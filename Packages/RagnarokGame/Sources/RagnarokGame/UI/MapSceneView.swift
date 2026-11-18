@@ -157,6 +157,8 @@ struct MapSceneView: View {
                 presentedMenuItem = nil
             }
         }
+        // Keep the bottom HUD near the display edge; retain top/side safe areas.
+        .ignoresSafeArea(.container, edges: .bottom)
         .onGeometryChange(for: CGFloat.self) { geometryProxy in
             geometryProxy.size.width
         } action: { containerWidth in
