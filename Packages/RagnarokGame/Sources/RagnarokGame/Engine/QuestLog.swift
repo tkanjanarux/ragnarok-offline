@@ -44,8 +44,8 @@ private struct QuestReader {
         return .init(id: id, state: UInt8(state), expires: expires, objectives: objectives)
     }
 }
-extension PlaySession {
-    func applyQuestPacket(_ packet: QuestWirePacket) {
+enum QuestLogDecoder {
+    static func applying(_ packet: QuestWirePacket, to quests: [UInt32: QuestEntry]) -> [UInt32: QuestEntry] {
         // Parse into a copy: malformed packets must not partially alter the log.
         var next = quests
         var reader = QuestReader(bytes: packet.bytes)
@@ -54,7 +54,7 @@ extension PlaySession {
             case 0x9f8:
                 _ = try reader.number(2)
                 let count = try reader.number(4)
-                guard count <= 10000 else { return }
+                guard count <= 10000 else { return quests }
                 next = [:]
                 for _ in 0..<count {
                     let quest = try reader.entry(adding: false)
@@ -71,7 +71,7 @@ extension PlaySession {
             case 0x9fa, 0x8fe:
                 let length = try reader.number(2)
                 let count = packet.type == 0x9fa ? try reader.number(2) : (length - 4) / 12
-                guard count <= 10000 else { return }
+                guard count <= 10000 else { return quests }
                 for _ in 0..<count {
                     let first = try reader.number(4), second = try reader.number(4)
                     let required = try reader.number(2), current = try reader.number(2)
@@ -82,9 +82,15 @@ extension PlaySession {
                         next[id]?.objectives[i].current = Int(current)
                     }
                 }
-            default: return
+            default: return quests
             }
-            quests = next
-        } catch { /* Keep the last complete server state. */ }
+            return next
+        } catch { return quests }
+    }
+}
+
+extension PlaySession {
+    func applyQuestPacket(_ packet: QuestWirePacket) {
+        quests = QuestLogDecoder.applying(packet, to: quests)
     }
 }

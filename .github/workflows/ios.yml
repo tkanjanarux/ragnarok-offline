@@ -41,7 +41,7 @@ jobs:
       - name: Run quest packet regression tests
         run: |
           set -o pipefail
-          xcodebuild -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -destination 'platform=macOS' -only-testing:RagnarokOfflineTests/QuestPacketTests CODE_SIGNING_ALLOWED=NO test | tee quest-tests.log
+          xcodebuild -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -destination 'platform=macOS' -only-testing:RagnarokOfflineTests/QuestPacketTests -only-testing:RagnarokGameTests CODE_SIGNING_ALLOWED=NO test | tee quest-tests.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
