@@ -43,6 +43,8 @@ final class PlaySession {
     var shortcutList: ShortcutList
     let messageCenter: MessageCenter
 
+    var quests: [UInt32: QuestEntry] = [:]
+
     var dialog: NPCDialog?
     var dealSelectionNPCID: UInt32?
     var npcShop: NPCShop?
@@ -412,6 +414,17 @@ final class PlaySession {
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_USE_ITEM_ACK:
             inventory.update(from: packet)
+            if packet.result != 0 {
+                let effects: [UInt32: EffectID] = [501: .ef_potion1, 502: .ef_potion2,
+                    503: .ef_potion3, 504: .ef_potion4, 505: .ef_potion5,
+                    506: .ef_potion6, 569: .ef_potion1]
+                if let effect = effects[packet.itemId] {
+                    mapScene?.onEffectSpawned(effectID: effect, objectID: packet.AID)
+                }
+            }
+        case let packet as QuestWirePacket:
+            applyQuestPacket(packet)
+
         case let packet as PACKET_ZC_REQ_WEAR_EQUIP_ACK:
             inventory.update(from: packet)
             if let item = inventory.items[Int(packet.index)] {

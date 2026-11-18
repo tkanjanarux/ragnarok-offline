@@ -68,7 +68,10 @@ final public class PacketDecoder: Sendable {
                     break
                 }
 
-                if let registeredPacket = registeredPackets[packetType] {
+                if [Int16(0x9f8), 0x9f9, 0x9fa, 0x8fe, 0x2b4, 0x2b7].contains(packetType) {
+                    let bytes = try decoder.decode([UInt8].self, count: packetLength)
+                    packetHandler(QuestWirePacket(type: packetType, bytes: bytes))
+                } else if let registeredPacket = registeredPackets[packetType] {
                     do {
                         let packet = try registeredPacket.init(from: decoder)
                         packetHandler(packet)

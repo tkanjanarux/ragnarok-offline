@@ -37,6 +37,7 @@ struct MapSceneView: View {
                 }
             #elseif os(iOS)
             MapView(runtime: runtime, isWidescreen: isWidescreen)
+                .ignoresSafeArea(.container)
             #else
             MapView(runtime: runtime)
             #endif
@@ -86,7 +87,6 @@ struct MapSceneView: View {
             .padding(.trailing, 16)
             .padding(.bottom, statusIconBarBottomPadding)
         }
-        .ignoresSafeArea()
         .overlay {
             #if os(iOS)
             ChatBoxView()
@@ -111,6 +111,10 @@ struct MapSceneView: View {
                     }
                 case .skill:
                     SkillListView(skillList: playSession.skillList) {
+                        presentedMenuItem = nil
+                    }
+                case .quest:
+                    QuestLogView(quests: Array(playSession.quests.values)) {
                         presentedMenuItem = nil
                     }
                 case .worldMap:
@@ -153,9 +157,8 @@ struct MapSceneView: View {
                 presentedMenuItem = nil
             }
         }
-        .ignoresSafeArea(.container)
         .onGeometryChange(for: CGFloat.self) { geometryProxy in
-            geometryProxy.size.width + geometryProxy.safeAreaInsets.leading + geometryProxy.safeAreaInsets.trailing
+            geometryProxy.size.width
         } action: { containerWidth in
             self.screenWidth = containerWidth
         }

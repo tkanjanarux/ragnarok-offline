@@ -1,0 +1,49 @@
+name: iOS client
+on:
+  workflow_dispatch:
+  push:
+    branches: [client-potions-quests]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: xcode-27
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Select Xcode 27.2
+        run: |
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+          SDK_VERSION=$(xcrun --sdk iphoneos --show-sdk-version)
+          python3 -c 'import sys; assert tuple(map(int, sys.argv[1].split("."))) >= (27, 1), "iPhone Duo requires iOS SDK 27.1+"' "$SDK_VERSION"
+      - name: Build unsigned iOS app
+        run: |
+          set -o pipefail
+          xcodebuild -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO build | tee build.log
+      - name: Package for external signing
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/RagnarokOffline.app Payload/
+          zip -qry RagOff-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RagOff-unsigned
+          path: RagOff-unsigned.ipa
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-log
+          path: build.log
+      - name: Run quest packet regression tests
+        run: |
+          set -o pipefail
+          xcodebuild -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -destination 'platform=macOS' -only-testing:RagnarokOfflineTests/QuestPacketTests CODE_SIGNING_ALLOWED=NO test | tee quest-tests.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: quest-test-log
+          path: quest-tests.log

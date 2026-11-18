@@ -12,8 +12,33 @@ import RagnarokCore
 // Ported from roBrowserLegacy:
 // https://github.com/MrAntares/roBrowserLegacy/blob/master/src/DB/Effects/EffectTable.js
 public enum EffectTable {
+    // Potion particles use client GRF textures. Timing is an approximation of PC.
+    private static func potion(_ lens: String) -> [EffectDefinition] {
+        [.wav(soundName: "_heal_effect.wav"), .`3D`(
+            kind: .texture("effect\\" + lens),
+            duration: 0.7,
+            duplicate: EffectParameters.Duplicate(count: 16, interval: 0.015),
+            attachedToTarget: true,
+            blendMode: .one,
+            alphaMax: 0.8,
+            fadesIn: true,
+            fadesOut: true,
+            positionStart: [0, 0, 2],
+            positionEndXRandomRange: -2...2,
+            positionEndYRandomRange: -2...2,
+            positionEndZRandomRange: 0...6,
+            size: [5, 5]
+        )]
+    }
+
     // Keep entries sorted in ascending order by `EffectID.rawValue`.
     private static let table: [EffectID : [EffectDefinition]] = [
+        .ef_potion1: potion("lens_r.bmp"),
+        .ef_potion2: potion("lens_r.bmp"),
+        .ef_potion3: potion("lens_y.bmp"),
+        .ef_potion4: potion("lens_w.bmp"),
+        .ef_potion5: potion("lens_b.bmp"),
+        .ef_potion6: potion("lens_g.bmp"),
         .ef_hit1: [
             .`3D`(
                 kind: .texture("effect\\pok3.tga"),
