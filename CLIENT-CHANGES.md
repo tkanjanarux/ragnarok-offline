@@ -12,3 +12,5 @@ Validation pending: macOS compilation, QuestPacketTests, live login/add/kill/del
 ## iPhone Duo
 
 Xcode 27.2 workflow checks iOS SDK >= 27.1 (Apple fullscreen requirement). Map rendering extends beyond safe areas; controls and dialogs respect safe areas. Layout already observes container width and Metal view bounds dynamically. Actual folded/unfolded testing is still pending.
+
+User clarification: macOS is only the GitHub runner host; deliverable is iOS. Host macOS test step removed from subsequent builds. Latest iOS build has passed and IPA metadata confirms iphoneos27.2 / Xcode27.2. Device gameplay validation remains pending.
