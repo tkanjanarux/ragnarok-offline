@@ -14,3 +14,9 @@ Validation pending: macOS compilation, QuestPacketTests, live login/add/kill/del
 Xcode 27.2 workflow checks iOS SDK >= 27.1 (Apple fullscreen requirement). Map rendering extends beyond safe areas; controls and dialogs respect safe areas. Layout already observes container width and Metal view bounds dynamically. Actual folded/unfolded testing is still pending.
 
 User clarification: macOS is only the GitHub runner host; deliverable is iOS. Host macOS test step removed from subsequent builds. Latest iOS build has passed and IPA metadata confirms iphoneos27.2 / Xcode27.2. Device gameplay validation remains pending.
+
+## Cash Shop (2026-11-18)
+- Added a labeled Cash Shop menu button, server catalogue tabs, item names, quantities, Cash/Kafra balances and optional Kafra-first payment.
+- Implements 20211103 open/list/close and single-product purchase requests using existing generated packet structures. Catalogue chunks merge; malformed counts rejected. Pending purchase disables repeat purchases; timeouts never resend.
+- Inventory updates use existing item-receipt packets. Server errors shown without optimistic balance deduction. Read-only reference: roBrowserLegacy CashShop flow; implementation written in Swift against rAthena packet layouts (no JavaScript copied).
+- Device validation still required: open shop, purchase, insufficient points/weight/slots, reopen and reconnect.

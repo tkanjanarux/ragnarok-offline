@@ -44,6 +44,8 @@ final class PlaySession {
     let messageCenter: MessageCenter
 
     var quests: [UInt32: QuestEntry] = [:]
+    var cashShop = CashShopState()
+    @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
 
     var dialog: NPCDialog?
     var dealSelectionNPCID: UInt32?
@@ -179,6 +181,8 @@ final class PlaySession {
         mapClient = nil
 
         // The scene holds this session, so keeping the runtime would leak both.
+        cashShopTimeout?.cancel()
+        cashShop = CashShopState()
         mapPhase = .connecting
     }
 
@@ -202,6 +206,15 @@ final class PlaySession {
 
     private func handlePacket(_ packet: any DecodablePacket) {
         switch packet {
+        case let packet as PACKET_ZC_ACK_SCHEDULER_CASHITEM:
+            cashShop.receive(packet)
+        case let packet as PACKET_ZC_SE_CASHSHOP_OPEN:
+            cashShop.cash = packet.cashPoints
+            cashShop.kafra = packet.kafraPoints
+            cashShop.ready = true
+        case let packet as PACKET_ZC_SE_PC_BUY_CASHITEM_RESULT:
+            cashShopTimeout?.cancel()
+            cashShop.receive(packet)
         case let packet as PACKET_ZC_ACCEPT_ENTER:
             serverClock.synchronize(serverTick: packet.startTime, receiveTime: .now)
         case _ as PACKET_ZC_REFUSE_ENTER:
@@ -696,6 +709,35 @@ final class PlaySession {
 
         let packet = PacketFactory.CZ_RESTART(type: 1)
         mapClient.sendPacket(packet)
+    }
+
+    func openCashShop() {
+        cashShop.ready = false
+        cashShop.message = nil
+        mapClient?.sendPacket(CashShopRequest(.list))
+        var packet = PACKET_CZ_SE_CASHSHOP_OPEN2()
+        packet.packetType = HEADER_CZ_SE_CASHSHOP_OPEN2
+        packet.tab = 6
+        mapClient?.sendPacket(packet)
+    }
+
+    func closeCashShop() {
+        mapClient?.sendPacket(CashShopRequest(.close))
+        cashShop.ready = false
+    }
+
+    func buyCashShop(_ product: CashShopProduct, quantity: Int, useKafra: Bool) {
+        guard let mapClient,
+              let packet = cashShop.purchase(product, quantity: quantity, useKafra: useKafra) else { return }
+        cashShop.pending = true
+        cashShop.message = "Waiting for the server…"
+        mapClient.sendPacket(packet)
+        cashShopTimeout?.cancel()
+        cashShopTimeout = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(15)) } catch { return }
+            // Never retry a purchase automatically: its outcome may be unknown.
+            self?.cashShop.message = "No purchase response. Reconnect and check inventory before buying again."
+        }
     }
 
     func requestExit() {
