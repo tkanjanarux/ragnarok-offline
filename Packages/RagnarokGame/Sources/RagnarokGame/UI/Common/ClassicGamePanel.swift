@@ -32,9 +32,11 @@ struct ClassicGamePanel<Content: View>: View {
                 content()
                     .frame(width: width, height: height - 17)
                     .clipped()
+                    .contentShape(Rectangle())
             }
             .frame(width: width, height: height)
             .background(Color.white)
+            .contentShape(Rectangle())
             .overlay { Rectangle().strokeBorder(Color.gameBoxBorder, lineWidth: 1).allowsHitTesting(false) }
             .font(.game(size: 12))
             .foregroundStyle(Color.gameLabel)

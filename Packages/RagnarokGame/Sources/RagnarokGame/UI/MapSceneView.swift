@@ -101,6 +101,16 @@ struct MapSceneView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: isWidescreen ? .bottomLeading : .bottom)
             #endif
         }
+        .overlay {
+            GeometryReader { geometry in
+                let top = min(250, geometry.size.height * 0.36)
+                QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
+                    .frame(maxHeight: max(60, geometry.size.height - top - 160), alignment: .top)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .padding(.top, top)
+                    .padding(.trailing, 16)
+            }
+        }
         .overlay(alignment: .center) {
             if let item = presentedMenuItem {
                 switch item {
@@ -138,17 +148,9 @@ struct MapSceneView: View {
             }
         }
         .overlay {
-            GeometryReader { geometry in
-                let top = min(250, geometry.size.height * 0.36)
-                QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
-                    .frame(maxHeight: max(60, geometry.size.height - top - 160), alignment: .top)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                    .padding(.top, top)
-                    .padding(.trailing, 16)
+            if presentedMenuItem == nil || presentedMenuItem == .quest {
+                QuestDetailView(quests: Array(playSession.quests.values), ui: playSession.questUI)
             }
-        }
-        .overlay {
-            QuestDetailView(quests: Array(playSession.quests.values), ui: playSession.questUI)
         }
         .overlay(alignment: .center) {
             if let dialog = playSession.dialog {

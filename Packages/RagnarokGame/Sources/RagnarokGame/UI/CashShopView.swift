@@ -33,7 +33,7 @@ struct CashShopView: View {
                     buyList.frame(width: 182)
                 }
                 .padding(2)
-                .background { GameImage("cashshop/img_shop_bg.bmp") { $0.resizable() } }
+                .background { GameImage("cashshop/img_shop_bg.bmp") { $0.resizable() }.allowsHitTesting(false) }
                 .disabled(confirming || detail != nil)
                 if let detail { itemDetails(detail) }
                 if confirming { confirmation }
@@ -45,6 +45,12 @@ struct CashShopView: View {
         .onDisappear { session.closeCashShop() }
         .onChange(of: tab) { page = 0 }
         .onChange(of: search) { page = 0 }
+    }
+
+    private var emptyCatalogueMessage: String {
+        if !session.cashShop.ready { return "Opening shop…" }
+        if session.cashShop.products.isEmpty { return "Shop catalogue unavailable.\nReconnect to refresh." }
+        return search.isEmpty ? "No items in this category." : "No matching items."
     }
 
     private var sellList: some View {
@@ -60,6 +66,7 @@ struct CashShopView: View {
                             name: "img_shop_tap\(index)_\(tab == UInt16(index) ? "on" : "off").bmp",
                             fallback: CashShopState.tabs[index])
                             .frame(width: 56, height: 31)
+                            .contentShape(Rectangle())
                     }.buttonStyle(.plain)
                 }
             }
@@ -68,7 +75,7 @@ struct CashShopView: View {
                     ForEach(visible) { product in productCell(product) }
                 }
                 if visible.isEmpty {
-                    Text(session.cashShop.ready ? "No items in this category." : "Opening shop…")
+                    Text(emptyCatalogueMessage)
                         .frame(width: 525, height: 370)
                 }
             }.frame(height: 382)
@@ -199,6 +206,7 @@ struct CashShopView: View {
         Button(action: action) {
             CashShopSkinLabel(name: "\(image).bmp", fallback: label)
                 .frame(width: width, height: 22)
+                .contentShape(Rectangle())
         }.buttonStyle(.plain)
     }
     private func smallButton(_ label: String, action: @escaping () -> Void) -> some View {
