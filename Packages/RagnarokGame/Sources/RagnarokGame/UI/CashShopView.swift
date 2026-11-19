@@ -65,9 +65,12 @@ struct CashShopView: View {
                         CashShopSkinLabel(
                             name: "img_shop_tap\(index)_\(tab == UInt16(index) ? "on" : "off").bmp",
                             fallback: CashShopState.tabs[index])
+                            .id("tab-\(index)-\(tab == UInt16(index))")
                             .frame(width: 56, height: 31)
                             .contentShape(Rectangle())
                     }.buttonStyle(.plain)
+                        .accessibilityLabel(CashShopState.tabs[index])
+                        .accessibilityAddTraits(tab == UInt16(index) ? .isSelected : [])
                 }
             }
             ZStack(alignment: .topLeading) {
@@ -78,12 +81,12 @@ struct CashShopView: View {
                     Text(emptyCatalogueMessage)
                         .frame(width: 525, height: 370)
                 }
-            }.frame(height: 382)
+            }.frame(height: 382, alignment: .topLeading)
             HStack(spacing: 4) {
                 TextField("Search", text: $search).textFieldStyle(.plain)
                     .padding(.horizontal, 4).frame(width: 160, height: 20)
                     .background(.white).border(Color.gameBoxBorder)
-                skinButton("Search", image: "btn_searchbar_normal", width: 48) { page = 0 }
+                skinButton("Search", image: "btn_searchbar_normal", width: 48, showsText: false) { page = 0 }
                 Spacer(minLength: 0)
                 arrow("|‹", image: "bt_arrowL2_on", enabled: page > 0) { page = 0 }
                 arrow("‹", image: "bt_arrowL_on", enabled: page > 0) { page -= 1 }
@@ -143,13 +146,27 @@ struct CashShopView: View {
             }.padding(4)
             HStack { Text("Total Price"); Spacer(); Text("\(session.cashShop.cartTotal) C") }
                 .padding(.horizontal, 4)
-            skinButton(session.cashShop.pending ? "Buying…" : "Buy", image: "btn_buy_normal", width: 82) { confirming = true }
+            skinButton(session.cashShop.pending ? "Buying…" : "Purchase", image: "btn_buy_normal", width: 82) { confirming = true }
                 .disabled(free == nil || !session.cashShop.canPurchaseCart(freePoints: free ?? 0))
-            Text(session.cashShop.message ?? "Add up to 8 items. Maximum 99 each.")
+            Text(purchaseStatus)
                 .font(.system(size: 10)).frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 60, alignment: .top).padding(.horizontal, 4)
             Spacer(minLength: 0)
         }.background(Color.white.opacity(0.5))
+    }
+
+    private var purchaseStatus: String {
+        if let message = session.cashShop.message { return message }
+        guard !session.cashShop.cart.isEmpty else { return "Add up to 8 items. Maximum 99 each." }
+        guard let free else { return "Enter a valid Free Points amount." }
+        if free > session.cashShop.kafra || UInt64(free) > session.cashShop.cartTotal {
+            return "Free Points amount exceeds your balance or total price."
+        }
+        let required = session.cashShop.cartTotal - UInt64(free)
+        if required > UInt64(session.cashShop.cash) {
+            return "Not enough Cash Points. Need \(required), available \(session.cashShop.cash)."
+        }
+        return "Review your Buy List, then choose Purchase."
     }
 
     private func cartRow(_ line: CashShopCartLine) -> some View {
@@ -166,8 +183,12 @@ struct CashShopView: View {
                 Text("\(line.product.price) C")
             }
             Button { session.cashShop.setQuantity(0, for: line.id) } label: {
-                CashShopSkinLabel(name: "btn_close.bmp", fallback: "×").frame(width: 14, height: 14)
+                CashShopSkinLabel(name: "btn_close.bmp", fallback: "×")
+                    .frame(width: 14, height: 14)
+                    .frame(width: 36, height: 44)
+                    .contentShape(Rectangle())
             }.buttonStyle(.plain)
+                .accessibilityLabel("Remove " + name(line.product))
         }.padding(3).frame(height: 64)
             .background { GameImage("cashshop/img_shop_itembg2.bmp") { $0.resizable() } }
             .disabled(session.cashShop.pending)
@@ -202,9 +223,9 @@ struct CashShopView: View {
         }.frame(width: 280).background(Color.white).border(Color.gameBoxBorder)
     }
 
-    private func skinButton(_ label: String, image: String, width: CGFloat, action: @escaping () -> Void) -> some View {
+    private func skinButton(_ label: String, image: String, width: CGFloat, showsText: Bool = true, action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            CashShopSkinLabel(name: "\(image).bmp", fallback: label)
+            CashShopSkinLabel(name: "\(image).bmp", fallback: label, showsText: showsText)
                 .frame(width: width, height: 22)
                 .contentShape(Rectangle())
         }.buttonStyle(.plain)
@@ -213,7 +234,7 @@ struct CashShopView: View {
         Button(label, action: action).buttonStyle(.game).frame(width: 18, height: 17)
     }
     private func arrow(_ label: String, image: String, enabled: Bool, action: @escaping () -> Void) -> some View {
-        skinButton(label, image: image, width: 20, action: action).disabled(!enabled)
+        skinButton(label, image: image, width: 20, showsText: false, action: action).disabled(!enabled)
     }
 }
 
@@ -236,27 +257,30 @@ private struct CashShopItemImage: View {
     }
 }
 
-/// Cash-shop bitmaps contain localized lettering. Draw the bitmap OR a text fallback,
-/// never both, so Korean/English GRF labels are not overprinted with Swift text.
+/// Tabs/arrows contain icons; Purchase assets are backgrounds with separate text.
 private struct CashShopSkinLabel: View {
     var name: String
     var fallback: String
+    var showsText = false
     @Environment(GameContext.self) private var context
     @State private var resource: Resources.Image?
+    @State private var loadedName = ""
     var body: some View {
-        Group {
-            if let resource { Image(decorative: resource.cgImage, scale: 1).resizable() }
-            else {
-                Text(fallback).font(.system(size: 9)).multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(white: 0.92)).border(Color.gameBoxBorder)
+        // A stable container keeps the loader alive when resource state changes.
+        ZStack {
+            if let resource, loadedName == name {
+                Image(decorative: resource.cgImage, scale: 1).resizable()
+                if showsText { Text(fallback).font(.game(size: 11)).foregroundStyle(Color.gameLabel) }
+            } else {
+                Color(white: 0.92)
+                Text(fallback).font(.game(size: 10)).multilineTextAlignment(.center)
             }
         }.accessibilityLabel(fallback).task(id: name) {
-            resource = nil
             let path = ResourcePath.userInterfaceDirectory.appending(["cashshop", name])
             let loaded = try? await context.resourceManager.image(at: path, removesMagentaPixels: true)
             guard !Task.isCancelled else { return }
             resource = loaded
+            loadedName = name
         }
     }
 }

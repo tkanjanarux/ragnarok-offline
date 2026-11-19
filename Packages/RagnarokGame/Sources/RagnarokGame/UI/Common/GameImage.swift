@@ -17,7 +17,9 @@ struct GameImage<Content>: View where Content: View {
     @State private var image: Resources.Image?
 
     var body: some View {
-        contentView
+        ZStack {
+            contentView
+        }
             .task(id: name) {
                 let components = name.split(separator: "/").map(String.init)
                 let path = ResourcePath.userInterfaceDirectory.appending(components)
