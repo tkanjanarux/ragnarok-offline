@@ -1,0 +1,140 @@
+import RagnarokResources
+import SwiftUI
+
+/// QuestHelper renewal companion window (342 × 412), independent from the quest list.
+struct QuestDetailView: View {
+    var quests: [QuestEntry]
+    @Bindable var ui: QuestUIState
+    var openItem: ((Int) -> Void)? = nil
+    @State private var selectedItemID: Int?
+    @Environment(GameContext.self) private var gameContext
+    var body: some View {
+        if let quest = quests.first(where: { $0.id == ui.selectedQuestID }) {
+            ClassicGamePanel(title: "Quest Information", width: 342, height: 412, preferredOffset: CGSize(width: 361.5, height: 0), onClose: { ui.selectedQuestID = nil }) {
+                VStack(spacing: 0) {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(questDisplayText(ui.title(for: quest))).font(.game(weight: .bold))
+                                .foregroundStyle(Color(red: 0, green: 0, blue: 0.57)).frame(maxWidth: .infinity, minHeight: 45)
+                            section("Description")
+                            Text(linkedDescription(ui.metadata[quest.id]?.description ?? "Description unavailable in client resources."))
+                                .fixedSize(horizontal: false, vertical: true).padding(.horizontal, 10)
+                            if let info = ui.metadata[quest.id], !info.npcMap.isEmpty {
+                                Text("\(info.npcMap) (\(info.npcX), \(info.npcY))").foregroundStyle(.blue).padding(.horizontal, 10)
+                            }
+                            Divider()
+                            section("Monster")
+                            ForEach(quest.objectives) { objective in
+                                Text("\(objective.name)  \(objective.current) / \(objective.required > 0 ? String(objective.required) : "?")")
+                                    .padding(.leading, 20)
+                            }
+                            Divider()
+                            section("Reward")
+                            if let info = ui.metadata[quest.id] {
+                                if let exp = info.rewardEXP { Text("Base EXP: \(exp)").padding(.leading, 20) }
+                                if let exp = info.rewardJobEXP { Text("Job EXP: \(exp)").padding(.leading, 20) }
+                                ForEach(Array(info.rewards.enumerated()), id: \.offset) { _, reward in
+                                    Button { showItem(reward.itemID) } label: {
+                                        QuestRewardRow(itemID: reward.itemID, count: reward.count)
+                                    }.buttonStyle(.plain)
+                                }
+                            }
+                        }.padding(.horizontal, 5).padding(.bottom, 8)
+                    }.frame(height: 370)
+                    HStack {
+                        if quest.expires > 0 {
+                            Text(Date(timeIntervalSince1970: Double(quest.expires)), style: .relative).foregroundStyle(.red).lineLimit(1)
+                        }
+                        Spacer()
+                        Button("Close") { ui.selectedQuestID = nil }.buttonStyle(.game).frame(width: 42, height: 20)
+                    }.padding(.horizontal, 7).frame(height: 25)
+                }.background(alignment: .top) {
+                    GameImage("renew_questui/bg_questsub.bmp").frame(width: 342, height: 412).offset(y: -17)
+                }.font(.game()).foregroundStyle(Color.gameLabel)
+            }
+            .environment(\.openURL, OpenURLAction { url in
+                guard url.scheme == "ragoff-quest-item", let host = url.host, let id = Int(host), id > 0 else { return .discarded }
+                showItem(id)
+                return .handled
+            })
+            .overlay {
+                if let selectedItemID {
+                    QuestItemDetailView(itemID: selectedItemID) { self.selectedItemID = nil }
+                }
+            }
+            .task { await ui.loadMetadata(resourceManager: gameContext.resourceManager) }
+        }
+    }
+    private func showItem(_ id: Int) {
+        if let openItem { openItem(id) } else { selectedItemID = id }
+    }
+    private func linkedDescription(_ source: String) -> AttributedString {
+        var result = AttributedString()
+        for segment in QuestRichText.parse(source) {
+            var part = AttributedString(description: segment.text, defaultColor: .gameLabel)
+            if let id = segment.itemID {
+                part.link = URL(string: "ragoff-quest-item://\(id)")
+                part.foregroundColor = .blue
+                part.underlineStyle = .single
+            }
+            result.append(part)
+        }
+        return result
+    }
+    private func section(_ title: String) -> some View {
+        HStack(spacing: 5) {
+            GameImage("renew_questui/img_poring.bmp").frame(width: 10, height: 9)
+            Text(title)
+        }.padding(.horizontal, 5)
+    }
+}
+
+private struct QuestRewardRow: View {
+    var itemID: Int
+    var count: Int
+    @Environment(GameContext.self) private var gameContext
+    @State private var icon: Resources.Image?
+    var body: some View {
+        HStack {
+            Group {
+                if let icon { Image(decorative: icon.cgImage, scale: 1) } else { Color.clear }
+            }.frame(width: 24, height: 24)
+            Text("\(gameContext.itemInfoTable.localizedIdentifiedItemName(forItemID: itemID) ?? "Item #\(itemID)") × \(count)")
+                .foregroundStyle(.blue)
+        }.padding(.leading, 20).task(id: itemID) {
+            icon = try? await gameContext.resourceManager.itemIconImage(forItemID: itemID)
+        }
+    }
+}
+
+
+private struct QuestItemDetailView: View {
+    var itemID: Int
+    var close: () -> Void
+    @Environment(GameContext.self) private var gameContext
+    @State private var preview: Resources.Image?
+    var body: some View {
+        ClassicGamePanel(title: "Item Information", width: 300, height: 240, onClose: close) {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(gameContext.itemInfoTable.localizedIdentifiedItemName(forItemID: itemID) ?? "Item #\(itemID)")
+                    .font(.game(weight: .bold))
+                HStack(alignment: .top, spacing: 8) {
+                    Group {
+                        if let preview { Image(decorative: preview.cgImage, scale: 1) }
+                        else { Color.clear }
+                    }.frame(width: 75, height: 100).clipped().border(Color.gray)
+                    ScrollView {
+                        Text(AttributedString(description: gameContext.itemInfoTable.localizedIdentifiedItemDescription(forItemID: itemID) ?? "Description unavailable in client resources.", defaultColor: .gameLabel))
+                            .font(.game(size: 11)).frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                HStack {
+                    Spacer()
+                    Button("Close", action: close).buttonStyle(.game).frame(width: 42, height: 20)
+                }
+            }.padding(8).font(.game()).background(Color.white)
+        }.task(id: itemID) {
+            preview = try? await gameContext.resourceManager.itemPreviewImage(forItemID: itemID)
+        }
+    }
+}

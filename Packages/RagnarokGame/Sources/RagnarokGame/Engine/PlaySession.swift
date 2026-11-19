@@ -44,6 +44,7 @@ final class PlaySession {
     let messageCenter: MessageCenter
 
     var quests: [UInt32: QuestEntry] = [:]
+    var questUI = QuestUIState()
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
 
@@ -183,6 +184,8 @@ final class PlaySession {
         // The scene holds this session, so keeping the runtime would leak both.
         cashShopTimeout?.cancel()
         cashShop = CashShopState()
+        quests.removeAll()
+        questUI = QuestUIState()
         mapPhase = .connecting
     }
 
@@ -213,8 +216,12 @@ final class PlaySession {
             cashShop.kafra = packet.kafraPoints
             cashShop.ready = true
         case let packet as PACKET_ZC_SE_PC_BUY_CASHITEM_RESULT:
-            cashShopTimeout?.cancel()
-            cashShop.receive(packet)
+            if let next = cashShop.receivePurchaseResult(packet) {
+                mapClient?.sendPacket(next)
+                scheduleCashShopTimeout()
+            } else if !cashShop.pending {
+                cashShopTimeout?.cancel()
+            }
         case let packet as PACKET_ZC_ACCEPT_ENTER:
             serverClock.synchronize(serverTick: packet.startTime, receiveTime: .now)
         case _ as PACKET_ZC_REFUSE_ENTER:
@@ -713,7 +720,7 @@ final class PlaySession {
 
     func openCashShop() {
         cashShop.ready = false
-        cashShop.message = nil
+        if !cashShop.pending { cashShop.message = nil }
         mapClient?.sendPacket(CashShopRequest(.list))
         var packet = PACKET_CZ_SE_CASHSHOP_OPEN2()
         packet.packetType = HEADER_CZ_SE_CASHSHOP_OPEN2
@@ -726,17 +733,29 @@ final class PlaySession {
         cashShop.ready = false
     }
 
-    func buyCashShop(_ product: CashShopProduct, quantity: Int, useKafra: Bool) {
+    func applyQuestPacket(_ packet: QuestWirePacket) {
+        quests = QuestLogDecoder.applying(packet, to: quests)
+        if let id = questUI.selectedQuestID, quests[id] == nil { questUI.selectedQuestID = nil }
+    }
+
+    func setQuestActive(_ questID: UInt32, active: Bool) {
+        guard let quest = quests[questID], quest.state != 2 else { return }
+        mapClient?.sendPacket(QuestActiveRequest(questID: questID, active: active))
+        // The server's 0x02b7 acknowledgement updates the authoritative state.
+    }
+
+    func buyCashShopCart(freePoints: UInt32) {
         guard let mapClient,
-              let packet = cashShop.purchase(product, quantity: quantity, useKafra: useKafra) else { return }
-        cashShop.pending = true
-        cashShop.message = "Waiting for the server…"
+              let packet = cashShop.beginCartPurchase(freePoints: freePoints) else { return }
         mapClient.sendPacket(packet)
+        scheduleCashShopTimeout()
+    }
+
+    private func scheduleCashShopTimeout() {
         cashShopTimeout?.cancel()
         cashShopTimeout = Task { [weak self] in
             do { try await Task.sleep(for: .seconds(15)) } catch { return }
-            // Never retry a purchase automatically: its outcome may be unknown.
-            self?.cashShop.message = "No purchase response. Reconnect and check inventory before buying again."
+            self?.cashShop.purchaseTimeout()
         }
     }
 

@@ -78,7 +78,14 @@ struct MapSceneView: View {
         }
         .overlay(alignment: .topTrailing) {
             VStack(alignment: .trailing, spacing: 8) {
-                MinimapView(scene: runtime.scene)
+                HStack(alignment: .top, spacing: 8) {
+                    GameImageButton("basic_interface/nc_cashshop.bmp") {
+                        presentedMenuItem = presentedMenuItem == .cashShop ? nil : .cashShop
+                    }
+                    .frame(width: 43, height: 45)
+                    .accessibilityLabel("Cash Shop")
+                    MinimapView(scene: runtime.scene)
+                }
 
                 StatusIconBarView(statusChanges: playSession.statusChanges)
             }
@@ -116,7 +123,7 @@ struct MapSceneView: View {
                 case .cashShop:
                     CashShopView { presentedMenuItem = nil }
                 case .quest:
-                    QuestLogView(quests: Array(playSession.quests.values)) {
+                    QuestLogView(quests: Array(playSession.quests.values), ui: playSession.questUI, setActive: playSession.setQuestActive) {
                         presentedMenuItem = nil
                     }
                 case .worldMap:
@@ -129,6 +136,19 @@ struct MapSceneView: View {
                     }
                 }
             }
+        }
+        .overlay {
+            GeometryReader { geometry in
+                let top = min(250, geometry.size.height * 0.36)
+                QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
+                    .frame(maxHeight: max(60, geometry.size.height - top - 160), alignment: .top)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    .padding(.top, top)
+                    .padding(.trailing, 16)
+            }
+        }
+        .overlay {
+            QuestDetailView(quests: Array(playSession.quests.values), ui: playSession.questUI)
         }
         .overlay(alignment: .center) {
             if let dialog = playSession.dialog {

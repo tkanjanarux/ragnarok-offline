@@ -10,6 +10,7 @@ import SwiftUI
 struct GameTitleBar: View {
     var title: Text?
     var closeAction: (() -> Void)?
+    var usesGameSkin = false
 
     var body: some View {
         HStack(spacing: 0) {
@@ -35,6 +36,11 @@ struct GameTitleBar: View {
         .frame(height: 17)
         .background {
             background
+                .overlay {
+                    if usesGameSkin {
+                        GameImage("basic_interface/titlebar_mid.bmp") { $0.resizable() }
+                    }
+                }
         }
     }
 
@@ -134,9 +140,10 @@ struct GameTitleBar: View {
         .allowsHitTesting(false)
     }
 
-    init(_ title: Text? = nil, closeAction: (() -> Void)? = nil) {
+    init(_ title: Text? = nil, closeAction: (() -> Void)? = nil, usesGameSkin: Bool = false) {
         self.title = title
         self.closeAction = closeAction
+        self.usesGameSkin = usesGameSkin
     }
 }
 

@@ -12,6 +12,7 @@ struct QuestEntry: Identifiable {
     var state: UInt8
     var expires: UInt32
     var objectives: [QuestObjective]
+    var starts: UInt32 = 0
 }
 private struct QuestReader {
     let bytes: [UInt8]
@@ -28,7 +29,7 @@ private struct QuestReader {
     }
     mutating func entry(adding: Bool) throws -> QuestEntry {
         let id = try number(4), state = try number(1)
-        _ = try number(4)
+        let starts = try number(4)
         let expires = try number(4), count = try number(2)
         guard count <= 100 else { throw CocoaError(.fileReadCorruptFile) }
         var objectives: [QuestObjective] = []
@@ -41,7 +42,7 @@ private struct QuestReader {
             let label = try name()
             objectives.append(.init(id: hunt, name: label, current: Int(current), required: Int(required)))
         }
-        return .init(id: id, state: UInt8(state), expires: expires, objectives: objectives)
+        return .init(id: id, state: UInt8(state), expires: expires, objectives: objectives, starts: starts)
     }
 }
 enum QuestLogDecoder {
@@ -52,7 +53,8 @@ enum QuestLogDecoder {
         do {
             switch packet.type {
             case 0x9f8:
-                _ = try reader.number(2)
+                let length = try reader.number(2)
+                guard Int(length) == packet.bytes.count else { return quests }
                 let count = try reader.number(4)
                 guard count <= 10000 else { return quests }
                 next = [:]
@@ -67,11 +69,15 @@ enum QuestLogDecoder {
                 next.removeValue(forKey: try reader.number(4))
             case 0x2b7:
                 let id = try reader.number(4)
-                next[id]?.state = UInt8(try reader.number(1))
+                let state = try reader.number(1)
+                guard state <= 1 else { return quests }
+                next[id]?.state = UInt8(state)
             case 0x9fa, 0x8fe:
                 let length = try reader.number(2)
+                let header: UInt32 = packet.type == 0x9fa ? 6 : 4
+                guard length >= header, Int(length) == packet.bytes.count, (length - header) % 12 == 0 else { return quests }
                 let count = packet.type == 0x9fa ? try reader.number(2) : (length - 4) / 12
-                guard count <= 10000 else { return quests }
+                guard count <= 10000, count == (length - header) / 12 else { return quests }
                 for _ in 0..<count {
                     let first = try reader.number(4), second = try reader.number(4)
                     let required = try reader.number(2), current = try reader.number(2)
@@ -86,11 +92,5 @@ enum QuestLogDecoder {
             }
             return next
         } catch { return quests }
-    }
-}
-
-extension PlaySession {
-    func applyQuestPacket(_ packet: QuestWirePacket) {
-        quests = QuestLogDecoder.applying(packet, to: quests)
     }
 }

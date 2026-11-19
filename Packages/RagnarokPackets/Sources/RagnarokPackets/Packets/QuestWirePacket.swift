@@ -10,3 +10,15 @@ public struct QuestWirePacket: DecodablePacket {
         throw PacketDecodingError.unknownPacket(0)
     }
 }
+
+/// CZ_ACTIVE_QUEST, PACKETVER 20211103. State is updated only upon ZC_ACTIVE_QUEST acknowledgment.
+public struct QuestActiveRequest: EncodablePacket {
+    public let questID: UInt32
+    public let active: Bool
+    public init(questID: UInt32, active: Bool) { self.questID = questID; self.active = active }
+    public func encode(to encoder: BinaryEncoder) throws {
+        try encoder.encode(Int16(0x02b6))
+        try encoder.encode(questID)
+        try encoder.encode(UInt8(active ? 1 : 0))
+    }
+}

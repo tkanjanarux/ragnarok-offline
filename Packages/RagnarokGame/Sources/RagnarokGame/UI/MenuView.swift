@@ -102,12 +102,6 @@ struct MenuView: View {
                     }
                     .frame(width: 32, height: 34)
                     .disabled(true)
-                    GridRow {
-                        Button("Cash Shop") { action(.cashShop) }
-                            .font(.game())
-                            .buttonStyle(.game)
-                            .gridCellColumns(5)
-                    }
                 }
                 .padding(10)
                 .background(.black.opacity(0.5))

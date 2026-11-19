@@ -18,10 +18,13 @@ struct GameImage<Content>: View where Content: View {
 
     var body: some View {
         contentView
-            .task {
+            .task(id: name) {
                 let components = name.split(separator: "/").map(String.init)
                 let path = ResourcePath.userInterfaceDirectory.appending(components)
-                image = try? await gameContext.resourceManager.image(at: path, removesMagentaPixels: true)
+                image = nil
+                let loaded = try? await gameContext.resourceManager.image(at: path, removesMagentaPixels: true)
+                guard !Task.isCancelled else { return }
+                image = loaded
             }
     }
 

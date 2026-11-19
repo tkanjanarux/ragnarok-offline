@@ -1,97 +1,254 @@
+import RagnarokResources
 import SwiftUI
 
+/// Original CashShop layout: 535px Sell List, 186px Buy List, nine category tabs.
+/// GRF paths and layout follow roBrowser's UI/Components/CashShop.
 struct CashShopView: View {
     var close: () -> Void
     @Environment(PlaySession.self) private var session
     @Environment(GameContext.self) private var context
     @State private var tab: UInt16 = 6
-    @State private var quantity = 1
-    @State private var selectedID: String?
-    @State private var useKafra = false
+    @State private var search = ""
+    @State private var page = 0
+    @State private var freePoints = "0"
+    @State private var confirming = false
+    @State private var detail: CashShopProduct?
 
-    private var selected: CashShopProduct? {
-        session.cashShop.products.first { $0.id == selectedID && $0.tab == tab }
+    private var free: UInt32? { UInt32(freePoints) }
+    private var filtered: [CashShopProduct] {
+        session.cashShop.products.filter { $0.tab == tab && (search.isEmpty || name($0).localizedCaseInsensitiveContains(search)) }
+            .sorted { $0.itemID < $1.itemID }
     }
-    private var total: UInt64 { UInt64(selected?.price ?? 0) * UInt64(quantity) }
-    private var canBuy: Bool {
-        guard let selected else { return false }
-        return session.cashShop.purchase(selected, quantity: quantity, useKafra: useKafra) != nil
-    }
+    private var pages: Int { max(1, (filtered.count + 8) / 9) }
+    private var visible: [CashShopProduct] { Array(filtered.dropFirst(min(page, pages - 1) * 9).prefix(9)) }
     private func name(_ product: CashShopProduct) -> String {
         context.itemInfoTable.localizedIdentifiedItemName(forItemID: Int(product.itemID)) ?? "Item #\(product.itemID)"
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("Cash Shop").font(.headline)
-                Spacer()
-                Button("Close", action: close)
+        ClassicGamePanel(title: "Cash Shop", width: 723, height: 540, onClose: close) {
+            ZStack {
+                HStack(spacing: 2) {
+                    sellList.frame(width: 535)
+                    buyList.frame(width: 182)
+                }
+                .padding(2)
+                .background { GameImage("cashshop/img_shop_bg.bmp") { $0.resizable() } }
+                .disabled(confirming || detail != nil)
+                if let detail { itemDetails(detail) }
+                if confirming { confirmation }
             }
-            Text("Cash: \(session.cashShop.cash)   Kafra: \(session.cashShop.kafra)")
-                .monospacedDigit()
-            Picker("Category", selection: $tab) {
-                ForEach(0..<CashShopState.tabs.count, id: \.self) { i in
-                    Text(CashShopState.tabs[i]).tag(UInt16(i))
-                }
-            }
-            .pickerStyle(.menu)
-            ScrollView {
-                if !session.cashShop.ready {
-                    Text("Opening shop… If it stays here, close and try outside this map or NPC dialog.")
-                        .font(.caption)
-                }
-                let products = session.cashShop.products.filter { $0.tab == tab }.sorted { $0.itemID < $1.itemID }
-                if products.isEmpty && session.cashShop.ready {
-                    Text("No items received in this category.").font(.caption)
-                }
-                ForEach(products) { product in
-                    Button {
-                        selectedID = product.id
-                        quantity = 1
-                    } label: {
-                        HStack {
-                            Text(name(product)).multilineTextAlignment(.leading)
-                            Spacer()
-                            Text("\(product.price) CP")
-                            if selectedID == product.id { Image(systemName: "checkmark.circle.fill") }
-                        }
-                        .padding(8)
-                        .background(selectedID == product.id ? Color.accentColor.opacity(0.18) : .clear)
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
-                    }
-                    .buttonStyle(.plain)
-                    .disabled(session.cashShop.pending)
-                }
-            }
-            if let selected {
-                Stepper("Quantity: \(quantity)", value: $quantity, in: 1...999)
-                    .disabled(session.cashShop.pending)
-                Toggle("Use Kafra Points first", isOn: $useKafra)
-                    .disabled(session.cashShop.pending)
-                HStack {
-                    Text("Total: \(total) points").monospacedDigit()
-                    Spacer()
-                    Button(session.cashShop.pending ? "Buying…" : "Buy") {
-                        session.buyCashShop(selected, quantity: quantity, useKafra: useKafra)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(!canBuy)
-                }
-                if !canBuy && !session.cashShop.pending && session.cashShop.ready {
-                    Text("Not enough points.").font(.caption)
-                }
-            }
-            if let message = session.cashShop.message {
-                Text(message).font(.caption)
-            }
+            .font(.game())
+            .foregroundStyle(Color.gameLabel)
         }
-        .padding()
-        .frame(maxWidth: 440, maxHeight: 420)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
-        .padding()
         .onAppear { session.openCashShop() }
         .onDisappear { session.closeCashShop() }
-        .onChange(of: tab) { selectedID = nil; quantity = 1 }
+        .onChange(of: tab) { page = 0 }
+        .onChange(of: search) { page = 0 }
+    }
+
+    private var sellList: some View {
+        VStack(spacing: 3) {
+            Text("Sell List").frame(maxWidth: .infinity).frame(height: 22)
+                .background(Color.white.opacity(0.7))
+            // Advertisements are intentionally empty when no server banner is configured.
+            Color.white.opacity(0.45).frame(height: 36)
+            HStack(spacing: 0) {
+                ForEach(0..<9, id: \.self) { index in
+                    Button { tab = UInt16(index) } label: {
+                        CashShopSkinLabel(
+                            name: "img_shop_tap\(index)_\(tab == UInt16(index) ? "on" : "off").bmp",
+                            fallback: CashShopState.tabs[index])
+                            .frame(width: 56, height: 31)
+                    }.buttonStyle(.plain)
+                }
+            }
+            ZStack(alignment: .topLeading) {
+                LazyVGrid(columns: Array(repeating: GridItem(.fixed(172), spacing: 4), count: 3), spacing: 2) {
+                    ForEach(visible) { product in productCell(product) }
+                }
+                if visible.isEmpty {
+                    Text(session.cashShop.ready ? "No items in this category." : "Opening shop…")
+                        .frame(width: 525, height: 370)
+                }
+            }.frame(height: 382)
+            HStack(spacing: 4) {
+                TextField("Search", text: $search).textFieldStyle(.plain)
+                    .padding(.horizontal, 4).frame(width: 160, height: 20)
+                    .background(.white).border(Color.gameBoxBorder)
+                skinButton("Search", image: "btn_searchbar_normal", width: 48) { page = 0 }
+                Spacer(minLength: 0)
+                arrow("|‹", image: "bt_arrowL2_on", enabled: page > 0) { page = 0 }
+                arrow("‹", image: "bt_arrowL_on", enabled: page > 0) { page -= 1 }
+                Text("\(min(page + 1, pages)) / \(pages)").frame(width: 46)
+                arrow("›", image: "bt_arrowR_on", enabled: page + 1 < pages) { page += 1 }
+                arrow("›|", image: "bt_arrowR2_on", enabled: page + 1 < pages) { page = pages - 1 }
+            }.padding(.horizontal, 4).frame(height: 24)
+        }
+    }
+
+    private func productCell(_ product: CashShopProduct) -> some View {
+        VStack(spacing: 2) {
+            Text(name(product)).lineLimit(1).frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 5).frame(height: 22)
+            HStack(spacing: 3) {
+                Button { detail = product } label: {
+                    CashShopItemImage(itemID: product.itemID, preview: true).frame(width: 85, height: 87)
+                }.buttonStyle(.plain).accessibilityLabel("Item information: " + name(product))
+                VStack(spacing: 14) {
+                    Text("\(product.price) C").lineLimit(1)
+                    skinButton("Purchase", image: "btn_add_normal", width: 70) {
+                        session.cashShop.addToCart(product)
+                    }.disabled(session.cashShop.pending || !session.cashShop.ready)
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .frame(width: 172, height: 126)
+        .background {
+            ZStack {
+                Color.white
+                GameImage("cashshop/img_shop_itembg.bmp") { $0.resizable() }
+            }
+        }
+        .border(Color.gameBoxBorder.opacity(0.4))
+    }
+
+    private var buyList: some View {
+        VStack(spacing: 4) {
+            Text("Buy List").frame(maxWidth: .infinity).frame(height: 22)
+            HStack { Text("Cash Point"); Spacer(); Text("\(session.cashShop.cash)") }.padding(.horizontal, 4)
+            ScrollView {
+                VStack(spacing: 2) {
+                    ForEach(session.cashShop.cart) { line in cartRow(line) }
+                }
+            }.frame(height: 287)
+                .background { GameImage("cashshop/img_shop_cart_bg.bmp") { $0.resizable() } }
+            VStack(spacing: 4) {
+                HStack { Text("Free Points"); Spacer(); Text("\(session.cashShop.kafra)") }
+                HStack {
+                    Text("Use Free Points")
+                    TextField("0", text: $freePoints).textFieldStyle(.plain)
+                        .multilineTextAlignment(.trailing).frame(width: 54, height: 20)
+                        .background(.white).border(Color.gameBoxBorder)
+                }.disabled(session.cashShop.pending)
+                HStack { Text("Cash Point"); Spacer(); Text("\(session.cashShop.cartTotal - min(UInt64(free ?? 0), session.cashShop.cartTotal))") }
+            }.padding(4)
+            HStack { Text("Total Price"); Spacer(); Text("\(session.cashShop.cartTotal) C") }
+                .padding(.horizontal, 4)
+            skinButton(session.cashShop.pending ? "Buying…" : "Buy", image: "btn_buy_normal", width: 82) { confirming = true }
+                .disabled(free == nil || !session.cashShop.canPurchaseCart(freePoints: free ?? 0))
+            Text(session.cashShop.message ?? "Add up to 8 items. Maximum 99 each.")
+                .font(.system(size: 10)).frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 60, alignment: .top).padding(.horizontal, 4)
+            Spacer(minLength: 0)
+        }.background(Color.white.opacity(0.5))
+    }
+
+    private func cartRow(_ line: CashShopCartLine) -> some View {
+        HStack(spacing: 3) {
+            CashShopItemImage(itemID: line.product.itemID, preview: false).frame(width: 32, height: 32)
+            VStack(alignment: .leading, spacing: 3) {
+                Text(name(line.product)).lineLimit(1)
+                HStack(spacing: 3) {
+                    Text("\(line.quantity)").frame(width: 22)
+                    smallButton("−") { session.cashShop.setQuantity(line.quantity - 1, for: line.id) }
+                    smallButton("+") { session.cashShop.setQuantity(line.quantity + 1, for: line.id) }
+                    Spacer(minLength: 0)
+                }
+                Text("\(line.product.price) C")
+            }
+            Button { session.cashShop.setQuantity(0, for: line.id) } label: {
+                CashShopSkinLabel(name: "btn_close.bmp", fallback: "×").frame(width: 14, height: 14)
+            }.buttonStyle(.plain)
+        }.padding(3).frame(height: 64)
+            .background { GameImage("cashshop/img_shop_itembg2.bmp") { $0.resizable() } }
+            .disabled(session.cashShop.pending)
+    }
+
+    private func itemDetails(_ product: CashShopProduct) -> some View {
+        VStack(spacing: 0) {
+            GameTitleBar(Text(verbatim: name(product)), closeAction: { detail = nil }, usesGameSkin: true)
+            HStack(alignment: .top, spacing: 8) {
+                CashShopItemImage(itemID: product.itemID, preview: true).frame(width: 85, height: 100)
+                ScrollView {
+                    Text(AttributedString(description: context.itemInfoTable.localizedIdentifiedItemDescription(forItemID: Int(product.itemID)) ?? "", defaultColor: .gameLabel))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }.frame(height: 205)
+            }.padding(8)
+        }.frame(width: 340).background(Color.white).border(Color.gameBoxBorder)
+    }
+
+    private var confirmation: some View {
+        VStack(spacing: 12) {
+            Text("Purchase items?").frame(maxWidth: .infinity).padding(4)
+                .background { GameImage("basic_interface/titlebar_mid.bmp") { $0.resizable() } }
+            Text("Total: \(session.cashShop.cartTotal) C\nFree Points: \(free ?? 0)")
+                .multilineTextAlignment(.center)
+            HStack {
+                Button("OK") {
+                    confirming = false
+                    if let free { session.buyCashShopCart(freePoints: free) }
+                }.buttonStyle(.game).frame(width: 55, height: 22)
+                Button("Cancel") { confirming = false }.buttonStyle(.game).frame(width: 55, height: 22)
+            }.padding(.bottom, 8)
+        }.frame(width: 280).background(Color.white).border(Color.gameBoxBorder)
+    }
+
+    private func skinButton(_ label: String, image: String, width: CGFloat, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            CashShopSkinLabel(name: "\(image).bmp", fallback: label)
+                .frame(width: width, height: 22)
+        }.buttonStyle(.plain)
+    }
+    private func smallButton(_ label: String, action: @escaping () -> Void) -> some View {
+        Button(label, action: action).buttonStyle(.game).frame(width: 18, height: 17)
+    }
+    private func arrow(_ label: String, image: String, enabled: Bool, action: @escaping () -> Void) -> some View {
+        skinButton(label, image: image, width: 20, action: action).disabled(!enabled)
+    }
+}
+
+private struct CashShopItemImage: View {
+    var itemID: UInt32
+    var preview: Bool
+    @Environment(GameContext.self) private var context
+    @State private var resource: Resources.Image?
+    var body: some View {
+        Group {
+            if let resource { Image(decorative: resource.cgImage, scale: 1).resizable().scaledToFit() }
+            else { Color.clear }
+        }.task(id: itemID) {
+            if preview {
+                resource = try? await context.resourceManager.itemPreviewImage(forItemID: Int(itemID))
+            } else {
+                resource = try? await context.resourceManager.itemIconImage(forItemID: Int(itemID))
+            }
+        }
+    }
+}
+
+/// Cash-shop bitmaps contain localized lettering. Draw the bitmap OR a text fallback,
+/// never both, so Korean/English GRF labels are not overprinted with Swift text.
+private struct CashShopSkinLabel: View {
+    var name: String
+    var fallback: String
+    @Environment(GameContext.self) private var context
+    @State private var resource: Resources.Image?
+    var body: some View {
+        Group {
+            if let resource { Image(decorative: resource.cgImage, scale: 1).resizable() }
+            else {
+                Text(fallback).font(.system(size: 9)).multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color(white: 0.92)).border(Color.gameBoxBorder)
+            }
+        }.accessibilityLabel(fallback).task(id: name) {
+            resource = nil
+            let path = ResourcePath.userInterfaceDirectory.appending(["cashshop", name])
+            let loaded = try? await context.resourceManager.image(at: path, removesMagentaPixels: true)
+            guard !Task.isCancelled else { return }
+            resource = loaded
+        }
     }
 }
