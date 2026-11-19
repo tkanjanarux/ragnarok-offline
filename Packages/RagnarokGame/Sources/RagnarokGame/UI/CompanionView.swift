@@ -11,7 +11,7 @@ struct CompanionView: View {
     private var enabled: Bool { session.companions.ready && session.companions.available && !session.companions.pending }
 
     var body: some View {
-        ClassicGamePanel(title: "Companions", width: 360, height: 410, onClose: close) {
+        ClassicGamePanel(title: "Companions", width: 360, height: 440, onClose: close) {
             VStack(spacing: 4) {
                 HStack {
                     Text("Roster \(session.companions.profiles.count)/9")
@@ -44,7 +44,7 @@ struct CompanionView: View {
                 }.frame(height: 135).overlay { Rectangle().strokeBorder(Color.gameBoxBorder).allowsHitTesting(false) }
                 if let row {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("EXP \(row.exp) / Job EXP \(row.jobExp)")
+                        Text("Base and Job follow your character")
                         Text(row.hp < 0 ? "Ready for first summon" : "HP \(row.hp)  SP \(row.sp)\(row.job == 8 ? "  Gems \(row.gems)" : "")")
                     }.font(.game(size: 10)).frame(maxWidth: .infinity, alignment: .leading).frame(height: 30)
                 } else { Text("Select a companion").font(.game(size: 11)).frame(height: 30) }
@@ -54,10 +54,19 @@ struct CompanionView: View {
                     action("Assist", verb: "assist", disabled: row?.active != true)
                     action("Stop", verb: "stop", disabled: row?.active != true)
                 }
+                if let row {
+                    Menu("Preset: " + row.preset.capitalized) {
+                        ForEach(["custom", "protect", "assist", "conserve"], id: \.self) { preset in
+                            Button(preset == "conserve" ? "Conserve SP" : preset.capitalized) {
+                                session.companionCommand("preset \(row.id) \(preset)")
+                            }
+                        }
+                    }.disabled(!enabled)
+                }
                 HStack(spacing: 4) {
                     Text("Recruit:").font(.game(size: 10))
                     ForEach(["Knight", "Priest", "Wizard"], id: \.self) { job in
-                        Button(job) { session.companionCommand("recruit \(job.lowercased())") }
+                        Button(["Knight":"Swordman", "Priest":"Acolyte", "Wizard":"Mage"][job] ?? job) { session.companionCommand("recruit \(job.lowercased())") }
                             .buttonStyle(.game).frame(minWidth: 72, minHeight: 40)
                             .disabled(!enabled || session.companions.profiles.count >= 9)
                     }

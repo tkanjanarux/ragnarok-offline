@@ -15,8 +15,9 @@ struct CompanionProfile: Identifiable, Equatable {
     let mode: Int
     let gems: UInt32
     let name: String
+    var preset: String = "custom"
     var active: Bool { actor != 0 }
-    var jobName: String { job == 7 ? "Knight" : job == 8 ? "Priest" : "Wizard" }
+    var jobName: String { [1:"Swordman", 2:"Mage", 4:"Acolyte", 7:"Knight", 8:"Priest", 9:"Wizard"][job] ?? "Unknown" }
     var stateName: String { ["Reserve", "Following", "Assisting", "Stopped", "Dead", "Resting"][mode] }
 }
 
@@ -110,9 +111,10 @@ struct CompanionState {
             guard t.count == 5, let count = Int(t[3]), (0...9).contains(count), t[4] == "0" || t[4] == "1" else { timeout(sequence); return true }
             expected = count; incoming = []; incomingAvailable = t[4] == "1"
         case "row":
-            guard let expected, incoming.count < expected, t.count == 17,
+            guard let expected, incoming.count < expected, (17...18).contains(t.count),
+                  t.count == 17 || ["custom","protect","assist","conserve"].contains(t[17]),
                   let id = UInt32(t[3]), id > 0, id < 95_000_000,
-                  let job = UInt32(t[4]), [7,8,9].contains(job),
+                  let job = UInt32(t[4]), [1,2,4,7,8,9].contains(job),
                   let level = UInt32(t[5]), level > 0, level <= 999,
                   let jobLevel = UInt32(t[6]), jobLevel > 0, jobLevel <= 999,
                   let exp = UInt64(t[7]), let jobExp = UInt64(t[8]),
@@ -123,7 +125,7 @@ struct CompanionState {
                   (actor == 0) == (mode == 0), let gems = UInt32(t[15]), gems <= 20,
                   !t[16].isEmpty, t[16].utf8.count <= 23,
                   !incoming.contains(where: { $0.id == id }) else { timeout(sequence); return true }
-            incoming.append(CompanionProfile(id: id, job: job, level: level, jobLevel: jobLevel, exp: exp, jobExp: jobExp, hp: hp, maxHP: maxHP, sp: sp, maxSP: maxSP, actor: actor, mode: mode, gems: gems, name: t[16]))
+            incoming.append(CompanionProfile(id: id, job: job, level: level, jobLevel: jobLevel, exp: exp, jobExp: jobExp, hp: hp, maxHP: maxHP, sp: sp, maxSP: maxSP, actor: actor, mode: mode, gems: gems, name: t[16], preset: t.count == 18 ? t[17] : "custom"))
         case "gearbegin":
             guard expected != nil, gearExpected == nil, t.count == 7,
                   let profile = UInt32(t[3]), (action == "equipment \(profile)" || action == "inspect \(profile)"),
