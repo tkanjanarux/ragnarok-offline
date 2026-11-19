@@ -49,6 +49,7 @@ struct CompanionState {
     var pending = false
     var message = "Waiting for companion roster."
     private(set) var sequence: UInt32 = 0
+    private(set) var completedSequence: UInt32 = 0
     private var expected: Int?
     private var incoming: [CompanionProfile] = []
     private var incomingAvailable = false
@@ -63,6 +64,7 @@ struct CompanionState {
     }
     mutating func timeout(_ token: UInt32) {
         guard pending && token == sequence else { return }
+        completedSequence = sequence
         pending = false; ready = false; expected = nil; incoming = []; equipmentReady = false; gearExpected = nil
         message = "No response. This server may not support Companions. Refresh to try again."
     }
@@ -115,7 +117,7 @@ struct CompanionState {
                 equipmentProfile = g.profile; equipment = incomingGear; bag = incomingBag
                 transferPending = g.busy; equipmentReady = true
             } else if action.hasPrefix("equipment ") { equipmentReady = false }
-            profiles = incoming; available = incomingAvailable; ready = true; pending = false
+            profiles = incoming; available = incomingAvailable; ready = true; pending = false; completedSequence = sequence
             self.message = t.dropFirst(3).joined(separator: " ")
             self.expected = nil; incoming = []
         default: timeout(sequence)

@@ -72,7 +72,7 @@ struct CompanionEquipmentView: View {
             }.padding(.horizontal, 8)
         }
         .onChange(of: bagTab) { selection = nil }
-        .onChange(of: state.pending) {
+        .onChange(of: state.completedSequence) {
             guard !state.pending else { return }
             if state.action.hasPrefix("equipment ") {
                 if waitingForTransfer || !state.equipmentReady || feedback == "Loading equipment…" { feedback = state.message }

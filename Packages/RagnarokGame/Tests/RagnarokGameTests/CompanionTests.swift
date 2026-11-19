@@ -45,7 +45,7 @@ import Testing
     s.receive("[RCO1] \(t) bag 4 2301 7654321")
     #expect(!s.equipmentReady && s.equipment.isEmpty)
     s.receive("[RCO1] \(t) end Waiting.")
-    #expect(s.equipmentReady && s.equipmentProfile == 2 && s.transferPending)
+    #expect(s.equipmentReady && s.equipmentProfile == 2 && s.transferPending && s.completedSequence == t)
     #expect(s.equipment[0].equipped && s.bag[0].uniqueID == 7654321)
     let next = s.begin("equipment 3")
     s.receive("[RCO1] \(t) gearbegin 2 0 0 0")
