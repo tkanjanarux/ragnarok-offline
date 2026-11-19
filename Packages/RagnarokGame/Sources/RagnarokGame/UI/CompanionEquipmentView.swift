@@ -9,6 +9,8 @@ struct CompanionEquipmentView: View {
     @Environment(GameContext.self) private var context
     @State private var tab = 0
     @State private var selection = ""
+    @State private var allowedSkills: [String]?
+    @State private var needsPolicy = false
     @State private var quantity = 10
     @State private var waitingForTransfer = false
     @State private var feedback = "Loading companion…"
@@ -50,7 +52,16 @@ struct CompanionEquipmentView: View {
                                 ForEach(state.skills) { skill in
                                     VStack(alignment: .leading, spacing: 3) {
                                         HStack { Text(skill.name).font(.game(weight: .bold)); Spacer(); Text("Lv \(skill.level)/\(skill.maximum)").font(.game(size: 11)) }
-                                        Text("\(skill.status) · SP \(skill.sp)").font(.game(size: 10))
+                                        HStack {
+                                            Text("\(skill.status) · SP \(skill.sp)").font(.game(size: 10))
+                                            Spacer()
+                                            if let key = skill.policyKey, let order = allowedSkills {
+                                                Button(order.contains(key) ? "AI: On" : "AI: Off") {
+                                                    let updated = order.contains(key) ? order.filter { $0 != key } : order + [key]
+                                                    send("skills \(profileID) \(updated.isEmpty ? "none" : updated.joined(separator: ","))")
+                                                }.buttonStyle(.game).disabled(!ready)
+                                            }
+                                        }
                                     }.padding(8).frame(maxWidth: .infinity, alignment: .leading).background(Color.white)
                                     Divider()
                                 }
@@ -91,16 +102,32 @@ struct CompanionEquipmentView: View {
                     control("Stop", disabled: !ready || profile?.active != true || profile?.mode == 3) { send("stop \(profileID)") }
                     control("Refresh", disabled: state.pending) { refresh() }
                 }.frame(height: 34)
-                Text(tab == 2 || tab == 3 ? "Auto: HP <50%, SP <30%, every 2s. Stop pauses use. Reserve to transfer; up to 100 at once." : "Starter gear cannot be returned. Stop to equip your gear; Reserve to give or return it.")
+                Text(tab == 1 ? "Tap AI: On or Off to choose which learned skills your companion may use." : tab == 2 || tab == 3 ? "Auto: HP <50%, SP <30%, every 2s. Stop pauses use. Reserve to transfer; up to 100 at once." : "Starter gear cannot be returned. Stop to equip your gear; Reserve to give or return it.")
                     .font(.game(size: 10)).frame(height: 32)
                 Text(verbatim: feedback).font(.game(size: 10)).frame(maxWidth: .infinity, alignment: .leading).frame(height: 38)
             }.padding(.horizontal, 8)
         }
-        .onChange(of: tab) { selection = "" }
+        .onChange(of: tab) {
+            selection = ""
+            if tab == 1 {
+                allowedSkills = nil
+                needsPolicy = true
+                if !state.pending && state.ready { fetchPolicy() }
+            }
+        }
         .onChange(of: selection) { quantity = min(10, Int(supplyBag?.amount ?? supply?.amount ?? 10)) }
         .onChange(of: state.completedSequence) {
             guard !state.pending else { return }
-            if state.action.hasPrefix("inspect ") {
+            if state.action == "config \(profileID)" || state.action.hasPrefix("skills \(profileID) ") {
+                let prefix = "Companion \(profileID) role="
+                if state.message.hasPrefix(prefix), let range = state.message.range(of: " skills=") {
+                    let order = state.message[range.upperBound...]
+                    allowedSkills = order == "none" ? [] : order.split(separator: ",").map(String.init)
+                } else { allowedSkills = nil }
+                feedback = state.message
+                if state.ready { refresh() }
+            } else if state.action.hasPrefix("inspect ") {
+                if tab == 1 && needsPolicy && state.ready { fetchPolicy(); return }
                 if waitingForTransfer || state.transferPending || feedback == "Loading companion…" { feedback = state.message }
                 waitingForTransfer = state.transferPending
             } else {
@@ -116,6 +143,10 @@ struct CompanionEquipmentView: View {
                 if !state.pending && state.ready { refresh() }
             }
         }
+    }
+    private func fetchPolicy() {
+        needsPolicy = false
+        send("config \(profileID)")
     }
     private func refresh() { session.companionCommand(state.ready ? "inspect \(profileID)" : "list") }
     private func send(_ action: String) { session.companionCommand(action) }

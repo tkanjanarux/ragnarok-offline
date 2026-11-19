@@ -47,6 +47,7 @@ struct CompanionSkill: Identifiable, Equatable {
     let sp: UInt32
     let reason: Int
     var name: String { [5:"Bash",6:"Provoke",19:"Fire Bolt",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
+    var policyKey: String? { [5:"bash", 6:"provoke", 19:"firebolt", 28:"heal", 34:"blessing", 29:"agi", 54:"resurrection"][id] }
     var status: String { ["Ready", "Unlocks at Job \(unlock)", "Summon to use", "Companion is dead", "Skills disabled", "Not enough SP", "No Blue Gemstone", "Cast delay"][reason] }
 }
 struct CompanionSupply: Identifiable, Equatable {
