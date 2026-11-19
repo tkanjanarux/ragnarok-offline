@@ -1,4 +1,6 @@
 import Testing
+import Foundation
+import BinaryIO
 import RagnarokPackets
 @testable import RagnarokGame
 
@@ -31,4 +33,23 @@ import RagnarokPackets
     leave.AID = 10
     state.receive(leave, ownID: 10)
     #expect(state.members.isEmpty && state.name.isEmpty)
+}
+
+@Test func partyOptionsFollowServerAndRejectUnavailableShare() throws {
+    var state = PartyState()
+    func response(_ exp: UInt8) throws -> PartyOptions {
+        let stream = MemoryStream(data: Data([0xd8,7,exp,0,0,0,1,0]))
+        return try PartyOptions(from: BinaryDecoder(stream: stream))
+    }
+    state.optionsPending = true
+    state.receive(try response(1), ownID: 10)
+    #expect(state.optionsReady && state.evenShare && !state.optionsPending && state.pickupShare)
+    state.receive(try response(2), ownID: 10)
+    #expect(!state.evenShare && state.shareMessage.contains("unavailable"))
+    var reason = PACKET_ZC_NOTIFY_PLAYERCHAT()
+    reason.Message = "Party EXP: Level difference 20 exceeds limit 15."
+    state.receive(reason, ownID: 10)
+    #expect(state.shareMessage == "Level difference 20 exceeds limit 15.")
+    state.receive(try response(0), ownID: 10)
+    #expect(!state.evenShare && state.shareMessage.contains("Each Take"))
 }

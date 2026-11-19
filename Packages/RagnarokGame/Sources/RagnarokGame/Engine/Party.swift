@@ -30,7 +30,7 @@ struct PartyState {
         switch packet {
         case let p as PartyOptions:
             optionsReady = true; optionsPending = false
-            if p.exp < 2 { evenShare = p.exp == 1 }
+            evenShare = p.exp == 1
             pickupShare = p.pickup != 0; distributionShare = p.distribution != 0
             shareMessage = p.exp == 2 ? "EXP sharing unavailable: party level range is too large."
                 : p.exp == 1 ? "Even Share enabled. Alive members on the same map can receive EXP."
