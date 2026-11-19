@@ -5,6 +5,7 @@ struct CompanionView: View {
     var close: () -> Void
     @Environment(PlaySession.self) private var session
     @State private var selected: UInt32?
+    @State private var equipmentProfile: UInt32?
     @State private var confirmRelease: UInt32?
     private var row: CompanionProfile? { session.companions.profiles.first { $0.id == selected } }
     private var enabled: Bool { session.companions.ready && session.companions.available && !session.companions.pending }
@@ -62,6 +63,7 @@ struct CompanionView: View {
                     }
                 }
                 HStack(spacing: 4) {
+                    Button("Equipment") { equipmentProfile = selected }.disabled(!enabled || row == nil)
                     Button("Refresh") { session.companionCommand("list") }.disabled(session.companions.pending)
                     Button("Create Party") { session.companionCommand("party") }.disabled(!enabled || !session.party.members.isEmpty)
                     Button("Release…") { confirmRelease = row?.id }.disabled(!enabled || row == nil || row?.active == true)
@@ -69,6 +71,10 @@ struct CompanionView: View {
                 Text(verbatim: session.companions.message).font(.game(size: 10))
                     .frame(maxWidth: .infinity, alignment: .leading).frame(height: 36)
             }.padding(.horizontal, 8).padding(.top, 4)
+        }
+        .allowsHitTesting(equipmentProfile == nil)
+        .overlay {
+            if let id = equipmentProfile { CompanionEquipmentView(profileID: id, close: { equipmentProfile = nil }) }
         }
         .overlay {
             if let id = confirmRelease {
@@ -88,7 +94,7 @@ struct CompanionView: View {
             session.companionCommand("list")
             while !Task.isCancelled {
                 do { try await Task.sleep(for: .seconds(5)) } catch { break }
-                if session.companions.ready && session.companions.available && !session.companions.pending && confirmRelease == nil { session.companionCommand("list") }
+                if session.companions.ready && session.companions.available && !session.companions.pending && confirmRelease == nil && equipmentProfile == nil { session.companionCommand("list") }
             }
         }
         .onChange(of: session.companions.profiles) {

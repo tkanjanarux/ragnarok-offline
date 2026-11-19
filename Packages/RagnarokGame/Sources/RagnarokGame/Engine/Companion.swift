@@ -22,7 +22,27 @@ struct CompanionProfile: Identifiable, Equatable {
 
 /// Versioned, bounded roster snapshots carried in ordinary server notices.
 /// A snapshot is published only after its matching end frame and exact row count.
+struct CompanionEquipment: Identifiable, Equatable {
+    let id: UInt32
+    let itemID: UInt32
+    let equipped: Bool
+    let returning: Bool
+}
+struct CompanionBagItem: Identifiable, Equatable {
+    let id: UInt32 // native one-based inventory slot
+    let itemID: UInt32
+    let uniqueID: UInt64
+}
 struct CompanionState {
+    var equipmentProfile: UInt32?
+    var equipment: [CompanionEquipment] = []
+    var bag: [CompanionBagItem] = []
+    var transferPending = false
+    var equipmentReady = false
+    private(set) var action = "list"
+    private var gearExpected: (profile: UInt32, gear: Int, bag: Int, busy: Bool)?
+    private var incomingGear: [CompanionEquipment] = []
+    private var incomingBag: [CompanionBagItem] = []
     var profiles: [CompanionProfile] = []
     var ready = false
     var available = false
@@ -33,7 +53,9 @@ struct CompanionState {
     private var incoming: [CompanionProfile] = []
     private var incomingAvailable = false
 
-    mutating func begin() -> UInt32 {
+    mutating func begin(_ action: String = "list") -> UInt32 {
+        self.action = action; gearExpected = nil; incomingGear = []; incomingBag = []
+        if action.hasPrefix("equipment ") { equipmentReady = false }
         sequence = sequence >= 999_999_999 ? 1 : sequence + 1
         pending = true; expected = nil; incoming = []
         message = "Waiting for server…"
@@ -41,7 +63,7 @@ struct CompanionState {
     }
     mutating func timeout(_ token: UInt32) {
         guard pending && token == sequence else { return }
-        pending = false; ready = false; expected = nil; incoming = []
+        pending = false; ready = false; expected = nil; incoming = []; equipmentReady = false; gearExpected = nil
         message = "No response. This server may not support Companions. Refresh to try again."
     }
     @discardableResult mutating func receive(_ message: String) -> Bool {
@@ -67,8 +89,32 @@ struct CompanionState {
                   !t[16].isEmpty, t[16].utf8.count <= 23,
                   !incoming.contains(where: { $0.id == id }) else { timeout(sequence); return true }
             incoming.append(CompanionProfile(id: id, job: job, level: level, jobLevel: jobLevel, exp: exp, jobExp: jobExp, hp: hp, maxHP: maxHP, sp: sp, maxSP: maxSP, actor: actor, mode: mode, gems: gems, name: t[16]))
+        case "gearbegin":
+            guard expected != nil, gearExpected == nil, t.count == 7,
+                  let profile = UInt32(t[3]), action == "equipment \(profile)",
+                  incoming.contains(where: { $0.id == profile }),
+                  let gear = Int(t[4]), (0...8).contains(gear),
+                  let bag = Int(t[5]), (0...200).contains(bag), t[6] == "0" || t[6] == "1" else { timeout(sequence); return true }
+            gearExpected = (profile, gear, bag, t[6] == "1")
+        case "gear":
+            guard let g = gearExpected, incomingGear.count < g.gear, t.count == 7,
+                  let id = UInt32(t[3]), id > 0, let item = UInt32(t[4]), item > 0,
+                  let mask = UInt32(t[5]), t[6] == "0" || t[6] == "1",
+                  !incomingGear.contains(where: { $0.id == id }) else { timeout(sequence); return true }
+            incomingGear.append(CompanionEquipment(id: id, itemID: item, equipped: mask != 0, returning: t[6] == "1"))
+        case "bag":
+            guard let g = gearExpected, incomingBag.count < g.bag, t.count == 6,
+                  let slot = UInt32(t[3]), (1...200).contains(slot), let item = UInt32(t[4]), item > 0,
+                  let uid = UInt64(t[5]), uid > 0, uid <= UInt64(Int64.max),
+                  !incomingBag.contains(where: { $0.id == slot || $0.uniqueID == uid }) else { timeout(sequence); return true }
+            incomingBag.append(CompanionBagItem(id: slot, itemID: item, uniqueID: uid))
         case "end":
             guard let expected, incoming.count == expected else { timeout(sequence); return true }
+            if let g = gearExpected {
+                guard incomingGear.count == g.gear, incomingBag.count == g.bag else { timeout(sequence); return true }
+                equipmentProfile = g.profile; equipment = incomingGear; bag = incomingBag
+                transferPending = g.busy; equipmentReady = true
+            } else if action.hasPrefix("equipment ") { equipmentReady = false }
             profiles = incoming; available = incomingAvailable; ready = true; pending = false
             self.message = t.dropFirst(3).joined(separator: " ")
             self.expected = nil; incoming = []

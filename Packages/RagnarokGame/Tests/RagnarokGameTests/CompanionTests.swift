@@ -35,3 +35,34 @@ import Testing
     s.timeout(a);#expect(s.pending)
     s.timeout(b);#expect(!s.pending && !s.ready)
 }
+
+@Test func companionEquipmentSnapshotIsAtomicAndBoundToProfile() {
+    var s = CompanionState(); let t = s.begin("equipment 2")
+    s.receive("[RCO1] \(t) begin 1 1")
+    s.receive("[RCO1] \(t) row 2 7 10 1 0 0 -1 0 -1 0 0 0 0 AI-Knight-2")
+    s.receive("[RCO1] \(t) gearbegin 2 1 1 1")
+    s.receive("[RCO1] \(t) gear 9 1101 2 0")
+    s.receive("[RCO1] \(t) bag 4 2301 7654321")
+    #expect(!s.equipmentReady && s.equipment.isEmpty)
+    s.receive("[RCO1] \(t) end Waiting.")
+    #expect(s.equipmentReady && s.equipmentProfile == 2 && s.transferPending)
+    #expect(s.equipment[0].equipped && s.bag[0].uniqueID == 7654321)
+    let next = s.begin("equipment 3")
+    s.receive("[RCO1] \(t) gearbegin 2 0 0 0")
+    #expect(s.pending && !s.equipmentReady)
+    s.receive("[RCO1] \(next) begin 0 1")
+    s.receive("[RCO1] \(next) gearbegin 2 0 0 0")
+    #expect(!s.ready && !s.pending)
+}
+@Test func companionEquipmentRejectsPartialAndDuplicateBag() {
+    for duplicate in [false, true] {
+        var s = CompanionState();let t = s.begin("equipment 2")
+        s.receive("[RCO1] \(t) begin 1 1")
+        s.receive("[RCO1] \(t) row 2 7 10 1 0 0 -1 0 -1 0 0 0 0 AI-Knight-2")
+        s.receive("[RCO1] \(t) gearbegin 2 0 2 0")
+        s.receive("[RCO1] \(t) bag 4 1101 123")
+        if duplicate { s.receive("[RCO1] \(t) bag 5 1101 123") }
+        s.receive("[RCO1] \(t) end Ready.")
+        #expect(!s.equipmentReady && !s.ready && !s.pending)
+    }
+}
