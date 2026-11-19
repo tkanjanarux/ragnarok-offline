@@ -16,9 +16,9 @@ struct CompanionEquipmentView: View {
     private var profile: CompanionProfile? { state.profiles.first { $0.id == profileID } }
     private var ready: Bool { state.ready && state.available && state.equipmentReady && state.detailReady && state.equipmentProfile == profileID && !state.pending && !state.transferPending }
     private var gear: CompanionEquipment? { state.equipment.first { selection == "gear:\($0.id)" } }
-    private var bagItem: CompanionBagItem? { state.bag.first { selection == "bag:\($0.id)" } }
+    private var bagItem: CompanionBagItem? { state.bag.first { selection == "bag:\($0.id):\($0.uniqueID)" } }
     private var supply: CompanionSupply? { state.supplies.first { selection == "supply:\($0.id)" } }
-    private var supplyBag: CompanionSupply? { state.supplyBag.first { selection == "supplybag:\($0.id)" } }
+    private var supplyBag: CompanionSupply? { state.supplyBag.first { selection == "supplybag:\($0.id):\($0.itemID)" } }
     private var amount: Int { min(quantity, Int(supplyBag?.amount ?? supply?.amount ?? 1)) }
 
     var body: some View {
@@ -58,8 +58,8 @@ struct CompanionEquipmentView: View {
                                 ForEach(state.supplies) { item in itemRow(key: "supply:\(item.id)", itemID: item.itemID, detail: "Remaining: \(item.amount)") }
                                 if state.supplies.isEmpty { empty(state.suppliesAvailable ? "No potions. Reserve, then send potions from Your Bag." : "Supplies are not enabled on this server.") }
                             default:
-                                ForEach(state.supplyBag) { item in itemRow(key: "supplybag:\(item.id)", itemID: item.itemID, detail: "Potion · Available: \(item.amount)") }
-                                ForEach(state.bag) { item in itemRow(key: "bag:\(item.id)", itemID: item.itemID, detail: "Equipment · Available to give") }
+                                ForEach(state.supplyBag) { item in itemRow(key: "supplybag:\(item.id):\(item.itemID)", itemID: item.itemID, detail: "Potion · Available: \(item.amount)") }
+                                ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: "Equipment · Available to give") }
                                 if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Plain equipment and Novice/Red/Orange/Yellow/White/Blue Potions only.") }
                             }
                         } else { empty(state.pending ? "Loading…" : "Details unavailable. This panel needs the updated Staging server.") }
