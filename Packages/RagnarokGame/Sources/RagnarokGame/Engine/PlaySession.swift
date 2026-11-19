@@ -45,6 +45,8 @@ final class PlaySession {
 
     var quests: [UInt32: QuestEntry] = [:]
     var questUI = QuestUIState()
+    var companions = CompanionState()
+    @ObservationIgnored private var companionTimeout: Task<Void, Never>?
     var party = PartyState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
@@ -187,6 +189,8 @@ final class PlaySession {
         cashShopTimeout?.cancel()
         cashShop = CashShopState()
         partyOptionsTimeout?.cancel()
+        companionTimeout?.cancel()
+        companions = CompanionState()
         party = PartyState()
         quests.removeAll()
         questUI = QuestUIState()
@@ -606,6 +610,7 @@ final class PlaySession {
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_NOTIFY_PLAYERCHAT:
+            if companions.receive(packet.Message) { break }
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_NPC_CHAT:
@@ -724,6 +729,17 @@ final class PlaySession {
     }
 
     var partyAccountID: UInt32 { account.accountID }
+
+    func companionCommand(_ action: String) {
+        guard !companions.pending, action == "list" || (companions.ready && companions.available) else { return }
+        let token = companions.begin()
+        sendMessage("@companion ui \(token) \(action)")
+        companionTimeout?.cancel()
+        companionTimeout = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(10)) } catch { return }
+            self?.companions.timeout(token)
+        }
+    }
 
     func setPartyOptions(exp: Bool, pickup: Bool, distribution: Bool) {
         guard party.optionsReady, !party.optionsPending,

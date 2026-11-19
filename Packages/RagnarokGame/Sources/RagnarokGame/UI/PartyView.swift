@@ -10,6 +10,7 @@ struct PartyView: View {
     @State private var confirmLeave = false
     @State private var confirmKick = false
     @State private var showSetup = false
+    @State private var showCompanions = false
 
     private var selectedMember: PartyMember? { session.party.members.first { $0.id == selected } }
     private var canKick: Bool {
@@ -35,6 +36,8 @@ struct PartyView: View {
                     toolbar("mesbtn_04", label: "Party Setup", disabled: session.party.members.isEmpty) { showSetup = true }
                     toolbar("mesbtn_05", label: "Expel from party", disabled: !canKick) { confirmKick = true }
                     toolbar("mesbtn_09", label: "Leave Party", disabled: session.party.members.isEmpty) { confirmLeave = true }
+                    Button("Companions") { showCompanions = true }
+                        .font(.game(size: 11)).buttonStyle(.game).frame(minHeight: 44)
                     Spacer()
                 }
                 .frame(height: 44)
@@ -50,6 +53,7 @@ struct PartyView: View {
         }
         .overlay {
             if showSetup { PartySetupView { showSetup = false } }
+            if showCompanions { CompanionView { showCompanions = false } }
         }
         .confirmationDialog("Leave this party?", isPresented: $confirmLeave, titleVisibility: .visible) {
             Button("Leave Party", role: .destructive) { session.leaveParty() }

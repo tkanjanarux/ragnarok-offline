@@ -1,0 +1,37 @@
+import Testing
+@testable import RagnarokGame
+
+@Test func companionAtomicSnapshotAndStaleResponses() {
+    var s = CompanionState()
+    let a = s.begin()
+    s.receive("[RCO1] \(a) begin 1 1")
+    s.receive("[RCO1] \(a) row 1 7 10 1 15 2 80 100 20 30 95000000 2 0 AI-Knight-1")
+    #expect(s.profiles.isEmpty && s.pending)
+    s.receive("[RCO1] \(a) end Summoned.")
+    #expect(s.profiles.count == 1 && s.profiles[0].active && s.profiles[0].stateName == "Assisting")
+    let b = s.begin()
+    s.receive("[RCO1] \(a) begin 0 1")
+    s.receive("[RCO1] \(a) end Stale")
+    #expect(s.pending && s.profiles.count == 1)
+    s.receive("[RCO1] \(b) begin 0 1"); s.receive("[RCO1] \(b) end Released.")
+    #expect(!s.pending && s.profiles.isEmpty && s.ready)
+}
+@Test func companionRejectsPartialDuplicateAndOversizedSnapshots() {
+    var s = CompanionState()
+    let a = s.begin();s.receive("[RCO1] \(a) begin 1 1");s.receive("[RCO1] \(a) end missing")
+    #expect(!s.ready && !s.pending)
+    let b = s.begin();s.receive("[RCO1] \(b) begin 10 1")
+    #expect(!s.pending)
+    let c = s.begin();s.receive("[RCO1] \(c) begin 2 1")
+    let row = "[RCO1] \(c) row 1 8 10 1 0 0 -1 0 -1 0 0 0 20 AI-Priest-1"
+    s.receive(row);s.receive(row)
+    #expect(!s.ready && s.profiles.isEmpty)
+    let d = s.begin();s.receive("[RCO1] \(d) begin 0 0");s.receive("[RCO1] \(d) end Disabled.")
+    #expect(s.ready && !s.available && s.message == "Disabled.")
+    let handled = s.receive("ordinary server message"); #expect(!handled)
+}
+@Test func companionTimeoutNeverRetriesMutation() {
+    var s = CompanionState();let a = s.begin();let b = s.begin()
+    s.timeout(a);#expect(s.pending)
+    s.timeout(b);#expect(!s.pending && !s.ready)
+}
