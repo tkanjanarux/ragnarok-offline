@@ -10,6 +10,7 @@ struct CompanionEquipmentView: View {
     @State private var tab = 0
     @State private var selection = ""
     @State private var quantity = 10
+    @State private var waitingForTransfer = false
     @State private var feedback = "Loading companion…"
     private var state: CompanionState { session.companions }
     private var profile: CompanionProfile? { state.profiles.first { $0.id == profileID } }
@@ -99,8 +100,13 @@ struct CompanionEquipmentView: View {
         .onChange(of: selection) { quantity = min(10, Int(supplyBag?.amount ?? supply?.amount ?? 10)) }
         .onChange(of: state.completedSequence) {
             guard !state.pending else { return }
-            if state.action.hasPrefix("inspect ") { feedback = state.message }
-            else { feedback = state.message; if state.ready { refresh() } }
+            if state.action.hasPrefix("inspect ") {
+                if waitingForTransfer || state.transferPending || feedback == "Loading companion…" { feedback = state.message }
+                waitingForTransfer = state.transferPending
+            } else {
+                feedback = state.message; waitingForTransfer = state.message.contains("Waiting for inventory")
+                if state.ready { refresh() }
+            }
         }
         .task {
             while state.pending && !Task.isCancelled { try? await Task.sleep(for: .milliseconds(100)) }
