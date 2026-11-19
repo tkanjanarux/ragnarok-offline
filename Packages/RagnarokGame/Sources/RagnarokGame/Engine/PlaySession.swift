@@ -46,6 +46,7 @@ final class PlaySession {
     var quests: [UInt32: QuestEntry] = [:]
     var questUI = QuestUIState()
     var party = PartyState()
+    @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
 
@@ -185,6 +186,7 @@ final class PlaySession {
         // The scene holds this session, so keeping the runtime would leak both.
         cashShopTimeout?.cancel()
         cashShop = CashShopState()
+        partyOptionsTimeout?.cancel()
         party = PartyState()
         quests.removeAll()
         questUI = QuestUIState()
@@ -722,6 +724,21 @@ final class PlaySession {
     }
 
     var partyAccountID: UInt32 { account.accountID }
+
+    func setPartyOptions(exp: Bool, pickup: Bool, distribution: Bool) {
+        guard party.optionsReady, !party.optionsPending,
+              party.members.contains(where: { $0.id == account.accountID && $0.leader }) else { return }
+        party.optionsPending = true
+        party.shareMessage = "Waiting for server confirmation…"
+        mapClient?.sendPacket(PartyOptionsRequest(exp: exp, pickup: pickup, distribution: distribution))
+        partyOptionsTimeout?.cancel()
+        partyOptionsTimeout = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(10)) } catch { return }
+            guard let self, self.party.optionsPending else { return }
+            self.party.optionsPending = false
+            self.party.shareMessage = "No confirmation received. Reopen the party window or reconnect before retrying."
+        }
+    }
 
     func leaveParty() {
         guard party.members.contains(where: { $0.id == account.accountID }) else { return }

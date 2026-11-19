@@ -310,7 +310,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_PARTY_JOIN_REQ: PACKET_ZC_PARTY_JOIN_REQ.self,
 
     // | 0x101, 0x7d8 | `clif_party_option` |
-//  HEADER_ZC_REQ_GROUPINFO_CHANGE_V2: PACKET_ZC_REQ_GROUPINFO_CHANGE_V2.self,
+    0x7d8: PartyOptions.self,
 
     // | 0x104, 0x1e9, 0xa43, 0xae4 | `clif_party_member_info` |
     packet_header_partymemberinfo: PACKET_ZC_ADD_MEMBER_TO_GROUP.self,

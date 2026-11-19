@@ -9,6 +9,7 @@ struct PartyView: View {
     @State private var selected: UInt32?
     @State private var confirmLeave = false
     @State private var confirmKick = false
+    @State private var showSetup = false
 
     private var selectedMember: PartyMember? { session.party.members.first { $0.id == selected } }
     private var canKick: Bool {
@@ -31,6 +32,7 @@ struct PartyView: View {
                     }.padding(4)
                 }.frame(height: 196)
                 HStack(spacing: 0) {
+                    toolbar("mesbtn_04", label: "Party Setup", disabled: session.party.members.isEmpty) { showSetup = true }
                     toolbar("mesbtn_05", label: "Expel from party", disabled: !canKick) { confirmKick = true }
                     toolbar("mesbtn_09", label: "Leave Party", disabled: session.party.members.isEmpty) { confirmLeave = true }
                     Spacer()
@@ -45,6 +47,9 @@ struct PartyView: View {
                 }.padding(.horizontal, 6).frame(height: 21)
                 .background { GameImage("basic_interface/btnbar_mid.bmp") { $0.resizable() }.allowsHitTesting(false) }
             }
+        }
+        .overlay {
+            if showSetup { PartySetupView { showSetup = false } }
         }
         .confirmationDialog("Leave this party?", isPresented: $confirmLeave, titleVisibility: .visible) {
             Button("Leave Party", role: .destructive) { session.leaveParty() }

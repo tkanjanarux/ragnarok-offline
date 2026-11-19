@@ -19,8 +19,25 @@ struct PartyMember: Identifiable {
 struct PartyState {
     var name = ""
     var members: [PartyMember] = []
+    var optionsReady = false
+    var evenShare = false
+    var pickupShare = false
+    var distributionShare = false
+    var optionsPending = false
+    var shareMessage = "Waiting for party settings from server."
+
     mutating func receive(_ packet: any DecodablePacket, ownID: UInt32) {
         switch packet {
+        case let p as PartyOptions:
+            optionsReady = true; optionsPending = false
+            if p.exp < 2 { evenShare = p.exp == 1 }
+            pickupShare = p.pickup != 0; distributionShare = p.distribution != 0
+            shareMessage = p.exp == 2 ? "EXP sharing unavailable: party level range is too large."
+                : p.exp == 1 ? "Even Share enabled. Alive members on the same map can receive EXP."
+                : "Each Take: EXP follows individual contribution."
+        case let p as PACKET_ZC_NOTIFY_PLAYERCHAT:
+            if p.Message.hasPrefix("Party EXP: ") { shareMessage = String(p.Message.dropFirst(11)) }
+
         case let p as PACKET_ZC_GROUP_LIST:
             name = p.partyName
             members = p.members.map { row in
