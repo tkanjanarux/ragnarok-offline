@@ -12,6 +12,7 @@ enum MenuItem {
     case equipment
     case inventory
     case skill
+    case party
     case cashShop
     case quest
     case worldMap
@@ -45,8 +46,8 @@ struct MenuView: View {
                             action(.skill)
                         }
                         GameImageButton("menu_icon/bt_party.bmp") {
+                            action(.party)
                         }
-                        .disabled(true)
                     }
                     .frame(width: 32, height: 34)
 

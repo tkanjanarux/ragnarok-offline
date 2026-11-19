@@ -130,6 +130,8 @@ struct MapSceneView: View {
                     SkillListView(skillList: playSession.skillList) {
                         presentedMenuItem = nil
                     }
+                case .party:
+                    PartyView { presentedMenuItem = nil }
                 case .cashShop:
                     CashShopView { presentedMenuItem = nil }
                 case .quest:

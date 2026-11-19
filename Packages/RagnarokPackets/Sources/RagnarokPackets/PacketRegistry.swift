@@ -995,7 +995,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_DELETE_ITEM_FROM_BODY: PACKET_ZC_DELETE_ITEM_FROM_BODY.self,
 
     // | 0x7fc | `clif_party_leaderchanged` |
-//  HEADER_ZC_CHANGE_GROUP_MASTER: PACKET_ZC_CHANGE_GROUP_MASTER.self,
+    packet_header_partyleaderchangedType: PartyLeaderChanged.self,
 
     // | 0x7fd, 0xbba | `clif_broadcast_obtain_special_item` |
     HEADER_ZC_BROADCASTING_SPECIAL_ITEM_OBTAIN_item: PACKET_ZC_BROADCASTING_SPECIAL_ITEM_OBTAIN_item.self,

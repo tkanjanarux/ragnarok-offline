@@ -45,6 +45,7 @@ final class PlaySession {
 
     var quests: [UInt32: QuestEntry] = [:]
     var questUI = QuestUIState()
+    var party = PartyState()
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
 
@@ -184,6 +185,7 @@ final class PlaySession {
         // The scene holds this session, so keeping the runtime would leak both.
         cashShopTimeout?.cancel()
         cashShop = CashShopState()
+        party = PartyState()
         quests.removeAll()
         questUI = QuestUIState()
         mapPhase = .connecting
@@ -208,6 +210,7 @@ final class PlaySession {
     }
 
     private func handlePacket(_ packet: any DecodablePacket) {
+        party.receive(packet, ownID: account.accountID)
         switch packet {
         case let packet as PACKET_ZC_ACK_SCHEDULER_CASHITEM:
             cashShop.receive(packet)
@@ -716,6 +719,24 @@ final class PlaySession {
 
         let packet = PacketFactory.CZ_RESTART(type: 1)
         mapClient.sendPacket(packet)
+    }
+
+    var partyAccountID: UInt32 { account.accountID }
+
+    func leaveParty() {
+        guard party.members.contains(where: { $0.id == account.accountID }) else { return }
+        var packet = PACKET_CZ_REQ_LEAVE_GROUP()
+        packet.packetType = 0x100
+        mapClient?.sendPacket(packet)
+    }
+
+    func expelPartyMember(_ member: PartyMember) {
+        guard member.id != account.accountID,
+              party.members.contains(where: { $0.id == account.accountID && $0.leader }),
+              party.members.contains(where: { $0.id == member.id && $0.characterID == member.characterID }) else { return }
+        var packet = PACKET_CZ_REQ_EXPEL_GROUP_MEMBER()
+        packet.packetType = 0x103; packet.AID = member.id; packet.name = member.name
+        mapClient?.sendPacket(packet)
     }
 
     func openCashShop() {
