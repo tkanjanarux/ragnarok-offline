@@ -173,6 +173,7 @@ private struct ChatMessageListView: View {
 
     @State private var scrollPosition = ScrollPosition(edge: .bottom)
     @State private var isAtBottom = true
+    @State private var isUserScrolling = false
 
     var body: some View {
         ScrollView {
@@ -186,15 +187,27 @@ private struct ChatMessageListView: View {
             }
             .padding(.horizontal, 3)
         }
+        .defaultScrollAnchor(.bottom)
         .scrollPosition($scrollPosition)
         .clipped()
-        .onScrollGeometryChange(for: ScrollGeometry.self) { geometry in
-            geometry
-        } action: { oldGeometry, newGeometry in
-            if isAtBottom && (oldGeometry.containerSize != newGeometry.containerSize || oldGeometry.contentSize != newGeometry.contentSize) {
+        .onAppear {
+            // Map reloads and switching back from Command recreate this view.
+            isAtBottom = true
+            scrollPosition.scrollTo(edge: .bottom)
+        }
+        .onChange(of: messages.last?.id) {
+            if isAtBottom { scrollPosition.scrollTo(edge: .bottom) }
+        }
+        .onScrollPhaseChange { _, phase in
+            isUserScrolling = phase == .interacting || phase == .decelerating
+        }
+        .onScrollGeometryChange(for: ScrollGeometry.self) { $0 } action: { old, new in
+            // Appending a line changes geometry before the scroll completes.
+            // Only an actual user scroll may turn off following the latest line.
+            if isUserScrolling {
+                isAtBottom = new.visibleRect.maxY >= new.contentSize.height + new.contentInsets.bottom - 2
+            } else if isAtBottom && (old.containerSize != new.containerSize || old.contentSize != new.contentSize) {
                 scrollPosition.scrollTo(edge: .bottom)
-            } else {
-                isAtBottom = newGeometry.visibleRect.maxY >= newGeometry.contentSize.height + newGeometry.contentInsets.bottom - 1
             }
         }
     }

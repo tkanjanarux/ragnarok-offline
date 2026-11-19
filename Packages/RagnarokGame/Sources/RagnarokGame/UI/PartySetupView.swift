@@ -23,8 +23,9 @@ struct PartySetupView: View {
                 HStack {
                     Spacer()
                     Button { session.setPartyOptions(exp: exp, pickup: pickup, distribution: distribution) } label: {
-                        Text(session.party.optionsPending ? "Waiting…" : "OK").frame(width: 64, height: 32)
-                    }.buttonStyle(.game).disabled(!leader || !session.party.optionsReady || session.party.optionsPending)
+                        Text(session.party.optionsPending ? "Waiting…" : "OK")
+                    }.buttonStyle(.game).frame(width: 64, height: 32)
+                        .disabled(!leader || !session.party.optionsReady || session.party.optionsPending)
                     Button("Cancel", action: close).buttonStyle(.game).frame(width: 64, height: 32)
                 }.padding(.bottom, 4)
             }.padding(.horizontal, 10).padding(.top, 10)
