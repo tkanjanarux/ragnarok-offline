@@ -33,7 +33,39 @@ struct CompanionBagItem: Identifiable, Equatable {
     let itemID: UInt32
     let uniqueID: UInt64
 }
+struct CompanionStarter: Identifiable, Equatable {
+    let id: UInt32
+    let itemID: UInt32
+    let equipped: Bool
+}
+struct CompanionSkill: Identifiable, Equatable {
+    let id: UInt32
+    let level: UInt32
+    let maximum: UInt32
+    let unlock: UInt32
+    let sp: UInt32
+    let reason: Int
+    var name: String { [5:"Bash",6:"Provoke",19:"Fire Bolt",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
+    var status: String { ["Ready", "Unlocks at Job \(unlock)", "Summon to use", "Companion is dead", "Skills disabled", "Not enough SP", "No Blue Gemstone", "Cast delay"][reason] }
+}
+struct CompanionSupply: Identifiable, Equatable {
+    let id: UInt32 // item id for stock, inventory slot for player bag
+    let itemID: UInt32
+    let amount: UInt32
+}
 struct CompanionState {
+    var detailReady = false
+    var starters: [CompanionStarter] = []
+    var skills: [CompanionSkill] = []
+    var supplies: [CompanionSupply] = []
+    var supplyBag: [CompanionSupply] = []
+    var suppliesAvailable = false
+    var activity = "Refresh to inspect."
+    private var detailExpected: (starter: Int, skill: Int, supply: Int, bag: Int, reason: Int, enabled: Bool)?
+    private var incomingStarters: [CompanionStarter] = []
+    private var incomingSkills: [CompanionSkill] = []
+    private var incomingSupplies: [CompanionSupply] = []
+    private var incomingSupplyBag: [CompanionSupply] = []
     var equipmentProfile: UInt32?
     var equipment: [CompanionEquipment] = []
     var bag: [CompanionBagItem] = []
@@ -56,7 +88,8 @@ struct CompanionState {
 
     mutating func begin(_ action: String = "list") -> UInt32 {
         self.action = action; gearExpected = nil; incomingGear = []; incomingBag = []
-        if action.hasPrefix("equipment ") { equipmentReady = false }
+        detailExpected = nil; incomingStarters = []; incomingSkills = []; incomingSupplies = []; incomingSupplyBag = []
+        if action.hasPrefix("equipment ") || action.hasPrefix("inspect ") { equipmentReady = false; detailReady = false }
         sequence = sequence >= 999_999_999 ? 1 : sequence + 1
         pending = true; expected = nil; incoming = []
         message = "Waiting for server…"
@@ -65,7 +98,7 @@ struct CompanionState {
     mutating func timeout(_ token: UInt32) {
         guard pending && token == sequence else { return }
         completedSequence = sequence
-        pending = false; ready = false; expected = nil; incoming = []; equipmentReady = false; gearExpected = nil
+        pending = false; ready = false; detailReady = false; detailExpected = nil; expected = nil; incoming = []; equipmentReady = false; gearExpected = nil
         message = "No response. This server may not support Companions. Refresh to try again."
     }
     @discardableResult mutating func receive(_ message: String) -> Bool {
@@ -93,7 +126,7 @@ struct CompanionState {
             incoming.append(CompanionProfile(id: id, job: job, level: level, jobLevel: jobLevel, exp: exp, jobExp: jobExp, hp: hp, maxHP: maxHP, sp: sp, maxSP: maxSP, actor: actor, mode: mode, gems: gems, name: t[16]))
         case "gearbegin":
             guard expected != nil, gearExpected == nil, t.count == 7,
-                  let profile = UInt32(t[3]), action == "equipment \(profile)",
+                  let profile = UInt32(t[3]), (action == "equipment \(profile)" || action == "inspect \(profile)"),
                   incoming.contains(where: { $0.id == profile }),
                   let gear = Int(t[4]), (0...8).contains(gear),
                   let bag = Int(t[5]), (0...200).contains(bag), t[6] == "0" || t[6] == "1" else { timeout(sequence); return true }
@@ -110,6 +143,36 @@ struct CompanionState {
                   let uid = UInt64(t[5]), uid > 0, uid <= UInt64(Int64.max),
                   !incomingBag.contains(where: { $0.id == slot || $0.uniqueID == uid }) else { timeout(sequence); return true }
             incomingBag.append(CompanionBagItem(id: slot, itemID: item, uniqueID: uid))
+        case "detailbegin":
+            guard expected != nil, detailExpected == nil, t.count == 10,
+                  let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,
+                  let starter = Int(t[4]), (0...2).contains(starter),
+                  let skill = Int(t[5]), (1...4).contains(skill),
+                  let supply = Int(t[6]), (0...6).contains(supply),
+                  let bag = Int(t[7]), (0...200).contains(bag),
+                  let reason = Int(t[8]), (0...9).contains(reason), ["0","1"].contains(t[9]) else { timeout(sequence); return true }
+            detailExpected = (starter,skill,supply,bag,reason,t[9] == "1")
+        case "starter":
+            guard let d = detailExpected, incomingStarters.count < d.starter, t.count == 6,
+                  let id = UInt32(t[3]), id < 2, let item = UInt32(t[4]), [1201,1601,2301].contains(item),
+                  ["0","1"].contains(t[5]), !incomingStarters.contains(where: { $0.id == id }) else { timeout(sequence); return true }
+            incomingStarters.append(CompanionStarter(id: id,itemID: item,equipped: t[5] == "1"))
+        case "skill":
+            guard let d = detailExpected, incomingSkills.count < d.skill, t.count == 9,
+                  let id = UInt32(t[3]), [5,6,19,28,34,29,54].contains(id),
+                  let level = UInt32(t[4]), let maximum = UInt32(t[5]), maximum <= 10, level <= maximum,
+                  let unlock = UInt32(t[6]), (1...50).contains(unlock), let sp = UInt32(t[7]), sp <= 10000,
+                  let reason = Int(t[8]), (0...7).contains(reason), !incomingSkills.contains(where: { $0.id == id }) else { timeout(sequence); return true }
+            incomingSkills.append(CompanionSkill(id:id,level:level,maximum:maximum,unlock:unlock,sp:sp,reason:reason))
+        case "supply", "supplybag":
+            guard let d = detailExpected else { timeout(sequence); return true }
+            let bag = t[2] == "supplybag"
+            guard t.count == (bag ? 6 : 5), let id = UInt32(t[3]),
+                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,569].contains(item),
+                  let amount = UInt32(t[bag ? 5 : 4]), amount > 0, amount <= (bag ? 30000 : 1000),
+                  bag ? ((1...200).contains(id) && incomingSupplyBag.count < d.bag && !incomingSupplyBag.contains(where: { $0.id == id })) : (incomingSupplies.count < d.supply && !incomingSupplies.contains(where: { $0.id == id })) else { timeout(sequence); return true }
+            let row = CompanionSupply(id:id,itemID:item,amount:amount)
+            if bag { incomingSupplyBag.append(row) } else { incomingSupplies.append(row) }
         case "end":
             guard let expected, incoming.count == expected else { timeout(sequence); return true }
             if let g = gearExpected {
@@ -117,6 +180,13 @@ struct CompanionState {
                 equipmentProfile = g.profile; equipment = incomingGear; bag = incomingBag
                 transferPending = g.busy; equipmentReady = true
             } else if action.hasPrefix("equipment ") { equipmentReady = false }
+            if action.hasPrefix("inspect ") {
+                guard let d = detailExpected, incomingStarters.count == d.starter, incomingSkills.count == d.skill,
+                      incomingSupplies.count == d.supply, incomingSupplyBag.count == d.bag, gearExpected != nil else { timeout(sequence); return true }
+                starters = incomingStarters; skills = incomingSkills; supplies = incomingSupplies; supplyBag = incomingSupplyBag
+                suppliesAvailable = d.enabled; detailReady = true
+                activity = ["In reserve", "Dead — needs revival or camp recovery", "Stopped — actions and potions paused", "Not in owner's party", "Resting to recover HP/SP", "Following — Assist to fight", "Assisting — waiting for target or support need", "Low HP — no HP potions", "Low SP — no SP potions", "Fighting"][d.reason]
+            }
             profiles = incoming; available = incomingAvailable; ready = true; pending = false; completedSequence = sequence
             self.message = t.dropFirst(3).joined(separator: " ")
             self.expected = nil; incoming = []

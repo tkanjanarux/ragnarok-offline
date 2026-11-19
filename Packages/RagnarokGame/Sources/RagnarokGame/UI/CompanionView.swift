@@ -63,7 +63,7 @@ struct CompanionView: View {
                     }
                 }
                 HStack(spacing: 4) {
-                    Button("Equipment") { equipmentProfile = selected }.disabled(!enabled || row == nil)
+                    Button("Details") { equipmentProfile = selected }.disabled(!enabled || row == nil)
                     Button("Refresh") { session.companionCommand("list") }.disabled(session.companions.pending)
                     Button("Create Party") { session.companionCommand("party") }.disabled(!enabled || !session.party.members.isEmpty)
                     Button("Release…") { confirmRelease = row?.id }.disabled(!enabled || row == nil || row?.active == true)

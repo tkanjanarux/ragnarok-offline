@@ -66,3 +66,24 @@ import Testing
         #expect(!s.equipmentReady && !s.ready && !s.pending)
     }
 }
+
+@Test func companionDetailsAndSupplySnapshots() {
+    var s = CompanionState(); let n = s.begin("inspect 1")
+    let frames = ["begin 1 1", "row 1 8 26 29 0 0 80 100 20 30 95000000 2 19 AI-Priest-1",
+                  "gearbegin 1 0 0 0", "detailbegin 1 2 1 1 1 8 1",
+                  "starter 0 1601 1", "starter 1 2301 1", "skill 54 1 4 20 30 5",
+                  "supply 505 10", "supplybag 2 505 20"]
+    for f in frames { s.receive("[RCO1] \(n) \(f)") }
+    #expect(!s.detailReady && s.profiles.isEmpty)
+    s.receive("[RCO1] \(n) end Ready")
+    #expect(s.detailReady && s.starters.count == 2 && s.skills.first?.name == "Resurrection")
+    #expect(s.skills.first?.status == "Not enough SP" && s.supplies.first?.amount == 10)
+    #expect(s.supplyBag.first?.amount == 20 && s.activity == "Low SP — no SP potions")
+}
+@Test func companionDetailsRejectPartialAndDuplicateFrames() {
+    for bad in ["starter 0 1601 1", "supply 505 1001", "skill 54 11 4 20 30 0"] {
+        var s = CompanionState(); let n = s.begin("inspect 1")
+        for f in ["begin 1 1", "row 1 8 26 29 0 0 80 100 20 30 95000000 2 19 AI-Priest-1", "gearbegin 1 0 0 0", "detailbegin 1 2 1 1 0 6 1", "starter 0 1601 1", bad, "end Ready"] { s.receive("[RCO1] \(n) \(f)") }
+        #expect(!s.ready && !s.detailReady && !s.pending)
+    }
+}
