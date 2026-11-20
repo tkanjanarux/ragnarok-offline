@@ -247,6 +247,7 @@ private struct CharacterSlotPanel: View {
                                     if let characterAnimation = characterAnimations[slot],
                                        let firstFrame = characterAnimation.firstFrame {
                                         Image(decorative: firstFrame, scale: 2)
+                                            .renderingMode(.original)
                                             .offset(y: 10)
                                     }
                                 }
