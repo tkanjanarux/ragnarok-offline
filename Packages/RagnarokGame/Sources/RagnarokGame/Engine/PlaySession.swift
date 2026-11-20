@@ -733,7 +733,8 @@ final class PlaySession {
     func companionCommand(_ action: String) {
         guard !companions.pending, action == "list" || (companions.ready && companions.available) else { return }
         let token = companions.begin(action)
-        sendMessage("@companion ui \(token) \(action) ui2")
+        let capability = action.hasPrefix("inspect ") ? "ui2 skills4" : "ui2"
+        sendMessage("@companion ui \(token) \(action) \(capability)")
         companionTimeout?.cancel()
         companionTimeout = Task { [weak self] in
             do { try await Task.sleep(for: .seconds(10)) } catch { return }

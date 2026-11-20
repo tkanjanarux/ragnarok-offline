@@ -87,3 +87,16 @@ import Testing
         #expect(!s.ready && !s.detailReady && !s.pending)
     }
 }
+
+@Test func expandedPriestSkillTable() {
+    var state = CompanionState()
+    let token = state.begin("inspect 1")
+    let frames = ["begin 1 1", "row 1 8 26 29 0 0 80 100 20 30 95000000 2 19 AI-Priest-1",
+                  "gearbegin 1 0 0 0", "detailbegin 1 0 6 0 0 0 1",
+                  "skill 28 3 10 1 20 0", "skill 34 2 10 5 20 0", "skill 29 2 10 5 20 0",
+                  "skill 54 1 4 20 30 0", "skill 33 2 10 10 26 0", "skill 74 1 5 15 40 0", "end Ready"]
+    for frame in frames { state.receive("[RCO1] \(token) \(frame)") }
+    #expect(state.detailReady && state.skills.count == 6)
+    #expect(state.skills.last?.name == "Magnificat")
+    #expect(state.skills.last?.policyKey == "magnificat")
+}
