@@ -23,16 +23,31 @@ struct CompanionProfile: Identifiable, Equatable {
 
 /// Versioned, bounded roster snapshots carried in ordinary server notices.
 /// A snapshot is published only after its matching end frame and exact row count.
+struct CompanionItemDetails: Equatable {
+    let refine: Int
+    let cards: [UInt32]
+    static let plain = Self(refine: 0, cards: [])
+
+    static func parse(_ fields: ArraySlice<String>) -> Self? {
+        if fields.isEmpty { return .plain }
+        guard fields.count == 5, let first = fields.first, let refine = Int(first), (0...20).contains(refine) else { return nil }
+        let cards = fields.dropFirst().compactMap(UInt32.init)
+        guard cards.count == 4 else { return nil }
+        return Self(refine: refine, cards: cards.filter { $0 != 0 })
+    }
+}
 struct CompanionEquipment: Identifiable, Equatable {
     let id: UInt32
     let itemID: UInt32
     let equipped: Bool
     let returning: Bool
+    var details = CompanionItemDetails.plain
 }
 struct CompanionBagItem: Identifiable, Equatable {
     let id: UInt32 // native one-based inventory slot
     let itemID: UInt32
     let uniqueID: UInt64
+    var details = CompanionItemDetails.plain
 }
 struct CompanionStarter: Identifiable, Equatable {
     let id: UInt32
@@ -43,11 +58,12 @@ struct CompanionGearRow: Identifiable {
     let id: String
     let itemID: UInt32
     let detail: String
+    var details = CompanionItemDetails.plain
 }
 extension CompanionState {
     var gearRows: [CompanionGearRow] {
         equipment.map { item in
-            CompanionGearRow(id: "gear:\(item.id)", itemID: item.itemID, detail: item.returning ? "Returning…" : item.equipped ? "Your equipment · Equipped" : "Your equipment · Stored")
+            CompanionGearRow(id: "gear:\(item.id)", itemID: item.itemID, detail: item.returning ? "Returning…" : item.equipped ? "Your equipment · Equipped" : "Your equipment · Stored", details: item.details)
         } + starters.map { item in
             CompanionGearRow(id: "starter:\(item.id)", itemID: item.itemID, detail: item.equipped ? "Starter · Equipped · Cannot transfer" : "Starter · Fallback · Cannot transfer")
         }
@@ -156,17 +172,17 @@ struct CompanionState {
                   let bag = Int(t[5]), (0...200).contains(bag), t[6] == "0" || t[6] == "1" else { timeout(sequence); return true }
             gearExpected = (profile, gear, bag, t[6] == "1")
         case "gear":
-            guard let g = gearExpected, incomingGear.count < g.gear, t.count == 7,
+            guard let g = gearExpected, incomingGear.count < g.gear, t.count >= 7, let details = CompanionItemDetails.parse(t.dropFirst(7)),
                   let id = UInt32(t[3]), id > 0, let item = UInt32(t[4]), item > 0,
                   let mask = UInt32(t[5]), t[6] == "0" || t[6] == "1",
                   !incomingGear.contains(where: { $0.id == id }) else { timeout(sequence); return true }
-            incomingGear.append(CompanionEquipment(id: id, itemID: item, equipped: mask != 0, returning: t[6] == "1"))
+            incomingGear.append(CompanionEquipment(id: id, itemID: item, equipped: mask != 0, returning: t[6] == "1", details: details))
         case "bag":
-            guard let g = gearExpected, incomingBag.count < g.bag, t.count == 6,
+            guard let g = gearExpected, incomingBag.count < g.bag, t.count >= 6, let details = CompanionItemDetails.parse(t.dropFirst(6)),
                   let slot = UInt32(t[3]), (1...200).contains(slot), let item = UInt32(t[4]), item > 0,
                   let uid = UInt64(t[5]), uid > 0, uid <= UInt64(Int64.max),
                   !incomingBag.contains(where: { $0.id == slot || $0.uniqueID == uid }) else { timeout(sequence); return true }
-            incomingBag.append(CompanionBagItem(id: slot, itemID: item, uniqueID: uid))
+            incomingBag.append(CompanionBagItem(id: slot, itemID: item, uniqueID: uid, details: details))
         case "detailbegin":
             guard expected != nil, detailExpected == nil, t.count == 10,
                   let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,

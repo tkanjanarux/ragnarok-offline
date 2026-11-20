@@ -140,3 +140,15 @@ import Testing
     state.receive("[RCO1] \(roster) end Ready.")
     #expect(state.detailRefreshAction(for: 3) == "inspect 3")
 }
+
+@Test func socketedEquipmentKeepsRefineAndRepeatedCardsInBothLists() {
+    var state = CompanionState()
+    let n = state.begin("equipment 1")
+    for line in ["begin 1 1","row 1 7 52 44 0 0 900 900 100 100 0 0 0 Knight","gearbegin 1 1 1 0",
+                 "gear 8 1101 2 0 7 4004 4004 0 0","bag 12 1101 4294967324 9 0 0 0 0","end Ready"] {
+        state.receive("[RCO1] \(n) \(line)")
+    }
+    #expect(state.equipmentReady)
+    #expect(state.gearRows.first?.details == CompanionItemDetails(refine: 7, cards: [4004,4004]))
+    #expect(state.bag.first?.details.refine == 9)
+}

@@ -44,7 +44,7 @@ struct CompanionEquipmentView: View {
                             case 0:
                                 VStack(spacing: 0) {
                                     ForEach(state.gearRows) { row in
-                                        itemRow(key: row.id, itemID: row.itemID, detail: row.detail)
+                                        itemRow(key: row.id, itemID: row.itemID, detail: row.detail, details: row.details)
                                     }
                                 }
                             case 1:
@@ -69,8 +69,8 @@ struct CompanionEquipmentView: View {
                                 if state.supplies.isEmpty { empty(state.suppliesAvailable ? "No potions. Reserve, then send potions from Your Bag." : "Supplies are not enabled on this server.") }
                             default:
                                 ForEach(state.supplyBag) { item in itemRow(key: "supplybag:\(item.id):\(item.itemID)", itemID: item.itemID, detail: "Potion · Available: \(item.amount)") }
-                                ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: "Equipment · Available to give") }
-                                if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Plain equipment and Novice/Red/Orange/Yellow/White/Blue Potions only.") }
+                                ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: "Equipment · Available to give", details: item.details) }
+                                if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Transferable equipment and Novice/Red/Orange/Yellow/White/Blue Potions only.") }
                             }
                         } else { empty(state.pending ? "Loading…" : "Waiting to refresh companion details.") }
                     }
@@ -175,16 +175,19 @@ struct CompanionEquipmentView: View {
     private func control(_ title: String, disabled: Bool, action: @escaping () -> Void) -> some View {
         Button(title, action: action).buttonStyle(.game).frame(width: title == "+" || title == "−" ? 36 : 96, height: 30).disabled(disabled)
     }
-    private func itemRow(key: String, itemID: UInt32, detail: String) -> some View {
+    private func itemRow(key: String, itemID: UInt32, detail: String, details: CompanionItemDetails = .plain) -> some View {
         let name = context.itemInfoTable.localizedIdentifiedItemName(forItemID: Int(itemID))?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let itemName = name.flatMap { $0.isEmpty ? nil : $0 } ?? "Item #\(itemID)"
+        let cardNames = details.cards.map { context.itemInfoTable.localizedIdentifiedItemName(forItemID: Int($0)) ?? "#\($0)" }
         return Button { selection = key } label: {
             HStack(spacing: 8) {
                 CompanionEquipmentIcon(itemID: itemID).frame(width: 32, height: 32)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(verbatim: name.flatMap { $0.isEmpty ? nil : $0 } ?? "Item #\(itemID)").font(.game(size: 12)).lineLimit(1)
+                    Text(verbatim: details.refine > 0 ? "+\(details.refine) \(itemName)" : itemName).font(.game(size: 12)).lineLimit(1)
                     Text(detail).font(.game(size: 10))
+                    if !cardNames.isEmpty { Text(verbatim: cardNames.joined(separator: ", ")).font(.game(size: 10)) }
                 }; Spacer()
-            }.padding(.horizontal, 6).frame(height: 44).foregroundStyle(Color.gameLabel)
+            }.padding(.horizontal, 6).frame(minHeight: 44).foregroundStyle(Color.gameLabel)
                 .background(selection == key ? Color(red: 0.82, green: 0.89, blue: 1) : Color.white).contentShape(Rectangle())
         }.buttonStyle(.plain)
     }
