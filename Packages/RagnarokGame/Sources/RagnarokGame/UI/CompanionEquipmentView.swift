@@ -72,7 +72,7 @@ struct CompanionEquipmentView: View {
                                 ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: "Equipment · Available to give") }
                                 if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Plain equipment and Novice/Red/Orange/Yellow/White/Blue Potions only.") }
                             }
-                        } else { empty(state.pending ? "Loading…" : "Details unavailable. This panel needs the updated Staging server.") }
+                        } else { empty(state.pending ? "Loading…" : "Waiting to refresh companion details.") }
                     }
                 }.frame(height: 178).overlay { Rectangle().strokeBorder(Color.gameBoxBorder).allowsHitTesting(false) }
                 HStack(spacing: 5) {
@@ -140,7 +140,7 @@ struct CompanionEquipmentView: View {
             guard !Task.isCancelled else { return }; refresh()
             while !Task.isCancelled {
                 do { try await Task.sleep(for: .seconds(2)) } catch { break }
-                if !state.pending && state.ready { refresh() }
+                refresh()
             }
         }
     }
@@ -160,7 +160,9 @@ struct CompanionEquipmentView: View {
         needsPolicy = false
         send("config \(profileID)")
     }
-    private func refresh() { session.companionCommand(state.ready ? "inspect \(profileID)" : "list") }
+    private func refresh() {
+        if let action = state.detailRefreshAction(for: profileID) { session.companionCommand(action) }
+    }
     private func send(_ action: String) { session.companionCommand(action) }
     private func empty(_ text: String) -> some View { Text(text).font(.game(size: 11)).padding(12).frame(maxWidth: .infinity) }
     private func tabButton(_ title: String, index: Int) -> some View {

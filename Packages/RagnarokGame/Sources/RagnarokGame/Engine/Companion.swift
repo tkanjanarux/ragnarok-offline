@@ -103,6 +103,12 @@ struct CompanionState {
     private var incoming: [CompanionProfile] = []
     private var incomingAvailable = false
 
+    func detailRefreshAction(for profileID: UInt32) -> String? {
+        guard !pending else { return nil }
+        if !ready { return "list" }
+        return available ? "inspect \(profileID)" : nil
+    }
+
     mutating func begin(_ action: String = "list") -> UInt32 {
         self.action = action; gearExpected = nil; incomingGear = []; incomingBag = []
         detailExpected = nil; incomingStarters = []; incomingSkills = []; incomingSupplies = []; incomingSupplyBag = []

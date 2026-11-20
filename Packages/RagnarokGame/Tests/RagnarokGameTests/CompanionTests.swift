@@ -128,3 +128,15 @@ import Testing
         #expect(state.potionRule == (threshold == 0 ? nil : rule))
     }
 }
+
+@Test func detailsResumeAfterTransferTimeoutWithoutRepeatingTransfer() {
+    var state = CompanionState()
+    let transfer = state.begin("giveui 3 1:4294967314")
+    #expect(state.detailRefreshAction(for: 3) == nil)
+    state.timeout(transfer)
+    #expect(state.detailRefreshAction(for: 3) == "list")
+    let roster = state.begin("list")
+    state.receive("[RCO1] \(roster) begin 0 1")
+    state.receive("[RCO1] \(roster) end Ready.")
+    #expect(state.detailRefreshAction(for: 3) == "inspect 3")
+}
