@@ -39,14 +39,13 @@ struct CompanionEquipmentView: View {
                 }.frame(height: 28)
                 ScrollView {
                     LazyVStack(spacing: 0) {
-                        if state.detailReady && state.equipmentProfile == profileID {
+                        if state.equipmentProfile == profileID && (state.detailReady || (state.pending && state.action == "inspect \(profileID)")) {
                             switch tab {
                             case 0:
-                                ForEach(state.starters) { item in
-                                    itemRow(key: "starter:\(item.id)", itemID: item.itemID, detail: item.equipped ? "Starter · Equipped · Cannot transfer" : "Starter · Fallback · Cannot transfer")
-                                }
-                                ForEach(state.equipment) { item in
-                                    itemRow(key: "gear:\(item.id)", itemID: item.itemID, detail: item.returning ? "Returning…" : item.equipped ? "Your equipment · Equipped" : "Your equipment · Stored")
+                                VStack(spacing: 0) {
+                                    ForEach(state.gearRows) { row in
+                                        itemRow(key: row.id, itemID: row.itemID, detail: row.detail)
+                                    }
                                 }
                             case 1:
                                 ForEach(state.skills) { skill in
@@ -102,13 +101,14 @@ struct CompanionEquipmentView: View {
                     control("Stop", disabled: !ready || profile?.active != true || profile?.mode == 3) { send("stop \(profileID)") }
                     control("Refresh", disabled: state.pending) { refresh() }
                 }.frame(height: 34)
-                Text(tab == 1 ? "Tap AI: On or Off to choose which learned skills your companion may use." : tab == 2 || tab == 3 ? "Auto: HP <50%, SP <30%, every 2s. Stop pauses use. Reserve to transfer; up to 100 at once." : "Starter gear cannot be returned. Stop to equip your gear; Reserve to give or return it.")
+                Text(tab == 1 ? "Tap AI: On or Off to choose which learned skills your companion may use." : tab == 2 || tab == 3 ? supplyHint : gearHint)
                     .font(.game(size: 10)).frame(height: 32)
                 Text(verbatim: feedback).font(.game(size: 10)).frame(maxWidth: .infinity, alignment: .leading).frame(height: 38)
             }.padding(.horizontal, 8)
         }
         .onChange(of: tab) {
             selection = ""
+            feedback = ""
             if tab == 1 {
                 allowedSkills = nil
                 needsPolicy = true
@@ -124,7 +124,7 @@ struct CompanionEquipmentView: View {
                     let order = state.message[range.upperBound...]
                     allowedSkills = order == "none" ? [] : order.split(separator: ",").map(String.init)
                 } else { allowedSkills = nil }
-                feedback = state.message
+                if tab == 1 { feedback = allowedSkills == nil ? state.message : "" }
                 if state.ready { refresh() }
             } else if state.action.hasPrefix("inspect ") {
                 if tab == 1 && needsPolicy && state.ready { fetchPolicy(); return }
@@ -144,6 +144,18 @@ struct CompanionEquipmentView: View {
             }
         }
     }
+    private var supplyHint: String {
+        let rule = state.equipmentProfile == profileID ? state.potionRule : nil
+        return [rule, "One potion every 2s. Stop pauses use. Reserve to transfer up to 100."].compactMap { $0 }.joined(separator: " ")
+    }
+    private var gearHint: String {
+        if selection.hasPrefix("starter:") { return "Starter gear is managed automatically. Select your own equipment to equip or return it." }
+        guard let gear else { return "Select a piece of your equipment to see the available actions." }
+        if gear.returning { return "Returning this item to your bag…" }
+        if profile?.active == false { return "Return this item to your bag, or Summon and then Stop to change equipment." }
+        if profile?.mode == 3 { return "Change the selected equipment here. Choose Reserve to return it to your bag." }
+        return "Choose Stop to change equipment, or Reserve to return it to your bag."
+    }
     private func fetchPolicy() {
         needsPolicy = false
         send("config \(profileID)")
@@ -162,11 +174,12 @@ struct CompanionEquipmentView: View {
         Button(title, action: action).buttonStyle(.game).frame(width: title == "+" || title == "−" ? 36 : 96, height: 30).disabled(disabled)
     }
     private func itemRow(key: String, itemID: UInt32, detail: String) -> some View {
-        Button { selection = key } label: {
+        let name = context.itemInfoTable.localizedIdentifiedItemName(forItemID: Int(itemID))?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return Button { selection = key } label: {
             HStack(spacing: 8) {
                 CompanionEquipmentIcon(itemID: itemID).frame(width: 32, height: 32)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(verbatim: context.itemInfoTable.localizedIdentifiedItemName(forItemID: Int(itemID)) ?? "Item #\(itemID)").font(.game(size: 12)).lineLimit(1)
+                    Text(verbatim: name.flatMap { $0.isEmpty ? nil : $0 } ?? "Item #\(itemID)").font(.game(size: 12)).lineLimit(1)
                     Text(detail).font(.game(size: 10))
                 }; Spacer()
             }.padding(.horizontal, 6).frame(height: 44).foregroundStyle(Color.gameLabel)
@@ -182,7 +195,7 @@ private struct CompanionEquipmentIcon: View {
     var body: some View {
         Group {
             if let resource { Image(decorative: resource.cgImage, scale: 1).resizable().scaledToFit() }
-            else { Color.clear }
+            else { Image(systemName: "shippingbox").accessibilityHidden(true) }
         }.task(id: itemID) { resource = try? await context.resourceManager.itemIconImage(forItemID: Int(itemID)) }
     }
 }

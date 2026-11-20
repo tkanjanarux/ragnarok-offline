@@ -39,6 +39,20 @@ struct CompanionStarter: Identifiable, Equatable {
     let itemID: UInt32
     let equipped: Bool
 }
+struct CompanionGearRow: Identifiable {
+    let id: String
+    let itemID: UInt32
+    let detail: String
+}
+extension CompanionState {
+    var gearRows: [CompanionGearRow] {
+        equipment.map { item in
+            CompanionGearRow(id: "gear:\(item.id)", itemID: item.itemID, detail: item.returning ? "Returning…" : item.equipped ? "Your equipment · Equipped" : "Your equipment · Stored")
+        } + starters.map { item in
+            CompanionGearRow(id: "starter:\(item.id)", itemID: item.itemID, detail: item.equipped ? "Starter · Equipped · Cannot transfer" : "Starter · Fallback · Cannot transfer")
+        }
+    }
+}
 struct CompanionSkill: Identifiable, Equatable {
     let id: UInt32
     let level: UInt32
@@ -56,6 +70,7 @@ struct CompanionSupply: Identifiable, Equatable {
     let amount: UInt32
 }
 struct CompanionState {
+    var potionRule: String?
     var detailReady = false
     var starters: [CompanionStarter] = []
     var skills: [CompanionSkill] = []
@@ -192,6 +207,13 @@ struct CompanionState {
             }
             profiles = incoming; available = incomingAvailable; ready = true; pending = false; completedSequence = sequence
             self.message = t.dropFirst(3).joined(separator: " ")
+            if action.hasPrefix("inspect ") {
+                potionRule = nil
+                if let marker = self.message.range(of: "Auto potion: ", options: .backwards) {
+                    potionRule = String(self.message[marker.lowerBound...])
+                    self.message = String(self.message[..<marker.lowerBound]).trimmingCharacters(in: .whitespaces)
+                }
+            }
             self.expected = nil; incoming = []
         default: timeout(sequence)
         }

@@ -100,3 +100,31 @@ import Testing
     #expect(state.skills.last?.name == "Magnificat")
     #expect(state.skills.last?.policyKey == "magnificat")
 }
+
+@Test func storedSwordsAndStarterSlotsHaveDistinctRows() {
+    var state = CompanionState()
+    state.equipment = [
+        CompanionEquipment(id: 1, itemID: 1157, equipped: false, returning: false),
+        CompanionEquipment(id: 2, itemID: 1154, equipped: true, returning: false),
+    ]
+    state.starters = [
+        CompanionStarter(id: 0, itemID: 1201, equipped: false),
+        CompanionStarter(id: 1, itemID: 2301, equipped: false),
+    ]
+    #expect(state.gearRows.map(\.id) == ["gear:1", "gear:2", "starter:0", "starter:1"])
+    #expect(state.gearRows.map(\.itemID) == [1157, 1154, 1201, 2301])
+}
+
+@Test func autoPotionHintTracksServerInspections() {
+    var state = CompanionState()
+    for threshold in [65, 35, 50, 47, 0] {
+        let token = state.begin("inspect 1")
+        let rule = threshold == 0 ? "" : "Auto potion: HP <\(threshold)%, SP <30%."
+        for frame in ["begin 1 1", "row 1 8 26 29 0 0 80 100 20 30 95000000 2 19 AI-Priest-1",
+                      "gearbegin 1 0 0 0", "detailbegin 1 0 1 0 0 6 1", "skill 28 3 10 1 20 0", "end Ready. \(rule)"] {
+            state.receive("[RCO1] \(token) \(frame)")
+        }
+        #expect(state.detailReady && state.message == "Ready.")
+        #expect(state.potionRule == (threshold == 0 ? nil : rule))
+    }
+}
