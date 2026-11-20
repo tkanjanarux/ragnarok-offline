@@ -17,8 +17,23 @@ struct ItemInfo: Decodable {
 final public class ItemInfoTable {
     let itemInfosByID: [Int : ItemInfo]
 
-    public init(locale: Locale = .current) {
-        guard let url = Bundle.module.url(forResource: "ItemInfo", withExtension: "json", locale: locale) else {
+    public convenience init() {
+        let language = Bundle.main.preferredLocalizations.first
+        self.init(locale: language.map { Locale(identifier: $0) } ?? .current)
+    }
+
+    public init(locale: Locale) {
+        let resources = Bundle.module
+        let available = resources.localizations
+        // Prefer the actual .lproj, including its on-disk capitalization.
+        let identifiers = [locale.identifier.replacingOccurrences(of: "_", with: "-"),
+                           locale.language.languageCode?.identifier].compactMap { $0 }
+        let language = identifiers.lazy.compactMap { tag in
+            available.first { $0.caseInsensitiveCompare(tag) == .orderedSame }
+        }.first ?? Bundle.preferredLocalizations(from: available, forPreferences: [locale.identifier]).first
+        guard let language,
+              let directory = resources.url(forResource: language, withExtension: "lproj"),
+              let url = Bundle(url: directory)?.url(forResource: "ItemInfo", withExtension: "json") else {
             self.itemInfosByID = [:]
             return
         }

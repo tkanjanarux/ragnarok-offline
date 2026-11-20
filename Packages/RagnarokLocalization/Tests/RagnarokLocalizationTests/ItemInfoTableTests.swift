@@ -91,6 +91,8 @@ final class ItemInfoTableTests: XCTestCase {
         let itemInfoTable = ItemInfoTable(locale: locale)
         let apple = itemInfoTable.localizedIdentifiedItemName(forItemID: 512)
         XCTAssertEqual(apple, "Apple")
+        let description = try XCTUnwrap(itemInfoTable.localizedIdentifiedItemDescription(forItemID: 501))
+        XCTAssertTrue(description.contains("น้ำยาสำหรับฟื้น HP"))
     }
 
     func testTurkish() async throws {
