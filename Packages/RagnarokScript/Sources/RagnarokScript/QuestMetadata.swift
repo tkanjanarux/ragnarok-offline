@@ -75,15 +75,31 @@ struct QuestMetadataDecoder {
 extension ResourceManager {
     public func questMetadata() async -> [UInt32: QuestMetadata] {
         // Same paths and Lua 5.1 decoder used by the client's other resource tables.
-        for directory in [["System"], ["system"], ["data", "System"], ["data", "system"]] {
+        var entries: [UInt32: QuestMetadata] = [:]
+        var paths = [["System"], ["system"], ["data", "System"], ["data", "system"]].flatMap { directory in
+            ["OngoingQuestInfoList", "OngoingQuestInfoList_true", "OngoingQuestInfoList_sak", "OngoingQuestInfoList_Sakray"].map { directory + [$0] }
+        }
+        paths += [["SystemEN", "OngoingQuests"], ["data", "SystemEN", "OngoingQuests"]]
+        search: for path in paths {
             for ext in ["lub", "lua"] {
-                let path = ResourcePath(components: directory + ["OngoingQuestInfoList.\(ext)"])
-                if let data = try? await contentsOfResource(at: path),
-                   let table = try? QuestMetadataDecoder.lua(data), !table.isEmpty { return table }
+                let resource = ResourcePath(components: Array(path.dropLast()) + [path.last! + "." + ext])
+                if let data = try? await contentsOfResource(at: resource),
+                   let table = try? QuestMetadataDecoder.lua(data), !table.isEmpty {
+                    entries = table
+                    break search
+                }
             }
         }
-        guard let data = try? await contentsOfResource(at: ["data", "questid2display.txt"]),
-              let text = String(data: data, encoding: .utf8) ?? String(data: data, encoding: .dosKorean) else { return [:] }
-        return QuestMetadataDecoder.text(text)
+        if let data = try? await contentsOfResource(at: ["data", "questid2display.txt"]),
+           let text = String(data: data, encoding: .utf8) ?? String(data: data, encoding: .dosKorean) {
+            entries.merge(QuestMetadataDecoder.text(text)) { modern, legacy in
+                var info = modern
+                if info.title.isEmpty { info.title = legacy.title }
+                if info.summary.isEmpty { info.summary = legacy.summary }
+                if info.description.isEmpty { info.description = legacy.description }
+                return info
+            }
+        }
+        return entries
     }
 }

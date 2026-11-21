@@ -3,6 +3,7 @@ import SwiftUI
 
 /// Renewal layout from roBrowser Quest/Quest.html and Quest.css (381 × 466).
 struct QuestLogView: View {
+    @Environment(\.locale) private var locale
     var quests: [QuestEntry]
     @Bindable var ui: QuestUIState
     var setActive: (UInt32, Bool) -> Void
@@ -74,7 +75,7 @@ struct QuestLogView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         Text(questDisplayText(ui.title(for: quest))).font(.game(weight: .bold)).foregroundStyle(Color(red: 0, green: 0, blue: 0.57))
                             .lineLimit(1).frame(height: 21)
-                        Text(questDisplayText(ui.metadata[quest.id]?.summary ?? "")).lineLimit(1).frame(height: 21)
+                        Text(questDisplayText(ui.summary(for: quest, locale: locale))).lineLimit(1).frame(height: 21)
                     }.frame(width: 254, alignment: .leading)
                 }.contentShape(Rectangle())
             }.buttonStyle(.plain)

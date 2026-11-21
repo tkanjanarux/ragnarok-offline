@@ -1,0 +1,2641 @@
+{
+ "1000": [
+  "Valkyrie · valkyrie (48, 86)"
+ ],
+ "1100": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1101": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1102": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1103": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1104": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1105": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1106": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1107": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1108": [
+  "Alonie · alberta (120, 206)"
+ ],
+ "1109": [
+  "Pitt · mora (65, 145)"
+ ],
+ "1110": [
+  "Euridi · mora (117, 66)"
+ ],
+ "1111": [
+  "Pitt · mora (65, 145)"
+ ],
+ "1112": [
+  "Euridi · mora (117, 66)"
+ ],
+ "1113": [
+  "Pitt · mora (65, 145)"
+ ],
+ "1114": [
+  "Euridi's Friend · mora (115, 68)"
+ ],
+ "1115": [
+  "Lope · bif_fild01 (132, 338)"
+ ],
+ "1116": [
+  "Euridi · mora (117, 66)"
+ ],
+ "1117": [
+  "Euridi's Friend · mora (115, 68)"
+ ],
+ "1118": [
+  "Knights Head · mora (114, 163)"
+ ],
+ "1152": [
+  "Gobonge · malangdo (175, 206)"
+ ],
+ "2000": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2001": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2002": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2003": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2004": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2005": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2006": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2007": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2008": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2009": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2010": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2011": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2012": [
+  "Guildsman · ein_in01 (201, 27)"
+ ],
+ "2013": [
+  "Guildsman · ein_in01 (18, 28)"
+ ],
+ "2014": [
+  "Blacksmith Guildsman · ein_in01 (24, 41)"
+ ],
+ "2015": [
+  "Guildsman · ein_in01 (18, 28)"
+ ],
+ "2016": [
+  "Guildsman · ein_in01 (18, 28)"
+ ],
+ "2017": [
+  "Mr. Smith · in_rogue (376, 23)"
+ ],
+ "2018": [
+  "Mr. Smith · in_rogue (376, 23)"
+ ],
+ "2019": [
+  "Mr. Smith · in_rogue (376, 23)"
+ ],
+ "2020": [
+  "Mr. Smith · in_rogue (376, 23)"
+ ],
+ "2021": [
+  "Mr. Smith · in_rogue (376, 23)"
+ ],
+ "2022": [
+  "Aragham Junior · in_rogue (244, 39)"
+ ],
+ "2023": [
+  "Antonio junior · in_rogue (177, 109)"
+ ],
+ "2024": [
+  "Hollgrehenn junior · in_rogue (160, 34)"
+ ],
+ "2025": [
+  "Hermanthorn Jr · in_rogue (272, 135)"
+ ],
+ "2026": [
+  "Rogue Guildsman · in_rogue (363, 122)"
+ ],
+ "2027": [
+  "Rogue Guildsman · in_rogue (363, 122)"
+ ],
+ "2028": [
+  "Alchemist Guildsman · alde_alche (27, 185)"
+ ],
+ "2029": [
+  "Alchemist Guildsman · alde_alche (27, 185)"
+ ],
+ "2030": [
+  "Alchemist Guildsman · alde_alche (27, 185)"
+ ],
+ "2031": [
+  "Fastidious Alchemist · alde_alche (175, 107)"
+ ],
+ "2032": [
+  "Studying Man · alde_alche (13, 15)"
+ ],
+ "2033": [
+  "Studying Man · alde_alche (13, 15)"
+ ],
+ "2034": [
+  "Master Alchemist · alde_alche (101, 184)"
+ ],
+ "2035": [
+  "Experiment Expert · alde_alche (79, 19)"
+ ],
+ "2036": [
+  "Experiment Expert · alde_alche (79, 19)"
+ ],
+ "2037": [
+  "Chief Researcher · alde_alche (145, 19)"
+ ],
+ "2038": [
+  "Chief Researcher · alde_alche (145, 19)"
+ ],
+ "2039": [
+  "Master Alchemist · alde_alche (101, 184)"
+ ],
+ "2040": [
+  "Master Alchemist · alde_alche (101, 184)"
+ ],
+ "2041": [
+  "Written Test Professor · yuno_in03 (105, 177)"
+ ],
+ "2043": [
+  "Staff of the Academy · yuno_in03 (154, 35)"
+ ],
+ "2044": [
+  "Staff of the Academy · yuno_in03 (154, 35)"
+ ],
+ "2045": [
+  "Staff of the Academy · yuno_in03 (154, 35)"
+ ],
+ "2046": [
+  "Practical Examination P · yuno_in03 (169, 180)"
+ ],
+ "2047": [
+  "History Professor · yuno_in03 (62, 176)"
+ ],
+ "2048": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2049": [
+  "Physics Professor · yuno_in03 (244, 31)"
+ ],
+ "2050": [
+  "History Professor · yuno_in03 (62, 176)"
+ ],
+ "2051": [
+  "Biology Professor · yuno_in03 (32, 102)",
+  "History Professor · yuno_in03 (62, 176)",
+  "Physics Professor · yuno_in03 (244, 31)"
+ ],
+ "2052": [
+  "Dean of the Academy · yuno_in02 (38, 61)"
+ ],
+ "2053": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2054": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2055": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2056": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2057": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2058": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2059": [
+  "Biology Professor · yuno_in03 (32, 102)"
+ ],
+ "2060": [
+  "Physics Professor · yuno_in03 (244, 31)"
+ ],
+ "2061": [
+  "Physics Professor · yuno_in03 (244, 31)"
+ ],
+ "2062": [
+  "Physics Professor · yuno_in03 (244, 31)"
+ ],
+ "2063": [
+  "Library Curator · prt_in (179, 92)"
+ ],
+ "2065": [
+  "Old News Scrapbook · yuno_in04 (117, 102)"
+ ],
+ "2066": [
+  "Monsterous Man · cave (22, 186)"
+ ],
+ "2067": [
+  "Book-Touching Man · moc_ruins (137, 70)"
+ ],
+ "2068": [
+  "Suspicious Man · yuno_in04 (169, 123)"
+ ],
+ "2071": [
+  "Buender Hikeman · einbech (165, 105)"
+ ],
+ "2072": [
+  "Sick Old Man · ein_in01 (231, 163)"
+ ],
+ "2073": [
+  "Sick Old Man · ein_in01 (231, 163)"
+ ],
+ "2074": [
+  "Sick Old Man · ein_in01 (231, 163)"
+ ],
+ "2075": [
+  "Sick Old Man · ein_in01 (231, 163)"
+ ],
+ "2076": [
+  "Drunken Man · airplane (31, 77)"
+ ],
+ "2077": [
+  "Sick Old Man · ein_in01 (231, 163)"
+ ],
+ "2078": [
+  "Buender Hikeman · einbech (165, 105)"
+ ],
+ "2109": [
+  "Man Stuck in Ice · ice_dun02 (120, 105)"
+ ],
+ "2110": [
+  "Hamion · rachel (265, 98)"
+ ],
+ "2111": [
+  "Hamion · rachel (265, 98)"
+ ],
+ "2112": [
+  "Man Stuck in Ice · ice_dun02 (120, 105)"
+ ],
+ "2113": [
+  "Sincere Follower Urstia · rachel (157, 183)"
+ ],
+ "2115": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "2116": [
+  "Drunken Man · ve_in (233, 116)"
+ ],
+ "2120": [
+  "Guard · que_thor (145, 66)"
+ ],
+ "2121": [
+  "Sahedi · thor_camp (250, 104)"
+ ],
+ "2123": [
+  "Colonel Vito · thor_camp (159, 74)"
+ ],
+ "2125": [
+  "Colonel Vito · thor_camp (159, 74)"
+ ],
+ "2126": [
+  "Colonel Vito · thor_camp (159, 74)"
+ ],
+ "2128": [
+  "Sahedi · thor_camp (250, 104)"
+ ],
+ "2129": [
+  "Foreign Merchant · moc_ruins (101, 133)"
+ ],
+ "2130": [
+  "Foreign Merchant · moc_ruins (77, 167)"
+ ],
+ "2131": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "2132": [
+  "Niren · ra_temple (165, 57)"
+ ],
+ "2133": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "2134": [
+  "Niren · ra_temple (165, 57)"
+ ],
+ "2135": [
+  "Pope · ra_temsky (99, 99)"
+ ],
+ "2136": [
+  "Niren · ra_temple (165, 57)"
+ ],
+ "2137": [
+  "Ishmael · ra_fild03 (139, 355)"
+ ],
+ "2138": [
+  "Ishmael · ra_fild03 (139, 355)"
+ ],
+ "2139": [
+  "Niren · ra_temple (165, 57)"
+ ],
+ "2141": [
+  "Niren · ra_temple (165, 57)"
+ ],
+ "2142": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "2147": [
+  "Monster Scholar · mid_camp (188, 254)"
+ ],
+ "2148": [
+  "Monster Scholar · mid_camp (188, 254)"
+ ],
+ "2149": [
+  "Botanist · mid_camp (240, 270)"
+ ],
+ "2150": [
+  "Botanist · mid_camp (240, 270)"
+ ],
+ "2151": [
+  "Botanist · mid_camp (240, 270)"
+ ],
+ "2152": [
+  "Botanist · mid_camp (45, 148)"
+ ],
+ "2153": [
+  "Monster Scholar · mid_camp (188, 254)"
+ ],
+ "2156": [
+  "Monster Scholar · mid_camp (188, 254)"
+ ],
+ "2157": [
+  "Monster Scholar · mid_camp (188, 254)"
+ ],
+ "2158": [
+  "Camp Guard Captain · mid_camp (212, 237)"
+ ],
+ "2159": [
+  "Camp Guard Captain · mid_camp (212, 237)"
+ ],
+ "2179": [
+  "Scientist · man_in01 (372, 221)"
+ ],
+ "2183": [
+  "High Laphine · spl_in01 (30, 324)"
+ ],
+ "2184": [
+  "High Laphine · spl_in01 (30, 324)"
+ ],
+ "2185": [
+  "High Laphine · spl_in01 (30, 324)"
+ ],
+ "2187": [
+  "Priest · umbala (139, 227)"
+ ],
+ "2188": [
+  "Priest · umbala (139, 227)"
+ ],
+ "2189": [
+  "Praying Nun · hu_in01 (205, 204)"
+ ],
+ "2190": [
+  "Valkyrie · job3_arch01 (29, 34)"
+ ],
+ "2196": [
+  "Toucan · bra_fild01 (75, 83)"
+ ],
+ "2197": [
+  "Jaguar · bra_fild01 (34, 184)"
+ ],
+ "2215": [
+  "Devries · job3_gen01 (25, 58)"
+ ],
+ "2216": [
+  "Demi Calberine · job3_gen01 (91, 48)"
+ ],
+ "2217": [
+  "Demi Calberine · job3_gen01 (91, 48)"
+ ],
+ "2218": [
+  "Cheerless Maestro · comodo (140, 86)"
+ ],
+ "2219": [
+  "Vacant Looking Lady · hu_in01 (305, 251)"
+ ],
+ "2220": [
+  "Dancer Kim · hu_fild05 (342, 130)"
+ ],
+ "2221": [
+  "Dancer Kim · hu_fild05 (342, 130)"
+ ],
+ "2222": [
+  "Dancer Kim · xmas (147, 135)"
+ ],
+ "2223": [
+  "Devries · job3_gen01 (25, 58)"
+ ],
+ "2280": [
+  "Guard Leader · malaya (290, 340)"
+ ],
+ "2289": [
+  "Suspicious Cat · moc_prydn1 (94, 98)"
+ ],
+ "2292": [
+  "Suspicious Cat · moc_prydn1 (94, 98)"
+ ],
+ "3000": [
+  "Wandering Bard · comodo (226, 123)"
+ ],
+ "3001": [
+  "Wandering Bard · comodo (226, 123)"
+ ],
+ "3002": [
+  "Wandering Bard · comodo (226, 123)"
+ ],
+ "3003": [
+  "Wandering Bard · comodo (226, 123)"
+ ],
+ "3004": [
+  "Wandering Bard · comodo (226, 123)"
+ ],
+ "3011": [
+  "Crusader · prt_church (95, 127)"
+ ],
+ "3016": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3017": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3018": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3019": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3020": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3021": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3022": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3023": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3024": [
+  "Touha · prt_monk (251, 255)"
+ ],
+ "3025": [
+  "Touha · prt_monk (251, 255)"
+ ],
+ "3026": [
+  "Boohae · prt_monk (57, 179)"
+ ],
+ "3027": [
+  "Hyunmoo · job_monk (225, 180)"
+ ],
+ "3028": [
+  "Apprentice Monk · monk_test (386, 388)",
+  "Supervisor · monk_test (387, 350)"
+ ],
+ "3029": [
+  "Tomoon · monk_test (319, 139)"
+ ],
+ "3031": [
+  "Tomoon · monk_test (319, 139)"
+ ],
+ "3032": [
+  "Sensei Moohae · monk_in (99, 58)"
+ ],
+ "3042": [
+  "Rust Blackhand · prt_monk (261, 91)"
+ ],
+ "3043": [
+  "Rust Blackhand · prt_monk (261, 91)"
+ ],
+ "3050": [
+  "Chief Balrog · morocc (159, 113)"
+ ],
+ "3051": [
+  "Chief Balrog · morocc (159, 113)"
+ ],
+ "3052": [
+  "Chief Balrog · morocc (159, 113)"
+ ],
+ "3053": [
+  "Time-Space Gap · moc_fild21 (177, 239)"
+ ],
+ "3055": [
+  "Chief Balrog · morocc (159, 113)"
+ ],
+ "3056": [
+  "Chief Balrog · morocc (159, 113)"
+ ],
+ "3060": [
+  "Little Curdie · que_thor (36, 66)"
+ ],
+ "3061": [
+  "Kid · veins (327, 185)"
+ ],
+ "3062": [
+  "Young Town Native · veins (221, 120)"
+ ],
+ "3063": [
+  "Lockenlock · veins (181, 166)"
+ ],
+ "3064": [
+  "Ivory · veins (227, 127)"
+ ],
+ "3065": [
+  "Ivory · veins (227, 127)"
+ ],
+ "3066": [
+  "Saraman · veins (115, 59)"
+ ],
+ "3067": [
+  "Saraman · veins (115, 59)"
+ ],
+ "3068": [
+  "Camel · veins (78, 226)"
+ ],
+ "3069": [
+  "Saraman · veins (115, 59)"
+ ],
+ "3070": [
+  "Silk Sand Camel · ve_fild07 (235, 42)"
+ ],
+ "3071": [
+  "Silk Sand Camel · ve_fild07 (235, 42)"
+ ],
+ "3072": [
+  "Silk Sand Camel · ve_fild07 (235, 42)"
+ ],
+ "3073": [
+  "Silk Sand Camel · ve_fild07 (235, 42)"
+ ],
+ "3074": [
+  "Silk Sand Camel · ve_fild07 (235, 42)"
+ ],
+ "3075": [
+  "Silk Sand Camel · ve_fild07 (235, 42)"
+ ],
+ "3076": [
+  "Saraman · veins (115, 59)"
+ ],
+ "3077": [
+  "Ivory · veins (227, 127)"
+ ],
+ "3078": [
+  "Lockenlock · veins (181, 166)"
+ ],
+ "3079": [
+  "Little Curdie · que_thor (36, 66)"
+ ],
+ "3080": [
+  "Lockenlock · veins (181, 166)"
+ ],
+ "3081": [
+  "Lockenlock · veins (181, 166)"
+ ],
+ "3082": [
+  "Little Curdie · que_thor (36, 66)"
+ ],
+ "3083": [
+  "Kid · veins (327, 185)"
+ ],
+ "3085": [
+  "Staff Officer Abidal · mid_campin (94, 118)"
+ ],
+ "3086": [
+  "Hibba Agip · mid_campin (90, 121)"
+ ],
+ "3087": [
+  "Expedition Messenger · mid_camp (206, 286)"
+ ],
+ "3088": [
+  "Hibba Agip · mid_campin (90, 121)"
+ ],
+ "3089": [
+  "Staff Officer Abidal · mid_campin (94, 118)"
+ ],
+ "3090": [
+  "Expedition Scout · man_fild01 (315, 95)"
+ ],
+ "3092": [
+  "Hibba Agip · mid_campin (90, 121)"
+ ],
+ "3093": [
+  "Gerhart · lhz_in01 (110, 174)",
+  "Nuria · ra_temple (122, 174)"
+ ],
+ "3094": [
+  "Hibba Agip · mid_campin (90, 121)"
+ ],
+ "3100": [
+  "Heap of Earth · cmd_fild01 (55, 160)"
+ ],
+ "3101": [
+  "Heap of Earth · cmd_fild01 (55, 160)"
+ ],
+ "3102": [
+  "Muff · comodo (224, 187)"
+ ],
+ "3109": [
+  "Muff · comodo (224, 187)"
+ ],
+ "3110": [
+  "Leblo · geffen (128, 153)"
+ ],
+ "3111": [
+  "Wola · payon_in03 (167, 149)"
+ ],
+ "3112": [
+  "Wola · payon_in03 (167, 149)"
+ ],
+ "3113": [
+  "Wola · payon_in03 (167, 149)"
+ ],
+ "3114": [
+  "Leblo · geffen (128, 153)"
+ ],
+ "3115": [
+  "Rogue Investigator · in_rogue (366, 46)"
+ ],
+ "3116": [
+  "Odd Switch · cmd_in02 (80, 189)"
+ ],
+ "3117": [
+  "Small Safe · cmd_in02 (69, 188)"
+ ],
+ "3118": [
+  "Ibrahim · moc_ruins (152, 147)"
+ ],
+ "3119": [
+  "Chief Officer · prontera (148, 326)"
+ ],
+ "3120": [
+  "Valdes · prt_in (168, 18)"
+ ],
+ "3121": [
+  "Valdes · prt_in (168, 18)"
+ ],
+ "3122": [
+  "Marybell · in_rogue (359, 116)"
+ ],
+ "3123": [
+  "Moonho Ahn · payon (244, 62)"
+ ],
+ "3124": [
+  "Moonho Ahn · payon (244, 62)"
+ ],
+ "3125": [
+  "Marybell · in_rogue (359, 116)"
+ ],
+ "3128": [
+  "Marybell · in_rogue (359, 116)"
+ ],
+ "3129": [
+  "Gooho Ahn · payon (192, 176)"
+ ],
+ "3130": [
+  "Gooho Ahn · payon (192, 176)"
+ ],
+ "3131": [
+  "Marybell · in_rogue (359, 116)"
+ ],
+ "3133": [
+  "Catfoii · z_agit (95, 101)",
+  "Louis · z_agit (97, 101)",
+  "Martha · z_agit (99, 101)"
+ ],
+ "3134": [
+  "Chief Officer · prontera (148, 326)"
+ ],
+ "3200": [
+  "Rune Leader Jungberg · glast_01 (44, 363)"
+ ],
+ "3201": [
+  "Rune Knight Captain · job3_rune01 (80, 60)"
+ ],
+ "3202": [
+  "Rune Knight Lunarea · job3_rune01 (90, 50)"
+ ],
+ "3203": [
+  "Rune Knight Lunarea · job3_rune01 (90, 50)"
+ ],
+ "3204": [
+  "Rune Knight Captain · job3_rune01 (80, 60)"
+ ],
+ "3205": [
+  "Rune Knight, Renoa · job3_rune01 (55, 50)"
+ ],
+ "3206": [
+  "Rune Knight, Renoa · job3_rune01 (55, 50)"
+ ],
+ "3207": [
+  "Sage Serpeone · mid_camp (235, 250)"
+ ],
+ "3208": [
+  "Sage Serpeone · mid_camp (235, 250)"
+ ],
+ "3209": [
+  "Sage Serpeone · mid_camp (235, 250)"
+ ],
+ "3210": [
+  "Sage Serpeone · mid_camp (235, 250)"
+ ],
+ "3211": [
+  "Sage Serpeone · mid_camp (235, 250)"
+ ],
+ "3212": [
+  "Sage Serpeone · mid_camp (235, 250)"
+ ],
+ "3213": [
+  "Rune Knight, Renoa · job3_rune01 (55, 50)"
+ ],
+ "3214": [
+  "Rune Knight, Renoa · job3_rune01 (55, 50)"
+ ],
+ "3215": [
+  "Rune Knight Captain · job3_rune01 (80, 60)"
+ ],
+ "3216": [
+  "Rune Knight Velpino · job3_rune01 (114, 50)"
+ ],
+ "3218": [
+  "Rune Knight Velpino · job3_rune01 (114, 50)"
+ ],
+ "3219": [
+  "Rune Knight Captain · job3_rune01 (80, 60)"
+ ],
+ "4000": [
+  "Hunter Guildsman · hu_in01 (386, 373)"
+ ],
+ "4001": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4002": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4003": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4004": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4005": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4006": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4007": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4008": [
+  "Guild Receptionist · hu_in01 (382, 382)"
+ ],
+ "4009": [
+  "Hunter · payon_in03 (131, 7)"
+ ],
+ "4010": [
+  "Hunter · payon_in02 (21, 31)"
+ ],
+ "4011": [
+  "exit · job_hunte (89, 139)"
+ ],
+ "4012": [
+  "Hunter · payon_in02 (21, 31)",
+  "Hunter · payon_in03 (131, 7)"
+ ],
+ "4013": [
+  "Hunter Guildsman · hu_in01 (386, 373)"
+ ],
+ "4161": [
+  "Siege Master · moc_para01 (24, 175)"
+ ],
+ "4162": [
+  "Party Recruiting Expert · moc_para01 (21, 172)"
+ ],
+ "4163": [
+  "Battleground Master · moc_para01 (12, 179)"
+ ],
+ "4164": [
+  "Memorial Dungeon Expert · moc_para01 (28, 167)"
+ ],
+ "4165": [
+  "Map Expert · moc_para01 (14, 168)"
+ ],
+ "4166": [
+  "Tutorial Goal · moc_para01 (32, 179)"
+ ],
+ "5000": [
+  "Roda Frog · gef_fild07 (108, 161)"
+ ],
+ "5001": [
+  "Roda Frog · gef_fild07 (108, 161)"
+ ],
+ "5002": [
+  "Roda Frog · gef_fild07 (108, 161)"
+ ],
+ "5003": [
+  "Roda Frog · gef_fild07 (108, 161)"
+ ],
+ "5017": [
+  "Black Shadow · mora (114, 79)"
+ ],
+ "5024": [
+  "Raffle Researcher · mora (31, 138)"
+ ],
+ "5025": [
+  "Raffle Researcher · mora (31, 138)"
+ ],
+ "5026": [
+  "Raffle Researcher · mora (31, 138)"
+ ],
+ "5028": [
+  "Raffle Researcher · mora (31, 138)"
+ ],
+ "5034": [
+  "Black Shadow · mora (114, 79)"
+ ],
+ "5035": [
+  "Lero · dew_fild01 (114, 275)"
+ ],
+ "5036": [
+  "Poby · dew_fild01 (259, 48)"
+ ],
+ "5037": [
+  "Lero · dew_fild01 (114, 275)"
+ ],
+ "5038": [
+  "Poby · dew_fild01 (259, 48)"
+ ],
+ "5039": [
+  "Lero · dew_fild01 (114, 275)"
+ ],
+ "5040": [
+  "Memo · dewata (109, 262)"
+ ],
+ "5041": [
+  "Lero · dew_fild01 (114, 275)"
+ ],
+ "5042": [
+  "Memo · dewata (109, 262)"
+ ],
+ "5043": [
+  "Memo · dewata (109, 262)"
+ ],
+ "5044": [
+  "Memo · dewata (109, 262)"
+ ],
+ "5045": [
+  "Lero · dew_fild01 (114, 275)"
+ ],
+ "5052": [
+  "Gatti · dew_fild01 (127, 240)"
+ ],
+ "5062": [
+  "Eryu · malangdo (161, 197)"
+ ],
+ "5063": [
+  "Stew · malangdo (230, 197)"
+ ],
+ "5064": [
+  "Ketchup · malangdo (244, 144)"
+ ],
+ "5065": [
+  "Eff · malangdo (181, 119)"
+ ],
+ "5092": [
+  "Fishing Novice · beach_dun2 (119, 92)"
+ ],
+ "5093": [
+  "Fishing Novice · beach_dun2 (119, 92)"
+ ],
+ "5094": [
+  "Fishing Novice · beach_dun2 (119, 92)"
+ ],
+ "5098": [
+  "Fishing Novice · beach_dun2 (119, 92)"
+ ],
+ "5099": [
+  "Nudor · airplane (33, 47)"
+ ],
+ "5136": [
+  "Guide · job_ko (4, 1)",
+  "Kuuga Gai · job_ko (81, 124)"
+ ],
+ "5137": [
+  "Guide · job_ko (4, 1)",
+  "Sight · job_ko (46, 41)"
+ ],
+ "5138": [
+  "Guide · job_ko (4, 1)",
+  "Red Leopard Joe · job_ko (127, 125)"
+ ],
+ "5143": [
+  "Red Leopard Joe · job_ko (127, 125)"
+ ],
+ "5144": [
+  "Red Leopard Joe · job_ko (127, 125)"
+ ],
+ "5892": [
+  "Cleaning Robot �� · ba_in01 (24, 322)"
+ ],
+ "6005": [
+  "Kid · morocc_in (174, 30)"
+ ],
+ "6007": [
+  "Alchemist Spirit · job_soul (25, 30)",
+  "Monk Spirit · job_soul (30, 35)",
+  "Sage Spirit · job_soul (30, 25)"
+ ],
+ "6010": [
+  "Tzerero · aldeba_in (223, 167)"
+ ],
+ "6015": [
+  "Suspicious Man · einbroch (184, 194)"
+ ],
+ "6016": [
+  "Suspicious Man · einbroch (184, 194)"
+ ],
+ "6017": [
+  "Kuuga Gai · que_ng (30, 65)"
+ ],
+ "6018": [
+  "Kuuga Gai · que_ng (30, 65)"
+ ],
+ "6020": [
+  "Wise Bull Horn · payon (184, 65)"
+ ],
+ "6021": [
+  "Wise Bull Horn · payon (184, 65)"
+ ],
+ "6022": [
+  "Wise Bull Horn · payon (184, 65)"
+ ],
+ "6023": [
+  "Wise Bull Horn · payon (184, 65)"
+ ],
+ "6024": [
+  "Master Miller · que_ng (152, 167)"
+ ],
+ "7000": [
+  "Aile · job_duncer (43, 93)"
+ ],
+ "7001": [
+  "Aile · job_duncer (43, 93)"
+ ],
+ "7002": [
+  "Aile · job_duncer (43, 93)"
+ ],
+ "7003": [
+  "Aile · job_duncer (43, 93)"
+ ],
+ "7004": [
+  "Bijou · job_duncer (95, 93)"
+ ],
+ "7006": [
+  "Bijou · job_duncer (95, 93)"
+ ],
+ "7007": [
+  "Wandering Master · comodo (172, 230)"
+ ],
+ "7008": [
+  "Wandering Master · comodo (172, 230)"
+ ],
+ "7009": [
+  "Cheehee · job_star (161, 33)"
+ ],
+ "7010": [
+  "Cheehee · job_star (161, 33)"
+ ],
+ "7011": [
+  "Wandering Master · comodo (172, 230)"
+ ],
+ "7012": [
+  "Mr. Kidd · mid_camp (199, 311)"
+ ],
+ "7013": [
+  "Pursuit Party Leader · mid_campin (68, 185)"
+ ],
+ "7014": [
+  "Mr. Kidd · mid_camp (199, 311)"
+ ],
+ "7015": [
+  "Rin · que_job01 (84, 17)"
+ ],
+ "7016": [
+  "Heap of Earth · hu_fild04 (235, 103)"
+ ],
+ "7017": [
+  "Rin · que_job01 (84, 17)"
+ ],
+ "7018": [
+  "Mr. Kidd · mid_camp (199, 311)"
+ ],
+ "7020": [
+  "Corpse · que_dan01 (49, 36)"
+ ],
+ "7021": [
+  "Mr. Kidd · mid_camp (199, 311)"
+ ],
+ "7022": [
+  "Pursuit Party Leader · mid_campin (68, 185)"
+ ],
+ "7023": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7024": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7025": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7027": [
+  "Mr. Kidd · mid_camp (199, 311)"
+ ],
+ "7028": [
+  "Man · que_dan02 (115, 53)"
+ ],
+ "7029": [
+  "Mr. Kidd · mid_camp (199, 311)"
+ ],
+ "7030": [
+  "Rin · que_job01 (144, 54)"
+ ],
+ "7031": [
+  "Pursuit Party Leader · mid_campin (68, 185)"
+ ],
+ "7034": [
+  "Pursuit Party Leader · mid_campin (68, 185)"
+ ],
+ "7035": [
+  "Manager · mid_camp (191, 206)"
+ ],
+ "7036": [
+  "Pursuit Party Leader · mid_campin (68, 185)"
+ ],
+ "7037": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7038": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7039": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7040": [
+  "Pursuit Party Leader · mid_campin (68, 185)"
+ ],
+ "7041": [
+  "Defaria · mid_camp (256, 272)"
+ ],
+ "7053": [
+  "Entrance Guide · tha_t02 (231, 161)"
+ ],
+ "7056": [
+  "???? · spl_fild02 (45, 214)"
+ ],
+ "7057": [
+  "Petrified Sapha · nyd_dun01 (58, 223)"
+ ],
+ "7058": [
+  "Splendide Guard · spl_in01 (32, 306)"
+ ],
+ "7059": [
+  "Petrified Sapha · nyd_dun01 (58, 223)"
+ ],
+ "7060": [
+  "Villager · manuk (278, 177)",
+  "Villager · manuk (281, 177)"
+ ],
+ "7061": [
+  "Snorren · man_in01 (175, 59)"
+ ],
+ "7062": [
+  "Splendide Guard · spl_in01 (32, 306)"
+ ],
+ "7063": [
+  "??? · spl_fild01 (329, 29)"
+ ],
+ "7064": [
+  "Snorren · man_in01 (17, 128)"
+ ],
+ "7065": [
+  "Luik · man_in01 (19, 126)"
+ ],
+ "7066": [
+  "Petrified Sapha · nyd_dun01 (58, 223)"
+ ],
+ "7067": [
+  "Luik · man_in01 (19, 126)",
+  "Snorren · man_in01 (17, 128)"
+ ],
+ "7068": [
+  "Petrified Sapha · nyd_dun01 (58, 223)"
+ ],
+ "7069": [
+  "Snorren · man_in01 (175, 59)"
+ ],
+ "7070": [
+  "Splendide Guard · spl_in01 (32, 306)"
+ ],
+ "7071": [
+  "Arc · spl_in02 (236, 92)"
+ ],
+ "7074": [
+  "Manuk Galtun · manuk (252, 116)"
+ ],
+ "7075": [
+  "Manuk Galtun · manuk (252, 116)"
+ ],
+ "7076": [
+  "Pet Breeder · mid_camp (146, 306)"
+ ],
+ "7101": [
+  "Daora · job3_guil01 (82, 95)"
+ ],
+ "7102": [
+  "Mayshell · job3_guil01 (16, 20)"
+ ],
+ "7106": [
+  "Estillda · job3_guil01 (79, 15)"
+ ],
+ "7107": [
+  "Dandelion · job3_guil02 (49, 43)"
+ ],
+ "7108": [
+  "Mayshell · job3_guil01 (16, 20)"
+ ],
+ "7111": [
+  "Mayshell · job3_guil01 (16, 20)"
+ ],
+ "7128": [
+  "Talking Dog · moc_fild11 (180, 253)"
+ ],
+ "7129": [
+  "Talking Dog · moc_fild11 (180, 253)"
+ ],
+ "7130": [
+  "Talking Dog · moc_fild11 (180, 253)"
+ ],
+ "7131": [
+  "Talking Dog · moc_fild11 (180, 253)"
+ ],
+ "7133": [
+  "Timid Cat · prt_sewb1 (131, 262)"
+ ],
+ "7134": [
+  "Timid Cat · prt_sewb1 (131, 262)"
+ ],
+ "7135": [
+  "Timid Cat · prt_sewb1 (131, 262)"
+ ],
+ "7136": [
+  "Timid Cat · prt_sewb1 (131, 262)"
+ ],
+ "7138": [
+  "Eden Member Karl · pay_arche (41, 136)"
+ ],
+ "7139": [
+  "Eden Member Karl · pay_arche (41, 136)"
+ ],
+ "7140": [
+  "Eden Member Karl · pay_arche (41, 136)"
+ ],
+ "7142": [
+  "Eden Member Cloud · anthell01 (29, 264)"
+ ],
+ "7143": [
+  "Eden Member Cloud · anthell01 (29, 264)"
+ ],
+ "7144": [
+  "Eden Member Cloud · anthell01 (29, 264)"
+ ],
+ "7145": [
+  "Eden Member Cloud · anthell01 (29, 264)"
+ ],
+ "7147": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7148": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7149": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7150": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7152": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7153": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7154": [
+  "Eden Member Hooksha · in_orcs01 (38, 175)"
+ ],
+ "7156": [
+  "Eden Member Callandiva · iz_dun04 (43, 46)"
+ ],
+ "7157": [
+  "Eden Member Callandiva · iz_dun04 (43, 46)"
+ ],
+ "7158": [
+  "Eden Member Callandiva · iz_dun04 (43, 46)"
+ ],
+ "7165": [
+  "Manager · s_atelier (65, 123)"
+ ],
+ "7166": [
+  "Manager · s_atelier (168, 65)"
+ ],
+ "7168": [
+  "???? · job3_sha01 (25, 28)"
+ ],
+ "7172": [
+  "Manager · s_atelier (168, 65)"
+ ],
+ "7173": [
+  "Manager · s_atelier (167, 129)"
+ ],
+ "7176": [
+  "Manager · s_atelier (167, 129)"
+ ],
+ "7177": [
+  "Manager · s_atelier (25, 75)"
+ ],
+ "7178": [
+  "???? · job3_sha01 (71, 27)"
+ ],
+ "7183": [
+  "Guard Captain Avalanche · man_in01 (315, 52)"
+ ],
+ "7184": [
+  "Adventurer Clerk · dic_in01 (42, 264)"
+ ],
+ "7185": [
+  "Inspector Doha · mid_campin (168, 170)"
+ ],
+ "7187": [
+  "Shay · dic_in01 (245, 119)"
+ ],
+ "7191": [
+  "BK · dic_fild01 (231, 174)"
+ ],
+ "7192": [
+  "Shay · dic_in01 (245, 119)"
+ ],
+ "7197": [
+  "Adventurer Clerk · dic_in01 (42, 264)"
+ ],
+ "7203": [
+  "Inspector Doha · mid_campin (168, 170)"
+ ],
+ "7206": [
+  "Stacked Boxes of Goods · dic_dun01 (274, 114)"
+ ],
+ "7207": [
+  "Cheshire · bif_fild01 (335, 168)"
+ ],
+ "7213": [
+  "Sharp Eyed Man · mora (48, 152)"
+ ],
+ "7242": [
+  "[Meow Team] Charo · malangdo (211, 203)"
+ ],
+ "7246": [
+  "Cat Detective · malangdo (172, 178)"
+ ],
+ "7258": [
+  "[Meow Team] Charo · malangdo (211, 203)"
+ ],
+ "7259": [
+  "Expert Cat · malangdo (165, 223)"
+ ],
+ "7267": [
+  "Cleanyang · mal_in02 (76, 63)"
+ ],
+ "7276": [
+  "Chef Nyas · mal_in02 (187, 58)"
+ ],
+ "7352": [
+  "Pedro the Sailor · malaya (326, 68)"
+ ],
+ "7353": [
+  "Old Man Nardo · malaya (181, 353)"
+ ],
+ "7354": [
+  "Blacksmith Pandoi · malaya (119, 217)"
+ ],
+ "7355": [
+  "Collection Dealer Woeon · malaya (295, 171)"
+ ],
+ "7356": [
+  "Talah · malaya (223, 267)"
+ ],
+ "7357": [
+  "Romel · malaya (224, 267)"
+ ],
+ "7359": [
+  "Pedro the Sailor · malaya (326, 68)"
+ ],
+ "7360": [
+  "Old Man Nardo · malaya (181, 353)"
+ ],
+ "7361": [
+  "Blacksmith Pandoi · malaya (119, 217)"
+ ],
+ "7362": [
+  "Collection Dealer Woeon · malaya (295, 171)"
+ ],
+ "7363": [
+  "Talah · malaya (223, 267)"
+ ],
+ "7364": [
+  "Romel · malaya (224, 267)"
+ ],
+ "8000": [
+  "Guildsman · in_moc_16 (19, 33)"
+ ],
+ "8001": [
+  "Guildsman · in_moc_16 (25, 90)"
+ ],
+ "8003": [
+  "Test Guide · in_moc_16 (21, 165)"
+ ],
+ "8004": [
+  "Barcardi · in_moc_16 (87, 48)",
+  "Thomas · in_moc_16 (89, 98)"
+ ],
+ "8005": [
+  "Maze Assistant · in_moc_16 (182, 169)"
+ ],
+ "8006": [
+  "Guildmaster · in_moc_16 (149, 80)"
+ ],
+ "8007": [
+  "Guildsman · in_moc_16 (19, 33)"
+ ],
+ "8008": [
+  "Guildsman · in_moc_16 (19, 33)"
+ ],
+ "8009": [
+  "High Bishop · prt_church (16, 41)"
+ ],
+ "8010": [
+  "High Bishop · prt_church (16, 41)"
+ ],
+ "8011": [
+  "Peter S. Alberto · job_prist (24, 187)"
+ ],
+ "8012": [
+  "prst3_1 · job_prist (98, 105)"
+ ],
+ "8013": [
+  "Sister Cecilia · prt_church (27, 24)"
+ ],
+ "8014": [
+  "Sister Cecilia · prt_church (27, 24)"
+ ],
+ "8015": [
+  "High Bishop · prt_church (16, 41)"
+ ],
+ "8016": [
+  "High Bishop · prt_church (16, 41)"
+ ],
+ "8018": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8020": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8022": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8024": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8026": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8028": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8029": [
+  "Liotzburg · einbroch (132, 84)"
+ ],
+ "8030": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8031": [
+  "Zelmeto · ein_in01 (67, 242)"
+ ],
+ "8046": [
+  "Euslan · yuno (111, 156)"
+ ],
+ "8047": [
+  "Eukran · que_bingo (53, 190)"
+ ],
+ "8048": [
+  "Young Man · odin_tem01 (130, 134)"
+ ],
+ "8050": [
+  "Young Man · odin_tem01 (130, 134)"
+ ],
+ "8051": [
+  "Young Man · odin_tem01 (130, 134)"
+ ],
+ "8052": [
+  "Euslan · yuno (111, 156)"
+ ],
+ "8053": [
+  "Postell Schuwell · hu_fild06 (34, 123)"
+ ],
+ "8054": [
+  "Allen Schuwell · hu_in01 (387, 245)"
+ ],
+ "8055": [
+  "Allen Schuwell · hu_in01 (387, 245)"
+ ],
+ "8057": [
+  "Manainne · hugel (191, 172)"
+ ],
+ "8058": [
+  "El Schatt · hugel (196, 164)"
+ ],
+ "8059": [
+  "Perfitz · hugel (100, 103)"
+ ],
+ "8060": [
+  "El Schatt · hugel (196, 164)"
+ ],
+ "8061": [
+  "Manainne · hugel (191, 172)"
+ ],
+ "8062": [
+  "A Spirit · niflheim (90, 106)"
+ ],
+ "8063": [
+  "El Schatt · hugel (196, 164)"
+ ],
+ "8065": [
+  "Maewan · hugel (87, 139)"
+ ],
+ "8066": [
+  "Layoma · hugel (84, 125)"
+ ],
+ "8067": [
+  "Erjan · hugel (102, 161)"
+ ],
+ "8068": [
+  "Neha · hugel (76, 134)"
+ ],
+ "8069": [
+  "Maewan · hugel (87, 139)"
+ ],
+ "8070": [
+  "Layoma · hugel (84, 125)"
+ ],
+ "8071": [
+  "Erjan · hugel (102, 161)"
+ ],
+ "8076": [
+  "Calla · ein_in01 (31, 138)"
+ ],
+ "8077": [
+  "Klitzer · ein_in01 (200, 101)",
+  "Megass · ein_in01 (21, 147)"
+ ],
+ "8078": [
+  "Calla · ein_in01 (31, 138)"
+ ],
+ "8079": [
+  "Calla · ein_in01 (31, 138)"
+ ],
+ "8080": [
+  "Klitzer · ein_in01 (200, 101)"
+ ],
+ "8081": [
+  "Kaijeta · ein_in01 (191, 102)",
+  "Satra · ein_in01 (31, 151)"
+ ],
+ "8082": [
+  "Satra · ein_in01 (31, 151)"
+ ],
+ "8083": [
+  "Satra · ein_in01 (31, 151)"
+ ],
+ "8084": [
+  "Satra · ein_in01 (31, 151)"
+ ],
+ "8085": [
+  "Klitzer · ein_in01 (200, 101)"
+ ],
+ "8086": [
+  "Kaijeta · ein_in01 (191, 102)"
+ ],
+ "8087": [
+  "Klitzer · ein_in01 (200, 101)"
+ ],
+ "8088": [
+  "Calla · ein_in01 (31, 138)"
+ ],
+ "8089": [
+  "Logan · rachel (114, 232)"
+ ],
+ "8090": [
+  "Manson · ra_in01 (372, 200)"
+ ],
+ "8091": [
+  "Jenny · rachel (48, 237)"
+ ],
+ "8092": [
+  "Idle Merchant · rachel (120, 47)"
+ ],
+ "8093": [
+  "Suspicious Man · ra_fild01 (245, 325)"
+ ],
+ "8094": [
+  "Vincent · ra_in01 (384, 246)"
+ ],
+ "8095": [
+  "Kid · rachel (263, 32)"
+ ],
+ "8096": [
+  "Vincent · ra_in01 (384, 246)"
+ ],
+ "8097": [
+  "Jenny · rachel (48, 237)"
+ ],
+ "8098": [
+  "Vincent · ra_in01 (384, 246)"
+ ],
+ "8099": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "8100": [
+  "Pope · ra_temsky (99, 99)"
+ ],
+ "8101": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "8103": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "8105": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "8106": [
+  "Lachellen · rachel (73, 244)"
+ ],
+ "8107": [
+  "Katinshuell · ra_in01 (235, 194)"
+ ],
+ "8108": [
+  "Mr. Shendar · ra_in01 (250, 19)"
+ ],
+ "8110": [
+  "Lachellen · rachel (73, 244)"
+ ],
+ "8112": [
+  "Mr. Shendar · ra_in01 (250, 19)"
+ ],
+ "8114": [
+  "Katinshuell · ra_in01 (235, 194)"
+ ],
+ "8115": [
+  "Lachellen · rachel (73, 244)"
+ ],
+ "8116": [
+  "Grandma · rachel (266, 35)"
+ ],
+ "8117": [
+  "Mr. Shendar · ra_in01 (250, 19)"
+ ],
+ "8119": [
+  "Katinshuell · ra_in01 (235, 194)"
+ ],
+ "8120": [
+  "Katinshuell · ra_in01 (235, 194)"
+ ],
+ "8121": [
+  "Katinshuell · ra_in01 (235, 194)"
+ ],
+ "8123": [
+  "Cook · ayo_in01 (145, 163)"
+ ],
+ "8124": [
+  "Cook · ayo_in01 (145, 163)"
+ ],
+ "8125": [
+  "Cook · ayo_in01 (145, 163)"
+ ],
+ "8126": [
+  "Cook · ayo_in01 (145, 163)"
+ ],
+ "8127": [
+  "Coach · ama_test (50, 100)"
+ ],
+ "8128": [
+  "Publisher · amatsu (223, 236)"
+ ],
+ "8129": [
+  "Coach · ama_test (50, 100)",
+  "Publisher · amatsu (223, 236)"
+ ],
+ "8130": [
+  "Publisher · amatsu (223, 236)"
+ ],
+ "8131": [
+  "Lord of Palace · ama_in02 (200, 176)"
+ ],
+ "8132": [
+  "Kitsune Mask · ama_in01 (180, 173)",
+  "Kouji · amatsu (189, 166)"
+ ],
+ "8133": [
+  "Kitsune Mask · ama_in01 (180, 173)"
+ ],
+ "8134": [
+  "Grandma · ama_in01 (22, 111)"
+ ],
+ "8135": [
+  "Lord of Palace · ama_in02 (200, 176)"
+ ],
+ "8196": [
+  "Ryosen · mid_camp (165, 245)"
+ ],
+ "8197": [
+  "Ryosen · mid_camp (165, 245)"
+ ],
+ "8198": [
+  "Research Official · mid_campin (376, 120)"
+ ],
+ "8199": [
+  "Ryosen · mid_camp (165, 245)"
+ ],
+ "8200": [
+  "Hansenne · mid_camp (222, 218)"
+ ],
+ "8201": [
+  "Hansenne · mid_camp (222, 218)"
+ ],
+ "8202": [
+  "Hue · mid_camp (247, 255)"
+ ],
+ "8203": [
+  "Hue · mid_camp (247, 255)"
+ ],
+ "8204": [
+  "Ryosen · mid_camp (165, 245)"
+ ],
+ "8205": [
+  "Research Official · mid_campin (376, 120)"
+ ],
+ "8206": [
+  "Research Official · mid_campin (376, 120)"
+ ],
+ "8207": [
+  "Hansenne · mid_camp (222, 218)"
+ ],
+ "8208": [
+  "Hue · mid_camp (247, 255)"
+ ],
+ "8209": [
+  "Ryosen · mid_camp (165, 245)"
+ ],
+ "8210": [
+  "Research Official · mid_campin (376, 120)"
+ ],
+ "8211": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8212": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8213": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8215": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8216": [
+  "Dequ'ee · geffen (154, 143)"
+ ],
+ "8217": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8218": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8219": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8220": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8222": [
+  "Dequ'ee · geffen (154, 143)"
+ ],
+ "8223": [
+  "Dequ'ee · geffen (154, 143)"
+ ],
+ "8224": [
+  "Dequ'ee · geffen (154, 143)"
+ ],
+ "8225": [
+  "Bankley · morocc_in (12, 156)"
+ ],
+ "8226": [
+  "Dequ'ee · geffen (154, 143)"
+ ],
+ "8227": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8228": [
+  "Shurank · izlude_in (82, 163)"
+ ],
+ "8241": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8242": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8243": [
+  "Arunafeltz Linguist · mid_campin (168, 82)"
+ ],
+ "8244": [
+  "Arunafeltz Linguist · mid_campin (168, 82)"
+ ],
+ "8245": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8246": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8247": [
+  "Arunafeltz Linguist · mid_campin (168, 82)"
+ ],
+ "8248": [
+  "Schwarzwald Mechanic · mid_camp (197, 237)"
+ ],
+ "8249": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8250": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8251": [
+  "Rune-Midgarts Magician · mid_camp (147, 256)"
+ ],
+ "8252": [
+  "Schwarzwald Mechanic · mid_camp (197, 237)"
+ ],
+ "8253": [
+  "Schwarzwald Mechanic · mid_camp (197, 237)"
+ ],
+ "8254": [
+  "Survival Instructor · tur_dun01 (156, 36)"
+ ],
+ "8255": [
+  "Survival Instructor · tur_dun01 (156, 36)"
+ ],
+ "8256": [
+  "Test Instructor · tur_dun01 (91, 169)"
+ ],
+ "8257": [
+  "Test Instructor · tur_dun01 (91, 169)"
+ ],
+ "8258": [
+  "Test Instructor · tur_dun01 (91, 169)"
+ ],
+ "8259": [
+  "Ranger Master · job3_rang01 (90, 43)"
+ ],
+ "8262": [
+  "Ranger Master · job3_rang01 (90, 43)"
+ ],
+ "9000": [
+  "Sir Andrew · prt_in (75, 107)"
+ ],
+ "9001": [
+  "Sir Andrew · prt_in (75, 107)"
+ ],
+ "9002": [
+  "Sir Andrew · prt_in (75, 107)"
+ ],
+ "9003": [
+  "Sir Siracuse · prt_in (71, 91)"
+ ],
+ "9004": [
+  "Sir Windsor · prt_in (79, 94)"
+ ],
+ "9005": [
+  "Sir Windsor · prt_in (79, 94)"
+ ],
+ "9007": [
+  "Lady Amy · prt_in (69, 107)"
+ ],
+ "9008": [
+  "Lady Amy · prt_in (69, 107)"
+ ],
+ "9009": [
+  "Sir Edmond · prt_in (70, 99)"
+ ],
+ "9010": [
+  "Warp · job_knt (143, 57)"
+ ],
+ "9011": [
+  "Sir Gray · prt_in (87, 92)"
+ ],
+ "9012": [
+  "Chivalry Captain · prt_in (88, 101)"
+ ],
+ "9013": [
+  "Wizard Guildsman · gef_tower (111, 37)"
+ ],
+ "9014": [
+  "Wizard Guildsman · gef_tower (111, 37)"
+ ],
+ "9015": [
+  "Gloomy Wizard · gef_tower (102, 24)"
+ ],
+ "9016": [
+  "Gloomy Wizard · gef_tower (102, 24)"
+ ],
+ "9017": [
+  "Room of Fire · job_wiz (1, 6)"
+ ],
+ "9018": [
+  "Wizard Guildsman · gef_tower (111, 37)"
+ ],
+ "9155": [
+  "Tribal Chief Paiko · dew_in01 (15, 49)"
+ ],
+ "9156": [
+  "Tribal Chief Paiko · dew_in01 (15, 49)"
+ ],
+ "9157": [
+  "Sage Kasyapa · dew_in01 (22, 48)"
+ ],
+ "9158": [
+  "Jaty Tribe Warrior · dew_fild01 (78, 288)"
+ ],
+ "9159": [
+  "Tribal Chief Paiko · dew_in01 (15, 49)"
+ ],
+ "9160": [
+  "Tribe Manager · dew_fild01 (185, 300)"
+ ],
+ "9161": [
+  "Tribal Chief Paiko · dew_in01 (15, 49)"
+ ],
+ "9162": [
+  "Gatekeeper of Krakatau · dewata (235, 56)"
+ ],
+ "9163": [
+  "Tribal Chief Paiko · dew_in01 (15, 49)"
+ ],
+ "9164": [
+  "Borobudur Temple Manager · dewata (78, 192)"
+ ],
+ "9165": [
+  "Tribal Chief Paiko · dew_in01 (15, 49)"
+ ],
+ "9167": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "9168": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "9169": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "9170": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "9171": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "9172": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "9173": [
+  "Tutorial Instructor · moc_para01 (34, 178)"
+ ],
+ "10035": [
+  "Han Ran Jiao · gonryun (237, 226)"
+ ],
+ "10041": [
+  "Sushi Master · ama_in01 (162, 17)"
+ ],
+ "10057": [
+  "Promotional Staff · aldebaran (127, 138)"
+ ],
+ "10058": [
+  "Promotional Staff · aldebaran (127, 138)"
+ ],
+ "10059": [
+  "Promotional Staff · geffen (90, 67)"
+ ],
+ "10060": [
+  "Promotional Staff · geffen (90, 67)"
+ ],
+ "10061": [
+  "Promotional Staff · geffen (90, 67)"
+ ],
+ "10065": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10066": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10067": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10069": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10070": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10071": [
+  "Alliance Manager · ra_temple (119, 113)"
+ ],
+ "10072": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10073": [
+  "Sikaiz · lhz_in01 (132, 259)"
+ ],
+ "10074": [
+  "Officer A · lhz_in01 (32, 22)",
+  "Officer B · lhz_in01 (30, 24)"
+ ],
+ "10075": [
+  "Officer A · lhz_in01 (32, 22)",
+  "Officer B · lhz_in01 (30, 24)"
+ ],
+ "10076": [
+  "Munkenro · moc_fild22b (230, 197)"
+ ],
+ "10077": [
+  "Munkenro · moc_fild22b (230, 197)"
+ ],
+ "10078": [
+  "Munkenro · moc_fild22b (230, 197)"
+ ],
+ "10079": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10080": [
+  "Little Boy · alberta (45, 106)"
+ ],
+ "10081": [
+  "Little Boy · alberta (45, 106)"
+ ],
+ "10082": [
+  "Little Boy · alberta (45, 106)"
+ ],
+ "10083": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10084": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10085": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10086": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10087": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10088": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10089": [
+  "Iromo · alberta_in (131, 95)"
+ ],
+ "10090": [
+  "Chainheart · yuno (129, 156)"
+ ],
+ "10091": [
+  "Chainheart · yuno (129, 156)"
+ ],
+ "10092": [
+  "Ghostfire · jupe_core2 (149, 273)"
+ ],
+ "10094": [
+  "Ghostfire · jupe_core2 (53, 75)"
+ ],
+ "10095": [
+  "Ghostfire · jupe_core2 (242, 62)"
+ ],
+ "10100": [
+  "Ghostfire · jupe_core2 (149, 273)"
+ ],
+ "10101": [
+  "Chainheart · yuno (129, 156)"
+ ],
+ "11000": [
+  "Alex · hu_in01 (19, 161)"
+ ],
+ "11001": [
+  "Alex · hu_in01 (19, 161)"
+ ],
+ "11002": [
+  "Laura · hu_in01 (14, 11)"
+ ],
+ "11003": [
+  "Laura · hu_in01 (14, 11)"
+ ],
+ "11004": [
+  "Laura · hu_in01 (14, 11)"
+ ],
+ "11006": [
+  "Laura · hu_in01 (14, 11)"
+ ],
+ "11007": [
+  "Ashe · hu_in01 (162, 85)"
+ ],
+ "11009": [
+  "Siria · hu_in01 (326, 307)"
+ ],
+ "11010": [
+  "Dono · lighthalzen (88, 79)"
+ ],
+ "11011": [
+  "Dono · lighthalzen (88, 79)"
+ ],
+ "11012": [
+  "Makkie · lhz_in03 (193, 28)"
+ ],
+ "11013": [
+  "Dono · lighthalzen (88, 79)"
+ ],
+ "11014": [
+  "Morriphen · ein_in01 (16, 36)"
+ ],
+ "11015": [
+  "Siria · hu_in01 (326, 307)"
+ ],
+ "11016": [
+  "Morriphen · ein_in01 (16, 36)"
+ ],
+ "11017": [
+  "Bronze Statue · juperos_01 (99, 112)"
+ ],
+ "11018": [
+  "Scholar · yuno_in04 (190, 125)"
+ ],
+ "11019": [
+  "Scholar · yuno_in04 (190, 125)"
+ ],
+ "11020": [
+  "Scholar · yuno_in04 (190, 125)"
+ ],
+ "11021": [
+  "Scholar · yuno_in04 (190, 125)"
+ ],
+ "11022": [
+  "Scholar · yuno_in04 (190, 125)"
+ ],
+ "11038": [
+  "Billik · umbala (215, 181)"
+ ],
+ "11039": [
+  "Feylin · niflheim (153, 215)"
+ ],
+ "11040": [
+  "Feylin · niflheim (153, 215)"
+ ],
+ "11041": [
+  "Feylin · niflheim (153, 215)"
+ ],
+ "11042": [
+  "Erious · prt_in (161, 20)"
+ ],
+ "11043": [
+  "Erious · prt_in (161, 20)"
+ ],
+ "11044": [
+  "Tool Shop Master · lou_in02 (248, 166)"
+ ],
+ "11045": [
+  "Storage Keeper · lou_in02 (201, 166)"
+ ],
+ "11046": [
+  "City Hall Officer · lou_in02 (210, 47)"
+ ],
+ "11047": [
+  "City Hall Officer · lou_in02 (210, 47)"
+ ],
+ "11048": [
+  "City Hall Officer · lou_in02 (210, 47)"
+ ],
+ "11049": [
+  "City Hall Officer · lou_in02 (210, 47)"
+ ],
+ "11055": [
+  "Storage Keeper · lou_in02 (201, 166)"
+ ],
+ "11056": [
+  "Doctor · lou_in02 (265, 69)"
+ ],
+ "11057": [
+  "Doctor · lou_in02 (265, 69)"
+ ],
+ "11070": [
+  "Employee · lou_in02 (253, 45)"
+ ],
+ "11071": [
+  "Employee · lou_in02 (253, 45)"
+ ],
+ "11072": [
+  "Employee · lou_in02 (253, 45)"
+ ],
+ "11073": [
+  "Lady · lou_fild01 (224, 348)"
+ ],
+ "11074": [
+  "Employee · lou_in02 (253, 45)"
+ ],
+ "11075": [
+  "Employee · lou_in02 (253, 45)"
+ ],
+ "11077": [
+  "Poison King · lou_in02 (123, 39)"
+ ],
+ "11078": [
+  "Poison King · lou_in02 (123, 39)"
+ ],
+ "11080": [
+  "Poison King · lou_in02 (123, 39)"
+ ],
+ "11081": [
+  "Lord · lou_in01 (99, 158)"
+ ],
+ "11082": [
+  "Poison King · lou_in02 (123, 39)"
+ ],
+ "11083": [
+  "Employee · lou_in02 (253, 45)"
+ ],
+ "11084": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11085": [
+  "Receptionist Brink · mid_campin (106, 122)"
+ ],
+ "11086": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11091": [
+  "Marian · mid_camp (222, 283)"
+ ],
+ "11092": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11093": [
+  "Jan · mid_camp (160, 298)"
+ ],
+ "11094": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11095": [
+  "Gerard · mid_camp (30, 168)"
+ ],
+ "11096": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11097": [
+  "Alberto · man_fild01 (80, 248)"
+ ],
+ "11098": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11099": [
+  "Otto · mid_camp (123, 290)"
+ ],
+ "11100": [
+  "Instructor · mid_camp (261, 284)"
+ ],
+ "11101": [
+  "Bazett Teablack · mid_camp (283, 198)"
+ ],
+ "11105": [
+  "Worker · manuk (193, 135)"
+ ],
+ "11106": [
+  "Assistant · spl_in02 (77, 107)"
+ ],
+ "11107": [
+  "Yoop · spl_in02 (60, 231)"
+ ],
+ "11108": [
+  "Guild Master · spl_in02 (80, 108)"
+ ],
+ "11109": [
+  "Assistant · spl_in02 (84, 103)"
+ ],
+ "11111": [
+  "Assistant · spl_in02 (84, 103)"
+ ],
+ "11112": [
+  "Guild Master · spl_in02 (80, 108)"
+ ],
+ "11135": [
+  "Warmhearted woman · prontera (141, 97)"
+ ],
+ "11136": [
+  "Glasses-wearing Man · prontera (140, 331)"
+ ],
+ "11137": [
+  "Woman · prontera (146, 218)"
+ ],
+ "11138": [
+  "Bard · alberta (196, 133)"
+ ],
+ "11139": [
+  "Karian · airplane (222, 67)"
+ ],
+ "11140": [
+  "Karian · hu_in01 (267, 5)"
+ ],
+ "11141": [
+  "Tone-deaf person · hu_in01 (361, 103)"
+ ],
+ "11142": [
+  "Karian · hu_in01 (267, 5)"
+ ],
+ "11144": [
+  "Mr. Click · yuno (143, 170)"
+ ],
+ "11145": [
+  "Little girl · lighthalzen (155, 119)"
+ ],
+ "11147": [
+  "Old Woman · ra_in01 (358, 130)"
+ ],
+ "11148": [
+  "=Notice= · ve_fild07 (131, 132)"
+ ],
+ "11150": [
+  "Kayak Master · comodo (192, 119)"
+ ],
+ "11151": [
+  "Woman Roasting Meat · comodo (159, 316)"
+ ],
+ "11154": [
+  "Karian · prt_in (94, 172)"
+ ],
+ "11155": [
+  "Fighter · ve_in (98, 159)"
+ ],
+ "11156": [
+  "Fighter · ve_in (98, 159)"
+ ],
+ "11157": [
+  "Buddy · yuno_fild07 (254, 176)"
+ ],
+ "11158": [
+  "Master · sword_1-1 (223, 167)"
+ ],
+ "11171": [
+  "Frede · dic_in01 (165, 104)"
+ ],
+ "11172": [
+  "Frede · dic_in01 (165, 104)"
+ ],
+ "11173": [
+  "Bouy · dic_in01 (349, 129)"
+ ],
+ "11174": [
+  "Bouy · dic_in01 (349, 129)"
+ ],
+ "11175": [
+  "Bouy · dic_in01 (349, 129)"
+ ],
+ "11176": [
+  "Frede · dic_in01 (165, 104)"
+ ],
+ "11182": [
+  "Theore · mid_camp (148, 222)"
+ ],
+ "11185": [
+  "Theore · mid_camp (148, 222)"
+ ],
+ "11186": [
+  "Tired-looking Fairy · splendide (183, 117)"
+ ],
+ "11187": [
+  "Kusmi · splendide (119, 138)",
+  "Pauchon · splendide (168, 301)",
+  "Theodore · splendide (304, 295)"
+ ],
+ "11188": [
+  "Kusmi · splendide (119, 138)"
+ ],
+ "11189": [
+  "Kusmi · splendide (119, 138)"
+ ],
+ "11190": [
+  "Laphine Soldier · splendide (262, 376)"
+ ],
+ "11191": [
+  "Kusmi · splendide (119, 138)"
+ ],
+ "11192": [
+  "Kusmi · splendide (119, 138)"
+ ],
+ "11193": [
+  "Kusmi · splendide (119, 138)"
+ ],
+ "11194": [
+  "Theodore · splendide (304, 295)"
+ ],
+ "11195": [
+  "Theodore · splendide (304, 295)"
+ ],
+ "11196": [
+  "Laphine Soldier · splendide (262, 376)"
+ ],
+ "11197": [
+  "Theodore · splendide (304, 295)"
+ ],
+ "11198": [
+  "Theodore · splendide (304, 295)"
+ ],
+ "11199": [
+  "Theodore · splendide (304, 295)"
+ ],
+ "11200": [
+  "Pauchon · splendide (168, 301)"
+ ],
+ "11201": [
+  "Pauchon · splendide (168, 301)"
+ ],
+ "11202": [
+  "Laphine Soldier · splendide (262, 376)"
+ ],
+ "11203": [
+  "Pauchon · splendide (168, 301)"
+ ],
+ "11204": [
+  "Pauchon · splendide (168, 301)"
+ ],
+ "11205": [
+  "Pauchon · splendide (168, 301)"
+ ],
+ "11206": [
+  "Jones · mora (55, 124)"
+ ],
+ "11207": [
+  "Jones · mora (55, 124)"
+ ],
+ "11208": [
+  "Daphrer · splendide (121, 260)"
+ ],
+ "11209": [
+  "President of Meeting · mal_in02 (182, 61)"
+ ],
+ "11210": [
+  "Scottfold · mal_in02 (178, 66)"
+ ],
+ "11211": [
+  "Koon · mal_in02 (177, 58)"
+ ],
+ "11212": [
+  "Linguist Devore · mal_in02 (174, 64)"
+ ],
+ "11213": [
+  "Geologist Mali · mal_in02 (179, 57)"
+ ],
+ "11214": [
+  "Brie · mal_in02 (181, 55)"
+ ],
+ "11215": [
+  "Brie · mal_in02 (181, 55)"
+ ],
+ "11216": [
+  "Rican · mal_in01 (114, 169)"
+ ],
+ "11217": [
+  "Rican · mal_in01 (114, 169)"
+ ],
+ "11218": [
+  "Dry Machine · mal_in01 (116, 168)"
+ ],
+ "11219": [
+  "Rican · mal_in01 (114, 169)"
+ ],
+ "11220": [
+  "Brie · mal_in02 (181, 55)"
+ ],
+ "11221": [
+  "Bob · mal_in02 (140, 94)"
+ ],
+ "11223": [
+  "Bob · mal_in02 (140, 94)"
+ ],
+ "11224": [
+  "Geologist Mali · mal_in02 (179, 57)"
+ ],
+ "11225": [
+  "Linguist Devore · mal_in02 (174, 64)"
+ ],
+ "11226": [
+  "Star Candy · mal_dun01 (133, 125)"
+ ],
+ "11227": [
+  "Linguist Devore · mal_in02 (174, 64)"
+ ],
+ "11228": [
+  "Biscuit · mal_dun01 (136, 122)"
+ ],
+ "11229": [
+  "Biscuit · mal_dun01 (136, 122)"
+ ],
+ "11230": [
+  "Biscuit · mal_dun01 (136, 122)"
+ ],
+ "11231": [
+  "Biscuit · mal_dun01 (136, 122)"
+ ],
+ "11232": [
+  "Biscuit · mal_dun01 (136, 122)"
+ ],
+ "11233": [
+  "Biscuit · mal_dun01 (136, 122)"
+ ],
+ "11236": [
+  "Linguist Devore · mal_in02 (174, 64)"
+ ],
+ "11237": [
+  "Tomas · mal_in02 (22, 62)"
+ ],
+ "11240": [
+  "Bob · mal_in02 (140, 94)"
+ ],
+ "11242": [
+  "Geologist Mali · mal_in02 (179, 57)"
+ ],
+ "11284": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11285": [
+  "Hospital Door · malaya (48, 76)"
+ ],
+ "11286": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11287": [
+  "Village Woman · malaya (64, 78)"
+ ],
+ "11288": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11289": [
+  "Village Man · malaya (62, 37)"
+ ],
+ "11290": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11291": [
+  "Dr. Boon · malaya (210, 200)"
+ ],
+ "11292": [
+  "Hospital Door · malaya (48, 76)"
+ ],
+ "11293": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11294": [
+  "Bushes · malaya (53, 68)"
+ ],
+ "11296": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11297": [
+  "Bent Old Lady · malaya (114, 183)"
+ ],
+ "11298": [
+  "Bent Old Lady · malaya (114, 183)"
+ ],
+ "11299": [
+  "Nurse · malaya (55, 72)"
+ ],
+ "11300": [
+  "Nurse · ma_dun01 (35, 108)"
+ ],
+ "11301": [
+  "Suspicious Wooden Stick · ma_dun01 (152, 23)"
+ ],
+ "11304": [
+  "Bent Old Lady · malaya (114, 183)"
+ ],
+ "11305": [
+  "Bent Shaman · malaya (276, 367)"
+ ],
+ "11307": [
+  "Suspicious Wooden Stick · ma_dun01 (152, 23)"
+ ],
+ "12029": [
+  "Fisherman · ayothaya (253, 99)"
+ ],
+ "12030": [
+  "Powerful-Looking Woman · ayothaya (233, 105)"
+ ],
+ "12031": [
+  "Old Man · ayothaya (193, 171)"
+ ],
+ "12034": [
+  "Haggard Man · ayo_dun02 (91, 264)"
+ ],
+ "12035": [
+  "Shaman · ayo_in01 (181, 193)"
+ ],
+ "12036": [
+  "Shaman · ayo_in01 (181, 193)"
+ ],
+ "12037": [
+  "Shaman · ayo_in01 (181, 193)"
+ ],
+ "12038": [
+  "Shaman · ayo_in01 (181, 193)"
+ ],
+ "12039": [
+  "Shaman · ayo_in01 (181, 193)"
+ ],
+ "12040": [
+  "Burupu · hu_fild06 (217, 270)"
+ ],
+ "12041": [
+  "Burupu · hu_fild06 (217, 270)"
+ ],
+ "12044": [
+  "Torpy's Mom · hu_fild06 (190, 367)"
+ ],
+ "12045": [
+  "Torpy · hugel (107, 67)"
+ ],
+ "12047": [
+  "Strange Man · hugel (100, 174)"
+ ],
+ "12048": [
+  "Torpy's Mom · hu_fild06 (190, 367)"
+ ],
+ "12096": [
+  "Karacas · gef_tower (113, 161)"
+ ],
+ "12097": [
+  "Karacas · gef_tower (113, 161)"
+ ],
+ "12098": [
+  "Karacas · gef_tower (113, 161)"
+ ],
+ "12345": [
+  "Ivan Sidorenko · job_gun (220, 132)"
+ ],
+ "17007": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ],
+ "60211": [
+  "Drunken Man · ve_in (233, 116)"
+ ],
+ "60213": [
+  "High Priest Zhed · ra_temin (277, 159)"
+ ]
+}

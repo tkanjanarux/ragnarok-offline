@@ -31,6 +31,12 @@ final class QuestUIState {
         let title = metadata[quest.id]?.title ?? ""
         return title.isEmpty ? (questTitles[quest.id] ?? "Quest #\(quest.id)") : title
     }
+    func summary(for quest: QuestEntry, locale: Locale) -> String {
+        if let step = QuestGuide.steps[String(quest.id)] { return step.text(locale: locale) }
+        if let summary = metadata[quest.id]?.summary, !summary.isEmpty { return summary }
+        if let objective = quest.objectives.first { return objective.name }
+        return QuestGuide.locations[String(quest.id)]?.first ?? ""
+    }
     func toggleTracking(_ id: UInt32) {
         if !hiddenQuestIDs.insert(id).inserted { hiddenQuestIDs.remove(id) }
     }

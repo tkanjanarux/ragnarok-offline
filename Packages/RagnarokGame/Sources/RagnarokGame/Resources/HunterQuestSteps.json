@@ -1,0 +1,156 @@
+{
+ "4000": {
+  "en": "Enter the Hunter Guild in Hugel at (206, 228). Speak to Sherin and pass the interview.",
+  "th": "เข้ากิลด์ Hunter ที่ Hugel (206, 228) คุยกับ Sherin แล้วตอบคำถามสัมภาษณ์ให้ผ่าน"
+ },
+ "4001": {
+  "en": "Speak to the Guild Receptionist in the same room to receive your materials list.",
+  "th": "คุยกับ Guild Receptionist ในห้องเดียวกันเพื่อรับรายการวัตถุดิบ"
+ },
+ "4002": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 928,
+    "count": 5
+   },
+   {
+    "id": 1019,
+    "count": 5
+   },
+   {
+    "id": 509,
+    "count": 3
+   }
+  ]
+ },
+ "4003": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 925,
+    "count": 3
+   },
+   {
+    "id": 932,
+    "count": 5
+   },
+   {
+    "id": 511,
+    "count": 3
+   }
+  ]
+ },
+ "4004": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 1013,
+    "count": 3
+   },
+   {
+    "id": 919,
+    "count": 3
+   },
+   {
+    "id": 507,
+    "count": 5
+   }
+  ]
+ },
+ "4005": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 947,
+    "count": 3
+   },
+   {
+    "id": 7033,
+    "count": 3
+   },
+   {
+    "id": 914,
+    "count": 10
+   }
+  ]
+ },
+ "4006": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 935,
+    "count": 9
+   },
+   {
+    "id": 955,
+    "count": 9
+   },
+   {
+    "id": 508,
+    "count": 9
+   }
+  ]
+ },
+ "4007": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 913,
+    "count": 3
+   },
+   {
+    "id": 938,
+    "count": 1
+   },
+   {
+    "id": 948,
+    "count": 1
+   }
+  ]
+ },
+ "4008": {
+  "en": "Bring these materials to the Guild Receptionist in Hugel.",
+  "th": "นำวัตถุดิบตามรายการไปส่งให้ Guild Receptionist ในกิลด์ Hunter ที่ Hugel",
+  "items": [
+   {
+    "id": 1027,
+    "count": 2
+   },
+   {
+    "id": 942,
+    "count": 1
+   },
+   {
+    "id": 1026,
+    "count": 1
+   }
+  ]
+ },
+ "4009": {
+  "en": "Go to the Payon palace. Enter at payon (189, 233), then use the door at (158, 32). Talk to the Hunter Guildmaster and choose “Begin test.”",
+  "th": "ไปวัง Payon เข้าประตูที่ payon (189, 233) แล้วเข้าประตูด้านในที่ (158, 32) คุยกับ Hunter Guildmaster แล้วเลือก “Begin test.”"
+ },
+ "4010": {
+  "en": "Go to the Archer Guild in Archer Village. Enter at pay_arche (145, 165), then take the door at (75, 67). Talk to the Hunter Guildmaster and choose “Begin test.”",
+  "th": "ไปกิลด์นักธนูที่ Archer Village เข้าที่ pay_arche (145, 165) แล้วเข้าประตูด้านในที่ (75, 67) คุยกับ Hunter Guildmaster แล้วเลือก “Begin test.”"
+ },
+ "4011": {
+  "en": "Enter the waiting room. Within three minutes, defeat four monsters named exactly “Job Change Monster”, activate the central switch, choose “Escape”, and leave through the north portal.",
+  "th": "เข้าห้องรอ เมื่อเริ่มสอบให้ตีเฉพาะมอนชื่อ “Job Change Monster” ให้ครบ 4 ตัว กดสวิตช์กลางห้อง เลือก “Escape” แล้วออกประตูทิศเหนือภายใน 3 นาที"
+ },
+ "4012": {
+  "en": "Speak to the Hunter Guildmaster in the room you returned to after the test to receive the Necklace of Wisdom.",
+  "th": "คุยกับ Hunter Guildmaster ในห้องที่ถูกส่งกลับมาหลังสอบ เพื่อรับ Necklace of Wisdom"
+ },
+ "4013": {
+  "en": "Take the Necklace of Wisdom back to Sherin in the Hunter Guild in Hugel to become a Hunter.",
+  "th": "นำ Necklace of Wisdom กลับไปให้ Sherin ที่กิลด์ Hunter ใน Hugel เพื่อเปลี่ยนอาชีพเป็น Hunter"
+ }
+}

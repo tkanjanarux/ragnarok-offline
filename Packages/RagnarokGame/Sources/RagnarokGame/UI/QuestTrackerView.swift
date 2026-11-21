@@ -2,6 +2,7 @@ import SwiftUI
 
 /// QuestWindow: at most four active, non-cooldown quests; visibility is independent of the list.
 struct QuestTrackerView: View {
+    @Environment(\.locale) private var locale
     var quests: [QuestEntry]
     @Bindable var ui: QuestUIState
     var body: some View {
@@ -13,7 +14,8 @@ struct QuestTrackerView: View {
                             Button { ui.selectedQuestID = quest.id } label: {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(questDisplayText(ui.title(for: quest))).foregroundStyle(.yellow).lineLimit(1)
-                                    if let summary = ui.metadata[quest.id]?.summary, !summary.isEmpty {
+                                    let summary = ui.summary(for: quest, locale: locale)
+                                    if !summary.isEmpty {
                                         Text(questDisplayText(summary)).lineLimit(2)
                                     }
                                     ForEach(quest.objectives) { objective in

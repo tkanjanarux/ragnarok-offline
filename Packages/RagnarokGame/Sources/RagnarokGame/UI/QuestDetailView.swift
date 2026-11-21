@@ -3,6 +3,7 @@ import SwiftUI
 
 /// QuestHelper renewal companion window (342 × 412), independent from the quest list.
 struct QuestDetailView: View {
+    @Environment(\.locale) private var locale
     var quests: [QuestEntry]
     @Bindable var ui: QuestUIState
     var openItem: ((Int) -> Void)? = nil
@@ -16,21 +17,46 @@ struct QuestDetailView: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text(questDisplayText(ui.title(for: quest))).font(.game(weight: .bold))
                                 .foregroundStyle(Color(red: 0, green: 0, blue: 0.57)).frame(maxWidth: .infinity, minHeight: 45)
-                            section("Description")
-                            Text(linkedDescription(ui.metadata[quest.id]?.description ?? "Description unavailable in client resources."))
-                                .fixedSize(horizontal: false, vertical: true).padding(.horizontal, 10)
-                            if let info = ui.metadata[quest.id], !info.npcMap.isEmpty {
-                                Text("\(info.npcMap) (\(info.npcX), \(info.npcY))").foregroundStyle(.blue).padding(.horizontal, 10)
+                            let info = ui.metadata[quest.id]
+                            let step = QuestGuide.steps[String(quest.id)]
+                            let locations = QuestGuide.locations[String(quest.id)] ?? []
+                            let thai = locale.language.languageCode == .thai
+                            if let step {
+                                section(thai ? "ขั้นตอนถัดไป" : "Next step")
+                                Text(verbatim: step.text(locale: locale)).padding(.horizontal, 10)
+                                if let materials = step.items {
+                                    section(thai ? "ของที่ต้องนำไปส่ง" : "Required items")
+                                    ForEach(materials, id: \.id) { item in
+                                        Button { showItem(item.id) } label: {
+                                            QuestRewardRow(itemID: item.id, count: item.count)
+                                        }.buttonStyle(.plain)
+                                    }
+                                }
                             }
-                            Divider()
-                            section("Monster")
-                            ForEach(quest.objectives) { objective in
-                                Text("\(objective.name)  \(objective.current) / \(objective.required > 0 ? String(objective.required) : "?")")
-                                    .padding(.leading, 20)
+                            if let description = [info?.description, info?.summary].compactMap({ $0 }).first(where: { !$0.isEmpty }) {
+                                section(thai ? "รายละเอียด" : "Description")
+                                Text(linkedDescription(description)).fixedSize(horizontal: false, vertical: true).padding(.horizontal, 10)
                             }
-                            Divider()
-                            section("Reward")
-                            if let info = ui.metadata[quest.id] {
+                            if !locations.isEmpty {
+                                section(thai ? "จุดที่เกี่ยวข้อง" : "Quest locations")
+                                ForEach(locations, id: \.self) { location in
+                                    Text(verbatim: location).padding(.horizontal, 10)
+                                }
+                            } else if let info, !info.npcMap.isEmpty {
+                                Text("\(info.npcMap) (\(info.npcX), \(info.npcY))").padding(.horizontal, 10)
+                            }
+                            if !quest.objectives.isEmpty {
+                                section(thai ? "ความคืบหน้า" : "Objectives")
+                                ForEach(quest.objectives) { objective in
+                                    Text("\(objective.name)  \(objective.current) / \(objective.required > 0 ? String(objective.required) : "?")")
+                                        .padding(.leading, 20)
+                                }
+                            }
+                            if step == nil && locations.isEmpty && (info?.description ?? "").isEmpty && (info?.summary ?? "").isEmpty && (info?.npcMap ?? "").isEmpty && quest.objectives.isEmpty {
+                                Text(thai ? "ยังไม่มีคำแนะนำสำหรับเควสขั้นนี้" : "No instructions available for this quest stage.").padding(.horizontal, 10)
+                            }
+                            if let info, info.rewardEXP != nil || info.rewardJobEXP != nil || !info.rewards.isEmpty {
+                                section(thai ? "รางวัล" : "Reward")
                                 if let exp = info.rewardEXP { Text("Base EXP: \(exp)").padding(.leading, 20) }
                                 if let exp = info.rewardJobEXP { Text("Job EXP: \(exp)").padding(.leading, 20) }
                                 ForEach(Array(info.rewards.enumerated()), id: \.offset) { _, reward in
