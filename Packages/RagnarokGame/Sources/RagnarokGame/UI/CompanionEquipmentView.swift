@@ -69,7 +69,7 @@ struct CompanionEquipmentView: View {
                                 if state.supplies.isEmpty { empty(state.suppliesAvailable ? "No supplies. Reserve, then give supplies from Your Bag. Hunters also accept arrows." : "Supplies are not enabled on this server.") }
                             default:
                                 ForEach(state.supplyBag) { item in itemRow(key: "supplybag:\(item.id):\(item.itemID)", itemID: item.itemID, detail: "Supply · Available: \(item.amount)") }
-                                ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: "Equipment · Available to give", details: item.details) }
+                                ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: item.blockedReason ?? "Equipment · Available to give", details: item.details) }
                                 if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Transferable equipment and supported supplies only.") }
                             }
                         } else { empty(state.pending ? "Loading…" : "Waiting to refresh companion details.") }
@@ -89,7 +89,7 @@ struct CompanionEquipmentView: View {
                             Text("\(amount)").font(.game(size: 12)).frame(width: 32)
                             control("+", disabled: quantity >= min(100,Int(supplyBag?.amount ?? supply?.amount ?? 1))) { quantity += 1 }
                         }
-                        control(tab == 2 ? "Return" : "Give", disabled: !ready || profile?.active != false || (tab == 2 ? supply == nil : bagItem == nil && supplyBag == nil)) {
+                        control(tab == 2 ? "Return" : "Give", disabled: !ready || profile?.active != false || (tab == 2 ? supply == nil : (bagItem == nil || bagItem?.blockedReason != nil) && supplyBag == nil)) {
                             if tab == 2, let supply { send("supplytake \(profileID) 0:\(supply.itemID):0:\(amount)") }
                             else if let item = supplyBag { send("supplygive \(profileID) \(item.id):\(item.itemID):\(item.amount):\(amount)") }
                             else if let item = bagItem { send("giveui \(profileID) \(item.id):\(item.uniqueID)") }

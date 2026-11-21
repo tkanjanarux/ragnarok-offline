@@ -47,6 +47,7 @@ struct CompanionBagItem: Identifiable, Equatable {
     let id: UInt32 // native one-based inventory slot
     let itemID: UInt32
     let uniqueID: UInt64
+    var blockedReason: String? = nil
     var details = CompanionItemDetails.plain
 }
 struct CompanionStarter: Identifiable, Equatable {
@@ -201,7 +202,7 @@ struct CompanionState {
             guard expected != nil, gearExpected == nil, t.count == 7,
                   let profile = UInt32(t[3]), (action == "equipment \(profile)" || action == "inspect \(profile)"),
                   incoming.contains(where: { $0.id == profile }),
-                  let gear = Int(t[4]), (0...8).contains(gear),
+                  let gear = Int(t[4]), (0...24).contains(gear),
                   let bag = Int(t[5]), (0...200).contains(bag), t[6] == "0" || t[6] == "1" else { timeout(sequence); return true }
             gearExpected = (profile, gear, bag, t[6] == "1")
         case "gear":
@@ -216,12 +217,17 @@ struct CompanionState {
                   let uid = UInt64(t[5]), uid > 0, uid <= UInt64(Int64.max),
                   !incomingBag.contains(where: { $0.id == slot || $0.uniqueID == uid }) else { timeout(sequence); return true }
             incomingBag.append(CompanionBagItem(id: slot, itemID: item, uniqueID: uid, details: details))
+        case "blocked":
+            guard let g = gearExpected, incomingBag.count < g.bag, t.count >= 7,
+                  let slot = UInt32(t[3]), (1...200).contains(slot), let item = UInt32(t[4]), item > 0,
+                  let uid = UInt64(t[5]), !incomingBag.contains(where: { $0.id == slot }) else { timeout(sequence); return true }
+            incomingBag.append(CompanionBagItem(id: slot, itemID: item, uniqueID: uid, blockedReason: t.dropFirst(6).joined(separator: " ")))
         case "detailbegin":
             guard expected != nil, detailExpected == nil, t.count == 10,
                   let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,
                   let starter = Int(t[4]), (0...2).contains(starter),
                   let skill = Int(t[5]), (1...13).contains(skill),
-                  let supply = Int(t[6]), (0...18).contains(supply),
+                  let supply = Int(t[6]), (0...21).contains(supply),
                   let bag = Int(t[7]), (0...200).contains(bag),
                   let reason = Int(t[8]), (0...9).contains(reason), ["0","1"].contains(t[9]) else { timeout(sequence); return true }
             detailExpected = (starter,skill,supply,bag,reason,t[9] == "1")
@@ -241,7 +247,7 @@ struct CompanionState {
             guard let d = detailExpected else { timeout(sequence); return true }
             let bag = t[2] == "supplybag"
             guard t.count == (bag ? 6 : 5), let id = UInt32(t[3]),
-                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,569,11621,11622,11623,11624,1750,1751,1752,1753,1754,1755,1756,1757].contains(item),
+                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,517,518,533,569,11621,11622,11623,11624,1750,1751,1752,1753,1754,1755,1756,1757].contains(item),
                   let amount = UInt32(t[bag ? 5 : 4]), amount > 0, amount <= (bag ? 30000 : 1000),
                   bag ? ((1...200).contains(id) && incomingSupplyBag.count < d.bag && !incomingSupplyBag.contains(where: { $0.id == id })) : (incomingSupplies.count < d.supply && !incomingSupplies.contains(where: { $0.id == id })) else { timeout(sequence); return true }
             let row = CompanionSupply(id:id,itemID:item,amount:amount)
