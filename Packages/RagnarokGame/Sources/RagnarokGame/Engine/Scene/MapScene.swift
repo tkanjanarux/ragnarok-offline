@@ -42,6 +42,21 @@ public final class MapScene {
     var hpspBarObjectIDs: Set<GameObjectID> = []
 
     var effects: [UUID : MapSceneEffect] = [:]
+    struct Speech {
+        let text: TextDescriptor
+        let position: SIMD3<Float>
+        let expires: ContinuousClock.Instant
+    }
+    var speech: [GameObjectID: Speech] = [:]
+
+    func showPublicChat(_ message: String, from id: GameObjectID) {
+        guard let actor = objects[id], let separator = message.range(of: " : ") else { return }
+        let words = String(message[separator.upperBound...].prefix(80))
+        guard !words.isEmpty else { return }
+        speech[id] = Speech(text: TextDescriptor(text: AttributedString(words), bubble: true),
+                            position: worldPosition(for: actor), expires: .now + .seconds(4))
+    }
+
     var combatTexts: [CombatText] = []
     var tileSelector: TileSelector?
     var targetSelector: TargetSelector?

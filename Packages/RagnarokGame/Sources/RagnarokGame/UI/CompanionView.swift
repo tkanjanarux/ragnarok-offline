@@ -54,10 +54,21 @@ struct CompanionView: View {
                     action("Assist", verb: "assist", disabled: row?.active != true)
                     action("Stop", verb: "stop", disabled: row?.active != true)
                 }
-                if let hunting = session.companions.nearbyHunt {
+                HStack {
+                    if let mode = session.companions.voice {
+                        let modes = ["off","quiet","normal","chatty"]
+                        let labels = ["off":"ปิด","quiet":"เงียบ","normal":"ปกติ","chatty":"ช่างพูด"]
+                        Menu("เสียงพูดทีม · " + (labels[mode] ?? mode)) {
+                            ForEach(modes, id: \.self) { key in
+                                Button(labels[key] ?? key) { session.companionCommand("talk " + key) }
+                            }
+                        }.disabled(!enabled)
+                    }
+                    if let hunting = session.companions.nearbyHunt {
                     Button(hunting ? "Nearby Hunt: ON" : "Nearby Hunt: OFF") {
                         session.companionCommand(hunting ? "hunt off" : "hunt on")
                     }.buttonStyle(.game).disabled(!enabled)
+                }
                 }
                 if let row {
                     Menu("Preset: " + row.preset.capitalized) {

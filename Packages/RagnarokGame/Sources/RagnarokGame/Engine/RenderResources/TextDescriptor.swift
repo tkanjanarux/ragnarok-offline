@@ -21,13 +21,16 @@ struct TextDescriptor: Hashable {
     /// The size of the drawn text, in points.
     let size: SIMD2<Float>
 
-    init(text: AttributedString) {
+    let bubble: Bool
+
+    init(text: AttributedString, bubble: Bool = false) {
+        self.bubble = bubble
         self.text = text
 
         let textSize = text.drawableString(isOutline: false).size()
         self.size = [
-            Float(ceil(textSize.width)) + 2,
-            Float(ceil(textSize.height)) + 2,
+            Float(ceil(textSize.width)) + (bubble ? 12 : 2),
+            Float(ceil(textSize.height)) + (bubble ? 10 : 2),
         ]
     }
 
@@ -36,14 +39,27 @@ struct TextDescriptor: Hashable {
         let scale: CGFloat = 4
         let imageSize = CGSize(width: CGFloat(size.x) * scale, height: CGFloat(size.y) * scale)
         let renderer = CGImageRenderer(size: imageSize, flipped: true)
-        return renderer.image(for: text, scale: scale)
+        return renderer.image(for: text, scale: scale, bubble: bubble)
     }
 }
 
 extension CGImageRenderer {
-    fileprivate func image(for attributedText: AttributedString, scale: CGFloat) -> CGImage? {
+    fileprivate func image(for attributedText: AttributedString, scale: CGFloat, bubble: Bool) -> CGImage? {
         image { context in
             context.scaleBy(x: scale, y: scale)
+
+            if bubble {
+                let size = attributedText.drawableString(isOutline: false).size()
+                let box = CGRect(x: 0, y: 0, width: ceil(size.width) + 12, height: ceil(size.height) + 6)
+                context.setFillColor(CGColor(gray: 0.08, alpha: 0.86))
+                context.addPath(CGPath(roundedRect: box, cornerWidth: 5, cornerHeight: 5, transform: nil))
+                context.fillPath()
+                context.move(to: CGPoint(x: box.midX - 4, y: box.maxY))
+                context.addLine(to: CGPoint(x: box.midX, y: box.maxY + 4))
+                context.addLine(to: CGPoint(x: box.midX + 4, y: box.maxY))
+                context.fillPath()
+                context.translateBy(x: 5, y: 2)
+            }
 
             #if canImport(UIKit)
             UIGraphicsPushContext(context)

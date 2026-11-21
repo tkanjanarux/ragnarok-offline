@@ -31,10 +31,12 @@ final class MapSceneRenderResources {
     private var effectLoadTasks: [UUID : Task<Void, Never>] = [:]
 
     let textTextureCache: TextTextureCache
+    let bubbleTextures: TextTextureCache
 
     init(device: any MTLDevice) {
         self.device = device
         self.textTextureCache = TextTextureCache(device: device)
+        self.bubbleTextures = TextTextureCache(device: device)
     }
 
     func loadWorld(_ asset: WorldAsset) {
@@ -183,6 +185,7 @@ final class MapSceneRenderResources {
         effectResources.removeAll()
 
         textTextureCache.removeAll()
+        bubbleTextures.removeAll()
 
         world = nil
     }

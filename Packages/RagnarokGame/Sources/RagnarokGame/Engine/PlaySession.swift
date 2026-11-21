@@ -634,6 +634,7 @@ final class PlaySession {
         case _ as PACKET_ZC_CLOSE_STORE:
             storage = nil
         case let packet as PACKET_ZC_NOTIFY_CHAT:
+            mapScene?.showPublicChat(packet.Message, from: packet.GID)
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_WHISPER:
@@ -641,6 +642,9 @@ final class PlaySession {
             messageCenter.add(message)
         case let packet as PACKET_ZC_NOTIFY_PLAYERCHAT:
             if companions.receive(packet.Message) { break }
+            if packet.Message.hasPrefix(character.name + " : ") {
+                mapScene?.showPublicChat(packet.Message, from: account.accountID)
+            }
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_NPC_CHAT:
@@ -782,7 +786,7 @@ final class PlaySession {
         guard !companions.pending, action == "list" || (companions.ready && companions.available) else { return }
         let token = companions.begin(action)
         let capability = action.hasPrefix("inspect ") ? "ui2 skills9 gear3 syrup1" : "ui2"
-        sendMessage("@companion ui \(token) \(action) \(capability) hunter1 hunt1")
+        sendMessage("@companion ui \(token) \(action) \(capability) hunter1 voice1 hunt1")
         companionTimeout?.cancel()
         companionTimeout = Task { [weak self] in
             do { try await Task.sleep(for: .seconds(10)) } catch { return }

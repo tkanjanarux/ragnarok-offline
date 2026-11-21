@@ -119,6 +119,13 @@ final class MapSceneRuntime {
         snapshot.effects = makeEffects(worldPositions: worldPositions)
         snapshot.bars = makeBars(at: time, worldPositions: worldPositions)
         snapshot.texts = makeTexts(worldPositions: worldPositions)
+        scene.speech = scene.speech.filter { $0.value.expires > time }
+        let bubbles = renderResources.bubbleTextures.synchronize(texts: scene.speech.values.map(\.text))
+        for (id, bubble) in scene.speech {
+            guard let texture = bubbles[bubble.text] else { continue }
+            let mesh = TextMesh(size: bubble.text.size, top: 42 + bubble.text.size.y)
+            snapshot.texts.append(.init(vertices: mesh.vertices, worldPosition: worldPositions[id] ?? bubble.position, texture: texture))
+        }
         snapshot.combatTexts = makeCombatTexts(at: time, worldPositions: worldPositions)
         snapshot.combatTextTexture = renderResources.combatTextTexture
         return snapshot
