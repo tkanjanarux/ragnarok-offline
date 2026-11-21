@@ -42,6 +42,15 @@ struct CompanionEquipmentView: View {
                         if state.equipmentProfile == profileID && (state.detailReady || (state.pending && state.action == "inspect \(profileID)")) {
                             switch tab {
                             case 0:
+                                if let profile, let build = profile.build {
+                                    Menu {
+                                        ForEach(profile.buildChoices, id: \.self) { key in
+                                            Button(buildTitle(key)) { send("build \(profileID) \(key)") }
+                                        }
+                                    } label: {
+                                        Text("Build · \(buildTitle(build)) ▾")
+                                    }.buttonStyle(.game).disabled(!ready || profile.active)
+                                }
                                 if let profile, let rented = profile.rented, [7,11].contains(profile.job) || rented {
                                     let bird = [1,7].contains(profile.job) ? "Peco Peco" : "Falcon"
                                     if rented {
@@ -174,6 +183,12 @@ struct CompanionEquipmentView: View {
         needsPolicy = false
         send("config \(profileID)")
     }
+    private func buildTitle(_ key: String) -> String {
+        ["sword":"Two-Handed Sword", "spear":"Spear", "double":"Double Strafe", "falcon":"Falcon",
+         "support":"Full Support", "battle":"Battle Priest", "bolt":"Bolt", "storm":"Storm Gust",
+         "vermilion":"Lord of Vermilion", "pillar":"Fire Pillar"][key] ?? key
+    }
+
     private func refresh() {
         if let action = state.detailRefreshAction(for: profileID) { session.companionCommand(action) }
     }
