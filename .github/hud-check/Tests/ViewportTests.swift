@@ -11,10 +11,17 @@ import XCTest
         window.makeKeyAndVisible()
         defer { window.isHidden = true }
         var hud: CGRect = .zero
-        let host = UIHostingController(rootView: MapHUDViewport { size in
+        var original: CGRect = .zero
+        let host = UIHostingController(rootView: ZStack {
+            GeometryReader { outside in
+                Color.clear.frame(width: outside.size.width, height: outside.size.height)
+                    .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { original = $0 }
+            }
+            MapHUDViewport { size in
             GeometryReader { proxy in
                 Color.clear.onGeometryChange(for: CGRect.self) { geo in geo.frame(in: .global) } action: { hud = $0 }
             }.frame(width: size.width, height: size.height)
+            }
         })
         parent.addChild(host)
         parent.view.addSubview(host.view)
@@ -27,6 +34,9 @@ import XCTest
             try await Task.sleep(for: .milliseconds(300))
             XCTAssertGreaterThanOrEqual(host.view.safeAreaInsets.left, CGFloat(left))
             XCTAssertGreaterThanOrEqual(host.view.safeAreaInsets.right, CGFloat(right))
+            print("window", width, "insets", host.view.safeAreaInsets, "previous", original, "fixed", hud)
+            XCTAssertEqual(original.width, CGFloat(width) - host.view.safeAreaInsets.left - host.view.safeAreaInsets.right, accuracy: 0.5)
+            XCTAssertEqual(original.minX, host.view.safeAreaInsets.left, accuracy: 0.5)
             XCTAssertEqual(hud.minX, 0, accuracy: 0.5)
             XCTAssertEqual(hud.width, CGFloat(width), accuracy: 0.5)
         }
