@@ -1,0 +1,25 @@
+name: Duo HUD geometry check
+on:
+  push:
+    branches: [check-duo-panels-5956fd2]
+permissions:
+  contents: read
+jobs:
+  simulator:
+    runs-on: xcode-27
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          mkdir -p .github/hud-check/Sources
+          cp Packages/RagnarokGame/Sources/RagnarokGame/UI/{MapHUDViewport,QuestTrackerSlot}.swift .github/hud-check/Sources/
+          cd .github/hud-check
+          id=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]))')
+          set -o pipefail
+          xcodebuild test -scheme ViewportCheck -destination "platform=iOS Simulator,id=$id" -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO | tee "$RUNNER_TEMP/geometry.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: geometry-log
+          path: ${{ runner.temp }}/geometry.log
