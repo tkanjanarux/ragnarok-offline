@@ -79,6 +79,7 @@ struct StatusIconBarView: View {
                 .buttonStyle(.plain)
             }
         }
+        .hudObstacle()
         .frame(maxHeight: .infinity, alignment: .topTrailing)
         .onGeometryChange(for: Int.self) { geometryProxy in
             // Each row is a 24-point icon plus 4 points of spacing.

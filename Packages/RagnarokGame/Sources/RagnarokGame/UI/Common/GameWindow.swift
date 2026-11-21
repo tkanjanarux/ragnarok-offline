@@ -20,7 +20,7 @@ struct GameWindow<Content, BottomBar>: View where Content: View, BottomBar: View
 
             content
                 .frame(maxWidth: .infinity)
-                .background(Color.white)
+                .background(Color.white, ignoresSafeAreaEdges: [])
                 .overlay(alignment: .leading) {
                     Rectangle().fill(Color.gameBoxBorder).frame(width: 1)
                 }

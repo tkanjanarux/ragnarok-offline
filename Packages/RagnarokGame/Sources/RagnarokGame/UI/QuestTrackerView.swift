@@ -7,9 +7,9 @@ struct QuestTrackerView: View {
     @Bindable var ui: QuestUIState
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { timeline in
-            VStack(alignment: .trailing, spacing: 6) {
+            VStack(alignment: .leading, spacing: 6) {
                 ForEach(ui.trackedQuests(quests, now: timeline.date)) { quest in
-                    VStack(alignment: .trailing, spacing: 2) {
+                    VStack(alignment: .leading, spacing: 2) {
                         Text(questDisplayText(ui.title(for: quest))).foregroundStyle(.yellow).lineLimit(1)
                         let summary = ui.summary(for: quest, locale: locale)
                         if !summary.isEmpty {
@@ -22,7 +22,7 @@ struct QuestTrackerView: View {
                 }
             }
             .font(.game()).foregroundStyle(.white).shadow(color: .black, radius: 1)
-            .multilineTextAlignment(.trailing)
+            .multilineTextAlignment(.leading)
         }
     }
 }

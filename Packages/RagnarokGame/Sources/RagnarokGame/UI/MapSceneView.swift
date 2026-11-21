@@ -21,9 +21,7 @@ struct MapSceneView: View {
     @State private var presentedMenuItem: MenuItem?
 
     var body: some View {
-        GeometryReader { viewport in
-            scene(in: viewport.size)
-        }
+        MapHUDViewport { size in scene(in: size) }
     }
 
     private func scene(in size: CGSize) -> some View {
@@ -56,11 +54,13 @@ struct MapSceneView: View {
             #if os(macOS)
             ChatBoxView()
                 .frame(width: 440)
+                .hudObstacle()
             #endif
         }
         .overlay(alignment: .bottomTrailing) {
             if isWidescreen {
                 actionBar
+                    .hudObstacle()
                     .frame(maxWidth: size.width - chatWidth - 2 * inset, alignment: .trailing)
                     .padding(.trailing, inset)
                     .padding(.bottom, 16)
@@ -69,6 +69,7 @@ struct MapSceneView: View {
         .overlay(alignment: .bottom) {
             if !isWidescreen {
                 actionBar
+                    .hudObstacle()
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.horizontal, inset)
                     .padding(.bottom, ChatBoxView.contentHeight(for: .compact) + 8)
@@ -86,6 +87,7 @@ struct MapSceneView: View {
                     }
                 }
             }
+            .hudObstacle()
         }
         .overlay(alignment: .topTrailing) {
             VStack(alignment: .trailing, spacing: 8) {
@@ -97,6 +99,7 @@ struct MapSceneView: View {
                     .accessibilityLabel("Cash Shop")
                     MinimapView(scene: runtime.scene)
                 }
+                .hudObstacle()
 
                 StatusIconBarView(statusChanges: playSession.statusChanges)
             }
@@ -109,17 +112,21 @@ struct MapSceneView: View {
             #if os(iOS)
             ChatBoxView()
                 .frame(width: chatWidth)
+                .hudObstacle()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: isWidescreen ? .bottomLeading : .bottom)
             #endif
         }
-        .overlay(alignment: .topTrailing) {
-            QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
-                .frame(width: min(230, size.width * 0.40), alignment: .trailing)
-                .frame(maxHeight: max(0, size.height - 144), alignment: .topTrailing)
-                .clipped()
-                .padding(.top, 144)
-                .padding(.trailing, inset)
-                .allowsHitTesting(false)
+        .overlayPreferenceValue(HUDObstacleKey.self) { obstacles in
+            GeometryReader { viewport in
+                let frames = obstacles.map { viewport[$0] }
+                if let slot = questTrackerSlot(in: viewport.size, obstacles: frames) {
+                    QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
+                        .frame(width: slot.width, height: slot.height, alignment: .topLeading)
+                        .clipped()
+                        .position(x: slot.midX, y: slot.midY)
+                }
+            }
+            .allowsHitTesting(false)
         }
         .overlay(alignment: .center) {
             if let item = presentedMenuItem {
@@ -236,5 +243,19 @@ struct MapSceneView: View {
         } else {
             ChatBoxView.contentHeight(for: .compact) + 8 + actionBarHeight + 8
         }
+    }
+}
+
+struct HUDObstacleKey: PreferenceKey {
+    static var defaultValue: [Anchor<CGRect>] { [] }
+
+    static func reduce(value: inout [Anchor<CGRect>], nextValue: () -> [Anchor<CGRect>]) {
+        value += nextValue()
+    }
+}
+
+extension View {
+    func hudObstacle() -> some View {
+        anchorPreference(key: HUDObstacleKey.self, value: .bounds) { [$0] }
     }
 }
