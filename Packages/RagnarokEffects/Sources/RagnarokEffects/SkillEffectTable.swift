@@ -93,6 +93,9 @@ public enum SkillEffectTable {
         .all_resurrection: .init(
             effects: [.id(.ef_resurrection), .id(.ef_revive)]
         ),
+        .kn_twohandquicken: .init(
+            successEffects: [.id(.ef_twohandquicken)]
+        ),
     ]
 
     public static func beginCastEffects(for skillID: SkillID) -> [EffectReference] {

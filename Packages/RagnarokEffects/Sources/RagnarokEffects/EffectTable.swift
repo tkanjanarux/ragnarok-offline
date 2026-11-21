@@ -896,6 +896,13 @@ public enum EffectTable {
                 attachedToTarget: true
             ),
         ],
+        .ef_twohandquicken: [
+            .str(
+                fileName: "twohand.str",
+                soundName: "effect\\knight_twohandquicken.wav",
+                attachedToTarget: true
+            ),
+        ],
         .ef_joblvup: [
             .str(
                 fileName: "joblvup.str",
