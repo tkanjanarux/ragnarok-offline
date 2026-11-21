@@ -40,7 +40,7 @@ final class SpriteLoader {
 
         if falconLoad == nil && objects.values.contains(where: { $0.hasVisibleFalcon }) {
             falconLoad = Task { [weak self, resourceManager] in
-                let path = ResourcePath.spriteDirectory.appending(path: K2L(["이펙트", "매"]))
+                let path = ResourcePath.spriteDirectory.appending(path: K2L(["이팩트", "매"]))
                 let sprite = try? await resourceManager.sprite(at: path)
                 if !Task.isCancelled { self?.falconSprite = sprite }
             }
