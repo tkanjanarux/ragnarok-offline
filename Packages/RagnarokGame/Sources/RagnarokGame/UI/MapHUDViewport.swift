@@ -21,8 +21,7 @@ struct MapHUDViewport<Content: View>: View {
     }
 }
 
-// Extend the panel to the edge. Keep the center of even a 28-point button
-// at least 6 points above the system gesture inset.
-func bottomHUDControlPadding(for bottomInset: CGFloat) -> CGFloat {
-    min(bottomInset, max(8, bottomInset - 8))
+// Reserve a small exterior margin on displays with a home indicator.
+func bottomHUDMargin(for bottomInset: CGFloat) -> CGFloat {
+    min(bottomInset, 12)
 }

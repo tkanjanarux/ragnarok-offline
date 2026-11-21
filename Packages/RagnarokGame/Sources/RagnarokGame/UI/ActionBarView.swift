@@ -9,7 +9,6 @@ import RagnarokModels
 import SwiftUI
 
 struct ActionBarView: View {
-    var bottomPadding: CGFloat = 0
     var selectedTargetType: MapObjectType?
     var onTargetAction: () -> Void
     var onSelectNextTarget: () -> Void
@@ -112,7 +111,6 @@ struct ActionBarView: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
-                .padding(.bottom, bottomPadding)
 
                 HStack(spacing: 4) {
                     ForEach(0..<8, id: \.self) { column in
@@ -124,7 +122,6 @@ struct ActionBarView: View {
                     }
                 }
                 .padding(4)
-                .padding(.bottom, bottomPadding)
                 .background(Color.black.opacity(0.4))
                 .clipShape(RoundedRectangle(cornerRadius: 3, style: .circular))
             }

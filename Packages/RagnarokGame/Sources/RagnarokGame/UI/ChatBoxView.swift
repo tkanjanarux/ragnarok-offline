@@ -9,8 +9,6 @@ import RagnarokModels
 import SwiftUI
 
 struct ChatBoxView: View {
-    var bottomPadding: CGFloat = 0
-
     enum ViewStyle {
         case compact
         case full
@@ -133,7 +131,6 @@ struct ChatBoxView: View {
             }
             .frame(height: ChatBoxView.chatInputHeight)
         }
-        .padding(.bottom, bottomPadding)
         .background(Color.black.opacity(0.4))
         .clipShape(RoundedRectangle(cornerRadius: 3, style: .circular))
         .environment(\.colorScheme, .dark)
