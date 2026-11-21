@@ -171,6 +171,12 @@ struct MapSceneView: View {
                 StorageView(storage: storage)
             }
         }
+        .onChange(of: playSession.examAdmissions) { _, _ in
+            if playSession.questUI.selectedQuestID == 4011 {
+                playSession.questUI.selectedQuestID = nil
+                if presentedMenuItem == .quest { presentedMenuItem = nil }
+            }
+        }
         .onChange(of: runtime.scene.state.isPlayerDead) { _, newValue in
             if newValue {
                 presentedMenuItem = .options

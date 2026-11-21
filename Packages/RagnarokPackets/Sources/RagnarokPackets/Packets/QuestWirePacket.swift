@@ -22,3 +22,10 @@ public struct QuestActiveRequest: EncodablePacket {
         try encoder.encode(UInt8(active ? 1 : 0))
     }
 }
+
+public struct LeaveWaitingRoomRequest: EncodablePacket {
+    public init() {}
+    public func encode(to encoder: BinaryEncoder) throws {
+        try encoder.encode(UInt16(0x00e3))
+    }
+}

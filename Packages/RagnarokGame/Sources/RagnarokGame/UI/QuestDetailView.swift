@@ -4,6 +4,7 @@ import SwiftUI
 /// QuestHelper renewal companion window (342 × 412), independent from the quest list.
 struct QuestDetailView: View {
     @Environment(\.locale) private var locale
+    @Environment(PlaySession.self) private var playSession
     var quests: [QuestEntry]
     @Bindable var ui: QuestUIState
     var openItem: ((Int) -> Void)? = nil
@@ -24,6 +25,9 @@ struct QuestDetailView: View {
                             if let step {
                                 section(thai ? "ขั้นตอนถัดไป" : "Next step")
                                 Text(verbatim: step.text(locale: locale)).padding(.horizontal, 10)
+                                if quest.id == 4011 && playSession.canAccessExamRoom {
+                                    examButton(thai: thai)
+                                }
                                 if let materials = step.items {
                                     section(thai ? "ของที่ต้องนำไปส่ง" : "Required items")
                                     ForEach(materials, id: \.id) { item in
@@ -91,6 +95,21 @@ struct QuestDetailView: View {
             .task { await ui.loadMetadata(resourceManager: gameContext.resourceManager) }
         }
     }
+    private func examButton(thai: Bool) -> some View {
+        let title: String = switch playSession.examQueueState {
+        case .idle: thai ? "เข้าห้องสอบ" : "Join test room"
+        case .joining: thai ? "กำลังเข้าห้องสอบ…" : "Joining…"
+        case .queued: thai ? "ออกจากคิวสอบ" : "Leave test queue"
+        case .leaving: thai ? "กำลังออกจากคิว…" : "Leaving…"
+        case .refused: thai ? "เข้าห้องไม่ได้ · ลองอีกครั้ง" : "Couldn’t join · Retry"
+        }
+        return Button(title) { playSession.requestExamRoom() }
+            .buttonStyle(.game)
+            .frame(minWidth: 140, minHeight: 30)
+            .disabled(playSession.examQueueState == .joining || playSession.examQueueState == .leaving)
+            .padding(.horizontal, 10)
+    }
+
     private func showItem(_ id: Int) {
         if let openItem { openItem(id) } else { selectedItemID = id }
     }

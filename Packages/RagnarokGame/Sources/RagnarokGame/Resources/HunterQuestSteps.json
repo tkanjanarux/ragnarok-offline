@@ -142,8 +142,8 @@
   "th": "ไปกิลด์นักธนูที่ Archer Village เข้าที่ pay_arche (145, 165) แล้วเข้าประตูด้านในที่ (75, 67) คุยกับ Hunter Guildmaster แล้วเลือก “Begin test.”"
  },
  "4011": {
-  "en": "Enter the waiting room. Within three minutes, defeat four monsters named exactly “Job Change Monster”, activate the central switch, choose “Escape”, and leave through the north portal.",
-  "th": "เข้าห้องรอ เมื่อเริ่มสอบให้ตีเฉพาะมอนชื่อ “Job Change Monster” ให้ครบ 4 ตัว กดสวิตช์กลางห้อง เลือก “Escape” แล้วออกประตูทิศเหนือภายใน 3 นาที"
+  "en": "Walk north past the Guide to job_hunte (178, 38). Open this quest and tap “Join test room” to enter the queue. Within three minutes, defeat four monsters named exactly “Job Change Monster”, activate the central switch, choose “Escape”, and leave through the north portal.",
+  "th": "เดินขึ้นเหนือผ่าน Guide ไปที่ job_hunte (178, 38) เปิดเควสนี้แล้วกด “เข้าห้องสอบ” เพื่อเข้าคิว เมื่อเริ่มสอบให้ตีเฉพาะมอนชื่อ “Job Change Monster” ให้ครบ 4 ตัว กดสวิตช์กลางห้อง เลือก “Escape” แล้วออกประตูทิศเหนือภายใน 3 นาที"
  },
  "4012": {
   "en": "Speak to the Hunter Guildmaster in the room you returned to after the test to receive the Necklace of Wisdom.",

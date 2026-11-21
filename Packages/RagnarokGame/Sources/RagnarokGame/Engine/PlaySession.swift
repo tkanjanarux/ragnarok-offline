@@ -45,6 +45,13 @@ final class PlaySession {
 
     var quests: [UInt32: QuestEntry] = [:]
     var questUI = QuestUIState()
+    enum ExamQueueState { case idle, joining, queued, leaving, refused }
+    private(set) var examQueueState: ExamQueueState = .idle
+    private(set) var examAdmissions = 0
+    private var examRoomID: UInt32?
+    var canAccessExamRoom: Bool {
+        examRoomID != nil && quests[4011] != nil && mapScene?.mapName == "job_hunte.rsw"
+    }
     var companions = CompanionState()
     @ObservationIgnored private var companionTimeout: Task<Void, Never>?
     var party = PartyState()
@@ -193,6 +200,8 @@ final class PlaySession {
         companionTimeout?.cancel()
         companions = CompanionState()
         party = PartyState()
+        examRoomID = nil
+        examQueueState = .idle
         quests.removeAll()
         questUI = QuestUIState()
         mapPhase = .connecting
@@ -246,7 +255,27 @@ final class PlaySession {
         case _ as PACKET_ZC_PING_LIVE:
             let packet = PacketFactory.CZ_PING_LIVE()
             mapClient?.sendPacket(packet)
+        case let packet as PACKET_ZC_ROOM_NEWENTRY:
+            if packet.type == 2, packet.title == "Waiting Room", packet.id > 0 {
+                examRoomID = UInt32(packet.id)
+            }
+        case let packet as PACKET_ZC_DESTROY_ROOM:
+            if packet.chatId == examRoomID {
+                examRoomID = nil
+                examQueueState = .idle
+            }
+        case let packet as PACKET_ZC_ENTER_ROOM:
+            if examQueueState == .joining, packet.chatId == examRoomID {
+                examQueueState = .queued
+                examAdmissions += 1
+            }
+        case _ as PACKET_ZC_REFUSE_ENTER_ROOM:
+            if examQueueState == .joining { examQueueState = .refused }
+        case let packet as PACKET_ZC_MEMBER_EXIT:
+            if packet.name == character.name { examQueueState = .idle }
         case let packet as PACKET_ZC_NPCACK_MAPMOVE:
+            examRoomID = nil
+            examQueueState = .idle
             let mapName = packet.mapName.replacingOccurrences(of: ".gat", with: ".rsw")
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
@@ -688,6 +717,24 @@ final class PlaySession {
     }
 
     // MARK: - Map Operations
+
+    func requestExamRoom() {
+        guard canAccessExamRoom, let examRoomID, let mapClient else { return }
+        switch examQueueState {
+        case .idle, .refused:
+            var request = PACKET_CZ_REQ_ENTER_ROOM()
+            request.packetType = HEADER_CZ_REQ_ENTER_ROOM
+            request.chat_id = examRoomID
+            request.password = ""
+            examQueueState = .joining
+            mapClient.sendPacket(request)
+        case .queued:
+            examQueueState = .leaving
+            mapClient.sendPacket(LeaveWaitingRoomRequest())
+        case .joining, .leaving:
+            break
+        }
+    }
 
     func notifyMapLoaded() {
         guard let mapClient else {
