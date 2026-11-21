@@ -191,3 +191,17 @@ import Testing
     #expect(quicken.toggling(in: ["provoke", "bash"]) == ["provoke", "quicken", "bash"])
     #expect(quicken.toggling(in: ["quicken", "bash"]) == ["bash"])
 }
+
+@Test func fourActiveCompanionsAndOneInReserve() {
+    var state = CompanionState()
+    let seq = state.begin("list")
+    state.receive("[RCO1] \(seq) begin 5 1")
+    for (i, job) in [7,8,9,11,7].enumerated() {
+        let active = i < 4
+        state.receive("[RCO1] \(seq) row \(i+1) \(job) 81 36 0 0 100 100 20 30 \(active ? 95000000+i : 0) \(active ? 2 : 0) 0 AI-\(i+1) custom")
+    }
+    state.receive("[RCO1] \(seq) end Ready.")
+    #expect(state.ready && state.profiles.count == 5)
+    #expect(state.activeCount == 4 && state.activeCount == CompanionState.activeLimit)
+    #expect(state.profiles.last?.active == false)
+}

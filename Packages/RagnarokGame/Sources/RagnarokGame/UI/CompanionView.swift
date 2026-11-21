@@ -16,7 +16,7 @@ struct CompanionView: View {
                 HStack {
                     Text("Roster \(session.companions.profiles.count)/9")
                     Spacer()
-                    Text("Active \(session.companions.profiles.filter(\.active).count)/3")
+                    Text("Active \(session.companions.activeCount)/\(CompanionState.activeLimit)")
                 }.padding(.horizontal, 8).frame(height: 22)
                 ScrollView {
                     LazyVStack(spacing: 0) {
@@ -49,7 +49,7 @@ struct CompanionView: View {
                     }.font(.game(size: 10)).frame(maxWidth: .infinity, alignment: .leading).frame(height: 30)
                 } else { Text("Select a companion").font(.game(size: 11)).frame(height: 30) }
                 HStack(spacing: 4) {
-                    action(row?.active == true ? "Reserve" : "Summon", verb: row?.active == true ? "bench" : "summon", disabled: row == nil)
+                    action(row?.active == true ? "Reserve" : "Summon", verb: row?.active == true ? "bench" : "summon", disabled: row == nil || (row?.active == false && session.companions.activeCount >= CompanionState.activeLimit))
                     action("Follow", verb: "follow", disabled: row?.active != true)
                     action("Assist", verb: "assist", disabled: row?.active != true)
                     action("Stop", verb: "stop", disabled: row?.active != true)

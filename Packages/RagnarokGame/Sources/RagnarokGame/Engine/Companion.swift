@@ -110,6 +110,8 @@ struct CompanionSupply: Identifiable, Equatable {
     let amount: UInt32
 }
 struct CompanionState {
+    static let activeLimit = 4
+    var activeCount: Int { profiles.filter(\.active).count }
     var potionRule: String?
     var detailReady = false
     var starters: [CompanionStarter] = []
