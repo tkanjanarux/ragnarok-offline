@@ -146,7 +146,7 @@ struct CashShopView: View {
             }.padding(4)
             HStack { Text("Total Price"); Spacer(); Text("\(session.cashShop.cartTotal) C") }
                 .padding(.horizontal, 4)
-            skinButton(session.cashShop.pending ? "Buying…" : "Purchase", image: "btn_buy_normal", width: 82) { confirming = true }
+            skinButton(session.cashShop.checkingBalance ? "Checking…" : (session.cashShop.pending ? "Buying…" : "Purchase"), image: "btn_buy_normal", width: 82) { confirming = true }
                 .disabled(free == nil || !session.cashShop.canPurchaseCart(freePoints: free ?? 0))
             Text(purchaseStatus)
                 .font(.system(size: 10)).frame(maxWidth: .infinity, alignment: .leading)

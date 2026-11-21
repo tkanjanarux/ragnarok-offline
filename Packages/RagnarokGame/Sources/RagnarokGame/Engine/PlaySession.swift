@@ -153,7 +153,8 @@ final class PlaySession {
         // Handle packet stream
         Task { [weak self] in
             for await packet in mapClient.packetStream {
-                self?.handlePacket(packet)
+                guard let self, self.mapClient === mapClient else { continue }
+                self.handlePacket(packet)
             }
         }
 
@@ -221,9 +222,7 @@ final class PlaySession {
         case let packet as PACKET_ZC_ACK_SCHEDULER_CASHITEM:
             cashShop.receive(packet)
         case let packet as PACKET_ZC_SE_CASHSHOP_OPEN:
-            cashShop.cash = packet.cashPoints
-            cashShop.kafra = packet.kafraPoints
-            cashShop.ready = true
+            cashShop.receiveBalance(cashPoints: packet.cashPoints, kafraPoints: packet.kafraPoints, tab: packet.tab)
         case let packet as PACKET_ZC_SE_PC_BUY_CASHITEM_RESULT:
             if let next = cashShop.receivePurchaseResult(packet) {
                 mapClient?.sendPacket(next)
@@ -779,7 +778,7 @@ final class PlaySession {
         mapClient?.sendPacket(CashShopRequest(.list))
         var packet = PACKET_CZ_SE_CASHSHOP_OPEN2()
         packet.packetType = HEADER_CZ_SE_CASHSHOP_OPEN2
-        packet.tab = 6
+        packet.tab = cashShop.checkingBalance ? CashShopState.balanceCheckTab : 6
         mapClient?.sendPacket(packet)
     }
 
@@ -810,7 +809,11 @@ final class PlaySession {
         cashShopTimeout?.cancel()
         cashShopTimeout = Task { [weak self] in
             do { try await Task.sleep(for: .seconds(15)) } catch { return }
-            self?.cashShop.purchaseTimeout()
+            guard let self, cashShop.purchaseTimeout() else { return }
+            var balance = PACKET_CZ_SE_CASHSHOP_OPEN2()
+            balance.packetType = HEADER_CZ_SE_CASHSHOP_OPEN2
+            balance.tab = CashShopState.balanceCheckTab
+            mapClient?.sendPacket(balance)
         }
     }
 

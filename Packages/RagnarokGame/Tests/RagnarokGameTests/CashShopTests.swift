@@ -44,18 +44,15 @@ import RagnarokPackets
     #expect(state.cartTotal == 30)
     #expect(!state.canPurchaseCart(freePoints: 8))
     let start = state.beginCartPurchase(freePoints: 7)
-    #expect(start?.items.first?.amount == 1)
-    #expect(start?.kafraPoints == 5)
+    #expect(start?.items.first?.amount == 2)
+    #expect(start?.kafraPoints == 7)
     #expect(state.pending)
     #expect(state.beginCartPurchase(freePoints: 0) == nil)
     var ack = PACKET_ZC_SE_PC_BUY_CASHITEM_RESULT()
-    ack.itemId = 505; ack.cashPoints = 100; ack.kafraPoints = 2
+    ack.itemId = 505; ack.cashPoints = 97; ack.kafraPoints = 0
     let next = state.receivePurchaseResult(ack)
-    #expect(next?.items.first?.itemId == 505 && next?.kafraPoints == 2)
-    #expect(state.cartTotal == 25 && state.pending)
-    ack.cashPoints = 97; ack.kafraPoints = 0
-    let last = state.receivePurchaseResult(ack)
-    #expect(last?.items.first?.itemId == 1201 && last?.kafraPoints == 0)
+    #expect(next?.items.first?.itemId == 1201 && next?.kafraPoints == 0)
+    #expect(state.cartTotal == 20 && state.pending)
     ack.itemId = 1201; ack.cashPoints = 77
     #expect(state.receivePurchaseResult(ack) == nil)
     #expect(!state.pending && state.cart.isEmpty && state.cash == 77)
@@ -73,10 +70,14 @@ import RagnarokPackets
     var result = PACKET_ZC_SE_PC_BUY_CASHITEM_RESULT()
     result.itemId = 999
     #expect(state.receivePurchaseResult(result) == nil && state.pending)
-    state.purchaseTimeout()
+    let didTimeout72 = state.purchaseTimeout()
+    #expect(didTimeout72)
     result.itemId = 1
     #expect(state.receivePurchaseResult(result) == nil && state.pending)
     #expect(state.beginCartPurchase(freePoints: 0) == nil)
+
+    state.receiveBalance(cashPoints: 999, kafraPoints: 0, tab: 0)
+    #expect(!state.pending && state.cart[0].quantity == 98)
 
     var failure = CashShopState()
     failure.ready = true; failure.cash = 10; failure.products = [state.products[0]]
@@ -104,4 +105,33 @@ import RagnarokPackets
     state.setQuantity(0, for: item.id)
     #expect(state.cart.isEmpty)
     #expect(!state.canPurchaseCart(freePoints: 0))
+}
+
+@Test func bluePotionBatchAndMissingResponse() {
+    let blue = CashShopProduct(itemID: 505, price: 5, tab: 6)
+    for balance: UInt32 in [9425, 9350] {
+        var state = CashShopState()
+        state.ready = true; state.cash = 9425; state.products = [blue]
+        state.addToCart(blue); state.setQuantity(15, for: blue.id)
+        let packet = state.beginCartPurchase(freePoints: 0)
+        #expect(packet?.items.first?.amount == 15 && packet?.count == 1)
+        let didTimeout116 = state.purchaseTimeout()
+        #expect(didTimeout116)
+        let didTimeout117 = state.purchaseTimeout()
+        #expect(!didTimeout117)
+        state.receiveBalance(cashPoints: 9425, kafraPoints: 0, tab: 6)
+        #expect(state.pending)
+        state.receiveBalance(cashPoints: balance, kafraPoints: 0, tab: CashShopState.balanceCheckTab)
+        #expect(!state.pending && !state.checkingBalance && state.cash == balance)
+        #expect(state.cart.isEmpty == (balance == 9350))
+    }
+    var state = CashShopState()
+    state.ready = true; state.cash = 9425; state.products = [blue]
+    state.addToCart(blue); state.setQuantity(15, for: blue.id)
+    _ = state.beginCartPurchase(freePoints: 0)
+    var ack = PACKET_ZC_SE_PC_BUY_CASHITEM_RESULT()
+    ack.itemId = 505; ack.cashPoints = 9350
+    #expect(state.receivePurchaseResult(ack) == nil && state.cart.isEmpty)
+    let didTimeout131 = state.purchaseTimeout()
+    #expect(!state.pending && !didTimeout131)
 }
