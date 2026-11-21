@@ -92,6 +92,7 @@ struct ActionBarView: View {
                             .frame(width: 24, height: 24)
                     }
                 }
+                .modifier(PanelMeasurement(key:"actions"))
                 .disabled(selectedTargetType == .pc)
                 .opacity(selectedTargetType == .pc ? 0.5 : 1)
             }
@@ -121,6 +122,7 @@ struct ActionBarView: View {
                         }
                     }
                 }
+                .modifier(PanelMeasurement(key:"slots"))
                 .padding(4)
                 .background(Color.black.opacity(0.4))
                 .clipShape(RoundedRectangle(cornerRadius: 3, style: .circular))

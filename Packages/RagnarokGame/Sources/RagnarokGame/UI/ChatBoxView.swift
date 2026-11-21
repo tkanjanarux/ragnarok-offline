@@ -114,6 +114,7 @@ struct ChatBoxView: View {
                     .tint(Color.white)
                     .padding(.horizontal, 3)
                     .frame(height: ChatBoxView.chatInputHeight)
+                    .modifier(PanelMeasurement(key:"input"))
                     .focused($isFocused)
                     .onSubmit {
                         send(message)
