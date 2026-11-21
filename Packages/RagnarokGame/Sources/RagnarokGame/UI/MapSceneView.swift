@@ -17,12 +17,21 @@ struct MapSceneView: View {
 
     @Environment(PlaySession.self) private var playSession
 
-    @State private var screenWidth: CGFloat = 320
     @State private var actionBarHeight: CGFloat = 0
     @State private var presentedMenuItem: MenuItem?
 
     var body: some View {
-        ZStack {
+        GeometryReader { viewport in
+            scene(in: viewport.size)
+        }
+    }
+
+    private func scene(in size: CGSize) -> some View {
+        let isWidescreen = size.width >= 640
+        let inset: CGFloat = size.width < 360 ? 8 : 16
+        let chatWidth = isWidescreen ? (size.width >= 780 ? 360.0 : 280.0) : max(0, size.width - 2 * inset)
+
+        return ZStack {
             #if os(visionOS)
             Color.clear
                 .onAppear {
@@ -42,6 +51,7 @@ struct MapSceneView: View {
             MapView(runtime: runtime)
             #endif
         }
+        .frame(width: size.width, height: size.height)
         .overlay(alignment: .bottomLeading) {
             #if os(macOS)
             ChatBoxView()
@@ -51,15 +61,16 @@ struct MapSceneView: View {
         .overlay(alignment: .bottomTrailing) {
             if isWidescreen {
                 actionBar
-                    .padding(.trailing, 16)
+                    .frame(maxWidth: size.width - chatWidth - 2 * inset, alignment: .trailing)
+                    .padding(.trailing, inset)
                     .padding(.bottom, 16)
             }
         }
         .overlay(alignment: .bottom) {
             if !isWidescreen {
                 actionBar
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal, 16)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.horizontal, inset)
                     .padding(.bottom, ChatBoxView.contentHeight(for: .compact) + 8)
             }
         }
@@ -92,24 +103,23 @@ struct MapSceneView: View {
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.top, 16)
             .padding(.trailing, 16)
-            .padding(.bottom, statusIconBarBottomPadding)
+            .padding(.bottom, statusIconBarBottomPadding(isWidescreen: isWidescreen))
         }
         .overlay {
             #if os(iOS)
             ChatBoxView()
-                .frame(width: chatBoxWidth)
+                .frame(width: chatWidth)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: isWidescreen ? .bottomLeading : .bottom)
             #endif
         }
-        .overlay {
-            GeometryReader { geometry in
-                let top = min(250, geometry.size.height * 0.36)
-                QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
-                    .frame(maxHeight: max(60, geometry.size.height - top - 160), alignment: .top)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                    .padding(.top, top)
-                    .padding(.trailing, 16)
-            }
+        .overlay(alignment: .topTrailing) {
+            QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
+                .frame(width: min(230, size.width * 0.40), alignment: .trailing)
+                .frame(maxHeight: max(0, size.height - 144), alignment: .topTrailing)
+                .clipped()
+                .padding(.top, 144)
+                .padding(.trailing, inset)
+                .allowsHitTesting(false)
         }
         .overlay(alignment: .center) {
             if let item = presentedMenuItem {
@@ -189,13 +199,6 @@ struct MapSceneView: View {
                 presentedMenuItem = nil
             }
         }
-        // Keep the bottom HUD near the display edge; retain top/side safe areas.
-        .ignoresSafeArea(.container, edges: .bottom)
-        .onGeometryChange(for: CGFloat.self) { geometryProxy in
-            geometryProxy.size.width
-        } action: { containerWidth in
-            self.screenWidth = containerWidth
-        }
     }
 
     private var actionBar: some View {
@@ -227,25 +230,7 @@ struct MapSceneView: View {
         }
     }
 
-    private var isUltraWidescreen: Bool {
-        screenWidth >= 780
-    }
-
-    private var isWidescreen: Bool {
-        screenWidth >= 640
-    }
-
-    private var chatBoxWidth: CGFloat {
-        if isUltraWidescreen {
-            360
-        } else if isWidescreen {
-            280
-        } else {
-            screenWidth - 16 * 2
-        }
-    }
-
-    private var statusIconBarBottomPadding: CGFloat {
+    private func statusIconBarBottomPadding(isWidescreen: Bool) -> CGFloat {
         if isWidescreen {
             16 + actionBarHeight + 8
         } else {

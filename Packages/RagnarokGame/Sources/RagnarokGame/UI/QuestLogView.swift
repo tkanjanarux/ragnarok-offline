@@ -40,10 +40,12 @@ struct QuestLogView: View {
                 }.frame(width: 381, alignment: .leading)
                 HStack(spacing: 5) {
                     Button { ui.showTracker.toggle() } label: {
-                        QuestControlImage(name: "renew_questui/checkbox_\(ui.showTracker ? "on" : "off").bmp",
+                        HStack(spacing: 5) {
+                            QuestControlImage(name: "renew_questui/checkbox_\(ui.showTracker ? "on" : "off").bmp",
                                           fallback: ui.showTracker ? "✓" : "", width: 10, height: 10)
+                            Text("Show Quest")
+                        }.contentShape(Rectangle())
                     }.buttonStyle(.plain).accessibilityLabel("Show Quest").accessibilityValue(ui.showTracker ? "On" : "Off")
-                    Text("Show Quest")
                     Spacer()
                     Button("Close", action: close).buttonStyle(.game).frame(width: 42, height: 20)
                 }.padding(.leading, 40).padding(.trailing, 7).frame(height: 29)
