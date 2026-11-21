@@ -42,6 +42,15 @@ struct CompanionEquipmentView: View {
                         if state.equipmentProfile == profileID && (state.detailReady || (state.pending && state.action == "inspect \(profileID)")) {
                             switch tab {
                             case 0:
+                                if let profile, let rented = profile.rented, [7,11].contains(profile.job) || rented {
+                                    let bird = [1,7].contains(profile.job) ? "Peco Peco" : "Falcon"
+                                    if rented {
+                                        Text("\(bird) · Rented").font(.game(size: 12))
+                                    } else {
+                                        Button("Rent \(bird) · 2,500 Z") { send("rent \(profileID)") }
+                                            .buttonStyle(.game).disabled(!ready || profile.active)
+                                    }
+                                }
                                 VStack(spacing: 0) {
                                     ForEach(state.gearRows) { row in
                                         itemRow(key: row.id, itemID: row.itemID, detail: row.detail, details: row.details)
@@ -65,6 +74,11 @@ struct CompanionEquipmentView: View {
                                     Divider()
                                 }
                             case 2:
+                                if let profile, [4,8].contains(profile.job) {
+                                    let deposited = state.supplies.first { $0.itemID == 717 }?.amount ?? 0
+                                    Text("Blue Gemstone: \(profile.gems + deposited) · Starter: \(profile.gems) · Returnable: \(deposited)")
+                                        .font(.game(size: 11))
+                                }
                                 ForEach(state.supplies) { item in itemRow(key: "supply:\(item.id)", itemID: item.itemID, detail: "Remaining: \(item.amount)") }
                                 if state.supplies.isEmpty { empty(state.suppliesAvailable ? "No supplies. Reserve, then give supplies from Your Bag. Hunters also accept arrows." : "Supplies are not enabled on this server.") }
                             default:
@@ -94,7 +108,7 @@ struct CompanionEquipmentView: View {
                             else if let item = supplyBag { send("supplygive \(profileID) \(item.id):\(item.itemID):\(item.amount):\(amount)") }
                             else if let item = bagItem { send("giveui \(profileID) \(item.id):\(item.uniqueID)") }
                         }
-                    } else { Text("Skill levels follow Job. Blue Gemstone: \(profile?.gems ?? 0)").font(.game(size: 10)) }
+                    } else { Text("Skill levels follow Job. Starter Blue Gemstones: \(profile?.gems ?? 0)").font(.game(size: 10)) }
                 }.frame(height: 34)
                 HStack(spacing: 5) {
                     control(profile?.active == true ? "Reserve" : "Summon", disabled: !ready || profile == nil) { send("\(profile?.active == true ? "bench" : "summon") \(profileID)") }
