@@ -1,0 +1,26 @@
+name: Thai companion speech on iPhone Simulator
+on: [push]
+jobs:
+  render:
+    runs-on: xcode-27
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render Thai speech bubbles
+        run: |
+          set -euxo pipefail
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          device=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]))')
+          xcrun simctl boot "$device" || xcrun simctl bootstatus "$device" -b
+          xcrun simctl bootstatus "$device" -b
+          out="$RUNNER_TEMP/falcon-free-speech"
+          mkdir -p "$out"
+          sed '/^import RagnarokCore$/d' Packages/RagnarokGame/Sources/RagnarokGame/Engine/RenderResources/TextDescriptor.swift >"$out/TextDescriptor.swift"
+          xcrun --sdk iphonesimulator swiftc -target "$(uname -m)-apple-ios18.0-simulator" -sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" Packages/RagnarokCore/Sources/RagnarokCore/Graphics/CGImageRenderer.swift "$out/TextDescriptor.swift" scripts/companion-speech/main.swift -o "$out/check"
+          xcrun simctl spawn "$device" "$out/check" "$out"
+          mkdir samples
+          cp "$out"/*.png samples/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: thai-bubbles
+          path: samples
