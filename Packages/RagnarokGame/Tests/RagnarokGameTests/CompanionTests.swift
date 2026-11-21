@@ -152,3 +152,18 @@ import Testing
     #expect(state.gearRows.first?.details == CompanionItemDetails(refine: 7, cards: [4004,4004]))
     #expect(state.bag.first?.details.refine == 9)
 }
+
+@Test func nearbyHuntStateFollowsCompletedServerSnapshot() {
+    var state = CompanionState()
+    for hunt in [0, 1, 0] {
+        let seq = state.begin("list")
+        state.receive("[RCO1] \(seq) begin 0 1")
+        state.receive("[RCO1] \(seq) hunt \(hunt)")
+        state.receive("[RCO1] \(seq) end Ready.")
+        #expect(state.ready && state.nearbyHunt == (hunt == 1))
+    }
+    let seq = state.begin()
+    state.receive("[RCO1] \(seq) begin 0 1")
+    state.receive("[RCO1] \(seq) end Ready.")
+    #expect(state.ready && state.nearbyHunt == nil)
+}

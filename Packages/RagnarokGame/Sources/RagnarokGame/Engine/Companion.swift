@@ -109,6 +109,8 @@ struct CompanionState {
     private var incomingGear: [CompanionEquipment] = []
     private var incomingBag: [CompanionBagItem] = []
     var profiles: [CompanionProfile] = []
+    private(set) var nearbyHunt: Bool?
+    private var incomingHunt: Bool?
     var ready = false
     var available = false
     var pending = false
@@ -126,6 +128,7 @@ struct CompanionState {
     }
 
     mutating func begin(_ action: String = "list") -> UInt32 {
+        incomingHunt = nil
         self.action = action; gearExpected = nil; incomingGear = []; incomingBag = []
         detailExpected = nil; incomingStarters = []; incomingSkills = []; incomingSupplies = []; incomingSupplyBag = []
         if action.hasPrefix("equipment ") || action.hasPrefix("inspect ") { equipmentReady = false; detailReady = false }
@@ -148,6 +151,9 @@ struct CompanionState {
         case "begin":
             guard t.count == 5, let count = Int(t[3]), (0...9).contains(count), t[4] == "0" || t[4] == "1" else { timeout(sequence); return true }
             expected = count; incoming = []; incomingAvailable = t[4] == "1"
+        case "hunt":
+            guard expected != nil, incomingHunt == nil, t.count == 4, ["0","1"].contains(t[3]) else { timeout(sequence); return true }
+            incomingHunt = t[3] == "1"
         case "row":
             guard let expected, incoming.count < expected, (17...18).contains(t.count),
                   t.count == 17 || ["custom","protect","assist","conserve"].contains(t[17]),
@@ -227,6 +233,7 @@ struct CompanionState {
                 suppliesAvailable = d.enabled; detailReady = true
                 activity = ["In reserve", "Dead — needs revival or camp recovery", "Stopped — actions and potions paused", "Not in owner's party", "Resting to recover HP/SP", "Following — Assist to fight", "Assisting — waiting for target or support need", "Low HP — no HP potions", "Low SP — no SP potions", "Fighting"][d.reason]
             }
+            nearbyHunt = incomingHunt
             profiles = incoming; available = incomingAvailable; ready = true; pending = false; completedSequence = sequence
             self.message = t.dropFirst(3).joined(separator: " ")
             if action.hasPrefix("inspect ") {

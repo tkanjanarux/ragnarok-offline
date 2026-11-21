@@ -41,7 +41,7 @@ struct CompanionView: View {
                                 .font(.game(size: 11)).padding(10)
                         }
                     }
-                }.frame(height: 135).overlay { Rectangle().strokeBorder(Color.gameBoxBorder).allowsHitTesting(false) }
+                }.frame(height: 107).overlay { Rectangle().strokeBorder(Color.gameBoxBorder).allowsHitTesting(false) }
                 if let row {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Base and Job follow your character")
@@ -53,6 +53,11 @@ struct CompanionView: View {
                     action("Follow", verb: "follow", disabled: row?.active != true)
                     action("Assist", verb: "assist", disabled: row?.active != true)
                     action("Stop", verb: "stop", disabled: row?.active != true)
+                }
+                if let hunting = session.companions.nearbyHunt {
+                    Button(hunting ? "Nearby Hunt: ON" : "Nearby Hunt: OFF") {
+                        session.companionCommand(hunting ? "hunt off" : "hunt on")
+                    }.buttonStyle(.game).disabled(!enabled)
                 }
                 if let row {
                     Menu("Preset: " + row.preset.capitalized) {
