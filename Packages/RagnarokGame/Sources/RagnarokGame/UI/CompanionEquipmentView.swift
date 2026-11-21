@@ -52,7 +52,7 @@ struct CompanionEquipmentView: View {
                                     VStack(alignment: .leading, spacing: 3) {
                                         HStack { Text(skill.name).font(.game(weight: .bold)); Spacer(); Text("Lv \(skill.level)/\(skill.maximum)").font(.game(size: 11)) }
                                         HStack {
-                                            Text("\(skill.status) · SP \(skill.sp)").font(.game(size: 10))
+                                            Text(skill.isPassive ? (skill.level > 0 ? "Passive · Learned" : "Passive · Not learned") : "\(skill.status) · SP \(skill.sp)").font(.game(size: 10))
                                             Spacer()
                                             if let key = skill.policyKey, let order = allowedSkills {
                                                 Button(order.contains(key) ? "AI: On" : "AI: Off") {
