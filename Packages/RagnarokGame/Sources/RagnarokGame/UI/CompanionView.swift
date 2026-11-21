@@ -70,8 +70,8 @@ struct CompanionView: View {
                 }
                 HStack(spacing: 4) {
                     Text("Recruit:").font(.game(size: 10))
-                    ForEach(["Knight", "Priest", "Wizard"], id: \.self) { job in
-                        Button(["Knight":"Swordman", "Priest":"Acolyte", "Wizard":"Mage"][job] ?? job) { session.companionCommand("recruit \(job.lowercased())") }
+                    ForEach(["Knight", "Priest", "Wizard", "Hunter"], id: \.self) { job in
+                        Button(["Knight":"Swordman", "Priest":"Acolyte", "Wizard":"Mage", "Hunter":"Archer"][job] ?? job) { session.companionCommand("recruit \(job.lowercased())") }
                             .buttonStyle(.game).frame(minWidth: 72, minHeight: 40)
                             .disabled(!enabled || session.companions.profiles.count >= 9)
                     }

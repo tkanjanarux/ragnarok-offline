@@ -17,7 +17,7 @@ struct CompanionProfile: Identifiable, Equatable {
     let name: String
     var preset: String = "custom"
     var active: Bool { actor != 0 }
-    var jobName: String { [1:"Swordman", 2:"Mage", 4:"Acolyte", 7:"Knight", 8:"Priest", 9:"Wizard"][job] ?? "Unknown" }
+    var jobName: String { [1:"Swordman", 2:"Mage", 4:"Acolyte", 7:"Knight", 8:"Priest", 9:"Wizard", 3:"Archer", 11:"Hunter"][job] ?? "Unknown" }
     var stateName: String { ["Reserve", "Following", "Assisting", "Stopped", "Dead", "Resting"][mode] }
 }
 
@@ -77,18 +77,19 @@ struct CompanionSkill: Identifiable, Equatable {
     let sp: UInt32
     let reason: Int
     static let passives: [UInt32:String] = [
-        2:"Sword Mastery", 3:"Two-Handed Sword Mastery", 4:"Increase HP Recovery",
+        43:"Owl's Eye", 44:"Vulture's Eye", 126:"Beast Bane", 2:"Sword Mastery", 3:"Two-Handed Sword Mastery", 4:"Increase HP Recovery",
         9:"Increase SP Recovery", 22:"Divine Protection", 23:"Demon Bane", 55:"Spear Mastery"
     ]
     var isPassive: Bool { Self.passives[id] != nil }
-    var name: String { Self.passives[id] ?? [60:"Two-Hand Quicken", 56:"Pierce", 59:"Spear Boomerang", 66:"Impositio Manus", 73:"Kyrie Eleison", 75:"Gloria", 86:"Water Ball", 5:"Bash",6:"Provoke",8:"Endure",62:"Bowling Bash",33:"Angelus",74:"Magnificat",19:"Fire Bolt",14:"Cold Bolt",20:"Lightning Bolt",90:"Earth Spike",84:"Jupitel Thunder",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
-    var policyKey: String? { [60:"quicken", 56:"pierce", 59:"spearboomerang", 66:"impositio", 73:"kyrie", 75:"gloria", 86:"waterball", 5:"bash", 6:"provoke", 8:"endure", 62:"bowlingbash", 33:"angelus", 74:"magnificat", 19:"firebolt", 14:"coldbolt", 20:"lightningbolt", 90:"earthspike", 84:"jupitelthunder", 28:"heal", 34:"blessing", 29:"agi", 54:"resurrection"][id] }
+    var name: String { Self.passives[id] ?? [45:"Improve Concentration", 46:"Double Strafe", 60:"Two-Hand Quicken", 56:"Pierce", 59:"Spear Boomerang", 66:"Impositio Manus", 73:"Kyrie Eleison", 75:"Gloria", 86:"Water Ball", 5:"Bash",6:"Provoke",8:"Endure",62:"Bowling Bash",33:"Angelus",74:"Magnificat",19:"Fire Bolt",14:"Cold Bolt",20:"Lightning Bolt",90:"Earth Spike",84:"Jupitel Thunder",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
+    var policyKey: String? { [45:"concentration", 46:"double", 60:"quicken", 56:"pierce", 59:"spearboomerang", 66:"impositio", 73:"kyrie", 75:"gloria", 86:"waterball", 5:"bash", 6:"provoke", 8:"endure", 62:"bowlingbash", 33:"angelus", 74:"magnificat", 19:"firebolt", 14:"coldbolt", 20:"lightningbolt", 90:"earthspike", 84:"jupitelthunder", 28:"heal", 34:"blessing", 29:"agi", 54:"resurrection"][id] }
     func toggling(in order: [String]) -> [String] {
         guard let key = policyKey else { return order }
         if order.contains(key) { return order.filter { $0 != key } }
         // Insert conditional skills before repeatable attacks that could starve them.
         let fallbacks: [String]
         switch key {
+        case "concentration": fallbacks = ["double"]
         case "quicken": fallbacks = ["pierce", "spearboomerang", "bowlingbash", "bash"]
         case "pierce": fallbacks = ["spearboomerang", "bowlingbash", "bash"]
         case "spearboomerang": fallbacks = ["bowlingbash", "bash"]
@@ -181,7 +182,7 @@ struct CompanionState {
             guard let expected, incoming.count < expected, (17...18).contains(t.count),
                   t.count == 17 || ["custom","protect","assist","conserve"].contains(t[17]),
                   let id = UInt32(t[3]), id > 0, id < 95_000_000,
-                  let job = UInt32(t[4]), [1,2,4,7,8,9].contains(job),
+                  let job = UInt32(t[4]), [1,2,3,4,7,8,9,11].contains(job),
                   let level = UInt32(t[5]), level > 0, level <= 999,
                   let jobLevel = UInt32(t[6]), jobLevel > 0, jobLevel <= 999,
                   let exp = UInt64(t[7]), let jobExp = UInt64(t[8]),
@@ -217,18 +218,18 @@ struct CompanionState {
                   let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,
                   let starter = Int(t[4]), (0...2).contains(starter),
                   let skill = Int(t[5]), (1...12).contains(skill),
-                  let supply = Int(t[6]), (0...10).contains(supply),
+                  let supply = Int(t[6]), (0...18).contains(supply),
                   let bag = Int(t[7]), (0...200).contains(bag),
                   let reason = Int(t[8]), (0...9).contains(reason), ["0","1"].contains(t[9]) else { timeout(sequence); return true }
             detailExpected = (starter,skill,supply,bag,reason,t[9] == "1")
         case "starter":
             guard let d = detailExpected, incomingStarters.count < d.starter, t.count == 6,
-                  let id = UInt32(t[3]), id < 2, let item = UInt32(t[4]), [1201,1601,2301].contains(item),
+                  let id = UInt32(t[3]), id < 2, let item = UInt32(t[4]), [1201,1601,1701,2301].contains(item),
                   ["0","1"].contains(t[5]), !incomingStarters.contains(where: { $0.id == id }) else { timeout(sequence); return true }
             incomingStarters.append(CompanionStarter(id: id,itemID: item,equipped: t[5] == "1"))
         case "skill":
             guard let d = detailExpected, incomingSkills.count < d.skill, t.count == 9,
-                  let id = UInt32(t[3]), CompanionSkill.passives[id] != nil || [60,56,59,66,73,75,86,5,6,8,62,33,74,90,84,19,14,20,28,34,29,54].contains(id),
+                  let id = UInt32(t[3]), CompanionSkill.passives[id] != nil || [45,46,60,56,59,66,73,75,86,5,6,8,62,33,74,90,84,19,14,20,28,34,29,54].contains(id),
                   let level = UInt32(t[4]), let maximum = UInt32(t[5]), maximum <= 10, level <= maximum,
                   let unlock = UInt32(t[6]), (1...50).contains(unlock), let sp = UInt32(t[7]), sp <= 10000,
                   let reason = Int(t[8]), (0...7).contains(reason), !incomingSkills.contains(where: { $0.id == id }) else { timeout(sequence); return true }
@@ -237,7 +238,7 @@ struct CompanionState {
             guard let d = detailExpected else { timeout(sequence); return true }
             let bag = t[2] == "supplybag"
             guard t.count == (bag ? 6 : 5), let id = UInt32(t[3]),
-                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,569,11621,11622,11623,11624].contains(item),
+                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,569,11621,11622,11623,11624,1750,1751,1752,1753,1754,1755,1756,1757].contains(item),
                   let amount = UInt32(t[bag ? 5 : 4]), amount > 0, amount <= (bag ? 30000 : 1000),
                   bag ? ((1...200).contains(id) && incomingSupplyBag.count < d.bag && !incomingSupplyBag.contains(where: { $0.id == id })) : (incomingSupplies.count < d.supply && !incomingSupplies.contains(where: { $0.id == id })) else { timeout(sequence); return true }
             let row = CompanionSupply(id:id,itemID:item,amount:amount)

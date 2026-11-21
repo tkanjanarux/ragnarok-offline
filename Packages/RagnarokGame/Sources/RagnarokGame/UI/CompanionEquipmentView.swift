@@ -66,11 +66,11 @@ struct CompanionEquipmentView: View {
                                 }
                             case 2:
                                 ForEach(state.supplies) { item in itemRow(key: "supply:\(item.id)", itemID: item.itemID, detail: "Remaining: \(item.amount)") }
-                                if state.supplies.isEmpty { empty(state.suppliesAvailable ? "No supplies. Reserve, then give potions or syrups from Your Bag." : "Supplies are not enabled on this server.") }
+                                if state.supplies.isEmpty { empty(state.suppliesAvailable ? "No supplies. Reserve, then give supplies from Your Bag. Hunters also accept arrows." : "Supplies are not enabled on this server.") }
                             default:
                                 ForEach(state.supplyBag) { item in itemRow(key: "supplybag:\(item.id):\(item.itemID)", itemID: item.itemID, detail: "Supply · Available: \(item.amount)") }
                                 ForEach(state.bag) { item in itemRow(key: "bag:\(item.id):\(item.uniqueID)", itemID: item.itemID, detail: "Equipment · Available to give", details: item.details) }
-                                if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Transferable equipment and supported potions or syrups only.") }
+                                if state.bag.isEmpty && state.supplyBag.isEmpty { empty("No eligible items. Transferable equipment and supported supplies only.") }
                             }
                         } else { empty(state.pending ? "Loading…" : "Waiting to refresh companion details.") }
                     }
