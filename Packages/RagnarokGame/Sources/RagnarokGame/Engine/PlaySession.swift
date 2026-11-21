@@ -33,7 +33,7 @@ final class PlaySession {
     private(set) var mapPhase: MapPhase = .connecting
 
     private(set) var account: AccountInfo
-    let character: CharacterInfo
+    private(set) var character: CharacterInfo
 
     var playerStatus: CharacterStatus
     var inventory: Inventory
@@ -318,6 +318,7 @@ final class PlaySession {
                 do {
                     try await runtime.load(progress: progress)
 
+                    scene.player.effectState = MapEffectOptions(rawValue: character.effectState)
                     notifyMapLoaded()
 
                     mapPhase = .loaded(runtime)
@@ -546,7 +547,8 @@ final class PlaySession {
         case let packet as PACKET_ZC_STATE_CHANGE:
             let bodyState = StatusChangeOption1(rawValue: Int(packet.bodyState)) ?? .none
             let healthState = StatusChangeOption2(rawValue: Int(packet.healthState)) ?? .none
-            let effectState = StatusChangeOption(rawValue: Int(packet.effectState)) ?? .nothing
+            let effectState = MapEffectOptions(rawValue: Int(packet.effectState))
+            if packet.AID == account.accountID { character.effectState = effectState.rawValue }
             mapScene?.onMapObjectStateChanged(objectID: packet.AID, bodyState: bodyState, healthState: healthState, effectState: effectState)
         case let packet as PACKET_ZC_NOTIFY_ACT:
             let objectAction = MapObjectAction(from: packet)

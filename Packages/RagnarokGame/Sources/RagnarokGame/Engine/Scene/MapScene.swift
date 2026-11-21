@@ -437,7 +437,7 @@ extension MapScene {
     func selectNextTarget(where isInViewport: (MapSceneMapObject) -> Bool) {
         let candidates = objects.values
             .filter { object in
-                guard !object.isDead, object.effectState != .cloak, object.effectState != .invisible else {
+                guard !object.isDead, !object.effectState.contains(.cloak), !object.effectState.contains(.invisible) else {
                     return false
                 }
 

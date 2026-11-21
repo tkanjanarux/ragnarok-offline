@@ -15,6 +15,8 @@ final class SpriteLoader {
         let task: Task<Void, Never>
     }
 
+    private var falconLoad: Task<Void, Never>?
+    private var falconSprite: SpriteResource?
     private let resourceManager: ResourceManager
 
     private var objectLoadTasks: [GameObjectID : ObjectLoadTask] = [:]
@@ -36,7 +38,15 @@ final class SpriteLoader {
             itemLoadTasks.removeValue(forKey: objectID)?.cancel()
         }
 
+        if falconLoad == nil && objects.values.contains(where: { $0.hasVisibleFalcon }) {
+            falconLoad = Task { [weak self, resourceManager] in
+                let path = ResourcePath.spriteDirectory.appending(path: K2L(["이펙트", "매"]))
+                let sprite = try? await resourceManager.sprite(at: path)
+                if !Task.isCancelled { self?.falconSprite = sprite }
+            }
+        }
         for object in objects.values {
+            object.falconSprite = object.hasVisibleFalcon ? falconSprite : nil
             loadSprite(forObject: object)
         }
 
@@ -46,6 +56,8 @@ final class SpriteLoader {
     }
 
     func cancelAll() {
+        falconLoad?.cancel()
+        falconLoad = nil
         for loadTask in objectLoadTasks.values {
             loadTask.task.cancel()
         }

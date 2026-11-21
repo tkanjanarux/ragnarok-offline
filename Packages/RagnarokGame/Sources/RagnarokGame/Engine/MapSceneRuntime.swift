@@ -139,7 +139,7 @@ final class MapSceneRuntime {
     private func makeTargetSelector(at time: ContinuousClock.Instant) -> MapSceneRenderSnapshot.TargetSelector? {
         guard let targetSelector = scene.targetSelector,
               let object = scene.objects[targetSelector.objectID],
-              object.effectState != .cloak,
+              !object.effectState.contains(.cloak),
               let drawable = renderResources.spriteDrawables.first(where: { $0.objectID == targetSelector.objectID }) else {
             return nil
         }
@@ -178,7 +178,7 @@ final class MapSceneRuntime {
     ) -> [MapSceneRenderSnapshot.Bar] {
         let hpspBars = scene.hpspBarObjectIDs.compactMap { objectID -> MapSceneRenderSnapshot.Bar? in
             guard let object = scene.objects[objectID],
-                  object.effectState != .cloak,
+                  !object.effectState.contains(.cloak),
                   let worldPosition = worldPositions[objectID] else {
                 return nil
             }
@@ -200,7 +200,7 @@ final class MapSceneRuntime {
 
         let castBars = scene.objects.values.compactMap { object -> MapSceneRenderSnapshot.Bar? in
             guard let cast = object.cast,
-                  object.effectState != .cloak,
+                  !object.effectState.contains(.cloak),
                   let worldPosition = worldPositions[object.objectID] else {
                 return nil
             }
@@ -220,7 +220,7 @@ final class MapSceneRuntime {
         guard let targetSelector = scene.targetSelector,
               let target = scene.objects[targetSelector.objectID],
               let targetPosition = worldPositions[target.objectID],
-              target.effectState != .cloak else {
+              !target.effectState.contains(.cloak) else {
             return []
         }
 

@@ -33,10 +33,17 @@ final class MapSceneMapObject {
     var maxSp: Int
     var bodyState: StatusChangeOption1
     var healthState: StatusChangeOption2
-    var effectState: StatusChangeOption
+    var effectState: MapEffectOptions
 
     var gridPosition: SIMD2<Int>
 
+    var hasVisibleFalcon: Bool {
+        type == .pc && effectState.contains(.falcon) && !isDead &&
+            !effectState.contains(.cloak) && !effectState.contains(.invisible) && !effectState.contains(.hide)
+    }
+
+    var falconSprite: SpriteResource?
+    var blitzFlight: FalconFlight?
     var composedSprite: ComposedSprite?
 
     var action: SpriteAction
@@ -87,7 +94,7 @@ final class MapSceneMapObject {
         maxSp = character.maxSp
         bodyState = StatusChangeOption1(rawValue: character.bodyState) ?? .none
         healthState = StatusChangeOption2(rawValue: character.healthState) ?? .none
-        effectState = StatusChangeOption(rawValue: character.effectState) ?? .nothing
+        effectState = MapEffectOptions(rawValue: character.effectState)
 
         self.gridPosition = gridPosition
 
@@ -132,7 +139,7 @@ final class MapSceneMapObject {
         self.maxSp = maxSp
         bodyState = object.bodyState
         healthState = object.healthState
-        effectState = object.effectState
+        effectState = object.effectOptions
 
         self.gridPosition = gridPosition
 

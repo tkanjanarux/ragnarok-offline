@@ -59,7 +59,8 @@ public struct MapObject: Sendable {
 
     public let bodyState: StatusChangeOption1
     public let healthState: StatusChangeOption2
-    public let effectState: StatusChangeOption
+    public let effectOptions: MapEffectOptions
+    public var effectState: StatusChangeOption { StatusChangeOption(rawValue: effectOptions.rawValue) ?? .nothing }
 
     public init(from packet: packet_spawn_unit) {
         self.objectID = packet.AID
@@ -86,7 +87,7 @@ public struct MapObject: Sendable {
 
         self.bodyState = StatusChangeOption1(rawValue: Int(packet.bodyState)) ?? .none
         self.healthState = StatusChangeOption2(rawValue: Int(packet.healthState)) ?? .none
-        self.effectState = StatusChangeOption(rawValue: Int(packet.effectState)) ?? .nothing
+        self.effectOptions = MapEffectOptions(rawValue: Int(packet.effectState))
     }
 
     public init(from packet: packet_idle_unit) {
@@ -114,7 +115,7 @@ public struct MapObject: Sendable {
 
         self.bodyState = StatusChangeOption1(rawValue: Int(packet.bodyState)) ?? .none
         self.healthState = StatusChangeOption2(rawValue: Int(packet.healthState)) ?? .none
-        self.effectState = StatusChangeOption(rawValue: Int(packet.effectState)) ?? .nothing
+        self.effectOptions = MapEffectOptions(rawValue: Int(packet.effectState))
     }
 
     public init(from packet: packet_unit_walking) {
@@ -142,6 +143,6 @@ public struct MapObject: Sendable {
 
         self.bodyState = StatusChangeOption1(rawValue: Int(packet.bodyState)) ?? .none
         self.healthState = StatusChangeOption2(rawValue: Int(packet.healthState)) ?? .none
-        self.effectState = StatusChangeOption(rawValue: Int(packet.effectState)) ?? .nothing
+        self.effectOptions = MapEffectOptions(rawValue: Int(packet.effectState))
     }
 }

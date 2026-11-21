@@ -165,6 +165,7 @@ extension MapScene {
             )
         } else {
             objects[object.objectID]?.speed = object.speed
+            objects[object.objectID]?.effectState = object.effectOptions
         }
 
         moveObject(
@@ -188,7 +189,7 @@ extension MapScene {
     public func onMapObjectVanished(objectID: GameObjectID, type: UnitClearType) {
         guard type == .dead, let object = objects[objectID] else {
             if type == .respawn || type == .teleport,
-               let object = objects[objectID], object.effectState != .invisible {
+               let object = objects[objectID], !object.effectState.contains(.invisible) {
                 let effect = MapSceneEffect(
                     reference: .id(.ef_teleportation2),
                     creationTime: CACurrentMediaTime(),
@@ -243,11 +244,12 @@ extension MapScene {
         object.turn(direction: direction, headDirection: headDirection)
     }
 
-    public func onMapObjectStateChanged(objectID: GameObjectID, bodyState: StatusChangeOption1, healthState: StatusChangeOption2, effectState: StatusChangeOption) {
+    public func onMapObjectStateChanged(objectID: GameObjectID, bodyState: StatusChangeOption1, healthState: StatusChangeOption2, effectState: MapEffectOptions) {
         if let mapObject = objects[objectID] {
             mapObject.bodyState = bodyState
             mapObject.healthState = healthState
             mapObject.effectState = effectState
+            if !mapObject.hasVisibleFalcon { mapObject.blitzFlight = nil }
         }
     }
 
@@ -402,6 +404,9 @@ extension MapScene {
 
         if let sourceObject = objects[objectSkill.sourceObjectID] {
             if let targetObject = objects[objectSkill.targetObjectID] {
+                if objectSkill.skillID == .ht_blitzbeat, sourceObject.hasVisibleFalcon {
+                    sourceObject.blitzFlight = FalconFlight(start: CACurrentMediaTime(), target: worldPosition(for: targetObject))
+                }
                 sourceObject.setDirection(SpriteDirection(sourcePosition: sourceObject.gridPosition, targetPosition: targetObject.gridPosition))
             }
 

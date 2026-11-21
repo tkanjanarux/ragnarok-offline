@@ -135,7 +135,7 @@ struct SpriteFrameResolver {
             objectID: object.objectID,
             worldPosition: worldPosition + [0, 0, 0.2], // Lifted slightly so uneven ground doesn't clip the sprite.
             shadow: shadow,
-            isVisible: object.effectState != .cloak,
+            isVisible: !object.effectState.contains(.cloak),
             layers: resolvedLayers.map {
                 SpriteDrawable.Layer(vertices: $0.vertices, texture: $0.texture)
             }
@@ -147,12 +147,18 @@ struct SpriteFrameResolver {
         sprite: SpriteResource,
         partTextures: SpritePartTextures,
         worldPosition: SIMD3<Float>,
-        shadow: Float
+        shadow: Float,
+        actionIndex: Int = 0,
+        elapsed: Double = 0,
+        pixelOffset: SIMD2<Int32> = .zero
     ) -> SpriteDrawable? {
-        guard let action = sprite.act.action(at: 0),
-              let frame = action.frames.first else {
+        guard let action = sprite.act.action(at: actionIndex) ?? sprite.act.action(at: 0),
+              !action.frames.isEmpty else {
             return nil
         }
+
+        let interval = max(0.025, Double(action.frameInterval))
+        let frame = action.frames[Int(elapsed / interval) % action.frames.count]
 
         let layers = frame.layers.enumerated().compactMap { layerIndex, layer -> SpriteDrawable.Layer? in
             guard layer.color.alpha != 0,
@@ -173,7 +179,7 @@ struct SpriteFrameResolver {
             return SpriteDrawable.Layer(
                 vertices: makeVertices(
                     layer: layer,
-                    parentOffset: .zero,
+                    parentOffset: pixelOffset,
                     partScale: 1,
                     width: image.width,
                     height: image.height,

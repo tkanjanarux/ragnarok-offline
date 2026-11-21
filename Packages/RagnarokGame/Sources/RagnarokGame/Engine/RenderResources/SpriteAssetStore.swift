@@ -6,6 +6,7 @@
 //
 
 import Metal
+import QuartzCore
 import RagnarokRenderAssets
 import RagnarokSprite
 
@@ -20,6 +21,7 @@ final class SpriteAssetStore {
     private let shadowmap: GroundShadowmap
 
     private var objectTextures: [GameObjectID : Textures] = [:]
+    private lazy var falconTextures = SpritePartTextures(device: device)
     private var itemTextures: [GameObjectID : Textures] = [:]
 
     init(device: any MTLDevice, shadowmap: GroundShadowmap) {
@@ -62,6 +64,24 @@ final class SpriteAssetStore {
                 continue
             }
             sprites.append(drawable)
+            if let falcon = object.falconSprite, object.hasVisibleFalcon,
+               let direction = object.resolvedAction?.direction {
+                let now = CACurrentMediaTime()
+                let flight = object.blitzFlight
+                let progress = flight?.targetWeight(at: now) ?? 0
+                let position = worldPosition + ((flight?.target ?? worldPosition) - worldPosition) * progress
+                let moving = progress > 0 || object.movement?.isMoving == true
+                let index = direction.rawValue + (moving && falcon.act.actions.count >= 16 ? 8 : 0)
+                let offset = SIMD2<Int32>(Int32(21 * (1 - progress)), Int32(-39 + 22 * progress))
+                if let bird = frameResolver.resolve(
+                    objectID: objectID, sprite: falcon, partTextures: falconTextures,
+                    worldPosition: position, shadow: drawable.shadow, actionIndex: index,
+                    elapsed: now, pixelOffset: offset
+                ) {
+                    sprites.append(bird)
+                }
+                if let flight, now >= flight.start + FalconFlight.duration { object.blitzFlight = nil }
+            }
         }
 
         for (objectID, item) in items {
