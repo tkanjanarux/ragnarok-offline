@@ -78,6 +78,24 @@ struct CompanionSkill: Identifiable, Equatable {
     let reason: Int
     var name: String { [60:"Two-Hand Quicken", 56:"Pierce", 59:"Spear Boomerang", 66:"Impositio Manus", 73:"Kyrie Eleison", 75:"Gloria", 86:"Water Ball", 5:"Bash",6:"Provoke",8:"Endure",62:"Bowling Bash",33:"Angelus",74:"Magnificat",19:"Fire Bolt",14:"Cold Bolt",20:"Lightning Bolt",90:"Earth Spike",84:"Jupitel Thunder",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
     var policyKey: String? { [60:"quicken", 56:"pierce", 59:"spearboomerang", 66:"impositio", 73:"kyrie", 75:"gloria", 86:"waterball", 5:"bash", 6:"provoke", 8:"endure", 62:"bowlingbash", 33:"angelus", 74:"magnificat", 19:"firebolt", 14:"coldbolt", 20:"lightningbolt", 90:"earthspike", 84:"jupitelthunder", 28:"heal", 34:"blessing", 29:"agi", 54:"resurrection"][id] }
+    func toggling(in order: [String]) -> [String] {
+        guard let key = policyKey else { return order }
+        if order.contains(key) { return order.filter { $0 != key } }
+        // Insert conditional skills before repeatable attacks that could starve them.
+        let fallbacks: [String]
+        switch key {
+        case "quicken": fallbacks = ["pierce", "spearboomerang", "bowlingbash", "bash"]
+        case "pierce": fallbacks = ["spearboomerang", "bowlingbash", "bash"]
+        case "spearboomerang": fallbacks = ["bowlingbash", "bash"]
+        case "waterball": fallbacks = ["coldbolt"]
+        case "kyrie": fallbacks = ["blessing", "agi", "angelus", "magnificat", "impositio", "gloria"]
+        default: fallbacks = []
+        }
+        var updated = order
+        let index = order.firstIndex(where: fallbacks.contains) ?? order.endIndex
+        updated.insert(key, at: index)
+        return updated
+    }
     var status: String { ["Ready", "Unlocks at Job \(unlock)", "Summon to use", "Companion is dead", "Skills disabled", "Not enough SP", "No Blue Gemstone", "Cast delay"][reason] }
 }
 struct CompanionSupply: Identifiable, Equatable {

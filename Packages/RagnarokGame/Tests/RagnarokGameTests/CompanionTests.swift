@@ -167,3 +167,27 @@ import Testing
     state.receive("[RCO1] \(seq) end Ready.")
     #expect(state.ready && state.nearbyHunt == nil)
 }
+
+@Test func allSecondJobTablesAndSwitches() {
+    let tables = [(7,[5,6,8,62,56,60,59]), (8,[28,34,29,54,33,74,66,73,75]), (9,[19,14,20,90,84,86])]
+    let keys = [56:"pierce",60:"quicken",59:"spearboomerang",66:"impositio",73:"kyrie",75:"gloria",86:"waterball"]
+    for (job,ids) in tables {
+        var state = CompanionState()
+        let token = state.begin("inspect 1")
+        let start = ["begin 1 1", "row 1 \(job) 90 50 0 0 80 100 20 30 95000000 2 0 Tester", "gearbegin 1 0 0 0", "detailbegin 1 0 \(ids.count) 0 0 0 1"]
+        let frames = start + ids.map { "skill \($0) 1 5 1 10 0" } + ["end Ready"]
+        for frame in frames { state.receive("[RCO1] \(token) \(frame)") }
+        #expect(state.detailReady && state.skills.count == ids.count)
+        for skill in state.skills {
+            if let key = keys[Int(skill.id)] {
+                #expect(skill.policyKey == key && !skill.name.contains("#"))
+            }
+        }
+    }
+}
+
+@Test func enableConditionalCompanionSkillsBeforeRepeatableAttacks() {
+    let quicken = CompanionSkill(id: 60, level: 1, maximum: 10, unlock: 12, sp: 14, reason: 0)
+    #expect(quicken.toggling(in: ["provoke", "bash"]) == ["provoke", "quicken", "bash"])
+    #expect(quicken.toggling(in: ["quicken", "bash"]) == ["bash"])
+}

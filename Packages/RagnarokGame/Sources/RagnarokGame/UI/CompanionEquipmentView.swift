@@ -56,7 +56,7 @@ struct CompanionEquipmentView: View {
                                             Spacer()
                                             if let key = skill.policyKey, let order = allowedSkills {
                                                 Button(order.contains(key) ? "AI: On" : "AI: Off") {
-                                                    let updated = order.contains(key) ? order.filter { $0 != key } : order + [key]
+                                                    let updated = skill.toggling(in: order)
                                                     send("skills \(profileID) \(updated.isEmpty ? "none" : updated.joined(separator: ","))")
                                                 }.buttonStyle(.game).disabled(!ready)
                                             }
