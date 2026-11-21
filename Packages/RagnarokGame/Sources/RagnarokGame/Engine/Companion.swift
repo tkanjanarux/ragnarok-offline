@@ -76,8 +76,8 @@ struct CompanionSkill: Identifiable, Equatable {
     let unlock: UInt32
     let sp: UInt32
     let reason: Int
-    var name: String { [5:"Bash",6:"Provoke",8:"Endure",62:"Bowling Bash",33:"Angelus",74:"Magnificat",19:"Fire Bolt",14:"Cold Bolt",20:"Lightning Bolt",90:"Earth Spike",84:"Jupitel Thunder",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
-    var policyKey: String? { [5:"bash", 6:"provoke", 8:"endure", 62:"bowlingbash", 33:"angelus", 74:"magnificat", 19:"firebolt", 14:"coldbolt", 20:"lightningbolt", 90:"earthspike", 84:"jupitelthunder", 28:"heal", 34:"blessing", 29:"agi", 54:"resurrection"][id] }
+    var name: String { [60:"Two-Hand Quicken", 56:"Pierce", 59:"Spear Boomerang", 66:"Impositio Manus", 73:"Kyrie Eleison", 75:"Gloria", 86:"Water Ball", 5:"Bash",6:"Provoke",8:"Endure",62:"Bowling Bash",33:"Angelus",74:"Magnificat",19:"Fire Bolt",14:"Cold Bolt",20:"Lightning Bolt",90:"Earth Spike",84:"Jupitel Thunder",28:"Heal",34:"Blessing",29:"Increase AGI",54:"Resurrection"][id] ?? "Skill #\(id)" }
+    var policyKey: String? { [60:"quicken", 56:"pierce", 59:"spearboomerang", 66:"impositio", 73:"kyrie", 75:"gloria", 86:"waterball", 5:"bash", 6:"provoke", 8:"endure", 62:"bowlingbash", 33:"angelus", 74:"magnificat", 19:"firebolt", 14:"coldbolt", 20:"lightningbolt", 90:"earthspike", 84:"jupitelthunder", 28:"heal", 34:"blessing", 29:"agi", 54:"resurrection"][id] }
     var status: String { ["Ready", "Unlocks at Job \(unlock)", "Summon to use", "Companion is dead", "Skills disabled", "Not enough SP", "No Blue Gemstone", "Cast delay"][reason] }
 }
 struct CompanionSupply: Identifiable, Equatable {
@@ -193,7 +193,7 @@ struct CompanionState {
             guard expected != nil, detailExpected == nil, t.count == 10,
                   let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,
                   let starter = Int(t[4]), (0...2).contains(starter),
-                  let skill = Int(t[5]), (1...6).contains(skill),
+                  let skill = Int(t[5]), (1...9).contains(skill),
                   let supply = Int(t[6]), (0...10).contains(supply),
                   let bag = Int(t[7]), (0...200).contains(bag),
                   let reason = Int(t[8]), (0...9).contains(reason), ["0","1"].contains(t[9]) else { timeout(sequence); return true }
@@ -205,7 +205,7 @@ struct CompanionState {
             incomingStarters.append(CompanionStarter(id: id,itemID: item,equipped: t[5] == "1"))
         case "skill":
             guard let d = detailExpected, incomingSkills.count < d.skill, t.count == 9,
-                  let id = UInt32(t[3]), [5,6,8,62,33,74,90,84,19,14,20,28,34,29,54].contains(id),
+                  let id = UInt32(t[3]), [60,56,59,66,73,75,86,5,6,8,62,33,74,90,84,19,14,20,28,34,29,54].contains(id),
                   let level = UInt32(t[4]), let maximum = UInt32(t[5]), maximum <= 10, level <= maximum,
                   let unlock = UInt32(t[6]), (1...50).contains(unlock), let sp = UInt32(t[7]), sp <= 10000,
                   let reason = Int(t[8]), (0...7).contains(reason), !incomingSkills.contains(where: { $0.id == id }) else { timeout(sequence); return true }
