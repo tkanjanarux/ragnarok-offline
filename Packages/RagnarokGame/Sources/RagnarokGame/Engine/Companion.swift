@@ -194,7 +194,7 @@ struct CompanionState {
                   let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,
                   let starter = Int(t[4]), (0...2).contains(starter),
                   let skill = Int(t[5]), (1...6).contains(skill),
-                  let supply = Int(t[6]), (0...6).contains(supply),
+                  let supply = Int(t[6]), (0...10).contains(supply),
                   let bag = Int(t[7]), (0...200).contains(bag),
                   let reason = Int(t[8]), (0...9).contains(reason), ["0","1"].contains(t[9]) else { timeout(sequence); return true }
             detailExpected = (starter,skill,supply,bag,reason,t[9] == "1")
@@ -214,7 +214,7 @@ struct CompanionState {
             guard let d = detailExpected else { timeout(sequence); return true }
             let bag = t[2] == "supplybag"
             guard t.count == (bag ? 6 : 5), let id = UInt32(t[3]),
-                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,569].contains(item),
+                  let item = UInt32(t[bag ? 4 : 3]), [501,502,503,504,505,569,11621,11622,11623,11624].contains(item),
                   let amount = UInt32(t[bag ? 5 : 4]), amount > 0, amount <= (bag ? 30000 : 1000),
                   bag ? ((1...200).contains(id) && incomingSupplyBag.count < d.bag && !incomingSupplyBag.contains(where: { $0.id == id })) : (incomingSupplies.count < d.supply && !incomingSupplies.contains(where: { $0.id == id })) else { timeout(sequence); return true }
             let row = CompanionSupply(id:id,itemID:item,amount:amount)
