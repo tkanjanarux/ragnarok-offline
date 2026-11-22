@@ -56,7 +56,8 @@ let package = Package(
         ),
         .testTarget(
             name: "RagnarokGameTests",
-            dependencies: ["RagnarokGame"]
+            dependencies: ["RagnarokGame"],
+            resources: [.copy("ReferencePack")]
         ),
     ]
 )
