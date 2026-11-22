@@ -1,0 +1,1445 @@
+Command line invocation:
+    /Applications/Xcode_27.2.app/Contents/Developer/usr/bin/xcodebuild -project CompanionInteraction.xcodeproj -scheme Controls -destination id=C898E3E4-5033-4085-B886-963EE2D0C478 -parallel-testing-enabled NO -resultBundlePath ../results.xcresult test
+
+Writing result bundle at path:
+	/Users/runner/work/ragnarok-offline/ragnarok-offline/results.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (2 targets)
+    Target 'Controls' in project 'CompanionInteraction'
+        ➜ Explicit dependency on target 'Host' in project 'CompanionInteraction'
+    Target 'Host' in project 'CompanionInteraction' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 4f0b56332a745454487695c0b4046ee8
+Build description path: /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/XCBuildData/4f0b56332a745454487695c0b4046ee8.xcbuilddata
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex
+
+ClangStatCache /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -o /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/CompanionInteraction-47b7fefc21311f125223152f5f794fc8-VFS-iphonesimulator/all-product-headers.yaml
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/CompanionInteraction-47b7fefc21311f125223152f5f794fc8-VFS-iphonesimulator/all-product-headers.yaml
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/PrecompiledHeaders
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/PrecompiledHeaders
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/ExplicitPrecompiledModules
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+CreateBuildDirectory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/CompanionInteraction.xcodeproj
+    builtin-create-build-directory /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/empty-Host.plist (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/empty-Host.plist
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_const_extract_protocols.json (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftFileList (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftConstValuesFileList (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.LinkFileList (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-OutputFileMap.json (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.hmap (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyStaticMetadataFileList (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyMetadataFileList (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-project-headers.hmap (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-own-target-headers.hmap (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-generated-files.hmap (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-target-headers.hmap (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-non-framework-target-headers.hmap (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-DebugDylibPath-normal-arm64.txt (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-DebugDylibPath-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-DebugDylibInstallName-normal-arm64.txt (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-DebugDylibInstallName-normal-arm64.txt
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/Entitlements-Simulated.plist (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/Entitlements-Simulated.plist
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/ProductTypeInfoPlistAdditions.plist (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/ProductTypeInfoPlistAdditions.plist
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/empty-Controls.plist (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/empty-Controls.plist
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_const_extract_protocols.json (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_const_extract_protocols.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftFileList (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftConstValuesFileList (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.LinkFileList (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.LinkFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-OutputFileMap.json (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/Entitlements-Simulated.plist (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/Entitlements-Simulated.plist
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.hmap (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyStaticMetadataFileList (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyMetadataFileList (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-project-headers.hmap (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-project-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-own-target-headers.hmap (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-generated-files.hmap (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-generated-files.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-target-headers.hmap (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-non-framework-target-headers.hmap (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    write-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-non-framework-target-headers.hmap
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest
+
+ProcessProductPackaging "" /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "FAKETEAMID.org.ragoff.test-host";
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent
+
+ProcessProductPackagingDER /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent.der (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /usr/bin/derq query -f xml -i /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent.der --raw
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/__preview.dylib normal (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios18.0-simulator -dynamiclib -isysroot /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -install_name @rpath/Host.debug.dylib -Xlinker -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_dependency_info.dat -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent.der -Xlinker -no_adhoc_codesign -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/__preview.dylib
+
+ProcessInfoPlistFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Info.plist /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/empty-Host.plist (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-infoPlistUtility /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/empty-Host.plist -producttype com.apple.product-type.application -genpkginfo /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Info.plist
+
+SwiftDriver Host normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-SwiftDriver -- /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Host -Onone @/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios18.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-Swift.h -working-directory /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdarg-76ZOKIUCHDBPDWNFNKLI8TTHH.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdbool-6DCUYBM6HSD4W1YV2MAX3L8U3.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/DeveloperToolsSupport-2HITVQ7Z0SY1AGCN0ESBCU694.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stddef-54WVX14UOPGE3IR14W59Q2GN6.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_SwiftConcurrencyShims-9U7BLJOXHC7Z8D3WZ6OBQANB4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_AvailabilityInternal-7PFAVAQVZ255J47RE6TU4AG5O.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/ptrcheck-9NT9MNU0XGQGWWHW666F6CZAO.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/ptrauth-48A1F2QO5UKMG3XXPBV87YHQY.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_float-273MNWTJZOJSDAPZUK682MN53.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/SwiftShims-3L29RJOGGOQW4HMA76HK5F80A.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_DarwinFoundation1-5AMJ3KVBB5HAQSP7FE93Y8Y57.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_limits-EUS3OTTC4DW0ZTE7OMJFUP402.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_DarwinFoundation2-2ON80T437BNUHLZLJCQD5DC4C.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_tgmath-7M132FDZXXP7X2XIAAFIZFVHR.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/string_h-7KL76QT8UAB7Z4IOI4XAGG8O2.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/sys_types-28IWUDRT2EVCHETH3XLK2LV6.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdint-F5FO1YUWCK2NJ08SUHCVU0JYX.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_intrinsics-87SYV71V288YKV24T377WD44R.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdatomic-DH19UDDDL3HLUYFS0C1649OQP.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_DarwinFoundation3-1W9LS2KEX3HSQOAZIF2BIW5C5.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_Builtin_inttypes-35F33ET6MCUU3KEIFKTSZKMM6.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Darwin-DHU32JOKGY2V0SG8FD8DS6B0Z.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/simd-5XY2K0ZIV9WX03GHN9GNR3PQD.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/MachO-6CPR2A7PIEDBBO4YHVWG7LFM.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/ObjectiveC-7G8M60KZTP8FUSEQUGWK9UQ5B.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/os_object-8ZFK4IB5BCDD5X699BCGM35V0.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/os_workgroup-1OHD72HJBLPU8U28XS8QX64LS.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Spatial-55ZZTJULC9WPBLD81WKF58UXR.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Dispatch-9GXYOYC44C8B1L5ROI357U2Y4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreFoundation-CF49P67RQ8XIUKJ75CKYQATUF.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/XPC-2ARPCW6EGTEWP0LURRC4SCWOE.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/os-7YJBAEKPDUXXJ77LSLDPXTD3G.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreGraphics-DFHOJCFLCN7D7SQPUD4EVVQ41.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CFNetwork-6P9NP8LVP0FKJ49JSEZE9CIVF.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreAudioTypes-60CMKIHMBOXYLVGLIL3J74W2.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Security-AOM2JOF01DKOFV7W9STCUJIN0.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreAudio-2EEW5XYZF9V31SE9CTDJPMOCI.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/ImageIO-55OI1QMIRLSIW6FDB0FEWWMF0.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreText-XSLKAPOKPI0OKVCLXN1TJ223.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Foundation-2OKB6HS48SMWZR8XDSOW0XDOK.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/UIUtilities-BKPORA5MZ979KILQUUJ2VQT7L.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/OpenGLES-E86K7T05JFOKJCQANMIIA03MZ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/FileProvider-2JALBM18EWT9IJSI05EWS9OT9.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Accessibility-DNODP9TN6IKQH36X4X0ZOR2NV.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/IOSurface-2I270E7G802WK4PAAQP0XIKNY.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/_LocationEssentials-17Q57WCKEB1CI19WNXO1O3ICB.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/UniformTypeIdentifiers-D8H4MOKAWPH24S82RZXBDQYB8.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/OSLog-CTWKE6SNRBISJISSVG12F754A.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/DataDetection-DMOF1SMW648ZQO9LKTMR0JZA1.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreLocation-CNQIJJSCYK1WFBTCSNKYWRNYS.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Metal-DJWJBXC7DCJD86BJNJYKKQ90F.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreData-7DCSN0U9UFYPA5G3I6KNFYFD6.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/Symbols-6LH7F31HRS84DWFYSUOBQ8V0S.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreMotion-9P4XL2NXWUC8SZUVPQU254JWQ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreTransferable-E4P3CECOYDP33BE4EZIPVF0VN.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/UserNotifications-5JYOOR9RUMRGQPBAWOJO0U4OK.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreVideo-2799PI1PWF30H6X7BF7Y4G4CC.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/QuartzCore-3FOS21XAWC48LK0A5BR2K9RDL.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreMedia-4EPUQI7S6PE8XFU9JQ2YX282T.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/CoreImage-3AT10U10K5L38UMXR7GB7TFVF.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/SwiftUICore-DNNPVHTJ32D0P62VO53CUX1NV.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/UIKit-D8N6Y7SYS1LENXQXPT8M7737B.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules/SwiftUI-2WT1SQ8N6B0ZCMHHMORWDO7BD.pcm
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Host (in target 'Host' from project 'CompanionInteraction')
+
+SwiftCompile normal arm64 (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+
+SwiftCompile normal arm64 Compiling\ Host.swift /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/host/Host.swift (in target 'Host' from project 'CompanionInteraction')
+
+SwiftCompile normal arm64 /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/host/Host.swift (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-SwiftPerFileCompile Host.swift
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for Host (in target 'Host' from project 'CompanionInteraction')
+
+SwiftDriver\ Compilation\ Requirements Host normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Host -Onone @/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios18.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-Swift.h -working-directory /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/Host-Swift.h /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-Swift.h (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-Swift.h -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/Host-Swift.h
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftmodule (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftdoc (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.abi.json (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftsourceinfo (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+ProcessProductPackaging "" /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "FAKETEAMID.org.ragoff.test-host.controls.xctrunner";
+    "keychain-access-groups" =     (
+        "FAKETEAMID.org.ragoff.test-host.controls.xctrunner"
+    );
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent
+
+ProcessProductPackagingDER /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent.der (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /usr/bin/derq query -f xml -i /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent.der --raw
+
+SwiftDriver Controls normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-SwiftDriver -- /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Controls -Onone @/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios18.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-Swift.h -working-directory /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-CYCMUNWG3GIKYG4QL34N5HMFW.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-TLX59436CM49.swiftmodule
+
+SwiftExplicitDependencyGeneratePcm arm64 /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-4I6MJ3YZTLTEG9ABYC0PJF2BZ.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-2MG35BP016AEG.swiftmodule
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ Controls (in target 'Controls' from project 'CompanionInteraction')
+
+SwiftCompile normal arm64 (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+
+SwiftCompile normal arm64 Compiling\ Controls.swift /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/tests/Controls.swift (in target 'Controls' from project 'CompanionInteraction')
+
+SwiftCompile normal arm64 /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/tests/Controls.swift (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-SwiftPerFileCompile Controls.swift
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for Controls (in target 'Controls' from project 'CompanionInteraction')
+
+SwiftDriver\ Compilation\ Requirements Controls normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Controls -Onone @/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios18.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-Swift.h -working-directory /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/Controls-Swift.h /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-Swift.h (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-swiftHeaderTool -arch arm64 /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-Swift.h -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/Controls-Swift.h
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/arm64-apple-ios-simulator.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftmodule (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftmodule /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/arm64-apple-ios-simulator.swiftmodule
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/arm64-apple-ios-simulator.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftdoc (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftdoc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/arm64-apple-ios-simulator.swiftdoc
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/arm64-apple-ios-simulator.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.abi.json (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.abi.json /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftsourceinfo (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -rename /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftsourceinfo /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling Controls.swift (in target 'Controls' from project 'CompanionInteraction')
+
+SwiftDriver\ Compilation Controls normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-Swift-Compilation -- /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Controls -Onone @/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftFileList -DDEBUG -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios18.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls-Swift.h -working-directory /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Compiling Host.swift (in target 'Host' from project 'CompanionInteraction')
+
+SwiftDriver\ Compilation Host normal arm64 com.apple.xcode.tools.swift.compiler (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-Swift-Compilation -- /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name Host -Onone @/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftFileList -DDEBUG -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios18.0-simulator -g -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -parse-as-library -c -j3 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-9aa026f88bf9ed31cff8761912ac5bd1414ec6ff3c837c3a1760e1fb4ff3fe25.sdkstatcache -output-file-map /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Users/runner/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_const_extract_protocols.json -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-generated-files.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-own-target-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-all-target-headers.hmap -Xcc -iquote -Xcc /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-project-headers.hmap -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources-normal/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources/arm64 -Xcc -I/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host-Swift.h -working-directory /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check -experimental-emit-module-separately -disable-cmo
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib normal (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios18.0-simulator -dynamiclib -isysroot /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -filelist /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.LinkFileList -install_name @rpath/Host.debug.dylib -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.swiftmodule -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -Xlinker -no_adhoc_codesign -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib
+
+ConstructStubExecutorLinkFileList /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-ExecutorLinkFileList-normal-arm64.txt (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    construct-stub-executor-link-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'Host' from project 'CompanionInteraction')
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host normal (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios18.0-simulator -isysroot /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host-ExecutorLinkFileList-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.app-Simulated.xcent.der /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib -Xlinker -no_adhoc_codesign -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host
+
+ExtractAppIntentsMetadata (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.2.47.0.3ABxpA/Metal.xctoolchain --module-name Host --sdk-root /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk --xcode-version 27B52 --platform-family iOS --deployment-target 18.0 --bundle-identifier org.ragoff.test-host --output /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app --target-triple arm64-apple-ios18.0-simulator --binary-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host --dependency-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host_dependency_info.dat --stringsdata-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftFileList --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyMetadataFileList --static-metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Objects-normal/arm64/Host.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-22 08:40:25.004 appintentsmetadataprocessor[18884:58213] Starting App Intents metadata extraction
+2026-11-22 08:40:25.030 appintentsmetadataprocessor[18884:58213] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+CopySwiftLibs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Frameworks --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/PlugIns --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/SystemExtensions --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.2.47.0.3ABxpA/Metal.xctoolchain --toolchain /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+AppIntentsSSUTraining (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Info.plist --temp-dir-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/ssu --bundle-id org.ragoff.test-host --product-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app --extracted-metadata-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Metadata.appintents --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Host.build/Host.DependencyMetadataFileList --source-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Info.plist --archive-ssu-assets
+2026-11-22 08:40:25.332 appintentsnltrainingprocessor[18923:58298] Parsing options for appintentsnltrainingprocessor
+2026-11-22 08:40:25.334 appintentsnltrainingprocessor[18923:58298] Starting AppIntents SSU YAML Generation
+2026-11-22 08:40:25.339 appintentsnltrainingprocessor[18923:58298] No AppShortcuts found - Skipping.
+
+CodeSign /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/Host.debug.dylib
+
+CodeSign /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/__preview.dylib (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app/__preview.dylib
+
+CodeSign /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app
+
+RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app
+
+Validate /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-validationUtility /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app -shallow-bundle -infoplist-subpath Info.plist
+
+Touch /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app (in target 'Host' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /usr/bin/touch -c /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Host.app
+
+ProcessInfoPlistFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Info.plist /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/empty-Controls.plist (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-infoPlistUtility /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/empty-Controls.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/ProductTypeInfoPlistAdditions.plist -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Info.plist
+
+Ld /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Controls normal (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios18.0-simulator -bundle -isysroot /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -O0 -Xlinker -no_warn_duplicate_libraries -L/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -L/Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -filelist /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __entitlements -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __ents_der -Xlinker /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.xctest-Simulated.xcent.der -Xlinker -no_adhoc_codesign -o /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Controls
+
+ExtractAppIntentsMetadata (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.2.47.0.3ABxpA/Metal.xctoolchain --module-name Controls --sdk-root /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk --xcode-version 27B52 --platform-family iOS --deployment-target 18.0 --bundle-identifier org.ragoff.test-host.controls --output /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest --target-triple arm64-apple-ios18.0-simulator --binary-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Controls --dependency-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls_dependency_info.dat --stringsdata-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftFileList --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyMetadataFileList --static-metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyStaticMetadataFileList --swift-const-vals-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Objects-normal/arm64/Controls.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-22 08:40:27.408 appintentsmetadataprocessor[19027:58526] Starting App Intents metadata extraction
+2026-11-22 08:40:27.414 appintentsmetadataprocessor[19027:58526] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+CopySwiftLibs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-swiftStdLibTool --copy --verbose --sign - --scan-executable /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Controls --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Frameworks --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/PlugIns --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/SystemExtensions --scan-folder /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v27.2.47.0.3ABxpA/Metal.xctoolchain --toolchain /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+AppIntentsSSUTraining (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Info.plist --temp-dir-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/ssu --bundle-id org.ragoff.test-host.controls --product-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest --extracted-metadata-path /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Metadata.appintents --metadata-file-list /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/CompanionInteraction.build/Debug-iphonesimulator/Controls.build/Controls.DependencyMetadataFileList --source-file /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Info.plist --archive-ssu-assets
+2026-11-22 08:40:27.502 appintentsnltrainingprocessor[19038:58549] Parsing options for appintentsnltrainingprocessor
+2026-11-22 08:40:27.503 appintentsnltrainingprocessor[19038:58549] Starting AppIntents SSU YAML Generation
+2026-11-22 08:40:27.504 appintentsnltrainingprocessor[19038:58549] No AppShortcuts found - Skipping.
+
+MkDir /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /bin/mkdir -p /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app
+
+CopyPlistFile /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/Info.plist /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copyPlist --validate --convert xml1 --macro-expansion WRAPPEDPRODUCTNAME Controls-Runner --macro-expansion WRAPPEDPRODUCTBUNDLEIDENTIFIER org.ragoff.test-host.controls.xctrunner --macro-expansion TESTPRODUCTNAME Controls --macro-expansion TESTPRODUCTBUNDLEIDENTIFIER org.ragoff.test-host.controls --copy-value UIDeviceFamily /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest/Info.plist --outdir /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app -- /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist
+
+CopyAndPreserveArchs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/Controls-Runner (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /Applications/Xcode_27.2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/XCTRunner -output /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/Controls-Runner -extract arm64
+
+Copy /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PkgInfo /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Applications/Xcode_27.2.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app
+
+CodeSign /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest
+
+CodeSign /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    
+    Signing Identity:     "Sign to Run Locally"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app
+/Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app: replacing existing signature
+
+RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    builtin-RegisterExecutionPolicyException /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest
+
+Touch /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest (in target 'Controls' from project 'CompanionInteraction')
+    cd /Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check
+    /usr/bin/touch -c /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Products/Debug-iphonesimulator/Controls-Runner.app/PlugIns/Controls.xctest
+
+PruneExplicitPrecompiledModules /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Users/runner/Library/Developer/Xcode/DerivedData/CompanionInteraction-btfnwmxdnhmfxqeujplgtwtaibdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Users/runner/Library/Developer/Xcode/DerivedData/SDKExplicitPrecompiledModules
+
+2026-11-22 08:40:32.012 xcodebuild[15638:49650] [MT] IDESchemeActionDeviceRecord: versionAndBuild = 27.2 (24B91016s), error = invalidDigitCount(91016).
+2026-11-22 08:40:46.316184+0000 Controls-Runner[19267:59337] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'All tests' started at 2026-11-22 08:41:10.466.
+Test Suite 'Controls.xctest' started at 2026-11-22 08:41:10.485.
+Test Suite 'Controls' started at 2026-11-22 08:41:10.492.
+Test Case '-[Controls.Controls testBagAndSupplies]' started.
+    t =     0.08s Start Test at 2026-11-22 08:41:10.575
+    t =     1.82s Set Up
+    t =     1.82s Setting device orientation to Landscape Left
+    t =     1.94s     Device orientation changed to Landscape Left
+    t =     2.08s     Wait for com.apple.springboard to idle
+    t =     2.39s Open com.github.arkadeleon.ragnarok-offline
+    t =     2.39s     Launch com.github.arkadeleon.ragnarok-offline
+objc[19267]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.91016.19.lObnVK/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10a94c310) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.2.91016.19.lObnVK/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.2.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10a9fc398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     8.71s         Setting up automation session
+    t =    10.26s         Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    16.84s Waiting 15.0s for "roster-2" Button to exist
+    t =    17.92s     Checking `Expect predicate `existsNoRetry == 1` for object "roster-2" Button`
+    t =    17.92s         Checking existence of `"roster-2" Button`
+    t =    18.55s Tap "roster-2" Button
+    t =    18.55s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    18.58s     Find the "roster-2" Button
+    t =    18.69s     Check for interrupting elements affecting "roster-2" Button
+    t =    18.82s         Wait for com.apple.springboard to idle
+    t =    19.03s     Synthesize event
+    t =    19.57s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    19.61s Waiting 4.0s for "Reserve" Button to exist
+    t =    20.65s     Checking `Expect predicate `existsNoRetry == 1` for object "Reserve" Button`
+    t =    20.65s         Checking existence of `"Reserve" Button`
+    t =    21.51s Find the "Reserve" Button
+    t =    21.77s Tap "Reserve" Button
+    t =    21.77s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    21.83s     Find the "Reserve" Button
+    t =    21.89s     Check for interrupting elements affecting "Reserve" Button
+    t =    22.12s         Wait for com.apple.springboard to idle
+    t =    22.30s     Synthesize event
+    t =    22.85s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    22.86s Waiting 4.0s for "Details" Button to exist
+    t =    23.89s     Checking `Expect predicate `existsNoRetry == 1` for object "Details" Button`
+    t =    23.89s         Checking existence of `"Details" Button`
+    t =    24.12s Find the "Details" Button
+    t =    24.37s Tap "Details" Button
+    t =    24.37s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    24.43s     Find the "Details" Button
+    t =    24.74s     Check for interrupting elements affecting "Details" Button
+    t =    25.59s         Wait for com.apple.springboard to idle
+    t =    26.03s     Synthesize event
+    t =    28.29s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    28.49s Waiting 4.0s for "Your Bag" Button to exist
+    t =    29.49s     Checking `Expect predicate `existsNoRetry == 1` for object "Your Bag" Button`
+    t =    29.50s         Checking existence of `"Your Bag" Button`
+    t =    29.54s Find the "Your Bag" Button
+    t =    29.56s Tap "Your Bag" Button
+    t =    29.57s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    29.84s     Find the "Your Bag" Button
+    t =    30.15s     Check for interrupting elements affecting "Your Bag" Button
+    t =    30.52s         Wait for com.apple.springboard to idle
+    t =    30.72s     Synthesize event
+    t =    31.93s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    32.29s Waiting 4.0s for "bag:5:101" Button to exist
+    t =    33.30s     Checking `Expect predicate `existsNoRetry == 1` for object "bag:5:101" Button`
+    t =    33.30s         Checking existence of `"bag:5:101" Button`
+    t =    33.43s         Capturing element debug description
+    t =    34.30s     Checking `Expect predicate `existsNoRetry == 1` for object "bag:5:101" Button`
+    t =    34.30s         Checking existence of `"bag:5:101" Button`
+    t =    34.49s         Capturing element debug description
+    t =    35.30s     Checking `Expect predicate `existsNoRetry == 1` for object "bag:5:101" Button`
+    t =    35.30s         Checking existence of `"bag:5:101" Button`
+    t =    35.51s         Capturing element debug description
+    t =    36.29s     Checking `Expect predicate `existsNoRetry == 1` for object "bag:5:101" Button`
+    t =    36.30s         Checking existence of `"bag:5:101" Button`
+    t =    36.49s         Capturing element debug description
+    t =    36.49s     Checking existence of `"bag:5:101" Button`
+    t =    36.62s Collecting debug information to assist test failure triage
+    t =    36.62s     Requesting snapshot of accessibility hierarchy for app with pid 19887
+    t =    36.74s Requesting snapshot of accessibility hierarchy for app with pid 19887
+    t =    39.17s Requesting snapshot of accessibility hierarchy for app with pid 19887
+/Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/tests/Controls.swift:16: error: -[Controls.Controls testBagAndSupplies] : XCTAssertTrue failed - bag:5:101
+Attributes: Application, 0x10bb2cdc0, pid: 19887, label: 'CompanionSimulator'
+Element subtree:
+ →Application, 0x10bb2cdc0, pid: 19887, label: 'CompanionSimulator'
+    Window (Main), 0x10bb2cf00, {{0.0, 0.0}, {466.0, 678.0}}
+      Other, 0x10bb2d040, {{0.0, 0.0}, {466.0, 678.0}}
+        Other, 0x10bb2d180, {{0.0, 0.0}, {466.0, 678.0}}
+          Other, 0x10bb2d2c0, {{0.0, 0.0}, {466.0, 678.0}}
+            Other, 0x10bb2d400, {{0.0, 0.0}, {466.0, 678.0}}
+              Other, 0x10bb2d540, {{0.0, 0.0}, {466.0, 678.0}}
+              Image, 0x10bb2d680, {{110.0, 0.0}, {356.0, 17.0}}
+              Image, 0x10bb2d7c0, {{110.0, 0.0}, {312.0, 17.0}}
+              StaticText, 0x10bb2d900, {{110.0, 0.0}, {312.0, 17.0}}, label: 'AI-Knight-2'
+              Button, 0x10bb2da40, {{422.0, 0.0}, {44.0, 44.0}}, identifier: 'xmark', label: 'Close AI-Knight-2'
+              StaticText, 0x10bb2db80, {{10.0, 20.0}, {100.7, 13.7}}, label: 'Basilisk | HUNTER'
+              StaticText, 0x10bb2dcc0, {{116.0, 28.2}, {160.0, 13.7}}, label: 'Knight · Two-Handed Sword'
+              Button, 0x10bb2de00, {{303.3, 23.0}, {38.0, 24.0}}, label: 'Info'
+              StaticText, 0x10bb2df40, {{349.3, 29.3}, {84.7, 11.3}}, label: 'Lv 87/46 · Reserve'
+              StaticText, 0x10bb2e080, {{15.0, 37.7}, {17.0, 13.7}}, label: 'HP'
+              StaticText, 0x10bb2e1c0, {{81.2, 39.3}, {42.7, 10.3}}, label: '3939/4586'
+              StaticText, 0x10bb2e300, {{15.0, 55.3}, {16.3, 13.7}}, label: 'SP'
+              StaticText, 0x10bb2e440, {{86.2, 57.0}, {32.7, 10.3}}, label: '405/405'
+              Button, 0x10bb2e580, {{116.0, 53.0}, {84.7, 26.0}}, label: 'Gear'
+              Button, 0x10bb2e6c0, {{202.7, 53.0}, {84.3, 26.0}}, label: 'Skills'
+              Button, 0x10bb2e800, {{289.0, 53.0}, {84.7, 26.0}}, label: 'Supplies'
+              Button, 0x10bb2e940, {{375.7, 53.0}, {84.3, 26.0}}, label: 'Your Bag'
+              ScrollView, 0x10bb2ea80, {{116.0, 85.0}, {350.0, 277.7}}
+                Other, 0x10bb2ebc0, {{116.0, 85.0}, {344.0, 203.0}}
+                  Other, 0x10bb2ed00, {{116.0, 85.0}, {350.0, 199.3}}
+                    Button, 0x10bb2ee40, {{116.0, 85.0}, {136.0, 28.0}}, identifier: 'slot-256', label: 'Head empty', Disabled
+                    Button, 0x10bb2ef80, {{324.0, 85.0}, {142.0, 28.0}}, identifier: 'slot-1', label: 'Lower empty', Disabled
+                    Button, 0x10bb2f0c0, {{116.0, 113.0}, {136.0, 28.0}}, identifier: 'slot-512', label: 'Middle empty', Disabled
+                    Image, 0x10bb2f200, {{268.7, 106.0}, {39.0, 98.0}}
+                    Button, 0x10bb2f340, {{324.0, 113.0}, {142.0, 28.0}}, identifier: 'slot-16', label: 'Body Cotton Shirt'
+                      Image, 0x10bb2f480, {{327.0, 115.7}, {23.0, 23.0}}
+                      StaticText, 0x10bb2f5c0, {{353.0, 121.3}, {53.0, 11.3}}, label: 'Cotton Shirt'
+                    Button, 0x10bb2f700, {{116.0, 141.0}, {136.0, 28.0}}, identifier: 'slot-2', label: 'R-hand Two-Handed Sword'
+                      Image, 0x10bb2f840, {{119.0, 143.7}, {23.0, 23.0}}
+                      StaticText, 0x10bb2f980, {{145.0, 149.3}, {88.0, 11.3}}, label: 'Two-Handed Sword'
+                    Button, 0x10bb2fac0, {{324.0, 141.0}, {142.0, 28.0}}, identifier: 'slot-32', label: 'L-hand Two-Handed Sword'
+                      Image, 0x10bb2fc00, {{327.0, 143.7}, {23.0, 23.0}}
+                      StaticText, 0x10bb2fd40, {{353.0, 149.3}, {88.0, 11.3}}, label: 'Two-Handed Sword'
+                    Button, 0x10bb2fe80, {{116.0, 169.0}, {136.0, 28.0}}, identifier: 'slot-4', label: 'Robe empty', Disabled
+                    Button, 0x10bb84000, {{324.0, 169.0}, {142.0, 28.0}}, identifier: 'slot-64', label: 'Shoes empty', Disabled
+                    Button, 0x10bb84140, {{116.0, 197.0}, {136.0, 28.0}}, identifier: 'slot-8', label: 'Acc. 1 empty', Disabled
+                    Button, 0x10bb84280, {{324.0, 197.0}, {142.0, 28.0}}, identifier: 'slot-128', label: 'Acc. 2 empty', Disabled
+                    StaticText, 0x10bb843c0, {{120.0, 225.0}, {75.7, 11.3}}, label: 'Stored & fallback'
+                    Other, 0x10bb84500, {{119.0, 239.3}, {55.7, 45.0}}
+                      Button, 0x10bb84640, {{119.0, 239.3}, {55.7, 45.0}}, identifier: 'starter:0', label: 'Knife'
+                        StaticText, 0x10bb84780, {{119.0, 239.3}, {55.7, 45.0}}, label: 'Knife'
+                        Image, 0x10bb848c0, {{132.7, 242.3}, {28.0, 28.0}}
+                Other, 0x10bb84a00, {{427.0, 85.0}, {30.0, 277.7}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x10bb84b40, {{454.0, 162.7}, {3.0, 197.0}}
+                Other, 0x10bb84c80, {{427.0, 85.0}, {30.0, 277.7}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x10bb84dc0, {{454.0, 162.7}, {3.0, 197.0}}
+              StaticText, 0x10bb84f00, {{125.7, 77.8}, {89.3, 11.3}}, label: 'Weight: 0/0  Zeny: 0'
+              Button, 0x10bb85040, {{0.0, 94.0}, {220.0, 12.0}}
+              Button, 0x10bb85180, {{116.0, 367.7}, {68.0, 30.0}}, label: 'Equip', Disabled
+              Button, 0x10bb852c0, {{189.0, 367.7}, {68.0, 30.0}}, label: 'Return', Disabled
+              Button, 0x10bb85400, {{392.0, 367.7}, {68.0, 30.0}}, label: 'Refresh'
+              StaticText, 0x10bb85540, {{116.0, 402.7}, {29.0, 11.3}}, label: 'Ready'
+              Button, 0x10bb85680, {{356.0, 407.0}, {44.0, 44.0}}, label: 'Hand Tapping'
+                Image, 0x10bb857c0, {{356.0, 407.0}, {44.0, 44.0}}, identifier: 'hand.tap', label: 'Hand Tapping'
+              Button, 0x10bb85900, {{406.0, 407.0}, {44.0, 44.0}}, label: 'Scope Reticle'
+                Image, 0x10bb85a40, {{406.0, 407.0}, {44.0, 44.0}}, identifier: 'scope', label: 'Scope Reticle'
+              Button, 0x10bb85b80, {{306.0, 457.0}, {44.0, 44.0}}, label: 'Waving Hand'
+                Image, 0x10bb85cc0, {{306.0, 457.0}, {44.0, 44.0}}, identifier: 'hand.wave', label: 'Waving Hand'
+              Button, 0x10bb85e00, {{356.0, 457.0}, {44.0, 44.0}}, label: 'Seated Figure From The Side'
+                Image, 0x10bb85f40, {{356.0, 457.0}, {44.0, 44.0}}, identifier: 'figure.seated.side', label: 'Seated Figure From The Side'
+              Button, 0x10bb86080, {{406.0, 457.0}, {44.0, 44.0}}
+              Button, 0x10bb861c0, {{26.0, 515.0}, {36.0, 36.0}}, label: '1'
+                StaticText, 0x10bb86300, {{26.0, 515.0}, {36.0, 36.0}}, label: '1'
+              Button, 0x10bb86440, {{66.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb86580, {{114.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb866c0, {{162.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb86800, {{210.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb86940, {{258.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb86a80, {{306.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb86bc0, {{354.0, 511.0}, {44.0, 44.0}}
+              Button, 0x10bb86d00, {{402.0, 511.0}, {44.0, 44.0}}
+              ScrollView, 0x10bb86e40, {{16.0, 567.0}, {450.0, 70.0}}
+                Other, 0x10bb86f80, {{417.0, 567.0}, {30.0, 52.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x10bb870c0, {{444.0, 570.0}, {3.0, 46.0}}
+                Other, 0x10bb87200, {{417.0, 567.0}, {30.0, 52.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x10bb87340, {{444.0, 570.0}, {3.0, 46.0}}
+              Button, 0x10bb87480, {{16.0, 638.0}, {60.0, 28.0}}
+              TextField, 0x10bb875c0, {{80.0, 641.0}, {311.0, 22.0}}
+              Button, 0x10bb87700, {{394.0, 638.0}, {28.0, 28.0}}, identifier: 'arrow.up', label: 'Up', Disabled
+              Button, 0x10bb87840, {{422.0, 638.0}, {28.0, 28.0}}, identifier: 'arrow.down', label: 'Down', Disabled
+Path to element:
+ →Application, 0x10bb2cdc0, pid: 19887, label: 'CompanionSimulator'
+Query chain:
+ →Find: Application 'com.github.arkadeleon.ragnarok-offline'
+  Output: {
+    Application, 0x10bb87980, pid: 19887, label: 'CompanionSimulator'
+  }
+
+    t =    46.96s Tear Down
+Test Case '-[Controls.Controls testBagAndSupplies]' failed (80.387 seconds).
+Test Case '-[Controls.Controls testEquipmentAndSkills]' started.
+    t =     0.00s Start Test at 2026-11-22 08:42:30.972
+    t =     0.10s Set Up
+    t =     0.10s Setting device orientation to Landscape Left
+    t =     0.18s     Wait for com.apple.springboard to idle
+    t =     0.19s Open com.github.arkadeleon.ragnarok-offline
+    t =     0.19s     Launch com.github.arkadeleon.ragnarok-offline
+    t =     0.19s         Terminate com.github.arkadeleon.ragnarok-offline:19887
+    t =    27.08s         Setting up automation session
+    t =    27.30s         Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    28.41s Waiting 15.0s for "roster-2" Button to exist
+    t =    29.45s     Checking `Expect predicate `existsNoRetry == 1` for object "roster-2" Button`
+    t =    29.45s         Checking existence of `"roster-2" Button`
+    t =    29.76s Tap "roster-2" Button
+    t =    29.76s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    29.79s     Find the "roster-2" Button
+    t =    29.88s     Check for interrupting elements affecting "roster-2" Button
+    t =    30.01s         Wait for com.apple.springboard to idle
+    t =    30.18s     Synthesize event
+    t =    30.60s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    30.85s Waiting 4.0s for "Stop" Button to exist
+    t =    31.87s     Checking `Expect predicate `existsNoRetry == 1` for object "Stop" Button`
+    t =    31.87s         Checking existence of `"Stop" Button`
+    t =    31.91s Find the "Stop" Button
+    t =    31.96s Tap "Stop" Button
+    t =    31.96s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    31.97s     Find the "Stop" Button
+    t =    32.01s     Check for interrupting elements affecting "Stop" Button
+    t =    32.09s         Wait for com.apple.springboard to idle
+    t =    32.17s     Synthesize event
+    t =    32.52s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    32.58s Waiting 4.0s for "Details" Button to exist
+    t =    33.62s     Checking `Expect predicate `existsNoRetry == 1` for object "Details" Button`
+    t =    33.62s         Checking existence of `"Details" Button`
+    t =    33.67s Find the "Details" Button
+    t =    33.89s Tap "Details" Button
+    t =    33.89s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    33.90s     Find the "Details" Button
+    t =    33.94s     Check for interrupting elements affecting "Details" Button
+    t =    34.08s         Wait for com.apple.springboard to idle
+    t =    34.18s     Synthesize event
+    t =    34.65s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    34.66s Waiting 4.0s for "slot-2" Button to exist
+    t =    35.67s     Checking `Expect predicate `existsNoRetry == 1` for object "slot-2" Button`
+    t =    35.67s         Checking existence of `"slot-2" Button`
+    t =    35.96s Find the "slot-2" Button
+    t =    36.28s Tap "slot-2" Button
+    t =    36.28s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    36.43s     Find the "slot-2" Button
+    t =    36.72s     Check for interrupting elements affecting "slot-2" Button
+    t =    36.79s         Wait for com.apple.springboard to idle
+    t =    36.99s     Synthesize event
+    t =    37.79s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    37.82s Waiting 4.0s for "Unequip" Button to exist
+    t =    38.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Unequip" Button`
+    t =    38.82s         Checking existence of `"Unequip" Button`
+    t =    38.90s Find the "Unequip" Button
+    t =    38.95s Tap "Unequip" Button
+    t =    38.95s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    38.96s     Find the "Unequip" Button
+    t =    39.15s     Check for interrupting elements affecting "Unequip" Button
+    t =    39.34s         Wait for com.apple.springboard to idle
+    t =    39.87s     Synthesize event
+    t =    40.27s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    40.31s Waiting 4.0s for "gear:1" Button to exist
+    t =    41.36s     Checking `Expect predicate `existsNoRetry == 1` for object "gear:1" Button`
+    t =    41.39s         Checking existence of `"gear:1" Button`
+    t =    41.56s Find the "gear:1" Button
+    t =    41.73s Tap "gear:1" Button
+    t =    41.73s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    41.73s     Find the "gear:1" Button
+    t =    41.84s     Check for interrupting elements affecting "gear:1" Button
+    t =    41.89s         Wait for com.apple.springboard to idle
+    t =    41.97s     Synthesize event
+    t =    42.34s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    42.35s Waiting 4.0s for "Equip" Button to exist
+    t =    43.41s     Checking `Expect predicate `existsNoRetry == 1` for object "Equip" Button`
+    t =    43.41s         Checking existence of `"Equip" Button`
+    t =    43.46s Find the "Equip" Button
+    t =    43.49s Tap "Equip" Button
+    t =    43.49s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    43.49s     Find the "Equip" Button
+    t =    43.52s     Check for interrupting elements affecting "Equip" Button
+    t =    43.60s         Wait for com.apple.springboard to idle
+    t =    43.72s     Synthesize event
+    t =    44.10s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    44.14s Waiting 4.0s for "Skills" Button to exist
+    t =    45.19s     Checking `Expect predicate `existsNoRetry == 1` for object "Skills" Button`
+    t =    45.19s         Checking existence of `"Skills" Button`
+    t =    45.22s Find the "Skills" Button
+    t =    45.25s Tap "Skills" Button
+    t =    45.25s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    45.25s     Find the "Skills" Button
+    t =    45.90s     Check for interrupting elements affecting "Skills" Button
+    t =    45.95s         Wait for com.apple.springboard to idle
+    t =    46.01s     Synthesize event
+    t =    46.35s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    46.36s Waiting 4.0s for "AI On" Button to exist
+    t =    47.43s     Checking `Expect predicate `existsNoRetry == 1` for object "AI On" Button`
+    t =    47.44s         Checking existence of `"AI On" Button`
+    t =    47.54s Find the "AI On" Button
+    t =    47.71s Tap "AI On" Button
+    t =    47.72s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    47.72s     Find the "AI On" Button
+    t =    47.80s     Check for interrupting elements affecting "AI On" Button
+    t =    47.85s         Wait for com.apple.springboard to idle
+    t =    47.92s     Synthesize event
+    t =    48.42s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    48.44s Waiting 4.0s for "AI Off" Button to exist
+    t =    49.52s     Checking `Expect predicate `existsNoRetry == 1` for object "AI Off" Button`
+    t =    49.52s         Checking existence of `"AI Off" Button`
+    t =    49.70s         Capturing element debug description
+    t =    50.56s     Checking `Expect predicate `existsNoRetry == 1` for object "AI Off" Button`
+    t =    50.56s         Checking existence of `"AI Off" Button`
+    t =    50.65s         Capturing element debug description
+    t =    51.49s     Checking `Expect predicate `existsNoRetry == 1` for object "AI Off" Button`
+    t =    51.49s         Checking existence of `"AI Off" Button`
+    t =    51.61s         Capturing element debug description
+    t =    52.47s     Checking `Expect predicate `existsNoRetry == 1` for object "AI Off" Button`
+    t =    52.47s         Checking existence of `"AI Off" Button`
+    t =    52.56s         Capturing element debug description
+    t =    52.56s     Checking existence of `"AI Off" Button`
+    t =    52.67s Collecting debug information to assist test failure triage
+    t =    52.67s     Requesting snapshot of accessibility hierarchy for app with pid 20264
+    t =    52.75s Requesting snapshot of accessibility hierarchy for app with pid 20264
+    t =    53.05s Requesting snapshot of accessibility hierarchy for app with pid 20264
+/Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/tests/Controls.swift:16: error: -[Controls.Controls testEquipmentAndSkills] : XCTAssertTrue failed - AI Off
+Attributes: Application, 0x10bb26800, pid: 20264, label: 'CompanionSimulator'
+Element subtree:
+ →Application, 0x10bb26800, pid: 20264, label: 'CompanionSimulator'
+    Window (Main), 0x10bb26940, {{0.0, 0.0}, {466.0, 678.0}}
+      Other, 0x10bb26a80, {{0.0, 0.0}, {466.0, 678.0}}
+        Other, 0x10bb26bc0, {{0.0, 0.0}, {466.0, 678.0}}
+          Other, 0x10bb26d00, {{0.0, 0.0}, {466.0, 678.0}}
+            Other, 0x10bb26e40, {{0.0, 0.0}, {466.0, 678.0}}
+              Other, 0x10bb26f80, {{0.0, 0.0}, {466.0, 678.0}}
+              Image, 0x10bb270c0, {{110.0, 0.0}, {356.0, 17.0}}
+              Image, 0x10bb27200, {{110.0, 0.0}, {312.0, 17.0}}
+              StaticText, 0x10bb27340, {{110.0, 0.0}, {312.0, 17.0}}, label: 'AI-Knight-2'
+              Button, 0x10bb27480, {{422.0, 0.0}, {44.0, 44.0}}, identifier: 'xmark', label: 'Close AI-Knight-2'
+              StaticText, 0x10bb275c0, {{10.0, 20.0}, {100.7, 13.7}}, label: 'Basilisk | HUNTER'
+              StaticText, 0x10bb27700, {{116.0, 28.2}, {160.0, 13.7}}, label: 'Knight · Two-Handed Sword'
+              Button, 0x10bb27840, {{303.3, 23.0}, {38.0, 24.0}}, label: 'Info'
+              StaticText, 0x10bb27980, {{349.3, 29.3}, {84.7, 11.3}}, label: 'Lv 87/46 · Stopped'
+              StaticText, 0x10bb27ac0, {{15.0, 37.7}, {17.0, 13.7}}, label: 'HP'
+              StaticText, 0x10bb27c00, {{81.2, 39.3}, {42.7, 10.3}}, label: '3939/4586'
+              StaticText, 0x10bb27d40, {{15.0, 55.3}, {16.3, 13.7}}, label: 'SP'
+              StaticText, 0x10bb27e80, {{86.2, 57.0}, {32.7, 10.3}}, label: '405/405'
+              Button, 0x114abc000, {{116.0, 53.0}, {84.7, 26.0}}, label: 'Gear'
+              Button, 0x114abc140, {{202.7, 53.0}, {84.3, 26.0}}, label: 'Skills'
+              Button, 0x114abc280, {{289.0, 53.0}, {84.7, 26.0}}, label: 'Supplies'
+              Button, 0x114abc3c0, {{375.7, 53.0}, {84.3, 26.0}}, label: 'Your Bag'
+              ScrollView, 0x114abc500, {{116.0, 85.0}, {350.0, 294.0}}
+                Other, 0x114abc640, {{116.0, 85.0}, {344.0, 73.0}}
+                  Other, 0x114abc780, {{121.0, 89.0}, {334.0, 63.8}}
+                    Image, 0x114abc8c0, {{121.0, 90.0}, {26.0, 26.0}}
+                    StaticText, 0x114abca00, {{153.0, 89.5}, {108.0, 13.7}}, label: 'Two-Hand Quicken'
+                    StaticText, 0x114abcb40, {{379.3, 96.8}, {21.7, 12.3}}, label: '5/10'
+                    Button, 0x114abcc80, {{407.0, 89.0}, {48.0, 28.0}}, label: 'AI On'
+                    StaticText, 0x114abcdc0, {{153.0, 105.2}, {65.0, 11.3}}, label: 'Ready · SP 34'
+                    Image, 0x114abcf00, {{121.0, 126.3}, {26.0, 26.0}}
+                    StaticText, 0x114abd040, {{153.0, 125.8}, {160.0, 13.7}}, label: 'Two-Handed Sword Mastery'
+                    StaticText, 0x114abd180, {{427.3, 133.2}, {27.7, 12.3}}, label: '10/10'
+                    StaticText, 0x114abd2c0, {{153.0, 141.5}, {68.7, 11.3}}, label: 'Passive · Job 1'
+                Other, 0x114abd400, {{427.0, 85.0}, {30.0, 294.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114abd540, {{454.0, 145.3}, {3.0, 197.0}}
+                Other, 0x114abd680, {{427.0, 85.0}, {30.0, 294.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114abd7c0, {{454.0, 145.3}, {3.0, 197.0}}
+              StaticText, 0x114abd900, {{125.7, 77.8}, {89.3, 11.3}}, label: 'Weight: 0/0  Zeny: 0'
+              Button, 0x114abda40, {{0.0, 94.0}, {220.0, 12.0}}
+              Button, 0x114abdb80, {{392.0, 384.0}, {68.0, 30.0}}, label: 'Refresh'
+              Button, 0x114abdcc0, {{356.0, 407.0}, {44.0, 44.0}}, label: 'Hand Tapping'
+                Image, 0x114abde00, {{356.0, 407.0}, {44.0, 44.0}}, identifier: 'hand.tap', label: 'Hand Tapping'
+              Button, 0x114abdf40, {{406.0, 407.0}, {44.0, 44.0}}, label: 'Scope Reticle'
+                Image, 0x114abe080, {{406.0, 407.0}, {44.0, 44.0}}, identifier: 'scope', label: 'Scope Reticle'
+              Button, 0x114abe1c0, {{306.0, 457.0}, {44.0, 44.0}}, label: 'Waving Hand'
+                Image, 0x114abe300, {{306.0, 457.0}, {44.0, 44.0}}, identifier: 'hand.wave', label: 'Waving Hand'
+              Button, 0x114abe440, {{356.0, 457.0}, {44.0, 44.0}}, label: 'Seated Figure From The Side'
+                Image, 0x114abe580, {{356.0, 457.0}, {44.0, 44.0}}, identifier: 'figure.seated.side', label: 'Seated Figure From The Side'
+              Button, 0x114abe6c0, {{406.0, 457.0}, {44.0, 44.0}}
+              Button, 0x114abe800, {{26.0, 515.0}, {36.0, 36.0}}, label: '1'
+                StaticText, 0x114abe940, {{26.0, 515.0}, {36.0, 36.0}}, label: '1'
+              Button, 0x114abea80, {{66.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abebc0, {{114.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abed00, {{162.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abee40, {{210.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abef80, {{258.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abf0c0, {{306.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abf200, {{354.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114abf340, {{402.0, 511.0}, {44.0, 44.0}}
+              ScrollView, 0x114abf480, {{16.0, 567.0}, {450.0, 70.0}}
+                Other, 0x114abf5c0, {{417.0, 567.0}, {30.0, 52.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114abf700, {{444.0, 570.0}, {3.0, 46.0}}
+                Other, 0x114abf840, {{417.0, 567.0}, {30.0, 52.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114abf980, {{444.0, 570.0}, {3.0, 46.0}}
+              Button, 0x114abfac0, {{16.0, 638.0}, {60.0, 28.0}}
+              TextField, 0x114abfc00, {{80.0, 641.0}, {311.0, 22.0}}
+              Button, 0x114abfd40, {{394.0, 638.0}, {28.0, 28.0}}, identifier: 'arrow.up', label: 'Up', Disabled
+              Button, 0x114abfe80, {{422.0, 638.0}, {28.0, 28.0}}, identifier: 'arrow.down', label: 'Down', Disabled
+Path to element:
+ →Application, 0x10bb26800, pid: 20264, label: 'CompanionSimulator'
+Query chain:
+ →Find: Application 'com.github.arkadeleon.ragnarok-offline'
+  Output: {
+    Application, 0x10bb266c0, pid: 20264, label: 'CompanionSimulator'
+  }
+
+    t =    59.38s Tear Down
+Test Case '-[Controls.Controls testEquipmentAndSkills]' failed (72.093 seconds).
+Test Case '-[Controls.Controls testPartyOrdersAndManagement]' started.
+    t =     0.00s Start Test at 2026-11-22 08:43:43.067
+    t =     0.06s Set Up
+    t =     0.06s Setting device orientation to Landscape Left
+    t =     0.08s     Wait for com.apple.springboard to idle
+    t =     0.08s Open com.github.arkadeleon.ragnarok-offline
+    t =     0.08s     Launch com.github.arkadeleon.ragnarok-offline
+    t =     0.08s         Terminate com.github.arkadeleon.ragnarok-offline:20264
+    t =     8.41s         Setting up automation session
+    t =    13.15s         Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    15.62s Waiting 15.0s for "roster-2" Button to exist
+    t =    16.68s     Checking `Expect predicate `existsNoRetry == 1` for object "roster-2" Button`
+    t =    16.69s         Checking existence of `"roster-2" Button`
+    t =    17.03s Tap "roster-2" Button
+    t =    17.03s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    17.04s     Find the "roster-2" Button
+    t =    17.14s     Check for interrupting elements affecting "roster-2" Button
+    t =    17.35s         Wait for com.apple.springboard to idle
+    t =    17.48s     Synthesize event
+    t =    17.96s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    18.12s Waiting 4.0s for "Stop" Button to exist
+    t =    19.19s     Checking `Expect predicate `existsNoRetry == 1` for object "Stop" Button`
+    t =    19.20s         Checking existence of `"Stop" Button`
+    t =    19.23s Find the "Stop" Button
+    t =    19.26s Tap "Stop" Button
+    t =    19.26s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    19.26s     Find the "Stop" Button
+    t =    19.29s     Check for interrupting elements affecting "Stop" Button
+    t =    19.35s         Wait for com.apple.springboard to idle
+    t =    19.45s     Synthesize event
+    t =    19.78s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    19.79s Waiting 4.0s for "Follow" Button to exist
+    t =    20.83s     Checking `Expect predicate `existsNoRetry == 1` for object "Follow" Button`
+    t =    20.83s         Checking existence of `"Follow" Button`
+    t =    20.86s Find the "Follow" Button
+    t =    20.88s Tap "Follow" Button
+    t =    20.89s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    20.89s     Find the "Follow" Button
+    t =    20.93s     Check for interrupting elements affecting "Follow" Button
+    t =    20.98s         Wait for com.apple.springboard to idle
+    t =    21.05s     Synthesize event
+    t =    21.37s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    21.38s Waiting 4.0s for "Assist" Button to exist
+    t =    22.39s     Checking `Expect predicate `existsNoRetry == 1` for object "Assist" Button`
+    t =    22.39s         Checking existence of `"Assist" Button`
+    t =    22.45s Find the "Assist" Button
+    t =    22.48s Tap "Assist" Button
+    t =    22.48s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    22.48s     Find the "Assist" Button
+    t =    22.51s     Check for interrupting elements affecting "Assist" Button
+    t =    22.57s         Wait for com.apple.springboard to idle
+    t =    22.65s     Synthesize event
+    t =    22.97s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    22.98s Waiting 4.0s for "Reserve" Button to exist
+    t =    24.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Reserve" Button`
+    t =    24.02s         Checking existence of `"Reserve" Button`
+    t =    24.06s Find the "Reserve" Button
+    t =    24.10s Tap "Reserve" Button
+    t =    24.10s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    24.11s     Find the "Reserve" Button
+    t =    24.13s     Check for interrupting elements affecting "Reserve" Button
+    t =    24.20s         Wait for com.apple.springboard to idle
+    t =    24.29s     Synthesize event
+    t =    24.60s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    24.61s Waiting 4.0s for "Summon" Button to exist
+    t =    25.63s     Checking `Expect predicate `existsNoRetry == 1` for object "Summon" Button`
+    t =    25.63s         Checking existence of `"Summon" Button`
+    t =    25.65s Find the "Summon" Button
+    t =    25.68s Tap "Summon" Button
+    t =    25.68s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    25.69s     Find the "Summon" Button
+    t =    25.74s     Check for interrupting elements affecting "Summon" Button
+    t =    25.80s         Wait for com.apple.springboard to idle
+    t =    25.88s     Synthesize event
+    t =    26.20s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    26.22s Waiting 4.0s for "Reserve" Button to exist
+    t =    27.26s     Checking `Expect predicate `existsNoRetry == 1` for object "Reserve" Button`
+    t =    27.26s         Checking existence of `"Reserve" Button`
+    t =    27.31s Find the "Reserve" Button
+    t =    27.33s Tap "Reserve" Button
+    t =    27.33s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    27.33s     Find the "Reserve" Button
+    t =    27.35s     Check for interrupting elements affecting "Reserve" Button
+    t =    27.40s         Wait for com.apple.springboard to idle
+    t =    27.48s     Synthesize event
+    t =    27.80s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    27.83s Waiting 4.0s for Button (First Match) to exist
+    t =    28.86s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    28.86s         Checking existence of `Button (First Match)`
+    t =    28.89s Tap Button (First Match)
+    t =    28.89s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    28.90s     Find the Button (First Match)
+    t =    28.93s     Check for interrupting elements affecting "Manage ▾" Button
+    t =    29.02s         Wait for com.apple.springboard to idle
+    t =    29.13s     Synthesize event
+    t =    29.48s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    30.47s Waiting 4.0s for "Recruit" Button to exist
+    t =    31.51s     Checking `Expect predicate `existsNoRetry == 1` for object "Recruit" Button`
+    t =    31.51s         Checking existence of `"Recruit" Button`
+    t =    31.72s Find the "Recruit" Button
+    t =    31.86s Tap "Recruit" Button
+    t =    31.87s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    31.87s     Find the "Recruit" Button
+    t =    32.03s     Check for interrupting elements affecting "Recruit" Button
+    t =    32.15s         Wait for com.apple.springboard to idle
+    t =    32.28s     Synthesize event
+    t =    32.65s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    33.89s Checking existence of `"Swordman" Button`
+    t =    34.07s Checking existence of `"Acolyte" Button`
+    t =    34.27s Checking existence of `"Mage" Button`
+    t =    34.59s Checking existence of `"Archer" Button`
+    t =    34.74s Waiting 4.0s for "Archer" Button to exist
+    t =    35.75s     Checking `Expect predicate `existsNoRetry == 1` for object "Archer" Button`
+    t =    35.75s         Checking existence of `"Archer" Button`
+    t =    35.90s Find the "Archer" Button
+    t =    36.03s Tap "Archer" Button
+    t =    36.04s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    36.04s     Find the "Archer" Button
+    t =    36.18s     Check for interrupting elements affecting "Archer" Button
+    t =    36.25s         Wait for com.apple.springboard to idle
+    t =    36.34s     Synthesize event
+    t =    36.65s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    38.16s Waiting 4.0s for Button (First Match) to exist
+    t =    39.19s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    39.19s         Checking existence of `Button (First Match)`
+    t =    39.21s Tap Button (First Match)
+    t =    39.21s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    39.22s     Find the Button (First Match)
+    t =    39.24s     Check for interrupting elements affecting "Manage ▾" Button
+    t =    39.30s         Wait for com.apple.springboard to idle
+    t =    39.37s     Synthesize event
+    t =    39.69s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    40.91s Waiting 4.0s for Button (First Match) to exist
+    t =    41.97s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    41.97s         Checking existence of `Button (First Match)`
+    t =    42.15s Tap Button (First Match)
+    t =    42.15s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    42.16s     Find the Button (First Match)
+    t =    42.29s     Check for interrupting elements affecting "Release…" Button
+    t =    42.37s         Wait for com.apple.springboard to idle
+    t =    42.47s     Synthesize event
+    t =    42.80s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    44.35s Checking existence of `"Cancel" Button`
+/Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/tests/Controls.swift:33: error: -[Controls.Controls testPartyOrdersAndManagement] : XCTAssertTrue failed
+    t =    44.50s Tear Down
+Test Case '-[Controls.Controls testPartyOrdersAndManagement]' failed (44.907 seconds).
+Test Case '-[Controls.Controls testTeamModesAndSettings]' started.
+    t =     0.00s Start Test at 2026-11-22 08:44:27.974
+    t =     0.07s Set Up
+    t =     0.07s Setting device orientation to Landscape Left
+    t =     0.08s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =     0.09s     Wait for com.apple.springboard to idle
+    t =     0.10s Open com.github.arkadeleon.ragnarok-offline
+    t =     0.10s     Launch com.github.arkadeleon.ragnarok-offline
+    t =     0.10s         Terminate com.github.arkadeleon.ragnarok-offline:20501
+    t =     3.29s         Setting up automation session
+    t =     8.65s         Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    11.42s Waiting 15.0s for "roster-2" Button to exist
+    t =    12.46s     Checking `Expect predicate `existsNoRetry == 1` for object "roster-2" Button`
+    t =    12.47s         Checking existence of `"roster-2" Button`
+    t =    12.98s Tap "roster-2" Button
+    t =    12.98s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    12.99s     Find the "roster-2" Button
+    t =    13.11s     Check for interrupting elements affecting "roster-2" Button
+    t =    13.24s         Wait for com.apple.springboard to idle
+    t =    13.44s     Synthesize event
+    t =    13.80s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    13.84s Waiting 4.0s for Button (First Match) to exist
+    t =    14.89s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    14.89s         Checking existence of `Button (First Match)`
+    t =    14.98s Tap Button (First Match)
+    t =    14.98s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    14.98s     Find the Button (First Match)
+    t =    15.05s     Check for interrupting elements affecting "Team · Assist ▾" Button
+    t =    15.16s         Wait for com.apple.springboard to idle
+    t =    15.25s     Synthesize event
+    t =    15.59s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    17.35s Waiting 4.0s for "Nearby Hunt" Button to exist
+    t =    18.35s     Checking `Expect predicate `existsNoRetry == 1` for object "Nearby Hunt" Button`
+    t =    18.35s         Checking existence of `"Nearby Hunt" Button`
+    t =    18.52s Find the "Nearby Hunt" Button
+    t =    18.63s Tap "Nearby Hunt" Button
+    t =    18.63s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    18.63s     Find the "Nearby Hunt" Button
+    t =    18.77s     Check for interrupting elements affecting "Nearby Hunt" Button
+    t =    18.83s         Wait for com.apple.springboard to idle
+    t =    18.95s     Synthesize event
+    t =    19.28s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    20.84s Waiting 4.0s for Button (First Match) to exist
+    t =    21.86s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    21.86s         Checking existence of `Button (First Match)`
+    t =    21.90s Tap Button (First Match)
+    t =    21.90s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    21.90s     Find the Button (First Match)
+    t =    21.94s     Check for interrupting elements affecting "Team · Hunt ▾" Button
+    t =    22.01s         Wait for com.apple.springboard to idle
+    t =    22.10s     Synthesize event
+    t =    22.43s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    23.63s Waiting 4.0s for "Assist" Button to exist
+    t =    24.64s     Checking `Expect predicate `existsNoRetry == 1` for object "Assist" Button`
+    t =    24.64s         Checking existence of `"Assist" Button`
+    t =    24.69s Find the "Assist" Button
+    t =    24.73s Tap "Assist" Button
+    t =    24.74s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    24.74s     Find the "Assist" Button
+    t =    24.78s     Check for interrupting elements affecting "Assist" Button
+    t =    24.85s         Wait for com.apple.springboard to idle
+    t =    24.97s     Synthesize event
+    t =    25.01s         Scroll element to visible
+    t =    25.02s         Find the "Assist" Button
+    t =    25.15s         Computed hit point {-1, -1} after scrolling to visible
+    t =    25.47s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    26.93s Waiting 4.0s for Button (First Match) to exist
+    t =    27.95s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    27.95s         Checking existence of `Button (First Match)`
+    t =    27.99s Tap Button (First Match)
+    t =    27.99s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    27.99s     Find the Button (First Match)
+    t =    28.03s     Check for interrupting elements affecting "Team · Assist ▾" Button
+    t =    28.08s         Wait for com.apple.springboard to idle
+    t =    28.14s     Synthesize event
+    t =    28.46s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    29.59s Waiting 4.0s for "Mob" Button to exist
+    t =    30.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Mob" Button`
+    t =    30.60s         Checking existence of `"Mob" Button`
+    t =    30.71s Find the "Mob" Button
+    t =    30.77s Tap "Mob" Button
+    t =    30.77s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    30.77s     Find the "Mob" Button
+    t =    30.92s     Check for interrupting elements affecting "Mob" Button
+    t =    30.99s         Wait for com.apple.springboard to idle
+    t =    31.04s     Synthesize event
+    t =    31.38s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    32.86s Waiting 4.0s for "Retreat" Button to exist
+    t =    33.91s     Checking `Expect predicate `existsNoRetry == 1` for object "Retreat" Button`
+    t =    33.91s         Checking existence of `"Retreat" Button`
+    t =    33.97s Find the "Retreat" Button
+    t =    34.02s Tap "Retreat" Button
+    t =    34.02s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    34.02s     Find the "Retreat" Button
+    t =    34.07s     Check for interrupting elements affecting "Retreat" Button
+    t =    34.12s         Wait for com.apple.springboard to idle
+    t =    34.21s     Synthesize event
+    t =    34.52s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    34.53s Waiting 4.0s for Button (First Match) to exist
+    t =    35.57s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    35.57s         Checking existence of `Button (First Match)`
+    t =    35.60s Tap Button (First Match)
+    t =    35.60s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    35.61s     Find the Button (First Match)
+    t =    35.64s     Check for interrupting elements affecting "Team · Retreat ▾" Button
+    t =    35.70s         Wait for com.apple.springboard to idle
+    t =    35.78s     Synthesize event
+    t =    36.20s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    37.31s Waiting 4.0s for "Assist" Button to exist
+    t =    38.35s     Checking `Expect predicate `existsNoRetry == 1` for object "Assist" Button`
+    t =    38.35s         Checking existence of `"Assist" Button`
+    t =    38.38s Find the "Assist" Button
+    t =    38.41s Tap "Assist" Button
+    t =    38.41s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    38.41s     Find the "Assist" Button
+    t =    38.45s     Check for interrupting elements affecting "Assist" Button
+    t =    38.51s         Wait for com.apple.springboard to idle
+    t =    38.61s     Synthesize event
+    t =    38.65s         Scroll element to visible
+    t =    38.65s         Find the "Assist" Button
+    t =    38.75s         Computed hit point {-1, -1} after scrolling to visible
+    t =    39.06s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    40.53s Waiting 4.0s for "Reserve" Button to exist
+    t =    41.55s     Checking `Expect predicate `existsNoRetry == 1` for object "Reserve" Button`
+    t =    41.55s         Checking existence of `"Reserve" Button`
+    t =    41.58s Find the "Reserve" Button
+    t =    41.61s Tap "Reserve" Button
+    t =    41.61s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    41.62s     Find the "Reserve" Button
+    t =    41.65s     Check for interrupting elements affecting "Reserve" Button
+    t =    41.71s         Wait for com.apple.springboard to idle
+    t =    41.78s     Synthesize event
+    t =    42.21s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    42.22s Waiting 4.0s for "Settings" Button to exist
+    t =    43.27s     Checking `Expect predicate `existsNoRetry == 1` for object "Settings" Button`
+    t =    43.27s         Checking existence of `"Settings" Button`
+    t =    43.32s Find the "Settings" Button
+    t =    43.37s Tap "Settings" Button
+    t =    43.37s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    43.38s     Find the "Settings" Button
+    t =    43.43s     Check for interrupting elements affecting "Settings" Button
+    t =    43.52s         Wait for com.apple.springboard to idle
+    t =    43.63s     Synthesize event
+    t =    43.98s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    44.00s Waiting 4.0s for Button (First Match) to exist
+    t =    45.07s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    45.07s         Checking existence of `Button (First Match)`
+    t =    45.13s Tap Button (First Match)
+    t =    45.13s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    45.14s     Find the Button (First Match)
+    t =    45.18s     Check for interrupting elements affecting "Two-Handed Sword ▾" Button
+    t =    45.23s         Wait for com.apple.springboard to idle
+    t =    45.30s     Synthesize event
+    t =    45.70s     Wait for com.github.arkadeleon.ragnarok-offline to idle
+    t =    45.72s Waiting 4.0s for "Spear" Button to exist
+    t =    46.75s     Checking `Expect predicate `existsNoRetry == 1` for object "Spear" Button`
+    t =    46.76s         Checking existence of `"Spear" Button`
+    t =    46.97s         Capturing element debug description
+    t =    47.80s     Checking `Expect predicate `existsNoRetry == 1` for object "Spear" Button`
+    t =    47.80s         Checking existence of `"Spear" Button`
+    t =    47.90s         Capturing element debug description
+    t =    48.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Spear" Button`
+    t =    48.72s         Checking existence of `"Spear" Button`
+    t =    48.80s         Capturing element debug description
+    t =    49.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Spear" Button`
+    t =    49.72s         Checking existence of `"Spear" Button`
+    t =    49.80s         Capturing element debug description
+    t =    49.81s     Checking existence of `"Spear" Button`
+    t =    49.91s Collecting debug information to assist test failure triage
+    t =    49.91s     Requesting snapshot of accessibility hierarchy for app with pid 21261
+    t =    50.03s Requesting snapshot of accessibility hierarchy for app with pid 21261
+    t =    50.35s Requesting snapshot of accessibility hierarchy for app with pid 21261
+/Users/runner/work/ragnarok-offline/ragnarok-offline/ui-check/tests/Controls.swift:16: error: -[Controls.Controls testTeamModesAndSettings] : XCTAssertTrue failed - Spear
+Attributes: Application, 0x114c5cb40, pid: 21261, label: 'CompanionSimulator'
+Element subtree:
+ →Application, 0x114c5cb40, pid: 21261, label: 'CompanionSimulator'
+    Window (Main), 0x114c5cc80, {{0.0, 0.0}, {466.0, 678.0}}
+      Other, 0x114c5cdc0, {{0.0, 0.0}, {466.0, 678.0}}
+        Other, 0x114c5cf00, {{0.0, 0.0}, {466.0, 678.0}}
+          Other, 0x114c5d040, {{0.0, 0.0}, {466.0, 678.0}}
+            Other, 0x114c5d180, {{0.0, 0.0}, {466.0, 678.0}}
+              Other, 0x114c5d2c0, {{0.0, 0.0}, {466.0, 678.0}}
+              StaticText, 0x114c5d400, {{10.0, 20.0}, {100.7, 13.7}}, label: 'Basilisk | HUNTER'
+              StaticText, 0x114c5d540, {{15.0, 37.7}, {17.0, 13.7}}, label: 'HP'
+              StaticText, 0x114c5d680, {{81.2, 39.3}, {42.7, 10.3}}, label: '3939/4586'
+              StaticText, 0x114c5d7c0, {{15.0, 55.3}, {16.3, 13.7}}, label: 'SP'
+              StaticText, 0x114c5d900, {{86.2, 57.0}, {32.7, 10.3}}, label: '405/405'
+              Image, 0x114c5da40, {{122.0, 53.0}, {344.0, 17.0}}
+              Image, 0x114c5db80, {{122.0, 53.0}, {300.0, 17.0}}
+              StaticText, 0x114c5dcc0, {{122.0, 53.0}, {300.0, 17.0}}, label: 'Companion Settings'
+              Button, 0x114c5de00, {{422.0, 53.0}, {44.0, 44.0}}, identifier: 'xmark', label: 'Close Companion Settings'
+              ScrollView, 0x114c5df40, {{122.0, 70.0}, {344.0, 333.0}}
+                Other, 0x114c5e080, {{122.0, 70.0}, {344.0, 329.0}}
+                  StaticText, 0x114c5e1c0, {{132.0, 80.0}, {64.7, 13.7}}, label: 'AI-Knight-2'
+                  StaticText, 0x114c5e300, {{132.0, 106.8}, {27.0, 13.7}}, label: 'Build'
+                  Button, 0x114c5e440, {{340.0, 106.7}, {116.0, 13.7}}, label: 'Two-Handed Sword ▾'
+                    Button, 0x114c5e580, {{340.0, 106.7}, {116.0, 13.7}}
+                      StaticText, 0x114c5e6c0, {{340.0, 106.8}, {116.0, 13.7}}, label: 'Two-Handed Sword ▾'
+                  StaticText, 0x114c5e800, {{132.0, 140.8}, {35.0, 13.7}}, label: 'Preset'
+                  Button, 0x114c5e940, {{404.0, 141.0}, {52.0, 13.7}}, label: 'Custom ▾'
+                    Button, 0x114c5ea80, {{404.0, 141.0}, {52.0, 13.7}}
+                      StaticText, 0x114c5ebc0, {{404.0, 140.8}, {52.0, 13.7}}, label: 'Custom ▾'
+                  Button, 0x114c5ed00, {{132.0, 167.7}, {324.0, 30.0}}, label: 'Rent Peco Peco · 2,500 Z'
+                  StaticText, 0x114c5ee40, {{132.0, 210.0}, {30.7, 13.7}}, label: 'Team'
+                  StaticText, 0x114c5ef80, {{132.0, 236.8}, {41.0, 13.7}}, label: 'Speech'
+                  Button, 0x114c5f0c0, {{406.7, 236.7}, {49.3, 13.7}}, label: 'Normal ▾'
+                    Button, 0x114c5f200, {{406.7, 236.7}, {49.3, 13.7}}
+                      StaticText, 0x114c5f340, {{406.7, 236.8}, {49.3, 13.7}}, label: 'Normal ▾'
+                  StaticText, 0x114c5f480, {{132.0, 270.8}, {48.3, 13.7}}, label: 'Mob limit'
+                  Button, 0x114c5f5c0, {{438.7, 271.0}, {17.3, 13.3}}, label: '5 ▾'
+                    Button, 0x114c5f700, {{438.7, 271.0}, {17.3, 13.3}}
+                      StaticText, 0x114c5f840, {{438.7, 270.8}, {17.3, 13.7}}, label: '5 ▾'
+                  StaticText, 0x114c5f980, {{132.0, 307.8}, {105.7, 13.7}}, label: 'Pause pulling at HP'
+                  TextField, 0x114c5fac0, {{356.0, 297.7}, {48.0, 34.0}}, placeholderValue: '%'
+                  Button, 0x114c5fc00, {{412.0, 300.7}, {44.0, 28.0}}, label: 'Set', Disabled
+                  StaticText, 0x114c5fd40, {{132.0, 347.8}, {73.0, 13.7}}, label: 'Retreat at HP'
+                  TextField, 0x114c5fe80, {{356.0, 337.7}, {48.0, 34.0}}, placeholderValue: '%'
+                  Button, 0x114c70000, {{412.0, 340.7}, {44.0, 28.0}}, label: 'Set', Disabled
+                  StaticText, 0x114c70140, {{132.0, 377.7}, {29.0, 11.3}}, label: 'Ready'
+                Other, 0x114c70280, {{433.0, 70.0}, {30.0, 333.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114c703c0, {{460.0, 393.0}, {3.0, 7.0}}
+                Other, 0x114c70500, {{433.0, 70.0}, {30.0, 333.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114c70640, {{460.0, 393.0}, {3.0, 7.0}}
+              StaticText, 0x114c70780, {{125.7, 77.8}, {89.3, 11.3}}, label: 'Weight: 0/0  Zeny: 0'
+              Button, 0x114c708c0, {{0.0, 94.0}, {220.0, 12.0}}
+              Button, 0x114c70a00, {{356.0, 407.0}, {44.0, 44.0}}, identifier: 'hand.tap', label: 'Hand Tapping'
+              Button, 0x114c70b40, {{406.0, 407.0}, {44.0, 44.0}}, identifier: 'scope', label: 'Scope Reticle'
+              Button, 0x114c70c80, {{306.0, 457.0}, {44.0, 44.0}}, identifier: 'hand.wave', label: 'Waving Hand'
+              Button, 0x114c70dc0, {{356.0, 457.0}, {44.0, 44.0}}, identifier: 'figure.seated.side', label: 'Seated Figure From The Side'
+              Button, 0x114c70f00, {{406.0, 457.0}, {44.0, 44.0}}
+              Button, 0x114c71040, {{26.0, 515.0}, {36.0, 36.0}}, label: '1'
+              Button, 0x114c71180, {{66.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c712c0, {{114.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c71400, {{162.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c71540, {{210.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c71680, {{258.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c717c0, {{306.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c71900, {{354.0, 511.0}, {44.0, 44.0}}
+              Button, 0x114c71a40, {{402.0, 511.0}, {44.0, 44.0}}
+              ScrollView, 0x114c71b80, {{16.0, 567.0}, {450.0, 70.0}}
+                Other, 0x114c71cc0, {{417.0, 567.0}, {30.0, 52.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114c71e00, {{444.0, 570.0}, {3.0, 46.0}}
+                Other, 0x114c71f40, {{417.0, 567.0}, {30.0, 52.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                  Other, 0x114c72080, {{444.0, 570.0}, {3.0, 46.0}}
+              Button, 0x114c721c0, {{16.0, 638.0}, {60.0, 28.0}}
+              TextField, 0x114c72300, {{80.0, 641.0}, {311.0, 22.0}}
+              Button, 0x114c72440, {{394.0, 638.0}, {28.0, 28.0}}, identifier: 'arrow.up', label: 'Up', Disabled
+              Button, 0x114c72580, {{422.0, 638.0}, {28.0, 28.0}}, identifier: 'arrow.down', label: 'Down', Disabled
+    Window, 0x114c726c0, {{0.0, 0.0}, {466.0, 678.0}}
+      Other, 0x114c72800, {{0.0, 0.0}, {466.0, 678.0}}
+        Other, 0x114c72940, {{0.0, 0.0}, {466.0, 678.0}}
+Path to element:
+ →Application, 0x114c5cb40, pid: 21261, label: 'CompanionSimulator'
+Query chain:
+ →Find: Application 'com.github.arkadeleon.ragnarok-offline'
+  Output: {
+    Application, 0x114c72a80, pid: 21261, label: 'CompanionSimulator'
+  }
+
+    t =    50.44s Tear Down
+Test Case '-[Controls.Controls testTeamModesAndSettings]' failed (51.569 seconds).
+Test Suite 'Controls' failed at 2026-11-22 08:45:19.543.
+	 Executed 4 tests, with 4 failures (0 unexpected) in 248.956 (249.051) seconds
+Test Suite 'Controls.xctest' failed at 2026-11-22 08:45:19.544.
+	 Executed 4 tests, with 4 failures (0 unexpected) in 248.956 (249.059) seconds
+Test Suite 'All tests' failed at 2026-11-22 08:45:19.544.
+	 Executed 4 tests, with 4 failures (0 unexpected) in 248.956 (249.078) seconds
+2026-11-22 08:45:19.998 xcodebuild[15638:49650] [MT] IDESchemeActionDeviceRecord: versionAndBuild = 27.2 (24B91016s), error = invalidDigitCount(91016).
+2026-11-22 08:45:19.999 xcodebuild[15638:49650] [MT] IDESchemeActionDeviceRecord: versionAndBuild = 27.2 (24B91016s), error = invalidDigitCount(91016).
+2026-11-22 08:45:20.488 xcodebuild[15638:49650] [MT] IDESchemeActionDeviceRecord: versionAndBuild = 27.2 (24B91016s), error = invalidDigitCount(91016).
+2026-11-22 08:48:54.876 xcodebuild[15638:49650] [MT] IDETestOperationsObserverDebug: 506.838 elapsed -- Testing started completed.
+2026-11-22 08:48:54.877 xcodebuild[15638:49650] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-22 08:48:54.877 xcodebuild[15638:49650] [MT] IDETestOperationsObserverDebug: 506.839 sec, +506.839 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/ragnarok-offline/ragnarok-offline/results.xcresult
+
+Failing tests:
+	Controls.testBagAndSupplies()
+	Controls.testEquipmentAndSkills()
+	Controls.testPartyOrdersAndManagement()
+	Controls.testTeamModesAndSettings()
+
+** TEST FAILED **
+
+Testing started
