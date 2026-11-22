@@ -1,0 +1,32 @@
+name: Export companion screenshot evidence
+on:
+  push:
+    branches: [qa/companion-capture-export]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 45000443278
+          github-token: ${{ github.token }}
+          name: companion-simulator-after
+          path: evidence/after
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/45000443278/logs" > /tmp/steps.zip
+          python3 - <<'PY'
+          import zipfile
+          z=zipfile.ZipFile('/tmp/steps.zip')
+          for f in z.namelist():
+              if 'Exercise revised controls' in f:
+                  open('evidence/after/driver.txt','w').write('\n'.join(z.read(f).decode(errors='replace').splitlines()[-40:]))
+          PY
+          git add -f evidence/after
+          git -c user.name=Codex -c user.email=codex@localhost commit -m 'Export simulator evidence for companion windows'
+          git push origin HEAD:refs/heads/qa/companion-captured-frames
