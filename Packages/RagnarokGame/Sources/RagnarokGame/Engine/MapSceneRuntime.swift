@@ -114,9 +114,7 @@ final class MapSceneRuntime {
         var snapshot = MapSceneRenderSnapshot(fog: scene.fog)
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
-        snapshot.groundTiles = scene.groundUnits.values.map {
-            .init(position: $0.position, cell: scene.mapGrid[$0.position], color: $0.color)
-        }
+        snapshot.groundTiles = scene.visibleGroundTiles()
         snapshot.targetSelector = makeTargetSelector(at: time)
         snapshot.spriteDrawables = renderResources.spriteDrawables
         snapshot.effects = makeEffects(worldPositions: worldPositions)

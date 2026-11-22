@@ -68,6 +68,7 @@ public final class MapScene {
     struct GroundUnit {
         let kind: Int32
         let position: SIMD2<Int>
+        let radius: Int
         let effect: UUID?
 
         var color: SIMD4<Float> {
@@ -82,8 +83,36 @@ public final class MapScene {
     }
     var groundUnits: [UInt32: GroundUnit] = [:]
 
+    // Terrain is immutable for the scene. Rebuild marker vertices' inputs only
+    // when a ground unit changes, rather than expanding every trap every frame.
+    var groundTiles: [MapSceneRenderSnapshot.TileSelector] = []
+    private var groundTilesDirty = false
+
+    func visibleGroundTiles() -> [MapSceneRenderSnapshot.TileSelector] {
+        guard groundTilesDirty else { return groundTiles }
+        var tiles: [SIMD2<Int>: MapSceneRenderSnapshot.TileSelector] = [:]
+        for unit in groundUnits.values where unit.kind == 135 || unit.kind == 136 {
+            for dy in -unit.radius...unit.radius {
+                for dx in -unit.radius...unit.radius {
+                    let p = unit.position &+ SIMD2(dx, dy)
+                    guard mapGrid.contains(p) else { continue }
+                    tiles[p] = .init(position: p, cell: mapGrid[p], color: [1, 0.42, 0.10, 0.85])
+                }
+            }
+        }
+        for unit in groundUnits.values {
+            let p = unit.position
+            tiles[p] = .init(position: p, cell: mapGrid[p], color: unit.color)
+        }
+        groundTiles = Array(tiles.values)
+        groundTilesDirty = false
+        return groundTiles
+    }
+
     func removeGroundUnit(_ id: UInt32) {
-        if let effect = groundUnits.removeValue(forKey: id)?.effect { effects.removeValue(forKey: effect) }
+        guard let unit = groundUnits.removeValue(forKey: id) else { return }
+        groundTilesDirty = true
+        if let effect = unit.effect { effects.removeValue(forKey: effect) }
     }
 
     func updateGroundUnit(_ packet: packet_skill_entry) {
@@ -92,7 +121,8 @@ public final class MapScene {
             removeGroundUnit(packet.AID)
             return
         }
-        if let old = groundUnits[packet.AID], old.position == position, old.kind == packet.job { return }
+        let radius = min(1, max(0, Int(packet.RadiusRange)))
+        if let old = groundUnits[packet.AID], old.position == position, old.kind == packet.job, old.radius == radius { return }
         removeGroundUnit(packet.AID)
         let art: EffectID? = switch packet.job {
         case 127: .ef_firewall
@@ -111,7 +141,8 @@ public final class MapScene {
             effects[effect.id] = effect
             effectID = effect.id
         }
-        groundUnits[packet.AID] = GroundUnit(kind: packet.job, position: position, effect: effectID)
+        groundUnits[packet.AID] = GroundUnit(kind: packet.job, position: position, radius: radius, effect: effectID)
+        groundTilesDirty = true
     }
 
     var combatTexts: [CombatText] = []
@@ -208,6 +239,7 @@ public final class MapScene {
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
         groundUnits.removeAll()
+        groundTiles.removeAll()
         skillDamage.removeAll()
         combatTexts.removeAll()
         tileSelector = nil
@@ -223,6 +255,7 @@ public final class MapScene {
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
         groundUnits.removeAll()
+        groundTiles.removeAll()
         skillDamage.removeAll()
         combatTexts.removeAll()
         tileSelector = nil
