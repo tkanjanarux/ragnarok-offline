@@ -17,6 +17,7 @@ struct CompanionProfile: Identifiable, Equatable {
     let name: String
     var preset: String = "custom"
     var rented: Bool? = nil
+    var birdOn: Bool? = nil
     var build: String? = nil
     var buildChoices: [String] {
         switch job {
@@ -211,7 +212,7 @@ struct CompanionState {
             guard expected != nil, incomingHunt == nil, t.count == 4, ["0","1"].contains(t[3]) else { timeout(sequence); return true }
             incomingHunt = t[3] == "1"
         case "row":
-            guard let expected, incoming.count < expected, (17...20).contains(t.count), t.count < 19 || ["0","1"].contains(t[18]),
+            guard let expected, incoming.count < expected, (17...21).contains(t.count), t.count < 21 || ["0","1"].contains(t[20]), t.count < 19 || ["0","1"].contains(t[18]),
                   t.count == 17 || ["custom","protect","assist","conserve"].contains(t[17]),
                   let id = UInt32(t[3]), id > 0, id < 95_000_000,
                   let job = UInt32(t[4]), [1,2,3,4,7,8,9,11].contains(job),
@@ -225,7 +226,7 @@ struct CompanionState {
                   (actor == 0) == (mode == 0), let gems = UInt32(t[15]), gems <= 20,
                   !t[16].isEmpty, t[16].utf8.count <= 23,
                   !incoming.contains(where: { $0.id == id }) else { timeout(sequence); return true }
-            incoming.append(CompanionProfile(id: id, job: job, level: level, jobLevel: jobLevel, exp: exp, jobExp: jobExp, hp: hp, maxHP: maxHP, sp: sp, maxSP: maxSP, actor: actor, mode: mode, gems: gems, name: t[16], preset: t.count >= 18 ? t[17] : "custom", rented: t.count >= 19 ? t[18] == "1" : nil, build: t.count == 20 ? t[19] : nil))
+            incoming.append(CompanionProfile(id: id, job: job, level: level, jobLevel: jobLevel, exp: exp, jobExp: jobExp, hp: hp, maxHP: maxHP, sp: sp, maxSP: maxSP, actor: actor, mode: mode, gems: gems, name: t[16], preset: t.count >= 18 ? t[17] : "custom", rented: t.count >= 19 ? t[18] == "1" : nil, birdOn: t.count == 21 ? t[20] == "1" : nil, build: t.count >= 20 ? t[19] : nil))
         case "gearbegin":
             guard expected != nil, gearExpected == nil, t.count == 7,
                   let profile = UInt32(t[3]), (action == "equipment \(profile)" || action == "inspect \(profile)"),

@@ -49,8 +49,15 @@ struct CompanionView: View {
                                 choice("Preset", value: row.preset.capitalized, options: ["custom","protect","assist","conserve"], label: { $0.capitalized }) { send("preset \(row.id) \($0)") }
                                 if let rented = row.rented, [7,11].contains(row.job) || rented {
                                     let bird = [1,7].contains(row.job) ? "Peco Peco" : "Falcon"
+                                    if rented, let on = row.birdOn {
+                                        let peco = bird == "Peco Peco"
+                                        let label = peco ? (on ? "Mounted · Dismount" : "On foot · Mount Peco") : (on ? "Falcon active · Rest" : "Falcon resting · Call")
+                                        Button(label) { send("\(peco ? "ride" : "falcon") \(row.id) \(on ? "off" : "on")") }
+                                            .buttonStyle(.game).frame(height: 30)
+                                    } else {
                                     Button(rented ? "\(bird) · Rented" : "Rent \(bird) · 2,500 Z") { send("rent \(row.id)") }
                                         .buttonStyle(.game).frame(height: 30).disabled(rented || row.active)
+                                    }
                                 }
                                 Divider()
                             }
