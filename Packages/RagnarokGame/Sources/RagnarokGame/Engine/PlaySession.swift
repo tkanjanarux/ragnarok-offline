@@ -827,7 +827,7 @@ final class PlaySession {
         var lines = ["begin \(profiles.count) 1","team \(mode) \(cap)","hunt \(mode == "nearby" ? 1 : 0)","voice \(voice)"]
         for p in profiles {
             let m = p.id == id ? ["bench":0,"summon":1,"follow":1,"assist":2,"stop":3][a[0]] ?? p.mode : p.mode
-            let actor = m == 0 ? 0 : 10 + p.id
+            let actor = m == 0 ? 0 : 95_000_000 + p.id
             lines.append("row \(p.id) \(p.job) 87 46 0 0 3200 4000 450 600 \(actor) \(m) 0 \(p.name) \(p.preset) 0 \(p.build ?? "sword")")
         }
         if a[0] == "inspect" {

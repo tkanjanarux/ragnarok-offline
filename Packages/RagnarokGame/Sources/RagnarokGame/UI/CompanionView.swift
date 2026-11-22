@@ -59,7 +59,6 @@ struct CompanionView: View {
                         HStack {
                             Text("Active \(state.activeCount)/\(CompanionState.activeLimit)").font(.game(weight: .bold))
                             Spacer()
-                            Text("Roster \(state.profiles.count)/9")
                             Menu("Manage ▾") {
                                 Menu("Recruit") {
                                     ForEach(["Swordman","Acolyte","Mage","Archer"], id: \.self) { job in
@@ -70,11 +69,12 @@ struct CompanionView: View {
                                 Button("Refresh") { send("list") }.disabled(state.pending)
                                 Button("Release…") { release = row?.id }.disabled(!enabled || row?.active != false)
                             }
+                            Text("\(state.profiles.count)/9").font(.game(size: 10)).frame(width: 36)
                         }.padding(.horizontal, 4).frame(height: 28)
                         ScrollView {
                             LazyVStack(spacing: 0) {
                                 ForEach(state.profiles) { member in
-                                    Button { selected = member.id } label: { memberRow(member) }.buttonStyle(.plain)
+                                    Button { selected = member.id } label: { memberRow(member) }.buttonStyle(.plain).accessibilityIdentifier("roster-\(member.id)")
                                     Divider()
                                 }
                                 if state.ready && state.profiles.isEmpty { Text("Manage ▸ Recruit").padding(10) }

@@ -6,12 +6,21 @@ permissions:
   contents: read
 jobs:
   capture:
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [before, after]
     runs-on: xcode-27
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-depth: 0
+      - name: Use original window code for baseline
+        if: matrix.version == 'before'
+        run: |
+          git checkout b0e5b1b -- Packages/RagnarokGame/Sources/RagnarokGame/UI/{CompanionView,CompanionEquipmentView,PartyView,MapSceneView,Common/ClassicGamePanel}.swift
       - name: Capture iPhone simulator
         run: |
           set -eu
@@ -24,6 +33,7 @@ jobs:
           ID=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$APP/Info.plist")
           xcrun simctl install "$DEVICE" "$APP"
           mkdir captures
+          xcrun simctl list devices booted > captures/device.txt
           for screen in roster gear; do
           for pose in portrait landscape; do
             xcrun simctl launch --terminate-running-process "$DEVICE" "$ID" "$pose" "$screen"
@@ -33,6 +43,7 @@ jobs:
           done
           python3 -c 'import struct; size=lambda f:struct.unpack(">II",open("captures/"+f+".png","rb").read()[16:24]); p=size("roster-portrait"); l=size("roster-landscape"); assert p[0]<p[1] and l[0]>l[1],(p,l)'
       - name: Exercise revised controls
+        if: matrix.version == 'after' 
         run: |
           set -eu
           curl -fsSL --retry 3 https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.12.1/maestro.zip -o /tmp/companion-maestro.zip
@@ -44,5 +55,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: companion-simulator
+          name: companion-simulator-${{ matrix.version }}
           path: captures
