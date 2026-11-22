@@ -17,6 +17,7 @@ struct MapSceneView: View {
 
     @Environment(PlaySession.self) private var playSession
 
+    @State private var hudFrames: [CGRect] = []
     @State private var companionFrame: CGRect = .null
     @State private var actionBarHeight: CGFloat = 0
     @State private var presentedMenuItem: MenuItem?
@@ -126,6 +127,9 @@ struct MapSceneView: View {
         .overlayPreferenceValue(HUDObstacleKey.self) { obstacles in
             GeometryReader { viewport in
                 let frames = obstacles.map { viewport[$0] }
+                Color.clear.preference(key: CompanionHUDFrames.self, value: frames.map {
+                    $0.offsetBy(dx: viewport.frame(in: .global).minX, dy: viewport.frame(in: .global).minY)
+                })
                 if companionFrame.isNull, let slot = questTrackerSlot(in: viewport.size, obstacles: frames) {
                     QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
                         .frame(width: slot.width, height: slot.height, alignment: .topLeading)
@@ -195,6 +199,8 @@ struct MapSceneView: View {
                 StorageView(storage: storage)
             }
         }
+        .environment(\.companionHUDObstacles, hudFrames)
+        .onPreferenceChange(CompanionHUDFrames.self) { hudFrames = $0 }
         .environment(\.companionManagementFrame, companionFrame)
         .onPreferenceChange(CompanionWindowBounds.self) { companionFrame = $0 }
         .onChange(of: playSession.examAdmissions) { _, _ in
