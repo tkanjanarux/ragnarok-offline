@@ -60,19 +60,28 @@ jobs:
           name: companion-app-${{ matrix.version }}
           path: simulator-app.zip
           retention-days: 2
-      - name: Exercise revised controls
-        if: matrix.version == 'after' 
-        run: |
-          set -eu
-          curl -fsSL --retry 3 https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.12.1/maestro.zip -o /tmp/companion-maestro.zip
-          echo '54dbb0716425626604973cbb374c585ca30272375d9ce15177a1152765ddd9d7  /tmp/companion-maestro.zip' | shasum -a 256 -c -
-          unzip -q /tmp/companion-maestro.zip -d /tmp/companion-maestro
-          DEVICE=$(xcrun simctl list devices booted -j | python3 -c 'import sys,json;print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"] and d["state"]=="Booted"))')
-          export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-          export MAESTRO_CLI_NO_ANALYTICS=1
-          /tmp/companion-maestro/maestro/bin/maestro --device "$DEVICE" test --format junit --output captures/interactions.xml scripts/companion-simulator/flow.yaml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: companion-simulator-${{ matrix.version }}
           path: captures
+
+      - name: Test controls with game system-overlay settings
+        if: matrix.version == 'after'
+        run: |
+          set -euo pipefail
+          DEVICE=$(xcrun simctl list devices booted -j | python3 -c 'import sys,json;print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone Duo" in d["name"] and d["state"]=="Booted"))')
+          cd ui-check
+          xcodegen generate
+          xcodebuild -project CompanionInteraction.xcodeproj -scheme Controls -destination "id=$DEVICE" -parallel-testing-enabled NO -resultBundlePath ../results.xcresult test 2>&1 | tee ../interaction.log
+      - name: Preserve interaction evidence
+        if: always() && matrix.version == 'after'
+        run: |
+          mkdir -p evidence
+          if [[ -d results.xcresult ]]; then xcrun xcresulttool get test-results tests --path results.xcresult > evidence/tests.json; fi
+          tail -n 2200 interaction.log > evidence/interaction.log || true
+      - uses: actions/upload-artifact@v4
+        if: always() && matrix.version == 'after'
+        with:
+          name: native-companion-controls
+          path: evidence

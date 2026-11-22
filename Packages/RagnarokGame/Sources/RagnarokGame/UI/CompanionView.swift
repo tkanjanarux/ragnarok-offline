@@ -20,7 +20,21 @@ struct CompanionView: View {
     var body: some View {
         GeometryReader { viewport in
             let height = min(396, max(294, viewport.size.height - 24))
-            if let details {
+            if let release {
+                ClassicGamePanel(title: "Release Companion", width: 300, height: 132, tracksCompanion: true, onClose: { self.release = nil }) {
+                    VStack(spacing: 12) {
+                        Text("Permanently release \(state.profiles.first(where: { $0.id == release })?.name ?? "companion")? Its level and EXP will be lost.")
+                            .multilineTextAlignment(.center)
+                        HStack {
+                            Button("Cancel") { self.release = nil }
+                            Button("Release") {
+                                send("retire \(release) confirm")
+                                self.release = nil
+                            }.disabled(!enabled)
+                        }.buttonStyle(.game).frame(height: 30)
+                    }.padding(10)
+                }
+            } else if let details {
                 CompanionEquipmentView(profileID: details, close: { self.details = nil })
             } else if settings {
                 ClassicGamePanel(title: "Companion Settings", width: 344, height: min(height, 350), tracksCompanion: true, onClose: { settings = false }) {
@@ -101,10 +115,6 @@ struct CompanionView: View {
                     }.padding(6)
                 }
             }
-        }
-        .confirmationDialog("Permanently release \(row?.name ?? "companion") and lose its progress?", isPresented: Binding(get: { release != nil }, set: { if !$0 { release = nil } }), titleVisibility: .visible) {
-            Button("Release", role: .destructive) { if let release { send("retire \(release) confirm") }; release = nil }
-            Button("Cancel", role: .cancel) { release = nil }
         }
         .onChange(of: state.profiles, initial: true) {
             if !state.profiles.contains(where: { $0.id == selected }) { selected = state.profiles.first?.id }

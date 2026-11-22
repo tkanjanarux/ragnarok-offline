@@ -6,6 +6,8 @@ struct CaptureApp: App {
     var body: some Scene {
         WindowGroup {
             CompanionCapture()
+                .persistentSystemOverlays(.hidden)
+                .statusBarHidden()
                 .task {
                     try? await Task.sleep(for: .seconds(1))
                     let args = ProcessInfo.processInfo.arguments
