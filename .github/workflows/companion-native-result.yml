@@ -1,0 +1,32 @@
+name: Collect companion interaction reports
+on:
+  push:
+    branches: [qa/companion-native-result]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  result:
+    strategy:
+      matrix:
+        native: ['45002476354','45003019695']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          RUN: ${{ matrix.native }}
+        run: |
+          gh run watch "$RUN" --repo "$GITHUB_REPOSITORY" --interval 40 >/dev/null
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ matrix.native }}
+          name: native-companion-controls
+          github-token: ${{ github.token }}
+          path: evidence/native
+      - env:
+          RUN: ${{ matrix.native }}
+        run: |
+          git add -f evidence/native
+          git -c user.name=Codex -c user.email=codex@localhost commit -m 'Archive native interaction results'
+          git push origin "HEAD:refs/heads/qa/companion-report-$RUN"
