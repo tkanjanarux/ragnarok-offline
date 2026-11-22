@@ -799,6 +799,7 @@ final class PlaySession {
     var partyAccountID: UInt32 { account.accountID }
 
     func companionCommand(_ action: String) {
+        if mapClient == nil { return } // Offline simulator fixture
         guard !companions.pending, action == "list" || (companions.ready && companions.available) else { return }
         let token = companions.begin(action)
         let capability = action.hasPrefix("inspect ") ? "ui2 skills9 gear3 syrup1" : "ui2"

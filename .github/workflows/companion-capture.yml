@@ -1,0 +1,37 @@
+name: Companion simulator capture
+on:
+  push:
+    branches: [qa/companion-window-simulator]
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: xcode-27
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Capture iPhone simulator
+        run: |
+          set -eu
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; phones=[d for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]]; print(next((d for d in phones if "Duo" in d["name"]),phones[0])["udid"])')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcodebuild -quiet -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -configuration Debug -destination "id=$DEVICE" -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
+          APP=build/Build/Products/Debug-iphonesimulator/RagnarokOffline.app
+          ID=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$APP/Info.plist")
+          xcrun simctl install "$DEVICE" "$APP"
+          mkdir captures
+          for pose in portrait landscape; do
+            xcrun simctl launch --terminate-running-process "$DEVICE" "$ID" "$pose"
+            sleep 6
+            xcrun simctl io "$DEVICE" screenshot "captures/$pose.png"
+          done
+          python3 -c 'import struct; size=lambda f:struct.unpack(">II",open("captures/"+f+".png","rb").read()[16:24]); p=size("portrait"); l=size("landscape"); assert p[0]<p[1] and l[0]>l[1],(p,l)'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: companion-simulator
+          path: captures

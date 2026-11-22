@@ -1,42 +1,19 @@
-//
-//  iOSApp.swift
-//  RagnarokOffline
-//
-//  Created by Leon Li on 2026/2/28.
-//
-
 #if os(iOS)
-
+import RagnarokGame
 import SwiftUI
-
 @main
-struct iOSApp: App {
-    @State private var appModel = AppModel()
-
+struct CaptureApp: App {
     var body: some Scene {
-        WindowGroup(id: appModel.mainWindowID) {
-            ContentView()
-                .environment(appModel)
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didEnterBackgroundNotification)) { _ in
-                    Task {
-                        let backgroundTaskID = UIApplication.shared.beginBackgroundTask(withName: "Pause Servers")
-                        await appModel.serverManager.pauseServers()
-                        UIApplication.shared.endBackgroundTask(backgroundTaskID)
-                    }
-                }
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-                    Task {
-                        if appModel.settings.automaticallyRestartsServers {
-                            try await appModel.serverManager.resumeServers()
-                        }
+        WindowGroup {
+            CompanionCapture()
+                .task {
+                    try? await Task.sleep(for: .seconds(1))
+                    if ProcessInfo.processInfo.arguments.contains("landscape"),
+                       let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first {
+                        scene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
                     }
                 }
         }
     }
-
-    init() {
-        configureTips()
-    }
 }
-
 #endif
