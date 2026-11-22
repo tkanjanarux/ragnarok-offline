@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: false
           fetch-depth: 0
       - name: Use original window code for baseline
         if: matrix.version == 'before'
@@ -28,8 +28,11 @@ jobs:
           DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; phones=[d for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]]; print(next((d for d in phones if "Duo" in d["name"]),phones[0])["udid"])')
           xcrun simctl boot "$DEVICE" || true
           xcrun simctl bootstatus "$DEVICE" -b
-          xcodebuild -quiet -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -configuration Debug -destination "id=$DEVICE" -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
-          APP=build/Build/Products/Debug-iphonesimulator/RagnarokOffline.app
+          command -v xcodegen || brew install xcodegen
+          cp scripts/companion-simulator/project.yml CompanionCapture.yml
+          xcodegen generate --spec CompanionCapture.yml
+          xcodebuild -quiet -project CompanionSimulator.xcodeproj -scheme CompanionSimulator -configuration Debug -destination "id=$DEVICE" -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
+          APP=build/Build/Products/Debug-iphonesimulator/CompanionSimulator.app
           ID=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$APP/Info.plist")
           xcrun simctl install "$DEVICE" "$APP"
           mkdir captures
@@ -37,11 +40,26 @@ jobs:
           for screen in roster gear; do
           for pose in portrait landscape; do
             xcrun simctl launch --terminate-running-process "$DEVICE" "$ID" "$pose" "$screen"
-            sleep 6
-            xcrun simctl io "$DEVICE" screenshot "captures/$screen-$pose.png"
+            DIR=$(xcrun simctl get_app_container "$DEVICE" "$ID" data)
+            for attempt in {1..30}; do test -s "$DIR/Documents/$screen-$pose.png" && break; sleep 1; done
+            cp "$DIR/Documents/$screen-$pose.png" "captures/$screen-$pose.png"
+            cp "$DIR/Documents/$screen-$pose.txt" "captures/$screen-$pose.txt"
+            xcrun simctl io "$DEVICE" screenshot --display=1 "captures/$screen-$pose-display.png" || xcrun simctl io "$DEVICE" screenshot "captures/$screen-$pose-display.png"
+
           done
           done
           python3 -c 'import struct; size=lambda f:struct.unpack(">II",open("captures/"+f+".png","rb").read()[16:24]); p=size("roster-portrait"); l=size("roster-landscape"); assert p[0]<p[1] and l[0]>l[1],(p,l)'
+      - name: Preserve simulator app for interaction retries
+        if: always()
+        run: |
+          APP=build/Build/Products/Debug-iphonesimulator/CompanionSimulator.app
+          if [[ -d "$APP" ]]; then ditto -c -k --keepParent "$APP" simulator-app.zip; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: companion-app-${{ matrix.version }}
+          path: simulator-app.zip
+          retention-days: 2
       - name: Exercise revised controls
         if: matrix.version == 'after' 
         run: |
