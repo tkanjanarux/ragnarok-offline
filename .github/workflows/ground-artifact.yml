@@ -1,0 +1,27 @@
+name: Retrieve verified ground skill iOS build
+on:
+  push:
+    paths: [.github/workflows/ground-artifact.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Relay an encrypted short-lived link for this specific build artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          status=$(curl -fsS -D "$RUNNER_TEMP/headers" -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/14735320934/zip")
+          test "$status" = 302
+          awk 'tolower($1)=="location:" {print substr($0,index($0," ")+1)}' "$RUNNER_TEMP/headers" | tr -d '\r\n' | openssl cms -encrypt -aes256 -binary -outform DER -out "$RUNNER_TEMP/link" .github/ground-artifact.crt
+          base64 -w0 "$RUNNER_TEMP/link" > artifact-link.b64
+          printf 'ARTIFACT_BEGIN%sARTIFACT_END\n' "$(cat artifact-link.b64)" >> "$GITHUB_STEP_SUMMARY"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add artifact-link.b64
+          git commit -qm "Relay ground skills artifact to release host"
+          git push
