@@ -253,7 +253,7 @@ struct CompanionState {
             guard expected != nil, detailExpected == nil, t.count == 10,
                   let profile = UInt32(t[3]), action == "inspect \(profile)", gearExpected?.profile == profile,
                   let starter = Int(t[4]), (0...2).contains(starter),
-                  let skill = Int(t[5]), (1...13).contains(skill),
+                  let skill = Int(t[5]), (1...15).contains(skill),
                   let supply = Int(t[6]), (0...21).contains(supply),
                   let bag = Int(t[7]), (0...200).contains(bag),
                   let reason = Int(t[8]), (0...9).contains(reason), ["0","1"].contains(t[9]) else { timeout(sequence); return true }
