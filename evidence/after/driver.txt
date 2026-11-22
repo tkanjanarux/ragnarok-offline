@@ -1,0 +1,19 @@
+﻿2026-11-22T08:20:17.8342560Z ##[group]Run set -eu
+2026-11-22T08:20:17.8343020Z [36;1mset -eu[0m
+2026-11-22T08:20:17.8343640Z [36;1mcurl -fsSL --retry 3 https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.12.1/maestro.zip -o /tmp/companion-maestro.zip[0m
+2026-11-22T08:20:17.8344570Z [36;1mecho '54dbb0716425626604973cbb374c585ca30272375d9ce15177a1152765ddd9d7  /tmp/companion-maestro.zip' | shasum -a 256 -c -[0m
+2026-11-22T08:20:17.8345250Z [36;1munzip -q /tmp/companion-maestro.zip -d /tmp/companion-maestro[0m
+2026-11-22T08:20:17.8346390Z [36;1mDEVICE=$(xcrun simctl list devices booted -j | python3 -c 'import sys,json;print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"] and d["state"]=="Booted"))')[0m
+2026-11-22T08:20:17.8348140Z [36;1mexport JAVA_HOME=$(/usr/libexec/java_home -v 17)[0m
+2026-11-22T08:20:17.8348530Z [36;1mexport MAESTRO_CLI_NO_ANALYTICS=1[0m
+2026-11-22T08:20:17.8349660Z [36;1m/tmp/companion-maestro/maestro/bin/maestro --device "$DEVICE" test --format junit --output captures/interactions.xml scripts/companion-simulator/flow.yaml[0m
+2026-11-22T08:20:17.8510500Z shell: /bin/bash -e {0}
+2026-11-22T08:20:17.8510910Z ##[endgroup]
+2026-11-22T08:20:26.9282450Z /tmp/companion-maestro.zip: OK
+2026-11-22T08:21:50.8439990Z 
+2026-11-22T08:21:50.8445580Z Waiting for flows to complete...
+2026-11-22T08:23:23.9756150Z [Failed] flow (1m 33s) (Assertion is false: "AI Off" is visible)
+2026-11-22T08:23:23.9771050Z 
+2026-11-22T08:23:23.9776310Z 1/1 Flow Failed
+2026-11-22T08:23:23.9777080Z 
+2026-11-22T08:23:28.8162520Z ##[error]Process completed with exit code 1.

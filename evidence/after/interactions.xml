@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="iPhone Duo - iOS 27.2 - C898E3E4-5033-4085-B886-963EE2D0C478" tests="1" failures="1" time="93.132" timestamp="2026-11-22T08:21:50">
+    <testcase id="flow" name="flow" classname="flow" file="scripts/companion-simulator/flow.yaml" time="93.076" timestamp="2026-11-22T08:21:50" status="ERROR">
+      <failure>Assertion is false: "AI Off" is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

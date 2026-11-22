@@ -1,0 +1,12 @@
+== Devices ==
+-- iOS 27.0 --
+-- iOS 27.1 --
+-- iOS 27.2 --
+-- iOS 27.2 --
+    iPhone Duo (C898E3E4-5033-4085-B886-963EE2D0C478) (Booted) 
+-- tvOS 27.0 --
+-- tvOS 27.2 --
+-- watchOS 27.0 --
+-- watchOS 27.2 --
+-- visionOS 27.0 --
+-- visionOS 27.2 --
