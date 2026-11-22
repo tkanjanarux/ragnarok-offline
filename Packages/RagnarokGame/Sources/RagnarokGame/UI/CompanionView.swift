@@ -1,145 +1,172 @@
 import SwiftUI
 
-/// RO party-list styling: game skin title/buttons, renewal job icons and white rows.
 struct CompanionView: View {
     var close: () -> Void
     @Environment(PlaySession.self) private var session
     @State private var selected: UInt32?
-    @State private var equipmentProfile: UInt32?
-    @State private var confirmRelease: UInt32?
-    private var row: CompanionProfile? { session.companions.profiles.first { $0.id == selected } }
-    private var enabled: Bool { session.companions.ready && session.companions.available && !session.companions.pending }
+    @State private var details: UInt32?
+    @State private var settings = false
+    @State private var release: UInt32?
+    @State private var feedback = ""
+    @State private var stopInput = ""
+    @State private var retreatInput = ""
+
+    private var state: CompanionState { session.companions }
+    private var row: CompanionProfile? { state.profiles.first { $0.id == selected } }
+    private var enabled: Bool { state.ready && state.available && !state.pending && !state.transferPending }
+    private var mode: String { state.teamMode ?? (state.nearbyHunt == true ? "nearby" : "assist") }
+    private func send(_ command: String) { session.companionCommand(command) }
 
     var body: some View {
-        ClassicGamePanel(title: "Companions", width: 360, height: 440, onClose: close) {
-            VStack(spacing: 4) {
-                HStack {
-                    Text("Roster \(session.companions.profiles.count)/9")
-                    Spacer()
-                    Text("Active \(session.companions.activeCount)/\(CompanionState.activeLimit)")
-                }.padding(.horizontal, 8).frame(height: 22)
-                ScrollView {
-                    LazyVStack(spacing: 0) {
-                        ForEach(session.companions.profiles) { member in
-                            Button { selected = member.id } label: {
-                                HStack(spacing: 8) {
-                                    GameImage("renewalparty/icon_jobs_\(member.job)\(member.mode == 4 ? "_die" : "").bmp").frame(width: 26, height: 32)
-                                    VStack(alignment: .leading, spacing: 3) {
-                                        Text(verbatim: member.name).font(.game(weight: .bold))
-                                        Text("Lv. \(member.level) / Job \(member.jobLevel)  \(member.jobName)").font(.game(size: 10))
-                                    }
-                                    Spacer()
-                                    Text(member.stateName).font(.game(size: 10))
-                                }.padding(.horizontal, 6).frame(height: 46)
-                                .foregroundStyle(Color.gameLabel)
-                                .background(selected == member.id ? Color(red: 0.82, green: 0.89, blue: 1) : Color.white)
-                                .contentShape(Rectangle())
-                            }.buttonStyle(.plain)
-                        }
-                        if session.companions.ready && session.companions.profiles.isEmpty {
-                            Text("Recruit a companion below or visit the recruiter in Prontera.")
-                                .font(.game(size: 11)).padding(10)
-                        }
-                    }
-                }.frame(height: 107).overlay { Rectangle().strokeBorder(Color.gameBoxBorder).allowsHitTesting(false) }
-                if let row {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Base and Job follow your character")
-                        Text(row.hp < 0 ? "Ready for first summon" : "HP \(row.hp)  SP \(row.sp)\(row.job == 8 ? "  Gems \(row.gems)" : "")")
-                    }.font(.game(size: 10)).frame(maxWidth: .infinity, alignment: .leading).frame(height: 30)
-                } else { Text("Select a companion").font(.game(size: 11)).frame(height: 30) }
-                HStack(spacing: 4) {
-                    action(row?.active == true ? "Reserve" : "Summon", verb: row?.active == true ? "bench" : "summon", disabled: row == nil || (row?.active == false && session.companions.activeCount >= CompanionState.activeLimit))
-                    action("Follow", verb: "follow", disabled: row?.active != true)
-                    action("Assist", verb: "assist", disabled: row?.active != true)
-                    action("Stop", verb: "stop", disabled: row?.active != true)
-                }
-                HStack {
-                    if let mode = session.companions.voice {
-                        let modes = ["off","quiet","normal","chatty"]
-                        let labels = ["off":"ปิด","quiet":"เงียบ","normal":"ปกติ","chatty":"ช่างพูด"]
-                        Menu("เสียงพูดทีม · " + (labels[mode] ?? mode)) {
-                            ForEach(modes, id: \.self) { key in
-                                Button(labels[key] ?? key) { session.companionCommand("talk " + key) }
-                            }
-                        }.disabled(!enabled)
-                    }
-                    if let mode = session.companions.teamMode {
-                        Menu("ทีม · " + mode + " · " + String(session.companions.mobCap)) {
-                            Button("ลากมอนรวมฝูง") { session.companionCommand("mob on") }.disabled(mode != "assist")
-                            Menu("เพดานฝูง") {
-                                ForEach(1...10, id: \.self) { n in
-                                    Button(String(n)) { session.companionCommand("mob " + String(n)) }
+        GeometryReader { viewport in
+            let height = min(396, max(294, viewport.size.height - 24))
+            if let details {
+                CompanionEquipmentView(profileID: details, close: { self.details = nil })
+            } else if settings {
+                ClassicGamePanel(title: "Companion Settings", width: 344, height: min(height, 350), tracksCompanion: true, onClose: { settings = false }) {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 6) {
+                            if let row {
+                                Text(row.name).font(.game(weight: .bold))
+                                if let build = row.build {
+                                    choice("Build", value: companionBuildTitle(build), options: row.buildChoices, label: companionBuildTitle) { send("build \(row.id) \($0)") }.disabled(row.active)
+                                    if row.active { Text("Reserve to change build.").font(.game(size: 10)) }
                                 }
+                                choice("Preset", value: row.preset.capitalized, options: ["custom","protect","assist","conserve"], label: { $0.capitalized }) { send("preset \(row.id) \($0)") }
+                                if let rented = row.rented, [7,11].contains(row.job) || rented {
+                                    let bird = [1,7].contains(row.job) ? "Peco Peco" : "Falcon"
+                                    Button(rented ? "\(bird) · Rented" : "Rent \(bird) · 2,500 Z") { send("rent \(row.id)") }
+                                        .buttonStyle(.game).frame(height: 30).disabled(rented || row.active)
+                                }
+                                Divider()
                             }
-                            Button("ถอยกลับหาเจ้าของ") { session.companionCommand("retreat") }.disabled(mode != "mob" && mode != "boss")
-                            Button("กลับ Assist") { session.companionCommand("teamoff") }.disabled(mode == "assist")
-                        }.disabled(!enabled)
-                    }
-                    if let hunting = session.companions.nearbyHunt {
-                    Button(hunting ? "Nearby Hunt: ON" : "Nearby Hunt: OFF") {
-                        session.companionCommand(hunting ? "hunt off" : "hunt on")
-                    }.buttonStyle(.game).disabled(!enabled)
-                }
-                }
-                if let row {
-                    Menu("Preset: " + row.preset.capitalized) {
-                        ForEach(["custom", "protect", "assist", "conserve"], id: \.self) { preset in
-                            Button(preset == "conserve" ? "Conserve SP" : preset.capitalized) {
-                                session.companionCommand("preset \(row.id) \(preset)")
+                            Text("Team").font(.game(weight: .bold))
+                            if let voice = state.voice {
+                                choice("Speech", value: voice.capitalized, options: ["off","quiet","normal","chatty"], label: { $0.capitalized }) { send("talk "+$0) }
                             }
-                        }
-                    }.disabled(!enabled)
-                }
-                HStack(spacing: 4) {
-                    Text("Recruit:").font(.game(size: 10))
-                    ForEach(["Knight", "Priest", "Wizard", "Hunter"], id: \.self) { job in
-                        Button(["Knight":"Swordman", "Priest":"Acolyte", "Wizard":"Mage", "Hunter":"Archer"][job] ?? job) { session.companionCommand("recruit \(job.lowercased())") }
-                            .buttonStyle(.game).frame(minWidth: 72, minHeight: 40)
-                            .disabled(!enabled || session.companions.profiles.count >= 9)
+                            if state.teamMode != nil {
+                                choice("Mob limit", value: String(state.mobCap), options: (1...10).map { String($0) }, label: { $0 }) { send("mob "+$0) }
+                                threshold("Pause pulling at HP", verb: "stop", input: $stopInput)
+                                threshold("Retreat at HP", verb: "retreat", input: $retreatInput)
+                            }
+                            if !feedback.isEmpty { Text(feedback).font(.game(size: 10)) }
+                        }.padding(10).disabled(!enabled)
                     }
                 }
-                HStack(spacing: 4) {
-                    Button("Details") { equipmentProfile = selected }.disabled(!enabled || row == nil)
-                    Button("Refresh") { session.companionCommand("list") }.disabled(session.companions.pending)
-                    Button("Create Party") { session.companionCommand("party") }.disabled(!enabled || !session.party.members.isEmpty)
-                    Button("Release…") { confirmRelease = row?.id }.disabled(!enabled || row == nil || row?.active == true)
-                }.buttonStyle(.game).frame(minHeight: 36)
-                Text(verbatim: session.companions.message).font(.game(size: 10))
-                    .frame(maxWidth: .infinity, alignment: .leading).frame(height: 36)
-            }.padding(.horizontal, 8).padding(.top, 4)
-        }
-        .allowsHitTesting(equipmentProfile == nil)
-        .overlay {
-            if let id = equipmentProfile { CompanionEquipmentView(profileID: id, close: { equipmentProfile = nil }) }
-        }
-        .overlay {
-            if let id = confirmRelease {
-                ClassicGamePanel(title: "Release Companion", width: 310, height: 150, onClose: { confirmRelease = nil }) {
-                    VStack(spacing: 12) {
-                        Text("Permanently release this companion?\nIts level and EXP will be lost.")
-                            .font(.game(size: 12)).multilineTextAlignment(.center)
+            } else {
+                ClassicGamePanel(title: "Companions", width: 356, height: height, tracksCompanion: true, onClose: close) {
+                    VStack(spacing: 3) {
                         HStack {
-                            Button("OK") { session.companionCommand("retire \(id) confirm"); confirmRelease = nil }
-                            Button("Cancel") { confirmRelease = nil }
-                        }.buttonStyle(.game).frame(minHeight: 44)
-                    }
+                            Text("Active \(state.activeCount)/\(CompanionState.activeLimit)").font(.game(weight: .bold))
+                            Spacer()
+                            Text("Roster \(state.profiles.count)/9")
+                            Menu("Manage ▾") {
+                                Menu("Recruit") {
+                                    ForEach(["Swordman","Acolyte","Mage","Archer"], id: \.self) { job in
+                                        Button(job) { send("recruit "+(["Swordman":"knight","Acolyte":"priest","Mage":"wizard","Archer":"hunter"][job] ?? "")) }
+                                    }
+                                }.disabled(!enabled || state.profiles.count >= 9)
+                                Button("Create Party") { send("party") }.disabled(!enabled || !session.party.members.isEmpty)
+                                Button("Refresh") { send("list") }.disabled(state.pending)
+                                Button("Release…") { release = row?.id }.disabled(!enabled || row?.active != false)
+                            }
+                        }.padding(.horizontal, 4).frame(height: 28)
+                        ScrollView {
+                            LazyVStack(spacing: 0) {
+                                ForEach(state.profiles) { member in
+                                    Button { selected = member.id } label: { memberRow(member) }.buttonStyle(.plain)
+                                    Divider()
+                                }
+                                if state.ready && state.profiles.isEmpty { Text("Manage ▸ Recruit").padding(10) }
+                            }
+                        }.border(Color.gameBoxBorder)
+                        HStack(spacing: 3) {
+                            action(row?.active == true ? "Reserve" : "Summon", row?.active == true ? "bench" : "summon", row == nil || (row?.active == false && state.activeCount >= CompanionState.activeLimit))
+                            action("Follow","follow",row?.active != true)
+                            action("Assist","assist",row?.active != true)
+                            action("Stop","stop",row?.active != true || row?.mode == 3)
+                        }.frame(height: 30)
+                        HStack(spacing: 3) {
+                            Button("Details") { details = selected }.disabled(row == nil || !enabled)
+                            Button("Settings") { settings = true }.disabled(!enabled)
+                            Menu {
+                                Button("Assist") { send(state.teamMode != nil ? "teamoff" : "hunt off") }.disabled(mode == "assist")
+                                if state.nearbyHunt != nil { Button("Nearby Hunt") { send("hunt on") }.disabled(mode != "assist") }
+                                if state.teamMode != nil { Button("Mob") { send("mob on") }.disabled(mode != "assist") }
+                            } label: { Text("Team · " + (mode == "nearby" ? "Hunt" : mode.capitalized) + " ▾") }
+                            .disabled(!enabled || (state.teamMode == nil && state.nearbyHunt == nil))
+                            if mode == "mob" || mode == "boss" { Button("Retreat") { send("retreat") }.disabled(!enabled) }
+                        }.buttonStyle(.game).frame(height: 30)
+                        if !feedback.isEmpty { Text(feedback).font(.game(size: 10)).lineLimit(2).frame(maxWidth: .infinity, alignment: .leading) }
+                    }.padding(6)
                 }
             }
+        }
+        .confirmationDialog("Permanently release \(row?.name ?? "companion") and lose its progress?", isPresented: Binding(get: { release != nil }, set: { if !$0 { release = nil } }), titleVisibility: .visible) {
+            Button("Release", role: .destructive) { if let release { send("retire \(release) confirm") }; release = nil }
+            Button("Cancel", role: .cancel) { release = nil }
+        }
+        .onChange(of: state.profiles, initial: true) {
+            if !state.profiles.contains(where: { $0.id == selected }) { selected = state.profiles.first?.id }
+        }
+        .onChange(of: state.completedSequence) {
+            if details == nil && (state.action != "list" || !state.available || !state.ready) { feedback = state.message }
         }
         .task {
-            session.companionCommand("list")
+            send("list")
             while !Task.isCancelled {
-                do { try await Task.sleep(for: .seconds(5)) } catch { break }
-                if session.companions.ready && session.companions.available && !session.companions.pending && confirmRelease == nil && equipmentProfile == nil { session.companionCommand("list") }
+                do { try await Task.sleep(for: .seconds(5)) } catch { return }
+                if !state.pending && details == nil && release == nil { send("list") }
             }
         }
-        .onChange(of: session.companions.profiles) {
-            if let selected, !session.companions.profiles.contains(where: { $0.id == selected }) { self.selected = nil }
+    }
+
+    private func memberRow(_ member: CompanionProfile) -> some View {
+        HStack(spacing: 7) {
+            GameImage("renewalparty/icon_jobs_\(member.job)\(member.mode == 4 ? "_die" : "").bmp").frame(width: 26, height: 32)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(member.name).font(.game(weight: .bold))
+                Text([member.jobName, member.build.map(companionBuildTitle)].compactMap { $0 }.joined(separator: " · ")).font(.game(size: 10)).lineLimit(1)
+            }
+            Spacer(minLength: 2)
+            VStack(alignment: .trailing, spacing: 2) {
+                Text("Lv \(member.level)/\(member.jobLevel) · \(member.stateName)").font(.game(size: 10))
+                if member.hp >= 0 && member.maxHP > 0 {
+                    HPSPBarView(hp: min(Int(member.hp),Int(member.maxHP)), maxHp: Int(member.maxHP), sp: max(0,min(Int(member.sp),Int(member.maxSP))), maxSp: max(1,Int(member.maxSP)), objectType: .pc)
+                        .accessibilityLabel("HP \(member.hp)/\(member.maxHP), SP \(member.sp)/\(member.maxSP)")
+                }
+            }
+        }.padding(.horizontal, 6).frame(height: 44).background(member.id == selected ? Color(red: 0.82,green: 0.89,blue: 1) : Color.white).contentShape(Rectangle())
+    }
+
+    private func action(_ title: String, _ verb: String, _ disabled: Bool) -> some View {
+        Button(title) { if let selected { send("\(verb) \(selected)") } }.buttonStyle(.game).disabled(disabled || !enabled)
+    }
+
+    private func choice(_ title: String, value: String, options: [String], label: (String) -> String, perform: @escaping (String) -> Void) -> some View {
+        let labels = options.map(label)
+        return HStack {
+            Text(title)
+            Spacer()
+            Menu(value + " ▾") {
+                ForEach(Array(options.indices), id: \.self) { i in Button(labels[i]) { perform(options[i]) } }
+            }
+        }.frame(height: 28)
+    }
+
+    private func threshold(_ title: String, verb: String, input: Binding<String>) -> some View {
+        HStack {
+            Text(title)
+            Spacer()
+            TextField("%", text: input).textFieldStyle(.roundedBorder).frame(width: 48)
+            Button("Set") {
+                if let value = Int(input.wrappedValue), (1...99).contains(value) { send("mob \(verb) \(value)") }
+            }.buttonStyle(.game).frame(width: 44, height: 28)
+                .disabled(!(1...99).contains(Int(input.wrappedValue) ?? 0))
         }
     }
-    private func action(_ title: String, verb: String, disabled: Bool) -> some View {
-        Button(title) { if let selected { session.companionCommand("\(verb) \(selected)") } }
-            .buttonStyle(.game).frame(minWidth: 78, minHeight: 40).disabled(!enabled || disabled)
-    }
+}
+
+func companionBuildTitle(_ key: String) -> String {
+    ["sword":"Two-Handed Sword","spear":"Spear","double":"Double Strafe","falcon":"Falcon","support":"Full Support","battle":"Battle Priest","bolt":"Bolt","storm":"Storm Gust","vermilion":"Lord of Vermilion","pillar":"Fire Pillar"][key] ?? key
 }

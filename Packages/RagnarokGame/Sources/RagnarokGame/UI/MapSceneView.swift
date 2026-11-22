@@ -17,6 +17,7 @@ struct MapSceneView: View {
 
     @Environment(PlaySession.self) private var playSession
 
+    @State private var companionFrame: CGRect = .null
     @State private var actionBarHeight: CGFloat = 0
     @State private var presentedMenuItem: MenuItem?
 
@@ -125,7 +126,7 @@ struct MapSceneView: View {
         .overlayPreferenceValue(HUDObstacleKey.self) { obstacles in
             GeometryReader { viewport in
                 let frames = obstacles.map { viewport[$0] }
-                if let slot = questTrackerSlot(in: viewport.size, obstacles: frames) {
+                if companionFrame.isNull, let slot = questTrackerSlot(in: viewport.size, obstacles: frames) {
                     QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
                         .frame(width: slot.width, height: slot.height, alignment: .topLeading)
                         .clipped()
@@ -194,6 +195,8 @@ struct MapSceneView: View {
                 StorageView(storage: storage)
             }
         }
+        .environment(\.companionManagementFrame, companionFrame)
+        .onPreferenceChange(CompanionWindowBounds.self) { companionFrame = $0 }
         .onChange(of: playSession.examAdmissions) { _, _ in
             if playSession.questUI.selectedQuestID == 4011 {
                 playSession.questUI.selectedQuestID = nil
@@ -266,6 +269,28 @@ struct HUDObstacleKey: PreferenceKey {
 
 extension View {
     func hudObstacle() -> some View {
-        anchorPreference(key: HUDObstacleKey.self, value: .bounds) { [$0] }
+        modifier(CompanionHUDVisibility()).anchorPreference(key: HUDObstacleKey.self, value: .bounds) { [$0] }
+    }
+}
+
+struct CompanionWindowBounds: PreferenceKey {
+    static var defaultValue: CGRect { .null }
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = value.union(nextValue())
+    }
+}
+
+private extension EnvironmentValues {
+    @Entry var companionManagementFrame: CGRect = .null
+}
+
+private struct CompanionHUDVisibility: ViewModifier {
+    @Environment(\.companionManagementFrame) var window
+    @State private var bounds: CGRect = .null
+
+    func body(content: Content) -> some View {
+        let covered = bounds.intersects(window)
+        content.opacity(covered ? 0 : 1).allowsHitTesting(!covered).accessibilityHidden(covered)
+            .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { bounds = $0 }
     }
 }
