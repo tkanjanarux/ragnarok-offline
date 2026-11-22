@@ -3,10 +3,9 @@ import XCTest
 @MainActor
 final class Controls: XCTestCase {
     let app = XCUIApplication(bundleIdentifier: "com.github.arkadeleon.ragnarok-offline")
-    override func setUp() {
-        super.setUp()
+    func start() {
         continueAfterFailure = false
-        XCUIDevice.shared.orientation = .portrait
+        XCUIDevice.shared.orientation = .landscapeLeft
         app.launch()
         XCTAssertTrue(app.buttons["roster-2"].waitForExistence(timeout: 15), app.debugDescription)
         app.buttons["roster-2"].tap()
@@ -24,6 +23,7 @@ final class Controls: XCTestCase {
         b.tap()
     }
     func testPartyOrdersAndManagement() {
+        start()
         tap("Stop"); tap("Follow"); tap("Assist")
         tap("Reserve"); tap("Summon"); tap("Reserve")
         menu("Manage"); tap("Recruit")
@@ -36,6 +36,7 @@ final class Controls: XCTestCase {
         menu("Manage"); tap("Create Party")
     }
     func testTeamModesAndSettings() {
+        start()
         menu("Team"); tap("Nearby Hunt")
         menu("Team"); tap("Assist")
         menu("Team"); tap("Mob"); tap("Retreat")
@@ -51,6 +52,7 @@ final class Controls: XCTestCase {
         menu("Close Companion Settings")
     }
     func testEquipmentAndSkills() {
+        start()
         tap("Stop"); tap("Details")
         tap("slot-2"); tap("Unequip")
         tap("gear:1"); tap("Equip")
@@ -61,6 +63,7 @@ final class Controls: XCTestCase {
         tap("Close AI-Knight-2")
     }
     func testBagAndSupplies() {
+        start()
         tap("Reserve"); tap("Details")
         tap("Your Bag"); tap("bag:5:101"); tap("Give")
         tap("supplybag:7:501"); tap("+"); tap("−"); tap("Give")
