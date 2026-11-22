@@ -100,7 +100,7 @@ extension MapObjectHit {
         let hits = (0..<count).map { i in
             MapObjectHit(
                 delay: .milliseconds(objectSkill.attackDelay) + MapObjectHit.multiHitInterval * i,
-                damage: damage / count,
+                damage: damage * (i + 1) / count - damage * i / count,
                 combo: showsCombo ? MapObjectHit.Combo(damage: damage * (i + 1) / count, isFinal: i + 1 == count) : nil
             )
         }

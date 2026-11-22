@@ -28,6 +28,7 @@ struct MapSceneRenderSnapshot {
     struct TileSelector {
         let position: SIMD2<Int>
         let cell: MapGrid.Cell
+        var color: SIMD4<Float> = [1, 1, 1, 1]
     }
 
     struct TargetSelector {
@@ -49,6 +50,7 @@ struct MapSceneRenderSnapshot {
 
     var fog: Fog
     var world: WorldRenderResource?
+    var groundTiles: [TileSelector] = []
     var tileSelector: TileSelector?
     var targetSelector: TargetSelector?
     var spriteDrawables: [SpriteDrawable] = []

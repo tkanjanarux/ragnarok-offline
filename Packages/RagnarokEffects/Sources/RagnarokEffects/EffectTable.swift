@@ -33,6 +33,14 @@ public enum EffectTable {
 
     // Keep entries sorted in ascending order by `EffectID.rawValue`.
     private static let table: [EffectID : [EffectDefinition]] = [
+        .ef_firewall: [.str(fileName: "firewall1.str", attachedToTarget: false)],
+        .ef_sanctuary: [.str(fileName: "sanctuary.str", attachedToTarget: false)],
+        .ef_pneuma: [.str(fileName: "pneuma1.str", attachedToTarget: false)],
+        .ef_firepillar: [.str(fileName: "firepillar.str", attachedToTarget: false)],
+        .ef_firepillarbomb: [.str(fileName: "firepillarbomb.str", attachedToTarget: false)],
+        .ef_stormgust: [.str(fileName: "stormgust.str", attachedToTarget: false)],
+        .ef_lord: [.str(fileName: "lord.str", attachedToTarget: false)],
+        .ef_quagmire: [.str(fileName: "quagmire.str", attachedToTarget: false)],
         .ef_potion1: potion("lens_r.bmp"),
         .ef_potion2: potion("lens_r.bmp"),
         .ef_potion3: potion("lens_y.bmp"),

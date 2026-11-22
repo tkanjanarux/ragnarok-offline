@@ -58,7 +58,7 @@ final class TileSelectorRenderer {
         )
 
         var fragmentUniforms = TileFragmentUniforms(
-            color: [1, 1, 1, 1],
+            color: tileSelector.color,
             fogUse: fog.isEnabled ? 1 : 0,
             fogNear: fog.near,
             fogFar: fog.far,

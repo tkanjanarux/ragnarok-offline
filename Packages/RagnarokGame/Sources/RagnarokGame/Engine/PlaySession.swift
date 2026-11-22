@@ -374,6 +374,21 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_SKILL:
             let objectSkill = MapObjectSkill(from: packet)
             mapScene?.onMapObjectSkillPerformed(objectSkill: objectSkill)
+            if packet.damage > 0 {
+                let member = companions.profiles.first { $0.actor == packet.targetID }
+                if packet.targetID == account.accountID || member != nil || party.members.contains(where: { $0.id == packet.targetID }) {
+                    let skill = context.skillInfoTable.localizedSkillName(forSkillID: Int(packet.SKID))
+                        ?? objectSkill.skillID?.stringValue ?? "Skill #\(packet.SKID)"
+                    let target = mapScene?.objects[packet.targetID]?.name ?? member?.name ?? "#\(packet.targetID)"
+                    let label = "\(skill) −\(packet.damage)"
+                    messageCenter.messages.append(.init(content: "\(target) · \(label)", type: .info, category: .battle))
+                    mapScene?.showSkillDamage(label, target: packet.targetID)
+                }
+            }
+        case let packet as packet_skill_entry:
+            mapScene?.updateGroundUnit(packet)
+        case let packet as PACKET_ZC_SKILL_DISAPPEAR:
+            mapScene?.removeGroundUnit(packet.GID)
         case let packet as PACKET_ZC_NOTIFY_GROUNDSKILL:
             if let skillID = SkillID(rawValue: Int(packet.SKID)) {
                 let position = SIMD2(Int(packet.xPos), Int(packet.yPos))

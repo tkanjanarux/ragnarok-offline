@@ -57,6 +57,63 @@ public final class MapScene {
                             position: worldPosition(for: actor), expires: .now + .seconds(4))
     }
 
+    var skillDamage: [GameObjectID: Speech] = [:]
+
+    func showSkillDamage(_ label: String, target: GameObjectID) {
+        guard let actor = objects[target] else { return }
+        skillDamage[target] = Speech(text: TextDescriptor(text: AttributedString(label), bubble: true),
+                                     position: worldPosition(for: actor), expires: .now + .seconds(2))
+    }
+
+    struct GroundUnit {
+        let kind: Int32
+        let position: SIMD2<Int>
+        let effect: UUID?
+
+        var color: SIMD4<Float> {
+            switch kind {
+            case 127, 135, 136: [1, 0.22, 0.04, 1]
+            case 126, 128, 129, 131, 133: [0.15, 1, 0.85, 1]
+            case 141: [0.45, 0.8, 1, 1]
+            case 142: [0.65, 0.95, 0.2, 1]
+            default: [1, 0.78, 0.08, 1]
+            }
+        }
+    }
+    var groundUnits: [UInt32: GroundUnit] = [:]
+
+    func removeGroundUnit(_ id: UInt32) {
+        if let effect = groundUnits.removeValue(forKey: id)?.effect { effects.removeValue(forKey: effect) }
+    }
+
+    func updateGroundUnit(_ packet: packet_skill_entry) {
+        let position = SIMD2(Int(packet.xPos), Int(packet.yPos))
+        guard packet.isVisible != 0, ![134, 137, 139].contains(packet.job), mapGrid.contains(position) else {
+            removeGroundUnit(packet.AID)
+            return
+        }
+        if let old = groundUnits[packet.AID], old.position == position, old.kind == packet.job { return }
+        removeGroundUnit(packet.AID)
+        let art: EffectID? = switch packet.job {
+        case 127: .ef_firewall
+        case 128, 129: .ef_warpzone2
+        case 131: .ef_sanctuary
+        case 133: .ef_pneuma
+        case 135: .ef_firepillar
+        case 136: .ef_firepillarbomb
+        case 142: .ef_quagmire
+        default: nil
+        }
+        var effectID: UUID?
+        if let art {
+            let effect = MapSceneEffect(reference: .id(art), creationTime: CACurrentMediaTime(),
+                                        gridPosition: position, targetObjectID: nil, ownerObjectID: nil)
+            effects[effect.id] = effect
+            effectID = effect.id
+        }
+        groundUnits[packet.AID] = GroundUnit(kind: packet.job, position: position, effect: effectID)
+    }
+
     var combatTexts: [CombatText] = []
     var tileSelector: TileSelector?
     var targetSelector: TargetSelector?
@@ -150,6 +207,8 @@ public final class MapScene {
         items.removeAll()
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
+        groundUnits.removeAll()
+        skillDamage.removeAll()
         combatTexts.removeAll()
         tileSelector = nil
         selectTarget(nil)
@@ -163,6 +222,8 @@ public final class MapScene {
         items.removeAll()
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
+        groundUnits.removeAll()
+        skillDamage.removeAll()
         combatTexts.removeAll()
         tileSelector = nil
         selectTarget(nil)

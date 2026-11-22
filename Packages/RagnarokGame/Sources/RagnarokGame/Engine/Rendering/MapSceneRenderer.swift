@@ -166,7 +166,7 @@ final class MapSceneRenderer {
             renderCommandEncoder: renderCommandEncoder
         )
 
-        if let tileSelector = snapshot.tileSelector {
+        for tileSelector in snapshot.groundTiles + [snapshot.tileSelector].compactMap({ $0 }) {
             tileSelectorRenderer.render(
                 tileSelector: tileSelector,
                 fog: snapshot.fog,

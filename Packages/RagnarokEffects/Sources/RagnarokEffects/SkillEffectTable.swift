@@ -53,6 +53,11 @@ public enum SkillEffectTable {
             beforeHitEffects: [.name("ef_firebolt")],
             hitEffects: [.id(.ef_firehit)]
         ),
+        .mg_firewall: .init(hitEffects: [.id(.ef_firehit)]),
+        .wz_firepillar: .init(hitEffects: [.id(.ef_firehit)]),
+        .wz_sightrasher: .init(hitEffects: [.id(.ef_firehit)]),
+        .wz_stormgust: .init(effects: [.id(.ef_stormgust)], hitEffects: [.id(.ef_coldhit)]),
+        .wz_vermilion: .init(effects: [.id(.ef_lord)], hitEffects: [.id(.ef_windhit)]),
         .al_heal: .init(
             effects: [.id(.ef_heal)],
             hitEffects: [.id(.ef_heal3)]

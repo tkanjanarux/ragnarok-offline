@@ -114,13 +114,22 @@ final class MapSceneRuntime {
         var snapshot = MapSceneRenderSnapshot(fog: scene.fog)
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
+        snapshot.groundTiles = scene.groundUnits.values.map {
+            .init(position: $0.position, cell: scene.mapGrid[$0.position], color: $0.color)
+        }
         snapshot.targetSelector = makeTargetSelector(at: time)
         snapshot.spriteDrawables = renderResources.spriteDrawables
         snapshot.effects = makeEffects(worldPositions: worldPositions)
         snapshot.bars = makeBars(at: time, worldPositions: worldPositions)
         snapshot.texts = makeTexts(worldPositions: worldPositions)
         scene.speech = scene.speech.filter { $0.value.expires > time }
-        let bubbles = renderResources.bubbleTextures.synchronize(texts: scene.speech.values.map(\.text))
+        scene.skillDamage = scene.skillDamage.filter { $0.value.expires > time }
+        let bubbles = renderResources.bubbleTextures.synchronize(texts: scene.speech.values.map(\.text) + scene.skillDamage.values.map(\.text))
+        for (id, label) in scene.skillDamage {
+            guard let texture = bubbles[label.text] else { continue }
+            let mesh = TextMesh(size: label.text.size, top: 75 + label.text.size.y)
+            snapshot.texts.append(.init(vertices: mesh.vertices, worldPosition: worldPositions[id] ?? label.position, texture: texture))
+        }
         for (id, bubble) in scene.speech {
             guard let texture = bubbles[bubble.text] else { continue }
             let mesh = TextMesh(size: bubble.text.size, top: 42 + bubble.text.size.y)
