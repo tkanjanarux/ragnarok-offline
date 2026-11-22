@@ -208,7 +208,7 @@ struct CompanionState {
             guard expected != nil, incomingTeam == nil, (5...6).contains(t.count),
                   t.count == 5 || ["auto","priest","knight"].contains(t[5]),
                   ["assist","nearby","mob","boss","retreat"].contains(t[3]),
-                  let cap = Int(t[4]), (1...10).contains(cap) else { timeout(sequence); return true }
+                  let cap = Int(t[4]), (1...30).contains(cap) else { timeout(sequence); return true }
             incomingTeam = (t[3], cap, t.count == 6 ? t[5] : nil)
         case "hunt":
             guard expected != nil, incomingHunt == nil, t.count == 4, ["0","1"].contains(t[3]) else { timeout(sequence); return true }

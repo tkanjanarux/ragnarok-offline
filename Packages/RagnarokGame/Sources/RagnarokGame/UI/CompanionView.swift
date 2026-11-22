@@ -70,7 +70,7 @@ struct CompanionView: View {
                                     choice("Puller", value: puller.capitalized, options: ["auto","priest","knight"], label: { $0.capitalized }) { send("mob puller "+$0) }
                                         .disabled(mode != "assist")
                                 }
-                                choice("Mob limit", value: String(state.mobCap), options: (1...10).map { String($0) }, label: { $0 }) { send("mob "+$0) }
+                                choice("Mob limit", value: String(state.mobCap), options: (1...30).map { String($0) }, label: { $0 }) { send("mob "+$0) }
                                 threshold("Pause pulling at HP", verb: "stop", input: $stopInput)
                                 threshold("Retreat at HP", verb: "retreat", input: $retreatInput)
                             }
