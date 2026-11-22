@@ -1,0 +1,32 @@
+name: Companion simulator diagnostics
+on:
+  push:
+    branches: [qa/companion-simulator-diagnostics]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read simulator failure
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/44997927599/logs" > /tmp/companion-run.zip
+          python3 - <<'PY'
+          import zipfile,re
+          z=zipfile.ZipFile('/tmp/companion-run.zip')
+          lines=[]
+          for f in z.namelist():
+              if 'Capture iPhone simulator' not in f:continue
+              for s in z.read(f).decode(errors='replace').splitlines():
+                  if re.search(r'error:|error domain|NSPOSIXErrorDomain|failed to|Unable to|underlying error|invalid argument|not supported|simctl:|not contain|missing bundle|\.app is|ApplicationVerification|SimulatorTrampoline|no such file|not found|Command line invocation|Invalid executable|not compatible|unrecognized',s,re.I):
+                      lines.append(s[:1800])
+              lines+=z.read(f).decode(errors='replace').splitlines()[-30:]
+          open('simulator-diagnostic.txt','w').write('\n'.join(lines[-90:]))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simulator-diagnostic
+          path: simulator-diagnostic.txt
