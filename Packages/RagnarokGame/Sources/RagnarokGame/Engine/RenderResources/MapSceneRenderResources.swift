@@ -7,6 +7,7 @@
 
 import Foundation
 import Metal
+import QuartzCore
 import RagnarokEffects
 import RagnarokRenderAssets
 import RagnarokRendering
@@ -138,7 +139,7 @@ final class MapSceneRenderResources {
                 let resourceGroup = EffectRenderResourceGroup(
                     device: device,
                     assetGroup: assetGroup,
-                    creationTime: effect.creationTime,
+                    creationTime: effect.startsWhenLoaded ? CACurrentMediaTime() : effect.creationTime,
                     delay: effect.delay,
                     duration: effect.duration,
                     worldPosition: worldPosition,

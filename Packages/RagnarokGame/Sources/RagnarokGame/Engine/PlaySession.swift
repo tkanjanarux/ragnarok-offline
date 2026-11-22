@@ -556,6 +556,7 @@ final class PlaySession {
             let headDirection = HeadDirection(rawValue: Int(packet.headDir)) ?? .lookForward
             mapScene?.onMapObjectDirectionChanged(objectID: packet.srcId, direction: direction, headDirection: headDirection)
         case let packet as PACKET_ZC_SPRITE_CHANGE:
+            if packet.type == 0 { mapScene?.changeGroundUnitLook(packet.AID, kind: Int32(packet.val)) }
             if let look = Look(rawValue: Int(packet.type)) {
                 mapScene?.onMapObjectSpriteChanged(objectID: packet.AID, look: look, value: Int(packet.val), value2: Int(packet.val2))
             }
@@ -1144,7 +1145,21 @@ final class PlaySession {
         }
     }
 
+    @ObservationIgnored private var checkingGroundEffects = false
+
     private func performSlashCommand(_ message: String) {
+        if message.lowercased() == "/effectfiles" {
+            guard !checkingGroundEffects else { return }
+            checkingGroundEffects = true
+            messageCenter.messages.append(.init(content: "กำลังตรวจไฟล์เอฟเฟกต์ในไคลเอนต์…", type: .info, category: .general))
+            Task {
+                defer { checkingGroundEffects = false }
+                await GroundEffectFiles.inspect(context.resourceManager) { line in
+                    messageCenter.messages.append(.init(content: line, type: .info, category: .general))
+                }
+            }
+            return
+        }
         guard let slashCommand = SlashCommand(message: message) else {
             messageCenter.addUnknownSlashCommandMessage()
             return

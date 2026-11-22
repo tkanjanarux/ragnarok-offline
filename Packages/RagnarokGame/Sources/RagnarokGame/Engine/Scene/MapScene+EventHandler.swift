@@ -509,14 +509,16 @@ extension MapScene {
 
         let currentTime = CACurrentMediaTime()
 
-        for effectReference in SkillEffectTable.effects(for: skillID) {
+        let art: [EffectReference] = skillID == .wz_firepillar ? [.id(.ef_firepillar)] : SkillEffectTable.effects(for: skillID)
+        for effectReference in art {
             let effect = MapSceneEffect(
                 reference: effectReference,
                 creationTime: currentTime,
                 gridPosition: position,
                 sourceWorldPosition: worldPosition(forObjectID: sourceObjectID),
                 targetObjectID: nil,
-                ownerObjectID: nil
+                ownerObjectID: nil,
+                startsWhenLoaded: true
             )
             effects[effect.id] = effect
         }

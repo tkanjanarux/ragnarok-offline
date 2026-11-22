@@ -26,6 +26,7 @@ final class MapSceneEffect: Identifiable {
 
     let delay: TimeInterval
 
+    let startsWhenLoaded: Bool
     let duration: TimeInterval?
 
     init(
@@ -36,7 +37,8 @@ final class MapSceneEffect: Identifiable {
         targetObjectID: GameObjectID?,
         ownerObjectID: GameObjectID?,
         delay: TimeInterval = 0,
-        duration: TimeInterval? = nil
+        duration: TimeInterval? = nil,
+        startsWhenLoaded: Bool = false
     ) {
         self.id = UUID()
         self.reference = reference
@@ -47,5 +49,6 @@ final class MapSceneEffect: Identifiable {
         self.ownerObjectID = ownerObjectID
         self.delay = delay
         self.duration = duration
+        self.startsWhenLoaded = startsWhenLoaded
     }
 }

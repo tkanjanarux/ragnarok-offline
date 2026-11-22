@@ -31,8 +31,30 @@ public enum EffectTable {
         )]
     }
 
+    private static let portalRing = EffectDefinition.cylinder(
+        textureName: "ring_blue.tga", duration: 0.5, repeats: true, attachedToTarget: false, rendersBeforeEntities: true,
+        blendMode: .one, color: [0.6, 0.6, 1], alpha: 0.4, fades: true, topRadius: 3.9, bottomRadius: 2.4,
+        height: 0.1, animation: .growRadius, positionOffset: [0, 0, 0.1], rotatesContinuously: true
+    )
+
     // Keep entries sorted in ascending order by `EffectID.rawValue`.
     private static let table: [EffectID : [EffectDefinition]] = [
+        .ef_firepillaron: [(2.0, 1.0, 3.0), (1.5, 0.7, 5.0), (1.0, 0.5, 7.0)].map { (top: Float, bottom: Float, height: Float) in
+            .cylinder(textureName: "magic_red.tga", duration: 5, repeats: true, attachedToTarget: false,
+                      blendMode: .one, topRadius: top, bottomRadius: bottom, height: height, rotatesContinuously: true)
+        },
+        .ef_glasswall2: [.str(fileName: "safetywall.str", attachedToTarget: false)],
+        .ef_bottom_sanc: [.cylinder(textureName: "magic_green.tga", duration: 5, repeats: true, attachedToTarget: false,
+                                    blendMode: .one, color: [0.5, 0.9, 0.5], alpha: 0.3, topRadius: 0.7, bottomRadius: 0.7,
+                                    height: 2, totalCircleSides: 4)],
+        .ef_readyportal2: [portalRing],
+        .ef_portal2: [portalRing,
+                      .cylinder(textureName: "ring_blue.tga", duration: 25, repeats: true, attachedToTarget: false,
+                                blendMode: .one, color: [0.6, 0.6, 1], alpha: 0.3, topRadius: 0.6, bottomRadius: 0.6,
+                                height: 15, rotatesContinuously: true),
+                      .cylinder(textureName: "ring_blue.tga", duration: 25, repeats: true, attachedToTarget: false,
+                                blendMode: .one, color: [0.6, 0.6, 1], alpha: 0.3, topRadius: 0.8, bottomRadius: 0.8,
+                                height: 13, rotatesContinuously: true)],
         .ef_firewall: [.str(fileName: "firewall1.str", attachedToTarget: false)],
         .ef_sanctuary: [.str(fileName: "sanctuary.str", attachedToTarget: false)],
         .ef_pneuma: [.str(fileName: "pneuma1.str", attachedToTarget: false)],

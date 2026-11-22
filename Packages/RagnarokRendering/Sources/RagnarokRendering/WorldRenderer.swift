@@ -55,6 +55,7 @@ public final class WorldRenderer {
 
     public func renderGroundAndModels(
         resource: WorldRenderResource,
+        additionalModels: [RSMModelRenderResource] = [],
         atTime time: TimeInterval,
         fog: Fog,
         modelMatrix: simd_float4x4,
@@ -71,7 +72,7 @@ public final class WorldRenderer {
         )
 
         modelRenderer.render(
-            resources: resource.modelResources,
+            resources: additionalModels.isEmpty ? resource.modelResources : resource.modelResources + additionalModels,
             atTime: time,
             fog: fog,
             modelMatrix: modelMatrix,

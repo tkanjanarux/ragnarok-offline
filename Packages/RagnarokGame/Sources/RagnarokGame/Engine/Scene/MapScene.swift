@@ -81,6 +81,7 @@ public final class MapScene {
             }
         }
     }
+    private(set) var groundRevision: UInt64 = 0
     var groundUnits: [UInt32: GroundUnit] = [:]
 
     // Terrain is immutable for the scene. Rebuild marker vertices' inputs only
@@ -111,8 +112,21 @@ public final class MapScene {
 
     func removeGroundUnit(_ id: UInt32) {
         guard let unit = groundUnits.removeValue(forKey: id) else { return }
+        groundRevision &+= 1
         groundTilesDirty = true
         if let effect = unit.effect { effects.removeValue(forKey: effect) }
+    }
+
+    func changeGroundUnitLook(_ id: UInt32, kind: Int32) {
+        guard let unit = groundUnits[id], unit.kind != kind else { return }
+        var packet = packet_skill_entry()
+        packet.AID = id
+        packet.job = kind
+        packet.isVisible = 1
+        packet.xPos = Int16(unit.position.x)
+        packet.yPos = Int16(unit.position.y)
+        packet.RadiusRange = Int8(unit.radius)
+        updateGroundUnit(packet)
     }
 
     func updateGroundUnit(_ packet: packet_skill_entry) {
@@ -125,11 +139,13 @@ public final class MapScene {
         if let old = groundUnits[packet.AID], old.position == position, old.kind == packet.job, old.radius == radius { return }
         removeGroundUnit(packet.AID)
         let art: EffectID? = switch packet.job {
+        case 126: .ef_glasswall2
         case 127: .ef_firewall
-        case 128, 129: .ef_warpzone2
-        case 131: .ef_sanctuary
+        case 128: .ef_portal2
+        case 129: .ef_readyportal2
+        case 131: .ef_bottom_sanc
         case 133: .ef_pneuma
-        case 135: .ef_firepillar
+        case 135: .ef_firepillaron
         case 136: .ef_firepillarbomb
         case 142: .ef_quagmire
         default: nil
@@ -137,11 +153,15 @@ public final class MapScene {
         var effectID: UUID?
         if let art {
             let effect = MapSceneEffect(reference: .id(art), creationTime: CACurrentMediaTime(),
-                                        gridPosition: position, targetObjectID: nil, ownerObjectID: nil)
+                                        gridPosition: position, targetObjectID: nil, ownerObjectID: nil,
+                                        duration: [126, 127, 133, 142].contains(packet.job) ? .infinity : nil,
+                                        startsWhenLoaded: true)
             effects[effect.id] = effect
-            effectID = effect.id
+            // The server may remove an activated pillar before the explosion has finished.
+            if packet.job != 136 { effectID = effect.id }
         }
         groundUnits[packet.AID] = GroundUnit(kind: packet.job, position: position, radius: radius, effect: effectID)
+        groundRevision &+= 1
         groundTilesDirty = true
     }
 
@@ -238,6 +258,7 @@ public final class MapScene {
         items.removeAll()
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
+        groundRevision &+= 1
         groundUnits.removeAll()
         groundTiles.removeAll()
         skillDamage.removeAll()
@@ -254,6 +275,7 @@ public final class MapScene {
         items.removeAll()
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
+        groundRevision &+= 1
         groundUnits.removeAll()
         groundTiles.removeAll()
         skillDamage.removeAll()

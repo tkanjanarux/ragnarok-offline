@@ -18,6 +18,7 @@ final class MapSceneRuntime {
     private static let cameraTargetOffset = SIMD3<Float>(0, 0.5, 0)
     private static let cameraFieldOfViewDegrees: Float = 15
 
+    private let trapModels: GroundTrapModels
     let scene: MapScene
     let world: WorldResource
     let renderResources: MapSceneRenderResources
@@ -28,6 +29,7 @@ final class MapSceneRuntime {
         world: WorldResource,
         renderResources: MapSceneRenderResources
     ) {
+        trapModels = GroundTrapModels(device: renderResources.device, manager: scene.resourceManager, light: WorldLight(light: world.rsw.light))
         self.scene = scene
         self.world = world
         self.renderResources = renderResources
@@ -58,6 +60,7 @@ final class MapSceneRuntime {
 
     func update(at time: ContinuousClock.Instant, renderTime: TimeInterval) {
         scene.update(at: time)
+        trapModels.synchronize(scene: scene)
 
         for effectID in renderResources.expiredEffectIDs(atTime: renderTime) {
             scene.removeEffect(objectID: effectID)
@@ -112,6 +115,7 @@ final class MapSceneRuntime {
         let worldPositions = makeWorldPositions()
 
         var snapshot = MapSceneRenderSnapshot(fog: scene.fog)
+        snapshot.traps = trapModels.resources
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
         snapshot.groundTiles = scene.visibleGroundTiles()

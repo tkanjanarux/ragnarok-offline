@@ -49,6 +49,7 @@ struct MapSceneRenderSnapshot {
     }
 
     var fog: Fog
+    var traps: [RSMModelRenderResource] = []
     var world: WorldRenderResource?
     var groundTiles: [TileSelector] = []
     var tileSelector: TileSelector?

@@ -96,6 +96,7 @@ final class MapSceneRenderer {
         if let world = snapshot.world {
             worldRenderer.renderGroundAndModels(
                 resource: world,
+                additionalModels: snapshot.traps,
                 atTime: time,
                 fog: snapshot.fog,
                 modelMatrix: modelMatrix,
