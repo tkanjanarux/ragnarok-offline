@@ -66,6 +66,10 @@ struct CompanionView: View {
                                 choice("Speech", value: voice.capitalized, options: ["off","quiet","normal","chatty"], label: { $0.capitalized }) { send("talk "+$0) }
                             }
                             if state.teamMode != nil {
+                                if let puller = state.mobPuller {
+                                    choice("Puller", value: puller.capitalized, options: ["auto","priest","knight"], label: { $0.capitalized }) { send("mob puller "+$0) }
+                                        .disabled(mode != "assist")
+                                }
                                 choice("Mob limit", value: String(state.mobCap), options: (1...10).map { String($0) }, label: { $0 }) { send("mob "+$0) }
                                 threshold("Pause pulling at HP", verb: "stop", input: $stopInput)
                                 threshold("Retreat at HP", verb: "retreat", input: $retreatInput)
@@ -185,5 +189,5 @@ struct CompanionView: View {
 }
 
 func companionBuildTitle(_ key: String) -> String {
-    ["sword":"Two-Handed Sword","spear":"Spear","double":"Double Strafe","falcon":"Falcon","support":"Full Support","battle":"Battle Priest","bolt":"Bolt","storm":"Storm Gust","vermilion":"Lord of Vermilion","pillar":"Fire Pillar"][key] ?? key
+    ["sword":"Two-Handed Sword","spear":"Spear","double":"Double Strafe","falcon":"Falcon","support":"Full Support","battle":"Battle Priest","mobber":"Puller Priest","bolt":"Bolt","storm":"Storm Gust","vermilion":"Lord of Vermilion","pillar":"Fire Pillar"][key] ?? key
 }

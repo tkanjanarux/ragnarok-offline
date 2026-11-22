@@ -23,7 +23,7 @@ struct CompanionProfile: Identifiable, Equatable {
         switch job {
         case 1,7: ["sword","spear"]
         case 3,11: ["double","falcon"]
-        case 4,8: ["support","battle"]
+        case 4,8: ["support","battle","mobber"]
         default: ["bolt","storm","vermilion","pillar"]
         }
     }
@@ -152,7 +152,8 @@ struct CompanionState {
     var profiles: [CompanionProfile] = []
     private(set) var teamMode: String?
     private(set) var mobCap = 5
-    private var incomingTeam: (String, Int)?
+    private(set) var mobPuller: String?
+    private var incomingTeam: (String, Int, String?)?
     private(set) var nearbyHunt: Bool?
     private(set) var voice: String?
     private var incomingVoice: String?
@@ -204,10 +205,11 @@ struct CompanionState {
                   ["off","quiet","normal","chatty"].contains(t[3]) else { timeout(sequence); return true }
             incomingVoice = t[3]
         case "team":
-            guard expected != nil, incomingTeam == nil, t.count == 5,
+            guard expected != nil, incomingTeam == nil, (5...6).contains(t.count),
+                  t.count == 5 || ["auto","priest","knight"].contains(t[5]),
                   ["assist","nearby","mob","boss","retreat"].contains(t[3]),
                   let cap = Int(t[4]), (1...10).contains(cap) else { timeout(sequence); return true }
-            incomingTeam = (t[3], cap)
+            incomingTeam = (t[3], cap, t.count == 6 ? t[5] : nil)
         case "hunt":
             guard expected != nil, incomingHunt == nil, t.count == 4, ["0","1"].contains(t[3]) else { timeout(sequence); return true }
             incomingHunt = t[3] == "1"
@@ -296,6 +298,7 @@ struct CompanionState {
                 activity = ["In reserve", "Dead — needs revival or camp recovery", "Stopped — actions and potions paused", "Not in owner's party", "Resting to recover HP/SP", "Following — Assist to fight", "Assisting — waiting for target or support need", "Low HP — no HP potions", "Low SP — no SP potions", "Fighting"][d.reason]
             }
             voice = incomingVoice
+            mobPuller = incomingTeam?.2
             teamMode = incomingTeam?.0
             mobCap = incomingTeam?.1 ?? 5
             nearbyHunt = incomingHunt
