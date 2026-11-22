@@ -5,10 +5,16 @@ final class Controls: XCTestCase {
     let app = XCUIApplication(bundleIdentifier: "com.github.arkadeleon.ragnarok-offline")
     func start() {
         continueAfterFailure = false
-        XCUIDevice.shared.orientation = .landscapeLeft
+        XCUIDevice.shared.orientation = .portrait
         app.launch()
         XCTAssertTrue(app.buttons["roster-2"].waitForExistence(timeout: 15), app.debugDescription)
         app.buttons["roster-2"].tap()
+    }
+    func movePanel(_ title: String) {
+        let h = app.staticTexts[title].firstMatch
+        XCTAssertTrue(h.waitForExistence(timeout: 5), app.debugDescription)
+        let from = h.coordinate(withNormalizedOffset: CGVector(dx: 0.22, dy: 0.5))
+        from.press(forDuration: 0.2, thenDragTo: from.withOffset(CGVector(dx: -108, dy: 112)))
     }
     func button(_ label: String) -> XCUIElement { app.buttons[label].firstMatch }
     func tap(_ label: String) {
@@ -30,8 +36,13 @@ final class Controls: XCTestCase {
         for job in ["Swordman","Acolyte","Mage","Archer"] { XCTAssertTrue(button(job).exists,app.debugDescription) }
         tap("Archer")
         menu("Manage"); menu("Release")
-        XCTAssertTrue(app.buttons["Cancel"].exists)
-        tap("Cancel")
+        if button("Cancel").waitForExistence(timeout: 3) {
+            tap("Cancel")
+        } else if button("Release").exists {
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.08,dy: 0.87)).tap()
+        } else {
+            XCTFail(app.debugDescription)
+        }
         menu("Manage"); tap("Refresh")
         menu("Manage"); tap("Create Party")
     }
@@ -41,7 +52,7 @@ final class Controls: XCTestCase {
         menu("Team"); tap("Assist")
         menu("Team"); tap("Mob"); tap("Retreat")
         menu("Team"); tap("Assist")
-        tap("Reserve"); tap("Settings")
+        tap("Reserve"); tap("Settings"); movePanel("Companion Settings")
         menu("Two-Handed Sword"); tap("Spear")
         menu("Custom"); tap("Protect")
         menu("Normal"); tap("Quiet")
@@ -53,7 +64,7 @@ final class Controls: XCTestCase {
     }
     func testEquipmentAndSkills() {
         start()
-        tap("Stop"); tap("Details")
+        tap("Stop"); tap("Details"); movePanel("AI-Knight-2")
         tap("slot-2"); tap("Unequip")
         tap("gear:1"); tap("Equip")
         tap("Skills")
@@ -64,7 +75,7 @@ final class Controls: XCTestCase {
     }
     func testBagAndSupplies() {
         start()
-        tap("Reserve"); tap("Details")
+        tap("Reserve"); tap("Details"); movePanel("AI-Knight-2")
         tap("Your Bag"); tap("bag:5:101"); tap("Give")
         tap("supplybag:7:501"); tap("+"); tap("−"); tap("Give")
         tap("Supplies"); tap("supply:501"); tap("Return")
