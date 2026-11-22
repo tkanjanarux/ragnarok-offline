@@ -1,0 +1,21 @@
+name: Cancel superseded companion QA
+on:
+  push:
+    branches: [qa/companion-cancel-superseded]
+permissions:
+  actions: write
+  contents: read
+jobs:
+  release-runners:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release slots used by superseded revisions of this UI change
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in 44998398772 44998586053 44998710162 44998753830; do
+            status=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$id" --jq .status)
+            if [[ "$status" == queued || "$status" == in_progress ]]; then
+              gh api -X POST "repos/$GITHUB_REPOSITORY/actions/runs/$id/cancel"
+            fi
+          done
