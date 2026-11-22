@@ -51,6 +51,7 @@ struct CompanionEquipment: Identifiable, Equatable {
     let itemID: UInt32
     let equipped: Bool
     let returning: Bool
+    var equipMask: UInt32 = 0
     var details = CompanionItemDetails.plain
 }
 struct CompanionBagItem: Identifiable, Equatable {
@@ -237,7 +238,7 @@ struct CompanionState {
                   let id = UInt32(t[3]), id > 0, let item = UInt32(t[4]), item > 0,
                   let mask = UInt32(t[5]), t[6] == "0" || t[6] == "1",
                   !incomingGear.contains(where: { $0.id == id }) else { timeout(sequence); return true }
-            incomingGear.append(CompanionEquipment(id: id, itemID: item, equipped: mask != 0, returning: t[6] == "1", details: details))
+            incomingGear.append(CompanionEquipment(id: id, itemID: item, equipped: mask != 0, returning: t[6] == "1", equipMask: mask, details: details))
         case "bag":
             guard let g = gearExpected, incomingBag.count < g.bag, t.count >= 6, let details = CompanionItemDetails.parse(t.dropFirst(6)),
                   let slot = UInt32(t[3]), (1...200).contains(slot), let item = UInt32(t[4]), item > 0,

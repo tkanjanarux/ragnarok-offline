@@ -51,6 +51,8 @@ struct PartyView: View {
                 .background { GameImage("basic_interface/btnbar_mid.bmp") { $0.resizable() }.allowsHitTesting(false) }
             }
         }
+        .opacity(showCompanions ? 0 : 1)
+        .allowsHitTesting(!showCompanions)
         .overlay {
             if showSetup { PartySetupView { showSetup = false } }
             if showCompanions { CompanionView { showCompanions = false } }

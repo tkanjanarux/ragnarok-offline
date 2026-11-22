@@ -6,6 +6,7 @@ struct ClassicGamePanel<Content: View>: View {
     let width: CGFloat
     let height: CGFloat
     var preferredOffset: CGSize = .zero
+    var tracksCompanion = false
     let onClose: () -> Void
     @ViewBuilder let content: () -> Content
 
@@ -66,6 +67,13 @@ struct ClassicGamePanel<Content: View>: View {
             .foregroundStyle(Color.gameLabel)
             .scaleEffect(scale)
             .frame(width: width * scale, height: height * scale)
+            .background {
+                if tracksCompanion {
+                    GeometryReader { window in
+                        Color.clear.preference(key: CompanionWindowBounds.self, value: window.frame(in: .global))
+                    }
+                }
+            }
             .offset(x: x, y: y)
             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
         }
