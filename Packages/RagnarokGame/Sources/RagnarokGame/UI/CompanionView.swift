@@ -67,9 +67,6 @@ struct CompanionView: View {
                     if let mode = session.companions.teamMode {
                         Menu("ทีม · " + mode + " · " + String(session.companions.mobCap)) {
                             Button("ลากมอนรวมฝูง") { session.companionCommand("mob on") }.disabled(mode != "assist")
-                            Button("สู้บอสที่เลือก") {
-                                if let id = session.mapScene?.selectedTargetID { session.companionCommand("boss " + String(id)) }
-                            }.disabled(mode != "assist" || session.mapScene?.selectedTargetID == nil)
                             Menu("เพดานฝูง") {
                                 ForEach(1...10, id: \.self) { n in
                                     Button(String(n)) { session.companionCommand("mob " + String(n)) }
