@@ -24,12 +24,14 @@ jobs:
           ID=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$APP/Info.plist")
           xcrun simctl install "$DEVICE" "$APP"
           mkdir captures
+          for screen in roster gear; do
           for pose in portrait landscape; do
-            xcrun simctl launch --terminate-running-process "$DEVICE" "$ID" "$pose"
+            xcrun simctl launch --terminate-running-process "$DEVICE" "$ID" "$pose" "$screen"
             sleep 6
-            xcrun simctl io "$DEVICE" screenshot "captures/$pose.png"
+            xcrun simctl io "$DEVICE" screenshot "captures/$screen-$pose.png"
           done
-          python3 -c 'import struct; size=lambda f:struct.unpack(">II",open("captures/"+f+".png","rb").read()[16:24]); p=size("portrait"); l=size("landscape"); assert p[0]<p[1] and l[0]>l[1],(p,l)'
+          done
+          python3 -c 'import struct; size=lambda f:struct.unpack(">II",open("captures/"+f+".png","rb").read()[16:24]); p=size("roster-portrait"); l=size("roster-landscape"); assert p[0]<p[1] and l[0]>l[1],(p,l)'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
