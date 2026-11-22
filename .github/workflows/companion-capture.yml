@@ -32,6 +32,15 @@ jobs:
           done
           done
           python3 -c 'import struct; size=lambda f:struct.unpack(">II",open("captures/"+f+".png","rb").read()[16:24]); p=size("roster-portrait"); l=size("roster-landscape"); assert p[0]<p[1] and l[0]>l[1],(p,l)'
+      - name: Exercise revised controls
+        run: |
+          set -eu
+          curl -fsSL --retry 3 https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.12.1/maestro.zip -o /tmp/companion-maestro.zip
+          echo '54dbb0716425626604973cbb374c585ca30272375d9ce15177a1152765ddd9d7  /tmp/companion-maestro.zip' | shasum -a 256 -c -
+          unzip -q /tmp/companion-maestro.zip -d /tmp/companion-maestro
+          DEVICE=$(xcrun simctl list devices booted -j | python3 -c 'import sys,json;print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"] and d["state"]=="Booted"))')
+          export MAESTRO_CLI_NO_ANALYTICS=1
+          /tmp/companion-maestro/maestro/bin/maestro --device "$DEVICE" test --format junit --output captures/interactions.xml scripts/companion-simulator/flow.yaml
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -798,8 +798,51 @@ final class PlaySession {
 
     var partyAccountID: UInt32 { account.accountID }
 
+    func captureCommand(_ action: String) {
+        guard !companions.pending else { return }
+        let a = action.split(separator: " ").map(String.init)
+        let id = a.count > 1 ? UInt32(a[1]) ?? 0 : 0
+        let profiles = companions.profiles
+        var mode = companions.teamMode ?? "assist"
+        var cap = companions.mobCap
+        var voice = companions.voice ?? "normal"
+        var note = "Ready"
+        var equipped = captureEquipped
+        switch a[0] {
+        case "equip": equipped = true; note = "Equipment equipped."
+        case "unequip": equipped = false; note = "Equipment unequipped."
+        case "giveui": note = "Equipment given."
+        case "supplytake": note = "Supply returned."
+        case "mob": if a[1] == "on" { mode = "mob" } else if let n = Int(a[1]) { cap = n }
+        case "retreat": mode = "retreat"
+        case "teamoff": mode = "assist"
+        case "hunt": mode = a[1] == "on" ? "nearby" : "assist"
+        case "talk": voice = a[1]
+        case "skills": capturePolicy = a[2]; fallthrough
+        case "config": note = "Companion \(id) role=tank skills=\(capturePolicy)"
+        default: break
+        }
+        captureEquipped = equipped
+        let t = companions.begin(action)
+        var lines = ["begin \(profiles.count) 1","team \(mode) \(cap)","hunt \(mode == "nearby" ? 1 : 0)","voice \(voice)"]
+        for p in profiles {
+            let m = p.id == id ? ["bench":0,"summon":1,"follow":1,"assist":2,"stop":3][a[0]] ?? p.mode : p.mode
+            let actor = m == 0 ? 0 : 10 + p.id
+            lines.append("row \(p.id) \(p.job) 87 46 0 0 3200 4000 450 600 \(actor) \(m) 0 \(p.name) \(p.preset) 0 \(p.build ?? "sword")")
+        }
+        if a[0] == "inspect" {
+            lines += ["gearbegin \(id) 1 1 0", "gear 1 1157 \(equipped ? 34 : 0) 0","bag 5 1154 101",
+                      "detailbegin \(id) 2 2 1 1 6 1","starter 0 1201 \(equipped ? 0 : 1)","starter 1 2301 1",
+                      "skill 60 5 10 12 34 0","skill 3 10 10 1 0 0","supply 501 12","supplybag 7 501 40"]
+        }
+        for line in lines + ["end "+note] { companions.receive("[RCO1] \(t) " + line) }
+    }
+
+    private var capturePolicy = "quicken,bash"
+    private var captureEquipped = true
+
     func companionCommand(_ action: String) {
-        if mapClient == nil { return } // Offline simulator fixture
+        if mapClient == nil { captureCommand(action); return }
         guard !companions.pending, action == "list" || (companions.ready && companions.available) else { return }
         let token = companions.begin(action)
         let capability = action.hasPrefix("inspect ") ? "ui2 skills9 gear3 syrup1" : "ui2"
