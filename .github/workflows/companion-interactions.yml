@@ -1,0 +1,43 @@
+name: Companion native interaction checks
+on:
+  push:
+    branches: [qa/companion-window-interactions]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  controls:
+    runs-on: xcode-27
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: companion-app-after
+          run-id: 45000443278
+          github-token: ${{ github.token }}
+          path: payload
+      - name: Test installed companion windows
+        run: |
+          set -euo pipefail
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone Duo" in d["name"]))')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          ditto -x -k payload/simulator-app.zip payload
+          xcrun simctl install "$DEVICE" payload/CompanionSimulator.app
+          command -v xcodegen || brew install xcodegen
+          cd ui-check
+          xcodegen generate
+          xcodebuild -project CompanionInteraction.xcodeproj -scheme Controls -destination "id=$DEVICE" -parallel-testing-enabled NO -resultBundlePath ../results.xcresult test 2>&1 | tee ../interaction.log
+      - name: Export results and accessibility failures
+        if: always()
+        run: |
+          mkdir -p evidence
+          if [[ -d results.xcresult ]]; then xcrun xcresulttool get test-results tests --path results.xcresult > evidence/tests.json; fi
+          tail -n 1600 interaction.log > evidence/interaction.log || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-companion-controls
+          path: evidence

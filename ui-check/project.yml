@@ -1,0 +1,31 @@
+name: CompanionInteraction
+targets:
+  Host:
+    platform: iOS
+    deploymentTarget: "18.0"
+    type: application
+    sources: [host]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.ragoff.test-host
+        GENERATE_INFOPLIST_FILE: YES
+  Controls:
+    platform: iOS
+    deploymentTarget: "18.0"
+    type: bundle.ui-testing
+    sources: [tests]
+    dependencies:
+      - target: Host
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.ragoff.test-host.controls
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: Host
+schemes:
+  Controls:
+    build:
+      targets:
+        Host: all
+        Controls: [test]
+    test:
+      targets: [Controls]
