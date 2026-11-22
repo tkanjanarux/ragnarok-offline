@@ -47,8 +47,11 @@ struct CompanionEquipmentView: View {
                             switch tab {
                             case 0:
                                 equipmentDiagram
+                                if !storedRows.isEmpty {
+                                    Text("Stored & fallback").font(.game(size: 10)).frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 4)
+                                }
                                 itemGrid {
-                                    ForEach(state.gearRows) { row in
+                                    ForEach(storedRows) { row in
                                         itemCell(row.id, row.itemID, quantity: row.details.refine > 0 ? "+\(row.details.refine)" : "")
                                     }
                                 }
@@ -188,6 +191,12 @@ struct CompanionEquipmentView: View {
         return ([name,detail] + info.cards.map(itemName)).joined(separator: " · ")
     }
 
+    private var storedRows: [CompanionGearRow] {
+        let equipped = Set(state.equipment.filter { $0.equipMask & 0x3ff != 0 }.map { "gear:\($0.id)" }
+            + state.starters.filter(\.equipped).map { "starter:\($0.id)" })
+        return state.gearRows.filter { !equipped.contains($0.id) }
+    }
+
     private var equipmentDiagram: some View {
         HStack(spacing: 0) {
             VStack(spacing: 0) {
@@ -214,7 +223,7 @@ struct CompanionEquipmentView: View {
                 Spacer(minLength: 0)
             }.padding(.horizontal, 3).frame(height: 28).background(key == selection ? Color.blue.opacity(0.15) : Color.white)
                 .border(Color.gameBoxBorder.opacity(0.5))
-        }.buttonStyle(.plain).disabled(key == nil).accessibilityLabel(label + " " + (id.map(itemName) ?? "empty"))
+        }.buttonStyle(.plain).disabled(key == nil).accessibilityIdentifier("slot-\(position.rawValue)").accessibilityLabel(label + " " + (id.map(itemName) ?? "empty"))
     }
 
     private func itemGrid<Cells: View>(@ViewBuilder _ cells: () -> Cells) -> some View {
@@ -232,8 +241,9 @@ struct CompanionEquipmentView: View {
             }.frame(maxWidth: .infinity).frame(height: 45)
                 .background(selection == key ? Color.blue.opacity(0.15) : Color.white)
                 .border(Color.gameBoxBorder.opacity(0.6)).contentShape(Rectangle())
-        }.buttonStyle(.plain)
+        }.buttonStyle(.plain).accessibilityIdentifier(key)
     }
+
     private func fetchPolicy() {
         needsPolicy = false
         send("config \(profileID)")
