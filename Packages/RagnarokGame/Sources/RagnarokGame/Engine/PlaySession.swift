@@ -798,6 +798,17 @@ final class PlaySession {
 
     var partyAccountID: UInt32 { account.accountID }
 
+    func captureOwner() {
+        character.name = "Basilisk"
+        character.job = 11
+        playerStatus.baseLevel = 87
+        playerStatus.jobLevel = 46
+        playerStatus.hp = 3939
+        playerStatus.maxHp = 4586
+        playerStatus.sp = 405
+        playerStatus.maxSp = 405
+    }
+
     func captureCommand(_ action: String) {
         guard !companions.pending else { return }
         let a = action.split(separator: " ").map(String.init)

@@ -10,6 +10,7 @@ struct ClassicGamePanel<Content: View>: View {
     let onClose: () -> Void
     @ViewBuilder let content: () -> Content
 
+    @Environment(\.companionHUDObstacles) private var obstacles
     @State private var position = CGSize.zero
     @GestureState private var translation = CGSize.zero
 
@@ -19,8 +20,10 @@ struct ClassicGamePanel<Content: View>: View {
                             max(1, geometry.size.height - 16) / height)
             let horizontalLimit = max(0, (geometry.size.width - width * scale) / 2)
             let verticalLimit = max(0, (geometry.size.height - height * scale) / 2)
-            let x = min(horizontalLimit, max(-horizontalLimit, preferredOffset.width + position.width + translation.width))
-            let y = min(verticalLimit, max(-verticalLimit, preferredOffset.height + position.height + translation.height))
+            let origin = tracksCompanion ? companionWindowOffset(in: geometry.frame(in: .global),
+                size: CGSize(width: width * scale, height: height * scale), obstacles: obstacles) : preferredOffset
+            let x = min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + translation.width))
+            let y = min(verticalLimit, max(-verticalLimit, origin.height + position.height + translation.height))
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     // Drag only the title area. The close button is a sibling overlay,
@@ -32,8 +35,8 @@ struct ClassicGamePanel<Content: View>: View {
                             .updating($translation) { value, state, _ in state = value.translation }
                             .onEnded { value in
                                 position = CGSize(
-                                    width: min(horizontalLimit, max(-horizontalLimit, preferredOffset.width + position.width + value.translation.width)) - preferredOffset.width,
-                                    height: min(verticalLimit, max(-verticalLimit, preferredOffset.height + position.height + value.translation.height)) - preferredOffset.height)
+                                    width: min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + value.translation.width)) - origin.width,
+                                    height: min(verticalLimit, max(-verticalLimit, origin.height + position.height + value.translation.height)) - origin.height)
                             })
                     Color.clear.frame(width: 44 / scale)
                 }

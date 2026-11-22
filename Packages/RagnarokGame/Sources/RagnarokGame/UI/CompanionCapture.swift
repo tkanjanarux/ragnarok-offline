@@ -3,6 +3,7 @@ public struct CompanionCapture: View {
     @State private var session: PlaySession
     public init() {
         let s = PlaySession(context: .testing)
+        s.captureOwner()
         let t = s.companions.begin("list")
         for line in ["begin 0 1","team assist 5","hunt 0","voice normal","end Ready"] {
             s.companions.receive("[RCO1] \(t) " + line)
@@ -25,15 +26,14 @@ public struct CompanionCapture: View {
         _session = State(initialValue: s)
     }
     public var body: some View {
-        ZStack {
-            Color(white: 0.32).ignoresSafeArea()
+        CompanionCaptureSurface {
             Group {
                 if ProcessInfo.processInfo.arguments.contains("gear") {
                     CompanionEquipmentView(profileID: 2, close: {})
                 } else {
                     CompanionView(close: {})
                 }
-            }.environment(session).environment(GameContext.testing)
-        }
+            }
+        }.environment(session).environment(GameContext.testing)
     }
 }

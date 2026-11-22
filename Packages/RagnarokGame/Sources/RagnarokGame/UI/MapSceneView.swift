@@ -17,6 +17,7 @@ struct MapSceneView: View {
 
     @Environment(PlaySession.self) private var playSession
 
+    @State private var hudFrames: [CGRect] = []
     @State private var companionFrame: CGRect = .null
     @State private var actionBarHeight: CGFloat = 0
     @State private var presentedMenuItem: MenuItem?
@@ -126,6 +127,9 @@ struct MapSceneView: View {
         .overlayPreferenceValue(HUDObstacleKey.self) { obstacles in
             GeometryReader { viewport in
                 let frames = obstacles.map { viewport[$0] }
+                Color.clear.preference(key: CompanionHUDFrames.self, value: frames.map {
+                    $0.offsetBy(dx: viewport.frame(in: .global).minX, dy: viewport.frame(in: .global).minY)
+                })
                 if companionFrame.isNull, let slot = questTrackerSlot(in: viewport.size, obstacles: frames) {
                     QuestTrackerView(quests: Array(playSession.quests.values), ui: playSession.questUI)
                         .frame(width: slot.width, height: slot.height, alignment: .topLeading)
@@ -195,6 +199,8 @@ struct MapSceneView: View {
                 StorageView(storage: storage)
             }
         }
+        .environment(\.companionHUDObstacles, hudFrames)
+        .onPreferenceChange(CompanionHUDFrames.self) { hudFrames = $0 }
         .environment(\.companionManagementFrame, companionFrame)
         .onPreferenceChange(CompanionWindowBounds.self) { companionFrame = $0 }
         .onChange(of: playSession.examAdmissions) { _, _ in
@@ -292,5 +298,49 @@ private struct CompanionHUDVisibility: ViewModifier {
         let covered = bounds.intersects(window)
         content.opacity(covered ? 0 : 1).allowsHitTesting(!covered).accessibilityHidden(covered)
             .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { bounds = $0 }
+    }
+}
+
+// Simulator fixture: real HUD controls over a neutral field so window edges are visible.
+struct CompanionCaptureSurface<Panel: View>: View {
+    @Environment(PlaySession.self) private var session
+    @State private var hud: [CGRect] = []
+    @State private var window: CGRect = .null
+    @ViewBuilder var panel: () -> Panel
+    var body: some View {
+        MapHUDViewport { size, inset in
+            let wide = size.width >= 640
+            let bottom = bottomHUDMargin(for: inset)
+            ZStack {
+                Color(white: 0.32)
+            }.frame(width: size.width, height: size.height)
+            .overlay(alignment: .topLeading) {
+                VStack(alignment: .leading, spacing: 0) {
+                    BasicInfoView(character: session.character, status: session.playerStatus)
+                    MenuView { _ in }
+                }.hudObstacle()
+            }
+            .overlay(alignment: .bottomTrailing) {
+                ActionBarView(selectedTargetType: nil, onTargetAction: {}, onSelectNextTarget: {}, onDeselectTarget: {}, onPickup: {}, onSit: {}, onShortcut: { _ in })
+                    .hudObstacle().frame(maxWidth: wide ? size.width * 0.55 : size.width, alignment: .trailing)
+                    .padding(.trailing, 16).padding(.bottom, wide ? bottom : ChatBoxView.contentHeight(for: .compact) + bottom + 8)
+            }
+            .overlay(alignment: wide ? .bottomLeading : .bottom) {
+                ChatBoxView().frame(width: wide ? 280 : size.width - 32).hudObstacle().padding(.bottom, bottom)
+            }
+            .overlayPreferenceValue(HUDObstacleKey.self) { frames in
+                GeometryReader { v in
+                    Color.clear.preference(key: CompanionHUDFrames.self, value: frames.map {
+                        v[$0].offsetBy(dx: v.frame(in: .global).minX, dy: v.frame(in: .global).minY)
+                    })
+                }.allowsHitTesting(false)
+            }
+            .overlay { panel() }
+            .environment(\.companionHUDObstacles, hud)
+            .environment(\.companionManagementFrame, window)
+            .onPreferenceChange(CompanionHUDFrames.self) { hud = $0 }
+            .onPreferenceChange(CompanionWindowBounds.self) { window = $0 }
+            .shortcutDragContainer()
+        }
     }
 }
