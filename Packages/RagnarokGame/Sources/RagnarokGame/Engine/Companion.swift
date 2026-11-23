@@ -152,6 +152,8 @@ struct CompanionState {
     var profiles: [CompanionProfile] = []
     private(set) var teamMode: String?
     private(set) var mobCap = 5
+    private(set) var mobPhase: String?
+    private static let phases = ["เตรียม","ออกลาก","พาฝูงกลับ","ลงวง","เก็บตก","พัก/ถอย"]
     private(set) var mobPuller: String?
     private var incomingTeam: (String, Int, String?)?
     private(set) var nearbyHunt: Bool?
@@ -193,6 +195,12 @@ struct CompanionState {
         message = "No response. This server may not support Companions. Refresh to try again."
     }
     @discardableResult mutating func receive(_ message: String) -> Bool {
+        let prefix = "[Mob] ช่วง "
+        if message.hasPrefix(prefix) {
+            let phase = String(message.dropFirst(prefix.count))
+            if Self.phases.contains(phase) { mobPhase = phase }
+            return false
+        }
         guard message.hasPrefix("[RCO1] ") else { return false }
         let t = message.split(separator: " ").map(String.init)
         guard t.count >= 3, UInt32(t[1]) == sequence, pending else { return true }
@@ -210,6 +218,8 @@ struct CompanionState {
                   ["assist","nearby","mob","boss","retreat"].contains(t[3]),
                   let cap = Int(t[4]), (1...30).contains(cap) else { timeout(sequence); return true }
             incomingTeam = (t[3], cap, t.count == 6 ? t[5] : nil)
+        case "phase":
+            if expected != nil, t.count == 4, Self.phases.contains(t[3]) { mobPhase = t[3] }
         case "hunt":
             guard expected != nil, incomingHunt == nil, t.count == 4, ["0","1"].contains(t[3]) else { timeout(sequence); return true }
             incomingHunt = t[3] == "1"
@@ -298,6 +308,7 @@ struct CompanionState {
                 activity = ["In reserve", "Dead — needs revival or camp recovery", "Stopped — actions and potions paused", "Not in owner's party", "Resting to recover HP/SP", "Following — Assist to fight", "Assisting — waiting for target or support need", "Low HP — no HP potions", "Low SP — no SP potions", "Fighting"][d.reason]
             }
             voice = incomingVoice
+            if !["mob","retreat"].contains(incomingTeam?.0 ?? "") { mobPhase = nil }
             mobPuller = incomingTeam?.2
             teamMode = incomingTeam?.0
             mobCap = incomingTeam?.1 ?? 5

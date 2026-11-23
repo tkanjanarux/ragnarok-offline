@@ -62,6 +62,7 @@ struct CompanionView: View {
                                 Divider()
                             }
                             Text("Team").font(.game(weight: .bold))
+                            if let phase = state.mobPhase { Text(phase).font(.game()) }
                             if let voice = state.voice {
                                 choice("Speech", value: voice.capitalized, options: ["off","quiet","normal","chatty"], label: { $0.capitalized }) { send("talk "+$0) }
                             }
@@ -118,7 +119,7 @@ struct CompanionView: View {
                                 Button("Assist") { send(state.teamMode != nil ? "teamoff" : "hunt off") }.disabled(mode == "assist")
                                 if state.nearbyHunt != nil { Button("Nearby Hunt") { send("hunt on") }.disabled(mode != "assist") }
                                 if state.teamMode != nil { Button("Mob") { send("mob on") }.disabled(mode != "assist") }
-                            } label: { Text("Team · " + (mode == "nearby" ? "Hunt" : mode.capitalized) + " ▾") }
+                            } label: { Text("Team · " + (state.mobPhase ?? (mode == "nearby" ? "Hunt" : mode.capitalized)) + " ▾") }
                             .disabled(!enabled || (state.teamMode == nil && state.nearbyHunt == nil))
                             if mode == "mob" || mode == "boss" { Button("Retreat") { send("retreat") }.disabled(!enabled) }
                         }.buttonStyle(.game).frame(height: 30)
