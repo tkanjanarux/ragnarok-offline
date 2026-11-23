@@ -206,3 +206,22 @@ import Testing
     #expect(state.activeCount == 4 && state.activeCount == CompanionState.activeLimit)
     #expect(state.profiles.last?.active == false)
 }
+
+@Test func companionRadiusUsesCompletedServerSnapshot() {
+    var s = CompanionState()
+    for suffix in [" auto 96", " knight 6", " priest 47", " auto", ""] {
+        let previous = s.mobRadius
+        let seq = s.begin()
+        s.receive("[RCO1] \(seq) begin 0 1")
+        s.receive("[RCO1] \(seq) team assist 5" + suffix)
+        #expect(s.mobRadius == previous)
+        s.receive("[RCO1] \(seq) end OK")
+        #expect(s.ready && s.mobRadius == Int(suffix.split(separator: " ").last ?? ""))
+    }
+    for invalid in ["5", "97", "bad"] {
+        let seq = s.begin()
+        s.receive("[RCO1] \(seq) begin 0 1")
+        s.receive("[RCO1] \(seq) team mob 5 auto " + invalid)
+        #expect(!s.ready && !s.pending)
+    }
+}

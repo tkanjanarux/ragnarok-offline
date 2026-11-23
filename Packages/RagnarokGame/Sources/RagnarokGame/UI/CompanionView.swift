@@ -72,6 +72,9 @@ struct CompanionView: View {
                                         .disabled(mode != "assist")
                                 }
                                 choice("Mob limit", value: String(state.mobCap), options: (1...30).map { String($0) }, label: { $0 }) { send("mob "+$0) }
+                                if let radius = state.mobRadius {
+                                    radiusMenu(radius)
+                                }
                                 threshold("Pause pulling at HP", verb: "stop", input: $stopInput)
                                 threshold("Retreat at HP", verb: "retreat", input: $retreatInput)
                             }
@@ -172,6 +175,31 @@ struct CompanionView: View {
             Spacer()
             Menu(value + " ▾") {
                 ForEach(Array(options.indices), id: \.self) { i in Button(labels[i]) { perform(options[i]) } }
+            }
+        }.frame(height: 28)
+    }
+
+    private func radiusMenu(_ radius: Int) -> some View {
+        HStack {
+            Text("Pull radius")
+            Spacer()
+            Menu("\(radius) cells ▾") {
+                ForEach(0..<10) { decade in
+                    let first = max(6, decade * 10)
+                    let last = min(96, decade * 10 + 9)
+                    Menu("\(first)–\(last)") {
+                        ForEach(first...last, id: \.self) { cells in
+                            Button {
+                                guard enabled, cells != state.mobRadius else { return }
+                                session.sendMessage("@companion mob radius \(cells)")
+                                send("list")
+                            } label: {
+                                if cells == radius { Label("\(cells)", systemImage: "checkmark") }
+                                else { Text("\(cells)") }
+                            }
+                        }
+                    }
+                }
             }
         }.frame(height: 28)
     }

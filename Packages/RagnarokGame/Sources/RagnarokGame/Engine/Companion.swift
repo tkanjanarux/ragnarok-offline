@@ -155,7 +155,8 @@ struct CompanionState {
     private(set) var mobPhase: String?
     private static let phases = ["เตรียม","ออกลาก","พาฝูงกลับ","ลงวง","เก็บตก","พัก/ถอย"]
     private(set) var mobPuller: String?
-    private var incomingTeam: (String, Int, String?)?
+    private(set) var mobRadius: Int?
+    private var incomingTeam: (String, Int, String?, Int?)?
     private(set) var nearbyHunt: Bool?
     private(set) var voice: String?
     private var incomingVoice: String?
@@ -213,11 +214,13 @@ struct CompanionState {
                   ["off","quiet","normal","chatty"].contains(t[3]) else { timeout(sequence); return true }
             incomingVoice = t[3]
         case "team":
-            guard expected != nil, incomingTeam == nil, (5...6).contains(t.count),
+            guard expected != nil, incomingTeam == nil, (5...7).contains(t.count),
                   t.count == 5 || ["auto","priest","knight"].contains(t[5]),
                   ["assist","nearby","mob","boss","retreat"].contains(t[3]),
                   let cap = Int(t[4]), (1...30).contains(cap) else { timeout(sequence); return true }
-            incomingTeam = (t[3], cap, t.count == 6 ? t[5] : nil)
+            let radius = t.count == 7 ? Int(t[6]) : nil
+            guard t.count < 7 || (6...96).contains(radius ?? 0) else { timeout(sequence); return true }
+            incomingTeam = (t[3], cap, t.count >= 6 ? t[5] : nil, radius)
         case "phase":
             if expected != nil, t.count == 4, Self.phases.contains(t[3]) { mobPhase = t[3] }
         case "hunt":
@@ -309,6 +312,7 @@ struct CompanionState {
             }
             voice = incomingVoice
             if !["mob","retreat"].contains(incomingTeam?.0 ?? "") { mobPhase = nil }
+            mobRadius = incomingTeam?.3
             mobPuller = incomingTeam?.2
             teamMode = incomingTeam?.0
             mobCap = incomingTeam?.1 ?? 5
