@@ -55,8 +55,8 @@ jobs:
         if: always()
         run: |
           if test -d party-tests.xcresult; then
-            xcrun xcresulttool get test-results summary --path party-tests.xcresult > simulator-summary.json
-            xcrun xcresulttool get test-results tests --path party-tests.xcresult > simulator-tests.json
+            xcrun xcresulttool get test-results summary --path party-tests.xcresult > simulator-summary.json || true
+            xcrun xcresulttool get test-results tests --path party-tests.xcresult > simulator-tests.json || true
           fi
           mkdir -p visual-evidence
           if test -f simulator-device.txt; then

@@ -54,7 +54,7 @@ import UIKit
     @Test func membershipAndLifecycleNeverInventHealth() {
         var (party, objects, positions) = fixture()
         #expect(bars(party, objects, positions).count == 2)
-        #expect(bars(party, objects, positions).allSatisfy(\.screenSpace))
+        #expect(bars(party, objects, positions).allSatisfy { $0.screenSpace })
         positions[11] = SIMD3(1.25, 2.5, 0.75)
         #expect(bars(party, objects, positions).contains { $0.worldPosition == positions[11] })
         objects[11]?.effectState = MapEffectOptions(rawValue: StatusChangeOption.cloak.rawValue)
