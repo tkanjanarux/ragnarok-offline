@@ -79,6 +79,8 @@ final class GameAudioEngine {
         engine.stop()
     }
 
+    func applyVolume() { engine.mainMixerNode.outputVolume = GameAudio.soundEffectVolume }
+
     private func startIfNeeded() -> Bool {
         if engine.isRunning {
             return true

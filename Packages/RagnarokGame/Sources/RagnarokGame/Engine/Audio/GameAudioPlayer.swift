@@ -84,6 +84,8 @@ final class GameAudioPlayer {
         bgmPlayer?.play()
     }
 
+    func applyVolumes() { bgmPlayer?.volume = GameAudio.bgmVolume; soundEffectEngine.applyVolume() }
+
     func stopBGM() {
         bgmPlayer?.stop()
         bgmPlayer = nil

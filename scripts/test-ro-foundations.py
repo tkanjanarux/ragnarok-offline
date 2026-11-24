@@ -31,14 +31,14 @@ for path in (root / 'Packages/BinaryIO/Sources/BinaryIO').glob('*.swift'):
 for name in ['ItemType', 'EquipPositions', 'ItemEquipAcknowledgeFlag']:
     copy('RagnarokConstants', f'Generated/{name}.swift')
 for name in ['Generated/packets.swift', 'PacketProtocol.swift', 'PacketEncoder.swift',
-             'Deprecated/ItemOptions.swift', 'Packets/ItemSelectionList.swift', 'Packets/EquipmentSwitch.swift', 'Packets/SocialPackets.swift', 'Packets/TradeRequest.swift', 'Packets/ChatRoomRequest.swift', 'Packets/AchievementEntry.swift', 'Packets/PetRequest.swift', 'Packets/MercenaryPackets.swift', 'Packets/GuildRequest.swift', 'Packets/RodexPackets.swift', 'Packets/ZC/PACKET_ZC_ALL_ACH_LIST.swift', 'Packets/ZC/PACKET_ZC_ACH_UPDATE.swift']:
+             'Deprecated/ItemOptions.swift', 'Packets/ItemSelectionList.swift', 'Packets/EquipmentSwitch.swift', 'Packets/SocialPackets.swift', 'Packets/TradeRequest.swift', 'Packets/ChatRoomRequest.swift', 'Packets/AchievementEntry.swift', 'Packets/PetRequest.swift', 'Packets/MercenaryPackets.swift', 'Packets/GuildRequest.swift', 'Packets/RodexPackets.swift', 'Packets/VendingRequest.swift', 'Packets/ZC/PACKET_ZC_ALL_ACH_LIST.swift', 'Packets/ZC/PACKET_ZC_ACH_UPDATE.swift']:
     copy('RagnarokPackets', name)
 decoder = (root / 'Packages/RagnarokPackets/Sources/RagnarokPackets/PacketDecoder.swift').read_text()
 (out / 'Sources/RagnarokPackets/PacketDecodingError.swift').write_text(
     decoder[decoder.index('public enum PacketDecodingError'):decoder.index('final public class')])
 for name in ['Inventory', 'InventoryItem', 'UsedItem']:
     copy('RagnarokModels', name + '.swift')
-for name in ['CartState', 'ItemSelectionState', 'RefineState', 'EquipmentSwitchState', 'SocialState', 'BankState', 'TradeState', 'ChatRoomState', 'RewardState', 'PetState', 'FollowerState', 'GuildState', 'RodexState']:
+for name in ['CartState', 'ItemSelectionState', 'RefineState', 'EquipmentSwitchState', 'SocialState', 'BankState', 'TradeState', 'ChatRoomState', 'RewardState', 'PetState', 'FollowerState', 'GuildState', 'RodexState', 'VendingState']:
     source = (root / f'Packages/RagnarokGame/Sources/RagnarokGame/Engine/{name}.swift').read_text()
     (out / f'Sources/RagnarokGame/{name}.swift').write_text(source.split('\nextension PlaySession')[0])
 shutil.copy2(root / 'Packages/RagnarokGame/Tests/RagnarokGameTests/ItemFoundationTests.swift',

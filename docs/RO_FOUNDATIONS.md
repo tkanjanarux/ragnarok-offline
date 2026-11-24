@@ -20,12 +20,12 @@ Different binaries require independent integration evidence.
 | A4 | Production/Enchant | Server-triggered forging/cooking/skill selection implemented; live crafting and enchant audit pending |
 | B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; party/guild live test pending |
 | B2 | Guild information/permissions | Implemented; portable identity/permissions PASS; isolated existing-guild fixture invite/decline/accept/notice/unauthorized rejection/positions/chat/expel/disband PASS. Creation blocked by server composite primary key without generated guild_id |
-| B3 | Trade item/zeny, vending/buying/signboards | Trade implemented; isolated decline/cancel/two-sided lock/commit/reject/persisted item and zeny conservation PASS; vending/buying/signboards pending |
+| B3 | Trade item/zeny, vending/buying/signboards | Trade implemented; isolated decline/cancel/two-sided lock/commit/reject/persisted item and zeny conservation PASS; Vending/cart shop creation/cancel/purchase/signboard/close implemented; isolated wrong-shop-ID rejection and persisted item/Zeny conservation PASS. Buying stores pending |
 | B4 | Ordinary chat rooms | Implemented separately from exam rooms; isolated normal-account create/private password rejection/join/chat/edit/owner transfer/kick/leave PASS |
 | C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX implemented; isolated read/claim/delete/duplicate protection/persisted +2 items +321 Zeny PASS using explicit existing-mail fixture. Sending blocked by server SQLite mail.id NOT NULL (no generated id); begin/cancel/recipient check PASS |
 | C2 | Pet, homunculus, mercenary | Pet/homunculus/mercenary native UI and commands implemented separately; isolated hatch/feed rejection/feed/name/egg/capture-cancel, hom info/name/autofeed/delete, mercenary contract/info/skills/dismiss PASS. Follow/attack/skill execution, pet evolution data remain unverified |
 | C3 | Achievement rewards, attendance | Implemented list/update/claim and attendance request/response; portable tests PASS. Live achievement claim blocked by server SQLite timestamp format bug (evidence/rewards-blocker.json); attendance DB loads zero events, no reward calendar invented |
-| C4 | Graphics/audio/shortcuts settings | Audit existing backend before enabling controls |
+| C4 | Graphics/audio/shortcuts settings | Implemented native sound sliders with live AVAudio mixer/BGM update, 30/60FPS Metal view, effect/fog switches, touch shortcut assignment/clear using existing packet backend. Native compile pending; no device audio/visual verification |
 | C5 | Reputation/clan/special enchant | Inspect actual enabled data/NPC; not marked disabled from missing client UI |
 
 Rules: no local optimistic inventory/zeny mutation, no retry of ambiguous monetary

@@ -6,6 +6,7 @@
 //
 
 import AVFAudio
+import Foundation
 import simd
 
 enum GameAudio {
@@ -13,10 +14,15 @@ enum GameAudio {
     static let format = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)!
 
     /// How loud the background music plays.
-    static let bgmVolume: Float = 0.8
+    static var bgmVolume: Float { volume("ro.bgmVolume", fallback: 0.8) }
 
     /// How loud sound effects play, before the distance to the listener is taken into account.
-    static let soundEffectVolume: Float = 0.5
+    static var soundEffectVolume: Float { volume("ro.effectVolume", fallback: 0.5) }
+    private static func volume(_ key: String, fallback: Float) -> Float {
+        guard UserDefaults.standard.object(forKey: key) != nil else { return fallback }
+        let value = UserDefaults.standard.float(forKey: key)
+        return value.isFinite ? min(1,max(0,value)) : fallback
+    }
 
     /// Where a sound effect comes from, and how far it carries, in world units.
     /// Only x and y count toward what the listener hears.

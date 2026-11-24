@@ -130,6 +130,7 @@ final class MapViewController: UIViewController, MTKViewDelegate, UIGestureRecog
     }
 
     func draw(in view: MTKView) {
+        view.preferredFramesPerSecond = UserDefaults.standard.integer(forKey: "ro.frameRate") == 30 ? 30 : 60
         guard let runtime,
               let commandBuffer = commandQueue.makeCommandBuffer(),
               let drawable = view.currentDrawable,
@@ -401,6 +402,7 @@ final class MapViewController: NSViewController, MTKViewDelegate {
     }
 
     func draw(in view: MTKView) {
+        view.preferredFramesPerSecond = UserDefaults.standard.integer(forKey: "ro.frameRate") == 30 ? 30 : 60
         guard let runtime,
               let commandBuffer = commandQueue.makeCommandBuffer(),
               let drawable = view.currentDrawable,

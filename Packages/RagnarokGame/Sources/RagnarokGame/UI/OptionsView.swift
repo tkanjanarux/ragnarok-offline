@@ -16,7 +16,12 @@ struct OptionsView: View {
     @Environment(PlaySession.self) private var playSession
     @Environment(\.exitGame) private var exitGame
 
+    @State private var settings: String?
+
     var body: some View {
+        if let settings {
+            GameSettingsView(section: settings) { self.settings = nil }
+        } else {
         GameWindow {
             VStack(spacing: 3) {
                 if isPlayerDead {
@@ -27,7 +32,7 @@ struct OptionsView: View {
                         Text("Resurrection", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
+                    .frame(width: 220, height: 44)
                     .disabled(!playSession.inventory.hasTokenOfSiegfried)
 
                     // esc_04a.bmp
@@ -37,7 +42,7 @@ struct OptionsView: View {
                         Text("Return to last save point", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
+                    .frame(width: 220, height: 44)
                 } else {
                     // esc_01a.bmp
                     Button {
@@ -46,34 +51,34 @@ struct OptionsView: View {
                         Text("Character Select", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
+                    .frame(width: 220, height: 44)
 
                     // esc_06a.bmp
                     Button {
+                        settings = "Settings"
                     } label: {
                         Text("Settings", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
-                    .disabled(true)
+                    .frame(width: 220, height: 44)
 
                     // esc_07a.bmp
                     Button {
+                        settings = "Sound"
                     } label: {
                         Text("Sound", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
-                    .disabled(true)
+                    .frame(width: 220, height: 44)
 
                     // esc_08a.bmp
                     Button {
+                        settings = "BM/Shortcut Settings"
                     } label: {
                         Text("BM/Shortcut Settings", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
-                    .disabled(true)
+                    .frame(width: 220, height: 44)
 
                     // esc_03a.bmp
                     Button {
@@ -84,7 +89,7 @@ struct OptionsView: View {
                         Text("Exit", bundle: #bundle)
                     }
                     .buttonStyle(.game)
-                    .frame(width: 220, height: 20)
+                    .frame(width: 220, height: 44)
                 }
             }
             .padding(.vertical, 20)
@@ -92,6 +97,7 @@ struct OptionsView: View {
         .gameWindowTitle(Text(gameContext.messageStringTable.localizedMessageString(forID: 1483)))
         .gameWindowCloseAction(onClose)
         .frame(width: 280)
+        }
     }
 }
 

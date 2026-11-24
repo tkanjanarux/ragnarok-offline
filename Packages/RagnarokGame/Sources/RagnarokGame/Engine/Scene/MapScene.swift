@@ -31,6 +31,7 @@ public final class MapScene {
 
     let state: MapSceneState
 
+    var shopSigns: [GameObjectID: String] = [:]
     var camera = MapSceneCamera()
 
     var fog = Fog()
@@ -255,6 +256,7 @@ public final class MapScene {
         camera.reset()
         sounds.removeAll()
         objects.removeAll()
+        shopSigns.removeAll()
         items.removeAll()
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
@@ -272,6 +274,7 @@ public final class MapScene {
     func jump(toPosition position: SIMD2<Int>) {
         camera.reset()
         objects.removeAll()
+        shopSigns.removeAll()
         items.removeAll()
         hpspBarObjectIDs.removeAll()
         effects.removeAll()
@@ -459,6 +462,7 @@ extension MapScene {
 
     func removeObject(objectID: GameObjectID) {
         objects.removeValue(forKey: objectID)
+        shopSigns.removeValue(forKey: objectID)
         hpspBarObjectIDs.remove(objectID)
         if selectedTargetID == objectID {
             selectTarget(nil)

@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var vending = VendingState()
     var rodex = RodexState()
     var guild = GuildState()
     var followers = FollowerState()
@@ -202,6 +203,7 @@ final class PlaySession {
     func stop() {
         followers = FollowerState()
         pets = PetState()
+        vending = VendingState()
         rodex = RodexState()
         guild = GuildState()
         rewards = RewardState()
@@ -246,6 +248,7 @@ final class PlaySession {
             navigation.cancel()
             followers = FollowerState()
             pets = PetState()
+            vending = VendingState()
             rodex = RodexState()
             guild = GuildState()
             rewards = RewardState()
@@ -345,6 +348,7 @@ final class PlaySession {
 
             navigation.mapChanging()
             if rodex.writing { sendFoundationPacket(RodexRequest.cancel) }
+            vending = VendingState()
             rodex = RodexState()
             guild.visible = false; guild.invitation = nil
             followers = FollowerState()
@@ -484,19 +488,23 @@ final class PlaySession {
         case let packet as PACKET_ZC_PAR_CHANGE:
             if let sp = StatusProperty(rawValue: Int(packet.varID)) {
                 playerStatus.update(property: sp, value: Int(packet.count))
+                vending.checkPurchase(zeny: playerStatus.zeny)
                 mapScene?.onPlayerStatusChanged(property: sp, value: Int(packet.count))
             }
         case let packet as PACKET_ZC_LONGPAR_CHANGE:
             if let sp = StatusProperty(rawValue: Int(packet.varID)) {
                 playerStatus.update(property: sp, value: Int(packet.amount))
+                vending.checkPurchase(zeny: playerStatus.zeny)
             }
         case let packet as PACKET_ZC_LONGLONGPAR_CHANGE:
             if let sp = StatusProperty(rawValue: Int(packet.varID)) {
                 playerStatus.update(property: sp, value: Int(packet.amount))
+                vending.checkPurchase(zeny: playerStatus.zeny)
             }
         case let packet as PACKET_ZC_STATUS_CHANGE:
             if let sp = StatusProperty(rawValue: Int(packet.statusID)) {
                 playerStatus.update(property: sp, value: Int(packet.value))
+                vending.checkPurchase(zeny: playerStatus.zeny)
             }
         case let packet as PACKET_ZC_COUPLESTATUS:
             if let sp = StatusProperty(rawValue: Int(packet.statusType)) {
@@ -578,6 +586,7 @@ final class PlaySession {
         case let packet as PACKET_ZC_ITEM_PICKUP_ACK:
             inventory.update(from: packet)
             if packet.result == 0 {
+                vending.receivedItem(packet.nameid, count: UInt16(clamping: packet.count), zeny: playerStatus.zeny)
                 cart.receiveTransferEvent(toCart: false, source: false, index: Int(packet.Index), itemID: Int(packet.nameid), amount: Int(packet.count))
             } else if cart.pending?.toCart == false {
                 cart.pending = nil; cart.message = "The server rejected the inventory transfer."
@@ -681,6 +690,7 @@ final class PlaySession {
             logger.info("Object \(objectID) stopped at \(position)")
             mapScene?.onMapObjectStopped(objectID: objectID, position: position)
         case let packet as PACKET_ZC_NOTIFY_VANISH:
+            vending.vanished(packet.GID)
             followers.vanished(packet.gid)
             pets.vanished(packet.gid)
             chatRoom.rooms = chatRoom.rooms.filter { $0.value.owner != packet.gid }
@@ -820,6 +830,25 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_CLAN_CHAT:
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
+        case let packet as PACKET_ZC_OPENSTORE:
+            vending.preparingSlots = min(12,Int(packet.num)); vending.draft = [:]; vending.visible = true; vending.message = nil
+        case let packet as PACKET_ZC_STORE_ENTRY:
+            vending.boards[packet.makerAID] = .init(id: packet.makerAID, name: packet.storeName)
+            mapScene?.shopSigns[packet.makerAID] = packet.storeName
+        case let packet as PACKET_ZC_DISAPPEAR_ENTRY:
+            vending.vanished(packet.GID); mapScene?.shopSigns.removeValue(forKey: packet.GID)
+        case let packet as PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC: vending.receive(packet)
+        case let packet as PACKET_ZC_PC_PURCHASE_MYITEMLIST:
+            if packet.AID == partyAccountID { vending.own = packet.items; vending.active = true; vending.preparingSlots = 0; vending.draft = [:]; vending.waiting = nil; vending.message = "Shop opened." }
+        case let packet as PACKET_ZC_ACK_OPENSTORE2:
+            if packet.result != 0 { vending.waiting = nil; vending.message = "The server rejected this shop (\(packet.result))." }
+        case let packet as PACKET_ZC_PC_PURCHASE_RESULT_FROMMC:
+            if vending.purchase != nil { vending.purchase = nil; vending.waiting = nil; vending.shop = nil; vending.message = "Purchase rejected (\(packet.result))." }
+        case let packet as PACKET_ZC_DELETEITEM_FROM_MCSTORE:
+            if let i = vending.own.firstIndex(where: { $0.index == packet.index }) {
+                vending.own[i].amount = max(0,vending.own[i].amount - Int16(clamping: packet.amount))
+                vending.own.removeAll { $0.amount == 0 }
+            }
         case let packet as RodexList: rodex.receive(packet)
         case let packet as RodexRead: rodex.receive(packet)
         case let packet as PACKET_ZC_ACK_OPEN_WRITE_MAIL:

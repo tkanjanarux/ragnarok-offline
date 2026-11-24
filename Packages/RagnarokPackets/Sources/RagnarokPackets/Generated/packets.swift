@@ -6378,6 +6378,9 @@ public struct PACKET_ZC_PC_PURCHASE_MYITEMLIST: CodablePacket {
     public init(from decoder: BinaryDecoder) throws {
         packetType = try decoder.decode(Int16.self)
         packetLength = try decoder.decode(Int16.self)
+        guard Int(packetLength) >= 8, (Int(packetLength) - 8) % PACKET_ZC_PC_PURCHASE_MYITEMLIST_sub.size == 0 else {
+            throw PacketDecodingError.invalidPacketLength(packetType, Int(packetLength))
+        }
         AID = try decoder.decode(UInt32.self)
         items = try decoder.decode([PACKET_ZC_PC_PURCHASE_MYITEMLIST_sub].self, count: (Int(packetLength) - (2 + 2 + 4)) / PACKET_ZC_PC_PURCHASE_MYITEMLIST_sub.size)
     }
@@ -6648,6 +6651,9 @@ public struct PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC: CodablePacket {
     public init(from decoder: BinaryDecoder) throws {
         packetType = try decoder.decode(Int16.self)
         packetLength = try decoder.decode(Int16.self)
+        guard Int(packetLength) >= 12, (Int(packetLength) - 12) % PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC_sub.size == 0 else {
+            throw PacketDecodingError.invalidPacketLength(packetType, Int(packetLength))
+        }
         AID = try decoder.decode(UInt32.self)
         venderId = try decoder.decode(UInt32.self)
         items = try decoder.decode([PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC_sub].self, count: (Int(packetLength) - (2 + 2 + 4 + 4)) / PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC_sub.size)

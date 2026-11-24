@@ -18,6 +18,7 @@ final class MapSceneRuntime {
     private static let cameraTargetOffset = SIMD3<Float>(0, 0.5, 0)
     private static let cameraFieldOfViewDegrees: Float = 15
 
+    private let shopTextCache: TextTextureCache
     private let trapModels: GroundTrapModels
     let scene: MapScene
     let world: WorldResource
@@ -29,6 +30,7 @@ final class MapSceneRuntime {
         world: WorldResource,
         renderResources: MapSceneRenderResources
     ) {
+        shopTextCache = TextTextureCache(device: renderResources.device)
         trapModels = GroundTrapModels(device: renderResources.device, manager: scene.resourceManager, light: WorldLight(light: world.rsw.light))
         self.scene = scene
         self.world = world
@@ -55,6 +57,7 @@ final class MapSceneRuntime {
     func unload() {
         scene.unload()
         renderResources.removeAll()
+        shopTextCache.removeAll()
         lastCamera = nil
     }
 
@@ -114,7 +117,9 @@ final class MapSceneRuntime {
     func makeRenderSnapshot(at time: ContinuousClock.Instant) -> MapSceneRenderSnapshot {
         let worldPositions = makeWorldPositions()
 
-        var snapshot = MapSceneRenderSnapshot(fog: scene.fog)
+        var fog = scene.fog
+        if UserDefaults.standard.object(forKey: "ro.fog") != nil && !UserDefaults.standard.bool(forKey: "ro.fog") { fog.isEnabled = false }
+        var snapshot = MapSceneRenderSnapshot(fog: fog)
         snapshot.traps = trapModels.resources
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
@@ -122,9 +127,9 @@ final class MapSceneRuntime {
         snapshot.groundTiles += scene.playSession.navigation.worldMarkers(mapName: scene.mapName, mapGrid: scene.mapGrid)
         snapshot.targetSelector = makeTargetSelector(at: time)
         snapshot.spriteDrawables = renderResources.spriteDrawables
-        snapshot.effects = makeEffects(worldPositions: worldPositions)
+        snapshot.effects = UserDefaults.standard.object(forKey: "ro.effects") != nil && !UserDefaults.standard.bool(forKey: "ro.effects") ? [] : makeEffects(worldPositions: worldPositions)
         snapshot.bars = makeBars(at: time, worldPositions: worldPositions)
-        snapshot.texts = makeTexts(worldPositions: worldPositions)
+        snapshot.texts = makeTexts(worldPositions: worldPositions) + makeShopTexts(worldPositions: worldPositions)
         scene.speech = scene.speech.filter { $0.value.expires > time }
         scene.skillDamage = scene.skillDamage.filter { $0.value.expires > time }
         let bubbles = renderResources.bubbleTextures.synchronize(texts: scene.speech.values.map(\.text) + scene.skillDamage.values.map(\.text))
@@ -278,6 +283,19 @@ final class MapSceneRuntime {
             texture: textTexture
         )
         return [text]
+    }
+
+    private func makeShopTexts(worldPositions: [GameObjectID: SIMD3<Float>]) -> [MapSceneRenderSnapshot.Text] {
+        let signs: [(TextDescriptor, SIMD3<Float>)] = scene.shopSigns.compactMap { id, name in
+            guard let actor = scene.objects[id], !actor.effectState.contains(.cloak), let position = worldPositions[id] else { return nil }
+            // Existing billboard text renderer handles camera orientation and clipping.
+            return (TextDescriptor(name: "[Shop] " + String(name.prefix(48)), objectType: .npc), position)
+        }
+        let textures = shopTextCache.synchronize(texts: signs.map { $0.0 })
+        return signs.compactMap { descriptor, position in
+            guard let texture = textures[descriptor] else { return nil }
+            return .init(vertices: TextMesh(size: descriptor.size, top: 65 + descriptor.size.y).vertices, worldPosition: position, texture: texture)
+        }
     }
 
     private func makeCombatTexts(

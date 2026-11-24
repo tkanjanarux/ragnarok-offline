@@ -6,6 +6,25 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func vendingPurchaseNeedsMatchingServerItemsAndMoney() throws {
+        var state = VendingState(); state.browsing = 7
+        var list = PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC(); list.AID = 8; list.venderId = 50
+        state.receive(list); #expect(state.shop == nil)
+        list.AID = 7; state.receive(list); #expect(state.shop?.venderId == 50)
+        state.purchase = .init(owner: 7,shop: 50,index: 2,itemID: 501,amount: 2,beforeZeny: 1000,cost: 200)
+        state.waiting = UUID()
+        state.checkPurchase(zeny: 800); #expect(state.purchase != nil)
+        state.receivedItem(502,count: 2,zeny: 800); #expect(state.purchase?.received == 0)
+        state.receivedItem(501,count: 2,zeny: 1000); #expect(state.purchase != nil)
+        state.checkPurchase(zeny: 800); #expect(state.purchase == nil && state.waiting == nil && state.shop == nil)
+        #expect(try PacketEncoder().encode(VendingRequest.buy(7,50,2,2)) == Data([1,8,16,0,7,0,0,0,50,0,0,0,2,0,2,0]))
+        #expect(throws: PacketDecodingError.self) {
+            try PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC(from: BinaryDecoder(stream: MemoryStream(data: Data([0x3d,11,13,0,0,0,0,0,0,0,0,0,0]))))
+        }
+        state.boards[7] = .init(id: 7,name: "Shop"); state.browsing = 7; state.shop = list
+        state.vanished(7); #expect(state.boards.isEmpty && state.shop == nil)
+    }
+
     @Test func rodexActualServerReadAndDuplicateClaim() throws {
         // Captured from the isolated synthetic mail 910001, PACKETVER 20211103.
         let bytes = Data(base64Encoded: "YwtpAACx4g0AAAAAABUAQQEAAAAAAAABS25vd24gYXR0YWNoZWQgaXRlbXMAAgD1AQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")!
