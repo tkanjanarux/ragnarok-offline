@@ -106,6 +106,7 @@ final class PlaySession {
             itemInfoTable: context.itemInfoTable,
             messageStringTable: context.messageStringTable
         )
+        self.party.currentMap = PartyMember.mapKey(character.mapName)
     }
 
     /// Keeps the current cooldown when it would end later than the new one.
@@ -214,6 +215,7 @@ final class PlaySession {
 
         switch error {
         case .network, .disconnected:
+            party = PartyState()
             if case .connecting = mapPhase {
                 let localizedMessage = context.messageStringTable.localizedMessageString(forID: 1)
                 delegate?.playSession(self, didFailToEnterWithErrorMessage: localizedMessage)

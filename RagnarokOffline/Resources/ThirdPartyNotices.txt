@@ -20,6 +20,8 @@ https://github.com/vthibault/roBrowser
 https://github.com/MrAntares/roBrowserLegacy
 Authors include Vincent Thibault, Antares, and MrUnzO.
 Includes code referenced or ported for GRF decryption and game sound tables.
+Party/minimap behavior also references roBrowserLegacy Group.js and MiniMapCommon.js
+at commit 2f9a9d6cf5b04a8ac7a44077080772046e15bcb7.
 Licensed under GNU GPLv3; see the full GNU GPLv3 text below.
 
 

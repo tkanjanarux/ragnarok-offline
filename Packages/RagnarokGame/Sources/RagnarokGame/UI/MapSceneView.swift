@@ -23,10 +23,14 @@ struct MapSceneView: View {
     @State private var presentedMenuItem: MenuItem?
 
     var body: some View {
-        MapHUDViewport { size, bottomInset in scene(in: size, bottomInset: bottomInset) }
+        GeometryReader { safe in
+            MapHUDViewport { size, bottomInset in
+                scene(in: size, bottomInset: bottomInset, trailingInset: safe.safeAreaInsets.trailing)
+            }
+        }
     }
 
-    private func scene(in size: CGSize, bottomInset: CGFloat) -> some View {
+    private func scene(in size: CGSize, bottomInset: CGFloat, trailingInset: CGFloat) -> some View {
         let bottomMargin = bottomHUDMargin(for: bottomInset)
         let isWidescreen = size.width >= 640
         let inset: CGFloat = size.width < 360 ? 8 : 16
@@ -98,7 +102,10 @@ struct MapSceneView: View {
         }
         .overlay(alignment: .topTrailing) {
             VStack(alignment: .trailing, spacing: 8) {
-                HStack(alignment: .top, spacing: 8) {
+                let minimapLayout = size.width < 420
+                    ? AnyLayout(VStackLayout(alignment: .trailing, spacing: 8))
+                    : AnyLayout(HStackLayout(alignment: .top, spacing: 8))
+                minimapLayout {
                     GameImageButton("basic_interface/nc_cashshop.bmp") {
                         presentedMenuItem = presentedMenuItem == .cashShop ? nil : .cashShop
                     }
@@ -112,7 +119,7 @@ struct MapSceneView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.top, 16)
-            .padding(.trailing, 16)
+            .padding(.trailing, max(16, trailingInset + 8))
             .padding(.bottom, statusIconBarBottomPadding(isWidescreen: isWidescreen, bottomMargin: bottomMargin))
         }
         .overlay {
