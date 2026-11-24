@@ -58,6 +58,8 @@ final class PlaySession {
     let navigation = NavigationState()
     var itemSelection = ItemSelectionState()
     var cart = CartState()
+    var refine = RefineState()
+    var equipmentSwitch = EquipmentSwitchState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
@@ -189,6 +191,8 @@ final class PlaySession {
     }
 
     func stop() {
+        equipmentSwitch = EquipmentSwitchState()
+        refine = RefineState()
         cart = CartState()
         itemSelection = ItemSelectionState()
         navigation.cancel()
@@ -222,6 +226,8 @@ final class PlaySession {
         switch error {
         case .network, .disconnected:
             navigation.cancel()
+            equipmentSwitch = EquipmentSwitchState()
+            refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
             party = PartyState()
@@ -291,6 +297,8 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            equipmentSwitch = EquipmentSwitchState()
+            refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
 
@@ -460,6 +468,8 @@ final class PlaySession {
         case let packet as PACKET_ZC_INVENTORY_START:
             // invType: 0 = inventory, 1 = cart, 2 = storage, 3 = guild storage
             switch packet.invType {
+            case 0:
+                inventory = Inventory()
             case 1:
                 cart.inventory = Inventory()
             case 2:
@@ -531,6 +541,20 @@ final class PlaySession {
             receiveCompositionResult(packet)
         case let packet as PACKET_ZC_MAKINGARROW_LIST:
             itemSelection.show(.arrow, values: packet.items.map { Int($0.itemId) })
+        case _ as PACKET_ZC_OPEN_REFINING_UI:
+            if refine.pending == nil { refine = RefineState() }
+            refine.authorized = true; refine.visible = true
+        case let packet as PACKET_ZC_REFINING_MATERIAL_LIST:
+            refine.receive(packet)
+        case let packet as PACKET_ZC_ACK_ITEMREFINING:
+            receiveRefineResult(packet)
+        case let packet as EquipmentSwitchResult:
+            equipmentSwitch.receive(packet)
+        case let packet as PACKET_ZC_SEND_SWAP_EQUIPITEM_INFO:
+            equipmentSwitch.entries = Dictionary(packet.items.map { (Int($0.index), $0.position) }, uniquingKeysWith: { _, last in last })
+        case let packet as EquipmentSwitchComplete:
+            equipmentSwitch.pending = nil
+            equipmentSwitch.message = packet.result == 0 ? "Equipment switched." : "The server rejected the equipment switch."
 
         case let packet as PACKET_ZC_REQ_WEAR_EQUIP_ACK:
             inventory.update(from: packet)
@@ -547,7 +571,9 @@ final class PlaySession {
         case let packet as PACKET_ZC_EQUIP_ARROW:
             inventory.update(from: packet)
         case let packet as PACKET_ZC_DELETE_ITEM_FROM_BODY:
-            cart.receiveTransferEvent(toCart: true, source: true, index: Int(packet.index), itemID: 0, amount: Int(packet.count))
+            if packet.deleteType == 5 {
+                cart.receiveTransferEvent(toCart: true, source: true, index: Int(packet.index), itemID: 0, amount: Int(packet.count))
+            }
             inventory.update(from: packet)
         case let packet as packet_spawn_unit:
             let object = MapObject(from: packet)
@@ -671,6 +697,10 @@ final class PlaySession {
         case let packet as PACKET_ZC_PC_SELL_ITEMLIST:
             npcShop = NPCShop(from: packet)
         case let packet as PACKET_ZC_PC_PURCHASE_RESULT:
+            if refine.pending != nil && packet.result != 0 {
+                refine.pending = nil
+                refine.message = "The server rejected the refining payment."
+            }
             npcShop = nil
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_PC_SELL_RESULT:

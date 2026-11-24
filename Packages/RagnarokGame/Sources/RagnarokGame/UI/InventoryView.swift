@@ -188,6 +188,10 @@ private struct InventoryItemActions: View {
             }
 
             if item.isEquippable && item.isIdentified {
+                GameContextMenuButton {
+                    playSession.equipmentSwitch.compareIndex = item.index
+                    dismiss()
+                } label: { Text("Compare") }
                 if item.isEquipped {
                     GameContextMenuButton {
                         playSession.unequipItem(at: item.index)

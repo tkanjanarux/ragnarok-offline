@@ -22,6 +22,9 @@ public struct PACKET_ZC_SEND_SWAP_EQUIPITEM_INFO: DecodablePacket {
     public init(from decoder: BinaryDecoder) throws {
         packetType = try decoder.decode(Int16.self)
         packetLength = try decoder.decode(Int16.self)
+        guard packetLength >= 4, (packetLength - 4) % 6 == 0 else {
+            throw PacketDecodingError.invalidPacketLength(packetType, Int(packetLength))
+        }
         items = try decoder.decode([PACKET_ZC_SEND_SWAP_EQUIPITEM_INFO_sub].self, count: Int((packetLength - 4) / 6))
     }
 }

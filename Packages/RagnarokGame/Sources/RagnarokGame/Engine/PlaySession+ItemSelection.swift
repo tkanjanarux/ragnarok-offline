@@ -11,7 +11,7 @@ extension PlaySession {
     }
 
     func requestCardComposition(index: Int) {
-        guard itemSelection.pending == nil, itemSelection.requestedCard == nil,
+        guard itemSelection.pending == nil, itemSelection.requestedCard == nil, cart.pending == nil, refine.pending == nil,
               let item = inventory.items[index], item.type == .card, item.amount > 0,
               let wireIndex = UInt16(exactly: index) else { return }
         itemSelection.requestedCard = (index, item.itemID)
@@ -20,9 +20,10 @@ extension PlaySession {
         var packet = PACKET_CZ_REQ_ITEMCOMPOSITION_LIST()
         packet.packetType = HEADER_CZ_REQ_ITEMCOMPOSITION_LIST; packet.index = wireIndex
         sendFoundationPacket(packet)
+        let epoch = itemSelection.epoch
         Task { [weak self] in
             try? await Task.sleep(for: .seconds(10))
-            guard let self, self.itemSelection.requestedCard?.index == index,
+            guard let self, self.itemSelection.epoch == epoch, self.itemSelection.requestedCard?.index == index,
                   self.itemSelection.selection == nil, self.itemSelection.pending == nil else { return }
             self.itemSelection.message = "No eligible equipment was returned. Unequip a compatible item with an empty slot, then try again."
         }
@@ -94,6 +95,7 @@ extension PlaySession {
     func receiveCompositionResult(_ packet: PACKET_ZC_ACK_ITEMCOMPOSITION) {
         guard let pending = itemSelection.pending, pending.kind == .card,
               pending.index == Int(packet.equipIndex), pending.cardIndex == Int(packet.cardIndex) else { return }
+        var applied = false
         if packet.result == 0, let cardID = pending.cardID, let cardIndex = pending.cardIndex,
            inventory.items[pending.index]?.itemID == pending.itemID,
            inventory.items[cardIndex]?.itemID == cardID,
@@ -103,8 +105,11 @@ extension PlaySession {
             inventory.items[pending.index]?.slots[slot] = cardID
             inventory.items[cardIndex]?.amount -= 1
             if inventory.items[cardIndex]?.amount == 0 { inventory.items.removeValue(forKey: cardIndex) }
+            applied = true
         }
         itemSelection.pending = nil; itemSelection.selection = nil; itemSelection.requestedCard = nil
-        itemSelection.message = packet.result == 0 ? "Card inserted." : "The server rejected card insertion."
+        itemSelection.message = packet.result == 0
+            ? (applied ? "Card inserted." : "The server accepted the card. Reconnect to refresh the changed inventory.")
+            : "The server rejected card insertion."
     }
 }

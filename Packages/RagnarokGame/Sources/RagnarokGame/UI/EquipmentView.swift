@@ -57,6 +57,10 @@ struct EquipmentView: View {
         .gameWindowTitle(Text(gameContext.messageStringTable.localizedMessageString(forID: 104)))
         .gameWindowCloseAction(onClose)
         .frame(width: 320)
+        .safeAreaInset(edge: .bottom) {
+            Button("Equipment switch") { playSession.equipmentSwitch.visible = true }
+                .buttonStyle(.game).frame(minHeight: 44)
+        }
         .task {
             characterAnimation = await gameSession.characterAnimation(for: playSession.character)
         }

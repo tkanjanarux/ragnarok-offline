@@ -1,6 +1,7 @@
 import Foundation
 
 struct ItemSelectionState {
+    var epoch = UUID()
     enum Kind: Equatable { case identify, card, arrow }
     struct Selection {
         var kind: Kind

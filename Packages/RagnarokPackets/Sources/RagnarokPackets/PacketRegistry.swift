@@ -1292,10 +1292,11 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_VIEW_CAMERAINFO: PACKET_ZC_VIEW_CAMERAINFO.self,
 
     // | 0xa98 | `clif_equipswitch_add` |
-//  HEADER_ZC_REQ_WEAR_SWITCHEQUIP_ADD_RESULT: PACKET_ZC_REQ_WEAR_SWITCHEQUIP_ADD_RESULT.self,
+    0xa98: EquipmentSwitchResult.self,
 
     // | 0xa9a | `clif_equipswitch_remove` |
-//  HEADER_ZC_REQ_WEAR_SWITCHEQUIP_REMOVE_RESULT: PACKET_ZC_REQ_WEAR_SWITCHEQUIP_REMOVE_RESULT.self,
+    0xa9a: EquipmentSwitchResult.self,
+    0xa9d: EquipmentSwitchComplete.self,
 
     // | 0xa9b | `clif_equipswitch_list` |
     HEADER_ZC_SEND_SWAP_EQUIPITEM_INFO: PACKET_ZC_SEND_SWAP_EQUIPITEM_INFO.self,

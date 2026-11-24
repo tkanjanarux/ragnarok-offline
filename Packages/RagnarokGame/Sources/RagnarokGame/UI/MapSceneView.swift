@@ -223,6 +223,20 @@ struct MapSceneView: View {
                     .padding(.trailing, trailingInset)
                     .padding(.bottom, bottomInset)
             }
+            if playSession.refine.visible {
+                RefineView()
+                    .padding(.leading, leadingInset)
+                    .padding(.trailing, trailingInset)
+                    .padding(.bottom, bottomInset)
+            }
+            if playSession.equipmentSwitch.visible {
+                EquipmentSwitchView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+            }
+            if playSession.equipmentSwitch.compareIndex != nil {
+                EquipmentCompareView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+            }
         }
         .environment(\.companionHUDObstacles, hudFrames)
         .task(id: runtime.scene.mapName) {
