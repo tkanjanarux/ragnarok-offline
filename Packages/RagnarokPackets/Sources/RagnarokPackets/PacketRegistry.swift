@@ -6,6 +6,10 @@
 //
 
 let registeredPackets: [Int16 : any DecodablePacket.Type] = [
+    0x29b: MercenaryInfo.self,
+    0x29d: MercenarySkills.self,
+    0x2a2: MercenaryParameter.self,
+    0x1a6: ItemSelectionList.self,
     0xa26: AchievementRewardResult.self,
     0xaf0: AttendanceResult.self,
     0x207: FriendInvitation.self,

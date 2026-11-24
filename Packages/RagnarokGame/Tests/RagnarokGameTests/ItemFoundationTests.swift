@@ -6,6 +6,39 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func petAndHomunculusUpdatesKeepOwnerIdentity() throws {
+        var pets = PetState(); var info = PACKET_ZC_PROPERTY_PET(); info.szName = "Poring"; info.nFullness = 50
+        pets.receive(info)
+        var change = PACKET_ZC_CHANGESTATE_PET(); change.GID = 42; change.type = 0; pets.receive(change)
+        change.type = 2; change.GID = 99; change.data = 10; pets.receive(change)
+        #expect(pets.info?.nFullness == 50)
+        change.GID = 42; pets.receive(change); #expect(pets.info?.nFullness == 10)
+        pets.vanished(99); #expect(pets.info != nil)
+        pets.vanished(42); #expect(pets.info == nil && pets.actorID == nil)
+        var followers = FollowerState(); var hom = PACKET_ZC_PROPERTY_HOMUN(); hom.hp = 100; hom.maxHp = 120
+        followers.receive(hom)
+        var state = PACKET_ZC_CHANGESTATE_MER(); state.gid = 7; state.state = 0; followers.receive(state)
+        var parameter = PACKET_ZC_HO_PAR_CHANGE(); parameter.type = 5; parameter.value = 40; followers.homParameter(parameter)
+        #expect(followers.homunculus?.hp == 40)
+        followers.vanished(8); #expect(followers.homunculus != nil)
+        followers.vanished(7); #expect(followers.homunculus == nil && followers.homSkills.isEmpty)
+        #expect(try PacketEncoder().encode(FollowerRequest.homunculus(1)) == Data([0x2d,2,0,0,1]))
+        #expect(try PacketEncoder().encode(PetRequest.autoFeed(true)) == Data([0xd8,2,2,0,0,0,1,0,0,0]))
+    }
+
+    @Test func mercenaryWireLayoutAndMalformedSkillList() throws {
+        var data = Data([0x9b,2,42,0,0,0]); data.append(Data(repeating: 0, count: 16))
+        data.append(Data("Mercenary".utf8)); data.append(Data(repeating: 0, count: 15))
+        data.append(contentsOf: [10,0,100,0,0,0,120,0,0,0,20,0,0,0,30,0,0,0])
+        data.append(Data(repeating: 0, count: 16))
+        #expect(data.count == 80)
+        let merc = try MercenaryInfo(from: BinaryDecoder(stream: MemoryStream(data: data)))
+        #expect(merc.id == 42 && merc.name == "Mercenary" && merc.hp == 100 && merc.maxHP == 120)
+        #expect(throws: PacketDecodingError.self) {
+            try MercenarySkills(from: BinaryDecoder(stream: MemoryStream(data: Data([0x9d,2,5,0,0]))))
+        }
+    }
+
     @Test func achievementRowsAndClaimUseServerAuthority() throws {
         var data = Data([0x23,0x0a,72,0,1,0,0,0,10,0,0,0,1,0,5,0,0,0,20,0,0,0])
         data.append(contentsOf: [0xc1,0xd4,1,0,1]) // 120001, complete

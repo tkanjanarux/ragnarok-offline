@@ -3,7 +3,9 @@ import RagnarokPackets
 
 extension PlaySession {
     func receiveItemSelection(_ packet: ItemSelectionList) {
-        if packet.type == 0x177 {
+        if packet.type == 0x1a6 {
+            pets.eggs = packet.indices.map(Int.init); pets.visible = true; pets.message = nil
+        } else if packet.type == 0x177 {
             itemSelection.show(.identify, values: packet.indices.map(Int.init))
         } else if itemSelection.requestedCard != nil {
             itemSelection.show(.card, values: packet.indices.map(Int.init))

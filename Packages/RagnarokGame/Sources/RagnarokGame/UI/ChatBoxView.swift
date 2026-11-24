@@ -104,6 +104,8 @@ struct ChatBoxView: View {
                         Button("Reply to \(sender)") { playSession.social.channel = .whisper; playSession.social.recipient = sender }
                     }
                     Button("Trade with selected player") { playSession.inviteSelectedPlayerToTrade() }
+                    Button("Homunculus / Mercenary") { playSession.followers.visible = true }
+                    Button("Pet") { playSession.pets.visible = true }
                     Button("Attendance") { playSession.openAttendance() }
                     Button("Chat rooms") { playSession.chatRoom.visible = true }
                     Button("Friends") { playSession.social.friendsVisible = true }

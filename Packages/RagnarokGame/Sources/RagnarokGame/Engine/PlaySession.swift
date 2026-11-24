@@ -60,6 +60,8 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var followers = FollowerState()
+    var pets = PetState()
     var rewards = RewardState()
     var chatRoom = ChatRoomState()
     var trade = TradeState()
@@ -196,6 +198,8 @@ final class PlaySession {
     }
 
     func stop() {
+        followers = FollowerState()
+        pets = PetState()
         rewards = RewardState()
         social = SocialState()
         equipmentSwitch = EquipmentSwitchState()
@@ -236,6 +240,8 @@ final class PlaySession {
         switch error {
         case .network, .disconnected:
             navigation.cancel()
+            followers = FollowerState()
+            pets = PetState()
             rewards = RewardState()
             social = SocialState()
             equipmentSwitch = EquipmentSwitchState()
@@ -332,6 +338,8 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            followers = FollowerState()
+            pets = PetState()
             rewards.visible = false; rewards.attendanceVisible = false
             social.invitation = nil
             social.friendsVisible = false
@@ -664,6 +672,8 @@ final class PlaySession {
             logger.info("Object \(objectID) stopped at \(position)")
             mapScene?.onMapObjectStopped(objectID: objectID, position: position)
         case let packet as PACKET_ZC_NOTIFY_VANISH:
+            followers.vanished(packet.gid)
+            pets.vanished(packet.gid)
             chatRoom.rooms = chatRoom.rooms.filter { $0.value.owner != packet.gid }
             let objectID = packet.gid
             let type = UnitClearType(rawValue: Int(packet.type)) ?? .outsight
@@ -801,6 +811,41 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_CLAN_CHAT:
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
+        case let packet as PACKET_ZC_PROPERTY_HOMUN:
+            followers.receive(packet)
+        case let packet as PACKET_ZC_CHANGESTATE_MER:
+            followers.receive(packet)
+        case let packet as PACKET_ZC_HO_PAR_CHANGE:
+            followers.homParameter(packet)
+        case let packet as PACKET_ZC_FEED_MER:
+            followers.finish(.feed, kind: .homunculus, message: packet.result == 0 ? "Could not feed the homunculus. Check its food." : "Homunculus fed.")
+        case let packet as PACKET_ZC_HOSKILLINFO_LIST:
+            followers.homSkills = Dictionary(packet.skills.map { ($0.id, $0) }, uniquingKeysWith: { _, new in new })
+        case let packet as PACKET_ZC_HOSKILLINFO_UPDATE:
+            followers.homSkills[packet.skill_id]?.level = UInt16(clamping: packet.Level)
+            followers.homSkills[packet.skill_id]?.sp = UInt16(clamping: packet.SP)
+            followers.homSkills[packet.skill_id]?.range = UInt16(clamping: packet.AttackRange)
+            followers.homSkills[packet.skill_id]?.upgradable = UInt8(clamping: packet.upgradable)
+            if followers.pendingSkill == packet.skill_id { followers.finish(.upgrade, kind: .homunculus) }
+        case let packet as MercenaryInfo:
+            followers.mercenary = packet
+        case let packet as MercenarySkills:
+            followers.mercSkills = Dictionary(packet.skills.map { ($0.id, $0) }, uniquingKeysWith: { _, new in new })
+        case let packet as MercenaryParameter:
+            followers.mercParameter(packet)
+        case _ as PACKET_ZC_START_CAPTURE:
+            pets.captureReady = true; pets.visible = true; pets.message = "Select a monster, then capture."
+        case let packet as PACKET_ZC_TRYCAPTURE_MONSTER:
+            pets.finish(.capture, message: packet.result == 1 ? "Capture succeeded." : "Capture failed or was cancelled.")
+        case let packet as PACKET_ZC_PROPERTY_PET:
+            pets.receive(packet)
+        case let packet as PACKET_ZC_CHANGESTATE_PET:
+            pets.receive(packet)
+        case let packet as PACKET_ZC_FEED_PET:
+            pets.finish(.feed, message: packet.result == 0 ? "Could not feed the pet. Check its food." : "Pet fed.")
+        case let packet as PACKET_ZC_CONFIG:
+            if packet.type == 2 { pets.autoFeed = packet.value != 0; pets.finish(.autoFeed) }
+            if packet.type == 3 { followers.homAutoFeed = packet.value != 0; followers.finish(.autoFeed, kind: .homunculus) }
         case let packet as PACKET_ZC_ALL_ACH_LIST:
             rewards.receive(packet)
         case let packet as PACKET_ZC_ACH_UPDATE:

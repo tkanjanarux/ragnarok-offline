@@ -23,7 +23,7 @@ Different binaries require independent integration evidence.
 | B3 | Trade item/zeny, vending/buying/signboards | Trade implemented; isolated decline/cancel/two-sided lock/commit/reject/persisted item and zeny conservation PASS; vending/buying/signboards pending |
 | B4 | Ordinary chat rooms | Implemented separately from exam rooms; isolated normal-account create/private password rejection/join/chat/edit/owner transfer/kick/leave PASS |
 | C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX pending |
-| C2 | Pet, homunculus, mercenary | Implement standard RO systems separately from custom companion |
+| C2 | Pet, homunculus, mercenary | Pet/homunculus/mercenary native UI and commands implemented separately; isolated hatch/feed rejection/feed/name/egg/capture-cancel, hom info/name/autofeed/delete, mercenary contract/info/skills/dismiss PASS. Follow/attack/skill execution, pet evolution data remain unverified |
 | C3 | Achievement rewards, attendance | Implemented list/update/claim and attendance request/response; portable tests PASS. Live achievement claim blocked by server SQLite timestamp format bug (evidence/rewards-blocker.json); attendance DB loads zero events, no reward calendar invented |
 | C4 | Graphics/audio/shortcuts settings | Audit existing backend before enabling controls |
 | C5 | Reputation/clan/special enchant | Inspect actual enabled data/NPC; not marked disabled from missing client UI |
