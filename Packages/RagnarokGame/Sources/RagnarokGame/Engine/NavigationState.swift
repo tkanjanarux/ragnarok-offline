@@ -6,7 +6,8 @@ import RagnarokScript
 
 extension NavigationGrid {
     init(mapGrid: MapGrid) {
-        width = mapGrid.width; height = mapGrid.height
+        let width = mapGrid.width, height = mapGrid.height
+        self.width = width; self.height = height
         walkable = (0..<height).flatMap { y in (0..<width).map { x in mapGrid[SIMD2(x, y)].isWalkable } }
     }
 }
