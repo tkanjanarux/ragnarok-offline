@@ -1,0 +1,37 @@
+name: RO foundations iPhone build
+on:
+  push:
+    branches: [qa/ro-foundations-20261125]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  iphone:
+    runs-on: xcode-27
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Select Xcode 27.2
+        run: |
+          sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          xcodebuild -version
+      - name: Build full unsigned iPhone app
+        run: |
+          set -o pipefail
+          xcodebuild -project RagnarokOffline.xcodeproj -scheme RagnarokOffline -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO build 2>&1 | tee build.log
+      - name: Package for external signing
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/RagnarokOffline.app Payload/
+          zip -qry RagOff-unsigned.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: RagOff-unsigned
+          path: RagOff-unsigned.ipa
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-log
+          path: build.log

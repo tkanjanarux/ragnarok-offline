@@ -529,13 +529,13 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
 //  HEADER_ZC_ACK_CHANGE_GUILD_POSITIONINFO: PACKET_ZC_ACK_CHANGE_GUILD_POSITIONINFO.self,
 
     // | 0x177 | `clif_item_identify_list` |
-//  HEADER_ZC_ITEMIDENTIFY_LIST: PACKET_ZC_ITEMIDENTIFY_LIST.self,
+    0x177: ItemSelectionList.self,
 
     // | 0x179 | `clif_item_identified` |
     HEADER_ZC_ACK_ITEMIDENTIFY: PACKET_ZC_ACK_ITEMIDENTIFY.self,
 
     // | 0x17b | `clif_use_card` |
-//  HEADER_ZC_ITEMCOMPOSITION_LIST: PACKET_ZC_ITEMCOMPOSITION_LIST.self,
+    0x17b: ItemSelectionList.self,
 
     // | 0x17d | `clif_insert_card` |
     HEADER_ZC_ACK_ITEMCOMPOSITION: PACKET_ZC_ACK_ITEMCOMPOSITION.self,

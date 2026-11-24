@@ -211,6 +211,18 @@ struct MapSceneView: View {
             if let storage = playSession.storage {
                 StorageView(storage: storage)
             }
+            if playSession.itemSelection.visible {
+                ItemSelectionView()
+                    .padding(.leading, leadingInset)
+                    .padding(.trailing, trailingInset)
+                    .padding(.bottom, bottomInset)
+            }
+            if playSession.cart.visible {
+                CartView()
+                    .padding(.leading, leadingInset)
+                    .padding(.trailing, trailingInset)
+                    .padding(.bottom, bottomInset)
+            }
         }
         .environment(\.companionHUDObstacles, hudFrames)
         .task(id: runtime.scene.mapName) {

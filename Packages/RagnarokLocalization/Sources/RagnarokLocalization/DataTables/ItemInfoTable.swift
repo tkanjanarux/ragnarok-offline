@@ -51,6 +51,14 @@ final public class ItemInfoTable {
         itemInfosByID[itemID]?.identifiedItemName
     }
 
+    public func localizedUnidentifiedItemName(forItemID itemID: Int) -> String? {
+        itemInfosByID[itemID]?.unidentifiedItemName
+    }
+
+    public func localizedUnidentifiedItemDescription(forItemID itemID: Int) -> String? {
+        itemInfosByID[itemID]?.unidentifiedItemDescription
+    }
+
     public func localizedIdentifiedItemDescription(forItemID itemID: Int) -> String? {
         itemInfosByID[itemID]?.identifiedItemDescription
     }

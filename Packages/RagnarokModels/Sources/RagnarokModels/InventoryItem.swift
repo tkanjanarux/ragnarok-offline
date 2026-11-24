@@ -16,6 +16,9 @@ public struct InventoryItem: Sendable {
     public var location: EquipPositions
     public var equippedLocation: EquipPositions
     public var slots: [Int]
+    public var isIdentified = false
+    public var refineLevel = 0
+    public var isDamaged = false
 
     public var isUsable: Bool {
         switch type {
@@ -53,6 +56,7 @@ public struct InventoryItem: Sendable {
     }
 
     public init(from item: NORMALITEM_INFO) {
+        isIdentified = item.Flag & 1 != 0
         index = Int(item.index)
         itemID = Int(item.ITID)
         type = ItemType(rawValue: Int(item.type)) ?? .etc
@@ -63,6 +67,9 @@ public struct InventoryItem: Sendable {
     }
 
     public init(from item: EQUIPITEM_INFO) {
+        isIdentified = item.Flag & 1 != 0
+        isDamaged = item.Flag & 2 != 0
+        refineLevel = Int(item.RefiningLevel)
         index = Int(item.index)
         itemID = Int(item.ITID)
         type = ItemType(rawValue: Int(item.type)) ?? .etc

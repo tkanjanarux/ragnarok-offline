@@ -59,6 +59,8 @@ struct InventoryView: View {
             }
 
             ShortcutBarView()
+            Button("Cart") { playSession.cart.visible = true }
+                .buttonStyle(.game).frame(minHeight: 44)
         }
         .shortcutDragContainer()
         .animation(.easeInOut(duration: 0.25), value: selectedItem)
@@ -178,7 +180,14 @@ private struct InventoryItemActions: View {
                 }
             }
 
-            if item.isEquippable {
+            if item.type == .card {
+                GameContextMenuButton {
+                    playSession.requestCardComposition(index: item.index)
+                    dismiss()
+                } label: { Text("Insert card") }
+            }
+
+            if item.isEquippable && item.isIdentified {
                 if item.isEquipped {
                     GameContextMenuButton {
                         playSession.unequipItem(at: item.index)

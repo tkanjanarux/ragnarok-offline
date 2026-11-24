@@ -139,11 +139,14 @@ struct InventoryItemPreview: View {
     }
 
     private var itemName: String {
-        gameContext.itemInfoTable.localizedIdentifiedItemName(forItemID: item.itemID) ?? "\(item.itemID)"
+        guard item.isIdentified else { return gameContext.itemInfoTable.localizedUnidentifiedItemName(forItemID: item.itemID) ?? "Unidentified item" }
+        let name = gameContext.itemInfoTable.localizedIdentifiedItemName(forItemID: item.itemID) ?? "\(item.itemID)"
+        return item.refineLevel > 0 ? "+\(item.refineLevel) \(name)" : name
     }
 
     private var itemDescription: String {
-        gameContext.itemInfoTable.localizedIdentifiedItemDescription(forItemID: item.itemID) ?? ""
+        guard item.isIdentified else { return gameContext.itemInfoTable.localizedUnidentifiedItemDescription(forItemID: item.itemID) ?? "Use a Magnifier or Item Appraisal to identify this item." }
+        return gameContext.itemInfoTable.localizedIdentifiedItemDescription(forItemID: item.itemID) ?? ""
     }
 
     /// Cards compounded into the equipment. The first slot marks forged and pet items instead of a card.

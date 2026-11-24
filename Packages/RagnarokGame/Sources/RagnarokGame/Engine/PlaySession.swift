@@ -56,6 +56,8 @@ final class PlaySession {
     @ObservationIgnored private var companionTimeout: Task<Void, Never>?
     var party = PartyState()
     let navigation = NavigationState()
+    var itemSelection = ItemSelectionState()
+    var cart = CartState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
@@ -187,6 +189,8 @@ final class PlaySession {
     }
 
     func stop() {
+        cart = CartState()
+        itemSelection = ItemSelectionState()
         navigation.cancel()
         mapRuntime?.unload()
 
@@ -218,6 +222,8 @@ final class PlaySession {
         switch error {
         case .network, .disconnected:
             navigation.cancel()
+            cart = CartState()
+            itemSelection = ItemSelectionState()
             party = PartyState()
             if case .connecting = mapPhase {
                 let localizedMessage = context.messageStringTable.localizedMessageString(forID: 1)
@@ -285,6 +291,8 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            cart = CartState()
+            itemSelection = ItemSelectionState()
 
             if let mapScene, mapScene.mapName == mapName {
                 mapScene.jump(toPosition: position)
@@ -452,6 +460,8 @@ final class PlaySession {
         case let packet as PACKET_ZC_INVENTORY_START:
             // invType: 0 = inventory, 1 = cart, 2 = storage, 3 = guild storage
             switch packet.invType {
+            case 1:
+                cart.inventory = Inventory()
             case 2:
                 storage = Storage(name: packet.name)
             default:
@@ -464,6 +474,8 @@ final class PlaySession {
             switch packet.invType {
             case 0:
                 inventory.update(from: packet)
+            case 1:
+                cart.inventory.update(from: packet)
             case 2:
                 storage?.update(from: packet)
             default:
@@ -474,6 +486,8 @@ final class PlaySession {
             switch packet.invType {
             case 0:
                 inventory.update(from: packet)
+            case 1:
+                cart.inventory.update(from: packet)
             case 2:
                 storage?.update(from: packet)
             default:
@@ -491,6 +505,11 @@ final class PlaySession {
             mapScene?.onItemVanished(objectID: packet.itemAid)
         case let packet as PACKET_ZC_ITEM_PICKUP_ACK:
             inventory.update(from: packet)
+            if packet.result == 0 {
+                cart.receiveTransferEvent(toCart: false, source: false, index: Int(packet.Index), itemID: Int(packet.nameid), amount: Int(packet.count))
+            } else if cart.pending?.toCart == false {
+                cart.pending = nil; cart.message = "The server rejected the inventory transfer."
+            }
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_USE_ITEM_ACK:
             inventory.update(from: packet)
@@ -504,6 +523,14 @@ final class PlaySession {
             }
         case let packet as QuestWirePacket:
             applyQuestPacket(packet)
+        case let packet as ItemSelectionList:
+            receiveItemSelection(packet)
+        case let packet as PACKET_ZC_ACK_ITEMIDENTIFY:
+            receiveIdentifyResult(packet)
+        case let packet as PACKET_ZC_ACK_ITEMCOMPOSITION:
+            receiveCompositionResult(packet)
+        case let packet as PACKET_ZC_MAKINGARROW_LIST:
+            itemSelection.show(.arrow, values: packet.items.map { Int($0.itemId) })
 
         case let packet as PACKET_ZC_REQ_WEAR_EQUIP_ACK:
             inventory.update(from: packet)
@@ -520,6 +547,7 @@ final class PlaySession {
         case let packet as PACKET_ZC_EQUIP_ARROW:
             inventory.update(from: packet)
         case let packet as PACKET_ZC_DELETE_ITEM_FROM_BODY:
+            cart.receiveTransferEvent(toCart: true, source: true, index: Int(packet.index), itemID: 0, amount: Int(packet.count))
             inventory.update(from: packet)
         case let packet as packet_spawn_unit:
             let object = MapObject(from: packet)
@@ -702,8 +730,17 @@ final class PlaySession {
             break
         case _ as PACKET_ZC_STATUS_CHANGE_ACK:
             break
-        case _ as PACKET_ZC_NOTIFY_CARTITEM_COUNTINFO:
-            break
+        case let packet as PACKET_ZC_NOTIFY_CARTITEM_COUNTINFO:
+            cart.receiveCount(packet)
+        case let packet as PACKET_ZC_ADD_ITEM_TO_CART:
+            cart.receiveAdded(packet)
+        case let packet as PACKET_ZC_DELETE_ITEM_FROM_CART:
+            cart.receiveRemoved(packet)
+        case _ as PACKET_ZC_CARTOFF:
+            cart = CartState()
+        case let packet as PACKET_ZC_ACK_ADDITEM_TO_CART:
+            cart.pending = nil
+            cart.message = packet.result == 0 ? "Cart weight limit reached." : "Cart item limit reached."
         case _ as PACKET_ZC_PARTY_CONFIG:
             break
         case _ as PACKET_ZC_REPUTE_INFO:
@@ -1030,6 +1067,10 @@ final class PlaySession {
 
         let packet = PacketFactory.CZ_USE_ITEM(index: index, accountID: account.accountID)
         mapClient.sendPacket(packet)
+    }
+
+    func sendFoundationPacket(_ packet: any EncodablePacket) {
+        mapClient?.sendPacket(packet)
     }
 
     func equipItem(at index: Int, location: EquipPositions) {
