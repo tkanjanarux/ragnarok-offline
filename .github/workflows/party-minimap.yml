@@ -1,7 +1,7 @@
-name: Party minimap iPhone build and tests
+name: Navigation iPhone build and tests
 on:
   push:
-    branches: [qa/party-minimap-20261124]
+    branches: [qa/navigation-20261124]
   workflow_dispatch:
 permissions:
   contents: read
@@ -50,7 +50,7 @@ jobs:
           sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
           device=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]))')
           echo "$device" > ../../simulator-device.txt
-          xcodebuild -scheme RagnarokGame -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO -only-testing:RagnarokGameTests/PartyMinimapTests -only-testing:RagnarokGameTests/PartyWorldBarTests -resultBundlePath ../../party-tests.xcresult test 2>&1 | tee ../../simulator.log
+          xcodebuild -scheme RagnarokGame -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO -only-testing:RagnarokGameTests/PartyMinimapTests -only-testing:RagnarokGameTests/PartyWorldBarTests -only-testing:RagnarokGameTests/NavigationTests -resultBundlePath ../../party-tests.xcresult test 2>&1 | tee ../../simulator.log
       - name: Extract test results
         if: always()
         run: |
@@ -68,6 +68,11 @@ jobs:
               assert data.startswith(b'\x89PNG\r\n\x1a\n')
               (output / ('party-bars-' + name + '.png')).write_bytes(data)
           assert len(list(output.glob('party-bars-*.png'))) == 3, 'Missing simulator fixture images'
+          for name, encoded in re.findall(r'NAVIGATION_PNG ([\w-]+) ([A-Za-z0-9+/=]+)', log):
+              data = base64.b64decode(encoded, validate=True)
+              assert data.startswith(b'\x89PNG\r\n\x1a\n')
+              (output / ('navigation-' + name + '.png')).write_bytes(data)
+          assert len(list(output.glob('navigation-*.png'))) == 3, 'Missing navigation fixture images'
           PY
       - uses: actions/upload-artifact@v4
         if: always()

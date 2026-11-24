@@ -23,6 +23,10 @@ Includes code referenced or ported for GRF decryption and game sound tables.
 Party/minimap behavior also references roBrowserLegacy Group.js and MiniMapCommon.js
 and entity health-bar behavior in Renderer/Entity/EntityLife.js
 at commit 2f9a9d6cf5b04a8ac7a44077080772046e15bcb7.
+Navigation guidance and table column semantics reference UI/Components/Navigation/
+Navigation.js, MapPathFinder.js, and DB/Map/NavigationSystem.js at the same commit.
+Uses the native Swift/Metal pipeline and user-supplied client navigation data;
+no roBrowser JavaScript dependencies or third-party game data are bundled.
 Licensed under GNU GPLv3; see the full GNU GPLv3 text below.
 
 

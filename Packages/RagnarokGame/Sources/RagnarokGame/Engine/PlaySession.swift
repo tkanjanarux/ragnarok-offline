@@ -55,6 +55,7 @@ final class PlaySession {
     var companions = CompanionState()
     @ObservationIgnored private var companionTimeout: Task<Void, Never>?
     var party = PartyState()
+    let navigation = NavigationState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
@@ -186,6 +187,7 @@ final class PlaySession {
     }
 
     func stop() {
+        navigation.cancel()
         mapRuntime?.unload()
 
         keepaliveTask?.cancel()
@@ -215,6 +217,7 @@ final class PlaySession {
 
         switch error {
         case .network, .disconnected:
+            navigation.cancel()
             party = PartyState()
             if case .connecting = mapPhase {
                 let localizedMessage = context.messageStringTable.localizedMessageString(forID: 1)
@@ -280,6 +283,8 @@ final class PlaySession {
             examQueueState = .idle
             let mapName = packet.mapName.replacingOccurrences(of: ".gat", with: ".rsw")
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
+
+            navigation.mapChanging()
 
             if let mapScene, mapScene.mapName == mapName {
                 mapScene.jump(toPosition: position)

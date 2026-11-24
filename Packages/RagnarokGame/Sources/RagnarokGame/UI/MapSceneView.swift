@@ -111,7 +111,7 @@ struct MapSceneView: View {
                     }
                     .frame(width: 43, height: 45)
                     .accessibilityLabel("Cash Shop")
-                    MinimapView(scene: runtime.scene)
+                    MinimapView(scene: runtime.scene) { presentedMenuItem = .navigation }
                 }
                 .hudObstacle()
 
@@ -177,6 +177,8 @@ struct MapSceneView: View {
                     WorldMapView(currentMapName: runtime.scene.mapName) {
                         presentedMenuItem = nil
                     }
+                case .navigation:
+                    NavigationView(scene: runtime.scene) { presentedMenuItem = nil }
                 case .options:
                     OptionsView(isPlayerDead: runtime.scene.state.isPlayerDead) {
                         presentedMenuItem = nil
@@ -207,6 +209,15 @@ struct MapSceneView: View {
             }
         }
         .environment(\.companionHUDObstacles, hudFrames)
+        .task(id: runtime.scene.mapName) {
+            playSession.navigation.update(map: runtime.scene.mapName, position: runtime.scene.state.playerPosition,
+                mapGrid: runtime.scene.mapGrid, manager: runtime.scene.resourceManager)
+            await playSession.navigation.loadData(using: runtime.scene.resourceManager)
+        }
+        .onChange(of: runtime.scene.state.playerPosition) { _, point in
+            playSession.navigation.update(map: runtime.scene.mapName, position: point,
+                mapGrid: runtime.scene.mapGrid, manager: runtime.scene.resourceManager)
+        }
         .onPreferenceChange(CompanionHUDFrames.self) { hudFrames = $0 }
         .environment(\.companionManagementFrame, companionFrame)
         .onPreferenceChange(CompanionWindowBounds.self) { companionFrame = $0 }

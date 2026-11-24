@@ -14,8 +14,10 @@ private let zoomFactors = [1, 10, 6, 3, 2]
 
 struct MinimapView: View {
     var scene: MapScene
+    var onNavigation: () -> Void = {}
 
     @Environment(GameContext.self) private var gameContext
+    @Environment(PlaySession.self) private var session
 
     @State private var zoomLevel = 0
     @State private var mapImage: CGImage?
@@ -64,6 +66,14 @@ struct MinimapView: View {
                 .disabled(zoomLevel == 0)
             }
             .offset(x: 6)
+            if session.navigation.target != nil {
+                HStack(spacing: 0) {
+                    Button(action: onNavigation) { Image(systemName: "location.north.line").frame(width: 48, height: 44) }
+                        .accessibilityLabel("Show navigation route")
+                    Button { session.navigation.cancel() } label: { Image(systemName: "xmark").frame(width: 48, height: 44) }
+                        .accessibilityLabel("Cancel route")
+                }.buttonStyle(.plain).foregroundStyle(.yellow).background(.black.opacity(0.65))
+            }
         }
         .frame(width: mapSize)
         .task(id: scene.mapName) {
@@ -114,6 +124,10 @@ private struct MinimapMapView: View {
                         height: projection.displaySize.height
                     )
                     .position(projection.center)
+            }
+
+            if session.navigation.map == PartyMember.mapKey(scene.mapName) {
+                NavigationRouteOverlay(path: session.navigation.path, projection: projection)
             }
 
             ForEach(session.party.members) { member in

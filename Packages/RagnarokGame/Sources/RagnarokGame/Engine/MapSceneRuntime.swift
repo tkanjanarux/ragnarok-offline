@@ -119,6 +119,7 @@ final class MapSceneRuntime {
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
         snapshot.groundTiles = scene.visibleGroundTiles()
+        snapshot.groundTiles += scene.playSession.navigation.worldMarkers(mapName: scene.mapName, mapGrid: scene.mapGrid)
         snapshot.targetSelector = makeTargetSelector(at: time)
         snapshot.spriteDrawables = renderResources.spriteDrawables
         snapshot.effects = makeEffects(worldPositions: worldPositions)

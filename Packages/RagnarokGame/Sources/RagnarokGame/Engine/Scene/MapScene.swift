@@ -329,6 +329,9 @@ extension MapScene {
         }
 
         let playerPosition = player.gridPosition
+        if playSession.navigation.map != PartyMember.mapKey(mapName) || playSession.navigation.position != playerPosition {
+            playSession.navigation.update(map: mapName, position: playerPosition, mapGrid: mapGrid, manager: resourceManager)
+        }
         if state.playerPosition != playerPosition {
             state.playerPosition = playerPosition
         }
