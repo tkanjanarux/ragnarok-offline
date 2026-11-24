@@ -51,7 +51,8 @@ public struct NavigationData: Sendable {
     public mutating func decode(_ bytes: Data, table: String) throws {
         let context = LuaContext()
         try context.load(bytes)
-        let rows = context[table].arrayValue ?? context[table].tableValue?.values.map { $0 } ?? []
+        let rows = (context[table].tableValue ?? [:]).filter { $0.key.intValue != nil }
+            .sorted { $0.key.intValue! < $1.key.intValue! }.map(\.value)
         func text(_ value: LuaValue) -> String {
             value.string(using: .utf8) ?? value.string(using: .dosKorean) ?? value.stringValue ?? ""
         }

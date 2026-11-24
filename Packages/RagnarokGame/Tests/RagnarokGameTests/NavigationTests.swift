@@ -1,5 +1,6 @@
 import Foundation
 import Metal
+import RagnarokCore
 import RagnarokFileFormats
 import RagnarokRendering
 import RagnarokResources
@@ -11,6 +12,14 @@ import Testing
 import UIKit
 #endif
 @testable import RagnarokGame
+
+private struct NavigationFixtureProvider: ResourceProvider {
+    let files: [String: Data]
+    func contentsOfResource(at path: ResourcePath) async throws -> Data {
+        guard let data = files[path.components.joined(separator: "/")] else { throw ResourceError.resourceNotFound(path) }
+        return data
+    }
+}
 
 @Suite @MainActor struct NavigationTests {
     static func grid(width: Int = 80, height: Int = 40, blocked: Set<SIMD2<Int>> = []) -> NavigationGrid {
@@ -34,6 +43,8 @@ import UIKit
         #expect(data.search("GUIDE", currentMap: "a").first?.position == SIMD2(10, 12))
         #expect(data.search("Poring", currentMap: "a").first?.map == "b")
         #expect(NavigationData.mapKey("A.RSW") == "a")
+        try data.decode(Data("Navi_Map = {[0]={'zero','Zero',5001,80,40},[4]={'four','Four',5001,80,40}}".utf8), table: "Navi_Map")
+        #expect(data.search("four", currentMap: "a").count == 1)
     }
 
     @Test func longRoutesObstaclesAndCornerClipping() {
@@ -102,6 +113,42 @@ import UIKit
         Issue.record("Navigation calculation did not finish")
     }
 
+    @Test func clientResourceLoadingAndSuccessfulMapTransition() async throws {
+        let prefix = "data/luafiles514/lua files/navigation/"
+        let grid = Self.grid()
+        let manager = ResourceManager(resourceProvider: NavigationFixtureProvider(files: [
+            prefix + "navi_map_krpri.lua": Data("Navi_Map = {{'a','A',5001,80,40},{'b','B',5001,80,40}}".utf8),
+            prefix + "navi_npc_krpri.lua": Data("Navi_Npc = {{'b',1,101,117,'Guide','',10,10}}".utf8),
+            prefix + "navi_link_krpri.lua": Data("Navi_Link = {{'a',1,200,45,'Portal','',70,20,'b',2,2}}".utf8),
+            "data/b.gat": Self.gatData(grid)
+        ]))
+        let state = NavigationState()
+        await state.loadData(using: manager)
+        #expect(state.loadedData && state.data.portals.count == 1)
+        #expect(state.data.sources.count == 3) // .lua fallback; missing mob table is not fabricated
+        let npc = try #require(state.data.destinations.first { $0.kind == .npc })
+        state.update(map: "a", position: SIMD2(2, 2), grid: grid, manager: manager)
+        state.begin(npc)
+        try await awaitCalculation(state)
+        #expect(state.legs.map(\.map) == ["a", "b"])
+        state.mapChanging()
+        #expect(state.path.isEmpty)
+        state.update(map: "b.rsw", position: SIMD2(2, 2), grid: grid, manager: manager)
+        try await awaitCalculation(state)
+        #expect(state.legs.map(\.map) == ["b"])
+        #expect(state.nextPortal == nil && state.status == .guiding)
+        state.cancel()
+    }
+
+    static func gatData(_ grid: NavigationGrid) -> Data {
+        var bytes = Array("GRAT".utf8) + [UInt8(1), 2]
+        for dimension in [UInt32(grid.width), UInt32(grid.height)] {
+            bytes += (0..<4).map { UInt8(truncatingIfNeeded: dimension >> ($0 * 8)) }
+        }
+        for walkable in grid.walkable { bytes += [UInt8](repeating: 0, count: 16) + [walkable ? 0 : 1, 0, 0, 0] }
+        return Data(bytes)
+    }
+
     @Test func movementWarpCancelAndLateResults() async throws {
         let state = NavigationState(), grid = Self.grid()
         let destination = NavigationDestination(id: "point", kind: .point, name: "Point", map: "a", position: SIMD2(70, 20))
@@ -163,10 +210,7 @@ import UIKit
             print("NAVIGATION_PNG \(name) \(png.base64EncodedString())")
         }
         // Actual production Metal tile renderer, using the same worldMarkers function as runtime.
-        var bytes = Array("GRAT".utf8) + [UInt8(1), 2]
-        for dimension: UInt32 in [40, 30] { bytes += (0..<4).map { UInt8(truncatingIfNeeded: dimension >> ($0 * 8)) } }
-        for walkable in grid.walkable { bytes += [UInt8](repeating: 0, count: 16) + [walkable ? 0 : 1, 0, 0, 0] }
-        let mapGrid = MapGrid(gat: try GAT(data: Data(bytes)))
+        let mapGrid = MapGrid(gat: try GAT(data: Self.gatData(grid)))
         var snapshot = MapSceneRenderSnapshot(fog: Fog())
         snapshot.groundTiles = state.worldMarkers(mapName: "fixture", mapGrid: mapGrid)
         #expect(!snapshot.groundTiles.isEmpty)
