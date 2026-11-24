@@ -117,15 +117,14 @@ struct NavigationContent: View {
                                 Text("\(leg.map) (\(portal.position.x), \(portal.position.y)) → \(portal.destinationMap)")
                             } else { Text(leg.map) }
                         }
-                        if state.target != nil {
-                            HStack {
-                                Button("Recalculate") { if let target = state.target { state.begin(target) } }
-                                Spacer()
-                                Button("Cancel route") { state.cancel() }
-                            }.buttonStyle(.game).frame(minHeight: 44)
-                        }
                     }.frame(maxWidth: .infinity, alignment: .leading)
                 }
+            }
+            if state.target != nil {
+                HStack(spacing: 12) {
+                    Button("Recalculate") { if let target = state.target { state.begin(target) } }
+                    Button("Cancel route") { state.cancel() }
+                }.buttonStyle(.game).frame(height: 44)
             }
         }.font(.game(size: 12)).padding(10)
             .onAppear { x = String(player.x); y = String(player.y) }

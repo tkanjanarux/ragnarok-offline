@@ -25,12 +25,13 @@ struct MapSceneView: View {
     var body: some View {
         GeometryReader { safe in
             MapHUDViewport { size, bottomInset in
-                scene(in: size, bottomInset: bottomInset, trailingInset: safe.safeAreaInsets.trailing)
+                scene(in: size, bottomInset: bottomInset, leadingInset: safe.safeAreaInsets.leading,
+                      trailingInset: safe.safeAreaInsets.trailing)
             }
         }
     }
 
-    private func scene(in size: CGSize, bottomInset: CGFloat, trailingInset: CGFloat) -> some View {
+    private func scene(in size: CGSize, bottomInset: CGFloat, leadingInset: CGFloat, trailingInset: CGFloat) -> some View {
         let bottomMargin = bottomHUDMargin(for: bottomInset)
         let isWidescreen = size.width >= 640
         let inset: CGFloat = size.width < 360 ? 8 : 16
@@ -179,6 +180,9 @@ struct MapSceneView: View {
                     }
                 case .navigation:
                     NavigationView(scene: runtime.scene) { presentedMenuItem = nil }
+                        .padding(.leading, leadingInset)
+                        .padding(.trailing, trailingInset)
+                        .padding(.bottom, bottomInset)
                 case .options:
                     OptionsView(isPlayerDead: runtime.scene.state.isPlayerDead) {
                         presentedMenuItem = nil
