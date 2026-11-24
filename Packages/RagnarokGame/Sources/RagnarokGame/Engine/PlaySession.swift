@@ -60,6 +60,8 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var bank = BankState()
+    var social = SocialState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
@@ -191,7 +193,9 @@ final class PlaySession {
     }
 
     func stop() {
+        social = SocialState()
         equipmentSwitch = EquipmentSwitchState()
+        bank = BankState()
         refine = RefineState()
         cart = CartState()
         itemSelection = ItemSelectionState()
@@ -226,7 +230,9 @@ final class PlaySession {
         switch error {
         case .network, .disconnected:
             navigation.cancel()
+            social = SocialState()
             equipmentSwitch = EquipmentSwitchState()
+            bank = BankState()
             refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
@@ -297,7 +303,10 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            social.invitation = nil
+            social.friendsVisible = false
             equipmentSwitch = EquipmentSwitchState()
+            bank = BankState()
             refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
@@ -541,6 +550,20 @@ final class PlaySession {
             receiveCompositionResult(packet)
         case let packet as PACKET_ZC_MAKINGARROW_LIST:
             itemSelection.show(.arrow, values: packet.items.map { Int($0.itemId) })
+        case let packet as PACKET_ZC_MAKABLEITEMLIST:
+            itemSelection.extraMaterials = [0, 0, 0]
+            itemSelection.show(.produce, values: packet.items.map { Int($0.itemId) })
+        case let packet as PACKET_ZC_MAKINGITEM_LIST:
+            itemSelection.cookingType = packet.makeItem
+            itemSelection.show(.cooking, values: packet.items.map { Int($0.itemId) })
+        case let packet as PACKET_ZC_SKILL_SELECT_REQUEST:
+            itemSelection.skillFlag = packet.flag
+            itemSelection.show(.skill, values: packet.skillIds.map(Int.init))
+        case let packet as PACKET_ZC_ACK_REQMAKINGITEM:
+            if let pending = itemSelection.pending, [.produce, .cooking].contains(pending.kind), pending.itemID == Int(packet.itemId) {
+                itemSelection.pending = nil; itemSelection.selection = nil
+                itemSelection.message = packet.result == 0 || packet.result == 2 ? "Production succeeded." : "Production failed."
+            }
         case _ as PACKET_ZC_OPEN_REFINING_UI:
             if refine.pending == nil { refine = RefineState() }
             refine.authorized = true; refine.visible = true
@@ -719,6 +742,7 @@ final class PlaySession {
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_WHISPER:
+            social.lastWhisperSender = packet.sender
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_NOTIFY_PLAYERCHAT:
@@ -754,8 +778,31 @@ final class PlaySession {
             let message = BannedMessage(from: packet)
             let localizedMessage = context.messageStringTable.localizedMessageString(forID: message.messageID)
             delegate?.playSession(self, didReceiveErrorMessage: localizedMessage)
-        case _ as PACKET_ZC_FRIENDS_LIST:
-            break
+        case _ as PACKET_ZC_ACK_OPEN_BANKING:
+            bankOpened()
+        case let packet as PACKET_ZC_BANKING_CHECK:
+            bankChecked(packet)
+        case let packet as PACKET_ZC_ACK_BANKING_DEPOSIT:
+            bank.receive(operation: .deposit, reason: packet.reason, money: packet.money)
+            if packet.zeny >= 0 { playerStatus.zeny = Int(packet.zeny) }
+        case let packet as PACKET_ZC_ACK_BANKING_WITHDRAW:
+            bank.receive(operation: .withdraw, reason: packet.reason, money: packet.money)
+            if packet.zeny >= 0 { playerStatus.zeny = Int(packet.zeny) }
+        case _ as PACKET_ZC_ACK_CLOSE_BANKING:
+            bank.authorized = false
+        case let packet as PACKET_ZC_FRIENDS_LIST:
+            social.receive(packet)
+        case let packet as PACKET_ZC_FRIENDS_STATE:
+            social.receive(packet)
+        case let packet as FriendInvitation:
+            social.invitation = .init(accountID: packet.accountID, characterID: packet.characterID, name: packet.name, online: true)
+            social.friendsVisible = true
+        case let packet as FriendAdded:
+            social.receive(packet)
+        case let packet as FriendRemoved:
+            social.receive(packet)
+        case let packet as PACKET_ZC_ACK_WHISPER:
+            receiveWhisperResult(packet)
         case _ as PACKET_ZC_EXTEND_BODYITEM_SIZE:
             break
         case _ as PACKET_ZC_STATUS_CHANGE_ACK:
@@ -1210,9 +1257,13 @@ final class PlaySession {
         }
 
         if message.hasPrefix("%") {
-//            PACKET_CZ_REQUEST_CHAT_PARTY
+            _ = sendSocialText(String(message.dropFirst()).trimmingCharacters(in: .whitespaces), channel: .party)
         } else if message.hasPrefix("$") {
-//            PACKET_CZ_GUILD_CHAT
+            _ = sendSocialText(String(message.dropFirst()).trimmingCharacters(in: .whitespaces), channel: .guild)
+        } else if message.lowercased().hasPrefix("/r ") {
+            if let recipient = social.lastWhisperSender {
+                _ = sendSocialText(String(message.dropFirst(3)), channel: .whisper, recipient: recipient)
+            } else { socialMessage("No whisper sender to reply to.") }
         } else if message.hasPrefix("/cl") {
 //            PACKET_CZ_CLAN_CHAT
         } else if message.hasPrefix("/") {

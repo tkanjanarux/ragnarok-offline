@@ -2,7 +2,7 @@ import Foundation
 
 struct ItemSelectionState {
     var epoch = UUID()
-    enum Kind: Equatable { case identify, card, arrow }
+    enum Kind: Equatable { case identify, card, arrow, produce, cooking, skill }
     struct Selection {
         var kind: Kind
         var values: [Int]
@@ -21,6 +21,9 @@ struct ItemSelectionState {
     var message: String?
     var visible = false
     var timedOut = false
+    var cookingType: UInt16 = 0
+    var skillFlag: Int32 = 0
+    var extraMaterials: [UInt32] = [0, 0, 0]
 
     mutating func show(_ kind: Kind, values: [Int]) {
         guard pending == nil else { return }

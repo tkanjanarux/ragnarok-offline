@@ -178,6 +178,8 @@ struct MapSceneView: View {
                     WorldMapView(currentMapName: runtime.scene.mapName) {
                         presentedMenuItem = nil
                     }
+                case .bank:
+                    playSession.openBank()
                 case .navigation:
                     NavigationView(scene: runtime.scene) { presentedMenuItem = nil }
                         .padding(.leading, leadingInset)
@@ -235,6 +237,14 @@ struct MapSceneView: View {
             }
             if playSession.equipmentSwitch.compareIndex != nil {
                 EquipmentCompareView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+            }
+            if playSession.bank.visible {
+                BankView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+            }
+            if playSession.social.friendsVisible {
+                FriendsView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
             }
         }

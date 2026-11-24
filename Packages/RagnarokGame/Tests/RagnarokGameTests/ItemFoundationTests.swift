@@ -6,6 +6,47 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func bankRejectAndLateReplyStayAuthoritative() throws {
+        var bank = BankState()
+        bank.balance = 100
+        bank.pending = .init(operation: .deposit)
+        let token = bank.pending?.token
+        bank.receive(operation: .withdraw, reason: 0, money: 200)
+        #expect(bank.pending?.token == token && bank.balance == 100)
+        bank.receive(operation: .deposit, reason: 2, money: 100)
+        #expect(bank.pending == nil && bank.balance == 100)
+        bank.pending = .init(operation: .withdraw)
+        bank.visible = false // closing the window does not discard a transaction result
+        bank.receive(operation: .withdraw, reason: 0, money: 50)
+        #expect(bank.balance == 50 && bank.pending == nil && !bank.visible)
+        bank.receive(operation: .withdraw, reason: 0, money: 0)
+        #expect(bank.balance == 50) // duplicate/unsolicited result cannot be applied twice
+        var p = PACKET_CZ_REQ_BANKING_DEPOSIT()
+        p.packetType = HEADER_CZ_REQ_BANKING_DEPOSIT; p.AID = 2100001; p.zeny = 12345
+        #expect(try PacketEncoder().encode(p) == Data([0xa7,9,33,11,32,0,57,48,0,0]))
+    }
+
+    @Test func socialWireLengthsAndFriendIdentity() throws {
+        let text = "สวัสดี"
+        let bytes = try PacketEncoder().encode(ChannelChatRequest(channel: .whisper, text: text, recipient: "Tester"))
+        #expect(bytes.count == 29 + text.utf8.count)
+        #expect(bytes[0] == 0x96 && bytes.last == 0)
+        #expect(throws: (any Error).self) { _ = try PacketEncoder().encode(ChannelChatRequest(channel: .whisper, text: "Hi", recipient: String(repeating: "a", count: 24))) }
+        let reply = try PacketEncoder().encode(FriendRequest.reply(accountID: 42, characterID: 99, accept: true))
+        #expect(reply == Data([8, 2, 42, 0, 0, 0, 99, 0, 0, 0, 1, 0, 0, 0]))
+        var state = SocialState()
+        var list = PACKET_ZC_FRIENDS_LIST()
+        var a = PACKET_ZC_FRIENDS_LIST_sub(); a.AID = 42; a.CID = 99; a.name = "Same"
+        var b = PACKET_ZC_FRIENDS_LIST_sub(); b.AID = 43; b.CID = 100; b.name = "Same"
+        list.friends = [a,b]; state.receive(list)
+        var status = PACKET_ZC_FRIENDS_STATE(); status.AID = 43; status.CID = 100; status.offline = 0
+        state.receive(status)
+        #expect(state.friends[0].online == false && state.friends[1].online == true)
+        let removed = try FriendRemoved(from: BinaryDecoder(stream: MemoryStream(data: Data([10, 2, 42, 0, 0, 0, 99, 0, 0, 0]))))
+        state.receive(removed)
+        #expect(state.friends.count == 1 && state.friends[0].characterID == 100)
+    }
+
     @Test func equipmentSwitchVersionAndRejection() throws {
         #expect(try PacketEncoder().encode(EquipmentSwitchRequest.remove(index: 2)) == Data([0x99, 0x0a, 2, 0]))
         #expect(try PacketEncoder().encode(EquipmentSwitchRequest.add(index: 2, position: 16)) == Data([0x97, 0x0a, 2, 0, 16, 0, 0, 0]))

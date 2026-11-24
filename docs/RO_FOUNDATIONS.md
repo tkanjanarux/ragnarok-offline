@@ -14,15 +14,15 @@ Different binaries require independent integration evidence.
 
 | Milestone | System | Current verification / remaining work |
 |---|---|---|
-| A1 | Identify, card composition, arrow/skill selection | Implementing exact server lists and authoritative results |
-| A2 | Cart transfers/count/weight | Inventory invType1 and cart updates currently discarded; implement |
-| A3 | Refine UI, equipment switch/compare | Inspect packet schema, actual NPC activation, implement |
-| A4 | Production/Enchant | Distinguish base profession selection from episode-specific NPC/data |
-| B1 | Whisper/reply, party/guild chat, friends | Received chat exists; outbound channels/friends flow incomplete |
+| A1 | Identify, card composition, arrow/skill selection | Implemented; isolated identify/cancel/card PASS; arrow live test pending |
+| A2 | Cart transfers/count/weight | Implemented; isolated roundtrip/invalid quantity/persisted conservation PASS |
+| A3 | Refine UI, equipment switch/compare | Implemented server-triggered refine, switch and comparison; portable protocol tests PASS; live test pending |
+| A4 | Production/Enchant | Server-triggered forging/cooking/skill selection implemented; live crafting and enchant audit pending |
+| B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; party/guild live test pending |
 | B2 | Guild information/permissions | Implement after member/session identity audit |
 | B3 | Trade item/zeny, vending/buying/signboards | Implement; isolated-account conservation/reject/cancel tests required |
 | B4 | Ordinary chat rooms | Keep exam room state separate; implement lifecycle |
-| C1 | Bank, RODEX attachments/zeny | Implement; isolated-account conservation tests required |
+| C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX pending |
 | C2 | Pet, homunculus, mercenary | Implement standard RO systems separately from custom companion |
 | C3 | Achievement rewards, attendance | Existing incoming achievement packets ignored; validate loaded server data |
 | C4 | Graphics/audio/shortcuts settings | Audit existing backend before enabling controls |

@@ -6,6 +6,9 @@
 //
 
 let registeredPackets: [Int16 : any DecodablePacket.Type] = [
+    0x207: FriendInvitation.self,
+    0x209: FriendAdded.self,
+    0x20a: FriendRemoved.self,
 
     // MARK: - Common
 

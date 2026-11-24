@@ -28,7 +28,7 @@ struct ChatBoxView: View {
 
     static let perMessageHeight: CGFloat = 14
     static let messageHeaderHeight: CGFloat = 22
-    static let chatInputHeight: CGFloat = 28
+    static let chatInputHeight: CGFloat = 44
 
     static func contentHeight(for viewStyle: ViewStyle) -> CGFloat {
         switch viewStyle {
@@ -49,6 +49,8 @@ struct ChatBoxView: View {
     @State private var viewStyle: ViewStyle = .compact
     @State private var messageGroup: MessageGroup = .chat
     @State private var message = ""
+    @State private var choosingWhisper = false
+    @State private var whisperRecipient = ""
 
     @FocusState private var isFocused: Bool
 
@@ -91,10 +93,21 @@ struct ChatBoxView: View {
                 .frame(height: 1)
 
             HStack(spacing: 0) {
-                Button {
+                Menu {
+                    ForEach(SocialState.Channel.allCases, id: \.self) { channel in
+                        Button(channel.rawValue) {
+                            if channel == .whisper { whisperRecipient = playSession.social.recipient; choosingWhisper = true }
+                            else { playSession.social.channel = channel }
+                        }
+                    }
+                    if let sender = playSession.social.lastWhisperSender {
+                        Button("Reply to \(sender)") { playSession.social.channel = .whisper; playSession.social.recipient = sender }
+                    }
+                    Button("Friends") { playSession.social.friendsVisible = true }
                 } label: {
-                    Color.clear
-                        .frame(width: 60)
+                    Text(playSession.social.channel == .whisper ? playSession.social.recipient : playSession.social.channel.rawValue)
+                        .font(.game(size: 11)).foregroundStyle(.white).lineLimit(1)
+                        .frame(width: 60, height: 44)
                         .contentShape(.rect)
                 }
                 .buttonStyle(.plain)
@@ -136,6 +149,14 @@ struct ChatBoxView: View {
         .environment(\.colorScheme, .dark)
         .geometryGroup()
         .animation(.spring(duration: 0.25), value: viewStyle)
+        .alert("Whisper to", isPresented: $choosingWhisper) {
+            TextField("Character name", text: $whisperRecipient)
+            Button("Choose") {
+                playSession.social.recipient = whisperRecipient.trimmingCharacters(in: .whitespacesAndNewlines)
+                playSession.social.channel = .whisper
+            }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 
     private func send(_ message: String) {
@@ -143,7 +164,7 @@ struct ChatBoxView: View {
             return
         }
 
-        playSession.sendMessage(message)
+        guard playSession.sendChannelChat(message) else { return }
         playSession.messageCenter.inputHistory.push(message)
         self.message = ""
     }

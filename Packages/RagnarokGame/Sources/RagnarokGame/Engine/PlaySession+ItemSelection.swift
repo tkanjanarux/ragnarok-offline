@@ -60,6 +60,29 @@ extension PlaySession {
             // This menu has no dedicated success ACK. Inventory/skill packets own results.
             itemSelection = ItemSelectionState()
             return
+        case .produce, .cooking:
+            guard let itemID = UInt32(exactly: value), cart.pending == nil, refine.pending == nil else { return }
+            if selection.kind == .produce {
+                let extras = itemSelection.extraMaterials
+                guard extras.count == 3,
+                      extras.allSatisfy({ $0 == 0 || [994, 995, 996, 997, 1000].contains($0) }),
+                      Set(extras.filter { $0 != 0 }).allSatisfy({ id in
+                          inventory.items.values.filter { $0.itemID == Int(id) }.reduce(0) { $0 + $1.amount } >= extras.filter { $0 == id }.count
+                      }) else { return }
+                var packet = PACKET_CZ_REQMAKINGITEM()
+                packet.packetType = HEADER_CZ_REQMAKINGITEM; packet.itemId = itemID; packet.material = extras
+                sendFoundationPacket(packet)
+            } else {
+                var packet = PACKET_CZ_REQ_MAKINGITEM()
+                packet.packetType = HEADER_CZ_REQ_MAKINGITEM; packet.type = Int16(bitPattern: itemSelection.cookingType); packet.itemId = itemID
+                sendFoundationPacket(packet)
+            }
+            itemSelection.pending = .init(kind: selection.kind, index: value, itemID: value)
+        case .skill:
+            guard let id = Int16(exactly: value) else { return }
+            var packet = PACKET_CZ_SKILL_SELECT_RESPONSE()
+            packet.packetType = HEADER_CZ_SKILL_SELECT_RESPONSE; packet.flag = itemSelection.skillFlag; packet.selectedSkillId = id
+            sendFoundationPacket(packet); itemSelection = ItemSelectionState(); return
         }
         itemSelection.message = "Waiting for the server…"
         if let token = itemSelection.pending?.token {
@@ -79,6 +102,17 @@ extension PlaySession {
         } else if itemSelection.selection?.kind == .arrow {
             var packet = PACKET_CZ_REQ_MAKINGARROW()
             packet.packetType = HEADER_CZ_REQ_MAKINGARROW; packet.itemId = 0
+            sendFoundationPacket(packet)
+        } else if itemSelection.selection?.kind == .produce {
+            var packet = PACKET_CZ_REQMAKINGITEM(); packet.packetType = HEADER_CZ_REQMAKINGITEM; packet.itemId = 0
+            sendFoundationPacket(packet)
+        } else if itemSelection.selection?.kind == .cooking {
+            var packet = PACKET_CZ_REQ_MAKINGITEM(); packet.packetType = HEADER_CZ_REQ_MAKINGITEM
+            packet.type = Int16(bitPattern: itemSelection.cookingType); packet.itemId = 0
+            sendFoundationPacket(packet)
+        } else if itemSelection.selection?.kind == .skill {
+            var packet = PACKET_CZ_SKILL_SELECT_RESPONSE(); packet.packetType = HEADER_CZ_SKILL_SELECT_RESPONSE
+            packet.flag = itemSelection.skillFlag; packet.selectedSkillId = 0
             sendFoundationPacket(packet)
         }
         itemSelection = ItemSelectionState()

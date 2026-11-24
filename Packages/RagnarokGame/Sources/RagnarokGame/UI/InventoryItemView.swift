@@ -12,6 +12,7 @@ import SwiftUI
 
 struct InventoryItemView: View {
     var item: InventoryItem
+    var showsAmount = true
 
     @Environment(GameContext.self) private var gameContext
 
@@ -23,11 +24,12 @@ struct InventoryItemView: View {
                 Image(decorative: iconImage.cgImage, scale: 1)
             }
 
-            Text(verbatim: "\(item.amount)")
+            if showsAmount { Text(verbatim: "\(item.amount)")
                 .font(.game())
                 .foregroundStyle(Color.gameLabel)
                 .shadow(color: .white, radius: 1)
                 .offset(x: 5, y: 10)
+            }
 
             if item.isEquipped {
                 Text(verbatim: "E")

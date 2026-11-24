@@ -377,3 +377,10 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+RO foundations protocol/UI reference (2026-11-25): roBrowserLegacy
+commit 2f9a9d6cf5b04a8ac7a44077080772046e15bcb7, GPL-3.0.
+Item selection, friends/chat and banking flows were checked against
+src/Engine/MapEngine/{Item,Skill,PrivateMessage,Friends,Bank}.js and
+original UI assets. Implemented natively in RagnarokGame; no web runtime.
+Existing roBrowser copyright and GPL notices above continue to apply.
