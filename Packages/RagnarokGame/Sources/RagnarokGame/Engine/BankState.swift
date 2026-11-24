@@ -18,7 +18,7 @@ struct BankState {
 
 extension PlaySession {
     func openBank() {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         bank.visible = true
         guard bank.pending == nil else { return }
         bank.authorized = false; bank.balance = nil

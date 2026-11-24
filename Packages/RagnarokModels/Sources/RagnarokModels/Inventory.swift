@@ -83,6 +83,9 @@ public struct Inventory {
             item.isIdentified = packet.IsIdentified != 0
             item.isDamaged = packet.IsDamaged != 0
             item.refineLevel = Int(packet.refiningLevel)
+            item.enchantGrade = Int(packet.grade)
+            item.hasRandomOptions = packet.option_data.contains { $0.index != 0 }
+            item.randomOptions = packet.option_data.filter { $0.index != 0 }.map(InventoryItem.Option.init)
             items[index] = item
         }
     }

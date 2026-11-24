@@ -19,6 +19,13 @@ public struct InventoryItem: Sendable {
     public var isIdentified = false
     public var refineLevel = 0
     public var isDamaged = false
+    public var enchantGrade: Int?
+    public var hasRandomOptions: Bool?
+    public struct Option: Equatable, Sendable {
+        public var id: Int; public var value: Int; public var parameter: Int
+        public init(_ source: ItemOptions) { id = Int(source.index); value = Int(source.value); parameter = Int(source.param) }
+    }
+    public var randomOptions: [Option] = []
 
     public var isUsable: Bool {
         switch type {
@@ -70,6 +77,9 @@ public struct InventoryItem: Sendable {
         isIdentified = item.Flag & 1 != 0
         isDamaged = item.Flag & 2 != 0
         refineLevel = Int(item.RefiningLevel)
+        enchantGrade = Int(item.grade)
+        hasRandomOptions = item.option_data.contains { $0.index != 0 }
+        randomOptions = item.option_data.filter { $0.index != 0 }.map(Option.init)
         index = Int(item.index)
         itemID = Int(item.ITID)
         type = ItemType(rawValue: Int(item.type)) ?? .etc

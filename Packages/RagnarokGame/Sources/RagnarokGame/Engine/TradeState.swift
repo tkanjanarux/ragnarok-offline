@@ -42,6 +42,8 @@ struct TradeState {
         var item = InventoryItem(); item.itemID = Int(p.itemId); item.amount = Int(p.amount)
         item.isIdentified = p.identified != 0; item.refineLevel = Int(p.refine); item.isDamaged = p.damaged != 0
         item.slots = p.slot.card.map(Int.init)
+        item.enchantGrade = Int(p.grade); item.hasRandomOptions = p.option_data.contains { $0.index != 0 }
+        item.randomOptions = p.option_data.filter { $0.index != 0 }.map(InventoryItem.Option.init)
         theirs.append(.init(item: item))
     }
     mutating func finish(_ message: String) {
@@ -53,7 +55,7 @@ struct TradeState {
 
 extension PlaySession {
     func inviteSelectedPlayerToTrade() {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, let target = mapScene?.selectedTarget,
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, let target = mapScene?.selectedTarget,
               target.type == .pc, target.objectID != partyAccountID,
               bank.pending == nil, cart.pending == nil, itemSelection.pending == nil, refine.pending == nil else { return }
         trade = TradeState(); trade.visible = true; trade.partnerID = target.objectID; trade.partnerName = target.name
@@ -61,6 +63,7 @@ extension PlaySession {
     }
     func replyToTrade(accept: Bool) {
         guard trade.invitation else { return }
+        if accept && (rodex.busy || buyingStore.busy || vending.active || vending.purchase != nil || bank.pending != nil) { return }
         trade.invitation = false
         sendFoundationPacket(TradeRequest.reply(accept)); awaitTrade()
     }

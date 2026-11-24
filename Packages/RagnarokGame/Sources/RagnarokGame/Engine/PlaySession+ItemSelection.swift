@@ -13,7 +13,7 @@ extension PlaySession {
     }
 
     func requestCardComposition(index: Int) {
-        guard itemSelection.pending == nil, itemSelection.requestedCard == nil, cart.pending == nil, refine.pending == nil,
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, itemSelection.pending == nil, itemSelection.requestedCard == nil, cart.pending == nil, refine.pending == nil,
               let item = inventory.items[index], item.type == .card, item.amount > 0,
               let wireIndex = UInt16(exactly: index) else { return }
         itemSelection.requestedCard = (index, item.itemID)
@@ -32,7 +32,7 @@ extension PlaySession {
     }
 
     func chooseItemSelection(_ value: Int) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard itemSelection.pending == nil, let selection = itemSelection.selection,
               selection.values.contains(value) else { return }
         switch selection.kind {

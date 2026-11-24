@@ -239,6 +239,7 @@ struct MapSceneView: View {
             }
             if playSession.buyingStore.visible { BuyingStoreView().hudObstacle() }
             if playSession.vending.visible { VendingView().hudObstacle() }
+            if playSession.enchant.visible { EnchantView().hudObstacle() }
             if playSession.rodex.visible { RodexView().hudObstacle() }
             if playSession.guild.visible {
                 GuildView()

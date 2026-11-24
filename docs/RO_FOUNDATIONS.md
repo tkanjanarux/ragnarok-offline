@@ -14,19 +14,19 @@ Different binaries require independent integration evidence.
 
 | Milestone | System | Current verification / remaining work |
 |---|---|---|
-| A1 | Identify, card composition, arrow/skill selection | Implemented; isolated identify/cancel/card PASS; arrow live test pending |
+| A1 | Identify, card composition, arrow/skill selection | Implemented; isolated identify/cancel/card PASS; isolated actual material list and arrow creation PASS |
 | A2 | Cart transfers/count/weight | Implemented; isolated roundtrip/invalid quantity/persisted conservation PASS |
 | A3 | Refine UI, equipment switch/compare | Implemented; isolated real Vestri NPC refine +1 at 100% and add/remove/full equipment switch PASS; portable tests PASS |
-| A4 | Production/Enchant | Server-triggered forging/cooking/skill selection implemented; live crafting and enchant audit pending |
-| B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; party/guild live test pending |
+| A4 | Production/Enchant | Server-triggered forging/cooking/skill selection implemented; isolated server recipe selection/forge failure response PASS. Modern NPC Enchant implemented; isolated real group33 NPC perfect/upgrade/reset/cancel and persisted money/material conservation PASS; reset preserves normal cards |
+| B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; guild live chat PASS; party live chat pending |
 | B2 | Guild information/permissions | Implemented; portable identity/permissions PASS; isolated existing-guild fixture invite/decline/accept/notice/unauthorized rejection/positions/chat/expel/disband PASS. Creation blocked by server composite primary key without generated guild_id |
 | B3 | Trade item/zeny, vending/buying/signboards | Trade implemented; isolated decline/cancel/two-sided lock/commit/reject/persisted item and zeny conservation PASS; Vending/cart shop creation/cancel/purchase/signboard/close implemented; isolated wrong-shop-ID rejection and persisted item/Zeny conservation PASS. Buying stores implemented; isolated permit/cancel/create/list/over-quantity rejection/sale/delete ACK/close/persisted item and Zeny conservation PASS |
 | B4 | Ordinary chat rooms | Implemented separately from exam rooms; isolated normal-account create/private password rejection/join/chat/edit/owner transfer/kick/leave PASS |
 | C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX implemented; isolated read/claim/delete/duplicate protection/persisted +2 items +321 Zeny PASS using explicit existing-mail fixture. Sending blocked by server SQLite mail.id NOT NULL (no generated id); begin/cancel/recipient check PASS |
-| C2 | Pet, homunculus, mercenary | Pet/homunculus/mercenary native UI and commands implemented separately; isolated hatch/feed rejection/feed/name/egg/capture-cancel, hom info/name/autofeed/delete, mercenary contract/info/skills/dismiss PASS. Follow/attack/skill execution, pet evolution recipes/explicit confirmation implemented from current public server DB; live evolution validation pending |
+| C2 | Pet, homunculus, mercenary | Pet/homunculus/mercenary native UI and commands implemented separately; isolated hatch/feed rejection/feed/name/egg/capture-cancel, hom info/name/autofeed/delete, mercenary contract/info/skills/dismiss PASS. Follow/attack/skill execution, pet evolution recipes/explicit confirmation implemented from current public server DB; isolated real pet evolution rejection/success and persisted materials PASS |
 | C3 | Achievement rewards, attendance | Implemented list/update/claim and attendance request/response; portable tests PASS. Live achievement claim blocked by server SQLite timestamp format bug (evidence/rewards-blocker.json); attendance DB loads zero events, no reward calendar invented |
-| C4 | Graphics/audio/shortcuts settings | Implemented native sound sliders with live AVAudio mixer/BGM update, 30/60FPS Metal view, effect/fog switches, touch shortcut assignment/clear using existing packet backend. Native compile pending; no device audio/visual verification |
-| C5 | Reputation/clan/special enchant | Inspect actual enabled data/NPC; not marked disabled from missing client UI |
+| C4 | Graphics/audio/shortcuts settings | Implemented native sound sliders with live AVAudio mixer/BGM update, 30/60FPS Metal view, effect/fog switches, touch shortcut assignment/clear using existing packet backend. Native compile pending for latest commits; no device audio/visual verification |
+| C5 | Reputation/clan/special enchant | Actual production/playable data: 4 clans, 4 reputation entries, 138 enchant recipes and grade data. Modern enchant implemented; clan/reputation/grade-special UI not yet completed. These are not disabled systems. |
 
 Rules: no local optimistic inventory/zeny mutation, no retry of ambiguous monetary
 requests, acknowledge server rejects, clear transient windows on disconnect/warp,

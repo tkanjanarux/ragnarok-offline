@@ -59,7 +59,7 @@ struct CartState {
 
 extension PlaySession {
     func moveCartItem(index: Int, amount: Int, toCart: Bool) {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         let source = toCart ? inventory : cart.inventory
         guard cart.available, cart.pending == nil, itemSelection.pending == nil,
               let item = source.items[index], !item.isEquipped, amount > 0, amount <= item.amount,

@@ -29,13 +29,13 @@ struct RodexState {
 
 extension PlaySession {
     func openRodex() {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !trade.active, trade.waiting == nil, bank.pending == nil, cart.pending == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !trade.active, trade.waiting == nil, bank.pending == nil, cart.pending == nil else { return }
         rodex.visible = true
         guard !rodex.busy else { return }
         waitForRodex(.list); sendFoundationPacket(RodexRequest.list)
     }
     func beginRodex() {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, bank.pending == nil, cart.pending == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, bank.pending == nil, cart.pending == nil else { return }
         waitForRodex(.begin); sendFoundationPacket(RodexRequest.begin(""))
     }
     func closeRodex() {

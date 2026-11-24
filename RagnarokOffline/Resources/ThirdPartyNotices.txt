@@ -408,3 +408,5 @@ Buying-store flows also reference Engine/MapEngine/Store.js (same commit).
 PetEvolutionRecipe.swift contains public rAthena pet recipes (GPL-3.0-or-later,
 Copyright (C) 2021 rAthena Development Team). The extraction evidence digest is
 recorded in that source file; server acknowledgements remain authoritative.
+
+EnchantCatalog.json: public rAthena item/enchant database from the configured server, GPL-3.0; source file SHA256 values embedded in the catalog. Native Enchant flow references roBrowserLegacy Enchant.js/UIOpen.js at 2f9a9d6cf5b04a8ac7a44077080772046e15bcb7 (GPL-3.0), implemented in Swift.

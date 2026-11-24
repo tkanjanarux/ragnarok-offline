@@ -32,7 +32,7 @@ struct BuyingStoreState {
 }
 extension PlaySession {
     func browseBuyingStore(_ id: UInt32) {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active,
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active,
               buyingStore.boards[id] != nil, mapScene?.objects[id] != nil else { return }
         buyingStore.visible = true; buyingStore.browsing = id; buyingStore.shop = nil
         waitForBuyingStore(); sendFoundationPacket(BuyingStoreRequest.browse(id))

@@ -58,6 +58,7 @@ final class PlaySession {
     let navigation = NavigationState()
     var itemSelection = ItemSelectionState()
     var cart = CartState()
+    var enchant = EnchantState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
     var buyingStore = BuyingStoreState()
@@ -214,6 +215,7 @@ final class PlaySession {
         chatRoom = ChatRoomState()
         trade = TradeState()
         bank = BankState()
+        enchant = EnchantState()
         refine = RefineState()
         cart = CartState()
         itemSelection = ItemSelectionState()
@@ -260,6 +262,7 @@ final class PlaySession {
             chatRoom = ChatRoomState()
             trade = TradeState()
             bank = BankState()
+            enchant = EnchantState()
             refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
@@ -364,6 +367,7 @@ final class PlaySession {
             chatRoom = ChatRoomState()
             trade = TradeState()
             bank = BankState()
+            enchant = EnchantState()
             refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
@@ -1009,6 +1013,13 @@ final class PlaySession {
             rewards.receive(packet)
         case let packet as AchievementRewardResult:
             rewards.receive(packet)
+        case let packet as PACKET_ZC_UI_OPEN_V3:
+            if packet.type == 10, enchant.pending == nil {
+                enchant = EnchantState(); enchant.visible = true; enchant.group = packet.data
+                if enchant.recipe == nil { enchant.message = "This enchanter's recipes are not available yet." }
+            }
+        case let packet as PACKET_ZC_RESPONSE_ENCHANT:
+            enchant.receive(packet, inventory: &inventory)
         case let packet as PACKET_ZC_UI_OPEN:
             if packet.UIType == 7 {
                 rewards.attendanceVisible = true; rewards.attendanceAuthorized = true
@@ -1031,7 +1042,7 @@ final class PlaySession {
             let localizedMessage = context.messageStringTable.localizedMessageString(forID: message.messageID)
             delegate?.playSession(self, didReceiveErrorMessage: localizedMessage)
         case let packet as PACKET_ZC_REQ_EXCHANGE_ITEM:
-            if trade.active || bank.pending != nil || cart.pending != nil || refine.pending != nil || itemSelection.pending != nil {
+            if enchant.pending != nil || rodex.busy || buyingStore.busy || vending.active || vending.purchase != nil || trade.active || bank.pending != nil || cart.pending != nil || refine.pending != nil || itemSelection.pending != nil {
                 sendFoundationPacket(TradeRequest.reply(false))
             } else {
                 trade = TradeState(); trade.visible = true; trade.invitation = true
@@ -1417,7 +1428,7 @@ final class PlaySession {
     }
 
     func useItem(at index: Int) {
-        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1431,7 +1442,7 @@ final class PlaySession {
     }
 
     func equipItem(at index: Int, location: EquipPositions) {
-        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1441,7 +1452,7 @@ final class PlaySession {
     }
 
     func unequipItem(at index: Int) {
-        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1451,7 +1462,7 @@ final class PlaySession {
     }
 
     func throwItem(at index: Int, amount: Int) {
-        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1718,7 +1729,7 @@ final class PlaySession {
     // MARK: - Storage
 
     func moveItemToStorage(index: Int, amount: Int) {
-        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
         }
@@ -1728,7 +1739,7 @@ final class PlaySession {
     }
 
     func moveItemFromStorage(index: Int, amount: Int) {
-        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
         }

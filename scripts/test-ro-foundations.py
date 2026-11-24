@@ -19,7 +19,7 @@ let package = Package(name: "ROFoundationsPortable", targets: [
  .target(name: "BinaryIO"), .target(name: "RagnarokConstants"),
  .target(name: "RagnarokPackets", dependencies: ["BinaryIO"]),
  .target(name: "RagnarokModels", dependencies: ["RagnarokConstants", "RagnarokPackets"]),
- .target(name: "RagnarokGame", dependencies: ["RagnarokModels", "RagnarokPackets"]),
+ .target(name: "RagnarokGame", dependencies: ["RagnarokModels", "RagnarokPackets"], resources: [.process("Resources")]),
  .testTarget(name: "RagnarokGameTests", dependencies: ["RagnarokGame", "RagnarokModels", "RagnarokPackets", "BinaryIO"])
 ])
 ''')
@@ -38,9 +38,11 @@ decoder = (root / 'Packages/RagnarokPackets/Sources/RagnarokPackets/PacketDecode
     decoder[decoder.index('public enum PacketDecodingError'):decoder.index('final public class')])
 for name in ['Inventory', 'InventoryItem', 'UsedItem']:
     copy('RagnarokModels', name + '.swift')
-for name in ['CartState', 'ItemSelectionState', 'RefineState', 'EquipmentSwitchState', 'SocialState', 'BankState', 'TradeState', 'ChatRoomState', 'RewardState', 'PetState', 'FollowerState', 'GuildState', 'RodexState', 'VendingState', 'BuyingStoreState']:
+for name in ['CartState', 'ItemSelectionState', 'RefineState', 'EquipmentSwitchState', 'SocialState', 'BankState', 'TradeState', 'ChatRoomState', 'RewardState', 'PetState', 'FollowerState', 'GuildState', 'RodexState', 'VendingState', 'BuyingStoreState', 'EnchantState']:
     source = (root / f'Packages/RagnarokGame/Sources/RagnarokGame/Engine/{name}.swift').read_text()
     (out / f'Sources/RagnarokGame/{name}.swift').write_text(source.split('\nextension PlaySession')[0])
 shutil.copy2(root / 'Packages/RagnarokGame/Tests/RagnarokGameTests/ItemFoundationTests.swift',
              out / 'Tests/RagnarokGameTests/ItemFoundationTests.swift')
 print(out)
+
+shutil.copytree(root / "Packages/RagnarokGame/Sources/RagnarokGame/Resources", out / "Sources/RagnarokGame/Resources", dirs_exist_ok=True)

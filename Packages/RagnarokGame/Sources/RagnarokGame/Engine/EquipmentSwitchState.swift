@@ -27,7 +27,7 @@ struct EquipmentSwitchState {
 
 extension PlaySession {
     func changeSwitchEquipment(index: Int, remove: Bool) {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, equipmentSwitch.pending == nil, cart.pending == nil, itemSelection.pending == nil, refine.pending == nil,
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, equipmentSwitch.pending == nil, cart.pending == nil, itemSelection.pending == nil, refine.pending == nil,
               let item = inventory.items[index], let wireIndex = UInt16(exactly: index),
               item.isIdentified, item.isEquippable else { return }
         if remove {
@@ -41,7 +41,7 @@ extension PlaySession {
         scheduleSwitchTimeout()
     }
     func requestEquipmentSwitch() {
-        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, equipmentSwitch.pending == nil, !equipmentSwitch.entries.isEmpty,
+        guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, equipmentSwitch.pending == nil, !equipmentSwitch.entries.isEmpty,
               cart.pending == nil, itemSelection.pending == nil, refine.pending == nil else { return }
         equipmentSwitch.pending = .init(index: nil)
         sendFoundationPacket(EquipmentSwitchRequest.swap)

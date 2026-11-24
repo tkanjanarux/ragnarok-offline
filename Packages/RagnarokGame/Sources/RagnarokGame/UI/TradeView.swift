@@ -61,7 +61,16 @@ struct TradeView: View {
     private func row(_ item: InventoryItem) -> some View {
         HStack {
             InventoryItemView(item: item)
+            VStack(alignment: .leading, spacing: 3) {
             Text(item.isIdentified ? (item.refineLevel > 0 ? "+\(item.refineLevel) " : "") + (context.itemInfoTable.localizedIdentifiedItemName(forItemID: item.itemID) ?? "Item \(item.itemID)") : "Unidentified item")
+            ForEach(Array(item.slots.enumerated()), id: \.offset) { slot in
+                if slot.element != 0 { Text("Slot \(slot.offset + 1): \(context.itemInfoTable.localizedIdentifiedItemName(forItemID: slot.element) ?? String(slot.element))") }
+            }
+            if let grade = item.enchantGrade, grade > 0 { Text("Grade \(grade)") }
+            ForEach(Array(item.randomOptions.enumerated()), id: \.offset) { option in
+                Text("Option \(option.element.id): \(option.element.value) (\(option.element.parameter))")
+            }
+            }
             Spacer(); Text("×\(item.amount)")
         }.frame(minHeight: 44)
     }

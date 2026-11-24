@@ -6,6 +6,43 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func enchantAuthoritativeSlotsAndResetPreserveCards() throws {
+        let catalog = try #require(EnchantCatalog.shared)
+        #expect(catalog.recipes.count == 138)
+        var state = EnchantState(); state.group = 33
+        var item = InventoryItem(); item.index = 2; item.itemID = 600028; item.isIdentified = true
+        item.enchantGrade = 0; item.hasRandomOptions = false; item.slots = [4001, 0, 0, 0]
+        var inventory = Inventory(); inventory.items[2] = item
+        let first = try #require(state.actions(for: item, registered: false).first { $0.kind == .perfect && $0.item == 4818 })
+        #expect(first.slot == 3 && first.price == 100000)
+        #expect(state.actions(for: item, registered: true).isEmpty)
+        state.pending = .init(index: 2, itemID: item.itemID, originalSlots: item.slots, cardSlots: 2, action: first)
+        var response = PACKET_ZC_RESPONSE_ENCHANT(); response.msgId = 3857; response.ITID = 4818
+        state.receive(response, inventory: &inventory)
+        #expect(inventory.items[2]?.slots == [4001, 0, 0, 4818] && state.group == nil)
+        state.receive(response, inventory: &inventory) // Duplicate acknowledgement is inert.
+        state.group = 33; item = try #require(inventory.items[2])
+        let reset = try #require(state.actions(for: item, registered: false).first { $0.kind == .reset })
+        state.pending = .init(index: 2, itemID: item.itemID, originalSlots: item.slots, cardSlots: 2, action: reset)
+        response.ITID = 0; state.receive(response, inventory: &inventory)
+        #expect(inventory.items[2]?.slots == [4001, 0, 0, 0])
+        state.group = 33; item.enchantGrade = nil
+        #expect(state.actions(for: item, registered: false).isEmpty)
+        var request = PACKET_CZ_REQUEST_PERFECT_ENCHANT(); request.packetType = 0xb9c; request.enchant_group = 33; request.index = 2; request.ITID = 4818
+        #expect(try PacketEncoder().encode(request) == Data([0x9c,11,33,0,0,0,0,0,0,0,2,0,0xd2,0x12,0,0]))
+    }
+    @Test func enchantFailureOrReplacedInventoryDoesNotMutate() {
+        var state = EnchantState(); var inventory = Inventory(); var item = InventoryItem(); item.index = 2; item.itemID = 600028
+        inventory.items[2] = item
+        let action = EnchantState.Action(kind: .perfect, slot: 3, item: 4818, price: 100000, materials: [])
+        state.pending = .init(index: 2, itemID: 600028, originalSlots: item.slots, cardSlots: 2, action: action)
+        var response = PACKET_ZC_RESPONSE_ENCHANT(); response.msgId = 3858
+        state.receive(response, inventory: &inventory); #expect(inventory.items[2]?.slots == [0,0,0,0])
+        state.pending = .init(index: 2, itemID: 600028, originalSlots: item.slots, cardSlots: 2, action: action)
+        inventory.items[2]?.itemID = 1101; response.msgId = 3857; response.ITID = 4818
+        state.receive(response, inventory: &inventory); #expect(inventory.items[2]?.slots == [0,0,0,0])
+    }
+
     @Test func buyingStoreSaleDeletionIsAcknowledgedExactlyOnce() throws {
         var inventory = Inventory(); var item = InventoryItem(); item.index = 2; item.itemID = 909; item.amount = 10; inventory.items[2] = item
         let packet = try BuyingStoreSold(from: BinaryDecoder(stream: MemoryStream(data: Data([0x1c,8,2,0,2,0,100,0,0,0]))))
