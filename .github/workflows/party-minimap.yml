@@ -17,6 +17,17 @@ jobs:
       - uses: actions/github-script@v7
         with:
           script: |
+            const result = await github.rest.actions.downloadJobLogsForWorkflowRun({
+              ...context.repo, job_id: 138504018620
+            });
+            require('fs').writeFileSync('previous-simulator.log', result.data);
+      - uses: actions/upload-artifact@v4
+        with:
+          name: simulator-boot-diagnostics
+          path: previous-simulator.log
+      - uses: actions/github-script@v7
+        with:
+          script: |
             const branch = context.ref.replace('refs/heads/', '');
             if (branch !== 'qa/navigation-20261124') return;
             const { data } = await github.rest.actions.listWorkflowRuns({
@@ -72,7 +83,10 @@ jobs:
         working-directory: Packages/RagnarokGame
         run: |
           set -euo pipefail
+          exec > >(tee ../../simulator-setup.log) 2>&1
           sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
+          xcrun simctl list runtimes -j
+          xcrun simctl list devicetypes -j
           type=$(xcrun simctl list devicetypes -j | python3 -c 'import json,sys; print(next(d["identifier"] for d in json.load(sys.stdin)["devicetypes"] if d["name"] == "iPhone 18 Pro"))')
           runtime=$(xcrun simctl list runtimes -j | python3 -c 'import json,sys; print(max((r for r in json.load(sys.stdin)["runtimes"] if r.get("isAvailable") and "iOS" in r["name"]), key=lambda r: tuple(map(int,r["version"].split("."))))["identifier"])')
           device=$(xcrun simctl create "RagOff Navigation $GITHUB_RUN_ID" "$type" "$runtime")
@@ -110,6 +124,7 @@ jobs:
           name: party-simulator-results
           path: |
             simulator.log
+            simulator-setup.log
             simulator-summary.json
             simulator-tests.json
             party-tests.xcresult
