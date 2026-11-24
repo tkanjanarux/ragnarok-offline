@@ -88,8 +88,9 @@ struct MenuView: View {
                         }
                         .disabled(true)
                         GameImageButton("menu_icon/bt_achievement.bmp") {
+                            playSession.rewards.visible = true
                         }
-                        .disabled(true)
+                        .accessibilityLabel("Achievements")
                     }
                     .frame(width: 32, height: 34)
 

@@ -237,6 +237,10 @@ struct MapSceneView: View {
                 EquipmentCompareView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
             }
+            if playSession.rewards.visible || playSession.rewards.attendanceVisible {
+                RewardsView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+            }
             if playSession.chatRoom.visible {
                 ChatRoomView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)

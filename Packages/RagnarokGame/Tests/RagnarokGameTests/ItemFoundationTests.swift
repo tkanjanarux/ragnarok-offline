@@ -6,6 +6,24 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func achievementRowsAndClaimUseServerAuthority() throws {
+        var data = Data([0x23,0x0a,72,0,1,0,0,0,10,0,0,0,1,0,5,0,0,0,20,0,0,0])
+        data.append(contentsOf: [0xc1,0xd4,1,0,1]) // 120001, complete
+        data.append(Data(repeating: 0, count: 40)); data.append(contentsOf: [1,0,0,0,0])
+        let packet = try PACKET_ZC_ALL_ACH_LIST(from: BinaryDecoder(stream: MemoryStream(data: data)))
+        var state = RewardState(); state.receive(packet)
+        #expect(state.entries[120001]?.completed == true && state.entries[120001]?.rewarded == false)
+        let result = try AchievementRewardResult(from: BinaryDecoder(stream: MemoryStream(data: Data([0x26,0x0a,0,0xc1,0xd4,1,0]))))
+        state.receive(result); #expect(state.entries[120001]?.rewarded == false)
+        state.pendingID = 120001; state.receive(result)
+        #expect(state.entries[120001]?.rewarded == true && state.pendingID == nil)
+        data[4] = 2
+        #expect(throws: PacketDecodingError.self) {
+            try PACKET_ZC_ALL_ACH_LIST(from: BinaryDecoder(stream: MemoryStream(data: data)))
+        }
+        #expect(try PacketEncoder().encode(RewardRequest.openAttendance) == Data([0x68,0x0a,5]))
+    }
+
     @Test func chatRoomsExcludeNPCAndRequireMatchingJoin() throws {
         var state = ChatRoomState()
         var entry = PACKET_ZC_ROOM_NEWENTRY(); entry.id = 10; entry.owner = 20; entry.type = 2; entry.title = "Waiting Room"

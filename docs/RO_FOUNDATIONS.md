@@ -16,7 +16,7 @@ Different binaries require independent integration evidence.
 |---|---|---|
 | A1 | Identify, card composition, arrow/skill selection | Implemented; isolated identify/cancel/card PASS; arrow live test pending |
 | A2 | Cart transfers/count/weight | Implemented; isolated roundtrip/invalid quantity/persisted conservation PASS |
-| A3 | Refine UI, equipment switch/compare | Implemented server-triggered refine, switch and comparison; portable protocol tests PASS; live test pending |
+| A3 | Refine UI, equipment switch/compare | Implemented; isolated real Vestri NPC refine +1 at 100% and add/remove/full equipment switch PASS; portable tests PASS |
 | A4 | Production/Enchant | Server-triggered forging/cooking/skill selection implemented; live crafting and enchant audit pending |
 | B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; party/guild live test pending |
 | B2 | Guild information/permissions | Implement after member/session identity audit |
@@ -24,7 +24,7 @@ Different binaries require independent integration evidence.
 | B4 | Ordinary chat rooms | Implemented separately from exam rooms; isolated normal-account create/private password rejection/join/chat/edit/owner transfer/kick/leave PASS |
 | C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX pending |
 | C2 | Pet, homunculus, mercenary | Implement standard RO systems separately from custom companion |
-| C3 | Achievement rewards, attendance | Existing incoming achievement packets ignored; validate loaded server data |
+| C3 | Achievement rewards, attendance | Implemented list/update/claim and attendance request/response; portable tests PASS. Live achievement claim blocked by server SQLite timestamp format bug (evidence/rewards-blocker.json); attendance DB loads zero events, no reward calendar invented |
 | C4 | Graphics/audio/shortcuts settings | Audit existing backend before enabling controls |
 | C5 | Reputation/clan/special enchant | Inspect actual enabled data/NPC; not marked disabled from missing client UI |
 

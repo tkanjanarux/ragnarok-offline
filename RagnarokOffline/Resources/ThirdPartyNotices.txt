@@ -388,3 +388,10 @@ Trade handshake, reservation/rollback and two-stage confirmation also checked
 against roBrowserLegacy src/Engine/MapEngine/Trade.js at the same commit.
 Ordinary chat room protocol and roles checked against roBrowserLegacy
 src/Engine/MapEngine/ChatRoom.js at the same commit.
+
+Achievement protocol/claim reference: roBrowserLegacy Engine/MapEngine/Achievement.js
+at commit 2f9a9d6cf5b04a8ac7a44077080772046e15bcb7 (GPL-3.0).
+AchievementCatalog.swift contains names and objective counts from rAthena
+db/re/achievement_db.yml, Copyright (C) 2021 rAthena Development Team,
+https://github.com/rathena/rathena, GPL-3.0-or-later. Source SHA256 is
+recorded in that file. These descriptions never grant completion or rewards.

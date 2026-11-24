@@ -6,6 +6,8 @@
 //
 
 let registeredPackets: [Int16 : any DecodablePacket.Type] = [
+    0xa26: AchievementRewardResult.self,
+    0xaf0: AttendanceResult.self,
     0x207: FriendInvitation.self,
     0x209: FriendAdded.self,
     0x20a: FriendRemoved.self,

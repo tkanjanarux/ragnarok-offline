@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var rewards = RewardState()
     var chatRoom = ChatRoomState()
     var trade = TradeState()
     var bank = BankState()
@@ -195,6 +196,7 @@ final class PlaySession {
     }
 
     func stop() {
+        rewards = RewardState()
         social = SocialState()
         equipmentSwitch = EquipmentSwitchState()
         chatRoom = ChatRoomState()
@@ -234,6 +236,7 @@ final class PlaySession {
         switch error {
         case .network, .disconnected:
             navigation.cancel()
+            rewards = RewardState()
             social = SocialState()
             equipmentSwitch = EquipmentSwitchState()
             chatRoom = ChatRoomState()
@@ -329,6 +332,7 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            rewards.visible = false; rewards.attendanceVisible = false
             social.invitation = nil
             social.friendsVisible = false
             equipmentSwitch = EquipmentSwitchState()
@@ -797,10 +801,23 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_CLAN_CHAT:
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
-        case _ as PACKET_ZC_ALL_ACH_LIST:
-            break
-        case _ as PACKET_ZC_ACH_UPDATE:
-            break
+        case let packet as PACKET_ZC_ALL_ACH_LIST:
+            rewards.receive(packet)
+        case let packet as PACKET_ZC_ACH_UPDATE:
+            rewards.receive(packet)
+        case let packet as AchievementRewardResult:
+            rewards.receive(packet)
+        case let packet as PACKET_ZC_UI_OPEN:
+            if packet.UIType == 7 {
+                rewards.attendanceVisible = true; rewards.attendanceAuthorized = true
+                rewards.attendanceCount = Int(packet.data) / 10; rewards.attendanceClaimed = packet.data % 10 != 0
+                rewards.attendanceWaiting = nil; rewards.attendanceMessage = nil
+            }
+        case let packet as AttendanceResult:
+            if rewards.attendanceAuthorized {
+                rewards.attendanceCount = Int(packet.count); rewards.attendanceClaimed = true
+                rewards.attendanceWaiting = nil; rewards.attendanceMessage = "Reward sent to your mailbox."
+            }
         case let packet as PACKET_ZC_NOTIFY_TIME:
             if let requestTime = serverTimeRequestTime {
                 let now = ContinuousClock.now
