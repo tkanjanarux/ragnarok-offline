@@ -6,6 +6,7 @@
 //
 
 import RagnarokCore
+import RagnarokLocalization
 import RagnarokModels
 import RagnarokResources
 import SwiftUI
@@ -48,6 +49,7 @@ struct InventoryItemView: View {
 
 struct InventoryItemPreview: View {
     var item: InventoryItem
+    private let optionNames = ItemRandomOptionNameTable()
 
     @Environment(GameContext.self) private var gameContext
 
@@ -114,6 +116,16 @@ struct InventoryItemPreview: View {
                 RoundedRectangle(cornerRadius: 3, style: .circular)
                     .stroke(Color.gameBoxBorder, lineWidth: 1)
                     .padding(2)
+            }
+
+            if item.isIdentified {
+                if let grade = item.enchantGrade, grade > 0 {
+                    Text("Grade \([1: "D", 2: "C", 3: "B", 4: "A"][grade] ?? String(grade))").font(.game(size: 13))
+                }
+                ForEach(Array(item.randomOptions.enumerated()), id: \.offset) { entry in
+                    Text(optionNames.localizedItemRandomOptionName(forID: entry.element.id)?.replacingOccurrences(of: "%d", with: String(entry.element.value)).replacingOccurrences(of: "%%", with: "%") ?? "Option \(entry.element.id): \(entry.element.value)")
+                        .font(.game(size: 13)).frame(maxWidth: 280, alignment: .leading)
+                }
             }
 
             if !cardIDs.isEmpty {
