@@ -73,7 +73,12 @@ jobs:
         run: |
           set -euo pipefail
           sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
-          device=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]))')
+          type=$(xcrun simctl list devicetypes -j | python3 -c 'import json,sys; print(next(d["identifier"] for d in json.load(sys.stdin)["devicetypes"] if d["name"] == "iPhone 18 Pro"))')
+          runtime=$(xcrun simctl list runtimes -j | python3 -c 'import json,sys; print(max((r for r in json.load(sys.stdin)["runtimes"] if r.get("isAvailable") and "iOS" in r["name"]), key=lambda r: tuple(map(int,r["version"].split("."))))["identifier"])')
+          device=$(xcrun simctl create "RagOff Navigation $GITHUB_RUN_ID" "$type" "$runtime")
+          trap 'xcrun simctl shutdown "$device" >/dev/null 2>&1 || true; xcrun simctl delete "$device" >/dev/null 2>&1 || true' EXIT
+          xcrun simctl boot "$device"
+          xcrun simctl bootstatus "$device" -b
           echo "$device" > ../../simulator-device.txt
           xcodebuild -scheme RagnarokGame -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO -only-testing:RagnarokGameTests/PartyMinimapTests -only-testing:RagnarokGameTests/PartyWorldBarTests -only-testing:RagnarokGameTests/NavigationTests -resultBundlePath ../../party-tests.xcresult test 2>&1 | tee ../../simulator.log
       - name: Extract test results
