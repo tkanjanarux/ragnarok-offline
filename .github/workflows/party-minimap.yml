@@ -59,10 +59,16 @@ jobs:
             xcrun xcresulttool get test-results tests --path party-tests.xcresult > simulator-tests.json || true
           fi
           mkdir -p visual-evidence
-          if test -f simulator-device.txt; then
-            device=$(cat simulator-device.txt)
-            find "$HOME/Library/Developer/CoreSimulator/Devices/$device/data/Containers" -name 'party-bars-*.png' -exec cp {} visual-evidence/ \;
-          fi
+          python3 - <<'PY'
+          import base64, pathlib, re
+          output = pathlib.Path('visual-evidence')
+          log = pathlib.Path('simulator.log').read_text()
+          for name, encoded in re.findall(r'PARTY_BAR_PNG ([\w-]+) ([A-Za-z0-9+/=]+)', log):
+              data = base64.b64decode(encoded, validate=True)
+              assert data.startswith(b'\x89PNG\r\n\x1a\n')
+              (output / ('party-bars-' + name + '.png')).write_bytes(data)
+          assert len(list(output.glob('party-bars-*.png'))) == 3, 'Missing simulator fixture images'
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:

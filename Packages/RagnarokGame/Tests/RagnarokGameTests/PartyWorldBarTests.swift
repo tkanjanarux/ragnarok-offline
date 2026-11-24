@@ -202,7 +202,9 @@ import UIKit
             }
             let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-            try #require(image.pngData()).write(to: directory.appendingPathComponent("party-bars-\(name).png"))
+            let png = try #require(image.pngData())
+            try png.write(to: directory.appendingPathComponent("party-bars-\(name).png"))
+            print("PARTY_BAR_PNG \(name) \(png.base64EncodedString())")
         }
     }
 
