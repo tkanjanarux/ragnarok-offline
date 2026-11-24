@@ -19,8 +19,10 @@ struct FollowersView: View {
                         if session.followers.actorID != nil {
                             HStack {
                                 Button("Follow") { session.moveFollowerToOwner() }
-                                Button("Attack selected") { session.moveFollowerToOwner(attack: true) }
+                                Button("Attack once") { session.moveFollowerToOwner(attack: true) }
                             }.frame(minHeight: 44)
+                            Button("Move to selected target") { session.moveFollowerToSelectedTarget() }.frame(minHeight: 44)
+                            Text("Attack once requires a target within reach. Move closer first if needed.").foregroundStyle(.secondary)
                             ForEach(session.followers.skills, id: \.id) { skill in
                                 HStack {
                                     Button(context.skillInfoTable.localizedSkillName(forSkillID: Int(skill.id)) ?? skill.name) { session.useFollowerSkill(skill.id) }

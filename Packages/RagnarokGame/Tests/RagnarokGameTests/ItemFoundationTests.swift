@@ -6,6 +6,13 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func followerManualCommandsUseOwnedActorAndPackedDestination() throws {
+        var move = PACKET_CZ_REQUEST_MOVENPC(); move.packetType = 0x232; move.GID = 0x12345678; move.PosDir = [0xff, 0xff, 0xf0]
+        #expect(try PacketEncoder().encode(move) == Data([0x32,2,0x78,0x56,0x34,0x12,0xff,0xff,0xf0]))
+        #expect(try PacketEncoder().encode(FollowerRequest.attack(7, 12)) == Data([0x33,2,7,0,0,0,12,0,0,0,0]))
+        #expect(try PacketEncoder().encode(FollowerRequest.follow(7)) == Data([0x34,2,7,0,0,0]))
+    }
+
     @Test func enchantAuthoritativeSlotsAndResetPreserveCards() throws {
         let catalog = try #require(EnchantCatalog.shared)
         #expect(catalog.recipes.count == 138)

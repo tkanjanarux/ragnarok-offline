@@ -86,6 +86,17 @@ extension PlaySession {
         guard followers.homunculus != nil, followers.pending == nil else { return }
         waitForFollower(.autoFeed); sendFoundationPacket(FollowerRequest.autoFeed(enabled))
     }
+    func moveFollowerToSelectedTarget() {
+        guard let id = followers.actorID, let target = mapScene?.selectedTarget else {
+            followers.message = "Select a target in the scene first."; return
+        }
+        let position = target.gridPosition
+        guard (0...1023).contains(position.x), (0...1023).contains(position.y) else { return }
+        var packet = PACKET_CZ_REQUEST_MOVENPC(); packet.packetType = HEADER_CZ_REQUEST_MOVENPC
+        packet.GID = id
+        packet.PosDir = [UInt8(position.x >> 2), UInt8(((position.x & 3) << 6) | (position.y >> 4)), UInt8((position.y & 15) << 4)]
+        sendFoundationPacket(packet)
+    }
     func moveFollowerToOwner(attack: Bool = false) {
         guard let id = followers.actorID else { return }
         if attack {
