@@ -2,7 +2,7 @@ import Foundation
 import RagnarokPackets
 
 struct PetState {
-    enum Operation { case feed, hatch, capture, rename, returnEgg, autoFeed }
+    enum Operation { case evolve, feed, hatch, capture, rename, returnEgg, autoFeed }
     var visible = false
     var actorID: UInt32?
     var info: PACKET_ZC_PROPERTY_PET?
@@ -40,6 +40,12 @@ struct PetState {
 }
 
 extension PlaySession {
+    func evolvePet(_ recipe: PetEvolutionRecipe) {
+        guard let pet = pets.info, Int(pet.job) == recipe.base, pet.nRelationship >= 1000, pets.pending == nil,
+              !trade.active, !rodex.busy, !buyingStore.busy, !vending.active, vending.purchase == nil,
+              recipe.materials.allSatisfy({ material in inventory.items.values.filter { $0.itemID == material.id }.reduce(0) { $0 + $1.amount } >= material.amount }) else { return }
+        waitForPet(.evolve); sendFoundationPacket(PetRequest.evolve(UInt32(recipe.egg)))
+    }
     func petCommand(_ command: UInt8) {
         guard pets.info != nil, pets.pending == nil, !trade.active, bank.pending == nil else { return }
         if command == 1 { waitForPet(.feed) }

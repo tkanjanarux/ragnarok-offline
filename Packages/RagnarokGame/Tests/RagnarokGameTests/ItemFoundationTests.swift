@@ -6,6 +6,17 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func buyingStoreSaleDeletionIsAcknowledgedExactlyOnce() throws {
+        var inventory = Inventory(); var item = InventoryItem(); item.index = 2; item.itemID = 909; item.amount = 10; inventory.items[2] = item
+        let packet = try BuyingStoreSold(from: BinaryDecoder(stream: MemoryStream(data: Data([0x1c,8,2,0,2,0,100,0,0,0]))))
+        var state = BuyingStoreState(); state.receive(packet,inventory: &inventory); #expect(inventory.items[2]?.amount == 10)
+        state.sale = .init(index: 2,itemID: 909,amount: 2,price: 100)
+        state.receive(packet,inventory: &inventory); #expect(inventory.items[2]?.amount == 8 && state.sale == nil)
+        state.receive(packet,inventory: &inventory); #expect(inventory.items[2]?.amount == 8)
+        #expect(try PacketEncoder().encode(BuyingStoreRequest.sell(owner: 7,store: 50,index: 2,item: 909,amount: 2)) == Data([0x19,8,20,0,7,0,0,0,50,0,0,0,2,0,0x8d,3,0,0,2,0]))
+        #expect(try PacketEncoder().encode(PetRequest.evolve(9069)) == Data([0xfb,9,8,0,0x6d,0x23,0,0]))
+    }
+
     @Test func vendingPurchaseNeedsMatchingServerItemsAndMoney() throws {
         var state = VendingState(); state.browsing = 7
         var list = PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC(); list.AID = 8; list.venderId = 50

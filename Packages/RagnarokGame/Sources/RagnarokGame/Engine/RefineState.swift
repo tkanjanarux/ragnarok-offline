@@ -44,7 +44,7 @@ extension PlaySession {
         }
     }
     func requestRefine(material: UInt32, blessing: Bool) {
-        guard !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
+        guard !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard refine.authorized, refine.pending == nil, cart.pending == nil, itemSelection.pending == nil,
               let index = refine.selectedIndex, inventory.items[index]?.itemID == refine.selectedItemID,
               let wireIndex = Int16(exactly: index),

@@ -38,13 +38,13 @@ struct VendingState {
 
 extension PlaySession {
     func browseVending(_ owner: UInt32) {
-        guard vending.waiting == nil, !vending.active, !rodex.busy, !trade.active, trade.waiting == nil,
+        guard !buyingStore.busy, vending.waiting == nil, !vending.active, !rodex.busy, !trade.active, trade.waiting == nil,
               vending.boards[owner] != nil, mapScene?.objects[owner] != nil else { return }
         vending.visible = true; vending.shop = nil; vending.browsing = owner
         waitForVending(); sendFoundationPacket(VendingRequest.browse(owner))
     }
     func buyVending(index: UInt16, amount: UInt16) {
-        guard vending.waiting == nil, !rodex.busy, !trade.active, bank.pending == nil, let shop = vending.shop,
+        guard !buyingStore.busy, vending.waiting == nil, !rodex.busy, !trade.active, bank.pending == nil, let shop = vending.shop,
               let item = shop.items.first(where: { UInt16(bitPattern: $0.index) == index }), amount > 0, amount <= item.amount else { return }
         let cost = UInt64(amount) * UInt64(item.price)
         guard cost <= UInt64(max(0,playerStatus.zeny)), cost <= UInt64(Int.max) else { return }

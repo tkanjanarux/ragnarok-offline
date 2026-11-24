@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var buyingStore = BuyingStoreState()
     var vending = VendingState()
     var rodex = RodexState()
     var guild = GuildState()
@@ -203,6 +204,7 @@ final class PlaySession {
     func stop() {
         followers = FollowerState()
         pets = PetState()
+        buyingStore = BuyingStoreState()
         vending = VendingState()
         rodex = RodexState()
         guild = GuildState()
@@ -248,6 +250,7 @@ final class PlaySession {
             navigation.cancel()
             followers = FollowerState()
             pets = PetState()
+            buyingStore = BuyingStoreState()
             vending = VendingState()
             rodex = RodexState()
             guild = GuildState()
@@ -348,6 +351,7 @@ final class PlaySession {
 
             navigation.mapChanging()
             if rodex.writing { sendFoundationPacket(RodexRequest.cancel) }
+            buyingStore = BuyingStoreState()
             vending = VendingState()
             rodex = RodexState()
             guild.visible = false; guild.invitation = nil
@@ -690,7 +694,8 @@ final class PlaySession {
             logger.info("Object \(objectID) stopped at \(position)")
             mapScene?.onMapObjectStopped(objectID: objectID, position: position)
         case let packet as PACKET_ZC_NOTIFY_VANISH:
-            vending.vanished(packet.GID)
+            vending.vanished(packet.gid)
+            buyingStore.vanished(packet.gid)
             followers.vanished(packet.gid)
             pets.vanished(packet.gid)
             chatRoom.rooms = chatRoom.rooms.filter { $0.value.owner != packet.gid }
@@ -830,13 +835,39 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_CLAN_CHAT:
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
+        case let packet as PetEvolutionResult:
+            pets.finish(.evolve, message: packet.result == 6 ? "Pet evolution completed." : "Pet evolution rejected (\(packet.result)). Check intimacy and materials.")
+        case let packet as BuyingStoreOpened:
+            buyingStore.slots = min(5,Int(packet.slots)); buyingStore.draft = [:]; buyingStore.visible = true; buyingStore.message = nil
+        case let packet as BuyingStoreRejected:
+            buyingStore.waiting = nil; buyingStore.slots = 0; buyingStore.draft = [:]; buyingStore.message = "Cannot open the buying store (\(packet.result)). Check eligible items, weight and budget."
+        case let packet as BuyingStoreEnded:
+            buyingStore.active = false; buyingStore.own = nil; buyingStore.message = "Buying store ended (\(packet.reason))."
+        case let packet as BuyingStoreSold: buyingStore.receive(packet, inventory: &inventory)
+        case let packet as PACKET_ZC_BUYING_STORE_ENTRY:
+            buyingStore.boards[packet.makerAID] = packet.storeName
+            mapScene?.shopSigns[packet.makerAID] = "Buying: " + packet.storeName
+        case let packet as PACKET_ZC_DISAPPEAR_BUYING_STORE_ENTRY:
+            buyingStore.vanished(packet.makerAID); mapScene?.shopSigns.removeValue(forKey: packet.makerAID)
+        case let packet as PACKET_ZC_ACK_ITEMLIST_BUYING_STORE:
+            if buyingStore.browsing == packet.AID, buyingStore.sale == nil { buyingStore.shop = packet; buyingStore.waiting = nil; buyingStore.message = nil }
+        case let packet as PACKET_ZC_MYITEMLIST_BUYING_STORE:
+            if packet.AID == partyAccountID { buyingStore.own = packet; buyingStore.active = true; buyingStore.slots = 0; buyingStore.draft = [:]; buyingStore.waiting = nil; buyingStore.message = "Buying store opened." }
+        case let packet as PACKET_ZC_UPDATE_ITEM_FROM_BUYING_STORE:
+            if let i = buyingStore.own?.items.firstIndex(where: { $0.itemId == packet.itemId }) {
+                let remaining = buyingStore.own?.items[i].amount ?? 0
+                buyingStore.own?.items[i].amount = remaining >= packet.amount ? remaining - packet.amount : 0
+                buyingStore.own?.zenyLimit = packet.zenyLimit
+            }
+        case let packet as PACKET_ZC_FAILED_TRADE_BUYING_STORE_TO_SELLER:
+            if buyingStore.sale != nil { buyingStore.sale = nil; buyingStore.waiting = nil; buyingStore.shop = nil; buyingStore.message = "Sale rejected (\(packet.result))." }
         case let packet as PACKET_ZC_OPENSTORE:
             vending.preparingSlots = min(12,Int(packet.num)); vending.draft = [:]; vending.visible = true; vending.message = nil
         case let packet as PACKET_ZC_STORE_ENTRY:
             vending.boards[packet.makerAID] = .init(id: packet.makerAID, name: packet.storeName)
             mapScene?.shopSigns[packet.makerAID] = packet.storeName
         case let packet as PACKET_ZC_DISAPPEAR_ENTRY:
-            vending.vanished(packet.GID); mapScene?.shopSigns.removeValue(forKey: packet.GID)
+            vending.vanished(UInt32(bitPattern: packet.GID)); mapScene?.shopSigns.removeValue(forKey: UInt32(bitPattern: packet.GID))
         case let packet as PACKET_ZC_PC_PURCHASE_ITEMLIST_FROMMC: vending.receive(packet)
         case let packet as PACKET_ZC_PC_PURCHASE_MYITEMLIST:
             if packet.AID == partyAccountID { vending.own = packet.items; vending.active = true; vending.preparingSlots = 0; vending.draft = [:]; vending.waiting = nil; vending.message = "Shop opened." }
@@ -845,7 +876,7 @@ final class PlaySession {
         case let packet as PACKET_ZC_PC_PURCHASE_RESULT_FROMMC:
             if vending.purchase != nil { vending.purchase = nil; vending.waiting = nil; vending.shop = nil; vending.message = "Purchase rejected (\(packet.result))." }
         case let packet as PACKET_ZC_DELETEITEM_FROM_MCSTORE:
-            if let i = vending.own.firstIndex(where: { $0.index == packet.index }) {
+            if let i = vending.own.firstIndex(where: { UInt16(bitPattern: $0.index) == packet.index }) {
                 vending.own[i].amount = max(0,vending.own[i].amount - Int16(clamping: packet.amount))
                 vending.own.removeAll { $0.amount == 0 }
             }
@@ -900,11 +931,12 @@ final class PlaySession {
                 guild.finish(.join)
             }
         case let packet as PACKET_ZC_MEMBERMGR_INFO:
-            if guild.id != nil { guild.receive(packet) }
+            if guild.id != nil { guild.receive(packet); guild.refreshPermissions(account: partyAccountID, character: character.charID) }
         case let packet as PACKET_ZC_POSITION_ID_NAME_INFO:
             guild.positionNames = Dictionary(packet.posInfo.map { ($0.positionID, $0.posName) }, uniquingKeysWith: { _, new in new })
         case let packet as PACKET_ZC_POSITION_INFO:
             guild.positions = Dictionary(packet.posInfo.map { ($0.positionID, $0) }, uniquingKeysWith: { _, new in new })
+            guild.refreshPermissions(account: partyAccountID, character: character.charID)
         case let packet as PACKET_ZC_GUILD_NOTICE:
             guild.subject = packet.subject; guild.notice = packet.notice; guild.finish(.notice)
             if guild.pending == .join { openGuild() }
@@ -926,6 +958,7 @@ final class PlaySession {
             for row in packet.members {
                 if let index = guild.members.firstIndex(where: { $0.data.AID == row.accId && $0.data.GID == row.charId }) { guild.members[index].data.positionID = row.positionID }
             }
+            guild.refreshPermissions(account: partyAccountID, character: character.charID)
             guild.finish(.memberPosition)
         case let packet as PACKET_ZC_ACK_CHANGE_GUILD_POSITIONINFO:
             for row in packet.posInfo {
@@ -933,6 +966,7 @@ final class PlaySession {
                 var value = PACKET_ZC_POSITION_INFO_sub(); value.positionID = row.positionID; value.right = row.mode; value.payRate = row.payRate; value.ranking = row.ranking
                 guild.positions[row.positionID] = value
             }
+            guild.refreshPermissions(account: partyAccountID, character: character.charID)
             guild.finish(.position)
         case let packet as PACKET_ZC_PROPERTY_HOMUN:
             followers.receive(packet)

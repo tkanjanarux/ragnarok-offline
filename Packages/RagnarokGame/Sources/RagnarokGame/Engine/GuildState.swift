@@ -30,6 +30,11 @@ struct GuildState {
     mutating func receive(_ p: PACKET_ZC_MEMBERMGR_INFO) {
         members = p.guildMemberInfo.filter { $0.AID > 0 && $0.GID > 0 }.map { .init(data: $0) }
     }
+    mutating func refreshPermissions(account: UInt32, character: UInt32) {
+        guard let member = members.first(where: { $0.data.AID == account && $0.data.GID == character }),
+              let position = positions[member.data.positionID] else { return }
+        permissions = UInt32(bitPattern: position.right)
+    }
     mutating func finish(_ operation: Operation, message: String? = nil) {
         guard pending == operation else { return }
         pending = nil; token = nil; self.message = message

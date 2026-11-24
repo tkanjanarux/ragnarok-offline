@@ -404,3 +404,7 @@ RODEX lifecycle and attachments checked against roBrowserLegacy
 Engine/MapEngine/Rodex.js at the same GPL-3.0 commit; native 20211103 codecs.
 Vending preparation, shop list and sale reports checked against roBrowserLegacy
 Engine/MapEngine/Store.js at the same GPL-3.0 commit.
+Buying-store flows also reference Engine/MapEngine/Store.js (same commit).
+PetEvolutionRecipe.swift contains public rAthena pet recipes (GPL-3.0-or-later,
+Copyright (C) 2021 rAthena Development Team). The extraction evidence digest is
+recorded in that source file; server acknowledgements remain authoritative.

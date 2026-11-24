@@ -4,6 +4,7 @@ struct PetView: View {
     @Environment(PlaySession.self) private var session
     @Environment(GameContext.self) private var context
     @State private var name = ""
+    @State private var evolution: PetEvolutionRecipe?
     @State private var action: UInt8?
     var body: some View {
         GeometryReader { bounds in
@@ -35,6 +36,18 @@ struct PetView: View {
                             if pet.ITID != 0 { Button("Unequip accessory") { session.petCommand(4) }.frame(minHeight: 44) }
                             Button(session.pets.autoFeed == true ? "Disable auto feed" : "Enable auto feed") { session.setPetAutoFeed(session.pets.autoFeed != true) }
                                 .frame(minHeight: 44).disabled(session.pets.pending != nil)
+                            DisclosureGroup("Evolution") {
+                                let recipes = PetEvolutionRecipe.all.filter { $0.base == Int(pet.job) }
+                                if recipes.isEmpty { Text("No evolution recipe is available for this pet.") }
+                                ForEach(recipes) { recipe in
+                                    Text(context.itemInfoTable.localizedIdentifiedItemName(forItemID: recipe.egg) ?? "Pet egg \(recipe.egg)")
+                                    ForEach(recipe.materials,id: \.id) { material in
+                                        Text("\(context.itemInfoTable.localizedIdentifiedItemName(forItemID: material.id) ?? "Item \(material.id)") ×\(material.amount)")
+                                    }
+                                    Button("Evolve") { evolution = recipe }.frame(minHeight: 44).disabled(pet.nRelationship < 1000 || session.pets.pending != nil)
+                                }
+                                Text("Requires 1000 intimacy. Materials are consumed on evolution.")
+                            }
                             if pet.bModified == 0 {
                                 TextField("Pet name", text: $name).textFieldStyle(.roundedBorder)
                                 Button("Rename") { session.renamePet(name) }.frame(minHeight: 44).disabled(name.isEmpty || session.pets.pending != nil)
@@ -46,6 +59,10 @@ struct PetView: View {
                     }.padding(12)
                 }.font(.game(size: 13)).buttonStyle(.game)
             }
+        }
+        .confirmationDialog("Evolve this pet and consume the listed materials?", isPresented: Binding(get: { evolution != nil },set: { if !$0 { evolution = nil } })) {
+            Button("Evolve") { if let recipe = evolution { session.evolvePet(recipe) }; evolution = nil }
+            Button("Cancel",role: .cancel) { evolution = nil }
         }
         .confirmationDialog(action == 1 ? "Feed your pet? Overfeeding can reduce intimacy." : "Return this pet to its egg?", isPresented: Binding(get: { action != nil }, set: { if !$0 { action = nil } })) {
             Button("Confirm") { if let value = action { session.petCommand(value) }; action = nil }

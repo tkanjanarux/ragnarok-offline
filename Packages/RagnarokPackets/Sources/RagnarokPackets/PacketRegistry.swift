@@ -409,6 +409,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     // | 0x12c | `clif_cart_additem_ack` |
     HEADER_ZC_ACK_ADDITEM_TO_CART: PACKET_ZC_ACK_ADDITEM_TO_CART.self,
 
+    0x9fc: PetEvolutionResult.self,
     // | 0x12d | `clif_openvendingreq` |
     HEADER_ZC_OPENSTORE: PACKET_ZC_OPENSTORE.self,
 
@@ -1032,10 +1033,10 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
 //  HEADER_ZC_PARTY_BOOKING_NOTIFY_DELETE: PACKET_ZC_PARTY_BOOKING_NOTIFY_DELETE.self,
 
     // | 0x810 | `clif_buyingstore_open` |
-//  HEADER_ZC_OPEN_BUYING_STORE: PACKET_ZC_OPEN_BUYING_STORE.self,
+    0x810: BuyingStoreOpened.self,
 
     // | 0x812 | `clif_buyingstore_open_failed` |
-//  HEADER_ZC_FAILED_OPEN_BUYING_STORE_TO_BUYER: PACKET_ZC_FAILED_OPEN_BUYING_STORE_TO_BUYER.self,
+    0x812: BuyingStoreRejected.self,
 
     // | 0x813 | `clif_buyingstore_myitemlist` |
     HEADER_ZC_MYITEMLIST_BUYING_STORE: PACKET_ZC_MYITEMLIST_BUYING_STORE.self,
@@ -1050,13 +1051,13 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_ACK_ITEMLIST_BUYING_STORE: PACKET_ZC_ACK_ITEMLIST_BUYING_STORE.self,
 
     // | 0x81a | `clif_buyingstore_trade_failed_buyer` |
-//  HEADER_ZC_FAILED_TRADE_BUYING_STORE_TO_BUYER: PACKET_ZC_FAILED_TRADE_BUYING_STORE_TO_BUYER.self,
+    0x81a: BuyingStoreEnded.self,
 
     // | 0x81b, 0x9e6 | `clif_buyingstore_update_item` |
     packet_header_buyingStoreUpdateItemType: PACKET_ZC_UPDATE_ITEM_FROM_BUYING_STORE.self,
 
     // | 0x81c | `clif_buyingstore_delete_item` |
-//  HEADER_ZC_ITEM_DELETE_BUYING_STORE: PACKET_ZC_ITEM_DELETE_BUYING_STORE.self,
+    0x81c: BuyingStoreSold.self,
 
     // | 0x81d | `clif_elemental_info` |
 //  HEADER_ZC_EL_INIT: PACKET_ZC_EL_INIT.self,
