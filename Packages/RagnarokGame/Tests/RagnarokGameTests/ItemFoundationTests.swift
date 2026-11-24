@@ -6,6 +6,25 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func chatRoomsExcludeNPCAndRequireMatchingJoin() throws {
+        var state = ChatRoomState()
+        var entry = PACKET_ZC_ROOM_NEWENTRY(); entry.id = 10; entry.owner = 20; entry.type = 2; entry.title = "Waiting Room"
+        state.receive(entry); #expect(state.rooms.isEmpty)
+        entry.type = 0; entry.title = "Players"; state.receive(entry)
+        #expect(state.rooms[10]?.isPrivate == true)
+        var joined = PACKET_ZC_ENTER_ROOM(); joined.chatId = 10
+        var member = PACKET_ZC_ENTER_ROOM_sub(); member.name = "Owner"; member.flag = 0; joined.members = [member]
+        state.receive(joined); #expect(!state.active)
+        state.joiningID = 10; state.receive(joined)
+        #expect(state.active && state.members["Owner"] == true)
+        state.leave(); #expect(!state.active && state.members.isEmpty)
+        let packet = try PacketEncoder().encode(ChatRoomRequest.configure(title: "RO", limit: 10, password: "", editing: false))
+        #expect(packet.count == 17 && packet.prefix(4) == Data([0xd5,0,17,0]))
+        #expect(throws: SocialPacketError.self) {
+            try PacketEncoder().encode(ChatRoomRequest.configure(title: String(repeating: "x", count: 61), limit: 10, password: "", editing: false))
+        }
+    }
+
     @Test func tradeReservationIsAppliedOnceAndCancelPickupRestores() throws {
         var inventory = Inventory()
         var item = InventoryItem(); item.index = 2; item.itemID = 501; item.amount = 10; item.isIdentified = true

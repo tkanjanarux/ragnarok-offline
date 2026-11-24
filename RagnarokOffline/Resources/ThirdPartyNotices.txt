@@ -386,3 +386,5 @@ original UI assets. Implemented natively in RagnarokGame; no web runtime.
 Existing roBrowser copyright and GPL notices above continue to apply.
 Trade handshake, reservation/rollback and two-stage confirmation also checked
 against roBrowserLegacy src/Engine/MapEngine/Trade.js at the same commit.
+Ordinary chat room protocol and roles checked against roBrowserLegacy
+src/Engine/MapEngine/ChatRoom.js at the same commit.

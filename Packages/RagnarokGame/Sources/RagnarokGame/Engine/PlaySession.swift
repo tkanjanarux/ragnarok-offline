@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var chatRoom = ChatRoomState()
     var trade = TradeState()
     var bank = BankState()
     var social = SocialState()
@@ -196,6 +197,7 @@ final class PlaySession {
     func stop() {
         social = SocialState()
         equipmentSwitch = EquipmentSwitchState()
+        chatRoom = ChatRoomState()
         trade = TradeState()
         bank = BankState()
         refine = RefineState()
@@ -234,6 +236,7 @@ final class PlaySession {
             navigation.cancel()
             social = SocialState()
             equipmentSwitch = EquipmentSwitchState()
+            chatRoom = ChatRoomState()
             trade = TradeState()
             bank = BankState()
             refine = RefineState()
@@ -282,23 +285,43 @@ final class PlaySession {
             let packet = PacketFactory.CZ_PING_LIVE()
             mapClient?.sendPacket(packet)
         case let packet as PACKET_ZC_ROOM_NEWENTRY:
+            chatRoom.receive(packet)
             if packet.type == 2, packet.title == "Waiting Room", packet.id > 0 {
                 examRoomID = UInt32(packet.id)
             }
         case let packet as PACKET_ZC_DESTROY_ROOM:
+            chatRoom.rooms.removeValue(forKey: packet.chatId)
             if packet.chatId == examRoomID {
                 examRoomID = nil
                 examQueueState = .idle
             }
         case let packet as PACKET_ZC_ENTER_ROOM:
+            chatRoom.receive(packet)
             if examQueueState == .joining, packet.chatId == examRoomID {
                 examQueueState = .queued
                 examAdmissions += 1
             }
-        case _ as PACKET_ZC_REFUSE_ENTER_ROOM:
+        case let packet as PACKET_ZC_REFUSE_ENTER_ROOM:
+            if chatRoom.joiningID != nil { chatRoom.waiting = nil; chatRoom.joiningID = nil; chatRoom.message = "Cannot enter this room (\(packet.result))." }
             if examQueueState == .joining { examQueueState = .refused }
         case let packet as PACKET_ZC_MEMBER_EXIT:
+            if chatRoom.active {
+                chatRoom.members.removeValue(forKey: packet.name); chatRoom.waiting = nil
+                if packet.name == character.name { chatRoom.leave(); chatRoom.message = packet.kicked == 0 ? "Left the room." : "Removed from the room." }
+            }
             if packet.name == character.name { examQueueState = .idle }
+        case let packet as PACKET_ZC_ACK_CREATE_CHATROOM:
+            if let title = chatRoom.creatingTitle {
+                chatRoom.creatingTitle = nil; chatRoom.waiting = nil
+                if packet.flag == 0 { chatRoom.active = true; chatRoom.title = title; chatRoom.members = [character.name: true]; chatRoom.message = nil }
+                else { chatRoom.message = "Cannot create this room (\(packet.flag))." }
+            }
+        case let packet as PACKET_ZC_MEMBER_NEWENTRY:
+            if chatRoom.active { chatRoom.members[packet.name] = false }
+        case let packet as PACKET_ZC_ROLE_CHANGE:
+            if chatRoom.active { chatRoom.members[packet.name] = packet.flag == 0; chatRoom.waiting = nil; chatRoom.message = nil }
+        case let packet as PACKET_ZC_CHANGE_CHATROOM:
+            if chatRoom.active { chatRoom.title = packet.title; chatRoom.roomID = packet.chatId; chatRoom.waiting = nil; chatRoom.message = nil }
         case let packet as PACKET_ZC_NPCACK_MAPMOVE:
             examRoomID = nil
             examQueueState = .idle
@@ -309,6 +332,7 @@ final class PlaySession {
             social.invitation = nil
             social.friendsVisible = false
             equipmentSwitch = EquipmentSwitchState()
+            chatRoom = ChatRoomState()
             trade = TradeState()
             bank = BankState()
             refine = RefineState()
@@ -403,6 +427,10 @@ final class PlaySession {
         case let packet as PACKET_ZC_DISPEL:
             mapScene?.onMapObjectSkillCastCancelled(sourceObjectID: packet.gid)
         case let packet as PACKET_ZC_ACK_TOUSESKILL:
+            if packet.skillId == 1, packet.flag == 0, chatRoom.creatingTitle != nil {
+                chatRoom.creatingTitle = nil; chatRoom.waiting = nil
+                chatRoom.message = "Cannot create a room here. Check Basic Skill and move away from NPCs."
+            }
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_USE_SKILL:
             let objectSkill = MapObjectSkill(from: packet)
@@ -632,6 +660,7 @@ final class PlaySession {
             logger.info("Object \(objectID) stopped at \(position)")
             mapScene?.onMapObjectStopped(objectID: objectID, position: position)
         case let packet as PACKET_ZC_NOTIFY_VANISH:
+            chatRoom.rooms = chatRoom.rooms.filter { $0.value.owner != packet.gid }
             let objectID = packet.gid
             let type = UnitClearType(rawValue: Int(packet.type)) ?? .outsight
             logger.info("Object \(objectID) vanished (type: \(packet.type))")

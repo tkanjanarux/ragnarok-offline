@@ -21,7 +21,7 @@ Different binaries require independent integration evidence.
 | B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; party/guild live test pending |
 | B2 | Guild information/permissions | Implement after member/session identity audit |
 | B3 | Trade item/zeny, vending/buying/signboards | Trade implemented; isolated decline/cancel/two-sided lock/commit/reject/persisted item and zeny conservation PASS; vending/buying/signboards pending |
-| B4 | Ordinary chat rooms | Keep exam room state separate; implement lifecycle |
+| B4 | Ordinary chat rooms | Implemented separately from exam rooms; isolated normal-account create/private password rejection/join/chat/edit/owner transfer/kick/leave PASS |
 | C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX pending |
 | C2 | Pet, homunculus, mercenary | Implement standard RO systems separately from custom companion |
 | C3 | Achievement rewards, attendance | Existing incoming achievement packets ignored; validate loaded server data |
