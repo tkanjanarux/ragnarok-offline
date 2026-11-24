@@ -49,13 +49,19 @@ jobs:
           set -euo pipefail
           sudo xcode-select -s /Applications/Xcode_27.2.app/Contents/Developer
           device=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; print(next(d["udid"] for ds in json.load(sys.stdin)["devices"].values() for d in ds if "iPhone" in d["name"]))')
-          xcodebuild -scheme RagnarokGame -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO -only-testing:RagnarokGameTests/PartyMinimapTests -resultBundlePath ../../party-tests.xcresult test 2>&1 | tee ../../simulator.log
+          echo "$device" > ../../simulator-device.txt
+          xcodebuild -scheme RagnarokGame -destination "platform=iOS Simulator,id=$device" -parallel-testing-enabled NO -only-testing:RagnarokGameTests/PartyMinimapTests -only-testing:RagnarokGameTests/PartyWorldBarTests -resultBundlePath ../../party-tests.xcresult test 2>&1 | tee ../../simulator.log
       - name: Extract test results
         if: always()
         run: |
           if test -d party-tests.xcresult; then
             xcrun xcresulttool get test-results summary --path party-tests.xcresult > simulator-summary.json
             xcrun xcresulttool get test-results tests --path party-tests.xcresult > simulator-tests.json
+          fi
+          mkdir -p visual-evidence
+          if test -f simulator-device.txt; then
+            device=$(cat simulator-device.txt)
+            find "$HOME/Library/Developer/CoreSimulator/Devices/$device/data/Containers" -name 'party-bars-*.png' -exec cp {} visual-evidence/ \;
           fi
       - uses: actions/upload-artifact@v4
         if: always()
@@ -66,3 +72,4 @@ jobs:
             simulator-summary.json
             simulator-tests.json
             party-tests.xcresult
+            visual-evidence

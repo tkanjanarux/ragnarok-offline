@@ -64,6 +64,8 @@ final class BarRenderer {
         bars: [MapSceneRenderSnapshot.Bar],
         modelMatrix: simd_float4x4,
         camera: RenderCamera,
+        viewport: MTLViewport,
+        pixelScale: Float = 1,
         renderCommandEncoder: any MTLRenderCommandEncoder
     ) {
         guard !bars.isEmpty, let whiteTexture else {
@@ -75,6 +77,16 @@ final class BarRenderer {
         renderCommandEncoder.setFragmentTexture(whiteTexture, index: 0)
 
         for bar in bars {
+            let vertices: [SpriteVertex]
+            if bar.screenSpace {
+                let projection = PartyBarProjection(viewport: viewport, pixelScale: pixelScale,
+                                                    camera: camera, modelMatrix: modelMatrix)
+                guard let projected = projection.vertices(for: bar) else { continue }
+                vertices = projected
+            } else {
+                vertices = bar.vertices
+            }
+            guard !vertices.isEmpty else { continue }
             var uniforms = SpriteVertexUniforms(
                 modelMatrix: modelMatrix,
                 viewMatrix: camera.viewMatrix,
@@ -89,7 +101,7 @@ final class BarRenderer {
                 fogColor: .zero
             )
 
-            bar.vertices.withUnsafeBytes { bytes in
+            vertices.withUnsafeBytes { bytes in
                 renderCommandEncoder.setVertexBytes(bytes.baseAddress!, length: bytes.count, index: 0)
             }
             renderCommandEncoder.setVertexBytes(
@@ -102,7 +114,7 @@ final class BarRenderer {
                 length: MemoryLayout<SpriteVertexUniforms>.stride,
                 index: 0
             )
-            renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: bar.vertices.count)
+            renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertices.count)
         }
     }
 }

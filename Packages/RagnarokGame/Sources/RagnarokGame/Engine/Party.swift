@@ -107,6 +107,11 @@ struct PartyState {
                     members[i].x = p.xPos; members[i].y = p.yPos
                 }
             }
+        case let p as PACKET_ZC_NOTIFY_VANISH:
+            if let index = members.firstIndex(where: { $0.id == p.gid }) {
+                members[index].hp = nil; members[index].maxHP = nil
+                members[index].hpUpdatedAt = nil
+            }
         case let p as PACKET_ZC_GROUP_ISALIVE:
             if let i = members.firstIndex(where: { $0.id == p.AID && !$0.offline }) {
                 members[i].dead = p.isDead != 0

@@ -229,7 +229,12 @@ final class MapSceneRuntime {
             )
         }
 
-        return hpspBars + castBars
+        let partyBars = PartyWorldBars.make(
+            party: scene.playSession.party, ownID: scene.player.objectID, mapName: scene.mapName,
+            objects: scene.objects, worldPositions: worldPositions,
+            visibleIDs: Set(renderResources.spriteDrawables.filter(\.isVisible).map(\.objectID))
+        )
+        return hpspBars + partyBars + castBars
     }
 
     /// The target selector's object shows its name 2 points under its HP bar.

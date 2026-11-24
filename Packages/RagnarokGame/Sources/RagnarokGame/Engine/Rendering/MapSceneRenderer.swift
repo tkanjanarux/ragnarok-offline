@@ -76,6 +76,7 @@ final class MapSceneRenderer {
                 snapshot,
                 atTime: frame.time,
                 viewport: view.viewport,
+                pixelScale: frame.bounds.width > 0 ? Float(view.viewport.width / frame.bounds.width) : 1,
                 camera: view.camera,
                 renderCommandEncoder: renderCommandEncoder
             )
@@ -88,6 +89,7 @@ final class MapSceneRenderer {
         _ snapshot: MapSceneRenderSnapshot,
         atTime time: TimeInterval,
         viewport: MTLViewport,
+        pixelScale: Float,
         camera: RenderCamera,
         renderCommandEncoder: any MTLRenderCommandEncoder
     ) {
@@ -190,6 +192,8 @@ final class MapSceneRenderer {
             bars: snapshot.bars,
             modelMatrix: modelMatrix,
             camera: camera,
+            viewport: viewport,
+            pixelScale: pixelScale,
             renderCommandEncoder: renderCommandEncoder
         )
 
