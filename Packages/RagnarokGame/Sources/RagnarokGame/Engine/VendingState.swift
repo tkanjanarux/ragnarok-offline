@@ -44,6 +44,7 @@ extension PlaySession {
         waitForVending(); sendFoundationPacket(VendingRequest.browse(owner))
     }
     func buyVending(index: UInt16, amount: UInt16) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, vending.waiting == nil, !rodex.busy, !trade.active, bank.pending == nil, let shop = vending.shop,
               let item = shop.items.first(where: { UInt16(bitPattern: $0.index) == index }), amount > 0, amount <= item.amount else { return }
         let cost = UInt64(amount) * UInt64(item.price)
@@ -58,6 +59,7 @@ extension PlaySession {
         vending.draft[wire] = .init(index: wire, amount: UInt16(amount), price: price)
     }
     func openVending(name: String) {
+        guard !hasPendingInventoryOperation else { return }
         guard !rodex.busy, !trade.active, bank.pending == nil, cart.pending == nil, vending.waiting == nil,
               vending.preparingSlots > 0, !vending.draft.isEmpty, vending.draft.count <= vending.preparingSlots,
               !name.isEmpty, name.utf8.count < 80, !name.contains("\0") else { return }

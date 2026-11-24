@@ -45,12 +45,14 @@ extension PlaySession {
         buyingStore.draft[id] = row
     }
     func createBuyingStore(name: String, budget: UInt32) {
+        guard !hasPendingInventoryOperation else { return }
         guard buyingStore.slots > 0, buyingStore.waiting == nil, !buyingStore.draft.isEmpty,
               !name.isEmpty, name.utf8.count < 80, !name.contains("\0"), budget > 0, UInt64(budget) <= UInt64(max(0,playerStatus.zeny)),
               !rodex.busy, !trade.active, !vending.active else { return }
         waitForBuyingStore(); sendFoundationPacket(BuyingStoreRequest.open(name,budget,buyingStore.draft.values.sorted { $0.itemId < $1.itemId }))
     }
     func sellToBuyingStore(index: Int, amount: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard buyingStore.waiting == nil, let shop = buyingStore.shop, let item = inventory.items[index], !item.isEquipped,
               let row = shop.items.first(where: { Int($0.itemId) == item.itemID }), amount > 0, amount <= item.amount, amount <= Int(row.amount),
               let wire = UInt16(exactly: index), UInt64(amount) * UInt64(row.price) <= UInt64(shop.zenyLimit), !rodex.busy, !trade.active else { return }

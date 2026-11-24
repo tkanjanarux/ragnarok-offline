@@ -2,6 +2,10 @@ import Foundation
 import RagnarokPackets
 
 struct RodexState {
+    // Current deployed SQLite mail schema cannot generate an outgoing mail id.
+    // A zero-Zeny item draft additionally loses postage on rejection (isolated test).
+    // Keep receiving enabled; lift only after server send/refund integration passes.
+    static let outgoingUnavailable = "Sending mail is temporarily unavailable. You can still read mail and collect attachments."
     enum Operation: Equatable { case list, begin, check(String), read(UInt64), attach(Int), remove(Int), send, claim(UInt64, Bool), delete(UInt64) }
     var visible = false
     var writing = false
@@ -71,8 +75,10 @@ extension PlaySession {
         guard rodex.writing, rodex.pending == nil, let checked = rodex.receiver, checked.CharId > 0, checked.Name == receiver,
               !title.isEmpty, title.utf8.count < 40, text.utf8.count < 500, !title.contains("\0"), !text.contains("\0"),
               let amount = UInt64(zeny.isEmpty ? "0" : zeny), amount <= UInt64(max(0,playerStatus.zeny)), amount <= 2_000_000_000 else { return }
-        waitForRodex(.send)
-        sendFoundationPacket(RodexRequest.send(receiver: checked.Name, sender: character.name, character: checked.CharId, title: title, text: text, zeny: amount))
+        rodex.message = RodexState.outgoingUnavailable
+        return
+        // Wire codec retained and covered by portable tests for the server repair.
+
     }
     func claimRodex(items: Bool) {
         guard rodex.pending == nil, !rodex.writing, let letter = rodex.letter,

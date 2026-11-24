@@ -58,6 +58,11 @@ final class PlaySession {
     let navigation = NavigationState()
     var itemSelection = ItemSelectionState()
     var cart = CartState()
+    var hasPendingInventoryOperation: Bool {
+        enchant.pending != nil || bank.pending != nil || cart.pending != nil || refine.pending != nil
+            || itemSelection.pending != nil || equipmentSwitch.pending != nil || trade.pending != nil
+            || trade.waiting != nil || rodex.pending != nil || vending.waiting != nil || buyingStore.waiting != nil
+    }
     var enchant = EnchantState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
@@ -1428,6 +1433,7 @@ final class PlaySession {
     }
 
     func useItem(at index: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
@@ -1442,6 +1448,7 @@ final class PlaySession {
     }
 
     func equipItem(at index: Int, location: EquipPositions) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
@@ -1452,6 +1459,7 @@ final class PlaySession {
     }
 
     func unequipItem(at index: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
@@ -1462,6 +1470,7 @@ final class PlaySession {
     }
 
     func throwItem(at index: Int, amount: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
@@ -1729,6 +1738,7 @@ final class PlaySession {
     // MARK: - Storage
 
     func moveItemToStorage(index: Int, amount: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
@@ -1739,6 +1749,7 @@ final class PlaySession {
     }
 
     func moveItemFromStorage(index: Int, amount: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return

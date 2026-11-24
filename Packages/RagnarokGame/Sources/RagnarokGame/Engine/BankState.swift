@@ -39,6 +39,7 @@ extension PlaySession {
         else { bank.authorized = false; bank.message = "Bank balance unavailable." }
     }
     func transferBank(amount: Int32, deposit: Bool) {
+        guard !hasPendingInventoryOperation else { return }
         guard bank.authorized, bank.pending == nil, let balance = bank.balance, amount > 0,
               cart.pending == nil, refine.pending == nil, itemSelection.pending == nil,
               deposit ? Int(amount) <= playerStatus.zeny : Int64(amount) <= balance else { return }

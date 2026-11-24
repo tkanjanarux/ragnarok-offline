@@ -66,7 +66,8 @@ struct FollowerState {
 
 extension PlaySession {
     func followerCommand(_ command: FollowerState.Operation) {
-        guard followers.pending == nil, !trade.active else { return }
+        guard !hasPendingInventoryOperation else { return }
+        guard followers.pending == nil, enchant.pending == nil, !rodex.busy, !trade.active else { return }
         let kind = followers.kind
         if kind == .homunculus {
             guard followers.homunculus != nil else { return }

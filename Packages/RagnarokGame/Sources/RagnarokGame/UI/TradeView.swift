@@ -1,9 +1,11 @@
+import RagnarokLocalization
 import RagnarokModels
 import SwiftUI
 
 struct TradeView: View {
     @Environment(PlaySession.self) private var session
     @Environment(GameContext.self) private var context
+    private let optionNames = ItemRandomOptionNameTable()
     @State private var zeny = "0"
     @State private var selected: InventoryItem?
     @State private var confirming = false
@@ -68,7 +70,7 @@ struct TradeView: View {
             }
             if let grade = item.enchantGrade, grade > 0 { Text("Grade \(grade)") }
             ForEach(Array(item.randomOptions.enumerated()), id: \.offset) { option in
-                Text("Option \(option.element.id): \(option.element.value) (\(option.element.parameter))")
+                Text(optionNames.localizedItemRandomOptionName(forID: option.element.id)?.replacingOccurrences(of: "%d", with: String(option.element.value)).replacingOccurrences(of: "%%", with: "%") ?? "Option \(option.element.id): \(option.element.value)")
             }
             }
             Spacer(); Text("×\(item.amount)")

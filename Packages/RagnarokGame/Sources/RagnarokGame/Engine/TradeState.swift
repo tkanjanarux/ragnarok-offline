@@ -55,6 +55,7 @@ struct TradeState {
 
 extension PlaySession {
     func inviteSelectedPlayerToTrade() {
+        guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil, let target = mapScene?.selectedTarget,
               target.type == .pc, target.objectID != partyAccountID,
               bank.pending == nil, cart.pending == nil, itemSelection.pending == nil, refine.pending == nil else { return }
@@ -68,6 +69,7 @@ extension PlaySession {
         sendFoundationPacket(TradeRequest.reply(accept)); awaitTrade()
     }
     func addTradeItem(index: Int, amount: Int) {
+        guard !hasPendingInventoryOperation else { return }
         guard trade.active, !trade.locked, trade.waiting == nil, trade.pending == nil,
               let item = inventory.items[index], !item.isEquipped,
               amount > 0, amount <= item.amount, amount <= Int(Int16.max),
@@ -78,6 +80,7 @@ extension PlaySession {
     }
     private func mineTradeSlotAvailable(_ index: Int) -> Bool { trade.mine[index] != nil || trade.mine.count < 10 }
     func lockTrade(zeny: Int32) {
+        guard !hasPendingInventoryOperation else { return }
         guard trade.active, !trade.locked, trade.waiting == nil, trade.pending == nil,
               zeny >= 0, Int(zeny) <= playerStatus.zeny else { return }
         trade.offeredZeny = Int(zeny)
@@ -87,6 +90,7 @@ extension PlaySession {
         sendFoundationPacket(TradeRequest.lock); awaitTrade()
     }
     func commitTrade() {
+        guard !hasPendingInventoryOperation else { return }
         guard trade.active, trade.locked, trade.otherLocked, trade.waiting == nil else { return }
         sendFoundationPacket(TradeRequest.commit); awaitTrade()
     }

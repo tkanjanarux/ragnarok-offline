@@ -100,7 +100,8 @@ struct RodexView: View {
             }
         }
         HStack {
-            Button("Send") { confirmation = "send" }.disabled(session.rodex.receiver?.Name != receiver || title.isEmpty)
+            Text(RodexState.outgoingUnavailable).foregroundStyle(.secondary)
+            Button("Send") { confirmation = "send" }.disabled(true)
             Button("Cancel letter") { session.cancelRodex() }
         }.frame(minHeight: 44).disabled(session.rodex.pending != nil)
     }

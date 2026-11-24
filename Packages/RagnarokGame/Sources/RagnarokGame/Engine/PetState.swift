@@ -41,19 +41,22 @@ struct PetState {
 
 extension PlaySession {
     func evolvePet(_ recipe: PetEvolutionRecipe) {
+        guard !hasPendingInventoryOperation else { return }
         guard let pet = pets.info, Int(pet.job) == recipe.base, pet.nRelationship >= 1000, pets.pending == nil,
-              !trade.active, !rodex.busy, !buyingStore.busy, !vending.active, vending.purchase == nil,
+              enchant.pending == nil, !rodex.busy, !trade.active, !rodex.busy, !buyingStore.busy, !vending.active, vending.purchase == nil,
               recipe.materials.allSatisfy({ material in inventory.items.values.filter { $0.itemID == material.id }.reduce(0) { $0 + $1.amount } >= material.amount }) else { return }
         waitForPet(.evolve); sendFoundationPacket(PetRequest.evolve(UInt32(recipe.egg)))
     }
     func petCommand(_ command: UInt8) {
-        guard pets.info != nil, pets.pending == nil, !trade.active, bank.pending == nil else { return }
+        guard !hasPendingInventoryOperation else { return }
+        guard pets.info != nil, pets.pending == nil, enchant.pending == nil, !rodex.busy, !trade.active, bank.pending == nil else { return }
         if command == 1 { waitForPet(.feed) }
         if command == 3 { waitForPet(.returnEgg) }
         sendFoundationPacket(PetRequest.command(command))
     }
     func hatchPet(_ index: Int) {
-        guard pets.pending == nil, pets.eggs.contains(index), inventory.items[index] != nil, let value = UInt16(exactly: index), !trade.active else { return }
+        guard !hasPendingInventoryOperation else { return }
+        guard pets.pending == nil, pets.eggs.contains(index), inventory.items[index] != nil, let value = UInt16(exactly: index), enchant.pending == nil, !rodex.busy, !trade.active else { return }
         waitForPet(.hatch); sendFoundationPacket(PetRequest.hatch(value))
     }
     func captureSelectedMonster(cancel: Bool = false) {
