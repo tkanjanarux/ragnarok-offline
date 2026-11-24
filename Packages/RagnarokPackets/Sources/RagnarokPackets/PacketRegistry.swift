@@ -6,6 +6,7 @@
 //
 
 let registeredPackets: [Int16 : any DecodablePacket.Type] = [
+    0x1f2: GuildMemberStatus.self,
     0x29b: MercenaryInfo.self,
     0x29d: MercenarySkills.self,
     0x2a2: MercenaryParameter.self,
@@ -487,7 +488,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_MEMBERMGR_INFO: PACKET_ZC_MEMBERMGR_INFO.self,
 
     // | 0x156 | `clif_guild_memberpositionchanged` |
-//  HEADER_ZC_ACK_REQ_CHANGE_MEMBERS: PACKET_ZC_ACK_REQ_CHANGE_MEMBERS.self,
+    HEADER_ZC_ACK_REQ_CHANGE_MEMBERS: PACKET_ZC_ACK_REQ_CHANGE_MEMBERS.self,
 
     // | 0x15a, 0xa83 | `clif_guild_leave` |
     packet_header_guildLeave: PACKET_ZC_ACK_LEAVE_GUILD2.self,
@@ -535,7 +536,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_ACK_REQ_ALLY_GUILD: PACKET_ZC_ACK_REQ_ALLY_GUILD.self,
 
     // | 0x174 | `clif_guild_positionchanged` |
-//  HEADER_ZC_ACK_CHANGE_GUILD_POSITIONINFO: PACKET_ZC_ACK_CHANGE_GUILD_POSITIONINFO.self,
+    HEADER_ZC_ACK_CHANGE_GUILD_POSITIONINFO: PACKET_ZC_ACK_CHANGE_GUILD_POSITIONINFO.self,
 
     // | 0x177 | `clif_item_identify_list` |
     0x177: ItemSelectionList.self,

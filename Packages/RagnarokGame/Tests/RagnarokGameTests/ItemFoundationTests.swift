@@ -6,6 +6,24 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func guildUsesCharacterIdentityAndServerPermissions() throws {
+        var state = GuildState()
+        var joined = PACKET_ZC_UPDATE_GDID(); joined.guildId = 10; joined.mode = 1; joined.isMaster = 0
+        state.receive(joined)
+        #expect(state.canInvite && !state.canExpel && !state.master)
+        var a = GUILD_MEMBER_INFO(); a.AID = 1; a.GID = 2; a.char_name = "Same"
+        var b = a; b.GID = 3
+        var list = PACKET_ZC_MEMBERMGR_INFO(); list.guildMemberInfo = [a,b]; state.receive(list)
+        #expect(state.members[0].id != state.members[1].id)
+        state.remove(characterID: 2, ownID: 3)
+        #expect(state.members.count == 1 && state.id == 10)
+        state.remove(characterID: 3, ownID: 3)
+        #expect(state.id == nil && !state.canInvite && state.members.isEmpty)
+        let packet = try PacketEncoder().encode(GuildRequest.memberPosition(1,3,2))
+        #expect(packet == Data([0x55,1,16,0,1,0,0,0,3,0,0,0,2,0,0,0]))
+        #expect(throws: SocialPacketError.self) { try PacketEncoder().encode(GuildRequest.invite(String(repeating: "x", count: 24))) }
+    }
+
     @Test func petAndHomunculusUpdatesKeepOwnerIdentity() throws {
         var pets = PetState(); var info = PACKET_ZC_PROPERTY_PET(); info.szName = "Poring"; info.nFullness = 50
         pets.receive(info)

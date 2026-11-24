@@ -19,7 +19,7 @@ Different binaries require independent integration evidence.
 | A3 | Refine UI, equipment switch/compare | Implemented; isolated real Vestri NPC refine +1 at 100% and add/remove/full equipment switch PASS; portable tests PASS |
 | A4 | Production/Enchant | Server-triggered forging/cooking/skill selection implemented; live crafting and enchant audit pending |
 | B1 | Whisper/reply, party/guild chat, friends | Implemented; isolated UTF8 whisper/reply/offline rejection/friend decline/accept/delete PASS; party/guild live test pending |
-| B2 | Guild information/permissions | Implement after member/session identity audit |
+| B2 | Guild information/permissions | Implemented; portable identity/permissions PASS; isolated existing-guild fixture invite/decline/accept/notice/unauthorized rejection/positions/chat/expel/disband PASS. Creation blocked by server composite primary key without generated guild_id |
 | B3 | Trade item/zeny, vending/buying/signboards | Trade implemented; isolated decline/cancel/two-sided lock/commit/reject/persisted item and zeny conservation PASS; vending/buying/signboards pending |
 | B4 | Ordinary chat rooms | Implemented separately from exam rooms; isolated normal-account create/private password rejection/join/chat/edit/owner transfer/kick/leave PASS |
 | C1 | Bank, RODEX attachments/zeny | Bank implemented and isolated deposit/withdraw/reject/reopen/persisted conservation PASS; RODEX pending |

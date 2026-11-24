@@ -55,8 +55,9 @@ struct MenuView: View {
 
                     GridRow {
                         GameImageButton("menu_icon/bt_guild.bmp") {
+                            playSession.openGuild()
                         }
-                        .disabled(true)
+                        .accessibilityLabel("Guild")
                         GameImageButton("menu_icon/bt_battle.bmp") {
                         }
                         .disabled(true)

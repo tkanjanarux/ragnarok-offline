@@ -398,3 +398,5 @@ recorded in that file. These descriptions never grant completion or rewards.
 Standard pet, homunculus and mercenary commands were checked against
 roBrowserLegacy src/Engine/MapEngine/{Pet,Homun,Mercenary}.js at the
 same reference commit (GPL-3.0). No JavaScript AI or runtime was imported.
+Guild information, member roles and permissions checked against roBrowserLegacy
+Engine/MapEngine/Guild.js and docs/reference/guild at the same GPL-3.0 commit.

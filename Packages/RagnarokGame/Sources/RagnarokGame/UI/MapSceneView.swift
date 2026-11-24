@@ -237,6 +237,10 @@ struct MapSceneView: View {
                 EquipmentCompareView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
             }
+            if playSession.guild.visible {
+                GuildView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+            }
             if playSession.followers.visible {
                 FollowersView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)

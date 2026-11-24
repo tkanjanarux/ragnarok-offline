@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var guild = GuildState()
     var followers = FollowerState()
     var pets = PetState()
     var rewards = RewardState()
@@ -200,6 +201,7 @@ final class PlaySession {
     func stop() {
         followers = FollowerState()
         pets = PetState()
+        guild = GuildState()
         rewards = RewardState()
         social = SocialState()
         equipmentSwitch = EquipmentSwitchState()
@@ -242,6 +244,7 @@ final class PlaySession {
             navigation.cancel()
             followers = FollowerState()
             pets = PetState()
+            guild = GuildState()
             rewards = RewardState()
             social = SocialState()
             equipmentSwitch = EquipmentSwitchState()
@@ -338,6 +341,7 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            guild.visible = false; guild.invitation = nil
             followers = FollowerState()
             pets = PetState()
             rewards.visible = false; rewards.attendanceVisible = false
@@ -811,6 +815,53 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_CLAN_CHAT:
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
+        case let packet as GuildMemberStatus:
+            if let index = guild.members.firstIndex(where: { $0.data.AID == packet.account && $0.data.GID == packet.character }) {
+                guild.members[index].data.currentState = Int32(clamping: packet.online)
+            }
+        case let packet as PACKET_ZC_UPDATE_GDID:
+            guild.receive(packet)
+        case let packet as PACKET_ZC_GUILD_INFO:
+            if packet.GDID > 0 {
+                guild.id = UInt32(packet.GDID); guild.name = packet.guildname; guild.info = packet
+                guild.master = UInt32(bitPattern: packet.masterGID) == character.charID
+                guild.finish(.join)
+            }
+        case let packet as PACKET_ZC_MEMBERMGR_INFO:
+            if guild.id != nil { guild.receive(packet) }
+        case let packet as PACKET_ZC_POSITION_ID_NAME_INFO:
+            guild.positionNames = Dictionary(packet.posInfo.map { ($0.positionID, $0.posName) }, uniquingKeysWith: { _, new in new })
+        case let packet as PACKET_ZC_POSITION_INFO:
+            guild.positions = Dictionary(packet.posInfo.map { ($0.positionID, $0) }, uniquingKeysWith: { _, new in new })
+        case let packet as PACKET_ZC_GUILD_NOTICE:
+            guild.subject = packet.subject; guild.notice = packet.notice; guild.finish(.notice)
+            if guild.pending == .join { openGuild() }
+        case let packet as PACKET_ZC_RESULT_MAKE_GUILD:
+            guild.finish(.create, message: packet.result == 0 ? "Guild created." : "Could not create the guild. Check its name and Emperium.")
+            if packet.result == 0 { openGuild() }
+        case let packet as PACKET_ZC_REQ_JOIN_GUILD:
+            guild.invitation = packet; guild.visible = true
+        case let packet as PACKET_ZC_ACK_REQ_JOIN_GUILD:
+            guild.finish(.invite, message: packet.result == 2 ? "Invitation accepted." : "Invitation declined or unavailable (\(packet.result)).")
+        case let packet as PACKET_ZC_ACK_LEAVE_GUILD2:
+            guild.remove(characterID: packet.GID, ownID: character.charID)
+        case let packet as PACKET_ZC_ACK_BAN_GUILD3:
+            guild.remove(characterID: packet.GID, ownID: character.charID)
+        case let packet as PACKET_ZC_ACK_DISORGANIZE_GUILD_RESULT:
+            if packet.result == 0 { guild = GuildState(); guild.visible = true; guild.message = "Guild disbanded." }
+            else { guild.finish(.disband, message: "The server rejected guild disbanding.") }
+        case let packet as PACKET_ZC_ACK_REQ_CHANGE_MEMBERS:
+            for row in packet.members {
+                if let index = guild.members.firstIndex(where: { $0.data.AID == row.accId && $0.data.GID == row.charId }) { guild.members[index].data.positionID = row.positionID }
+            }
+            guild.finish(.memberPosition)
+        case let packet as PACKET_ZC_ACK_CHANGE_GUILD_POSITIONINFO:
+            for row in packet.posInfo {
+                guild.positionNames[row.positionID] = row.posName
+                var value = PACKET_ZC_POSITION_INFO_sub(); value.positionID = row.positionID; value.right = row.mode; value.payRate = row.payRate; value.ranking = row.ranking
+                guild.positions[row.positionID] = value
+            }
+            guild.finish(.position)
         case let packet as PACKET_ZC_PROPERTY_HOMUN:
             followers.receive(packet)
         case let packet as PACKET_ZC_CHANGESTATE_MER:
