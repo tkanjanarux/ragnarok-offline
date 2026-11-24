@@ -237,6 +237,7 @@ struct MapSceneView: View {
                 EquipmentCompareView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
             }
+            if playSession.rodex.visible { RodexView().hudObstacle() }
             if playSession.guild.visible {
                 GuildView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)

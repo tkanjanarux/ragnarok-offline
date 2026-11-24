@@ -6,6 +6,32 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func rodexActualServerReadAndDuplicateClaim() throws {
+        // Captured from the isolated synthetic mail 910001, PACKETVER 20211103.
+        let bytes = Data(base64Encoded: "YwtpAACx4g0AAAAAABUAQQEAAAAAAAABS25vd24gYXR0YWNoZWQgaXRlbXMAAgD1AQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")!
+        let packet = try RodexRead(from: BinaryDecoder(stream: MemoryStream(data: bytes)))
+        #expect(packet.id == 910001 && packet.zeny == 321 && packet.items.count == 1)
+        #expect(packet.items[0].ITID == 501 && packet.items[0].count == 2)
+        var state = RodexState(); state.receive(packet); #expect(state.letter == nil)
+        state.pending = .read(910001); state.receive(packet)
+        state.claim(id: 910001, items: false, result: 0); #expect(state.letter?.zeny == 321)
+        state.pending = .claim(910001,false); state.claim(id: 910002, items: false, result: 0)
+        #expect(state.letter?.zeny == 321)
+        state.claim(id: 910001, items: false, result: 1); #expect(state.letter?.zeny == 321)
+        state.pending = .claim(910001,false); state.claim(id: 910001, items: false, result: 0)
+        #expect(state.letter?.zeny == 0 && state.pending == nil)
+        var bad = bytes; bad[23] = 6
+        #expect(throws: PacketDecodingError.self) { try RodexRead(from: BinaryDecoder(stream: MemoryStream(data: bad))) }
+    }
+    @Test func rodexListBoundsAndUTF8WireLengths() throws {
+        let empty = try RodexList(from: BinaryDecoder(stream: MemoryStream(data: Data([0xc2,10,5,0,1]))))
+        #expect(empty.entries.isEmpty)
+        #expect(throws: PacketDecodingError.self) { try RodexList(from: BinaryDecoder(stream: MemoryStream(data: Data([0xc2,10,6,0,1,0])))) }
+        let data = try PacketEncoder().encode(RodexRequest.send(receiver: "Fixture", sender: "Sender", character: 42, title: "ทดสอบ", text: "Hello", zeny: 123))
+        #expect(Int(data[2]) + 256 * Int(data[3]) == data.count)
+        #expect(Int(data[60]) == "ทดสอบ".utf8.count + 1 && data.last == 0)
+    }
+
     @Test func guildUsesCharacterIdentityAndServerPermissions() throws {
         var state = GuildState()
         var joined = PACKET_ZC_UPDATE_GDID(); joined.guildId = 10; joined.mode = 1; joined.isMaster = 0

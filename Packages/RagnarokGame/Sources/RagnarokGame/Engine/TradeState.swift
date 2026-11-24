@@ -53,7 +53,7 @@ struct TradeState {
 
 extension PlaySession {
     func inviteSelectedPlayerToTrade() {
-        guard !trade.active, trade.waiting == nil, let target = mapScene?.selectedTarget,
+        guard !rodex.busy, !trade.active, trade.waiting == nil, let target = mapScene?.selectedTarget,
               target.type == .pc, target.objectID != partyAccountID,
               bank.pending == nil, cart.pending == nil, itemSelection.pending == nil, refine.pending == nil else { return }
         trade = TradeState(); trade.visible = true; trade.partnerID = target.objectID; trade.partnerName = target.name

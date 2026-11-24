@@ -1191,10 +1191,10 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     packet_header_rodexicon: PACKET_ZC_NOTIFY_UNREADMAIL.self,
 
     // | 0x9f0, 0xa7d, 0xac2 | `clif_Mail_refreshinbox` |
-//  packet_header_rodexmailList: PACKET_ZC_ACK_MAIL_LIST.self,
+    packet_header_rodexmailList: RodexList.self,
 
     // | 0x9eb, 0xb63 | `clif_Mail_read` |
-    HEADER_ZC_ACK_READ_RODEX: PACKET_ZC_ACK_READ_RODEX.self,
+    HEADER_ZC_ACK_READ_RODEX: RodexRead.self,
 
     // | 0x9ed | `clif_Mail_send` |
     packet_header_rodexwriteresult: PACKET_ZC_WRITE_MAIL_RESULT.self,
@@ -1203,7 +1203,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     packet_header_rodexdelete: PACKET_ZC_ACK_DELETE_MAIL.self,
 
     // | 0x9f2 | `clif_mail_getattachment` |
-    packet_header_rodexgetzeny: PACKET_ZC_ACK_ITEM_FROM_MAIL.self,
+    packet_header_rodexgetzeny: PACKET_ZC_ACK_ZENY_FROM_MAIL.self,
 
     // | 0x9f4 | `clif_mail_getattachment` |
     packet_header_rodexgetitem: PACKET_ZC_ACK_ITEM_FROM_MAIL.self,
@@ -1215,7 +1215,7 @@ let registeredPackets: [Int16 : any DecodablePacket.Type] = [
     HEADER_ZC_ACK_ADD_ITEM_RODEX: PACKET_ZC_ACK_ADD_ITEM_RODEX.self,
 
     // | 0xa07 | `clif_mail_removeitem` |
-//  packet_header_rodexremoveitem: PACKET_ZC_ACK_REMOVE_RODEX_ITEM.self,
+    packet_header_rodexremoveitem: PACKET_ZC_ACK_REMOVE_ITEM_MAIL.self,
 
     // | 0xa12 | `clif_send_Mail_beginwrite_ack` |
     packet_header_rodexopenwrite: PACKET_ZC_ACK_OPEN_WRITE_MAIL.self,

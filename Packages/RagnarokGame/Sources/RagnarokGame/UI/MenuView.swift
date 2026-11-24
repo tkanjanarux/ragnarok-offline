@@ -86,8 +86,9 @@ struct MenuView: View {
                         }
                         .disabled(true)
                         GameImageButton("menu_icon/bt_mail.bmp") {
+                            playSession.openRodex()
                         }
-                        .disabled(true)
+                        .accessibilityLabel("RODEX mail")
                         GameImageButton("menu_icon/bt_achievement.bmp") {
                             playSession.rewards.visible = true
                         }

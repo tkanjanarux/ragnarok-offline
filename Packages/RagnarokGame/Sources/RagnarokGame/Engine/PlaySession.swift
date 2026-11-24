@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var rodex = RodexState()
     var guild = GuildState()
     var followers = FollowerState()
     var pets = PetState()
@@ -201,6 +202,7 @@ final class PlaySession {
     func stop() {
         followers = FollowerState()
         pets = PetState()
+        rodex = RodexState()
         guild = GuildState()
         rewards = RewardState()
         social = SocialState()
@@ -244,6 +246,7 @@ final class PlaySession {
             navigation.cancel()
             followers = FollowerState()
             pets = PetState()
+            rodex = RodexState()
             guild = GuildState()
             rewards = RewardState()
             social = SocialState()
@@ -341,6 +344,8 @@ final class PlaySession {
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
 
             navigation.mapChanging()
+            if rodex.writing { sendFoundationPacket(RodexRequest.cancel) }
+            rodex = RodexState()
             guild.visible = false; guild.invitation = nil
             followers = FollowerState()
             pets = PetState()
@@ -815,6 +820,44 @@ final class PlaySession {
         case let packet as PACKET_ZC_NOTIFY_CLAN_CHAT:
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
+        case let packet as RodexList: rodex.receive(packet)
+        case let packet as RodexRead: rodex.receive(packet)
+        case let packet as PACKET_ZC_ACK_OPEN_WRITE_MAIL:
+            if rodex.pending == .begin {
+                rodex.writing = packet.result != 0; rodex.attachments = [:]; rodex.receiver = nil
+                rodex.finish(.begin, message: rodex.writing ? nil : "The server cannot open a letter now.")
+            }
+        case let packet as PACKET_ZC_CHECKNAME:
+            if case let .check(requested) = rodex.pending {
+                if packet.CharId > 0, packet.Name == requested { rodex.receiver = packet }
+                rodex.finish(.check(requested), message: rodex.receiver == nil ? "Recipient not found." : "Recipient verified.")
+            }
+        case let packet as PACKET_ZC_ACK_ADD_ITEM_RODEX:
+            if case let .attach(index) = rodex.pending {
+                if packet.result == 0, Int(packet.index) == index, packet.count > 0 {
+                    var item = packet; item.count += rodex.attachments[index]?.count ?? 0
+                    rodex.attachments[index] = item
+                }
+                rodex.finish(.attach(index), message: packet.result == 0 ? nil : "Attachment rejected (\(packet.result)).")
+            }
+        case let packet as PACKET_ZC_ACK_REMOVE_ITEM_MAIL:
+            let index = Int(packet.index)
+            if rodex.pending == .remove(index) {
+                if packet.result != 0 { rodex.attachments.removeValue(forKey: index) }
+                rodex.finish(.remove(index), message: packet.result != 0 ? nil : "Cannot remove this attachment.")
+            }
+        case let packet as PACKET_ZC_WRITE_MAIL_RESULT:
+            if rodex.pending == .send {
+                rodex.finish(.send, message: packet.result == 0 ? "Mail sent." : "Mail was not sent (\(packet.result)).")
+                sendFoundationPacket(RodexRequest.cancel); rodex.writing = false; rodex.attachments = [:]; rodex.receiver = nil
+            }
+        case let packet as PACKET_ZC_ACK_ZENY_FROM_MAIL:
+            rodex.claim(id: UInt64(bitPattern: packet.MailID), items: false, result: packet.result)
+        case let packet as PACKET_ZC_ACK_ITEM_FROM_MAIL:
+            rodex.claim(id: UInt64(bitPattern: packet.MailID), items: true, result: packet.result)
+        case let packet as PACKET_ZC_ACK_DELETE_MAIL:
+            let id = UInt64(bitPattern: packet.MailID)
+            if rodex.pending == .delete(id) { rodex.entries.removeAll { $0.id == id }; rodex.letter = nil; rodex.finish(.delete(id), message: "Mail deleted.") }
         case let packet as GuildMemberStatus:
             if let index = guild.members.firstIndex(where: { $0.data.AID == packet.account && $0.data.GID == packet.character }) {
                 guild.members[index].data.currentState = Int32(clamping: packet.online)
@@ -1311,7 +1354,7 @@ final class PlaySession {
     }
 
     func useItem(at index: Int) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1325,7 +1368,7 @@ final class PlaySession {
     }
 
     func equipItem(at index: Int, location: EquipPositions) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1335,7 +1378,7 @@ final class PlaySession {
     }
 
     func unequipItem(at index: Int) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1345,7 +1388,7 @@ final class PlaySession {
     }
 
     func throwItem(at index: Int, amount: Int) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1612,7 +1655,7 @@ final class PlaySession {
     // MARK: - Storage
 
     func moveItemToStorage(index: Int, amount: Int) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
         }
@@ -1622,7 +1665,7 @@ final class PlaySession {
     }
 
     func moveItemFromStorage(index: Int, amount: Int) {
-        guard !trade.active, trade.waiting == nil else { return }
+        guard !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
         }
