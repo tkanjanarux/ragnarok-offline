@@ -103,6 +103,7 @@ struct ChatBoxView: View {
                     if let sender = playSession.social.lastWhisperSender {
                         Button("Reply to \(sender)") { playSession.social.channel = .whisper; playSession.social.recipient = sender }
                     }
+                    Button("Trade with selected player") { playSession.inviteSelectedPlayerToTrade() }
                     Button("Friends") { playSession.social.friendsVisible = true }
                 } label: {
                     Text(playSession.social.channel == .whisper ? playSession.social.recipient : playSession.social.channel.rawValue)

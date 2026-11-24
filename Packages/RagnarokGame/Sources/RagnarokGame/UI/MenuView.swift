@@ -17,11 +17,11 @@ enum MenuItem {
     case quest
     case worldMap
     case navigation
-    case bank
     case options
 }
 
 struct MenuView: View {
+    @Environment(PlaySession.self) private var playSession
     var action: (MenuItem) -> Void
 
     @State private var isExpanded = false
@@ -78,7 +78,7 @@ struct MenuView: View {
                             action(.options)
                         }
                         GameImageButton("menu_icon/bt_bank.bmp") {
-                            action(.bank)
+                            playSession.openBank()
                         }
                         .accessibilityLabel("Bank")
                         GameImageButton("menu_icon/bt_rec.bmp") {

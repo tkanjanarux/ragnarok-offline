@@ -6,6 +6,26 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func tradeReservationIsAppliedOnceAndCancelPickupRestores() throws {
+        var inventory = Inventory()
+        var item = InventoryItem(); item.index = 2; item.itemID = 501; item.amount = 10; item.isIdentified = true
+        inventory.items[2] = item
+        var trade = TradeState(); trade.active = true
+        trade.pending = .init(index: 2, amount: 3, item: item)
+        var ack = PACKET_ZC_ACK_ADD_EXCHANGE_ITEM(); ack.index = 2; ack.result = 1
+        trade.receiveAdd(ack, inventory: &inventory)
+        #expect(inventory.items[2]?.amount == 10 && trade.mine.isEmpty)
+        trade.pending = .init(index: 2, amount: 3, item: item); ack.result = 0
+        trade.receiveAdd(ack, inventory: &inventory)
+        trade.receiveAdd(ack, inventory: &inventory)
+        #expect(inventory.items[2]?.amount == 7 && trade.mine[2]?.amount == 3)
+        var restore = PACKET_ZC_ITEM_PICKUP_ACK(); restore.Index = 2; restore.nameid = 501; restore.count = 3; restore.IsIdentified = 1
+        inventory.update(from: restore); trade.finish("Cancelled")
+        #expect(inventory.items[2]?.amount == 10 && !trade.active && trade.mine.isEmpty)
+        #expect(try PacketEncoder().encode(TradeRequest.reply(true)) == Data([0xe6,0,3]))
+        #expect(try PacketEncoder().encode(TradeRequest.commit) == Data([0xef,0]))
+    }
+
     @Test func bankRejectAndLateReplyStayAuthoritative() throws {
         var bank = BankState()
         bank.balance = 100

@@ -30,6 +30,7 @@ extension PlaySession {
     }
 
     func chooseItemSelection(_ value: Int) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard itemSelection.pending == nil, let selection = itemSelection.selection,
               selection.values.contains(value) else { return }
         switch selection.kind {

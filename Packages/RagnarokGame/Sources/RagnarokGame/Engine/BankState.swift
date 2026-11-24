@@ -18,6 +18,7 @@ struct BankState {
 
 extension PlaySession {
     func openBank() {
+        guard !trade.active, trade.waiting == nil else { return }
         bank.visible = true
         guard bank.pending == nil else { return }
         bank.authorized = false; bank.balance = nil

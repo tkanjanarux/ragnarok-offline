@@ -60,6 +60,7 @@ final class PlaySession {
     var cart = CartState()
     var refine = RefineState()
     var equipmentSwitch = EquipmentSwitchState()
+    var trade = TradeState()
     var bank = BankState()
     var social = SocialState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
@@ -195,6 +196,7 @@ final class PlaySession {
     func stop() {
         social = SocialState()
         equipmentSwitch = EquipmentSwitchState()
+        trade = TradeState()
         bank = BankState()
         refine = RefineState()
         cart = CartState()
@@ -232,6 +234,7 @@ final class PlaySession {
             navigation.cancel()
             social = SocialState()
             equipmentSwitch = EquipmentSwitchState()
+            trade = TradeState()
             bank = BankState()
             refine = RefineState()
             cart = CartState()
@@ -306,6 +309,7 @@ final class PlaySession {
             social.invitation = nil
             social.friendsVisible = false
             equipmentSwitch = EquipmentSwitchState()
+            trade = TradeState()
             bank = BankState()
             refine = RefineState()
             cart = CartState()
@@ -778,6 +782,33 @@ final class PlaySession {
             let message = BannedMessage(from: packet)
             let localizedMessage = context.messageStringTable.localizedMessageString(forID: message.messageID)
             delegate?.playSession(self, didReceiveErrorMessage: localizedMessage)
+        case let packet as PACKET_ZC_REQ_EXCHANGE_ITEM:
+            if trade.active || bank.pending != nil || cart.pending != nil || refine.pending != nil || itemSelection.pending != nil {
+                sendFoundationPacket(TradeRequest.reply(false))
+            } else {
+                trade = TradeState(); trade.visible = true; trade.invitation = true
+                trade.partnerID = packet.targetId; trade.partnerName = packet.requesterName
+            }
+        case let packet as PACKET_ZC_ACK_EXCHANGE_ITEM:
+            trade.waiting = nil; trade.invitation = false
+            if packet.result == 3 {
+                trade.active = true; trade.visible = true; trade.partnerID = packet.targetId; trade.message = nil
+            } else { trade.finish("Trade unavailable or declined (\(packet.result)).") }
+        case let packet as PACKET_ZC_ACK_ADD_EXCHANGE_ITEM:
+            trade.receiveAdd(packet, inventory: &inventory)
+        case let packet as PACKET_ZC_ADD_EXCHANGE_ITEM:
+            trade.receiveOther(packet)
+        case let packet as PACKET_ZC_CONCLUDE_EXCHANGE_ITEM:
+            if trade.active {
+                if packet.who == 0 { trade.locked = true; trade.waiting = nil; trade.message = nil }
+                else { trade.otherLocked = true }
+            }
+        case _ as PACKET_ZC_CANCEL_EXCHANGE_ITEM:
+            trade.finish("Trade cancelled.")
+        case let packet as PACKET_ZC_EXEC_EXCHANGE_ITEM:
+            trade.finish(packet.result == 0 ? "Trade completed." : "Trade failed.")
+        case _ as PACKET_ZC_EXCHANGEITEM_UNDO:
+            trade.locked = false; trade.otherLocked = false; trade.waiting = nil
         case _ as PACKET_ZC_ACK_OPEN_BANKING:
             bankOpened()
         case let packet as PACKET_ZC_BANKING_CHECK:
@@ -1138,6 +1169,7 @@ final class PlaySession {
     }
 
     func useItem(at index: Int) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1151,6 +1183,7 @@ final class PlaySession {
     }
 
     func equipItem(at index: Int, location: EquipPositions) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1160,6 +1193,7 @@ final class PlaySession {
     }
 
     func unequipItem(at index: Int) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1169,6 +1203,7 @@ final class PlaySession {
     }
 
     func throwItem(at index: Int, amount: Int) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard let mapClient else {
             return
         }
@@ -1435,6 +1470,7 @@ final class PlaySession {
     // MARK: - Storage
 
     func moveItemToStorage(index: Int, amount: Int) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
         }
@@ -1444,6 +1480,7 @@ final class PlaySession {
     }
 
     func moveItemFromStorage(index: Int, amount: Int) {
+        guard !trade.active, trade.waiting == nil else { return }
         guard let mapClient, storage != nil else {
             return
         }
