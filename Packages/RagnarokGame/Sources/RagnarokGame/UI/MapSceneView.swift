@@ -237,10 +237,26 @@ struct MapSceneView: View {
                 EquipmentCompareView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
             }
-            if playSession.buyingStore.visible { BuyingStoreView().hudObstacle() }
-            if playSession.vending.visible { VendingView().hudObstacle() }
-            if playSession.enchant.visible { EnchantView().hudObstacle() }
-            if playSession.rodex.visible { RodexView().hudObstacle() }
+            if playSession.buyingStore.visible {
+                BuyingStoreView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+                    .hudObstacle()
+            }
+            if playSession.vending.visible {
+                VendingView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+                    .hudObstacle()
+            }
+            if playSession.enchant.visible {
+                EnchantView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+                    .hudObstacle()
+            }
+            if playSession.rodex.visible {
+                RodexView()
+                    .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
+                    .hudObstacle()
+            }
             if playSession.guild.visible {
                 GuildView()
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
