@@ -15,7 +15,9 @@ import UIKit
 
 private struct NavigationFixtureProvider: ResourceProvider {
     let files: [String: Data]
+    var delay: Duration = .zero
     func contentsOfResource(at path: ResourcePath) async throws -> Data {
+        if delay > .zero { try await Task.sleep(for: delay) }
         guard let data = files[path.components.joined(separator: "/")] else { throw ResourceError.resourceNotFound(path) }
         return data
     }
@@ -121,8 +123,11 @@ private struct NavigationFixtureProvider: ResourceProvider {
             prefix + "navi_npc_krpri.lua": Data("Navi_Npc = {{'b',1,101,117,'Guide','',10,10}}".utf8),
             prefix + "navi_link_krpri.lua": Data("Navi_Link = {{'a',1,200,45,'Portal','',70,20,'b',2,2}}".utf8),
             "data/b.gat": Self.gatData(grid)
-        ]))
+        ], delay: .milliseconds(10)))
         let state = NavigationState()
+        let previousView = Task { await state.loadData(using: manager) }
+        try await Task.sleep(for: .milliseconds(5))
+        previousView.cancel()
         await state.loadData(using: manager)
         #expect(state.loadedData && state.data.portals.count == 1)
         #expect(state.data.sources.count == 3) // .lua fallback; missing mob table is not fabricated
@@ -228,7 +233,11 @@ private struct NavigationFixtureProvider: ResourceProvider {
         renderer.render(frame: RenderFrame(time: 0, commandBuffer: command, renderPassDescriptor: pass,
             views: [RenderView(viewport: MTLViewport(size: CGSize(width: 800, height: 600)), camera: camera)],
             bounds: CGRect(x: 0, y: 0, width: 800, height: 600)), snapshot: snapshot)
-        command.commit(); command.waitUntilCompleted(); #expect(command.error == nil)
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            command.addCompletedHandler { _ in continuation.resume() }
+            command.commit()
+        }
+        #expect(command.error == nil)
         var pixels = [UInt8](repeating: 0, count: 800 * 600 * 4)
         pixels.withUnsafeMutableBytes { texture.getBytes($0.baseAddress!, bytesPerRow: 3200, from: MTLRegionMake2D(0, 0, 800, 600), mipmapLevel: 0) }
         let yellow = stride(from: 0, to: pixels.count, by: 4).filter { pixels[$0 + 2] > 150 && pixels[$0 + 1] > 100 && pixels[$0] < 80 }.count

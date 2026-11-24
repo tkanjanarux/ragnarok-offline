@@ -47,6 +47,7 @@ final class NavigationState {
     @ObservationIgnored private var manager: ResourceManager?
     @ObservationIgnored private let maps = NavigationMapStore()
     @ObservationIgnored private var calculation: Task<Void, Never>?
+    @ObservationIgnored private var dataLoading: Task<NavigationData, Never>?
     @ObservationIgnored private var generation = 0
 
     var path: [SIMD2<Int>] { legs.first?.map == map ? legs.first!.path : [] }
@@ -64,12 +65,17 @@ final class NavigationState {
     }
 
     func loadData(using manager: ResourceManager) async {
-        guard !loadedData, !loadingData else { return }
-        loadingData = true
-        let result = await manager.navigationData()
-        loadingData = false
-        guard !Task.isCancelled else { return }
-        data = result; loadedData = true
+        guard !loadedData else { return }
+        let task: Task<NavigationData, Never>
+        if let existing = dataLoading { task = existing }
+        else {
+            task = Task.detached { await manager.navigationData() }
+            dataLoading = task; loadingData = true
+        }
+        // The catalogue belongs to the session, not a particular map view.
+        // A warp canceling the old view task must not abandon the new view's load.
+        data = await task.value
+        loadedData = true; loadingData = false; dataLoading = nil
     }
 
     func begin(_ destination: NavigationDestination) {
