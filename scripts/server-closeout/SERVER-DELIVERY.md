@@ -8,8 +8,8 @@
 - `src/map/mail.cpp`: validate title before debit; 64-bit fee arithmetic; refund postage even when attached Zeny is zero.
 - `src/char/int_guild.cpp`: creation transaction includes guild/member/positions/skills; rollback any failed write; reject another creation for a character already in a guild.
 - `src/map/guild.cpp`: consume Emperium at inventory index zero as well as later indices.
-- `src/char/int_achievement.cpp`: correct literal SQLite strftime format; reward marker and mail commit together; notify only after commit; check full 32-bit item ID.
-- `src/map/clif.cpp`: announce outgoing-mail capability during successful begin-draft ACK. Native client consumes the marker and keeps Send disabled on older servers. This is not a reward/balance change.
+- `src/char/int_achievement.cpp`: correct literal SQLite strftime format; reward marker and mail commit together; notify only after commit; check full 32-bit item ID; preserve a committed reward marker when a stale logout save still contains rewarded=0.
+- `src/map/clif.cpp`: announce outgoing-mail capability only for the opt-in native begin-draft probe (`__ragoff_caps_v1__`); ordinary RO requests receive no extra text. Native client consumes the marker and keeps Send disabled on older servers. This is not a reward/balance change.
 - `migrate_ids.py`: rebuild only `mail` and `guild` with SQLite INTEGER PRIMARY KEY AUTOINCREMENT; preserve existing IDs/columns/indexes/triggers; refuse duplicate/out-of-range IDs, unexpected schema or failed integrity/FK check. No MAX+1.
 
 Source snapshot is from `/opt/ragoff-server`; playable has a different original map binary. Do not overwrite playable with this test binary. Apply reviewed patch to its actual source/build provenance and rebuild there in a separate directory. Exact input/output hashes are in `server-source-manifest.json`. rAthena source retains its GPL copyright/license; no AI/RL changes are in the patch.

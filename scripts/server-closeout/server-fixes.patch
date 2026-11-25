@@ -170,7 +170,21 @@
  	for (i = 0; i < MAX_ACHIEVEMENT_OBJECTIVES; ++i)
  		StringBuf_Printf(&buf, ", `count%d`", i + 1);
  	StringBuf_Printf(&buf, " FROM `%s` WHERE `char_id` = '%u'", schema_config.achievement_table, char_id);
-@@ -297,10 +297,16 @@
+@@ -161,9 +161,11 @@
+ 		StringBuf_AppendStr(&buf, "`completed` = NULL,");
+ 	}
+ 	if( ad->rewarded ){
+-		StringBuf_Printf(&buf, "`rewarded` = datetime(%u, 'unixepoch')", (uint32)ad->rewarded);
++		StringBuf_Printf(&buf, "`rewarded` = COALESCE(`rewarded`, datetime(%u, 'unixepoch'))", (uint32)ad->rewarded);
+ 	}else{
+-		StringBuf_AppendStr(&buf, "`rewarded` = NULL");
++		// A logout save can precede the reward ACK. Never erase a committed claim
++		// with that stale map-server snapshot. Explicit achievement deletion still works.
++		StringBuf_AppendStr(&buf, "`rewarded` = `rewarded`");
+ 	}
+ 	for (i = 0; i < MAX_ACHIEVEMENT_OBJECTIVES; ++i)
+ 		StringBuf_Printf(&buf, ", `count%d` = '%d'", i + 1, ad->count[i]);
+@@ -297,10 +299,16 @@
  	uint32 char_id = RFIFOL(fd, 2);
  	int32 achievement_id = RFIFOL(fd, 6);
  
@@ -188,7 +202,7 @@
  		char mail_sender[NAME_LENGTH];
  		char mail_receiver[NAME_LENGTH];
  		char mail_title[MAIL_TITLE_LENGTH];
-@@ -317,11 +323,27 @@
+@@ -317,11 +325,27 @@
  		safesnprintf(mail_title, MAIL_TITLE_LENGTH, char_msg_txt(228)); // 228: Achievement Reward Mail
  		safesnprintf(mail_text, MAIL_BODY_LENGTH, char_msg_txt(229), RFIFOCP(fd,16+NAME_LENGTH) ); // 229: [%s] Achievement Reward.
  
@@ -230,14 +244,16 @@
  	return 0;
 --- a/src/map/clif.cpp
 +++ b/src/map/clif.cpp
-@@ -16470,6 +16470,9 @@
- 	p.PacketType = rodexopenwrite;
- 	safestrncpy(p.receiveName, name, NAME_LENGTH);
- 	p.result = success;
-+	// Native client keeps sending disabled on unpatched backends.
-+	if( success )
+@@ -16492,6 +16492,11 @@
+ 	mail_clear(sd);
+ 
+ 	sd->state.mail_writing = true;
++	// Opt-in native capability probe; ordinary RO clients receive no extra text.
++	if( strcmp(name, "__ragoff_caps_v1__") == 0 ){
++		name[0] = '\0';
 +		clif_displaymessage(sd->fd, "[RAGOFF_CAPS] rodex_send_v1");
- 	clif_send(&p, sizeof(p), sd, SELF);
++	}
+ 	clif_send_Mail_beginwrite_ack(sd, name,true);
  }
  
 --- a/src/map/mail.cpp
