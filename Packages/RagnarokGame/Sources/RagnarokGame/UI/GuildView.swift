@@ -353,8 +353,8 @@ private struct GuildPositionEditor: View {
                 Button("Back", action: close)
             }
         }.onAppear { originGuild = session.guild.id; load() }
-            .onChange(of: session.guild.pending) { _, pending in
-                if submitted && pending == nil { submitted = false; load() }
+            .onChange(of: submitted && session.guild.pending == nil) { _, completed in
+                if completed { submitted = false; load() }
             }
     }
     private func load() {
