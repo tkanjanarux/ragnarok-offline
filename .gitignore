@@ -91,3 +91,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Python helpers used by native server and migration checks
+__pycache__/
+*.py[cod]
