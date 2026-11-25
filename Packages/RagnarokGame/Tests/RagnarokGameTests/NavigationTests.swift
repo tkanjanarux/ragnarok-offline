@@ -217,7 +217,7 @@ private struct NavigationFixtureProvider: ResourceProvider {
         // Actual production Metal tile renderer, using the same worldMarkers function as runtime.
         let mapGrid = MapGrid(gat: try GAT(data: Self.gatData(grid)))
         var snapshot = MapSceneRenderSnapshot(fog: Fog())
-        snapshot.groundTiles = state.worldMarkers(mapName: "fixture", mapGrid: mapGrid)
+        snapshot.navigationArrows = state.worldMarkers(mapName: "fixture", mapGrid: mapGrid)
         #expect(!snapshot.groundTiles.isEmpty)
         let device = try #require(MTLCreateSystemDefaultDevice())
         let renderer = try MapSceneRenderer(device: device, configuration: .default)

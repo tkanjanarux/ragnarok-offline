@@ -32,6 +32,11 @@ struct MapSceneRenderSnapshot {
         var color: SIMD4<Float> = [1, 1, 1, 1]
     }
 
+    struct NavigationArrow: Equatable {
+        let marker: NavigationBreadcrumb
+        let altitudes: SIMD4<Float>
+    }
+
     struct TargetSelector {
         let worldPosition: SIMD3<Float>
         let ringCenterHeight: Float
@@ -53,6 +58,8 @@ struct MapSceneRenderSnapshot {
     var traps: [RSMModelRenderResource] = []
     var world: WorldRenderResource?
     var groundTiles: [TileSelector] = []
+    var navigationArrows: [NavigationArrow] = []
+    var navigationTexture: (any MTLTexture)?
     var tileSelector: TileSelector?
     var targetSelector: TargetSelector?
     var spriteDrawables: [SpriteDrawable] = []

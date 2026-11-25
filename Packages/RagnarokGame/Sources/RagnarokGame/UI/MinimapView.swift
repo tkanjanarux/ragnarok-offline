@@ -67,12 +67,24 @@ struct MinimapView: View {
             }
             .offset(x: 6)
             if session.navigation.target != nil {
-                HStack(spacing: 0) {
-                    Button(action: onNavigation) { Image(systemName: "location.north.line").frame(width: 48, height: 44) }
-                        .accessibilityLabel("Show navigation route")
-                    Button { session.navigation.cancel() } label: { Image(systemName: "xmark").frame(width: 48, height: 44) }
-                        .accessibilityLabel("Cancel route")
-                }.buttonStyle(.plain).foregroundStyle(.yellow).background(.black.opacity(0.65))
+                VStack(spacing: 0) {
+                    HStack(spacing: 4) {
+                        Button(action: onNavigation) {
+                            GameImage("basic_interface/sys_mini_off.bmp")
+                                .frame(width: 44, height: 32).contentShape(Rectangle())
+                        }.accessibilityLabel("Show navigation route")
+                        Button { session.navigation.cancel() } label: {
+                            GameImage("basic_interface/sys_close_off.bmp")
+                                .frame(width: 44, height: 32).contentShape(Rectangle())
+                        }.accessibilityLabel("Cancel route")
+                    }.buttonStyle(.plain)
+                        .background { GameTitleBar(nil, usesGameSkin: true).allowsHitTesting(false) }
+                    Text(session.navigation.target?.name ?? "")
+                        .font(.game(size: 10)).foregroundStyle(Color.gameLabel)
+                        .lineLimit(2).frame(maxWidth: .infinity, alignment: .leading).padding(3)
+                        .background { GameStripeView() }
+                }.overlay { Rectangle().strokeBorder(Color.gameBoxBorder).allowsHitTesting(false) }
+
             }
         }
         .frame(width: mapSize)

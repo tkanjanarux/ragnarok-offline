@@ -34,24 +34,22 @@ actor NavigationMapStore {
 
 @MainActor @Observable
 final class NavigationState {
-    enum Status: Equatable { case idle, calculating, guiding, arrived, failed(String) }
+    typealias Status = NavigationGuidance.Status
     private(set) var data = NavigationData()
     private(set) var loadingData = false
     private(set) var loadedData = false
-    private(set) var target: NavigationDestination?
-    private(set) var status = Status.idle
-    private(set) var legs: [NavigationLeg] = []
-    private(set) var map = ""
-    private(set) var position = SIMD2<Int>.zero
+    let guidance = NavigationGuidance()
+    var target: NavigationDestination? { guidance.target }
+    var status: Status { guidance.status }
+    var legs: [NavigationLeg] { guidance.legs }
+    var map: String { guidance.map }
+    var position: SIMD2<Int> { guidance.position }
+    var path: [SIMD2<Int>] { guidance.path }
+    var nextPortal: NavigationPortal? { guidance.nextPortal }
     @ObservationIgnored private var grid: NavigationGrid?
-    @ObservationIgnored private var manager: ResourceManager?
     @ObservationIgnored private let maps = NavigationMapStore()
-    @ObservationIgnored private var calculation: Task<Void, Never>?
     @ObservationIgnored private var dataLoading: Task<NavigationData, Never>?
-    @ObservationIgnored private var generation = 0
 
-    var path: [SIMD2<Int>] { legs.first?.map == map ? legs.first!.path : [] }
-    var nextPortal: NavigationPortal? { legs.first?.map == map ? legs.first?.portal : nil }
     var message: String {
         switch status {
         case .idle: "Choose a destination. Walk along the highlighted route."
@@ -78,87 +76,29 @@ final class NavigationState {
         loadedData = true; loadingData = false; dataLoading = nil
     }
 
-    func begin(_ destination: NavigationDestination) {
-        cancel()
-        target = destination
-        calculate()
-    }
-
-    func cancel() {
-        generation += 1; calculation?.cancel(); calculation = nil
-        target = nil; legs = []; status = .idle
-    }
-
-    func mapChanging() {
-        generation += 1; calculation?.cancel(); calculation = nil
-        legs = []; grid = nil; map = ""
-        status = target == nil ? .idle : .calculating
-    }
+    func begin(_ destination: NavigationDestination) { guidance.begin(destination) }
+    func cancel() { guidance.cancel() }
+    func mapChanging() { grid = nil; guidance.mapChanging() }
 
     func update(map name: String, position: SIMD2<Int>, mapGrid: MapGrid, manager: ResourceManager) {
-        let key = NavigationData.mapKey(name)
-        if map != key || grid == nil { grid = NavigationGrid(mapGrid: mapGrid) }
-        update(map: key, position: position, grid: grid!, manager: manager)
+        if map != NavigationData.mapKey(name) || grid == nil { grid = NavigationGrid(mapGrid: mapGrid) }
+        update(map: name, position: position, grid: grid!, manager: manager)
     }
 
     func update(map name: String, position: SIMD2<Int>, grid: NavigationGrid, manager: ResourceManager) {
-        let key = NavigationData.mapKey(name)
-        let changedMap = key != map
-        let moved = position != self.position
-        if changedMap { mapChanging() }
-        self.map = key; self.position = position; self.grid = grid; self.manager = manager
-        guard let target else { return }
-        if target.map == key, target.position == nil {
-            calculation?.cancel(); calculation = nil; generation += 1
-            legs = []; status = .arrived; return
-        }
-        if !changedMap, !path.isEmpty, let index = path.firstIndex(of: position) {
-            if index > 0 { legs[0].path.removeFirst(index) }
-            status = path.count == 1 && nextPortal == nil ? .arrived : .guiding
-            return
-        }
-        if changedMap || moved || status == .calculating { calculate() }
-    }
-
-    private func calculate() {
-        guard calculation == nil, let target, let manager, let grid, !map.isEmpty else { return }
-        let startMap = map, start = position, portals = data.portals, store = maps
-        generation += 1; let token = generation
-        legs = []; status = .calculating
-        // GAT search never blocks rendering or user input. Generation checks prevent
-        // canceled destinations/old-map results from resurrecting route markers.
-        calculation = Task {
-            let worker = Task.detached {
-                try await NavigationRouter.route(from: startMap, position: start, target: target, portals: portals) { name in
-                    if name == startMap { return grid }
-                    return try await store.grid(name, manager: manager)
-                }
-            }
-            let result = await withTaskCancellationHandler {
-                await worker.result
-            } onCancel: { worker.cancel() }
-            guard !Task.isCancelled, token == self.generation else { return }
-            self.calculation = nil
-            switch result {
-            case .success(let route):
-                self.legs = route
-                if let index = self.path.firstIndex(of: self.position) {
-                    self.legs[0].path.removeFirst(index)
-                    self.status = self.path.count == 1 && self.nextPortal == nil ? .arrived : .guiding
-                } else { self.calculate() }
-            case .failure(let error):
-                if start != self.position { self.calculate() }
-                else { self.status = .failed((error as? NavigationFailure)?.message ?? "Unable to load this route.") }
-            }
+        let store = maps
+        guidance.update(map: name, position: position, grid: grid, portals: data.portals) { name in
+            try await store.grid(name, manager: manager)
         }
     }
 
-    func worldMarkers(mapName: String, mapGrid: MapGrid) -> [MapSceneRenderSnapshot.TileSelector] {
-        guard NavigationData.mapKey(mapName) == map, status == .guiding else { return [] }
-        // Bound draw calls while keeping the near-player guidance visible.
-        return path.prefix(100).enumerated().compactMap { index, point in
-            guard index % 3 == 0, mapGrid.contains(point) else { return nil }
-            return .init(position: point, cell: mapGrid[point], color: [1, 0.78, 0.08, 0.9])
+    func worldMarkers(mapName: String, mapGrid: MapGrid) -> [MapSceneRenderSnapshot.NavigationArrow] {
+        guard NavigationData.mapKey(mapName) == map else { return [] }
+        return guidance.markers.compactMap { marker in
+            guard mapGrid.contains(marker.position) else { return nil }
+            let cell = mapGrid[marker.position]
+            return .init(marker: marker, altitudes: [cell.bottomLeftAltitude, cell.bottomRightAltitude,
+                                                    cell.topLeftAltitude, cell.topRightAltitude])
         }
     }
 }

@@ -20,6 +20,8 @@ struct ClassicGamePanel<Content: View>: View {
         GeometryReader { geometry in
             let scale = min(1, max(1, geometry.size.width - 16) / width,
                             max(1, geometry.size.height - 16) / height)
+            let chrome = PanelChromeLayout(width: width, height: height, scale: scale,
+                requestedHeight: titleBarHeight, closeSize: closeHitSize)
             let horizontalLimit = max(0, (geometry.size.width - width * scale) / 2)
             let verticalLimit = max(0, (geometry.size.height - height * scale) / 2)
             let origin = tracksCompanion ? companionWindowOffset(in: geometry.frame(in: .global),
@@ -27,28 +29,24 @@ struct ClassicGamePanel<Content: View>: View {
             let x = min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + translation.width))
             let y = min(verticalLimit, max(-verticalLimit, origin.height + position.height + translation.height))
             VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    // Drag only the title area. The close button is a sibling overlay,
-                    // so its tap cannot be intercepted by the window drag recognizer.
-                    GameTitleBar(Text(verbatim: title), usesGameSkin: true)
-                        .frame(width: max(0, width - closeHitSize / scale))
-                        .contentShape(Rectangle())
-                        .gesture(DragGesture(coordinateSpace: .global)
-                            .updating($translation) { value, state, _ in state = value.translation }
-                            .onEnded { value in
-                                position = CGSize(
-                                    width: min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + value.translation.width)) - origin.width,
-                                    height: min(verticalLimit, max(-verticalLimit, origin.height + position.height + value.translation.height)) - origin.height)
-                            })
-                    Color.clear.frame(width: closeHitSize / scale)
-                }
-                .frame(height: titleBarHeight, alignment: .top)
-                .background {
-                    GameImage("basic_interface/titlebar_mid.bmp") { $0.resizable() }
-                        .frame(height: 17).frame(maxHeight: .infinity, alignment: .top).allowsHitTesting(false)
-                }
+                // One visual strip and one bottom border across the entire width.
+                // Interaction is a separate pair of non-overlapping sibling regions.
+                GameTitleBar(Text(verbatim: title), usesGameSkin: true, trailingContentInset: chrome.close.width)
+                    .frame(width: width, height: chrome.headerHeight, alignment: .top)
+                    .allowsHitTesting(false)
+                    .overlay(alignment: .topLeading) {
+                        Color.clear.frame(width: chrome.drag.width, height: chrome.drag.height)
+                            .contentShape(Rectangle())
+                            .gesture(DragGesture(coordinateSpace: .global)
+                                .updating($translation) { value, state, _ in state = value.translation }
+                                .onEnded { value in
+                                    position = CGSize(
+                                        width: min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + value.translation.width)) - origin.width,
+                                        height: min(verticalLimit, max(-verticalLimit, origin.height + position.height + value.translation.height)) - origin.height)
+                                })
+                    }
                 content()
-                    .frame(width: width, height: height - titleBarHeight)
+                    .frame(width: width, height: max(0, height - chrome.headerHeight))
                     .clipped()
                     .contentShape(Rectangle())
             }
@@ -65,7 +63,7 @@ struct ClassicGamePanel<Content: View>: View {
                             Image(systemName: "xmark").font(.system(size: 7, weight: .bold))
                         }.frame(width: 11, height: 11).padding(.top, 3).padding(.trailing, 6)
                     }
-                    .frame(width: closeHitSize / scale, height: closeHitSize / scale)
+                    .frame(width: chrome.close.width, height: chrome.close.height)
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)

@@ -31,6 +31,7 @@ final class MapSceneRenderer {
     private let combatTextRenderer: CombatTextRenderer
     private let barRenderer: BarRenderer
     private let effectRenderer: EffectRenderer
+    private let navigationRenderer: NavigationArrowRenderer
     private let tileSelectorRenderer: TileSelectorRenderer
     private let targetSelectorRenderer: TargetSelectorRenderer
 
@@ -44,6 +45,7 @@ final class MapSceneRenderer {
         combatTextRenderer = try CombatTextRenderer(device: device, configuration: configuration)
         barRenderer = try BarRenderer(device: device, configuration: configuration)
         effectRenderer = try EffectRenderer(device: device, configuration: configuration)
+        navigationRenderer = try NavigationArrowRenderer(device: device, configuration: configuration)
         tileSelectorRenderer = try TileSelectorRenderer(device: device, configuration: configuration)
         targetSelectorRenderer = try TargetSelectorRenderer(device: device, configuration: configuration)
     }
@@ -126,6 +128,9 @@ final class MapSceneRenderer {
             camera: camera,
             renderCommandEncoder: renderCommandEncoder
         )
+
+        navigationRenderer.render(arrows: snapshot.navigationArrows, texture: snapshot.navigationTexture,
+            fog: snapshot.fog, modelMatrix: modelMatrix, camera: camera, renderCommandEncoder: renderCommandEncoder)
 
         spriteRenderer.render(
             drawables: snapshot.spriteDrawables,

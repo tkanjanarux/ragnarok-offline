@@ -11,6 +11,7 @@ struct GameTitleBar: View {
     var title: Text?
     var closeAction: (() -> Void)?
     var usesGameSkin = false
+    var trailingContentInset: CGFloat = 0
 
     var body: some View {
         HStack(spacing: 0) {
@@ -33,6 +34,7 @@ struct GameTitleBar: View {
                 GameCloseButton(action: closeAction)
             }
         }
+        .padding(.trailing, trailingContentInset)
         .frame(height: 17)
         .background {
             background

@@ -24,6 +24,7 @@ final class MapSceneRuntime {
     let world: WorldResource
     let renderResources: MapSceneRenderResources
     var lastCamera: RenderCamera?
+    private var navigationTexture: (any MTLTexture)?
 
     init(
         scene: MapScene,
@@ -51,10 +52,15 @@ final class MapSceneRuntime {
         await renderResources.prepareCombatTexts(resourceManager: scene.resourceManager)
         renderResources.prepareEffects(resourceManager: scene.resourceManager)
 
+        let path = ResourcePath.userInterfaceDirectory.appending(["navigation_interface3", "navi_grid1_4.tga"])
+        if let image = try? await scene.resourceManager.image(at: path, removesMagentaPixels: true) {
+            navigationTexture = MetalTextureFactory.makeTexture(from: image.cgImage, device: renderResources.device, label: "navigation-arrow")
+        }
         await scene.load(world: world)
     }
 
     func unload() {
+        navigationTexture = nil
         scene.unload()
         renderResources.removeAll()
         shopTextCache.removeAll()
@@ -124,7 +130,8 @@ final class MapSceneRuntime {
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
         snapshot.groundTiles = scene.visibleGroundTiles()
-        snapshot.groundTiles += scene.playSession.navigation.worldMarkers(mapName: scene.mapName, mapGrid: scene.mapGrid)
+        snapshot.navigationArrows = scene.playSession.navigation.worldMarkers(mapName: scene.mapName, mapGrid: scene.mapGrid)
+        snapshot.navigationTexture = navigationTexture
         snapshot.targetSelector = makeTargetSelector(at: time)
         snapshot.spriteDrawables = renderResources.spriteDrawables
         snapshot.effects = UserDefaults.standard.object(forKey: "ro.effects") != nil && !UserDefaults.standard.bool(forKey: "ro.effects") ? [] : makeEffects(worldPositions: worldPositions)

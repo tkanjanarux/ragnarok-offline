@@ -419,3 +419,10 @@ Original RO UI restoration: visual/layout reference from roBrowserLegacy
 artwork is redistributed. Skin images resolve from the user's existing resource
 provider. AchievementCatalog display groups use the same rAthena GPL-3.0-or-later
 database and SHA256 as its existing names; server progress remains authoritative.
+
+Navigation marker polish: roBrowserLegacy commit
+2f9a9d6cf5b04a8ac7a44077080772046e15bcb7 (GPL-3.0),
+Renderer/Effects/NavigationFootstep.js/.vs/.fs and UI/Components/Navigation.
+Native Metal arrow fallback follows the reference shaft/head/outline geometry;
+GRF navi_grid1_4.tga and restore/close skins are resolved from user resources,
+not redistributed. Route progression/concurrency is implemented natively.

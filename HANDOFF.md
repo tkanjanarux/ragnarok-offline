@@ -115,3 +115,13 @@ Achievements and Navigation from actual reference captures. See
 not automatically merged or deployed. PR #1's inventory fixes stay independent;
 resolve its duplicate autorun packet case in its own review, not in this UI patch.
 Do not infer iPhone visual acceptance from a successful build. No Simulator gate.
+
+## UI navigation polish — follow-up review branch
+
+`ui-navigation-polish` is based on `ui-original-restore` 2447080, as requested by
+its iPhone feedback. See [details/tests](docs/ui-navigation-polish/README.md).
+Titlebars now draw continuously with disjoint reserved hit regions. Navigation
+uses a stable cursor/marker lifecycle and a dedicated textured ground-arrow
+renderer; minimized controls use RO skins. Old restore run45644280441 succeeded.
+Do not treat queued iPhone builds as a missing-runner failure; inspect the final
+job result. No Simulator, automatic merge or gameplay deployment in this work.
