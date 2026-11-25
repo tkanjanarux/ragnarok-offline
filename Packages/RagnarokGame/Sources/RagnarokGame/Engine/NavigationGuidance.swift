@@ -40,7 +40,8 @@ final class NavigationGuidance {
     var path: [SIMD2<Int>] { legs.first?.map == map ? Array(legs[0].path.dropFirst(cursor)) : [] }
     var nextPortal: NavigationPortal? { legs.first?.map == map ? legs.first?.portal : nil }
 
-    func begin(_ destination: NavigationDestination) {
+    func begin(_ destination: NavigationDestination, portals: [NavigationPortal]? = nil) {
+        if let portals { self.portals = portals }
         if target == destination, legs.first?.map == map {
             invalidate(); schedule(debounced: false)
         } else {

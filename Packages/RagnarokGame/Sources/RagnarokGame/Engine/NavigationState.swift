@@ -76,7 +76,7 @@ final class NavigationState {
         loadedData = true; loadingData = false; dataLoading = nil
     }
 
-    func begin(_ destination: NavigationDestination) { guidance.begin(destination) }
+    func begin(_ destination: NavigationDestination) { guidance.begin(destination, portals: data.portals) }
     func cancel() { guidance.cancel() }
     func mapChanging() { grid = nil; guidance.mapChanging() }
 

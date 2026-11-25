@@ -127,6 +127,16 @@ private actor RouteGate {
         state.cancel()
     }
 
+    @Test func catalogueLoadedWhileStationaryIsUsedAtBegin() async throws {
+        let state = NavigationGuidance()
+        update(state, SIMD2(1,1)) // scene was attached before navigation data loaded
+        let portal = NavigationPortal(id: "a-b", map: "a", position: SIMD2(4,4), destinationMap: "b", destination: SIMD2(1,1))
+        state.begin(.init(id: "b", kind: .map, name: "B", map: "b"), portals: [portal])
+        try await wait { state.status != .calculating }
+        #expect(state.status == .guiding && state.nextPortal?.id == "a-b")
+        state.cancel()
+    }
+
     @Test func allEightDirectionsMatchGroundAxesAndTextureTop() {
         for x in -1...1 { for y in -1...1 where x != 0 || y != 0 {
             let points = NavigationArrowGeometry.points(direction: SIMD2(x,y))
