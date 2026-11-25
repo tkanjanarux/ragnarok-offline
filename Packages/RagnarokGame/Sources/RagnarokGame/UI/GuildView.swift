@@ -3,6 +3,7 @@ import UniformTypeIdentifiers
 
 struct GuildView: View {
     @Environment(PlaySession.self) private var session
+    @Environment(GameContext.self) private var context
     @State private var importingEmblem = false
     @State private var skillToLearn: UInt16?
     @State private var relationToRemove: Int32?
@@ -116,7 +117,7 @@ struct GuildView: View {
             ForEach(session.guild.skills.keys.sorted(), id: \.self) { id in
                 if let skill = session.guild.skills[id] {
                     HStack {
-                        Text("\(skill.name) · Lv. \(skill.level)")
+                        Text("\(context.skillInfoTable.localizedSkillName(forSkillID: Int(id)) ?? "Skill \(id)") · Lv. \(skill.level)")
                         Spacer()
                         if session.guild.master && skill.level > 0 && skill.inf != 0 {
                             Button("Use") { session.useGuildSkill(id) }.frame(minHeight: 44).disabled(session.guild.pending != nil)

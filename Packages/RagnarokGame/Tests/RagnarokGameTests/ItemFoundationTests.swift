@@ -44,11 +44,11 @@ struct ItemFoundationTests {
     }
     @Test func guildChangeClearsEmblemSkillsAndPendingAuthority() {
         var s = GuildState(); s.id = 12; s.emblemBitmap = Data([1]); s.emblemVersion = 8
-        s.pending = .emblem; s.submittedEmblem = [1]; s.master = true
+        s.skillPoints = 7; s.pending = .emblem; s.submittedEmblem = [1]; s.master = true
         var skill = GUILD_SKILLDATA(); skill.id = 10000; s.skills[10000] = skill
         var p = PACKET_ZC_UPDATE_GDID(); p.guildId = 13; p.isMaster = 0
         s.receive(p)
-        #expect(s.skills.isEmpty && s.emblemBitmap == nil && s.pending == nil && !s.master && s.submittedEmblem == nil)
+        #expect(s.skillPoints == 0 && s.skills.isEmpty && s.emblemBitmap == nil && s.pending == nil && !s.master && s.submittedEmblem == nil)
     }
     @Test func attendanceUsesExplicitServerNoEventReply() {
         var s = RewardState(); s.attendanceVisible = true; s.attendanceAuthorized = true; s.attendanceWaiting = UUID()

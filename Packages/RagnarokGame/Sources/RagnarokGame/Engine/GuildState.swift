@@ -31,7 +31,7 @@ struct GuildState {
     var canInvite: Bool { id != nil && (master || permissions & 1 != 0) }
     var canExpel: Bool { id != nil && (master || permissions & 16 != 0) }
     mutating func receive(_ p: PACKET_ZC_UPDATE_GDID) {
-        if id != p.guildId { info = nil; members = []; positions = [:]; positionNames = [:]; skills = [:]; relations = []; emblemBitmap = nil; emblemVersion = 0; submittedEmblem = nil; allianceInvitation = nil; pending = nil; token = nil; pendingSkill = nil }
+        if id != p.guildId { info = nil; members = []; positions = [:]; positionNames = [:]; skills = [:]; skillPoints = 0; relations = []; emblemBitmap = nil; emblemVersion = 0; submittedEmblem = nil; allianceInvitation = nil; pending = nil; token = nil; pendingSkill = nil }
         id = p.guildId > 0 ? p.guildId : nil; name = p.guildName; master = p.isMaster != 0; permissions = p.mode
         finish(.join)
         if pending == .memberPosition { finish(.memberPosition) }
