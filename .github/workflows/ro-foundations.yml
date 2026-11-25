@@ -1,7 +1,7 @@
 name: RO foundations iPhone build
 on:
   push:
-    branches: [main]
+    branches: [main, ui-original-restore]
     paths:
       - 'Packages/**'
       - 'RagnarokOffline/**'

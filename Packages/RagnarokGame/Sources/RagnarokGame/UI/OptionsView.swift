@@ -31,8 +31,8 @@ struct OptionsView: View {
                     } label: {
                         Text("Resurrection", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
                     .disabled(!playSession.inventory.hasTokenOfSiegfried)
 
                     // esc_04a.bmp
@@ -41,8 +41,8 @@ struct OptionsView: View {
                     } label: {
                         Text("Return to last save point", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
                 } else {
                     // esc_01a.bmp
                     Button {
@@ -50,8 +50,8 @@ struct OptionsView: View {
                     } label: {
                         Text("Character Select", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
 
                     // esc_06a.bmp
                     Button {
@@ -59,8 +59,8 @@ struct OptionsView: View {
                     } label: {
                         Text("Settings", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
 
                     // esc_07a.bmp
                     Button {
@@ -68,8 +68,8 @@ struct OptionsView: View {
                     } label: {
                         Text("Sound", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
 
                     // esc_08a.bmp
                     Button {
@@ -77,8 +77,8 @@ struct OptionsView: View {
                     } label: {
                         Text("BM/Shortcut Settings", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
 
                     // esc_03a.bmp
                     Button {
@@ -88,8 +88,8 @@ struct OptionsView: View {
                     } label: {
                         Text("Exit", bundle: #bundle)
                     }
-                    .buttonStyle(.game)
-                    .frame(width: 220, height: 44)
+                    .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
+                    .frame(width: 220, height: 28)
                 }
             }
             .padding(.vertical, 20)

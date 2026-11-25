@@ -11,8 +11,8 @@ struct NavigationView: View {
 
     var body: some View {
         GeometryReader { available in
-            ClassicGamePanel(title: "Navigation", width: min(600, available.size.width - 24),
-                             height: min(580, available.size.height - 32), onClose: onClose) {
+            OriginalROPanel(title: "Navigation", width: min(320, available.size.width - 24),
+                             height: min(450, available.size.height - 32), onClose: onClose) {
                 NavigationContent(state: session.navigation, mapName: scene.mapName,
                     width: scene.mapGrid.width, height: scene.mapGrid.height,
                     player: scene.state.playerPosition, mapImage: mapImage)
@@ -54,21 +54,26 @@ struct NavigationContent: View {
     }
     var body: some View {
         VStack(spacing: 6) {
-            Picker("Navigation", selection: $tab) {
-                Text("Destinations").tag(0)
-                Text("Route").tag(1)
-            }.pickerStyle(.segmented)
+            ROTabs(choices: [(0, "Destinations"), (1, "Route")], selection: $tab)
             if tab == 0 {
-                TextField("Search NPC, monster or map", text: $query)
-                    .textFieldStyle(.roundedBorder).autocorrectionDisabled()
-                Picker("Type", selection: $kind) {
-                    Text("All").tag(NavigationDestination.Kind?.none)
-                    ForEach([NavigationDestination.Kind.map, .npc, .monster], id: \.self) { kind in
-                        Text(kind.rawValue).tag(Optional(kind))
-                    }
-                }.pickerStyle(.segmented)
+                HStack(spacing: 4) {
+                    Menu {
+                        Button("All") { kind = nil }
+                        ForEach([NavigationDestination.Kind.map, .npc, .monster], id: \.self) { choice in
+                            Button(choice.rawValue) { kind = choice }
+                        }
+                    } label: { Text(kind?.rawValue ?? "All"); Image(systemName: "chevron.down") }
+                        .frame(width: 64)
+                    TextField("Search NPC, monster or map", text: $query)
+                        .textFieldStyle(ROTextFieldStyle()).autocorrectionDisabled()
+                }
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 6) {
+                        NavigationMapPreview(width: width, height: height, player: player, mapImage: mapImage,
+                            path: state.map == NavigationData.mapKey(mapName) ? state.path : [], size: 160)
+                            .frame(maxWidth: .infinity).background(Color.black)
+                        Text("\(NavigationData.mapKey(mapName)) · X: \(player.x)  Y: \(player.y)").monospacedDigit()
+                        Text("Search results: \(results.count)").foregroundStyle(Color.blue)
                         if state.loadingData { ProgressView("Loading destinations…") }
                         if state.loadedData && state.data.destinations.isEmpty {
                             Text("No destination list is available in your client files. You can choose coordinates on this map below.")
@@ -83,7 +88,7 @@ struct NavigationContent: View {
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text(destination.name).fontWeight(.semibold)
                                     Text(detail(destination)).font(.game(size: 11)).foregroundStyle(.secondary)
-                                }.frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+                                }.frame(maxWidth: .infinity, minHeight: 32, alignment: .leading)
                                     .contentShape(Rectangle())
                             }.buttonStyle(.plain).disabled(state.loadingData)
                             Divider()
@@ -91,9 +96,9 @@ struct NavigationContent: View {
                         if results.count > 100 { Text("Showing the first 100 results. Refine your search.").foregroundStyle(.secondary) }
                         Text("Coordinates on \(NavigationData.mapKey(mapName))").fontWeight(.semibold)
                         HStack {
-                            TextField("X", text: $x).textFieldStyle(.roundedBorder)
-                            TextField("Y", text: $y).textFieldStyle(.roundedBorder)
-                            Button("Guide") { guideToCoordinates() }.buttonStyle(.game).frame(minWidth: 60, minHeight: 44)
+                            TextField("X", text: $x).textFieldStyle(ROTextFieldStyle())
+                            TextField("Y", text: $y).textFieldStyle(ROTextFieldStyle())
+                            Button("Guide") { guideToCoordinates() }.buttonStyle(ROCompactButtonStyle()).frame(minWidth: 60, minHeight: 32)
                         }
                         if let coordinateError { Text(coordinateError).foregroundStyle(.red) }
                     }.padding(.vertical, 4)
@@ -124,9 +129,10 @@ struct NavigationContent: View {
                 HStack(spacing: 12) {
                     Button("Recalculate") { if let target = state.target { state.begin(target) } }
                     Button("Cancel route") { state.cancel() }
-                }.buttonStyle(.game).frame(height: 44)
+                }.buttonStyle(ROCompactButtonStyle()).frame(height: 30)
             }
-        }.font(.game(size: 12)).padding(10)
+        }.font(.game(size: 12)).padding(6)
+            .scrollDismissesKeyboard(.interactively)
             .onAppear { x = String(player.x); y = String(player.y) }
     }
 

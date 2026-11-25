@@ -7,6 +7,8 @@ struct ClassicGamePanel<Content: View>: View {
     let height: CGFloat
     var preferredOffset: CGSize = .zero
     var tracksCompanion = false
+    var titleBarHeight: CGFloat = 17
+    var closeHitSize: CGFloat = 44
     let onClose: () -> Void
     @ViewBuilder let content: () -> Content
 
@@ -29,7 +31,7 @@ struct ClassicGamePanel<Content: View>: View {
                     // Drag only the title area. The close button is a sibling overlay,
                     // so its tap cannot be intercepted by the window drag recognizer.
                     GameTitleBar(Text(verbatim: title), usesGameSkin: true)
-                        .frame(width: max(0, width - 44 / scale))
+                        .frame(width: max(0, width - closeHitSize / scale))
                         .contentShape(Rectangle())
                         .gesture(DragGesture(coordinateSpace: .global)
                             .updating($translation) { value, state, _ in state = value.translation }
@@ -38,12 +40,12 @@ struct ClassicGamePanel<Content: View>: View {
                                     width: min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + value.translation.width)) - origin.width,
                                     height: min(verticalLimit, max(-verticalLimit, origin.height + position.height + value.translation.height)) - origin.height)
                             })
-                    Color.clear.frame(width: 44 / scale)
+                    Color.clear.frame(width: closeHitSize / scale)
                 }
-                .frame(height: 17)
+                .frame(height: titleBarHeight)
                 .background { GameImage("basic_interface/titlebar_mid.bmp") { $0.resizable() }.allowsHitTesting(false) }
                 content()
-                    .frame(width: width, height: height - 17)
+                    .frame(width: width, height: height - titleBarHeight)
                     .clipped()
                     .contentShape(Rectangle())
             }
@@ -60,7 +62,7 @@ struct ClassicGamePanel<Content: View>: View {
                             Image(systemName: "xmark").font(.system(size: 7, weight: .bold))
                         }.frame(width: 11, height: 11).padding(.top, 3).padding(.trailing, 6)
                     }
-                    .frame(width: 44 / scale, height: 44 / scale)
+                    .frame(width: closeHitSize / scale, height: closeHitSize / scale)
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
