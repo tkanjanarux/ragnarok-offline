@@ -166,4 +166,23 @@ private actor RouteGate {
             }
         }
     }
+    @Test func sharedPanelsPreserveFixedContentAndFitSafeViewport() {
+        let panels: [CGSize] = [.init(width:723,height:540), .init(width:381,height:466),
+            .init(width:320,height:278), .init(width:300,height:132), .init(width:356,height:420),
+            .init(width:500,height:650), .init(width:280,height:200)]
+        for panel in panels {
+            for viewport: CGSize in [.init(width:288,height:530), .init(width:620,height:280), .init(width:800,height:740)] {
+                for header: CGFloat in [17,28] {
+                    let close: CGFloat = header == 17 ? 44 : 28
+                    let layout = PanelWindowLayout(width:panel.width, height:panel.height, available:viewport, requestedHeader:header, closeSize:close)
+                    #expect(layout.contentHeight == panel.height - header)
+                    #expect(layout.height * layout.scale <= viewport.height + 0.001)
+                    #expect(panel.width * layout.scale <= viewport.width + 0.001)
+                    #expect(abs(layout.chrome.close.height * layout.scale - close) < 0.001)
+                    #expect(layout.chrome.headerHeight + layout.contentHeight <= layout.height + 0.001)
+                }
+            }
+        }
+    }
+
 }

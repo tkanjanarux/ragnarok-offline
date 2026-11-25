@@ -18,14 +18,14 @@ struct ClassicGamePanel<Content: View>: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let scale = min(1, max(1, geometry.size.width - 16) / width,
-                            max(1, geometry.size.height - 16) / height)
-            let chrome = PanelChromeLayout(width: width, height: height, scale: scale,
-                requestedHeight: titleBarHeight, closeSize: closeHitSize)
+            let layout = PanelWindowLayout(width: width, height: height,
+                available: CGSize(width: geometry.size.width - 16, height: geometry.size.height - 16),
+                requestedHeader: titleBarHeight, closeSize: closeHitSize)
+            let scale = layout.scale, chrome = layout.chrome
             let horizontalLimit = max(0, (geometry.size.width - width * scale) / 2)
-            let verticalLimit = max(0, (geometry.size.height - height * scale) / 2)
+            let verticalLimit = max(0, (geometry.size.height - layout.height * scale) / 2)
             let origin = tracksCompanion ? companionWindowOffset(in: geometry.frame(in: .global),
-                size: CGSize(width: width * scale, height: height * scale), obstacles: obstacles) : preferredOffset
+                size: CGSize(width: width * scale, height: layout.height * scale), obstacles: obstacles) : preferredOffset
             let x = min(horizontalLimit, max(-horizontalLimit, origin.width + position.width + translation.width))
             let y = min(verticalLimit, max(-verticalLimit, origin.height + position.height + translation.height))
             VStack(spacing: 0) {
@@ -46,11 +46,11 @@ struct ClassicGamePanel<Content: View>: View {
                                 })
                     }
                 content()
-                    .frame(width: width, height: max(0, height - chrome.headerHeight))
+                    .frame(width: width, height: layout.contentHeight)
                     .clipped()
                     .contentShape(Rectangle())
             }
-            .frame(width: width, height: height)
+            .frame(width: width, height: layout.height)
             .background(Color.white)
             .contentShape(Rectangle())
             .overlay { Rectangle().strokeBorder(Color.gameBoxBorder, lineWidth: 1).allowsHitTesting(false) }
@@ -72,7 +72,7 @@ struct ClassicGamePanel<Content: View>: View {
             .font(.game(size: 12))
             .foregroundStyle(Color.gameLabel)
             .scaleEffect(scale)
-            .frame(width: width * scale, height: height * scale)
+            .frame(width: width * scale, height: layout.height * scale)
             .background {
                 if tracksCompanion {
                     GeometryReader { window in

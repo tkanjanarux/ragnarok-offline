@@ -15,7 +15,9 @@ Reference: the two new iPhone feedback photographs, roBrowserLegacy
   Separate drag and close hit regions share the same reserved header row;
   content starts below both. The visual skin remains 17 logical points tall.
   Shared callers that previously used a 44-point close target over a 17-point
-  row now reserve that target above the content, including scaled panels.
+  row now reserve that target above the content, including scaled panels. The
+  caller's original content height is preserved; the full window scales to fit
+  so fixed Cash Shop/Quest/Party footers are not cropped by the added clearance.
 - **Directional ground markers:** dedicated navigation snapshot and Metal renderer,
   separate from tile selection/combat ground indicators. Load the user's existing
   `navigation_interface3/navi_grid1_4.tga` (+Y image) and rotate ground quads along

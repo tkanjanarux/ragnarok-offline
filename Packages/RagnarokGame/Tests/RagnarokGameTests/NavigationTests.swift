@@ -214,11 +214,11 @@ private struct NavigationFixtureProvider: ResourceProvider {
             let png = try #require(image.pngData())
             print("NAVIGATION_PNG \(name) \(png.base64EncodedString())")
         }
-        // Actual production Metal tile renderer, using the same worldMarkers function as runtime.
+        // Actual production Metal navigation renderer; fixture uses the procedural fallback.
         let mapGrid = MapGrid(gat: try GAT(data: Self.gatData(grid)))
         var snapshot = MapSceneRenderSnapshot(fog: Fog())
         snapshot.navigationArrows = state.worldMarkers(mapName: "fixture", mapGrid: mapGrid)
-        #expect(!snapshot.groundTiles.isEmpty)
+        #expect(!snapshot.navigationArrows.isEmpty)
         let device = try #require(MTLCreateSystemDefaultDevice())
         let renderer = try MapSceneRenderer(device: device, configuration: .default)
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: 800, height: 600, mipmapped: false)
