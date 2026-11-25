@@ -187,6 +187,9 @@ struct MapSceneView: View {
                     OptionsView(isPlayerDead: runtime.scene.state.isPlayerDead) {
                         presentedMenuItem = nil
                     }
+                    .padding(.leading, leadingInset)
+                    .padding(.trailing, trailingInset)
+                    .padding(.bottom, bottomInset)
                 }
             }
         }

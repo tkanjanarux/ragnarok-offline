@@ -106,3 +106,12 @@ rAthena และ roBrowser ตามไฟล์ notices เดิม
 
 เอกสารอ้างอิงเพิ่มเติม: [Baseline](docs/baseline/README.md),
 [Navigation](docs/NAVIGATION.md), [Party/minimap](docs/PARTY_MINIMAP.md)
+
+## UI original restore — review branch
+
+`ui-original-restore` restores compact Options/Settings, Bank, RODEX,
+Achievements and Navigation from actual reference captures. See
+[review notes](docs/ui-original-restore/README.md). Built separately from main;
+not automatically merged or deployed. PR #1's inventory fixes stay independent;
+resolve its duplicate autorun packet case in its own review, not in this UI patch.
+Do not infer iPhone visual acceptance from a successful build. No Simulator gate.

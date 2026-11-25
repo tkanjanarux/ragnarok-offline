@@ -42,8 +42,11 @@ struct ClassicGamePanel<Content: View>: View {
                             })
                     Color.clear.frame(width: closeHitSize / scale)
                 }
-                .frame(height: titleBarHeight)
-                .background { GameImage("basic_interface/titlebar_mid.bmp") { $0.resizable() }.allowsHitTesting(false) }
+                .frame(height: titleBarHeight, alignment: .top)
+                .background {
+                    GameImage("basic_interface/titlebar_mid.bmp") { $0.resizable() }
+                        .frame(height: 17).frame(maxHeight: .infinity, alignment: .top).allowsHitTesting(false)
+                }
                 content()
                     .frame(width: width, height: height - titleBarHeight)
                     .clipped()

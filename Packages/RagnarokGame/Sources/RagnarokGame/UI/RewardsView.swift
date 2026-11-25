@@ -3,10 +3,12 @@ import SwiftUI
 struct RewardsView: View {
     @Environment(PlaySession.self) private var session
     @State private var category = 0
+    @State private var group = "All"
+    private var groups: [String] { ["All"] + Set(session.rewards.entries.keys.map { AchievementCatalog.groups[$0] ?? "Other" }).sorted() }
     @State private var selectedID: UInt32?
     private var filteredIDs: [UInt32] {
         session.rewards.entries.keys.sorted().filter { id in
-            guard let entry = session.rewards.entries[id] else { return false }
+            guard let entry = session.rewards.entries[id], group == "All" || (AchievementCatalog.groups[id] ?? "Other") == group else { return false }
             switch category {
             case 1: return !entry.completed
             case 2: return entry.completed && !entry.rewarded
@@ -41,17 +43,18 @@ struct RewardsView: View {
                             }
                             HStack(alignment: .top, spacing: 8) {
                                 VStack(spacing: 2) {
-                                    ForEach(Array(["All", "In progress", "Completed", "Reward claimed"].enumerated()), id: \.offset) { index, name in
-                                        Button { category = index; selectedID = nil } label: {
+                                    ForEach(groups, id: \.self) { name in
+                                        Button { group = name; selectedID = nil } label: {
                                             Text(LocalizedStringKey(name)).font(.game(size: 11))
                                                 .frame(maxWidth: .infinity, minHeight: 34)
-                                                .background(category == index ? Color.blue.opacity(0.15) : Color.clear)
+                                                .background(group == name ? Color.blue.opacity(0.15) : Color.clear)
                                                 .contentShape(Rectangle())
                                         }.buttonStyle(.plain)
                                         Divider()
                                     }
                                 }.frame(width: 90)
                                 VStack(alignment: .leading, spacing: 7) {
+                                    ROTabs(choices: [(0, "All"), (1, "In progress"), (2, "Completed"), (3, "Reward claimed")], selection: $category)
                                     Text("\(session.rewards.entries.values.filter { $0.completed }.count) / \(session.rewards.entries.count) completed")
                                     ROProgress(value: Double(session.rewards.entries.values.filter { $0.completed }.count), total: Double(session.rewards.entries.count))
                                     if session.rewards.entries.isEmpty { Text("No achievement progress received yet.") }

@@ -6,7 +6,7 @@ struct BankView: View {
     @State private var confirmation: Bool?
     var body: some View {
         GeometryReader { bounds in
-            OriginalROPanel(title: "Bank", width: min(280, bounds.size.width - 24), height: min(230, bounds.size.height - 24), onClose: { session.closeBank() }) {
+            OriginalROPanel(title: "Bank", width: min(280, bounds.size.width - 24), height: min(200, bounds.size.height - 24), onClose: { session.closeBank() }) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 5) {
                         HStack { Text("Bank"); Spacer(); Text(session.bank.balance.map { "\($0) Zeny" } ?? "—").monospacedDigit() }
