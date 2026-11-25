@@ -244,14 +244,16 @@
  	return 0;
 --- a/src/map/clif.cpp
 +++ b/src/map/clif.cpp
-@@ -16470,6 +16470,9 @@
- 	p.PacketType = rodexopenwrite;
- 	safestrncpy(p.receiveName, name, NAME_LENGTH);
- 	p.result = success;
-+	// Native client keeps sending disabled on unpatched backends.
-+	if( success )
+@@ -16492,6 +16492,11 @@
+ 	mail_clear(sd);
+ 
+ 	sd->state.mail_writing = true;
++	// Opt-in native capability probe; ordinary RO clients receive no extra text.
++	if( strcmp(name, "__ragoff_caps_v1__") == 0 ){
++		name[0] = '\0';
 +		clif_displaymessage(sd->fd, "[RAGOFF_CAPS] rodex_send_v1");
- 	clif_send(&p, sizeof(p), sd, SELF);
++	}
+ 	clif_send_Mail_beginwrite_ack(sd, name,true);
  }
  
 --- a/src/map/mail.cpp

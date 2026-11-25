@@ -17,7 +17,7 @@
   },
   "src/map/clif.cpp": {
     "base": "430ad59e507503efafc36735b071c0b9a096d5c9a66f2cd3cbeeaa7af77afc1a",
-    "patched": "41e74e18c7544e0828971e4e0d57badd7a82d203a2e0ca143acc9e0ba395c7e6"
+    "patched": "77209b6e39ae525b1ba112d471817fc7e3120436b56624225b84f6aefee8d080"
   },
   "src/map/mail.cpp": {
     "base": "d25db844c6e16d8d278377135a546afe0618ee4c6fa71d3ed397f0caffb04310",
