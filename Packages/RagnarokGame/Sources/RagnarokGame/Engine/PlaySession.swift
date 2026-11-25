@@ -60,7 +60,8 @@ final class PlaySession {
     var cart = CartState()
     var hasPendingInventoryOperation: Bool {
         enchant.pending != nil || bank.pending != nil || cart.pending != nil || refine.pending != nil
-            || itemSelection.pending != nil || equipmentSwitch.pending != nil || trade.pending != nil
+            || basicTransactions.busy || itemSelection.pending != nil || itemSelection.magnifier != nil
+            || equipmentSwitch.pending != nil || trade.pending != nil
             || trade.waiting != nil || rodex.pending != nil || vending.waiting != nil || buyingStore.waiting != nil
     }
     var enchant = EnchantState()
@@ -85,6 +86,7 @@ final class PlaySession {
     var dealSelectionNPCID: UInt32?
     var npcShop: NPCShop?
     var storage: Storage?
+    var basicTransactions = BasicInventoryTransactions()
     var warpList: WarpList?
 
     var interactionMode: GameInteractionMode = .direct
@@ -224,6 +226,7 @@ final class PlaySession {
         refine = RefineState()
         cart = CartState()
         itemSelection = ItemSelectionState()
+        resetBasicTransactions()
         navigation.cancel()
         mapRuntime?.unload()
 
@@ -271,6 +274,7 @@ final class PlaySession {
             refine = RefineState()
             cart = CartState()
             itemSelection = ItemSelectionState()
+            resetBasicTransactions()
             party = PartyState()
             if case .connecting = mapPhase {
                 let localizedMessage = context.messageStringTable.localizedMessageString(forID: 1)
@@ -609,7 +613,8 @@ final class PlaySession {
             }
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_USE_ITEM_ACK:
-            inventory.update(from: packet)
+            inventory.update(from: packet, ownerID: account.accountID)
+            itemSelection.receiveMagnifierUseResult(packet, ownerID: account.accountID)
             if packet.result != 0 {
                 let effects: [UInt32: EffectID] = [501: .ef_potion1, 502: .ef_potion2,
                     503: .ef_potion3, 504: .ef_potion4, 505: .ef_potion5,
@@ -620,6 +625,12 @@ final class PlaySession {
             }
         case let packet as QuestWirePacket:
             applyQuestPacket(packet)
+        case let packet as PACKET_ZC_AUTORUN_SKILL:
+            if itemSelection.acceptMagnifierSkill(packet) {
+                // The item grants a one-use self skill. This is its first cast,
+                // sent only after the server grants it, not a retry of useItem.
+                useSkill(skillID: Int(packet.skill_id), level: Int(packet.skill_lv), onTarget: account.accountID)
+            }
         case let packet as ItemSelectionList:
             receiveItemSelection(packet)
         case let packet as PACKET_ZC_ACK_ITEMIDENTIFY:
@@ -668,6 +679,9 @@ final class PlaySession {
                 messageCenter.addMessage(for: packet, itemID: item.itemID)
             }
         case let packet as PACKET_ZC_ITEM_THROW_ACK:
+            if packet.count == 0 {
+                basicTransactions.receiveStorage(.deposit, index: Int(packet.index), amount: 0)
+            }
             inventory.update(from: packet)
         case let packet as PACKET_ZC_EQUIP_ARROW:
             inventory.update(from: packet)
@@ -676,6 +690,9 @@ final class PlaySession {
                 cart.receiveTransferEvent(toCart: true, source: true, index: Int(packet.index), itemID: 0, amount: Int(packet.count))
             }
             inventory.update(from: packet)
+            if packet.deleteType == 4 {
+                basicTransactions.receiveStorage(.deposit, index: Int(packet.index), amount: Int(packet.count))
+            }
         case let packet as packet_spawn_unit:
             let object = MapObject(from: packet)
             let posDir = PosDir(from: packet.PosDir)
@@ -803,6 +820,7 @@ final class PlaySession {
         case let packet as PACKET_ZC_PC_SELL_ITEMLIST:
             npcShop = NPCShop(from: packet)
         case let packet as PACKET_ZC_PC_PURCHASE_RESULT:
+            basicTransactions.receiveShop(.buy)
             if refine.pending != nil && packet.result != 0 {
                 refine.pending = nil
                 refine.message = "The server rejected the refining payment."
@@ -810,6 +828,7 @@ final class PlaySession {
             npcShop = nil
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_PC_SELL_RESULT:
+            basicTransactions.receiveShop(.sell)
             npcShop = nil
             messageCenter.addMessage(for: packet)
         case let packet as PACKET_ZC_NOTIFY_STOREITEM_COUNTINFO:
@@ -818,7 +837,9 @@ final class PlaySession {
             storage?.update(from: packet)
         case let packet as PACKET_ZC_DELETE_ITEM_FROM_STORE:
             storage?.update(from: packet)
+            basicTransactions.receiveStorage(.withdraw, index: Int(packet.index), amount: Int(packet.amount))
         case _ as PACKET_ZC_CLOSE_STORE:
+            basicTransactions.storageClosed()
             storage = nil
         case let packet as PACKET_ZC_NOTIFY_CHAT:
             mapScene?.showPublicChat(packet.Message, from: packet.GID)
@@ -1466,6 +1487,19 @@ final class PlaySession {
             return
         }
 
+        if inventory.items[index]?.itemID == ItemSelectionState.magnifierItemID {
+            guard itemSelection.selection == nil, itemSelection.requestedCard == nil else { return }
+            guard inventory.items.values.contains(where: { !$0.isIdentified && $0.isEquippable }) else {
+                itemSelection.message = "No unidentified equipment."
+                itemSelection.visible = true
+                return
+            }
+            guard let token = itemSelection.beginMagnifier(index: index) else { return }
+            Task { [weak self] in
+                try? await Task.sleep(for: .seconds(10))
+                self?.itemSelection.expireMagnifier(token: token)
+            }
+        }
         let packet = PacketFactory.CZ_USE_ITEM(index: index, accountID: account.accountID)
         mapClient.sendPacket(packet)
     }
@@ -1716,6 +1750,13 @@ final class PlaySession {
         dialog?.clearInput()
     }
 
+    private func resetBasicTransactions() {
+        basicTransactions = BasicInventoryTransactions()
+        npcShop = nil
+        dealSelectionNPCID = nil
+        storage = nil
+    }
+
     // MARK: - NPC Shop
 
     func selectDealType(_ dealType: NPCShopDealType) {
@@ -1734,25 +1775,25 @@ final class PlaySession {
     }
 
     func purchaseItems(_ purchases: [NPCShopPurchase]) {
-        guard let mapClient else {
-            return
-        }
+        guard !hasPendingInventoryOperation, let mapClient,
+              case .buy? = npcShop, !purchases.isEmpty,
+              basicTransactions.beginShop(.buy) else { return }
 
         let packet = PacketFactory.CZ_PC_PURCHASE_ITEMLIST(purchases: purchases)
         mapClient.sendPacket(packet)
     }
 
     func sellItems(_ sales: [NPCShopSale]) {
-        guard let mapClient else {
-            return
-        }
+        guard !hasPendingInventoryOperation, let mapClient, case .sell(let offers)? = npcShop,
+              BasicInventoryTransactions.canSell(sales, offered: Set(offers.map(\.index)), inventory: inventory),
+              basicTransactions.beginShop(.sell) else { return }
 
         let packet = PacketFactory.CZ_PC_SELL_ITEMLIST(sales: sales)
         mapClient.sendPacket(packet)
     }
 
     func closeNPCShop() {
-        guard let mapClient else {
+        guard basicTransactions.shop == nil, let mapClient else {
             return
         }
 
@@ -1767,9 +1808,8 @@ final class PlaySession {
     func moveItemToStorage(index: Int, amount: Int) {
         guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
-        guard let mapClient, storage != nil else {
-            return
-        }
+        guard let mapClient, storage != nil, let item = inventory.items[index],
+              basicTransactions.beginStorage(.deposit, item: item, amount: amount) else { return }
 
         let packet = PacketFactory.CZ_MOVE_ITEM_FROM_BODY_TO_STORE(index: index, amount: amount)
         mapClient.sendPacket(packet)
@@ -1778,16 +1818,15 @@ final class PlaySession {
     func moveItemFromStorage(index: Int, amount: Int) {
         guard !hasPendingInventoryOperation else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
-        guard let mapClient, storage != nil else {
-            return
-        }
+        guard let mapClient, storage != nil, let item = storage?.items[index],
+              basicTransactions.beginStorage(.withdraw, item: item, amount: amount) else { return }
 
         let packet = PacketFactory.CZ_MOVE_ITEM_FROM_STORE_TO_BODY(index: index, amount: amount)
         mapClient.sendPacket(packet)
     }
 
     func closeStorage() {
-        guard let mapClient else {
+        guard let mapClient, storage != nil, basicTransactions.beginStorageClose() else {
             return
         }
 

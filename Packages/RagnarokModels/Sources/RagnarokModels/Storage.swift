@@ -41,6 +41,7 @@ public struct Storage: Sendable {
         let index = Int(packet.index)
         let amount = Int(packet.amount)
 
+        guard amount > 0 else { return }
         if var item = items[index] {
             item.amount += amount
             items[index] = item
@@ -51,6 +52,12 @@ public struct Storage: Sendable {
             item.type = ItemType(rawValue: Int(packet.itemType)) ?? .etc
             item.amount = amount
             item.slots = packet.slot.card.map(Int.init)
+            item.isIdentified = packet.identified != 0
+            item.isDamaged = packet.damaged != 0
+            item.refineLevel = Int(packet.refine)
+            item.enchantGrade = Int(packet.grade)
+            item.randomOptions = packet.option_data.filter { $0.index != 0 }.map(InventoryItem.Option.init)
+            item.hasRandomOptions = !item.randomOptions.isEmpty
             items[index] = item
         }
     }

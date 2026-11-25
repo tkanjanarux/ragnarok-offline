@@ -13,6 +13,7 @@ extension PlaySession {
     }
 
     func requestCardComposition(index: Int) {
+        guard !basicTransactions.busy else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, itemSelection.pending == nil, itemSelection.requestedCard == nil, cart.pending == nil, refine.pending == nil,
               let item = inventory.items[index], item.type == .card, item.amount > 0,
               let wireIndex = UInt16(exactly: index) else { return }
@@ -32,6 +33,7 @@ extension PlaySession {
     }
 
     func chooseItemSelection(_ value: Int) {
+        guard !basicTransactions.busy else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard itemSelection.pending == nil, let selection = itemSelection.selection,
               selection.values.contains(value) else { return }
@@ -97,7 +99,7 @@ extension PlaySession {
     }
 
     func closeItemSelection() {
-        if itemSelection.pending != nil { itemSelection.visible = false; return }
+        if itemSelection.pending != nil || itemSelection.magnifier != nil { itemSelection.visible = false; return }
         if itemSelection.selection?.kind == .identify {
             var packet = PACKET_CZ_REQ_ITEMIDENTIFY()
             packet.packetType = HEADER_CZ_REQ_ITEMIDENTIFY; packet.index = UInt16.max

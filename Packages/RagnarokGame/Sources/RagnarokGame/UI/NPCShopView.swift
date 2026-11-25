@@ -47,7 +47,7 @@ struct NPCShopView: View {
                     }
                     .buttonStyle(.game)
                     .frame(width: 42, height: 20)
-                    .disabled(total == 0)
+                    .disabled(total == 0 || playSession.hasPendingInventoryOperation)
                 case .sell:
                     // btn_sell.bmp
                     Button {
@@ -57,7 +57,7 @@ struct NPCShopView: View {
                     }
                     .buttonStyle(.game)
                     .frame(width: 42, height: 20)
-                    .disabled(total == 0)
+                    .disabled(total == 0 || playSession.hasPendingInventoryOperation)
                 }
 
                 // btn_cancel.bmp
@@ -67,6 +67,7 @@ struct NPCShopView: View {
                     Text("cancel", bundle: #bundle)
                 }
                 .buttonStyle(.game)
+                .disabled(playSession.basicTransactions.shop != nil)
                 .frame(width: 42, height: 20)
             }
         }

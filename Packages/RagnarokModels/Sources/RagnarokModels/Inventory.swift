@@ -90,9 +90,15 @@ public struct Inventory {
         }
     }
 
-    public mutating func update(from packet: PACKET_ZC_USE_ITEM_ACK) {
+    public mutating func update(from packet: PACKET_ZC_USE_ITEM_ACK, ownerID: UInt32) {
+        // Successful uses are broadcast to nearby clients. Inventory indices are
+        // local to the actor, and failure reports zero without consuming anything.
         let usedItem = UsedItem(from: packet)
-        if var item = items[usedItem.index] {
+        guard packet.AID == ownerID, packet.result != 0, usedItem.amount >= 0,
+              var item = items[usedItem.index], item.itemID == usedItem.itemID else { return }
+        if usedItem.amount == 0 {
+            items.removeValue(forKey: usedItem.index)
+        } else {
             item.amount = usedItem.amount
             items[usedItem.index] = item
         }

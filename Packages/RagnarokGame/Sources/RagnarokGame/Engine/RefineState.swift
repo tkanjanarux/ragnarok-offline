@@ -44,6 +44,7 @@ extension PlaySession {
         }
     }
     func requestRefine(material: UInt32, blessing: Bool) {
+        guard !basicTransactions.busy else { return }
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, trade.waiting == nil else { return }
         guard refine.authorized, refine.pending == nil, cart.pending == nil, itemSelection.pending == nil,
               let index = refine.selectedIndex, inventory.items[index]?.itemID == refine.selectedItemID,
