@@ -142,10 +142,11 @@ struct GameTitleBar: View {
         .allowsHitTesting(false)
     }
 
-    init(_ title: Text? = nil, closeAction: (() -> Void)? = nil, usesGameSkin: Bool = false) {
+    init(_ title: Text? = nil, closeAction: (() -> Void)? = nil, usesGameSkin: Bool = false, trailingContentInset: CGFloat = 0) {
         self.title = title
         self.closeAction = closeAction
         self.usesGameSkin = usesGameSkin
+        self.trailingContentInset = trailingContentInset
     }
 }
 
