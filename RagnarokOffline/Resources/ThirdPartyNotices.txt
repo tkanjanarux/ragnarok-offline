@@ -426,3 +426,9 @@ Renderer/Effects/NavigationFootstep.js/.vs/.fs and UI/Components/Navigation.
 Native Metal arrow fallback follows the reference shaft/head/outline geometry;
 GRF navi_grid1_4.tga and restore/close skins are resolved from user resources,
 not redistributed. Route progression/concurrency is implemented natively.
+
+Guild original UI reference:
+roBrowserLegacy commit 2f9a9d6cf5b04a8ac7a44077080772046e15bcb7,
+GNU GPL v3, src/UI/Components/Guild/Guild.{html,css,js} and guild reference notes.
+The native SwiftUI adaptation uses existing game-resource paths at runtime;
+no GRF artwork or JavaScript dependency is redistributed in this change.

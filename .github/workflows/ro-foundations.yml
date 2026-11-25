@@ -1,7 +1,7 @@
 name: RO foundations iPhone build
 on:
   push:
-    branches: [main, ui-original-restore, ui-navigation-polish]
+    branches: [main, ui-original-restore, ui-navigation-polish, ui-guild-original]
     paths:
       - 'Packages/**'
       - 'RagnarokOffline/**'
@@ -20,6 +20,14 @@ jobs:
         run: |
           python3 scripts/test-navigation.py /tmp/navigation-tests
           docker run --rm --network none -v /tmp/navigation-tests:/work:ro -w /work swift:6.2 swift test --scratch-path /tmp/build
+  guild-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Guild permissions, identity and foundation regressions
+        run: |
+          python3 scripts/test-ro-foundations.py /tmp/guild-tests
+          docker run --rm --network none -v /tmp/guild-tests:/work:ro -w /work swift:6.2 swift test --scratch-path /tmp/build
   iphone:
     runs-on: xcode-27
     timeout-minutes: 60

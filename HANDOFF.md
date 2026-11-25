@@ -125,3 +125,14 @@ uses a stable cursor/marker lifecycle and a dedicated textured ground-arrow
 renderer; minimized controls use RO skins. Old restore run45644280441 succeeded.
 Do not treat queued iPhone builds as a missing-runner failure; inspect the final
 job result. No Simulator, automatic merge or gameplay deployment in this work.
+
+## Guild original UI — follow-up review branch
+
+`ui-guild-original` starts from navigation polish 16e8b6a, per explicit user
+instruction. See [Guild layout and validation](docs/ui-guild-original/README.md).
+Restores compact guild tabs/summary/roster/positions/notice and native GRF control
+skins while preserving server callbacks and pending guards. Selection uses live
+account/character identity; confirmations cannot cross a guild change. The
+position editor remains open for server feedback. No real guild/account mutations,
+Simulator, automatic merge or server deployment. No Guild screenshot was supplied;
+source/assets are the reference, and physical iPhone visual acceptance is pending.

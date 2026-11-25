@@ -46,3 +46,7 @@ shutil.copy2(root / 'Packages/RagnarokGame/Tests/RagnarokGameTests/ItemFoundatio
 print(out)
 
 shutil.copytree(root / "Packages/RagnarokGame/Sources/RagnarokGame/Resources", out / "Sources/RagnarokGame/Resources", dirs_exist_ok=True)
+
+copy('RagnarokGame', 'Engine/GuildPresentation.swift')
+shutil.copy2(root / 'Packages/RagnarokGame/Tests/RagnarokGameTests/GuildPresentationTests.swift',
+             out / 'Tests/RagnarokGameTests/GuildPresentationTests.swift')
