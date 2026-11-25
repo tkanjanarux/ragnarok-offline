@@ -51,6 +51,16 @@
 - Achievement: แก้ timestamp และการรับรางวัลซ้ำแล้ว
 - Guild skills/alliance/emblem: เพิ่ม UI และทดสอบในสนามแยกแล้ว
 
+## ตรวจวงจรเล่นพื้นฐาน — 2026-11-25
+
+- Native packet integration ผ่านทั้ง production และ playable ในสนาม loopback
+  ด้วย SQLite ที่สร้างใหม่ ยอดเงิน ของ น้ำหนัก คลัง และอุปกรณ์ตรงกันหลัง reconnect
+  รวมกรณีส่งฝากของแล้วหลุดก่อนอ่าน ACK ดู [รายการทดสอบและ ledger](docs/basic-ro-loop/README.md)
+- แก้ Magnifier ที่ไม่เปิด picker, item-use ACK ที่กระทบ slot ผิดเจ้าของหรือค้างรายการหมด,
+  metadata อุปกรณ์ในคลัง และการส่งขาย/ย้ายของซ้ำระหว่างรอผล ไม่มีการ retry อัตโนมัติ
+- Portable Swift ผ่าน 32 รายการ ใช้ iPhone workflow เดิมเป็น PR check โดยไม่ใช้ Simulator
+  ยังไม่ได้ทำ device acceptance และไม่มีการเปลี่ยน backend ที่ deploy อยู่
+
 ## ข้อจำกัดและงานที่ยังไม่ทำ
 
 - ไม่ได้ยืนยันภาพ การสัมผัส หรือเสียงบน iPhone จริง อย่าอ้างว่า device acceptance ผ่าน

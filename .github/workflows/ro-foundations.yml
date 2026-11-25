@@ -8,6 +8,15 @@ on:
       - 'RagnarokOffline.xcodeproj/**'
       - 'Configurations/**'
       - 'swift-rathena'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Packages/**'
+      - 'RagnarokOffline/**'
+      - 'RagnarokOffline.xcodeproj/**'
+      - 'Configurations/**'
+      - 'swift-rathena'
+      - '.github/workflows/ro-foundations.yml'
   workflow_dispatch:
 permissions:
   contents: read
