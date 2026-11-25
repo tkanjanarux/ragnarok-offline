@@ -44,7 +44,7 @@ extension PlaySession {
     func beginRodex() {
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, bank.pending == nil, cart.pending == nil else { return }
         rodex.outgoingAllowed = false
-        waitForRodex(.begin); sendFoundationPacket(RodexRequest.begin(""))
+        waitForRodex(.begin); sendFoundationPacket(RodexRequest.begin("__ragoff_caps_v1__"))
     }
     func closeRodex() {
         guard rodex.pending == nil else { rodex.visible = false; return }
