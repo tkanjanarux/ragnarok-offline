@@ -14,8 +14,10 @@ private let zoomFactors = [1, 10, 6, 3, 2]
 
 struct MinimapView: View {
     var scene: MapScene
+    var onNavigation: () -> Void = {}
 
     @Environment(GameContext.self) private var gameContext
+    @Environment(PlaySession.self) private var session
 
     @State private var zoomLevel = 0
     @State private var mapImage: CGImage?
@@ -28,6 +30,15 @@ struct MinimapView: View {
                 zoomFactor: zoomFactors[zoomLevel],
                 showsFullMap: zoomLevel == 0
             )
+
+            Text("X: \(scene.state.playerPosition.x)  Y: \(scene.state.playerPosition.y)")
+                .font(.game(size: 10, weight: .bold))
+                .monospacedDigit()
+                .foregroundStyle(.white)
+                .padding(.vertical, 3)
+                .frame(maxWidth: .infinity)
+                .background(.black.opacity(0.65))
+                .accessibilityLabel("Position X \(scene.state.playerPosition.x), Y \(scene.state.playerPosition.y)")
 
             HStack(spacing: 0) {
                 // map/map_plus0.bmp
@@ -55,11 +66,22 @@ struct MinimapView: View {
                 .disabled(zoomLevel == 0)
             }
             .offset(x: 6)
+            if session.navigation.target != nil {
+                HStack(spacing: 0) {
+                    Button(action: onNavigation) { Image(systemName: "location.north.line").frame(width: 48, height: 44) }
+                        .accessibilityLabel("Show navigation route")
+                    Button { session.navigation.cancel() } label: { Image(systemName: "xmark").frame(width: 48, height: 44) }
+                        .accessibilityLabel("Cancel route")
+                }.buttonStyle(.plain).foregroundStyle(.yellow).background(.black.opacity(0.65))
+            }
         }
         .frame(width: mapSize)
         .task(id: scene.mapName) {
+            mapImage = nil
             let mapName = scene.mapName.split(separator: ".", maxSplits: 1).first.map(String.init) ?? scene.mapName
-            mapImage = try? await gameContext.resourceManager.mapImage(forMapName: mapName).cgImage
+            let loadedImage = try? await gameContext.resourceManager.mapImage(forMapName: mapName).cgImage
+            guard !Task.isCancelled else { return }
+            mapImage = loadedImage
         }
     }
 
@@ -82,6 +104,15 @@ private struct MinimapMapView: View {
     var zoomFactor: Int
     var showsFullMap: Bool
 
+    @Environment(PlaySession.self) private var session
+
+    private var projection: MinimapProjection {
+        MinimapProjection(width: scene.mapGrid.width, height: scene.mapGrid.height,
+            imageWidth: Double(mapImage?.width ?? 512), imageHeight: Double(mapImage?.height ?? 512),
+            zoomFactor: showsFullMap || mapImage == nil ? 1 : zoomFactor,
+            player: scene.state.playerPosition)
+    }
+
     var body: some View {
         ZStack {
             if let mapImage {
@@ -89,103 +120,39 @@ private struct MinimapMapView: View {
                     .resizable()
                     .interpolation(.none)
                     .frame(
-                        width: mapDisplaySize(for: mapImage).width,
-                        height: mapDisplaySize(for: mapImage).height
+                        width: projection.displaySize.width,
+                        height: projection.displaySize.height
                     )
-                    .position(mapCenter(for: mapImage, playerPosition: scene.state.playerPosition))
+                    .position(projection.center)
+            }
+
+            if session.navigation.map == PartyMember.mapKey(scene.mapName) {
+                NavigationRouteOverlay(path: session.navigation.path, projection: projection)
+            }
+
+            ForEach(session.party.members) { member in
+                if member.id != session.partyAccountID, member.isOnMap(scene.mapName),
+                   let position = member.position, projection.contains(position) {
+                    Circle()
+                        .fill(member.dead ? Color.gray : Color.cyan)
+                        .overlay { Circle().stroke(.black, lineWidth: 1) }
+                        .frame(width: 7, height: 7)
+                        .position(projection.point(position))
+                        .accessibilityLabel(member.name)
+                }
             }
 
             MinimapArrowView()
                 .rotationEffect(arrowRotation(for: scene.state.playerDirection))
-                .position(arrowPosition(for: scene.state.playerPosition))
+                .position(projection.point(scene.state.playerPosition))
         }
         .frame(width: mapSize, height: mapSize)
         .clipped()
         .allowsHitTesting(false)
     }
 
-    private func mapDisplaySize(for image: CGImage) -> CGSize {
-        guard !showsFullMap else {
-            return CGSize(width: mapSize, height: mapSize)
-        }
-
-        let scale = mapDisplayScale(for: image)
-        return CGSize(
-            width: CGFloat(image.width) * scale,
-            height: CGFloat(image.height) * scale
-        )
-    }
-
-    private func mapDisplayScale(for image: CGImage) -> CGFloat {
-        let sourceSize = CGFloat(zoomFactor * 40)
-        let fillScale = mapSize / CGFloat(min(image.width, image.height))
-        return max(mapSize / sourceSize, fillScale)
-    }
-
-    private func mapCenter(for image: CGImage, playerPosition: SIMD2<Int>) -> CGPoint {
-        guard !showsFullMap else {
-            return CGPoint(x: mapSize / 2, y: mapSize / 2)
-        }
-
-        let scale = mapDisplayScale(for: image)
-        let displaySize = mapDisplaySize(for: image)
-        let sourceCenter = sourcePoint(for: playerPosition, in: image)
-        let center = CGPoint(
-            x: mapSize / 2 + (CGFloat(image.width) / 2 - sourceCenter.x) * scale,
-            y: mapSize / 2 + (CGFloat(image.height) / 2 - sourceCenter.y) * scale
-        )
-
-        return CGPoint(
-            x: clamp(center.x, displayLength: displaySize.width),
-            y: clamp(center.y, displayLength: displaySize.height)
-        )
-    }
-
-    private func clamp(_ center: CGFloat, displayLength: CGFloat) -> CGFloat {
-        guard displayLength > mapSize else {
-            return mapSize / 2
-        }
-        return min(max(center, mapSize - displayLength / 2), displayLength / 2)
-    }
-
     private func arrowRotation(for direction: SpriteDirection) -> Angle {
         .degrees(Double((direction.rawValue + 4) * 45))
-    }
-
-    private func arrowPosition(for position: SIMD2<Int>) -> CGPoint {
-        guard !showsFullMap, let mapImage else {
-            return projectedPoint(for: position)
-        }
-
-        let scale = mapDisplayScale(for: mapImage)
-        let center = mapCenter(for: mapImage, playerPosition: position)
-        let sourceCenter = sourcePoint(for: position, in: mapImage)
-        return CGPoint(
-            x: center.x + (sourceCenter.x - CGFloat(mapImage.width) / 2) * scale,
-            y: center.y + (sourceCenter.y - CGFloat(mapImage.height) / 2) * scale
-        )
-    }
-
-    private func sourcePoint(for position: SIMD2<Int>, in image: CGImage) -> CGPoint {
-        let projected = projectedPoint(for: position)
-        return CGPoint(
-            x: projected.x / mapSize * CGFloat(image.width),
-            y: projected.y / mapSize * CGFloat(image.height)
-        )
-    }
-
-    private func projectedPoint(for position: SIMD2<Int>) -> CGPoint {
-        let width = CGFloat(scene.mapGrid.width)
-        let height = CGFloat(scene.mapGrid.height)
-        let maximumDimension = max(width, height)
-        let scale = mapSize / maximumDimension
-        let startX = (maximumDimension - width) / 2 * scale
-        let startY = (height - maximumDimension) / 2 * scale
-
-        return CGPoint(
-            x: startX + CGFloat(position.x) * scale,
-            y: startY + mapSize - CGFloat(position.y) * scale
-        )
     }
 }
 

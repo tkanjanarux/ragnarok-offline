@@ -78,7 +78,7 @@ struct PartyView: View {
     private func memberRow(_ member: PartyMember) -> some View {
         HStack(spacing: 5) {
             ZStack(alignment: .top) {
-                GameImage("renewalparty/icon_jobs_\(member.job)\(member.hp == 0 ? "_die" : "").bmp")
+                GameImage("renewalparty/icon_jobs_\(member.job)\(member.dead ? "_die" : "").bmp")
                 if member.leader { GameImage("renewalparty/ico_partycrown.bmp").offset(y: -6) }
             }.frame(width: 26, height: 32)
             VStack(alignment: .leading, spacing: 2) {
@@ -87,26 +87,46 @@ struct PartyView: View {
                     Text(verbatim: member.name).fontWeight(member.leader ? .bold : .regular).lineLimit(1)
                     Spacer(minLength: 0)
                 }
-                HStack(spacing: 4) {
-                    if !member.offline, let hp = member.hp, let maxHP = member.maxHP, maxHP > 0 {
-                        ZStack(alignment: .leading) {
-                            Rectangle().fill(Color(white: 0.3))
-                            Rectangle().fill(Color.green).frame(width: 75 * CGFloat(min(hp, maxHP)) / CGFloat(maxHP))
-                        }.frame(width: 75, height: 5)
-                        Text("\(hp)/\(maxHP)")
-                    } else { Text(member.offline ? "Offline" : member.map.replacingOccurrences(of: ".gat", with: "")) }
-                    Spacer(minLength: 0)
-                    Text(jobName(member.job)).lineLimit(1)
-                }.font(.game(size: 10))
+                TimelineView(.periodic(from: .now, by: 5)) { context in
+                    memberHealth(member, now: context.date)
+                }
             }
             GameImage("renewalparty/icon_party_\(member.id == session.partyAccountID ? "me" : member.offline ? "off" : "on").bmp")
                 .frame(width: 14, height: 14)
         }
         .foregroundStyle(member.offline ? Color.gray : member.leader ? Color(red: 0.03, green: 0.19, blue: 0.48) : Color(red: 0, green: 0.48, blue: 0.48))
-        .padding(.horizontal, 3).frame(height: 44)
+        .padding(.horizontal, 3).frame(height: 60)
         .background(selected == member.id ? Color(red: 0.81, green: 0.88, blue: 1) : .white)
         .contentShape(Rectangle())
         .accessibilityLabel("\(member.name), level \(member.level), \(jobName(member.job))\(member.leader ? ", party leader" : "")")
+    }
+
+    private func memberHealth(_ member: PartyMember, now: Date) -> some View {
+        let isSelf = member.id == session.partyAccountID
+        let hp = isSelf ? session.playerStatus.hp : member.hp.map(Int.init)
+        let maximum = isSelf ? session.playerStatus.maxHp : member.maxHP.map(Int.init)
+        let sameMap = isSelf || member.isOnMap(session.mapScene?.mapName ?? "")
+        let stale = !isSelf && member.hpUpdatedAt.map { now.timeIntervalSince($0) > 30 } != false
+        return VStack(alignment: .leading, spacing: 2) {
+            HStack(spacing: 4) {
+                if !member.offline, sameMap, let hp, let maximum, maximum > 0 {
+                    ZStack(alignment: .leading) {
+                        Rectangle().fill(Color(white: 0.3))
+                        Rectangle().fill(stale ? Color.gray : Color.green)
+                            .frame(width: 80 * CGFloat(max(0, min(hp, maximum))) / CGFloat(maximum))
+                    }.frame(width: 80, height: 7)
+                    Text("\(hp)/\(maximum)").monospacedDigit()
+                } else {
+                    Text(member.offline ? "Offline" : member.dead ? "Dead" : "HP —")
+                }
+            }
+            HStack(spacing: 4) {
+                Text(member.offline ? "Offline" : !sameMap ? PartyMember.mapKey(member.map) : member.dead ? "Dead" : stale && hp != nil ? "Last known HP" : "")
+                    .lineLimit(1)
+                Spacer(minLength: 0)
+                Text(jobName(member.job)).lineLimit(1)
+            }
+        }.font(.game(size: 10))
     }
 
     private func jobName(_ job: Int16) -> String {

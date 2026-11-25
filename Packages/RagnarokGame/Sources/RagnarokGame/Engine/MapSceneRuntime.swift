@@ -119,6 +119,7 @@ final class MapSceneRuntime {
         snapshot.world = renderResources.world
         snapshot.tileSelector = makeTileSelector(at: time)
         snapshot.groundTiles = scene.visibleGroundTiles()
+        snapshot.groundTiles += scene.playSession.navigation.worldMarkers(mapName: scene.mapName, mapGrid: scene.mapGrid)
         snapshot.targetSelector = makeTargetSelector(at: time)
         snapshot.spriteDrawables = renderResources.spriteDrawables
         snapshot.effects = makeEffects(worldPositions: worldPositions)
@@ -229,7 +230,12 @@ final class MapSceneRuntime {
             )
         }
 
-        return hpspBars + castBars
+        let partyBars = PartyWorldBars.make(
+            party: scene.playSession.party, ownID: scene.player.objectID, mapName: scene.mapName,
+            objects: scene.objects, worldPositions: worldPositions,
+            visibleIDs: Set(renderResources.spriteDrawables.filter(\.isVisible).map(\.objectID))
+        )
+        return hpspBars + partyBars + castBars
     }
 
     /// The target selector's object shows its name 2 points under its HP bar.

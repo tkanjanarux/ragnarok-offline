@@ -23,10 +23,15 @@ struct MapSceneView: View {
     @State private var presentedMenuItem: MenuItem?
 
     var body: some View {
-        MapHUDViewport { size, bottomInset in scene(in: size, bottomInset: bottomInset) }
+        GeometryReader { safe in
+            MapHUDViewport { size, bottomInset in
+                scene(in: size, bottomInset: bottomInset, leadingInset: safe.safeAreaInsets.leading,
+                      trailingInset: safe.safeAreaInsets.trailing)
+            }
+        }
     }
 
-    private func scene(in size: CGSize, bottomInset: CGFloat) -> some View {
+    private func scene(in size: CGSize, bottomInset: CGFloat, leadingInset: CGFloat, trailingInset: CGFloat) -> some View {
         let bottomMargin = bottomHUDMargin(for: bottomInset)
         let isWidescreen = size.width >= 640
         let inset: CGFloat = size.width < 360 ? 8 : 16
@@ -98,13 +103,16 @@ struct MapSceneView: View {
         }
         .overlay(alignment: .topTrailing) {
             VStack(alignment: .trailing, spacing: 8) {
-                HStack(alignment: .top, spacing: 8) {
+                let minimapLayout = size.width < 420
+                    ? AnyLayout(VStackLayout(alignment: .trailing, spacing: 8))
+                    : AnyLayout(HStackLayout(alignment: .top, spacing: 8))
+                minimapLayout {
                     GameImageButton("basic_interface/nc_cashshop.bmp") {
                         presentedMenuItem = presentedMenuItem == .cashShop ? nil : .cashShop
                     }
                     .frame(width: 43, height: 45)
                     .accessibilityLabel("Cash Shop")
-                    MinimapView(scene: runtime.scene)
+                    MinimapView(scene: runtime.scene) { presentedMenuItem = .navigation }
                 }
                 .hudObstacle()
 
@@ -112,7 +120,7 @@ struct MapSceneView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding(.top, 16)
-            .padding(.trailing, 16)
+            .padding(.trailing, max(16, trailingInset + 8))
             .padding(.bottom, statusIconBarBottomPadding(isWidescreen: isWidescreen, bottomMargin: bottomMargin))
         }
         .overlay {
@@ -170,6 +178,11 @@ struct MapSceneView: View {
                     WorldMapView(currentMapName: runtime.scene.mapName) {
                         presentedMenuItem = nil
                     }
+                case .navigation:
+                    NavigationView(scene: runtime.scene) { presentedMenuItem = nil }
+                        .padding(.leading, leadingInset)
+                        .padding(.trailing, trailingInset)
+                        .padding(.bottom, bottomInset)
                 case .options:
                     OptionsView(isPlayerDead: runtime.scene.state.isPlayerDead) {
                         presentedMenuItem = nil
@@ -200,6 +213,15 @@ struct MapSceneView: View {
             }
         }
         .environment(\.companionHUDObstacles, hudFrames)
+        .task(id: runtime.scene.mapName) {
+            playSession.navigation.update(map: runtime.scene.mapName, position: runtime.scene.state.playerPosition,
+                mapGrid: runtime.scene.mapGrid, manager: runtime.scene.resourceManager)
+            await playSession.navigation.loadData(using: runtime.scene.resourceManager)
+        }
+        .onChange(of: runtime.scene.state.playerPosition) { _, point in
+            playSession.navigation.update(map: runtime.scene.mapName, position: point,
+                mapGrid: runtime.scene.mapGrid, manager: runtime.scene.resourceManager)
+        }
         .onPreferenceChange(CompanionHUDFrames.self) { hudFrames = $0 }
         .environment(\.companionManagementFrame, companionFrame)
         .onPreferenceChange(CompanionWindowBounds.self) { companionFrame = $0 }

@@ -209,7 +209,7 @@ import Testing
 
 @Test func companionRadiusUsesCompletedServerSnapshot() {
     var s = CompanionState()
-    for suffix in [" auto 96", " knight 6", " priest 47", " auto", ""] {
+    for suffix in [" owner 96", " auto 96", " knight 6", " priest 47", " auto", ""] {
         let previous = s.mobRadius
         let seq = s.begin()
         s.receive("[RCO1] \(seq) begin 0 1")
@@ -224,4 +224,20 @@ import Testing
         s.receive("[RCO1] \(seq) team mob 5 auto " + invalid)
         #expect(!s.ready && !s.pending)
     }
+}
+
+@Test func ownerPullerCapabilityAndChoiceAreCommittedTogether() {
+    var state = CompanionState()
+    let first = state.begin()
+    state.receive("[RCO1] \(first) begin 0 1")
+    state.receive("[RCO1] \(first) team mob 10 owner 96")
+    state.receive("[RCO1] \(first) ownerpull 1")
+    #expect(!state.supportsOwnerPuller)
+    state.receive("[RCO1] \(first) end OK")
+    #expect(state.supportsOwnerPuller && state.mobPuller == "owner")
+    let next = state.begin()
+    state.receive("[RCO1] \(next) begin 0 1")
+    state.receive("[RCO1] \(next) team assist 10 auto 96")
+    state.receive("[RCO1] \(next) end OK")
+    #expect(!state.supportsOwnerPuller && state.mobPuller == "auto")
 }

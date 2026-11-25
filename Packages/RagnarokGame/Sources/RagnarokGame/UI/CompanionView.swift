@@ -68,7 +68,7 @@ struct CompanionView: View {
                             }
                             if state.teamMode != nil {
                                 if let puller = state.mobPuller {
-                                    choice("Puller", value: puller.capitalized, options: ["auto","priest","knight"], label: { $0.capitalized }) { send("mob puller "+$0) }
+                                    choice("Puller", value: puller.capitalized, options: state.supportsOwnerPuller ? ["auto","priest","knight","owner"] : ["auto","priest","knight"], label: { $0.capitalized }) { send("mob puller "+$0) }
                                         .disabled(mode != "assist")
                                 }
                                 choice("Mob limit", value: String(state.mobCap), options: (1...30).map { String($0) }, label: { $0 }) { send("mob "+$0) }

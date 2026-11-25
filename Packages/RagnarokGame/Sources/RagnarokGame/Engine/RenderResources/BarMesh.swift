@@ -13,6 +13,15 @@ import simd
 struct BarMesh {
     let vertices: [SpriteVertex]
 
+    static func partyHealth(hp: Int, maxHp: Int) -> BarMesh {
+        guard hp >= 0, maxHp > 0 else { return BarMesh(vertices: []) }
+        let ratio = Float(hp) / Float(maxHp)
+        return BarMesh(vertices: makeBarVertices(
+            top: -8, height: 6, percentage: ratio,
+            fillColor: ratio < 0.25 ? [1, 0, 0, 1] : [0.063, 0.937, 0.129, 1]
+        ))
+    }
+
     /// An object's health and spell point bars, stacked around its anchor.
     static func mesh(hp: Int, maxHp: Int, sp: Int, maxSp: Int, objectType: MapObjectType) -> BarMesh {
         guard maxHp > 0 else {

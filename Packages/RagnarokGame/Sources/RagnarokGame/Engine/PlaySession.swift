@@ -55,6 +55,7 @@ final class PlaySession {
     var companions = CompanionState()
     @ObservationIgnored private var companionTimeout: Task<Void, Never>?
     var party = PartyState()
+    let navigation = NavigationState()
     @ObservationIgnored private var partyOptionsTimeout: Task<Void, Never>?
     var cashShop = CashShopState()
     @ObservationIgnored private var cashShopTimeout: Task<Void, Never>?
@@ -106,6 +107,7 @@ final class PlaySession {
             itemInfoTable: context.itemInfoTable,
             messageStringTable: context.messageStringTable
         )
+        self.party.currentMap = PartyMember.mapKey(character.mapName)
     }
 
     /// Keeps the current cooldown when it would end later than the new one.
@@ -185,6 +187,7 @@ final class PlaySession {
     }
 
     func stop() {
+        navigation.cancel()
         mapRuntime?.unload()
 
         keepaliveTask?.cancel()
@@ -214,6 +217,8 @@ final class PlaySession {
 
         switch error {
         case .network, .disconnected:
+            navigation.cancel()
+            party = PartyState()
             if case .connecting = mapPhase {
                 let localizedMessage = context.messageStringTable.localizedMessageString(forID: 1)
                 delegate?.playSession(self, didFailToEnterWithErrorMessage: localizedMessage)
@@ -278,6 +283,8 @@ final class PlaySession {
             examQueueState = .idle
             let mapName = packet.mapName.replacingOccurrences(of: ".gat", with: ".rsw")
             let position = SIMD2(x: Int(packet.xPos), y: Int(packet.yPos))
+
+            navigation.mapChanging()
 
             if let mapScene, mapScene.mapName == mapName {
                 mapScene.jump(toPosition: position)
@@ -802,7 +809,7 @@ final class PlaySession {
         guard !companions.pending, action == "list" || (companions.ready && companions.available) else { return }
         let token = companions.begin(action)
         let capability = action.hasPrefix("inspect ") ? "ui2 skills9 gear3 syrup1" : "ui2"
-        sendMessage("@companion ui \(token) \(action) \(capability) hunter1 voice1 bird1 phase1 loop1 puller1 team2 radius1 hunt1")
+        sendMessage("@companion ui \(token) \(action) \(capability) hunter1 voice1 bird1 phase1 owner1 loop1 puller1 team2 radius1 hunt1")
         companionTimeout?.cancel()
         companionTimeout = Task { [weak self] in
             do { try await Task.sleep(for: .seconds(10)) } catch { return }

@@ -16,6 +16,7 @@ enum MenuItem {
     case cashShop
     case quest
     case worldMap
+    case navigation
     case options
 }
 
@@ -65,8 +66,9 @@ struct MenuView: View {
                             action(.worldMap)
                         }
                         GameImageButton("menu_icon/bt_navigation.bmp") {
+                            action(.navigation)
                         }
-                        .disabled(true)
+                        .accessibilityLabel("Navigation")
                     }
                     .frame(width: 32, height: 34)
 

@@ -23,6 +23,7 @@ struct MapSceneRenderSnapshot {
     struct Bar {
         let vertices: [SpriteVertex]
         let worldPosition: SIMD3<Float>
+        var screenSpace = false
     }
 
     struct TileSelector {

@@ -156,6 +156,8 @@ struct CompanionState {
     private static let phases = ["เตรียม","ออกลาก","พาฝูงกลับ","ลงวง","เก็บตก","พัก/ถอย"]
     private(set) var mobPuller: String?
     private(set) var mobRadius: Int?
+    private(set) var supportsOwnerPuller = false
+    private var incomingOwnerPuller = false
     private var incomingTeam: (String, Int, String?, Int?)?
     private(set) var nearbyHunt: Bool?
     private(set) var voice: String?
@@ -178,6 +180,7 @@ struct CompanionState {
     }
 
     mutating func begin(_ action: String = "list") -> UInt32 {
+        incomingOwnerPuller = false
         incomingTeam = nil
         incomingVoice = nil
         incomingHunt = nil
@@ -213,9 +216,11 @@ struct CompanionState {
             guard expected != nil, incomingVoice == nil, t.count == 4,
                   ["off","quiet","normal","chatty"].contains(t[3]) else { timeout(sequence); return true }
             incomingVoice = t[3]
+        case "ownerpull":
+            incomingOwnerPuller = expected != nil && t.count == 4 && t[3] == "1"
         case "team":
             guard expected != nil, incomingTeam == nil, (5...7).contains(t.count),
-                  t.count == 5 || ["auto","priest","knight"].contains(t[5]),
+                  t.count == 5 || ["auto","priest","knight","owner"].contains(t[5]),
                   ["assist","nearby","mob","boss","retreat"].contains(t[3]),
                   let cap = Int(t[4]), (1...30).contains(cap) else { timeout(sequence); return true }
             let radius = t.count == 7 ? Int(t[6]) : nil
@@ -313,6 +318,7 @@ struct CompanionState {
             voice = incomingVoice
             if !["mob","retreat"].contains(incomingTeam?.0 ?? "") { mobPhase = nil }
             mobRadius = incomingTeam?.3
+            supportsOwnerPuller = incomingOwnerPuller
             mobPuller = incomingTeam?.2
             teamMode = incomingTeam?.0
             mobCap = incomingTeam?.1 ?? 5
