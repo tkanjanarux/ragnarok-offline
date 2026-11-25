@@ -1,0 +1,1318 @@
+--- a/src/char/int_achievement.cpp
++++ b/src/char/int_achievement.cpp
+@@ -39,7 +39,7 @@
+ 	memset(&tmp_achieve, 0, sizeof(tmp_achieve));
+ 
+ 	StringBuf_Init(&buf);
+-	StringBuf_AppendStr(&buf, "SELECT `id`, COALESCE(strftime('%s',`completed`),0), COALESCE(strftime('%s',`rewarded`),0)");
++	StringBuf_AppendStr(&buf, "SELECT `id`, COALESCE(strftime('%%s',`completed`),0), COALESCE(strftime('%%s',`rewarded`),0)");
+ 	for (i = 0; i < MAX_ACHIEVEMENT_OBJECTIVES; ++i)
+ 		StringBuf_Printf(&buf, ", `count%d`", i + 1);
+ 	StringBuf_Printf(&buf, " FROM `%s` WHERE `char_id` = '%u'", schema_config.achievement_table, char_id);
+@@ -161,11 +161,9 @@
+ 		StringBuf_AppendStr(&buf, "`completed` = NULL,");
+ 	}
+ 	if( ad->rewarded ){
+-		StringBuf_Printf(&buf, "`rewarded` = COALESCE(`rewarded`, datetime(%u, 'unixepoch'))", (uint32)ad->rewarded);
++		StringBuf_Printf(&buf, "`rewarded` = datetime(%u, 'unixepoch')", (uint32)ad->rewarded);
+ 	}else{
+-		// A logout save can precede the reward ACK. Never erase a committed claim
+-		// with that stale map-server snapshot. Explicit achievement deletion still works.
+-		StringBuf_AppendStr(&buf, "`rewarded` = `rewarded`");
++		StringBuf_AppendStr(&buf, "`rewarded` = NULL");
+ 	}
+ 	for (i = 0; i < MAX_ACHIEVEMENT_OBJECTIVES; ++i)
+ 		StringBuf_Printf(&buf, ", `count%d` = '%d'", i + 1, ad->count[i]);
+@@ -299,16 +297,10 @@
+ 	uint32 char_id = RFIFOL(fd, 2);
+ 	int32 achievement_id = RFIFOL(fd, 6);
+ 
+-	struct mail_message reward_mail = {};
+-	if( SQL_ERROR == Sql_QueryStr(sql_handle, "BEGIN IMMEDIATE") ){
+-		mapif_achievement_reward(fd, char_id, achievement_id, 0);
+-		return 0;
+-	}
+-
+ 	if( Sql_Query( sql_handle, "UPDATE `%s` SET `rewarded` = datetime(%u, 'unixepoch') WHERE `char_id`='%u' AND `id` = '%d' AND `completed` IS NOT NULL AND `rewarded` IS NULL", schema_config.achievement_table, (uint32)current, char_id, achievement_id ) == SQL_ERROR ||
+ 		Sql_NumRowsAffected(sql_handle) <= 0 ){
+ 		current = 0;
+-	}else if( RFIFOL(fd,10) > 0 ){ // Do not send a mail if no item reward
++	}else if( RFIFOW(fd,10) > 0 ){ // Do not send a mail if no item reward
+ 		char mail_sender[NAME_LENGTH];
+ 		char mail_receiver[NAME_LENGTH];
+ 		char mail_title[MAIL_TITLE_LENGTH];
+@@ -325,27 +317,11 @@
+ 		safesnprintf(mail_title, MAIL_TITLE_LENGTH, char_msg_txt(228)); // 228: Achievement Reward Mail
+ 		safesnprintf(mail_text, MAIL_BODY_LENGTH, char_msg_txt(229), RFIFOCP(fd,16+NAME_LENGTH) ); // 229: [%s] Achievement Reward.
+ 
+-		reward_mail.dest_id = char_id;
+-		safestrncpy(reward_mail.send_name, mail_sender, NAME_LENGTH);
+-		safestrncpy(reward_mail.dest_name, mail_receiver, NAME_LENGTH);
+-		safestrncpy(reward_mail.title, mail_title, MAIL_TITLE_LENGTH);
+-		safestrncpy(reward_mail.body, mail_text, MAIL_BODY_LENGTH);
+-		reward_mail.item[0] = item;
+-		reward_mail.timestamp = current;
+-		reward_mail.type = MAIL_INBOX_NORMAL;
+-		if( !mail_savemessage(&reward_mail) ){
++		if( !mail_sendmail(0, mail_sender, char_id, mail_receiver, mail_title, mail_text, 0, &item, 1) ){
+ 			current = 0;
+ 		}
+ 	}
+ 
+-	// The reward marker and its mail must commit together. A failed mail
+-	// leaves the achievement claimable, and notifications follow the commit.
+-	if( current == 0 || SQL_ERROR == Sql_QueryStr(sql_handle, "COMMIT") ){
+-		Sql_QueryStr(sql_handle, "ROLLBACK");
+-		current = 0;
+-	}else if( reward_mail.id > 0 ){
+-		mapif_Mail_new(&reward_mail);
+-	}
+ 	mapif_achievement_reward(fd, char_id, achievement_id, current);
+ 
+ 	return 0;
+--- a/src/char/int_guild.cpp
++++ b/src/char/int_guild.cpp
+@@ -133,30 +133,6 @@
+ 	Sql_EscapeStringLen(sql_handle, esc_master, g.master, strnlen(g.master, NAME_LENGTH));
+ 	*t_info = '\0';
+ 
+-	const bool creating = (flag & GS_BASIC) && g.guild_id == -1;
+-	if( creating && SQL_ERROR == Sql_QueryStr(sql_handle, "BEGIN IMMEDIATE") )
+-		return 0;
+-	auto abort_creation = [&]() {
+-		Sql_QueryStr(sql_handle, "ROLLBACK");
+-		g.guild_id = -1;
+-	};
+-	// A second request for the same character must not create another guild.
+-	if( creating ){
+-		if( SQL_ERROR == Sql_Query(sql_handle, "SELECT `guild_id` FROM `%s` WHERE `char_id`='%d'", schema_config.char_db, g.member[0].char_id)
+-		|| SQL_SUCCESS != Sql_NextRow(sql_handle) ){
+-			abort_creation();
+-			return 0;
+-		}
+-		char* value;
+-		Sql_GetData(sql_handle, 0, &value, nullptr);
+-		const bool already_member = value == nullptr || atoi(value) != 0;
+-		Sql_FreeResult(sql_handle);
+-		if( already_member ){
+-			abort_creation();
+-			return 0;
+-		}
+-	}
+-
+ 	// Insert a new guild the guild
+ 	if (flag&GS_BASIC && g.guild_id == -1)
+ 	{
+@@ -168,7 +144,7 @@
+ 			"VALUES ('%s', '%s', '%d', '%d', '%d', '%d')",
+ 			schema_config.guild_db, esc_name, esc_master, g.guild_lv, g.max_member, g.average_lv, g.member[0].char_id) )
+ 		{
+-			{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++			Sql_ShowDebug(sql_handle);
+ 			return 0; //Failed to create guild!
+ 		}
+ 		else
+@@ -249,7 +225,7 @@
+ 		}
+ 		StringBuf_Printf(&buf, " WHERE `guild_id`=%d", g.guild_id);
+ 		if( SQL_ERROR == Sql_Query(sql_handle, "%s", StringBuf_Value(&buf)) )
+-			{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++			Sql_ShowDebug(sql_handle);
+ 	}
+ 
+ 	if (flag&GS_MEMBER)
+@@ -265,12 +241,12 @@
+ 				if( SQL_ERROR == Sql_Query(sql_handle, "REPLACE INTO `%s` (`guild_id`,`char_id`,`exp`,`position`) "
+ 					"VALUES ('%d','%d','%" PRIu64 "','%d')",
+ 					schema_config.guild_member_db, g.guild_id, m->char_id, m->exp, m->position ) )
+-					{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++					Sql_ShowDebug(sql_handle);
+ 				if (m->modified&GS_MEMBER_NEW || new_guild == 1)
+ 				{
+ 					if( SQL_ERROR == Sql_Query(sql_handle, "UPDATE `%s` SET `guild_id` = '%d' WHERE `char_id` = '%d'",
+ 						schema_config.char_db, g.guild_id, m->char_id) )
+-						{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++						Sql_ShowDebug(sql_handle);
+ 				}
+ 				m->modified = GS_MEMBER_UNMODIFIED;
+ 			}
+@@ -287,7 +263,7 @@
+ 			Sql_EscapeStringLen(sql_handle, esc_name, p->name, strnlen(p->name, NAME_LENGTH));
+ 			if( SQL_ERROR == Sql_Query(sql_handle, "REPLACE INTO `%s` (`guild_id`,`position`,`name`,`mode`,`exp_mode`) VALUES ('%d','%d','%s','%d','%d')",
+ 				schema_config.guild_position_db, g.guild_id, i, esc_name, p->mode, p->exp_mode) )
+-				{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++				Sql_ShowDebug(sql_handle);
+ 			p->modified = GS_POSITION_UNMODIFIED;
+ 		}
+ 	}
+@@ -301,7 +277,7 @@
+ 		//if( SQL_ERROR == Sql_Query(sql_handle, "DELETE FROM `%s` WHERE `guild_id`='%d' OR `alliance_id`='%d'", guild_alliance_db, g.guild_id, g.guild_id) )
+ 		if( SQL_ERROR == Sql_Query(sql_handle, "DELETE FROM `%s` WHERE `guild_id`='%d'", schema_config.guild_alliance_db, g.guild_id) )
+ 		{
+-			{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++			Sql_ShowDebug(sql_handle);
+ 		}
+ 		else
+ 		{
+@@ -315,7 +291,7 @@
+ 					if( SQL_ERROR == Sql_Query(sql_handle, "REPLACE INTO `%s` (`guild_id`,`opposition`,`alliance_id`,`name`) "
+ 						"VALUES ('%d','%d','%d','%s')",
+ 						schema_config.guild_alliance_db, g.guild_id, a->opposition, a->guild_id, esc_name) )
+-						{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++						Sql_ShowDebug(sql_handle);
+ 				}
+ 			}
+ 		}
+@@ -333,7 +309,7 @@
+ 				Sql_EscapeStringLen(sql_handle, esc_mes, e->mes, strnlen(e->mes, sizeof(e->mes)));
+ 				if( SQL_ERROR == Sql_Query(sql_handle, "REPLACE INTO `%s` (`guild_id`,`account_id`,`name`,`mes`,`char_id`) "
+ 					"VALUES ('%u','%u','%s','%s','%u')", schema_config.guild_expulsion_db, g.guild_id, e->account_id, esc_name, esc_mes, e->char_id) )
+-					{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++					Sql_ShowDebug(sql_handle);
+ 			}
+ 		}
+ 	}
+@@ -345,14 +321,9 @@
+ 			if (g.skill[i].id>0 && g.skill[i].lv>0){
+ 				if( SQL_ERROR == Sql_Query(sql_handle, "REPLACE INTO `%s` (`guild_id`,`id`,`lv`) VALUES ('%d','%d','%d')",
+ 					schema_config.guild_skill_db, g.guild_id, g.skill[i].id, g.skill[i].lv) )
+-					{ Sql_ShowDebug(sql_handle); if( creating ){ abort_creation(); return 0; } }
++					Sql_ShowDebug(sql_handle);
+ 			}
+ 		}
+-	}
+-
+-	if( creating && SQL_ERROR == Sql_QueryStr(sql_handle, "COMMIT") ){
+-		abort_creation();
+-		return 0;
+ 	}
+ 
+ 	if (charserv_config.save_log)
+--- a/src/char/int_mail.cpp
++++ b/src/char/int_mail.cpp
+@@ -86,8 +86,7 @@
+ 	int32 i, j;
+ 	bool found = false;
+ 
+-	msg->id = 0;
+-	if( SQL_ERROR == Sql_QueryStr( sql_handle, "SAVEPOINT mail_message_save" ) ){
++	if( SQL_ERROR == Sql_QueryStr( sql_handle, "BEGIN" ) ){
+ 		Sql_ShowDebug( sql_handle );
+ 		return 0;
+ 	}
+@@ -107,8 +106,7 @@
+ 	||  SQL_SUCCESS != stmt.Execute() )
+ 	{
+ 		SqlStmt_ShowDebug(stmt);
+-		Sql_QueryStr( sql_handle, "ROLLBACK TO mail_message_save" );
+-		Sql_QueryStr( sql_handle, "RELEASE mail_message_save" );
++		Sql_QueryStr( sql_handle, "ROLLBACK" );
+ 		return msg->id = 0;
+ 	} else
+ 		msg->id = (int32)stmt.LastInsertId();
+@@ -149,15 +147,12 @@
+ 	if( found && SQL_ERROR == Sql_QueryStr(sql_handle, StringBuf_Value(&buf)) ){
+ 		Sql_ShowDebug(sql_handle);
+ 		msg->id = 0;
+-		Sql_QueryStr( sql_handle, "ROLLBACK TO mail_message_save" );
+-		Sql_QueryStr( sql_handle, "RELEASE mail_message_save" );
+-	}
+-
+-	if( msg->id && SQL_ERROR == Sql_QueryStr( sql_handle, "RELEASE mail_message_save" ) ){
++		Sql_QueryStr( sql_handle, "ROLLBACK" );
++	}
++
++	if( msg->id && SQL_ERROR == Sql_QueryStr( sql_handle, "COMMIT" ) ){
+ 		Sql_ShowDebug( sql_handle );
+-		Sql_QueryStr( sql_handle, "ROLLBACK TO mail_message_save" );
+-		Sql_QueryStr( sql_handle, "RELEASE mail_message_save" );
+-		return msg->id = 0;
++		return 0;
+ 	}
+ 
+ 	return msg->id;
+--- a/src/map/clif.cpp
++++ b/src/map/clif.cpp
+@@ -16506,11 +16506,6 @@
+ 	mail_clear(sd);
+ 
+ 	sd->state.mail_writing = true;
+-	// Opt-in native capability probe; ordinary RO clients receive no extra text.
+-	if( strcmp(name, "__ragoff_caps_v1__") == 0 ){
+-		name[0] = '\0';
+-		clif_displaymessage(sd->fd, "[RAGOFF_CAPS] rodex_send_v1");
+-	}
+ 	clif_send_Mail_beginwrite_ack(sd, name,true);
+ }
+ 
+--- a/src/map/guild.cpp
++++ b/src/map/guild.cpp
+@@ -735,7 +735,7 @@
+ 	if(battle_config.guild_emperium_check){
+ 		int32 index = pc_search_inventory(sd,ITEMID_EMPERIUM);
+ 
+-		if( index >= 0 )
++		if( index > 0 )
+ 			pc_delitem(sd,index,1,0,0,LOG_TYPE_CONSUME);	//emperium consumption
+ 	}
+ 	return 0;
+--- a/src/map/mail.cpp
++++ b/src/map/mail.cpp
+@@ -171,7 +171,7 @@
+ 		if( amount > sd->status.zeny )
+ 			amount = sd->status.zeny; // TODO: confirm this behavior for old mail system
+ #else
+-		if( ( static_cast<int64>(amount) + static_cast<int64>(amount) * battle_config.mail_zeny_fee / 100 ) > sd->status.zeny )
++		if( ( amount + battle_config.mail_zeny_fee / 100 * amount ) > sd->status.zeny )
+ 			return MAIL_ATTACH_ERROR;
+ #endif
+ 
+@@ -310,7 +310,7 @@
+ 		msg->item[i].amount = sd->mail.item[i].amount;
+ 	}
+ 
+-	if( sd->mail.zeny < 0 || ( static_cast<int64>(sd->mail.zeny) + static_cast<int64>(sd->mail.zeny) * battle_config.mail_zeny_fee / 100 + static_cast<int64>(amount) * battle_config.mail_attachment_price ) > sd->status.zeny )
++	if( sd->mail.zeny < 0 || ( sd->mail.zeny + sd->mail.zeny * battle_config.mail_zeny_fee / 100 + amount * battle_config.mail_attachment_price ) > sd->status.zeny )
+ 		return false;
+ 
+ 	msg->zeny = sd->mail.zeny;
+@@ -425,12 +425,8 @@
+ 		}
+ 	}
+ 
+-	// Postage is charged even when no Zeny is attached. Use the same
+-	// integer rounding and wide arithmetic as mail_removezeny.
+-	const int64 refund = static_cast<int64>(msg->zeny)
+-		+ static_cast<int64>(msg->zeny) * battle_config.mail_zeny_fee / 100 + zeny;
+-	if( refund > 0 ){
+-		pc_getzeny(sd, static_cast<int32>(refund), LOG_TYPE_MAIL);
++	if( msg->zeny > 0 ){
++		pc_getzeny(sd,msg->zeny + msg->zeny*battle_config.mail_zeny_fee/100 + zeny,LOG_TYPE_MAIL); //Zeny receive (due to failure)
+ 	}
+ 
+ 	clif_Mail_send(sd, WRITE_MAIL_FAILED);
+@@ -489,12 +485,6 @@
+ 		}
+ 	}
+ 
+-	// Validate before taking any attachments or postage from the sender.
+-	if( title == nullptr || title[0] == '\0' || body_len < 0 ){
+-		clif_Mail_send(sd, WRITE_MAIL_FAILED);
+-		return;
+-	}
+-
+ 	if( body_len > MAIL_BODY_LENGTH )
+ 		body_len = MAIL_BODY_LENGTH;
+ 
+@@ -517,6 +507,10 @@
+ 	safestrncpy(msg.title, (char*)title, MAIL_TITLE_LENGTH);
+ 	msg.type = MAIL_INBOX_NORMAL;
+ 
++	if (msg.title[0] == '\0') {
++		return; // Message has no length and somehow client verification was skipped.
++	}
++
+ 	if (body_len)
+ 		safestrncpy(msg.body, (char*)body_msg, min(body_len + 1, MAIL_BODY_LENGTH));
+ 	else
+--- a/src/map/population_engine/minimal.cpp
++++ b/src/map/population_engine/minimal.cpp
+@@ -60,6 +60,39 @@
+ constexpr int hunt_chase_range = 12;
+ 
+ enum class TeamMode { nearby, mob, boss };
++enum class MobPhase { prepare, collect, home, field, finish, recover };
++enum class MobTask { hold, move, tag, shoot, cast, ground, ward, guard, recover };
++struct MobOrder {
++    MobTask task=MobTask::hold;
++    int target=0, x=0, y=0;
++    uint16 skill=0, level=0;
++    const char* reason="hold camp";
++};
++struct MobPlanner {
++    std::unordered_map<int,MobOrder> orders;
++    t_tick stock_at=0;
++    unsigned hp_bottles=0;
++    int return_ms=0;
++    MobPhase phase=MobPhase::prepare;
++    t_tick since=0;
++    bool manual_retreat=false, emergency_field=false;
++    int ward_target=0,retreat_peel=0;
++    uint16 storm_level=0;
++    int left=0,right=0,top=0,bottom=0;
++    t_tick field_until=0;
++    static constexpr int kyrie_wait=10000, collateral=2;
++    static const char* label(MobPhase p){
++        switch(p){
++        case MobPhase::prepare:return "เตรียม";
++        case MobPhase::collect:return "ออกลาก";
++        case MobPhase::home:return "พาฝูงกลับ";
++        case MobPhase::field:return "ลงวง";
++        case MobPhase::finish:return "เก็บตก";
++        case MobPhase::recover:return "พัก/ถอย";
++        }
++        return "";
++    }
++};
+ struct HealthSample {
+     uint32 hp = 0;
+     double loss_per_second = 0;
+@@ -71,6 +104,7 @@
+ static constexpr int escort_grace_ms=6000;
+ struct Hunt {
+     TeamMode mode = TeamMode::nearby;
++    MobPlanner coordinator;
+     int16 x=0,y=0;
+     int front_x=0,front_y=0;
+     bool priest_pull=false;
+@@ -427,7 +461,7 @@
+                 const auto& stats = ally->battle_status;
+                 if (pc_isdead(ally) || !stats.max_hp || !battle_check_range(sd,ally,range)) continue;
+                 const double percent = 100.0 * stats.hp / stats.max_hp;
+-                if(boss){
++                if(boss || (farming && active->second.coordinator.emergency_field)){
+                     double loss=active->second.health[ally->id].loss_per_second;
+                     double seconds=loss>0?stats.hp/loss:1e20+percent;
+                     if((percent<threshold || seconds<4) && (!hurt || seconds<urgent)){hurt=ally;urgent=seconds;}
+@@ -448,9 +482,12 @@
+     auto team=hunts.find(shell.character);
+     if(team!=hunts.end() && team->second.mode!=TeamMode::nearby && !team->second.retreat && shell.skills){
+         auto* tank=map_id2sd(team->second.opener);
+-        if(farming && tank==sd && team->second.priest_pull && !sd->sc.getSCE(SC_INCREASEAGI) &&
++        if(farming && team->second.coordinator.emergency_field){
++            if(auto* under_attack=map_id2sd(team->second.coordinator.ward_target))tank=under_attack;
++        }
++        if(farming && tank && team->second.coordinator.phase==MobPhase::prepare && !tank->sc.getSCE(SC_INCREASEAGI) &&
+            std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"agi")!=shell.policy.skills.end() &&
+-           cast_skill(shell,sd,AL_INCAGI,1))return true;
++           cast_skill(shell,tank,AL_INCAGI,1))return true;
+         if(farming && tank && !pc_isdead(tank) && !tank->sc.getSCE(SC_KYRIE) &&
+            (team->second.target || !team->second.pack.empty()) &&
+            std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"kyrie")!=shell.policy.skills.end() &&
+@@ -661,9 +698,21 @@
+     return true;
+ }
+ 
++static void set_mob_phase(map_session_data* owner,Hunt& h,MobPhase next,const char* reason){
++    auto& c=h.coordinator;
++    const auto now=gettick();
++    if(c.since && c.phase==next)return;
++    ShowInfo("Mob phase owner=%u tick=%lld from=%s to=%s elapsed_ms=%lld reason=%s pack=%zu\n",
++        owner->status.char_id,(long long)now,c.since?c.label(c.phase):"off",c.label(next),
++        (long long)(c.since?now-c.since:0),reason,h.pack.size());
++    c.phase=next;c.since=now;
++    clif_displaymessage(owner->fd,(std::string("[Mob] ช่วง ")+c.label(next)).c_str());
++}
++
+ void team_retreat(map_session_data* owner,Hunt& h,const char* why) {
+     if (h.retreat) return;
+     h.retreat=true;
++    if(h.mode==TeamMode::mob)set_mob_phase(owner,h,MobPhase::recover,why);
+     ShowInfo("Companion retreat: owner=%d reason=%s potions=%d gems=%d\n",owner->id,why,h.potions,h.gems);
+     for (auto& [id,s]:shells) if (s.character==owner->status.char_id) stop_hunt_attack(s);
+     std::string msg=std::string("Team retreat: ")+why+". Regroup on owner. Fly Wing is manual.";
+@@ -850,20 +899,68 @@
+     return 0;
+ }
+ 
++bool threatened_backline(const mob_data*,const map_session_data*);
++
++static bool trained(const Shell& s,const char* key,uint16 skill) {
++    return s.skills && pc_checkskill(s.sd,skill) &&
++        std::find(s.policy.skills.begin(),s.policy.skills.end(),key)!=s.policy.skills.end();
++}
++
++static bool in_mob_field(const MobPlanner& c,const mob_data& m,t_tick now) {
++    return now<c.field_until && m.x>=c.left && m.x<=c.right && m.y>=c.top && m.y<=c.bottom;
++}
++
++static int remaining_status(map_session_data* sd,sc_type effect,t_tick now) {
++    auto* entry=sd->sc.getSCE(effect);
++    if(!entry)return 0;
++    auto* timer=entry->timer==INVALID_TIMER?nullptr:get_timer(entry->timer);
++    return timer?std::clamp<t_tick>(timer->tick-now,0,INT_MAX):INT_MAX;
++}
++
++// Compare learned ranks on the same monsters. Use expected HP removed to break
++// ties on kills before preferring the faster rank. This estimate has no RNG.
++static uint16 storm_rank(Shell& wizard,const Hunt& h,mob_data& focus,uint16 max_level) {
++    const auto& caster=wizard.sd->battle_status;
++    uint16 chosen=0;
++    double best=-1;
++    for(uint16 level=1;level<=max_level;++level){
++        if(!can_spend_sp(wizard,WZ_STORMGUST,level))continue;
++        double value=0;
++        for(int id:h.pack){
++            auto* m=map_id2md(id);
++            if(!m || !m->status.hp || distance_bl(&focus,m)>5)continue;
++            const auto& st=m->status;
++            const double resistance=(1000.+st.mdef)/(1000.+10.*std::max<int>(0,st.mdef));
++            const int element=elemental_attribute_db.getAttribute(st.ele_lv,ELE_WATER,st.def_ele);
++            const double hit=std::max(1.,(caster.matk_min+caster.matk_max)*.5*(.7+.5*level)*resistance-st.mdef2)
++                *std::max(0,element)/100.;
++            const int hits=battle_check_undead(st.race,st.def_ele) || status_has_mode(&m->status,MD_STATUSIMMUNE)?10:3;
++            const double fraction=hit*hits/st.hp;
++            value+=(fraction>=1.?1.:0.)+std::min(1.,fraction)*.25;
++        }
++        if(value>best){best=value;chosen=level;}
++    }
++    return chosen;
++}
++
+ void update_team(map_session_data* owner,Hunt& h) {
+     const auto now=gettick();
+     if (now<h.next_scan) return;
+-    h.next_scan=now+350;
+-    Shell *tank=nullptr,*healer=nullptr,*wizard=nullptr,*mobber=nullptr;
++    h.next_scan=now+(h.mode==TeamMode::mob?340:350);
++    Shell *tank=nullptr,*healer=nullptr,*wizard=nullptr,*mobber=nullptr,*archer=nullptr;
+     for (auto& [id,s]:shells) {
+         if (!hunt_member(s,owner)) continue;
+         switch(companion_progression::career(s.sd->status.class_)){
++        case JOB_HUNTER: if(!archer || id<archer->sd->id)archer=&s;break;
+         case JOB_KNIGHT: if (!tank || id<tank->sd->id) tank=&s; break;
+         case JOB_PRIEST: if(s.build==companion_build::Build::mobber && (!mobber || id<mobber->sd->id))mobber=&s; if (!healer || id<healer->sd->id) healer=&s; break;
+         case JOB_WIZARD: if (!wizard || id<wizard->sd->id) wizard=&s; break;
+         }
+     }
+-    if(h.mode==TeamMode::mob && h.priest_pull)tank=healer=mobber;
++    if(h.mode==TeamMode::mob){
++        h.coordinator.orders.clear();
++        if(h.priest_pull)tank=healer=mobber;
++    }
+     if(h.mode==TeamMode::mob && tank){
+         if(h.parent.empty())survey_camp(h,owner->m);
+         h.blocked.assign(h.parent.size(),0);
+@@ -889,7 +986,22 @@
+             if(h.hold_train || !pull_step(h,from,x,y)){unit_stop_walking(tank->sd,USW_FIXPOS|USW_FORCE_STOP|USW_RELEASE_TARGET);break;}
+         }
+     }
+-    if(h.retreat)return;
++    if(h.retreat && h.mode==TeamMode::mob){
++        for(auto& [id,s]:shells)if(hunt_member(s,owner)){
++            h.coordinator.orders[id]={MobTask::recover,owner->id,owner->x,owner->y,0,0,"regroup on owner"};
++            ShowInfo("Mob order owner=%u tick=%lld actor=%d action=%d target=%d pos=%d,%d skill=0 lv=0 reason=regroup previous=%s\n",
++                owner->status.char_id,(long long)now,id,int(MobTask::recover),owner->id,owner->x,owner->y,s.wave_decision);
++        }
++    }
++    if(h.retreat){
++        // Operator-issued retreat is latched until the owner leaves mob mode.
++        if(h.mode!=TeamMode::mob || h.coordinator.manual_retreat || now-h.coordinator.since<90000 ||
++           !tank || !healer || !wizard || pc_isdead(owner) ||
++           distance_xy(owner->x,owner->y,h.x,h.y)>hunt_chase_range ||
++           distance_bl(tank->sd,owner)>4 || status_get_hp(tank->sd)*100ULL<status_get_max_hp(tank->sd)*h.stop_hp)return;
++        h.retreat=false;h.release_pack=true;h.tour.clear();h.target=0;h.inbound=false;
++        set_mob_phase(owner,h,MobPhase::prepare,"reassess after recovery");
++    }
+     if (!tank || !healer || pc_isdead(owner) || distance_xy(owner->x,owner->y,h.x,h.y)>hunt_chase_range) {
+         team_retreat(owner,h,pc_isdead(owner)?"เจ้าของล้ม":!tank?"Knight ไม่พร้อมช่วยสู้":!healer?"Priest ไม่พร้อมช่วยสู้":"เจ้าของห่างจุดรวมเกิน 12 ช่อง"); return;
+     }
+@@ -909,7 +1021,7 @@
+         auto assess=[&](map_session_data* ally){
+             auto& health=ally->battle_status;
+             if(ally!=tank->sd && !pc_isdead(ally) && health.max_hp &&
+-               (uint64(health.hp)*100<35ULL*health.max_hp || h.health[ally->id].loss_per_second*3>health.hp))
++               (uint64(health.hp)*100<35ULL*health.max_hp || h.health[ally->id].loss_per_second*std::max(3,2+h.coordinator.return_ms/1000)>health.hp))
+                 if(!h.rescue_ally || ally==owner)h.rescue_ally=ally->id;
+         };
+         assess(owner);
+@@ -967,7 +1079,14 @@
+         bool stuck=outside && now-pos.since>escort_grace_ms && victim &&
+                    !battle_check_range(mob,victim,status_get_range(mob)+1);
+         const int tail_grace=(following && gap<=8 && now-pos.since<1500)?2*escort_grace_ms:escort_grace_ms;
+-        bool lost=valid && (now-seen>escort_grace_ms || stuck ||
++        bool isolated=valid && !mob->target_id && !status_bl_has_mode(mob,MD_CANMOVE);
++        if(isolated)for(int d=0;d<8;++d)if(map_getcell(mob->m,mob->x+dirx[d],mob->y+diry[d],CELL_CHKPASS)){
++            isolated=false;break;
++        }
++        bool controlled=valid && !isolated && !outside && h.opened &&
++            (mob->sc.getSCE(SC_FREEZE) || in_mob_field(h.coordinator,*mob,now));
++        if(controlled)seen=now;
++        bool lost=valid && ((isolated && now-pos.since>=escort_grace_ms) || now-seen>escort_grace_ms || stuck ||
+                    (lagging && now-h.stalled_since.at(*it)>tail_grace));
+         if(!valid || lost){
+             if(lost){
+@@ -993,6 +1112,31 @@
+     PullScan scan;
+     map_foreachinallarea(gather_candidate,owner->m,h.x-h.radius,h.y-h.radius,h.x+h.radius,h.y+h.radius,BL_MOB,owner,tank->sd,&h,&best,&scan);
+     const bool at_camp=distance_xy(tank->sd->x,tank->sd->y,h.x,h.y)<=3;
++    auto& planner=h.coordinator;
++    if(now>=planner.stock_at){
++        std::vector<companion_supply::Stock> stock;
++        planner.hp_bottles=0;
++        if(companion_supply::list(mmysql_handle,tank->character,tank->profile,stock))
++            for(const auto& r:stock)if(companion_supply::supported(r.itemid) && !companion_supply::arrow(r.itemid) && r.itemid!=ITEMID_BLUE_GEMSTONE &&
++                (!companion_supply::restores_sp(r.itemid) || r.itemid==518))planner.hp_bottles+=r.amount;
++        planner.stock_at=now+2000;
++    }
++    bool holding_camp=false;
++    const bool paid_cast=wizard && wizard->sd->ud.skilltimer!=INVALID_TIMER &&
++        (wizard->sd->ud.skill_id==WZ_STORMGUST || wizard->sd->ud.skill_id==WZ_VERMILION);
++    for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(m && distance_xy(m->x,m->y,h.x,h.y)<=6 && (paid_cast || in_mob_field(planner,*m,now) || m->sc.getSCE(SC_FREEZE)))holding_camp=true;
++    }
++    bool guarded_survivors=!h.pack.empty() && h.pack.size()<=2 && archer && wizard;
++    if(guarded_survivors)for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(!m || m->target_id==h.opener || distance_xy(m->x,m->y,h.x,h.y)>7 ||
++            m->status.hp>3ULL*std::max<int>(1,wizard->sd->battle_status.matk_max))guarded_survivors=false;
++    }
++    if(at_camp && (holding_camp || guarded_survivors) && !scan.candidates.empty() && h.pack.size()<h.cap && !h.rescue_ally && !h.hold_train){
++        h.release_pack=false;h.inbound=false;h.outbound_train=false;
++    }
+     if(!h.release_pack || h.inbound || (h.pack.empty() && at_camp)){
+         const bool had_stops=!h.tour.empty();
+         for(auto it=h.skip_tag_until.begin();it!=h.skip_tag_until.end();){
+@@ -1032,22 +1176,6 @@
+             if(!h.tour.empty())best=map_id2md(h.tour.front());
+         }
+     }
+-    h.hunter_target=0;
+-    for(int id:h.pack){
+-        auto* m=map_id2md(id);
+-        if(m && distance_xy(h.x,h.y,m->x,m->y)<=7 && (m->target_id!=h.opener || at_camp)){
+-            h.hunter_target=id;break;
+-        }
+-    }
+-    if(!h.hunter_target && h.pack.size()<h.cap){
+-        int closest=8;
+-        for(auto* m:scan.candidates){
+-            int d=distance_xy(h.x,h.y,m->x,m->y);
+-            if(d<closest && (!best || best->id!=m->id) && !m->target_id){
+-                closest=d;h.hunter_target=m->id;
+-            }
+-        }
+-    }
+     if(now>=h.next_trace){
+         h.next_trace=now+2000;
+         auto trace=[&](int mid,const char* role){
+@@ -1063,17 +1191,35 @@
+     h.camp_target=0;
+     int nearby=0,closest=INT_MAX, close_pursuers=0;
+     bool threatened=false;
++    int owner_attackers=0,backline_attackers=0;
++    std::unordered_map<int,int> attackers;
++    uint64 incoming_burst=0;
++    int most=0;h.coordinator.ward_target=0;
+     for(auto mid:h.pack){
+         auto* mob=map_id2md(mid);
+         if(!mob)continue;
+         if(mob->target_id==tank->sd->id && distance_bl(mob,tank->sd)<=status_get_range(mob)+2)++close_pursuers;
+         int d=distance_xy(h.x,h.y,mob->x,mob->y);
+-        if(d>6)continue;
++        if(d<=10 && mob->target_id){
++            const auto& attack=mob->status;
++            incoming_burst+=3000ULL*(attack.rhw.atk2+std::max<int>(0,attack.batk))/std::max<int>(500,attack.adelay);
++        }
++        if(d<=12 && mob->target_id!=h.opener && (mob->target_id==owner->id || threatened_backline(mob,owner))){
++            ++backline_attackers;
++            int count=++attackers[mob->target_id];
++            if(count>most){most=count;h.coordinator.ward_target=mob->target_id;}
++        }
++        const bool chasing_backline=mob->target_id!=h.opener &&
++            (mob->target_id==owner->id || threatened_backline(mob,owner));
++        if(d>6 && !(chasing_backline && d<=12))continue;
+         ++nearby;
++        if(mob->target_id==owner->id)++owner_attackers;
+         if(mob->target_id && mob->target_id!=tank->sd->id && team_victim(mob,owner))threatened=true;
+         if(d<closest){h.camp_target=mid;closest=d;}
+     }
+-    if(!threatened && (nearby<2 || (h.outbound_train && nearby<int(h.pack.size()))))h.camp_target=0;
++    h.coordinator.emergency_field=(h.pack.size()>=4 && incoming_burst>owner->battle_status.hp) || backline_attackers>=3 || owner_attackers>=3 || (owner_attackers && 100ULL*owner->battle_status.hp<50ULL*owner->battle_status.max_hp);
++    if(h.coordinator.emergency_field && !h.coordinator.ward_target)h.coordinator.ward_target=owner->id;
++    if(!threatened && nearby<2 && !h.release_pack && !holding_camp)h.camp_target=0;
+     if(h.pack.empty()){h.storm_landed=h.mire_landed=false;h.front_x=h.front_y=0;h.outbound_train=false;}
+     if(!h.front_x && !h.front_y){
+         const auto* incoming=h.pack.empty()?best:map_id2md(*h.pack.begin());
+@@ -1111,6 +1257,12 @@
+     bool return_for_hp=h.radius>30 && (beyond_heal || h.priest_pull) && lead>0 && loss>0 &&
+         st.hp-loss*lead < st.max_hp*h.stop_hp/100.0;
+     bool continue_home=false;
++    auto& c=h.coordinator;
++    const int home_index=h.route_index(tank->sd->x,tank->sd->y);
++    const int home_steps=home_index>=0 && h.parent[home_index]>=0?h.depth[home_index]:camp_gap;
++    c.return_ms=home_steps*std::max<int>(tank->sd->battle_status.speed,200);
++    const bool camp_needs_return=!at_camp && c.field_until>now && !h.pack.empty() &&
++        c.return_ms>=c.field_until-now && h.outbound_train && close_pursuers>0;
+     const char* reason=nullptr;
+     if(h.rescue_ally)reason="หยุดลาก กลับไปฮีลเพื่อน";
+     else if(!heal_enabled) reason="พักลาก เปิด Heal ให้ Priest";
+@@ -1121,6 +1273,8 @@
+     else if(!ready) reason="พักลาก SP ของ Wizard ไม่พอร่ายวง 2 รอบ";
+     else if(h.pressed && ((exposed && (camp_gap>18 || close_pursuers>=3)) ||
+                           (camp_gap>25 && close_pursuers>=4)))reason="จบรอบ Priest กำลังถูกล้อม พาฝูงกลับก่อนโล่แตก";
++    else if(camp_needs_return)reason="พาฝูงเข้าจุดรวมให้ทันวงเดิม";
++    else if(!c.hp_bottles && hp<85 && loss>0 && st.hp-loss*(2+c.return_ms/1000)<st.max_hp*h.stop_hp/100.)reason="ยาคนลากหมด กลับก่อนเลือดต่ำ";
+     else if(return_for_hp) reason="จบรอบ กลับเข้าระยะฮีลก่อน HP ต่ำ";
+     else if(hp<h.stop_hp) reason="พักลาก HP ของ Knight ต่ำกว่าเกณฑ์";
+     else if(loss>healing_per_second && loss>0) reason="พักลาก Knight เสีย HP เร็วกว่าที่ Priest ฮีลทัน";
+@@ -1179,9 +1333,9 @@
+         if(!was_released && !h.pack.empty())ShowInfo("Companion mob: returning=%zu at_anchor=%d cap=%d anchor=%d,%d\n",h.pack.size(),together,h.cap,h.x,h.y);
+     }else{
+         if(h.pack.empty() && !h.kyrie_deadline && healer->skills &&
+-           !tank->sd->sc.getSCE(SC_KYRIE) && pc_checkskill(healer->sd,PR_KYRIE) &&
++           (!tank->sd->sc.getSCE(SC_KYRIE) || (h.priest_pull && !tank->sd->sc.getSCE(SC_INCREASEAGI))) && pc_checkskill(healer->sd,PR_KYRIE) &&
+            std::find(healer->policy.skills.begin(),healer->policy.skills.end(),"kyrie")!=healer->policy.skills.end())
+-            h.kyrie_deadline=now+10000;
++            h.kyrie_deadline=now+MobPlanner::kyrie_wait;
+         h.return_since=0;
+         auto* current=map_id2md(h.target);
+         if(!current || current->id!=best->id){
+@@ -1190,6 +1344,194 @@
+         }
+         h.opened=false;
+     }
++
++    auto* focus=map_id2md(h.camp_target);
++    if(!focus && h.opened)focus=map_id2md(h.target);
++    int clustered=0, freezable=0;
++    c.field_until=0;
++    if(wizard)for(const auto& group:wizard->sd->ud.skillunits){
++        if(!group || !group->alive_count || (group->skill_id!=WZ_STORMGUST && group->skill_id!=WZ_VERMILION && group->skill_id!=WZ_FIREPILLAR))continue;
++        for(int i=0;i<group->unit_count;++i){
++            const auto& u=group->unit[i];
++            if(!u.alive)continue;
++            if(!c.field_until){c.left=c.right=u.x;c.top=c.bottom=u.y;}
++            c.left=std::min<int>(c.left,u.x-u.range);c.right=std::max<int>(c.right,u.x+u.range);
++            c.top=std::min<int>(c.top,u.y-u.range);c.bottom=std::max<int>(c.bottom,u.y+u.range);
++            c.field_until=std::max(c.field_until,group->tick+group->limit);
++        }
++    }
++    if(focus && wizard){
++        for(auto mid:h.pack){
++            auto* m=map_id2md(mid);
++            if(!m || status_isdead(*m) || distance_bl(m,focus)>5)continue;
++            const auto& st=m->status;
++            int ratio=elemental_attribute_db.getAttribute(st.ele_lv,ELE_WATER,st.def_ele);
++            if(ratio<=0)continue;
++            ++clustered;
++
++            if(!battle_check_undead(st.race,st.def_ele) && !status_has_mode(&m->status,MD_STATUSIMMUNE))++freezable;
++        }
++    }
++    bool finishing=focus && h.pack.size()==1 && focus->id==h.hunter_hit_target &&
++        now-h.hunter_hit_tick<1800 && focus->status.hp<=2ULL*h.hunter_hit_damage;
++    if(!finishing && focus && h.pack.size()==1 && archer && archer->sd->status.weapon==W_BOW &&
++       battle_check_range(archer->sd,focus,status_get_range(archer->sd)) &&
++       focus->status.hp<=archer->sd->battle_status.batk && select_arrow(*archer,&focus->status))
++        finishing=true;
++    c.storm_level=focus && wizard && lv ? (area==WZ_STORMGUST?storm_rank(*wizard,h,*focus,lv):lv) : 0;
++    if(!h.storm_landed && clustered>1 && clustered<4 && freezable && backline_attackers)c.storm_level=1;
++    if(c.emergency_field && freezable && !h.storm_landed)c.storm_level=1;
++    if(finishing)c.storm_level=0;
++    bool preparing=h.pack.empty() && h.target && !h.release_pack && now<h.kyrie_deadline &&
++        (!tank->sd->sc.getSCE(SC_KYRIE) || (h.priest_pull && !tank->sd->sc.getSCE(SC_INCREASEAGI)));
++    // Phase is a display summary only. Publish a complete owner-local order book
++    // before any shell executes, including separate orders for camp and train.
++    h.hunter_target=0;
++    int best_priority=INT_MIN;
++    for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(!m || distance_xy(h.x,h.y,m->x,m->y)>12 || in_mob_field(c,*m,now))continue;
++        const bool head=m->target_id==h.opener && !h.release_pack;
++        if(head)continue;
++        const bool threatened=m->target_id!=h.opener && (m->target_id==owner->id || threatened_backline(m,owner));
++        if(!threatened && !finishing && !m->sc.getSCE(SC_FREEZE) && clustered>1)continue;
++        if(focus && wizard && clustered>1 && !finishing && distance_bl(focus,m)<=5 &&
++           elemental_attribute_db.getAttribute(m->status.ele_lv,skill_get_ele(area,std::max<int>(1,lv)),m->status.def_ele)>=100)continue;
++        int priority=(threatened?200:0)-int(100ULL*m->status.hp/std::max<uint32>(1,m->status.max_hp));
++        if(priority>best_priority){best_priority=priority;h.hunter_target=id;}
++    }
++    if(finishing)h.wait_for_area_until=0;
++    MobPhase summary=focus && !finishing?MobPhase::field:finishing?MobPhase::finish:
++        h.release_pack && camp_gap>3?MobPhase::home:!h.release_pack && h.target && !preparing?MobPhase::collect:
++        !reserve || !ready?MobPhase::recover:MobPhase::prepare;
++    // A stalled recovery periodically discards an obsolete route and reassesses
++    // supplies. Redisplay preparation without suspending camp or rescue orders.
++    if(summary==MobPhase::recover && c.phase==MobPhase::recover && now-c.since>=90000){
++        h.tour.clear();
++        set_mob_phase(owner,h,MobPhase::prepare,"phase timeout");
++    }else set_mob_phase(owner,h,summary,reason?reason:"individual orders");
++
++    for(auto& [id,s]:shells){
++        if(!hunt_member(s,owner))continue;
++        auto* sd=s.sd;
++        int career=companion_progression::career(sd->status.class_);
++        MobOrder order;
++        auto move=[&](int x,int y,const char* why){order={MobTask::move,0,x,y,0,0,why};};
++        auto cast=[&](map_session_data* ally,uint16 skill,const char* key,const char* why){
++            if(!ally || !trained(s,key,skill) || sd->scd.count(skill))return false;
++            auto level=pc_checkskill(sd,skill);
++            if(!can_spend_sp(s,skill,level) || !battle_check_range(sd,ally,skill_get_range2(sd,skill,level,true)))return false;
++            order={MobTask::cast,ally->id,ally->x,ally->y,skill,level,why};return true;
++        };
++        bool assigned=false;
++        if(career==JOB_PRIEST){
++            auto* ward=map_id2sd(c.ward_target);
++            if(!ward || !c.emergency_field)ward=tank->sd;
++            const auto* kyrie=ward->sc.getSCE(SC_KYRIE);
++            if((h.target || !h.pack.empty()) && (!kyrie || kyrie->val3<=2 || remaining_status(ward,SC_KYRIE,now)<1600))
++                assigned=cast(ward,PR_KYRIE,"kyrie","shield before incoming hits");
++            if(!assigned && !c.emergency_field && !tank->sd->sc.getSCE(SC_INCREASEAGI))
++                assigned=cast(tank->sd,AL_INCAGI,"agi","speed for return trip");
++            if(!assigned && h.rescue_ally && &s==tank){
++                if(auto* ally=map_id2sd(h.rescue_ally)){
++                    move(ally->x,ally->y,"camp HP falling before predicted return");assigned=true;
++                }
++            }
++            if(!assigned && ward && distance_xy(ward->x,ward->y,h.x,h.y)<=6 && !ward->sc.getSCE(SC_SAFETYWALL) && !ward->sc.getSCE(SC_PNEUMA)){
++                unsigned melee=0,ranged=0;
++                for(int mid:h.pack)if(auto* m=map_id2md(mid);m && m->target_id==ward->id && distance_bl(m,ward)<=status_get_range(m)+1)
++                    (status_get_range(m)>3?ranged:melee)++;
++                bool missiles=ranged>melee;
++                uint16 skill=missiles?AL_PNEUMA:MG_SAFETYWALL;
++                if((melee || ranged) && (missiles || s.starter_gems+s.paid_gems) &&
++                    !map_find_skill_unit_oncell(ward,ward->x,ward->y,skill,nullptr,0) &&
++                    sd->battle_status.sp>=3*skill_get_sp(AL_HEAL,std::max<int>(1,heal))+skill_get_sp(skill,std::max<int>(1,pc_checkskill(sd,skill))) &&
++                    cast(ward,skill,missiles?"pneuma":"safetywall","protect camp against incoming attacks")){
++                    order.task=MobTask::ward;assigned=true;
++                }
++            }
++            if(!assigned && !c.emergency_field && !sd->sc.getSCE(SC_MAGNIFICAT))
++                assigned=cast(sd,PR_MAGNIFICAT,"magnificat","restore party SP");
++            if(!assigned && !c.emergency_field && wizard && !wizard->sd->sc.getSCE(SC_SUFFRAGIUM) && focus && distance_bl(sd,wizard->sd)<=skill_get_splash(PR_SUFFRAGIUM,1))
++                assigned=cast(sd,PR_SUFFRAGIUM,"suffragium","prepare field cast");
++        }
++        if(!assigned && !c.emergency_field && career==JOB_PRIEST && (&s!=tank || !h.target)){
++            for(auto* ally:{tank->sd,owner,wizard?wizard->sd:nullptr,archer?archer->sd:nullptr}){
++                if(!ally || pc_isdead(ally))continue;
++                if(remaining_status(ally,SC_BLESSING,now)<2000 && cast(ally,AL_BLESSING,"blessing","renew party Blessing")){
++                    assigned=true;break;
++                }
++                if(remaining_status(ally,SC_INCREASEAGI,now)<2000 && cast(ally,AL_INCAGI,"agi","renew party agility")){
++                    assigned=true;break;
++                }
++            }
++        }
++        if(!assigned && &s==tank){
++            const auto* endure=sd->sc.getSCE(SC_ENDURE);
++            if((!h.release_pack && h.target || !h.pack.empty() && camp_gap>3) &&
++               (!endure || !endure->val4 && (endure->val2<=2 || remaining_status(sd,SC_ENDURE,now)<1600)))
++                assigned=cast(sd,SM_ENDURE,"endure","protect remaining strides");
++            if(!assigned && !preparing && !h.hold_train){
++                auto* tail=map_id2md(h.escort_target);
++                if(tail && camp_gap>5 && !h.pressed && distance_xy(tail->x,tail->y,h.x,h.y)>6 &&
++                   (tail->target_id!=id || distance_bl(sd,tail)>4)){
++                    order={MobTask::tag,tail->id,tail->x,tail->y,SM_PROVOKE,0,"keep tail in range"};
++                }else if(!h.release_pack && best){
++                    order={MobTask::tag,best->id,best->x,best->y,SM_PROVOKE,0,"collect along route"};
++                }else if(camp_gap>2)move(h.x,h.y,"deliver train to camp");
++                else if(career==JOB_KNIGHT && focus)
++                    order={MobTask::guard,focus->id,h.x,h.y,SM_PROVOKE,0,"hold front line"};
++            }
++        }else if(!assigned && career==JOB_WIZARD){
++            int fx=h.x,fy=h.y;
++            const bool center=focus && uses_ground_build(s) && s.build!=companion_build::Build::pillar &&
++                distance_xy(focus->x,focus->y,h.x,h.y)<=7;
++            int cx=center?h.x:focus?focus->x:h.x, cy=center?h.y:focus?focus->y:h.y;
++            SpellChoice single;
++            if(focus && (!uses_ground_build(s) || (elemental_attribute_db.getAttribute(focus->status.ele_lv,
++                skill_get_ele(area,std::max<int>(1,lv)),focus->status.def_ele)<100 && !focus->sc.getSCE(SC_FREEZE))))
++                single=choose_spell(s,focus->status);
++            if(single.skill){
++                cx=focus->x;cy=focus->y;
++            }
++            const uint16 planned_skill=single.skill?single.skill:area;
++            const uint16 planned_lv=single.skill?single.level:c.storm_level;
++            const bool reposition=h.storm_landed && distance_xy(sd->x,sd->y,h.x,h.y)<8 && now<c.field_until;
++            if(focus && !finishing && planned_lv && !reposition &&
++               check_distance_client_blxy(sd,cx,cy,skill_get_range2(sd,planned_skill,planned_lv,true)) &&
++               path_search_long(nullptr,sd->m,sd->x,sd->y,cx,cy,CELL_CHKWALL)){
++                order={single.skill?MobTask::cast:MobTask::ground,focus->id,cx,cy,planned_skill,planned_lv,
++                    single.skill?"match element of survivor":"camp in cast range"};
++            }else{
++                int best_score=INT_MAX;
++                for(int r:{9,8,7,5,3})for(int d=0;d<8;++d){
++                    int x=cx+r*dirx[d],y=cy+r*diry[d];
++                    if(!pull_cell(h,x,y) || !check_distance_client_xy(x,y,cx,cy,9) ||
++                       !path_search_long(nullptr,sd->m,x,y,cx,cy,CELL_CHKWALL))continue;
++                    int score=(9-r)*18+distance_xy(sd->x,sd->y,x,y)+3*(dirx[d]*h.front_x+diry[d]*h.front_y);
++                    if(score<best_score){best_score=score;fx=x;fy=y;}
++                }
++                move(fx,fy,"establish casting range");
++            }
++        }else if(!assigned && career==JOB_HUNTER && h.hunter_target){
++            auto* m=map_id2md(h.hunter_target);
++            if(m && battle_check_range(sd,m,status_get_range(sd)))
++                order={MobTask::shoot,m->id,m->x,m->y,
++                    uint16(trained(s,"double",AC_DOUBLE)?AC_DOUBLE:0),pc_checkskill(sd,AC_DOUBLE),"finish outside field"};
++            else if(m){
++                const int x=std::clamp<int>(m->x,h.x-4,h.x+4),y=std::clamp<int>(m->y,h.y-4,h.y+4);
++                if(pull_cell(h,x,y))move(x,y,"shoot stray from camp flank");
++            }
++        }else if(!assigned && &s!=tank){
++            if(distance_xy(sd->x,sd->y,h.x,h.y)>3)move(h.x,h.y,"cover camp");
++            else if(career==JOB_KNIGHT && focus)order={MobTask::guard,focus->id,h.x,h.y,SM_PROVOKE,0,"hold front line"};
++        }
++        c.orders[id]=order;
++        ShowInfo("Mob order owner=%u tick=%lld actor=%d action=%d target=%d pos=%d,%d skill=%u lv=%u reason=%s return_ms=%d field_ms=%lld HPpots=%u previous=%s\n",
++            owner->status.char_id,(long long)now,id,int(order.task),order.target,order.x,order.y,order.skill,order.level,
++            order.reason,c.return_ms,(long long)std::max<t_tick>(0,c.field_until-now),c.hp_bottles,s.wave_decision);
++    }
++
+ }
+ 
+ void update_hunt(map_session_data* owner,Hunt& hunt) {
+@@ -1363,23 +1705,14 @@
+ 
+  auto encounter=hunts.find(shell.character);
+  const bool wave=encounter!=hunts.end() && encounter->second.mode==TeamMode::mob && (encounter->second.opened || encounter->second.camp_target==target->id);
++
+  if(wave && b==B::storm){
+   auto& h=encounter->second;
+-  int clustered=0;
+-  for(auto id:h.pack){
+-   auto* m=map_id2md(id);
+-   if(m && !status_isdead(*m) && distance_bl(m,target)<=5)++clustered;
++  if(!h.coordinator.storm_level){
++   shell.wave_decision=h.coordinator.phase==MobPhase::finish?"hunter-finishing":"waiting-for-team-field";return true;
+   }
+-  if(h.pack.size()==1 && h.hunter_hit_target==target->id && gettick()-h.hunter_hit_tick<1800 &&
+-     stats.hp<=2ULL*h.hunter_hit_damage){shell.wave_decision="hunter-finishing";return true;}
+-  if(!h.storm_landed && clustered<4){
+-   for(auto mid:h.pack){
+-    auto* mob=map_id2md(mid);
+-    if(!mob || status_isdead(*mob))continue;
+-    auto* st=status_get_status_data(*mob);
+-    if(!battle_check_undead(st->race,st->def_ele) && !status_has_mode(st,MD_STATUSIMMUNE)){lv=1;break;}
+-   }
+-  }else if(h.storm_landed && !h.mire_landed && h.pack.size()>1 && distance_xy(target->x,target->y,h.x,h.y)<=5){
++  lv=std::min<uint16>(lv,h.coordinator.storm_level);
++  if(h.storm_landed && !h.mire_landed && h.pack.size()>1 && distance_xy(target->x,target->y,h.x,h.y)<=5){
+    // Use the gap between Storm Gusts. A lingering mire from an earlier
+    // pull must never postpone the next damaging field.
+    auto active_field=[&](uint16 skill){
+@@ -1447,7 +1780,7 @@
+       !path_search_long(nullptr,sd->m,sd->x,sd->y,cx,cy,CELL_CHKWALL))return false;
+    extras.clear();
+    return !map_foreachinarea(wave_bystander,sd->m,cx-radius,cy-radius,cx+radius,cy+radius,BL_MOB,owner,&h,&extras)
+-       && (extras.empty() || h.pack.size()+extras.size()<=h.cap+2);
++       && (extras.empty() || h.pack.size()+extras.size()<=h.cap+MobPlanner::collateral);
+   };
+   blocked=!safe_center(x,y);
+   if(blocked && b!=B::pillar){
+@@ -1539,6 +1872,81 @@
+     return steps>0 && unit_walktoxy(sd,next_x,next_y,0);
+ }
+ 
++static void execute_mob_order(Shell& s,map_session_data* owner,Hunt& h){
++    auto* sd=s.sd;
++    if(sd->ud.skilltimer!=INVALID_TIMER){s.wave_decision="casting";return;}
++    if(support_party(s,owner,true)){s.wave_decision="override-heal-or-resurrect";return;}
++    const bool knight=companion_progression::career(sd->status.class_)==JOB_KNIGHT;
++    if(knight && trained(s,"provoke",SM_PROVOKE)){
++        mob_data* danger=nullptr;
++        double shortest=1e20;
++        for(int id:h.pack){
++            auto* m=map_id2md(id);
++            if(!m || m->sc.getSCE(SC_FREEZE) || m->target_id==sd->id || m->target_id==h.opener ||
++               !(m->target_id==owner->id || threatened_backline(m,owner)) ||
++               !battle_check_range(sd,m,skill_get_range2(sd,SM_PROVOKE,1,true)))continue;
++            auto* victim=map_id2sd(m->target_id);
++            if(!victim)continue;
++            double life=victim->battle_status.hp/std::max(1.,h.health[victim->id].loss_per_second);
++            if(life<shortest){shortest=life;danger=m;}
++        }
++        if(danger && cast_skill(s,danger,SM_PROVOKE,5)){s.wave_decision="override-peel";return;}
++    }
++    auto it=h.coordinator.orders.find(sd->id);
++    if(it==h.coordinator.orders.end()){unit_stop_attack(sd);return;}
++    const MobOrder& o=it->second;
++    s.wave_decision=o.reason;
++    auto* m=o.target?map_id2md(o.target):nullptr;
++    auto move=[&](int x,int y,int stride){
++        unit_stop_attack(sd);
++        if(sd->ud.walktimer==INVALID_TIMER && (sd->x!=x || sd->y!=y))
++            if(!walk_toward_cell(sd,h,x,y,stride))s.wave_decision="path blocked";
++    };
++    if(sd->ud.target && sd->ud.target!=o.target)unit_stop_attack(sd);
++    switch(o.task){
++    case MobTask::move: move(o.x,o.y,h.pack.empty()?8:4);break;
++    case MobTask::cast:
++        if(!cast_skill(s,map_id2bl(o.target),o.skill,o.level,true))s.wave_decision="cast not ready";
++        break;
++    case MobTask::ward:
++        if(sd->ud.skilltimer==INVALID_TIMER && gettick()>=sd->ud.canact_tick && gettick()>=s.skill_retry && unit_skilluse_pos(sd,o.x,o.y,o.skill,o.level))s.skill_retry=gettick()+1200;
++        break;
++    case MobTask::ground:
++        if(m){
++            if(uses_ground_build(s))cast_build_ground(s,m);
++            else {auto spell=choose_spell(s,m->status);if(spell.skill)cast_skill(s,m,spell.skill,spell.level,true);}
++        }
++        break;
++    case MobTask::shoot:
++        if(m && hunter_ready(s,owner) && population_combat_target(sd,m,BCT_ENEMY) && prepare_arrow(s,select_arrow(s,&m->status))){
++            if(trained(s,"concentration",AC_CONCENTRATION) && !sd->sc.getSCE(SC_CONCENTRATE) &&
++               cast_skill(s,sd,AC_CONCENTRATION,1))break;
++            if(o.skill && cast_skill(s,m,o.skill,o.level,true))break;
++            if(sd->ud.attacktimer==INVALID_TIMER && battle_check_range(sd,m,status_get_range(sd)))unit_attack(sd,m->id,0);
++        }
++        break;
++    case MobTask::tag:
++        if(!m || !hunt_candidate(owner,m,h.radius+hunt_chase_range))break;
++        if(m->id==h.escort_target && m->target_id==sd->id && distance_bl(sd,m)<=7){
++            if(sd->ud.walktimer!=INVALID_TIMER)unit_stop_walking(sd,USW_FIXPOS);
++            break;
++        }
++        if(distance_bl(sd,m)<=(distance_xy(sd->x,sd->y,h.x,h.y)<4?3:9) && trained(s,"provoke",SM_PROVOKE) && cast_skill(s,m,SM_PROVOKE,5))break;
++        if(!battle_check_range(sd,m,status_get_range(sd)))move(m->x,m->y,h.pack.empty()?8:3);
++        else if(sd->ud.attacktimer==INVALID_TIMER)unit_attack(sd,m->id,0);
++        break;
++    case MobTask::guard:
++        if(m && !m->sc.getSCE(SC_FREEZE) && !in_mob_field(h.coordinator,*m,gettick()) && battle_check_range(sd,m,status_get_range(sd)) && sd->ud.attacktimer==INVALID_TIMER)
++            unit_attack(sd,m->id,0);
++        break;
++    default:
++        unit_stop_attack(sd);
++        if(sd->ud.walktimer!=INVALID_TIMER)unit_stop_walking(sd,USW_FIXPOS);
++        if(s.sd->battle_status.sp*4<s.sd->battle_status.max_sp)rest(s,owner);
++        break;
++    }
++}
++
+ bool assist_owner(Shell& shell, map_session_data* owner) {
+     auto* sd = shell.sd;
+     // A bow user can engage beyond the normal eight-cell formation. The tank
+@@ -1548,6 +1956,7 @@
+         ? std::max(8, std::min<int>(AREA_SIZE, status_get_range(owner))) : 8;
+     if (!shell.assist || !sd->status.party_id || sd->status.party_id != owner->status.party_id
+         || distance_bl(sd, owner) > assist_range) return false;
++    if(hunt!=hunts.end() && hunt->second.mode==TeamMode::mob)return true;
+     const bool knight = companion_progression::career(sd->status.class_) == JOB_KNIGHT;
+     const bool guard = shell.build==companion_build::Build::pillar || shell.preset=="protect" || (knight && shell.preset!="assist" && shell.policy.role=="tank");
+     const bool hunter=companion_progression::career(sd->status.class_)==JOB_HUNTER;
+@@ -1561,119 +1970,6 @@
+         if(h.mode!=TeamMode::nearby){
+             if(h.retreat)return false;
+             bool tank=h.opener==sd->id;
+-            if(h.priest_pull && tank && h.rescue_ally){
+-                auto* ally=map_id2sd(h.rescue_ally);
+-                if(ally && !battle_check_range(sd,ally,skill_get_range2(sd,AL_HEAL,1,true))){
+-                    if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,ally->x,ally->y);
+-                    return true;
+-                }
+-            }
+-            if(h.priest_pull && knight){
+-                // Hold camp while the Priest is away. Do not steal the train's
+-                // aggro from the puller or chase a target beyond the anchor.
+-                if(distance_xy(sd->x,sd->y,h.x,h.y)>3){
+-                    if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,h.x,h.y);
+-                    return true;
+-                }
+-                for(int mid:h.pack){
+-                    auto* mob=map_id2md(mid);
+-                    if(!mob || mob->target_id==h.opener || distance_xy(mob->x,mob->y,h.x,h.y)>10 ||
+-                       !threatened_backline(mob,owner))continue;
+-                    if(std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end() &&
+-                       cast_skill(shell,mob,SM_PROVOKE,5))return true;
+-                    if(battle_check_range(sd,mob,status_get_range(sd)))target=mob;
+-                    break;
+-                }
+-                if(!target && h.opened)for(int mid:h.pack){
+-                    auto* mob=map_id2md(mid);
+-                    if(mob && battle_check_range(sd,mob,status_get_range(sd))){target=mob;break;}
+-                }
+-                if(!target){unit_stop_attack(sd);return true;}
+-            }
+-            if(tank && h.mode==TeamMode::mob && shell.skills && !sd->scd.count(SM_ENDURE) &&
+-               ((!h.release_pack && h.target) || (h.release_pack && !h.pack.empty() && distance_xy(sd->x,sd->y,h.x,h.y)>4)) &&
+-               std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"endure")!=shell.policy.skills.end()){
+-                const auto* endure=sd->sc.getSCE(SC_ENDURE);
+-                if((!endure || !endure->val4) && cast_skill(shell,sd,SM_ENDURE,5))return true;
+-            }
+-            if(h.mode==TeamMode::mob && !h.opened && uses_ground_build(shell) && h.camp_target)
+-                target=map_id2bl(h.camp_target);
+-            auto cover_stray=[&]{
+-                for(int mid:h.pack){
+-                    auto* stray=map_id2md(mid);
+-                    if(stray && (stray->target_id==owner->id || threatened_backline(stray,owner)) &&
+-                       battle_check_range(sd,stray,status_get_range(sd))){target=stray;break;}
+-                }
+-            };
+-            auto* puller=map_id2sd(h.opener);
+-            const bool escorting=h.mode==TeamMode::mob && (h.outbound_train ||
+-                (puller && distance_xy(h.x,h.y,puller->x,puller->y)>5));
+-            if(hunter && h.mode==TeamMode::mob && h.hunter_target){
+-                auto* m=map_id2md(h.hunter_target);
+-                if(m && battle_check_range(sd,m,status_get_range(sd)))target=m;
+-            }
+-            if(escorting && hunter)cover_stray();
+-            if(tank && !h.rescue_ally && !h.pressed && (escorting || (h.escort_target && h.camp_target && h.escort_target==h.camp_target)) && h.escort_target && 100ULL*sd->battle_status.hp>=sd->battle_status.max_hp*h.stop_hp){
+-                auto* stray=map_id2md(h.escort_target);
+-                if(stray && stray->prev && hunt_candidate(owner,stray,assist_range)){
+-                    bool following=stray->target_id==sd->id;
+-                    int gap=distance_bl(sd,stray);
+-                    if(!following || (gap>=std::max<int>(5,stray->db->range3-2))){
+-                        if(gettick()>=h.next_escort_tag && shell.skills &&
+-                           std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end() &&
+-                           cast_skill(shell,stray,SM_PROVOKE,5)){
+-                            h.next_escort_tag=gettick()+1200;return true;
+-                        }
+-                        if(!following && battle_check_range(sd,stray,status_get_range(sd))){
+-                            if(sd->ud.attacktimer==INVALID_TIMER)unit_attack(sd,stray->id,0);
+-                            return true;
+-                        }
+-                    }
+-                    // End the outward stride before the tail loses line of sight.
+-                    if(sd->ud.walktimer!=INVALID_TIMER)unit_stop_walking(sd,USW_FIXPOS);
+-                    if(!following || (gap>6 && h.stalled_since.count(stray->id) && gettick()-h.stalled_since.at(stray->id)>1400))
+-                        walk_toward_cell(sd,h,stray->x,stray->y,2);
+-                    return true;
+-                }
+-            }
+-            if(hunter && h.mode==TeamMode::mob && h.wait_for_area_until>gettick() &&
+-               h.pack.size()>1 && !escorting && !h.camp_target){
+-                unit_stop_attack(sd);return true;
+-            }
+-            bool form=!target && h.mode==TeamMode::mob && (tank ? h.release_pack : !h.opened || sd->status.class_==JOB_PRIEST);
+-            int fx=h.x,fy=h.y;
+-            const bool rear=h.mode==TeamMode::mob && uses_ground_build(shell);
+-            if(rear){
+-                // Try either flank before reducing distance in narrow passages.
+-                int back=0;
+-                for(int i=0;i<8;++i)if(dirx[i]==-h.front_x && diry[i]==-h.front_y)back=i;
+-                bool placed=false;
+-                for(int dist:{9,8,7,6,4}){
+-                    for(int turn:{0,1,-1,2,-2,3,-3,4}){
+-                        int direction=(back+turn+8)%8;
+-                        int x=h.x+dist*dirx[direction],y=h.y+dist*diry[direction];
+-                        walkpath_data path{};
+-                        if(!check_distance_client_xy(x,y,h.x,h.y,9) || !map_getcell(sd->m,x,y,CELL_CHKPASS) ||
+-                           !path_search_long(nullptr,sd->m,x,y,h.x,h.y,CELL_CHKWALL) ||
+-                           ((sd->x!=x || sd->y!=y) && !path_search(&path,sd->m,sd->x,sd->y,x,y,0,CELL_CHKNOPASS)))continue;
+-                        fx=x;fy=y;form=placed=true;break;
+-                    }
+-                    if(placed)break;
+-                }
+-            }else if(form && (h.front_x || h.front_y)){
+-                const int offset=tank?(h.outbound_train || h.priest_pull?0:2):-4;
+-                int x=h.x+offset*h.front_x,y=h.y+offset*h.front_y;
+-                if(map_getcell(sd->m,x,y,CELL_CHKPASS)){fx=x;fy=y;}
+-            }
+-            if(form && distance_xy(sd->x,sd->y,fx,fy)>(rear?0:tank?1:2)){
+-                unit_stop_attack(sd);
+-                if(sd->ud.walktimer!=INVALID_TIMER)return true;
+-                if(tank && h.mode==TeamMode::mob){
+-                    walk_toward_cell(sd,h,fx,fy,h.pack.empty()?4:3);return true;
+-                }else if(walk_toward_cell(sd,h,fx,fy))return true;
+-            }
+-            if(!escorting && h.mode==TeamMode::mob && hunter)cover_stray();
+-            if(!tank && !h.opened && !target){shell.wave_decision="gathering-no-target";unit_stop_attack(sd);return true;}
+             if(tank && h.mode==TeamMode::boss && !h.opened){
+                 auto* boss=map_id2md(h.boss);
+                 if(!boss)return true;
+@@ -1682,38 +1978,6 @@
+                 } else if(sd->ud.attacktimer==INVALID_TIMER) unit_attack(sd,boss->id,1);
+                 return true;
+             }
+-            if(tank && h.mode==TeamMode::mob && !h.release_pack){
+-                auto* pull=map_id2md(h.target);
+-                if(!pull)return true;
+-                if(h.priest_pull && h.pack.empty() && (!sd->sc.getSCE(SC_INCREASEAGI) || !sd->sc.getSCE(SC_KYRIE))){
+-                    shell.wave_decision="waiting-for-puller-buffs";return true;
+-                }
+-                if(h.pack.empty() && gettick()<h.kyrie_deadline && !sd->sc.getSCE(SC_KYRIE))return true;
+-                // Walk into tagging range before provoking, then lead the train home.
+-                const int tag_range=distance_xy(sd->x,sd->y,h.x,h.y)>=4 ? 9 : 3;
+-                if(distance_bl(sd,pull)>tag_range){
+-                    if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,pull->x,pull->y,h.pack.empty()?8:2);
+-                    return true;
+-                }
+-                if(std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end() &&
+-                    cast_skill(shell,pull,SM_PROVOKE,5))return true;
+-                int range=status_get_range(sd);
+-                if(!battle_check_range(sd,pull,range)){
+-                    if(sd->ud.walktimer==INVALID_TIMER)walk_pull(sd,h,pull->x,pull->y,h.pack.empty()?6:3);
+-                }else if(sd->ud.attacktimer==INVALID_TIMER)unit_attack(sd,pull->id,0);
+-                return true;
+-            }
+-            if(tank && h.mode==TeamMode::mob && h.opened && h.release_pack &&
+-                std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end()){
+-                for(int id:h.pack){
+-                    auto* mob=map_id2md(id);
+-                    if(mob && (mob->target_id==owner->id || threatened_backline(mob,owner)) && cast_skill(shell,mob,SM_PROVOKE,5))return true;
+-                }
+-            }
+-            if(!target && h.mode==TeamMode::mob && h.opened && gettick()<h.wait_for_area_until && companion_progression::career(sd->status.class_)!=JOB_WIZARD){
+-                unit_stop_attack(sd);return true;
+-            }
+-            if(tank && h.mode==TeamMode::mob && !h.opened){unit_stop_attack(sd);return true;}
+             if(h.mode==TeamMode::boss && !tank){
+                 auto* boss=map_id2md(h.boss);
+                 if(boss && distance_bl(sd,boss)<5 && (hunter || sd->status.class_==JOB_WIZARD || sd->status.class_==JOB_PRIEST)){
+@@ -1722,7 +1986,7 @@
+                     if(sd->ud.walktimer==INVALID_TIMER && map_getcell(sd->m,x,y,CELL_CHKPASS) && unit_walktoxy(sd,x,y,0)) return true;
+                 }
+             }
+-            if(tank && h.priest_pull && h.release_pack)return true;
++            
+             if(!target)target=map_id2bl(h.target);
+             if(h.mode==TeamMode::boss && hunter){
+                 block_list* add=threat_for(sd,owner);
+@@ -1758,18 +2022,7 @@
+     if (companion_progression::career(sd->status.class_) == JOB_PRIEST && shell.build!=companion_build::Build::battle) return false;
+     if (sd->ud.skilltimer != INVALID_TIMER) return true;
+     stand(shell);
+-    const bool casting_at_anchor=wizard && hunt!=hunts.end() && hunt->second.mode==TeamMode::mob &&
+-        hunt->second.release_pack && hunt->second.pack.size()>1 && hunt->second.opened;
+-    const bool hunter_at_camp=hunter && hunt!=hunts.end() && hunt->second.mode==TeamMode::mob &&
+-        !hunt->second.pack.empty() && (hunt->second.opened || hunt->second.camp_target);
+-    if(hunter_at_camp){
+-        const auto& h=hunt->second;
+-        if(distance_xy(sd->x,sd->y,h.x,h.y)>3 &&
+-           (sd->ud.walktimer!=INVALID_TIMER || walk_toward_cell(sd,h,h.x,h.y)))return true;
+-    }
+-    // A pursued archer can shoot at close range in camp. Kiting here would
+-    // take the pursuers outside both the Knight's cover and the waiting Gust.
+-    if (!hunter_at_camp && !casting_at_anchor && (wizard || hunter) && distance_bl(sd, target) < 3) {
++    if ((wizard || hunter) && distance_bl(sd, target) < 3) {
+         shell.wave_decision="kite-before-cast";
+         if (sd->ud.walktimer != INVALID_TIMER) return true;
+         int16 x = sd->x + (sd->x >= target->x ? 2 : -2);
+@@ -1788,6 +2041,7 @@
+             if(skill=="double" && cast_skill(shell,target,AC_DOUBLE,1))return true;
+         }
+     } else if (wizard) {
++
+         if(cast_build_ground(shell,target))return true;
+         const auto spell = choose_spell(shell,*target_status);
+         if (spell.skill && cast_skill(shell,target,spell.skill,spell.level,true)) return true;
+@@ -1943,9 +2197,9 @@
+     }
+     if (shell.dead_since) notice(shell,speech::Revived);
+     shell.dead_since = 0;
+-    shell.wave_decision="waiting-for-assist";
+     auto hunt=hunts.find(shell.character);
+     if (hunt != hunts.end()) { if (hunt->second.mode==TeamMode::nearby) update_hunt(owner,hunt->second); else update_team(owner,hunt->second); }
++    shell.wave_decision="waiting-for-assist";
+     companion_loadout::equip_fallback(sd);
+     if(shell.following && shell.profile && DIFF_TICK(tick,shell.potion_retry)>=0){shell.potion_retry=tick+2000;companion_supplies::consume(sd,shell.character,shell.profile,shell.preset);}
+     auto* p = party_search(sd->status.party_id);
+@@ -1966,11 +2220,25 @@
+         support_party(shell,owner,true);
+     } else if (auto team=hunts.find(shell.character); team!=hunts.end() && team->second.retreat) {
+         shell.wave_decision="team-retreat";
++        auto& h=team->second;
++        if(h.mode==TeamMode::mob && distance_bl(sd,owner)<=3 && companion_progression::career(sd->status.class_)==JOB_KNIGHT &&
++           std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end()){
++            for(auto id:h.pack){
++                auto* m=map_id2md(id);
++                if(!m || m->target_id==sd->id || !(m->target_id==owner->id || threatened_backline(m,owner)))continue;
++                h.coordinator.retreat_peel=id;
++                bool cast=cast_skill(shell,m,SM_PROVOKE,5);
++                h.coordinator.retreat_peel=0;
++                if(cast)break;
++            }
++        }
+         if(sd->ud.skilltimer==INVALID_TIMER && !support_party(shell,owner,true) && distance_bl(sd,owner)>2 && sd->ud.walktimer==INVALID_TIMER)
+             {if(team->second.opener==sd->id && team->second.mode==TeamMode::mob)walk_pull(sd,team->second,owner->x,owner->y,3);
+              else unit_walktobl(sd,owner,2,0);}
+     } else if (retreat(shell,owner)) {
+         shell.wave_decision="low-HP-retreat";
++    } else if (hunt!=hunts.end() && hunt->second.mode==TeamMode::mob && shell.assist) {
++        execute_mob_order(shell,owner,hunt->second);
+     } else if (sd->ud.skilltimer != INVALID_TIMER || support_party(shell, owner)) {
+         shell.wave_decision=sd->ud.skilltimer!=INVALID_TIMER?"cast-in-progress":"support";
+     } else if (pc_isdead(owner)) {
+@@ -2408,6 +2676,10 @@
+             std::snprintf(line+used,sizeof(line)-used," %d",saved_mob_radius(owner));
+         }
+         clif_displaymessage(owner->fd,line);
++        if(expanded_skills>=15 && it!=hunts.end() && it->second.mode==TeamMode::mob){
++            std::snprintf(line,sizeof(line),"[RCO1] %u phase %s",seq,MobPlanner::label(it->second.coordinator.phase));
++            clif_displaymessage(owner->fd,line);
++        }
+     }
+     if(hunt_status){std::snprintf(line,sizeof(line),"[RCO1] %u hunt %d",seq,int(hunts.count(owner->status.char_id) && hunts.at(owner->status.char_id).mode==TeamMode::nearby));clif_displaymessage(owner->fd,line);}
+     if(enabled) for(auto row:rows) {
+@@ -2489,7 +2761,15 @@
+ }
+ 
+ void population_end_hunt(map_session_data* owner) {
+-    if (!owner || !hunts.erase(owner->status.char_id)) return;
++    if(!owner)return;
++    auto it=hunts.find(owner->status.char_id);
++    if(it==hunts.end())return;
++    if(it->second.mode==TeamMode::mob){
++        auto& c=it->second.coordinator;
++        ShowInfo("Mob phase owner=%u tick=%lld from=%s to=off elapsed_ms=%lld reason=mode ended pack=%zu\n",
++            owner->status.char_id,(long long)gettick(),c.label(c.phase),(long long)(gettick()-c.since),it->second.pack.size());
++    }
++    hunts.erase(it);
+     team_notice(owner,speech::HuntOff);
+     for (auto& [id,shell] : shells)
+         if (shell.character == owner->status.char_id) stop_hunt_attack(shell);
+@@ -2509,6 +2789,7 @@
+             auto& h=hunt->second;
+             h.wait_for_area_until=0;
+             if(h.splash_targets.erase(mob->id))h.pack.insert(mob->id);
++            if(h.pack.count(mob->id) && damage>0)h.last_aggro[mob->id]=gettick();
+         }
+         if(hunt->second.mode==TeamMode::boss && actor->id==hunt->second.opener && mob->id==hunt->second.boss)hunt->second.opened=true;
+         return;
+@@ -2552,7 +2833,7 @@
+     auto mode=verb=="boss"?TeamMode::boss:TeamMode::mob;
+     if(verb=="retreat"){
+         if(it==hunts.end() || it->second.mode==TeamMode::nearby)return "No team encounter.";
+-        team_retreat(owner,it->second,"owner requested retreat");return "Regrouping on owner.";
++        it->second.coordinator.manual_retreat=true;team_retreat(owner,it->second,"owner requested retreat");return "Regrouping on owner.";
+     }
+     if(arg=="off"){
+         if(it!=hunts.end() && it->second.mode==mode)population_end_hunt(owner);
+@@ -2618,6 +2899,7 @@
+     auto& active=hunts.emplace(owner->status.char_id,std::move(h)).first->second;
+     if(mode==TeamMode::mob){
+         mob_message(owner,active,std::string(mapindex_id2name(owner->mapindex))+" ("+std::to_string(active.x)+","+std::to_string(active.y)+") เป้าสูงสุด "+std::to_string(active.cap)+" ตัว รัศมี "+std::to_string(active.radius)+" ช่อง");
++        set_mob_phase(owner,active,MobPhase::prepare,"mode enabled");
+         update_team(owner,active);
+         if(active.priest_pull)mob_message(owner,active,"Priest เป็นคนลาก");
+         else if(auto* knight=map_id2sd(active.opener)){
+@@ -2877,7 +3159,7 @@
+             }
+             previous=seq;
+         }
+-        auto note=roster_action(owner,verb,arg,extra);roster_reply(owner,seq,note,(verb=="equipment"||verb=="inspect")?std::strtoul(arg.c_str(),nullptr,10):0,verb=="inspect",modern,std::string(command).find(" loop1 ")!=std::string::npos?14:std::string(command).find(" puller1 ")!=std::string::npos?13:std::string(command).find(" bird1 ")!=std::string::npos?12:std::string(command).find(" team2 ")!=std::string::npos?11:std::string(command).find(" team1 ")!=std::string::npos?10:capability=="skills9"?9:capability=="skills8"?8:capability=="skills7"?7:capability=="skills6"?6:capability=="skills5"?5:capability=="skills4"?4:capability=="skills3"?3:capability=="skills2"?2:0,gear_capability=="gear3"?3:gear_capability=="gear2"?2:0,std::string(command).size()>=6 && std::string(command).substr(std::strlen(command)-6)==" hunt1",supply_capability=="syrup1",std::string(command).find(" hunter1")!=std::string::npos,std::string(command).find(" voice1 ")!=std::string::npos,std::string(command).find(" radius1 ")!=std::string::npos);return 0;
++        auto note=roster_action(owner,verb,arg,extra);roster_reply(owner,seq,note,(verb=="equipment"||verb=="inspect")?std::strtoul(arg.c_str(),nullptr,10):0,verb=="inspect",modern,std::string(command).find(" phase1 ")!=std::string::npos?15:std::string(command).find(" loop1 ")!=std::string::npos?14:std::string(command).find(" puller1 ")!=std::string::npos?13:std::string(command).find(" bird1 ")!=std::string::npos?12:std::string(command).find(" team2 ")!=std::string::npos?11:std::string(command).find(" team1 ")!=std::string::npos?10:capability=="skills9"?9:capability=="skills8"?8:capability=="skills7"?7:capability=="skills6"?6:capability=="skills5"?5:capability=="skills4"?4:capability=="skills3"?3:capability=="skills2"?2:0,gear_capability=="gear3"?3:gear_capability=="gear2"?2:0,std::string(command).size()>=6 && std::string(command).substr(std::strlen(command)-6)==" hunt1",supply_capability=="syrup1",std::string(command).find(" hunter1")!=std::string::npos,std::string(command).find(" voice1 ")!=std::string::npos,std::string(command).find(" radius1 ")!=std::string::npos);return 0;
+     }
+     if(head=="talk" && battle_config.companion_enable) {input>>arg;clif_displaymessage(owner->fd,configure_talk(owner,arg).c_str());return 0;}
+     if((head=="mob" || head=="boss" || head=="retreat") && battle_config.companion_enable){input>>arg>>extra;clif_displaymessage(owner->fd,team_command(owner,head,arg,extra).c_str());return 0;}
+@@ -3019,7 +3301,7 @@
+     if(hunt==hunts.end())return false;
+     const auto& h=hunt->second;
+     auto* owner=map_id2sd(shell->second.account);
+-    return owner && h.mode==TeamMode::mob && !h.retreat && (h.opener==src->id || (h.priest_pull && companion_progression::career(shell->second.sd->status.class_)==JOB_KNIGHT && mob->target_id!=h.opener && threatened_backline(mob,owner))) && h.pack.count(mob->id) &&
++    return owner && h.mode==TeamMode::mob && (!h.retreat || h.coordinator.retreat_peel==mob->id) && (h.coordinator.retreat_peel==mob->id || h.opener==src->id || (h.priest_pull && companion_progression::career(shell->second.sd->status.class_)==JOB_KNIGHT && mob->target_id!=h.opener && threatened_backline(mob,owner))) && h.pack.count(mob->id) &&
+         owner && hunt_member(shell->second,owner) && team_victim(mob,owner) &&
+         hunt_candidate(owner,mob,h.radius+hunt_chase_range);
+ }
+@@ -3047,19 +3329,26 @@
+             if(!hunt_member(it->second,owner) || mob->guardian_data || mob->m!=owner->m)return false;
+             bool boss=h.mode==TeamMode::boss && (mob->id==h.boss || mob->master_id==h.boss);
+             if(actor!=src)return boss || (!mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE);
++            if(h.retreat && h.mode==TeamMode::mob && h.coordinator.retreat_peel==mob->id)
++                return !mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE && unclaimed(owner,mob) && h.pack.count(mob->id);
+             if(h.retreat || !unclaimed(owner,mob) || distance_xy(mob->x,mob->y,h.x,h.y)>(h.mode==TeamMode::mob?h.radius+3:hunt_chase_range))return false;
+             if(h.mode==TeamMode::boss)return boss && (h.opener==sd->id || h.opened) && (mob->id==h.boss || team_victim(mob,owner));
++            if(companion_progression::career(sd->status.class_)==JOB_HUNTER){
++                const auto& c=h.coordinator;
++                if(h.hunter_target!=mob->id || in_mob_field(c,*mob,gettick()))return false;
++                if(mob->target_id==h.opener && distance_xy(mob->x,mob->y,h.x,h.y)>5)return false;
++            }
+             bool knight_guard_for_mob=companion_progression::career(sd->status.class_)==JOB_KNIGHT && mob->target_id!=h.opener && threatened_backline(mob,owner) && distance_xy(mob->x,mob->y,h.x,h.y)<=10;
+             return !mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE &&
+                 ((companion_progression::career(sd->status.class_)==JOB_HUNTER && h.hunter_target==mob->id &&
+-                  distance_xy(h.x,h.y,mob->x,mob->y)<=7 && (h.pack.count(mob->id) || h.pack.size()<h.cap)) ||
++                  distance_xy(h.x,h.y,mob->x,mob->y)<=12 && (h.pack.count(mob->id) || h.pack.size()<h.cap)) ||
+                  (h.priest_pull && knight_guard_for_mob && h.pack.count(mob->id)) || (h.opener==sd->id && (mob->id==h.target || (mob->id==h.escort_target && h.pack.count(mob->id)))) ||
+                  (uses_ground_build(it->second) && h.camp_target &&
+                   (mob->id==h.camp_target || (distance_xy(h.x,h.y,mob->x,mob->y)<=7 &&
+-                   (h.pack.count(mob->id) || (h.splash_targets.count(mob->id) && h.pack.size()<h.cap+2))))) ||
++                   (h.pack.count(mob->id) || (h.splash_targets.count(mob->id) && h.pack.size()<h.cap+MobPlanner::collateral))))) ||
+                  (companion_progression::career(sd->status.class_)==JOB_HUNTER && h.pack.count(mob->id) &&
+                   (mob->target_id==owner->id || threatened_backline(mob,owner))) || (h.opened && (h.pack.count(mob->id) ||
+-                 (uses_ground_build(it->second) && h.splash_targets.count(mob->id) && h.pack.size()<h.cap+2))));
++                 (uses_ground_build(it->second) && h.splash_targets.count(mob->id) && h.pack.size()<h.cap+MobPlanner::collateral))));
+         }
+     }
+     if (actor == src && (flag & BCT_ENEMY) && owner) {

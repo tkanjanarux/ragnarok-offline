@@ -1,0 +1,22 @@
+{
+  "archive_local_commit": "9912035ca1d3144ed04953c3bd388ea7868df55a",
+  "base": "main server production 2026-11-25",
+  "before_sha256": {
+    "src/char/int_achievement.cpp": "956674b34bb5597072b59aaa474363ffdfce8aa93d2b117f423cac82e4562988",
+    "src/char/int_guild.cpp": "0884cd97cddcdf49bd388255da4ce4025e03d8cd74933427d5358826d415800a",
+    "src/char/int_mail.cpp": "a95c929b63ceb429ec5bba13f4cbaf7f75f2e3efb1877138448de1bd628a917b",
+    "src/map/clif.cpp": "74b30f0db89137577f8349847f5b65cadf1f5c4982bc560644c74dfa5d907608",
+    "src/map/guild.cpp": "559aa80807fc8aaec1c731c66d2f500ef742efa38c6db945de8f30f4f7a367dd",
+    "src/map/mail.cpp": "dc503e5eac0543c228d4b3a9f5546ebfe4fbdda67c960d2a50c844e0fbd60c01",
+    "src/map/population_engine/minimal.cpp": "aecc8bd79489ac9c151c6e7abf0bbacfa47ab13d37d0937add5aa3464f6e0a34"
+  },
+  "original_experimental_sha256": {
+    "src/char/int_achievement.cpp": "0881531f2c0601cd116126539fc4d0f83975f6adab95b42e71cd768b1f333d09",
+    "src/char/int_guild.cpp": "78d1a22523a22d56371c4bad7bc5e829e41d187d9af7be6583b0172a1d0294b1",
+    "src/char/int_mail.cpp": "e9e2802492c2d8ea43449cbf4593b2a3bbc4ffa55e39224a59f4065560d1cb4b",
+    "src/map/clif.cpp": "634777b6e9681e59fe66ac6dbad268d03cc6dbb2fabe9161317f2a78498006cb",
+    "src/map/guild.cpp": "7c629dbb769602b2ba55f011269ab628649680f89743788d384f0512b1aede67",
+    "src/map/mail.cpp": "d25db844c6e16d8d278377135a546afe0618ee4c6fa71d3ed397f0caffb04310",
+    "src/map/population_engine/minimal.cpp": "edb0fcdeb49942140c3d982383fbfdc2baf98fce4b3b1b98428ce48b532a442f"
+  }
+}

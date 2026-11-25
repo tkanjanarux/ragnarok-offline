@@ -1,0 +1,80 @@
+"""Native spear skills, emergency healing on a melee Priest, and Falcon build behavior."""
+import struct,time
+from nearby_hunt_fixture import c,knight,priest,mage,egg,hp,chat,damage,stage
+from build_fixture import BuildFixture
+from check_m4_skills import wait,skill
+from check_m8_gear import held,slot,transfer
+from companion_ai_fixture import attack,owner
+f=BuildFixture(c)
+kid,pid=knight['id'],priest['id']
+for p in (knight,priest,mage): f.note(f'bench {p["id"]}')
+c.command('@jobchange 11')
+c.command('@set JobLevel 50')
+c.command('@set BaseLevel 83')
+c.command('@set Zeny 10000')
+c.command('@setbattleflag min_hitrate 100')
+def equip(p,item):
+    c.command(f'@item {item} 1')
+    transfer(c,p,slot(c,item))
+    assert 'Summoned' in f.note(f'summon {p}')
+    f.note(f'stop {p}')
+    assert 'equipped and saved' in f.note(f'equip {p} {held(p)[-1][0]}')
+    return int(f.row(p)[11])
+def rent(p):
+    assert 'Saving rental' in f.note(f'rent {p}')
+    f.eventually(lambda:f.row(p)[-2]=='1')
+f.select(kid,'spear')
+rent(kid)
+actor=equip(kid,1401)
+assert 'dismounted' in f.note(f'ride {kid} off')
+f.note(f'skills {kid} brandish')
+mob=egg(152,180)
+chat('hunt on')
+for _ in range(5):
+    packet=wait(c,lambda i,b:damage(i,b)[1:]==(actor,mob),10)
+    assert damage(int.from_bytes(packet[:2],'little'),packet)[0]==0
+f.note(f'stop {kid}')
+c.command('@killmonster2')
+assert 'mounted' in f.note(f'ride {kid} on')
+print('PASS dismounted spear Knight attacks without Brandish, then remounts')
+for key,sk in [('pierce',56),('spearstab',58),('spearboomerang',59),('brandish',57)]:
+    f.note(f'skills {kid} {key}')
+    mob=egg(152,180)
+    bystander=egg(153,181) if key in ('spearstab','brandish') else None
+    chat('hunt on')
+    if bystander:
+        wait(c,lambda i,b:damage(i,b)==(0,actor,mob),20)
+        assert hp(bystander)==60000,(key,bystander)
+        c.command(f'@huntremove {bystander}')
+    wait(c,lambda i,b:damage(i,b)==(sk,actor,mob),20)
+    print('PASS mounted native',key,flush=True)
+    f.note(f'stop {kid}')
+    c.command('@killmonster2')
+    time.sleep(1)
+f.note(f'bench {kid}')
+f.select(pid,'battle')
+actor=equip(pid,1501)
+f.note(f'assist {pid}')
+mob=egg(152,180)
+attack(c,mob)
+wait(c,lambda i,b:damage(i,b)==(0,actor,mob))
+c.command('@set Hp 10')
+skill(c,actor,28,owner)
+print('PASS mace Priest melees owner target and casts emergency Heal',flush=True)
+f.note(f'stop {pid}')
+c.command('@killmonster2')
+c.command('@heal')
+time.sleep(2)
+assert 'reserve' in f.note(f'bench {pid}').lower()
+f.note('recruit hunter')
+hid=int(next(t[1] for t in f.frames('list') if t[0]=='row' and t[2]=='11'))
+f.select(hid,'falcon')
+rent(hid)
+f.db.execute('insert into ragoff_companion_supply select id,owner_char,1750,50 from ragoff_companion where id=?',(hid,))
+assert 'Summoned' in f.note(f'summon {hid}')
+actor=int(f.row(hid)[11])
+target=egg(154,180)
+chat('hunt on')
+wait(c,lambda i,b:damage(i,b)==(129,actor,target),20)
+print('PASS Falcon build, native active Blitz and arrows',flush=True)
+c.close()
