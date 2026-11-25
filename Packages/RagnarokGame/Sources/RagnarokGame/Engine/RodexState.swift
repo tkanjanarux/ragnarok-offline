@@ -2,10 +2,13 @@ import Foundation
 import RagnarokPackets
 
 struct RodexState {
-    // Current deployed SQLite mail schema cannot generate an outgoing mail id.
-    // A zero-Zeny item draft additionally loses postage on rejection (isolated test).
-    // Keep receiving enabled; lift only after server send/refund integration passes.
-    static let outgoingUnavailable = "Sending mail is temporarily unavailable. You can still read mail and collect attachments."
+    static let outgoingUnavailable = "Sending mail is unavailable on this server. You can still read mail and collect attachments."
+    var outgoingAllowed = false
+    mutating func receiveCapability(_ message: String) -> Bool {
+        guard message == "[RAGOFF_CAPS] rodex_send_v1" else { return false }
+        if pending == .begin { outgoingAllowed = true }
+        return true
+    }
     enum Operation: Equatable { case list, begin, check(String), read(UInt64), attach(Int), remove(Int), send, claim(UInt64, Bool), delete(UInt64) }
     var visible = false
     var writing = false
@@ -40,6 +43,7 @@ extension PlaySession {
     }
     func beginRodex() {
         guard enchant.pending == nil, !buyingStore.busy, !vending.active, vending.purchase == nil, !rodex.busy, !trade.active, bank.pending == nil, cart.pending == nil else { return }
+        rodex.outgoingAllowed = false
         waitForRodex(.begin); sendFoundationPacket(RodexRequest.begin(""))
     }
     func closeRodex() {
@@ -75,9 +79,9 @@ extension PlaySession {
         guard rodex.writing, rodex.pending == nil, let checked = rodex.receiver, checked.CharId > 0, checked.Name == receiver,
               !title.isEmpty, title.utf8.count < 40, text.utf8.count < 500, !title.contains("\0"), !text.contains("\0"),
               let amount = UInt64(zeny.isEmpty ? "0" : zeny), amount <= UInt64(max(0,playerStatus.zeny)), amount <= 2_000_000_000 else { return }
-        rodex.message = RodexState.outgoingUnavailable
-        return
-        // Wire codec retained and covered by portable tests for the server repair.
+        guard rodex.outgoingAllowed else { rodex.message = RodexState.outgoingUnavailable; return }
+        waitForRodex(.send)
+        sendFoundationPacket(RodexRequest.send(receiver: receiver, sender: character.name, character: checked.CharId, title: title, text: text, zeny: amount))
 
     }
     func claimRodex(items: Bool) {

@@ -6,6 +6,19 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func outgoingMailRequiresThisSessionServerCapability() {
+        var state = RodexState()
+        #expect(!state.outgoingAllowed)
+        let consumed = state.receiveCapability("[RAGOFF_CAPS] rodex_send_v1"); #expect(consumed)
+        #expect(!state.outgoingAllowed)
+        state.pending = .begin
+        let ordinaryChat = state.receiveCapability("Someone : [RAGOFF_CAPS] rodex_send_v1"); #expect(!ordinaryChat)
+        #expect(!state.outgoingAllowed)
+        let allowed = state.receiveCapability("[RAGOFF_CAPS] rodex_send_v1"); #expect(allowed)
+        #expect(state.outgoingAllowed)
+        state = RodexState(); #expect(!state.outgoingAllowed)
+    }
+
     @Test func guildAlliancePacketsPreserveAccountAndCharacterIDs() throws {
         #expect(try PacketEncoder().encode(GuildRequest.alliance(17, 23, 91)) == Data([0x70,1,17,0,0,0,23,0,0,0,91,0,0,0]))
         #expect(try PacketEncoder().encode(GuildRequest.allianceReply(17, false)) == Data([0x72,1,17,0,0,0,0,0,0,0]))
@@ -203,8 +216,11 @@ struct ItemFoundationTests {
         let packet = try PACKET_ZC_ALL_ACH_LIST(from: BinaryDecoder(stream: MemoryStream(data: data)))
         var state = RewardState(); state.receive(packet)
         #expect(state.entries[120001]?.completed == true && state.entries[120001]?.rewarded == false)
-        let result = try AchievementRewardResult(from: BinaryDecoder(stream: MemoryStream(data: Data([0x26,0x0a,0,0xc1,0xd4,1,0]))))
+        let result = try AchievementRewardResult(from: BinaryDecoder(stream: MemoryStream(data: Data([0x26,0x0a,1,0xc1,0xd4,1,0]))))
         state.receive(result); #expect(state.entries[120001]?.rewarded == false)
+        let rejected = try AchievementRewardResult(from: BinaryDecoder(stream: MemoryStream(data: Data([0x26,0x0a,0,0xc1,0xd4,1,0]))))
+        state.pendingID = 120001; state.receive(rejected)
+        #expect(state.entries[120001]?.rewarded == false && state.pendingID == nil)
         state.pendingID = 120001; state.receive(result)
         #expect(state.entries[120001]?.rewarded == true && state.pendingID == nil)
         data[4] = 2

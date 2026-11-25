@@ -829,6 +829,7 @@ final class PlaySession {
             let message = ChatMessage(from: packet)
             messageCenter.add(message)
         case let packet as PACKET_ZC_NOTIFY_PLAYERCHAT:
+            if rodex.receiveCapability(packet.Message) { break }
             if companions.receive(packet.Message) { break }
             if packet.Message.hasPrefix(character.name + " : ") {
                 mapScene?.showPublicChat(packet.Message, from: account.accountID)

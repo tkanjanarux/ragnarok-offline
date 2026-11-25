@@ -118,6 +118,9 @@ struct GuildView: View {
                     HStack {
                         Text("\(skill.name) · Lv. \(skill.level)")
                         Spacer()
+                        if session.guild.master && skill.level > 0 && skill.inf != 0 {
+                            Button("Use") { session.useGuildSkill(id) }.frame(minHeight: 44).disabled(session.guild.pending != nil)
+                        }
                         if session.guild.master && skill.upFlag == 1 {
                             Button("Learn") { skillToLearn = id; confirming = "skill" }.frame(minHeight: 44)
                                 .disabled(session.guild.pending != nil || session.guild.skillPoints <= 0)

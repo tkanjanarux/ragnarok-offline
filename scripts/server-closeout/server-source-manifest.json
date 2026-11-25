@@ -1,0 +1,26 @@
+{
+  "src/char/int_mail.cpp": {
+    "base": "e9e2802492c2d8ea43449cbf4593b2a3bbc4ffa55e39224a59f4065560d1cb4b",
+    "patched": "a95c929b63ceb429ec5bba13f4cbaf7f75f2e3efb1877138448de1bd628a917b"
+  },
+  "src/char/int_guild.cpp": {
+    "base": "78d1a22523a22d56371c4bad7bc5e829e41d187d9af7be6583b0172a1d0294b1",
+    "patched": "0884cd97cddcdf49bd388255da4ce4025e03d8cd74933427d5358826d415800a"
+  },
+  "src/char/int_achievement.cpp": {
+    "base": "0881531f2c0601cd116126539fc4d0f83975f6adab95b42e71cd768b1f333d09",
+    "patched": "e33f5fc788892a622b7636a7b4edd3ea0619fbea8da449b1dafe11d50a84e4be"
+  },
+  "src/map/guild.cpp": {
+    "base": "7c629dbb769602b2ba55f011269ab628649680f89743788d384f0512b1aede67",
+    "patched": "559aa80807fc8aaec1c731c66d2f500ef742efa38c6db945de8f30f4f7a367dd"
+  },
+  "src/map/clif.cpp": {
+    "base": "430ad59e507503efafc36735b071c0b9a096d5c9a66f2cd3cbeeaa7af77afc1a",
+    "patched": "41e74e18c7544e0828971e4e0d57badd7a82d203a2e0ca143acc9e0ba395c7e6"
+  },
+  "src/map/mail.cpp": {
+    "base": "d25db844c6e16d8d278377135a546afe0618ee4c6fa71d3ed397f0caffb04310",
+    "patched": "dc503e5eac0543c228d4b3a9f5546ebfe4fbdda67c960d2a50c844e0fbd60c01"
+  }
+}

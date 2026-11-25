@@ -1,0 +1,2 @@
+# Preserve source CRLF and unified-diff context whitespace byte-for-byte.
+server-fixes.patch -text -whitespace

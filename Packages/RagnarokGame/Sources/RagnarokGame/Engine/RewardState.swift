@@ -32,9 +32,9 @@ struct RewardState {
     }
     mutating func receive(_ p: AchievementRewardResult) {
         guard pendingID == p.id else { return }
-        if p.result == 0 { entries[p.id]?.rewarded = true }
+        if p.result == 1 { entries[p.id]?.rewarded = true }
         pendingID = nil; token = nil
-        message = p.result == 0 ? "Reward claimed. Item rewards are delivered by mail." : "The server rejected this reward claim."
+        message = p.result == 1 ? "Reward claimed. Item rewards are delivered by mail." : "The server rejected this reward claim."
     }
 }
 

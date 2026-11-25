@@ -1,5 +1,6 @@
 import Foundation
 import RagnarokPackets
+import RagnarokModels
 
 struct GuildState {
     struct Member: Identifiable { var id: String { "\(data.AID):\(data.GID)" }; var data: GUILD_MEMBER_INFO }
@@ -83,6 +84,13 @@ extension PlaySession {
     func upgradeGuildSkill(_ id: UInt16) {
         guard guild.master, guild.pending == nil, guild.skillPoints > 0, guild.skills[id]?.upFlag == 1 else { return }
         guild.pendingSkill = id; waitForGuild(.skill); upgradeSkillLevel(skillID: Int(id))
+    }
+    func useGuildSkill(_ id: UInt16) {
+        guard guild.master, guild.pending == nil, let row = guild.skills[id], row.level > 0, row.inf != 0 else { return }
+        var skill = SkillInfo(); skill.skillID = Int(id); skill.level = Int(row.level); skill.flag = Int(row.inf)
+        guard !skill.isPassiveSkill else { return }
+        // The existing scene routes ground/target/self skills and server cooldowns.
+        mapScene?.useSkill(skill, level: skill.level)
     }
     func requestGuildAlliance() {
         guard guild.master, guild.pending == nil else { return }
