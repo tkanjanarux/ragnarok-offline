@@ -1,7 +1,11 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct GuildView: View {
     @Environment(PlaySession.self) private var session
+    @State private var importingEmblem = false
+    @State private var skillToLearn: UInt16?
+    @State private var relationToRemove: Int32?
     @State private var name = ""
     @State private var reason = ""
     @State private var subject = ""
@@ -38,6 +42,7 @@ struct GuildView: View {
                             Text(session.guild.subject).fontWeight(.bold)
                             Text(session.guild.notice)
                             Button("Refresh") { session.openGuild() }.frame(minHeight: 44)
+                            guildDetails
                             members
                             if session.guild.canInvite {
                                 TextField("Character name", text: $name).textFieldStyle(.roundedBorder)
@@ -51,10 +56,24 @@ struct GuildView: View {
                 }.font(.game(size: 13)).buttonStyle(.game)
             }
         }
+        .fileImporter(isPresented: $importingEmblem, allowedContentTypes: [.bmp]) { result in
+            do {
+                let url = try result.get()
+                let access = url.startAccessingSecurityScopedResource()
+                defer { if access { url.stopAccessingSecurityScopedResource() } }
+                guard let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize, size <= 1782 else {
+                    session.guild.message = "Choose a 24 × 24 BMP emblem, up to 1782 bytes."; return
+                }
+                session.uploadGuildEmblem(try Data(contentsOf: url))
+            } catch { session.guild.message = "The emblem file could not be opened." }
+        }
         .onAppear { subject = session.guild.subject; notice = session.guild.notice }
         .confirmationDialog(confirmationTitle, isPresented: Binding(get: { !confirming.isEmpty }, set: { if !$0 { confirming = "" } })) {
             Button("Confirm") {
                 switch confirming {
+                case "skill": if let skillToLearn { session.upgradeGuildSkill(skillToLearn) }
+                case "relation": if let relationToRemove { session.removeGuildRelation(relationToRemove) }
+                case "alliance": session.requestGuildAlliance()
                 case "create": session.createGuild(name)
                 case "leave": session.removeGuildMember(nil, reason: reason)
                 case "kick": if let member { session.removeGuildMember(member, reason: reason) }
@@ -72,12 +91,62 @@ struct GuildView: View {
     }
     private var confirmationTitle: String {
         switch confirming {
+        case "skill": "Spend one guild skill point?"
+        case "relation": "Remove this guild relationship?"
+        case "alliance": "Send an alliance invitation to the selected guild master?"
         case "create": "Create this guild and consume Emperium?"
         case "leave": "Leave this guild?"
         case "kick": "Expel \(member?.data.char_name ?? "member")?"
         case "position": position == 0 ? "Transfer guild leadership to \(member?.data.char_name ?? "member")?" : "Change this member's position?"
         case "disband": "Permanently disband this guild?"
         default: "Confirm guild change?"
+        }
+    }
+    @ViewBuilder private var guildDetails: some View {
+        DisclosureGroup("Emblem") {
+            if let bitmap = session.guild.emblemBitmap, let image = UIImage(data: bitmap) {
+                Image(uiImage: image).resizable().interpolation(.none).frame(width: 48, height: 48)
+            } else { Text("No emblem loaded.") }
+            if session.guild.master {
+                Button("Choose BMP emblem") { importingEmblem = true }.frame(minHeight: 44).disabled(session.guild.pending != nil)
+                Text("24 × 24 pixels · BMP · 8-bit or 24-bit")
+            }
+        }
+        DisclosureGroup("Guild skills (\(session.guild.skillPoints) points)") {
+            ForEach(session.guild.skills.keys.sorted(), id: \.self) { id in
+                if let skill = session.guild.skills[id] {
+                    HStack {
+                        Text("\(skill.name) · Lv. \(skill.level)")
+                        Spacer()
+                        if session.guild.master && skill.upFlag == 1 {
+                            Button("Learn") { skillToLearn = id; confirming = "skill" }.frame(minHeight: 44)
+                                .disabled(session.guild.pending != nil || session.guild.skillPoints <= 0)
+                        }
+                    }
+                }
+            }
+        }
+        DisclosureGroup("Alliances and opposition") {
+            if let invitation = session.guild.allianceInvitation {
+                Text("Alliance invitation: \(invitation.inviterGuildName)")
+                HStack {
+                    Button("Accept") { session.replyGuildAlliance(true) }
+                    Button("Decline") { session.replyGuildAlliance(false) }
+                }.frame(minHeight: 44).disabled(session.guild.pending != nil)
+            }
+            if session.guild.relations.isEmpty { Text("No guild relationships.") }
+            ForEach(session.guild.relations, id: \.GDID) { relation in
+                HStack {
+                    Text("\(relation.guildname) · \(relation.relation == 0 ? "Ally" : "Enemy")")
+                    if session.guild.master {
+                        Button("Remove") { relationToRemove = relation.GDID; confirming = "relation" }
+                            .frame(minHeight: 44).disabled(session.guild.pending != nil)
+                    }
+                }
+            }
+            if session.guild.master {
+                Button("Invite selected guild master") { confirming = "alliance" }.frame(minHeight: 44).disabled(session.guild.pending != nil)
+            }
         }
     }
     @ViewBuilder private var members: some View {

@@ -17,6 +17,11 @@ struct RewardState {
     var attendanceClaimed = false
     var attendanceWaiting: UUID?
     var attendanceMessage: String?
+    mutating func receiveAttendanceMessage(_ id: UInt16) {
+        guard id == 3474, attendanceVisible else { return }
+        attendanceAuthorized = false; attendanceWaiting = nil; attendanceCount = nil; attendanceClaimed = false
+        attendanceMessage = "There is no active Attendance event."
+    }
     mutating func receive(_ p: PACKET_ZC_ALL_ACH_LIST) {
         entries = Dictionary(p.entries.map { ($0.id, $0) }, uniquingKeysWith: { _, new in new })
         points = p.points; rank = p.rank; currentPoints = p.currentRankPoints; nextPoints = p.nextRankPoints

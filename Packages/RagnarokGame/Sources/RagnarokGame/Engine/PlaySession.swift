@@ -437,7 +437,10 @@ final class PlaySession {
         case let packet as PACKET_ZC_SKILLINFO_LIST:
             skillList.replace(from: packet)
         case let packet as PACKET_ZC_SKILLINFO_UPDATE:
-            skillList.update(from: packet)
+            if guild.skills[packet.skillId] != nil {
+                guild.skills[packet.skillId]?.level = packet.level
+                if guild.pendingSkill == packet.skillId { guild.pendingSkill = nil; guild.finish(.skill); sendFoundationPacket(GuildRequest.page(3)) }
+            } else { skillList.update(from: packet) }
         case let packet as PACKET_ZC_SKILLINFO_UPDATE2:
             skillList.update(from: packet)
         case let packet as PACKET_ZC_ADD_SKILL:
@@ -927,6 +930,26 @@ final class PlaySession {
         case let packet as PACKET_ZC_ACK_DELETE_MAIL:
             let id = UInt64(bitPattern: packet.MailID)
             if rodex.pending == .delete(id) { rodex.entries.removeAll { $0.id == id }; rodex.letter = nil; rodex.finish(.delete(id), message: "Mail deleted.") }
+        case let packet as PACKET_ZC_MSG_COLOR:
+            rewards.receiveAttendanceMessage(packet.MessageId)
+        case let packet as PACKET_ZC_GUILD_SKILLINFO:
+            if guild.id != nil { guild.skillPoints = packet.skillPoint; guild.skills = Dictionary(packet.skillInfo.map { ($0.id, $0) }, uniquingKeysWith: { _, new in new }) }
+        case let packet as PACKET_ZC_MYGUILD_BASIC_INFO:
+            if guild.id != nil { guild.relations = packet.rgInfo.filter { $0.GDID > 0 } }
+        case let packet as PACKET_ZC_REQ_ALLY_GUILD:
+            if guild.master { guild.allianceInvitation = packet; guild.visible = true }
+        case let packet as PACKET_ZC_ACK_REQ_ALLY_GUILD:
+            guild.finish(.alliance, message: packet.flag == 2 ? "Alliance accepted." : "Alliance request was not accepted (\(packet.flag)).")
+            sendFoundationPacket(GuildRequest.page(0))
+        case let packet as PACKET_ZC_DELETE_RELATED_GUILD:
+            guild.relations.removeAll { UInt32(bitPattern: $0.GDID) == packet.allyID && UInt32(bitPattern: $0.relation) == packet.flag }
+            guild.finish(.alliance, message: "Guild relationship removed.")
+        case let packet as GuildEmblemPacket:
+            receiveGuildEmblem(packet)
+        case let packet as PACKET_ZC_CHANGE_GUILD:
+            if guild.id == UInt32(bitPattern: packet.guild_id), packet.emblem_id > guild.emblemVersion {
+                sendFoundationPacket(GuildRequest.emblem(UInt32(bitPattern: packet.guild_id)))
+            }
         case let packet as GuildMemberStatus:
             if let index = guild.members.firstIndex(where: { $0.data.AID == packet.account && $0.data.GID == packet.character }) {
                 guild.members[index].data.currentState = Int32(clamping: packet.online)
@@ -937,6 +960,9 @@ final class PlaySession {
             if packet.GDID > 0 {
                 guild.id = UInt32(packet.GDID); guild.name = packet.guildname; guild.info = packet
                 guild.master = UInt32(bitPattern: packet.masterGID) == character.charID
+                if packet.emblemVersion > 0 && (guild.emblemBitmap == nil || UInt32(packet.emblemVersion) > guild.emblemVersion) {
+                    sendFoundationPacket(GuildRequest.emblem(UInt32(packet.GDID)))
+                }
                 guild.finish(.join)
             }
         case let packet as PACKET_ZC_MEMBERMGR_INFO:

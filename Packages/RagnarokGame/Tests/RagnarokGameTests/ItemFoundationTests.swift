@@ -6,6 +6,45 @@ import Testing
 @testable import RagnarokGame
 
 struct ItemFoundationTests {
+    @Test func guildAlliancePacketsPreserveAccountAndCharacterIDs() throws {
+        #expect(try PacketEncoder().encode(GuildRequest.alliance(17, 23, 91)) == Data([0x70,1,17,0,0,0,23,0,0,0,91,0,0,0]))
+        #expect(try PacketEncoder().encode(GuildRequest.allianceReply(17, false)) == Data([0x72,1,17,0,0,0,0,0,0,0]))
+        #expect(try PacketEncoder().encode(GuildRequest.removeRelation(91, 1)) == Data([0x83,1,91,0,0,0,1,0,0,0]))
+        #expect(throws: SocialPacketError.self) { try PacketEncoder().encode(GuildRequest.removeRelation(91, 2)) }
+    }
+    @Test func legacyEmblemPreservesBinaryAndRejectsBadLength() throws {
+        let bytes = Data([0x52,1,16,0,21,0,0,0,3,0,0,0,0x78,0x9c,0xff,0])
+        let p = try GuildEmblemPacket(from: BinaryDecoder(stream: MemoryStream(data: bytes)))
+        #expect(p.guildID == 21 && p.version == 3 && p.compressed == [0x78,0x9c,0xff,0])
+        #expect(throws: PacketDecodingError.self) { try GuildEmblemPacket(from: BinaryDecoder(stream: MemoryStream(data: Data([0x52,1,11,0])))) }
+        #expect(try PacketEncoder().encode(GuildRequest.uploadEmblem(p.compressed)) == Data([0x53,1,8,0,0x78,0x9c,0xff,0]))
+    }
+    @Test func emblemRequiresActual24PixelUncompressedBitmap() {
+        var b = [UInt8](repeating: 0, count: 1782)
+        func put(_ index: Int, _ value: UInt32) { for j in 0..<4 { b[index+j] = UInt8(truncatingIfNeeded: value >> (j*8)) } }
+        b[0] = 0x42; b[1] = 0x4d; put(2,1782); put(10,54); put(14,40); put(18,24); put(22,24); b[26] = 1; b[28] = 24
+        #expect(GuildBitmap.isValid(Data(b)))
+        put(18,32); #expect(!GuildBitmap.isValid(Data(b)))
+        put(18,24); put(30,1); #expect(!GuildBitmap.isValid(Data(b)))
+        put(30,0); put(10,1781); #expect(!GuildBitmap.isValid(Data(b)))
+        #expect(!GuildBitmap.isValid(Data(b.prefix(53))))
+    }
+    @Test func guildChangeClearsEmblemSkillsAndPendingAuthority() {
+        var s = GuildState(); s.id = 12; s.emblemBitmap = Data([1]); s.emblemVersion = 8
+        s.pending = .emblem; s.submittedEmblem = [1]; s.master = true
+        var skill = GUILD_SKILLDATA(); skill.id = 10000; s.skills[10000] = skill
+        var p = PACKET_ZC_UPDATE_GDID(); p.guildId = 13; p.isMaster = 0
+        s.receive(p)
+        #expect(s.skills.isEmpty && s.emblemBitmap == nil && s.pending == nil && !s.master && s.submittedEmblem == nil)
+    }
+    @Test func attendanceUsesExplicitServerNoEventReply() {
+        var s = RewardState(); s.attendanceVisible = true; s.attendanceAuthorized = true; s.attendanceWaiting = UUID()
+        s.receiveAttendanceMessage(1); #expect(s.attendanceWaiting != nil)
+        s.receiveAttendanceMessage(3474)
+        #expect(!s.attendanceAuthorized && s.attendanceWaiting == nil && s.attendanceCount == nil)
+        #expect(s.attendanceMessage == "There is no active Attendance event.")
+    }
+
     @Test func followerManualCommandsUseOwnedActorAndPackedDestination() throws {
         var move = PACKET_CZ_REQUEST_MOVENPC(); move.packetType = 0x232; move.GID = 0x12345678; move.PosDir = [0xff, 0xff, 0xf0]
         #expect(try PacketEncoder().encode(move) == Data([0x32,2,0x78,0x56,0x34,0x12,0xff,0xff,0xf0]))

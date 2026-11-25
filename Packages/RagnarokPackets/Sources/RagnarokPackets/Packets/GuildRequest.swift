@@ -4,11 +4,24 @@ public enum GuildRequest: EncodablePacket {
     case remove(guild: UInt32, account: UInt32, character: UInt32, reason: String, kick: Bool)
     case disband(String), notice(UInt32, String, String), memberPosition(UInt32, UInt32, Int32)
     case position(Int32, Int32, Int32, String)
+    case alliance(UInt32, UInt32, UInt32), allianceReply(UInt32, Bool), removeRelation(UInt32, UInt32)
+    case emblem(UInt32), uploadEmblem([UInt8])
     public func encode(to encoder: BinaryEncoder) throws {
         func validate(_ text: String, _ limit: Int) throws {
             guard text.utf8.count < limit, !text.contains("\0") else { throw SocialPacketError.invalidText }
         }
         switch self {
+        case let .alliance(target, account, character):
+            try encoder.encode(UInt16(0x170)); try encoder.encode(target); try encoder.encode(account); try encoder.encode(character)
+        case let .allianceReply(account, accept):
+            try encoder.encode(UInt16(0x172)); try encoder.encode(account); try encoder.encode(UInt32(accept ? 1 : 0))
+        case let .removeRelation(id, relation):
+            guard relation <= 1 else { throw SocialPacketError.invalidText }
+            try encoder.encode(UInt16(0x183)); try encoder.encode(id); try encoder.encode(relation)
+        case .emblem(let id): try encoder.encode(UInt16(0x151)); try encoder.encode(id)
+        case .uploadEmblem(let bytes):
+            guard !bytes.isEmpty, bytes.count <= 2048 else { throw SocialPacketError.invalidText }
+            try encoder.encode(UInt16(0x153)); try encoder.encode(UInt16(bytes.count + 4)); try encoder.encode(bytes)
         case .access: try encoder.encode(UInt16(0x14d))
         case .page(let page): try encoder.encode(UInt16(0x14f)); try encoder.encode(page)
         case let .create(account, name):
@@ -42,5 +55,21 @@ public struct GuildMemberStatus: DecodablePacket {
         _ = try decoder.decode(UInt16.self); account = try decoder.decode(UInt32.self); character = try decoder.decode(UInt32.self)
         online = try decoder.decode(UInt32.self); gender = try decoder.decode(UInt16.self); hair = try decoder.decode(UInt16.self)
         _ = try decoder.decode(UInt16.self) // hair color
+    }
+}
+
+/// The legacy map-server reply has a 12-byte header and binary zlib bytes.
+/// It is distinct from the newer web-emblem 0xb36 reply.
+public struct GuildEmblemPacket: DecodablePacket {
+    public static let size = -1
+    public let guildID: UInt32
+    public let version: UInt32
+    public let compressed: [UInt8]
+    public init(from decoder: BinaryDecoder) throws {
+        let type = try decoder.decode(Int16.self)
+        let length = Int(try decoder.decode(UInt16.self))
+        guard type == 0x152, (13...2060).contains(length) else { throw PacketDecodingError.invalidPacketLength(type, length) }
+        guildID = try decoder.decode(UInt32.self); version = try decoder.decode(UInt32.self)
+        compressed = try decoder.decode([UInt8].self, count: length - 12)
     }
 }
