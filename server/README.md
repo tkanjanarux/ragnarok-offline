@@ -7,7 +7,7 @@ Two profiles are intentional. `production` matches the main backend source deplo
 ## Clone and reconstruct
 
 ```sh
-git clone --recurse-submodules https://github.com/tkanjanarux/ragnarok-offline.git
+git clone --branch main --recurse-submodules https://github.com/tkanjanarux/ragnarok-offline.git
 cd ragnarok-offline
 python3 server/prepare.py production --output build/server-production --with-runtime-templates
 python3 server/prepare.py playable --output build/server-playable --with-runtime-templates
