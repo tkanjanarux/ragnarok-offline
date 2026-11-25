@@ -1,0 +1,21 @@
+prontera,153,181,4	script	Farm Test Guide	4_M_KNIGHT_BLACK,{
+ if (getcharid(0) != 1 && !FarmTestKnightId) close;
+ mes "[Farm Test Guide]";
+ mes "Team test: five companions. Choose your field after preparing the party.";
+ switch(select("Prepare 5 companions and Assist:Geffen Field 06 (234,156):Orc Dungeon 1:Sphinx 2:Pyramid 5:Knight Puller build (Reserve first):Knight Sword build (Reserve first):Owner pulls (select only, then start in field):Orc Field - last camp (154,294):Orc Field - south camp (198,161):Stay here")){
+ case 1:
+  close2;
+  atcommand "@companion fieldteam";
+  end;
+ case 2: warp "gef_fild06",234,156; end;
+ case 9: warp "gef_fild10",154,294; end;
+ case 10: warp "gef_fild10",198,161; end;
+ case 3: warp "orcsdun01",66,63; end;
+ case 4: warp "in_sphinx2",150,147; end;
+ case 5: warp "moc_pryd05",117,120; end;
+ case 6: close2; atcommand "@companion build "+(FarmTestKnightId ? FarmTestKnightId : 2)+" puller"; end;
+ case 8: close2; atcommand "@companion mob puller owner"; end;
+ case 7: close2; atcommand "@companion build "+(FarmTestKnightId ? FarmTestKnightId : 2)+" sword"; end;
+ }
+ close;
+}

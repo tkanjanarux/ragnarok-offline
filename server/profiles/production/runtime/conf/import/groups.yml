@@ -1,0 +1,28 @@
+Header:
+  Type: PLAYER_GROUP_DB
+  Version: 1
+
+Body:
+  - Id: 0
+    Commands:
+      companion: true
+      mapmove: true
+      jobchange: true
+      alive: true
+      heal: true
+      item: true
+      baselevelup: true
+      joblevelup: true
+      monster: true
+      zeny: true
+      str: true
+      agi: true
+      vit: true
+      int: true
+      dex: true
+      luk: true
+      mount_peco: true
+      autoloot: true
+      effect: true
+    Permissions:
+      any_warp: true

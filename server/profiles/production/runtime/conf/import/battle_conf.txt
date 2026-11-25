@@ -1,0 +1,14 @@
+area_size: 26
+max_walk_path: 32
+// EXP rate: 100 = 1x, 300 = 3x
+base_exp_rate: 300
+job_exp_rate: 300
+
+// RagOff companion
+companion_enable: 1
+companion_owner_progression: 1
+companion_loadouts: 1
+companion_supplies: 1
+
+item_drop_card_min: 100
+item_drop_card_max: 100

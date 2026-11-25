@@ -1,0 +1,46 @@
+{
+  "production": {
+    "deployed_at_utc": "2026-11-25T03:46:33Z",
+    "packetver": 20211103,
+    "binary_sha256": {
+      "char-server": "73a6b0880007472e6d468f367771209e668d3082a30d594820123539cdf7346d",
+      "map-server": "0c196f13e00e7f40042d4513a76a7506543cdba2be33496853dac232d9413ecb"
+    },
+    "migration_tables": [
+      "mail",
+      "guild"
+    ],
+    "all_83_existing_tables_preserved": true,
+    "integrity": "ok",
+    "foreign_key_violations": 0,
+    "smoke": [
+      "mail capability, cancel, reject, attachments, zeny, duplicate send/claim, reconnect",
+      "guild create, duplicate name, Emperium conservation, disband",
+      "achievement persistence, duplicate claim after reconnect",
+      "Attendance explicit no-event"
+    ],
+    "production_player_accounts_used_for_tests": false
+  },
+  "playable": {
+    "deployed_at_utc": "2026-11-25T03:47:48Z",
+    "packetver": 20211103,
+    "binary_sha256": {
+      "char-server": "73a6b0880007472e6d468f367771209e668d3082a30d594820123539cdf7346d",
+      "map-server": "e6e89e6bbfe9228b4a1c4457f6c77fe671d942f1ee51236a6fbf852ee494c11a"
+    },
+    "migration_tables": [
+      "mail",
+      "guild"
+    ],
+    "all_83_existing_tables_preserved": true,
+    "integrity": "ok",
+    "foreign_key_violations": 0,
+    "smoke": [
+      "mail capability, cancel, reject, attachments, zeny, duplicate send/claim, reconnect",
+      "guild create, duplicate name, Emperium conservation, disband",
+      "achievement persistence, duplicate claim after reconnect",
+      "Attendance explicit no-event"
+    ],
+    "production_player_accounts_used_for_tests": false
+  }
+}

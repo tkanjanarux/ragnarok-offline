@@ -1,0 +1,192 @@
+{
+  "client_refs": [
+    {
+      "original_ref": "refs/heads/archive/local-ui-snapshot-20261125",
+      "commit": "c8e232ff7e4ac1126375f335c96871b5ef4d2b7e",
+      "archive_tag": "archive/2026-11-25/local/archive/local-ui-snapshot-20261125"
+    },
+    {
+      "original_ref": "refs/heads/client-potions-quests",
+      "commit": "1862f4e143b155b3f6f5a0521b4f4a2e59f46e4f",
+      "archive_tag": "archive/2026-11-25/local/client-potions-quests"
+    },
+    {
+      "original_ref": "refs/heads/master",
+      "commit": "2b6f1233cbca9bf17568e22865c05b16625f6c67",
+      "archive_tag": "archive/2026-11-25/local/master"
+    },
+    {
+      "original_ref": "refs/heads/qa-effect-ipa-b7b825a",
+      "commit": "8faffec45abb905f28bb43fe23cdacdc4f8bb4d4",
+      "archive_tag": "archive/2026-11-25/local/qa-effect-ipa-b7b825a"
+    },
+    {
+      "original_ref": "refs/heads/qa-fx-b7b825a",
+      "commit": "d55d846aaa2ce39f1ce97228698a441065e48382",
+      "archive_tag": "archive/2026-11-25/local/qa-fx-b7b825a"
+    },
+    {
+      "original_ref": "refs/heads/qa-ground-artifact-e65916f",
+      "commit": "8f3b9a48376dd9a9dbb5b2cba987a9af87ab39e0",
+      "archive_tag": "archive/2026-11-25/local/qa-ground-artifact-e65916f"
+    },
+    {
+      "original_ref": "refs/heads/qa-ground-e65916f",
+      "commit": "caaefe21a1a10f7754457c736edae7e0d8179457",
+      "archive_tag": "archive/2026-11-25/local/qa-ground-e65916f"
+    },
+    {
+      "original_ref": "refs/heads/qa/companion-window-simulator",
+      "commit": "573c6aba1f9f4a2c2550c0e8a618adb06594ed02",
+      "archive_tag": "archive/2026-11-25/local/qa/companion-window-simulator"
+    },
+    {
+      "original_ref": "refs/heads/qa/navigation-20261124",
+      "commit": "cb3fc336a0ee291a0b6454d8e04d40e202dedf38",
+      "archive_tag": "archive/2026-11-25/local/qa/navigation-20261124"
+    },
+    {
+      "original_ref": "refs/heads/qa/party-minimap-20261124",
+      "commit": "e8651f58a29fac18b305d8aefa372d59295831e7",
+      "archive_tag": "archive/2026-11-25/local/qa/party-minimap-20261124"
+    },
+    {
+      "original_ref": "refs/heads/qa/ro-foundations-20261125",
+      "commit": "57c5a833763145b00e9718145853d9ba9ad7cb93",
+      "archive_tag": "archive/2026-11-25/local/qa/ro-foundations-20261125"
+    },
+    {
+      "original_ref": "refs/heads/qa/ro-foundations-server-closeout-20261125",
+      "commit": "479369736b00dbde07fb3a492b7fc55492e8779a",
+      "archive_tag": "archive/2026-11-25/local/qa/ro-foundations-server-closeout-20261125"
+    },
+    {
+      "original_ref": "refs/heads/verify-companion-thai-2847c1b",
+      "commit": "488406eb5a2dc47a88f4549f4d9481aedf5f41e6",
+      "archive_tag": "archive/2026-11-25/local/verify-companion-thai-2847c1b"
+    },
+    {
+      "original_ref": "refs/remotes/fork/check-duo-bottom-1718452",
+      "commit": "e56821b6653787fee4aa6008013f8f25f9258c23",
+      "archive_tag": "archive/2026-11-25/remote/check-duo-bottom-1718452"
+    },
+    {
+      "original_ref": "refs/remotes/fork/check-duo-hud-986fab8",
+      "commit": "5cfb751ae69ae5f0b221ca429d98c31c84b98045",
+      "archive_tag": "archive/2026-11-25/remote/check-duo-hud-986fab8"
+    },
+    {
+      "original_ref": "refs/remotes/fork/check-duo-panels-5956fd2",
+      "commit": "b8b5cc24f2807f10349ae5ee70d5d7dfd9bcb4da",
+      "archive_tag": "archive/2026-11-25/remote/check-duo-panels-5956fd2"
+    },
+    {
+      "original_ref": "refs/remotes/fork/client-potions-quests",
+      "commit": "1862f4e143b155b3f6f5a0521b4f4a2e59f46e4f",
+      "archive_tag": "archive/2026-11-25/remote/client-potions-quests"
+    },
+    {
+      "original_ref": "refs/remotes/fork/master",
+      "commit": "2b6f1233cbca9bf17568e22865c05b16625f6c67",
+      "archive_tag": "archive/2026-11-25/remote/master"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa-effect-ipa-b7b825a",
+      "commit": "85764dd6e0ba377268ed929f6c951bc7623a6212",
+      "archive_tag": "archive/2026-11-25/remote/qa-effect-ipa-b7b825a"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa-fx-b7b825a",
+      "commit": "d55d846aaa2ce39f1ce97228698a441065e48382",
+      "archive_tag": "archive/2026-11-25/remote/qa-fx-b7b825a"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa-ground-artifact-e65916f",
+      "commit": "6c8745d0be6989d3b81f49d335a379aa213a0914",
+      "archive_tag": "archive/2026-11-25/remote/qa-ground-artifact-e65916f"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa-ground-e65916f",
+      "commit": "caaefe21a1a10f7754457c736edae7e0d8179457",
+      "archive_tag": "archive/2026-11-25/remote/qa-ground-e65916f"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-cancel-superseded",
+      "commit": "ec5bdf9136c59c2d4f6effffdff6861220b70bd3",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-cancel-superseded"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-capture-export",
+      "commit": "423e146e63aaa0e8597b739993855974d2cdf5d2",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-capture-export"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-captured-frames",
+      "commit": "7977c65b477566300be26434ed5ee3d9f0ab92ae",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-captured-frames"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-native-result",
+      "commit": "11afa77eb1c870dc8811cdbb57048eb29aa48a79",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-native-result"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-report-45002476354",
+      "commit": "c686557bec735c89f641b50a337c1aae50e2d489",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-report-45002476354"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-report-45003019695",
+      "commit": "4b1e14b52c0060337d925198df2f93894445e885",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-report-45003019695"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-simulator-diagnostics",
+      "commit": "fce95cc43ac0fdc6d0eeed718a4d0640cb900223",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-simulator-diagnostics"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-window-interactions",
+      "commit": "2acc9d84eb72e03c35adb3c691b92261d236e8ef",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-window-interactions"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/companion-window-simulator",
+      "commit": "573c6aba1f9f4a2c2550c0e8a618adb06594ed02",
+      "archive_tag": "archive/2026-11-25/remote/qa/companion-window-simulator"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/navigation-20261124",
+      "commit": "cb3fc336a0ee291a0b6454d8e04d40e202dedf38",
+      "archive_tag": "archive/2026-11-25/remote/qa/navigation-20261124"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/party-minimap-20261124",
+      "commit": "e8651f58a29fac18b305d8aefa372d59295831e7",
+      "archive_tag": "archive/2026-11-25/remote/qa/party-minimap-20261124"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/ro-foundations-20261125",
+      "commit": "57c5a833763145b00e9718145853d9ba9ad7cb93",
+      "archive_tag": "archive/2026-11-25/remote/qa/ro-foundations-20261125"
+    },
+    {
+      "original_ref": "refs/remotes/fork/qa/ro-foundations-server-closeout-20261125",
+      "commit": "479369736b00dbde07fb3a492b7fc55492e8779a",
+      "archive_tag": "archive/2026-11-25/remote/qa/ro-foundations-server-closeout-20261125"
+    },
+    {
+      "original_ref": "refs/remotes/fork/verify-companion-thai-2847c1b",
+      "commit": "488406eb5a2dc47a88f4549f4d9481aedf5f41e6",
+      "archive_tag": "archive/2026-11-25/remote/verify-companion-thai-2847c1b"
+    }
+  ],
+  "stopped_companion": {
+    "tag": "archive/2026-11-25/stopped-companion-experiments",
+    "commit": "8eac6babba18e5deeea965687d7f87d77a41ac22",
+    "tree": "6f7bc7822fdbe9ec23208dcf10d020ddc7978e0f",
+    "files": 247,
+    "private_local_snapshot": "9912035ca1d3144ed04953c3bd388ea7868df55a"
+  },
+  "private_backup_policy": "Full raw workspaces, bundles and excluded evidence remain owner-private; no player DB, credentials, binaries, GRF or runtime logs published."
+}

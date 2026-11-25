@@ -1,0 +1,22 @@
+{
+  "ui_commit": "57c5a833763145b00e9718145853d9ba9ad7cb93",
+  "server_patch_commit": "479369736b00dbde07fb3a492b7fc55492e8779a",
+  "ui_application_source_unchanged": true,
+  "portable_tests": {
+    "passed": 27,
+    "swift": "6.2",
+    "network": "disabled Docker"
+  },
+  "migration_tests": {
+    "passed": 4
+  },
+  "reconstructed_server_source_files": {
+    "production": 3228,
+    "playable": 3230
+  },
+  "simulator": "Not run, per user instruction",
+  "device_visual_verification": "Not performed",
+  "consolidation_deployment": "None; running services were not restarted",
+  "existing_ipa_sha256": "bec3e73bd2458c1c7faccbd25b0328cba844f184fc57c2cf99f79df22fc2f289",
+  "ipa_build_run": "https://github.com/tkanjanarux/ragnarok-offline/actions/runs/45527290839"
+}

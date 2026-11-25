@@ -1,0 +1,2 @@
+# Preserve deployed patch/config bytes, including intentional whitespace.
+profiles/** -text -whitespace

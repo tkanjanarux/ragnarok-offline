@@ -1,3 +1,5 @@
+> **Canonical RagOff baseline:** shipped iOS UI + reproducible production/playable server profiles. See [baseline documentation](docs/baseline/README.md) and [native server build instructions](server/README.md).
+
 # Ragnarok Offline
 
 ![Ragnarok Offline on iPhone Duo](Screenshots/Simulator%20Screenshot%20-%20iPhone%20Duo.png)

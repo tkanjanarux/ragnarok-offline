@@ -1,0 +1,2550 @@
+--- a/src/map/battle.cpp
++++ b/src/map/battle.cpp
+@@ -1303,7 +1303,7 @@
+ 		// Pressure usually won't reach this code in pre-renewal and does consequently not remove Kyrie
+ 		// But it's still coded to do that - this reflects how it is done officially
+ 		if ((--sce->val3) <= 0 || (sce->val2 <= 0) || skill_id == AL_HOLYLIGHT || skill_id == PA_PRESSURE)
+-			status_change_end(target, SC_KYRIE);
++			{ ShowInfo("B_BREAK %lld %d %d %d\n",(long long)gettick(),target->id,sce->val2,sce->val3); status_change_end(target, SC_KYRIE); }
+ 	}
+ 
+ 	int32 element;
+--- a/src/map/mob.cpp
++++ b/src/map/mob.cpp
+@@ -1,3 +1,4 @@
++#include "audit.hpp"
+ #include "population_engine/minimal.hpp"
+ #include "population_engine/progression.hpp"
+ // Copyright (c) rAthena Dev Teams - Licensed under GNU GPL
+@@ -1035,7 +1036,7 @@
+ 		&& md->target_id == 0)
+ 	{
+ 		md->last_linktime = tick;
+-		md->target_id = target_id;
++		do { auto prior=md->target_id; md->target_id = target_id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 		return 1;
+ 	}
+ 
+@@ -1176,7 +1177,7 @@
+ 	status_calc_mob(md, SCO_FIRST);
+ 	md->attacked_id = 0;
+ 	md->norm_attacked_id = 0;
+-	md->target_id = 0;
++	do { auto prior=md->target_id; md->target_id = 0; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 	md->move_fail_count = 0;
+ 	md->ud.state.attack_continue = 0;
+ 	md->ud.target_to = 0;
+@@ -1303,7 +1304,7 @@
+ 	if(!status_check_skilluse(md, bl, 0, 0))
+ 		return 0;
+ 
+-	md->target_id = bl->id;	// Since there was no disturbance, it locks on to target.
++	do { auto prior=md->target_id; md->target_id = bl->id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);	// Since there was no disturbance, it locks on to target.
+ 	if (md->state.provoke_flag && bl->id != md->state.provoke_flag)
+ 		md->state.provoke_flag = 0;
+ 	// When an angry monster is provoked, it will switch to retaliate AI
+@@ -1360,7 +1361,7 @@
+ 			return 0;
+ #endif
+ 		(*target) = bl;
+-		md->target_id=bl->id;
++		do { auto prior=md->target_id; md->target_id=bl->id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 		return 1;
+ 
+ 	}
+@@ -1388,7 +1389,7 @@
+ 	if(battle_check_range (md, bl, md->status.rhw.range))
+ 	{
+ 		(*target) = bl;
+-		md->target_id=bl->id;
++		do { auto prior=md->target_id; md->target_id=bl->id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 	}
+ 	return 1;
+ }
+@@ -1430,7 +1431,7 @@
+ 		))
+ 	{
+ 		(*target) = bl;
+-		md->target_id = bl->id;
++		do { auto prior=md->target_id; md->target_id = bl->id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 	}
+ 
+ 	return 0;
+@@ -1613,7 +1614,7 @@
+ 			if (tbl != nullptr) {
+ 				md->last_linktime = tick;
+ 				if (status_check_skilluse(md, tbl, 0, 0)) {
+-					md->target_id = tbl->id;
++					do { auto prior=md->target_id; md->target_id = tbl->id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 					return 1;
+ 				}
+ 			}
+@@ -1657,7 +1658,7 @@
+ 		break;
+ 	}
+ 	if (md->target_id) {
+-		md->target_id=0;
++		do { auto prior=md->target_id; md->target_id=0; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 		unit_set_target(&md->ud, 0);
+ 	}
+ 	md->ud.state.attack_continue = 0;
+@@ -1866,7 +1867,7 @@
+ 
+ 	// Abnormalities
+ 	if(( md->sc.opt1 && md->sc.opt1 != OPT1_STONEWAIT && md->sc.opt1 != OPT1_BURNING ) || status_db.hasSCF(&md->sc, SCF_MOBLOSETARGET)) {//Should reset targets.
+-		md->target_id = md->attacked_id = md->norm_attacked_id = 0;
++		do { auto prior=md->target_id; md->target_id = md->attacked_id = md->norm_attacked_id = 0; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 		return false;
+ 	}
+ 
+@@ -1987,7 +1988,7 @@
+ 			else
+ 			{ //Attackable
+ 				//If a monster can change the target to the attacker, it will change the target
+-				md->target_id = md->attacked_id; // set target
++				do { auto prior=md->target_id; md->target_id = md->attacked_id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false); // set target
+ 				if (md->state.attacked_count)
+ 					md->state.attacked_count--; //Should we reset rude attack count?
+ 				tbl = abl; //Set the new target
+@@ -2938,6 +2939,8 @@
+  *------------------------------------------*/
+ int32 mob_dead(mob_data *md, block_list *src, int32 type)
+ {
++if(kt_owner(md))ShowInfo("KT_KILL %lld id=%d species=%d killer=%d\n",(long long)gettick(),md->id,md->mob_id,src?src->id:0);
++ShowInfo("B_KILL %lld %d %d %d\n",(long long)gettick(),md->id,md->mob_id,src?src->id:0);
+ 	struct status_data *status;
+ 	map_session_data *sd = nullptr, *tmpsd[DAMAGELOG_SIZE];
+ 	map_session_data *first_sd = nullptr, *second_sd = nullptr, *third_sd = nullptr;
+@@ -3902,7 +3905,7 @@
+ 		md->lootitems = (struct s_mob_lootitem *)aCalloc(LOOTITEM_SIZE,sizeof(struct s_mob_lootitem));
+ 
+ 	//Targets should be cleared no morph
+-	md->target_id = md->attacked_id = md->norm_attacked_id = 0;
++	do { auto prior=md->target_id; md->target_id = md->attacked_id = md->norm_attacked_id = 0; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 
+ 	//Need to update name display.
+ 	clif_name_area(md);
+@@ -4554,7 +4557,7 @@
+ 
+ 	target_id = md->target_id;
+ 	if (!target_id || battle_config.mob_changetarget_byskill)
+-		md->target_id = src->id;
++		do { auto prior=md->target_id; md->target_id = src->id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 
+ 	if (flag == -1)
+ 		res = mobskill_use(md, tick, MSC_CASTTARGETED);
+@@ -4569,10 +4572,10 @@
+ 
+ 	if (!res)
+ 	//Restore previous target only if skill condition failed to trigger. [Skotlex]
+-		md->target_id = target_id;
++		do { auto prior=md->target_id; md->target_id = target_id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 	//Otherwise check if the target is an enemy, and unlock if needed.
+ 	else if (battle_check_target(md, src, BCT_ENEMY) <= 0)
+-		md->target_id = target_id;
++		do { auto prior=md->target_id; md->target_id = target_id; if(prior!=md->target_id && kt_owner(md))ShowInfo("KT_AGGRO %lld id=%d from=%d to=%d\n",(long long)gettick(),md->id,prior,md->target_id); if(prior!=md->target_id)ShowInfo("B_AGGRO %lld %d %d %d\n",(long long)gettick(),md->id,prior,md->target_id); } while(false);
+ 
+ 	return res;
+ }
+--- a/src/map/pc.cpp
++++ b/src/map/pc.cpp
+@@ -1,3 +1,4 @@
++#include "audit.hpp"
+ // Copyright (c) rAthena Dev Teams - Licensed under GNU GPL
+ // For more information, see LICENCE in the main folder
+ 
+@@ -6545,6 +6546,7 @@
+ 	    potion_flag = 2; // Famous player's potions have 50% more efficiency
+ 
+ 	//Update item use time.
++	if(nameid==11623 && kt_owner(sd))ShowInfo("KT_ITEM %lld owner=%d item=11623 walking=%d remaining_stack=%d\n",(long long)gettick(),sd->status.char_id,int(sd->ud.walktimer!=INVALID_TIMER),int(amount)-1);
+ 	sd->canuseitem_tick = tick + battle_config.item_use_interval;
+ 	if( itemdb_group.item_exists(IG_CASH_FOOD, nameid) )
+ 		sd->canusecashfood_tick = tick + battle_config.cashfood_use_interval;
+@@ -8512,7 +8514,8 @@
+ 		}
+ 	}
+ 
+-	// Give EXP for Base Level
++	ShowInfo("B_EXP %lld %d %lld %lld %d %d %d\n",(long long)gettick(),sd->id,(long long)base_exp,(long long)job_exp,src?src->id:0,src?src->x:0,src?src->y:0);
++// Give EXP for Base Level
+ 	if (base_exp) {
+ 		sd->status.base_exp = util::safe_addition_cap(sd->status.base_exp, base_exp, MAX_EXP);
+ 
+@@ -9884,7 +9887,8 @@
+ 
+ 	clif_party_dead( *sd );
+ 
+-	pc_setparam(sd, SP_PCDIECOUNTER, sd->die_counter+1);
++	ShowInfo("B_DEATH %lld %d %d %d %d %d\n",(long long)gettick(),sd->id,src?src->id:0,sd->m,sd->x,sd->y);
++pc_setparam(sd, SP_PCDIECOUNTER, sd->die_counter+1);
+ 	pc_setparam(sd, SP_KILLERRID, src?src->id:0);
+ 
+ 	if (battle_config.loose_ap_on_death == 1)
+--- /dev/null
++++ b/src/map/population_engine/audit.hpp
+@@ -0,0 +1,7 @@
++#pragma once
++struct block_list;
++struct s_skill_unit_group;
++int kt_owner(const block_list*);
++void kt_field(const s_skill_unit_group&,bool,int,int);
++void kt_damage(const block_list*,const block_list*,int,unsigned,unsigned);
++void kt_contact(int,const block_list*);
+--- a/src/map/population_engine/build.cpp
++++ b/src/map/population_engine/build.cpp
+@@ -11,14 +11,14 @@
+  switch(build){
+  case Build::legacy: switch(companion_progression::career(job)){
+   case JOB_KNIGHT:return "sword";case JOB_PRIEST:return "support";case JOB_HUNTER:return "double";default:return "bolt";}
+- case Build::mobber:return "mobber"; case Build::spear:return "spear"; case Build::battle:return "battle";case Build::falcon:return "falcon";
++ case Build::mobber:return companion_progression::career(job)==JOB_KNIGHT?"puller":"mobber"; case Build::spear:return "spear"; case Build::battle:return "battle";case Build::falcon:return "falcon";
+  case Build::storm:return "storm";case Build::vermilion:return "vermilion";case Build::pillar:return "pillar";default:return "unavailable";
+  }
+ }
+ Build parse(uint32 job,const std::string& key){
+  if(key==name(job,Build::legacy))return Build::legacy;
+  switch(companion_progression::career(job)){
+- case JOB_KNIGHT:if(key=="spear")return Build::spear;break;
++ case JOB_KNIGHT:if(key=="puller" || key=="mobber")return Build::mobber;if(key=="spear")return Build::spear;break;
+  case JOB_PRIEST:if(key=="mobber")return Build::mobber;if(key=="battle")return Build::battle;break;
+  case JOB_HUNTER:if(key=="falcon")return Build::falcon;break;
+  case JOB_WIZARD:for(auto b:{Build::storm,Build::vermilion,Build::pillar})if(key==name(job,b))return b;
+@@ -48,12 +48,12 @@
+  if(Sql_Query(mmysql_handle,"SELECT id FROM ragoff_companion WHERE id=%u AND owner_account=%u AND owner_char=%u AND job=%u",id,account,owner,job)!=SQL_SUCCESS || Sql_NextRow(mmysql_handle)!=SQL_SUCCESS)return fail();
+  Sql_FreeResult(mmysql_handle);
+  if(Sql_Query(mmysql_handle,"DELETE FROM ragoff_companion_build WHERE profile_id=%u",id)!=SQL_SUCCESS)return fail();
+- if(b!=Build::legacy && Sql_Query(mmysql_handle,"INSERT INTO ragoff_companion_build VALUES(%u,'%s')",id,name(job,b))!=SQL_SUCCESS)return fail();
++ if(b!=Build::legacy && Sql_Query(mmysql_handle,"INSERT INTO ragoff_companion_build VALUES(%u,'%s')",id,b==Build::mobber?"mobber":name(job,b))!=SQL_SUCCESS)return fail();
+  auto policy=companion_policy::defaults(job);
+  switch(b){
+  case Build::spear:policy.skills={"provoke","endure","brandish","spearstab","pierce","spearboomerang","bash"};break;
+  case Build::falcon:policy.skills={"concentration","blitz"};break;
+- case Build::mobber:policy.skills={"heal","kyrie","agi","pneuma","safetywall","magnificat","blessing","angelus"};break;
++ case Build::mobber:if(companion_progression::career(job)==JOB_KNIGHT){policy.skills={"provoke","endure","quicken"};break;}policy.skills={"heal","kyrie","agi","pneuma","safetywall","magnificat","blessing","angelus"};break;
+  case Build::battle:policy.skills={"heal","blessing","agi","impositio"};break;
+  case Build::storm:case Build::pillar:case Build::vermilion:policy.skills={name(job,b),"firebolt","coldbolt","lightningbolt"};break;
+  default:break;
+--- a/src/map/population_engine/loadout.cpp
++++ b/src/map/population_engine/loadout.cpp
+@@ -201,8 +201,8 @@
+  switch(job){
+  case JOB_ARCHER:return {{AC_OWL,3},{AC_VULTURE,3},{AC_DOUBLE,3},{AC_CONCENTRATION,5},{AC_OWL,10},{AC_VULTURE,10},{AC_CONCENTRATION,10},{AC_DOUBLE,10}};
+  case JOB_HUNTER:return {{HT_FALCON,1},{HT_BLITZBEAT,1},{HT_STEELCROW,5},{HT_BLITZBEAT,5},{HT_STEELCROW,10},{HT_BEASTBANE,10}};
+- case JOB_SWORDMAN:return {{SM_PROVOKE,5},{SM_ENDURE,1},{SM_BASH,10},{SM_RECOVERY,10},{SM_PROVOKE,10},{SM_ENDURE,10}};
+- case JOB_KNIGHT:return {{KN_SPEARMASTERY,1},{KN_PIERCE,5},{KN_SPEARSTAB,3},{KN_SPEARBOOMERANG,1},{KN_RIDING,1},{KN_BRANDISHSPEAR,1},{KN_CAVALIERMASTERY,5},{KN_PIERCE,10},{KN_SPEARMASTERY,10},{KN_BRANDISHSPEAR,10},{KN_SPEARBOOMERANG,5},{KN_SPEARSTAB,10}};
++ case JOB_SWORDMAN:if(b==B::mobber)return {{SM_PROVOKE,5},{SM_ENDURE,5},{SM_RECOVERY,5},{SM_PROVOKE,10},{SM_RECOVERY,10},{SM_ENDURE,10},{SM_SWORD,1},{SM_TWOHAND,5}};return {{SM_PROVOKE,5},{SM_ENDURE,1},{SM_BASH,10},{SM_RECOVERY,10},{SM_PROVOKE,10},{SM_ENDURE,10}};
++ case JOB_KNIGHT:if(b==B::mobber)return {{KN_RIDING,1},{KN_CAVALIERMASTERY,5},{KN_TWOHANDQUICKEN,5},{KN_TWOHANDQUICKEN,10}};return {{KN_SPEARMASTERY,1},{KN_PIERCE,5},{KN_SPEARSTAB,3},{KN_SPEARBOOMERANG,1},{KN_RIDING,1},{KN_BRANDISHSPEAR,1},{KN_CAVALIERMASTERY,5},{KN_PIERCE,10},{KN_SPEARMASTERY,10},{KN_BRANDISHSPEAR,10},{KN_SPEARBOOMERANG,5},{KN_SPEARSTAB,10}};
+  case JOB_ACOLYTE:
+   if(b==B::mobber)return {{AL_HEAL,3},{AL_INCAGI,1},{AL_ANGELUS,2},{AL_HOLYWATER,1},{AL_PNEUMA,1},{AL_HEAL,8},{AL_INCAGI,8},{AL_BLESSING,5},{AL_HEAL,10},{AL_INCAGI,10},{AL_BLESSING,10},{AL_ANGELUS,10}};
+   return {{AL_HEAL,3},{AL_INCAGI,1},{AL_DP,5},{AL_BLESSING,5},{AL_HEAL,7},{AL_DEMONBANE,5},{AL_INCAGI,5},{AL_HEAL,10},{AL_BLESSING,10},{AL_DEMONBANE,10},{AL_DP,10}};
+--- a/src/map/population_engine/minimal.cpp
++++ b/src/map/population_engine/minimal.cpp
+@@ -1,3 +1,6 @@
++#include <tuple>
++#include "audit.hpp"
++int storm_cast_preview(block_list*);
+ // SPDX-License-Identifier: GPL-3.0
+ // Copyright (c) rAthena Dev Teams
+ // Copyright (c) Louis T Steinhil - https://github.com/YlenXWalker
+@@ -32,6 +35,7 @@
+ #include <common/malloc.hpp>
+ #include <common/mapindex.hpp>
+ #include <common/showmsg.hpp>
++#include "trip_guard.hpp"
+ #include <common/socket.hpp>
+ #include <common/sql.hpp>
+ #include <common/strlib.hpp>
+@@ -55,7 +59,7 @@
+ struct Shell { map_session_data* sd; uint32 account; uint32 character;
+     int timer = INVALID_TIMER; bool following = true; unsigned failures = 0; bool combat = false; bool assist = false; int target = 0; t_tick skill_retry = 0; bool skills = true; t_tick dead_since = 0; bool resting = false; bool retreating = false; int share_state = -1; int skill_target = 0; t_tick skill_until = 0; uint32 profile = 0; t_tick checkpoint = 0; t_tick potion_retry = 0; companion_policy::Policy policy; std::string preset="custom"; unsigned hunt_epoch=1; speech::Voice voice; bool empty_notice=false; bool rented=false; bool bird_on=true; const char* wave_decision="idle"; unsigned starter_gems=0,paid_gems=0; companion_build::Build build=companion_build::Build::legacy; };
+ std::unordered_map<int32, Shell> shells;
+-constexpr unsigned max_active_per_owner = 4;
++constexpr unsigned max_active_per_owner = 5;
+ constexpr int hunt_acquire_range = 9;
+ constexpr int hunt_chase_range = 12;
+ 
+@@ -73,11 +77,30 @@
+     TeamMode mode = TeamMode::nearby;
+     int16 x=0,y=0;
+     int front_x=0,front_y=0;
+-    bool priest_pull=false;
++    bool had_dock=false,pace=false; int ex=0,ey=0; int last_window=-1,approaching=0; int drop_x=0,drop_y=0,drop_dx=0,drop_dy=0; std::vector<std::pair<int,int>> rear_cells;
++    bool priest_pull=false, owner_pull=false;
++    int audit_group=0; t_tick audit_next=0; std::set<int> audit_hits,audit_inside,audit_contacts;
++    int storm_target=0,book_x=0,book_y=0;
++    t_tick storm_log=0,help_notice=0,spell_notice=0;
++    std::string storm_reason;
++    std::unordered_map<int,std::tuple<int,int,t_tick,int,int,int>> storm_seen;
+     int rescue_ally=0;
+     int radius=15, cap=5, stop_hp=60, retreat_hp=35, boss=0;
+     int potions=0, gems=0;
+     bool retreat=false, release_pack=false, outbound_train=false;
++    enum Round { Ready, Pull, Clear, Withdraw } round=Ready;
++    std::set<int> outstanding;
++    int camp_add=0;
++    bool scout_goal=false, scout_home=false;
++    int progress_x=0,progress_y=0,sx=0,sy=0, seen_x=0,seen_y=0,seen_id=0, motion_id=0,motion_x=0,motion_y=0, walked=0;
++    unsigned scout_cursor=0;
++    std::unordered_map<int,t_tick> visited, failed_cells;
++    std::set<int> recruited;
++    t_tick last_contact=0, hp_window=0;
++    uint32 window_hp=0;
++    double sustained_loss=0;
++    t_tick scout_log_at=0, memory_until=0, motion_since=0, next_move=0, outing_since=0;
++
+     bool storm_landed=false, mire_landed=false;
+     t_tick kyrie_deadline=0;
+     std::string pull_notice;
+@@ -92,6 +115,10 @@
+     int hunter_target=0, hunter_hit_target=0, hunter_hit_damage=0;
+     t_tick hunter_hit_tick=0;
+     std::vector<uint8> blocked;
++    struct Hazard {int id,species,x,y,margin,master; bool orc_family;};
++    std::vector<Hazard> observed_hazards;
++    t_tick skirt_since=0;
++    bool skirt_goal=false;
+     bool hold_train=false, hazard_near_train=false, pressed=false;
+     int camp_target=0, escort_target=0;
+     t_tick next_trace=0, next_escort_tag=0;
+@@ -323,6 +350,9 @@
+ 
+ bool cast_skill(Shell& shell, block_list* target, uint16 skill, uint16 level, bool chosen_level=false) {
+     auto* sd = shell.sd;
++    // status_change_start returns immediately for SC_ENDURE on this equipment.
++    // Avoid paying SP and consuming the AI action for a redundant native cast.
++    if(skill==SM_ENDURE && sd->special_state.no_walk_delay)return false;
+     const auto learned=companion_loadout::cast_level(sd,skill,level);
+     level=chosen_level ? std::min(level,learned) : learned;
+     if(!level)return false;
+@@ -394,6 +424,40 @@
+     }
+ }
+ 
++static bool camp_priest(const Shell& shell,map_session_data* owner){
++    const int id=pc_readreg2(owner,"FarmTestCampPriest");
++    return shell.profile==unsigned(id>0?id:5);
++}
++static map_session_data* team_wizard(map_session_data* owner){
++    for(auto& kv:shells)if(kv.second.character==owner->status.char_id && companion_progression::career(kv.second.sd->status.class_)==JOB_WIZARD)return kv.second.sd;
++    return nullptr;
++}
++static bool camp_cover(Shell& s,map_session_data* owner){
++    auto* sd=s.sd;auto* wiz=team_wizard(owner);
++    if(!wiz || wiz->m!=sd->m || pc_isdead(wiz))return false;
++    auto lv=companion_loadout::cast_level(sd,AL_HEAL,5);
++    if(!lv)return false;
++    int radius=skill_get_range2(sd,AL_HEAL,lv,true);
++    auto covered=[&](int x,int y,map_session_data* a){
++        return distance_xy(x,y,a->x,a->y)<=radius-1 && path_search_long(nullptr,sd->m,x,y,a->x,a->y,CELL_CHKWALL);
++    };
++    if(covered(sd->x,sd->y,wiz) && covered(sd->x,sd->y,owner))return true;
++    if(sd->ud.skilltimer!=INVALID_TIMER || sd->ud.walktimer!=INVALID_TIMER)return true;
++    int bx=sd->x,by=sd->y,cost=INT_MAX;
++    for(int x=owner->x-6;x<=owner->x+6;x++)for(int y=owner->y-6;y<=owner->y+6;y++){
++        if(!covered(x,y,wiz)||!covered(x,y,owner)||!map_getcell(sd->m,x,y,CELL_CHKPASS))continue;
++        walkpath_data p{};
++        if(!path_search(&p,sd->m,sd->x,sd->y,x,y,0,CELL_CHKNOPASS))continue;
++        int score=p.path_len*4+distance_xy(x,y,wiz->x,wiz->y);
++        if(score<cost){cost=score;bx=x;by=y;}
++    }
++    if(cost!=INT_MAX && unit_walktoxy(sd,bx,by,0))
++        ShowInfo("B_COVERMOVE %lld %d %d %d %d\n",(long long)gettick(),sd->id,bx,by,cost);
++    return true;
++}
++
++static bool scout_sees(const block_list*,const block_list*);
++
+ bool support_party(Shell& shell, map_session_data* owner, bool emergency_only = false) {
+     auto* sd = shell.sd;
+     if (!shell.assist || companion_progression::career(sd->status.class_) != JOB_PRIEST || !sd->status.party_id
+@@ -405,11 +469,11 @@
+     std::vector<map_session_data*> allies;
+     for (const auto& data : p->data) {
+         auto* ally = data.sd;
+-        if (ally && ally->prev && ally->m == sd->m && (farming || distance_bl(ally, owner) <= 8)
++        if (ally && ally->prev && ally->m == sd->m && (!farming || !encounter->second.owner_pull || distance_bl(sd,ally)<=14) && (farming || distance_bl(ally, owner) <= 8)
+             && (population_m1_is_shell(ally) || session_isActive(ally->fd))) allies.push_back(ally);
+     }
+     for(const auto& name:shell.policy.skills) {
+-        if(name=="resurrection") {
++        if(name=="resurrection") { if(trial::stopped)continue;
+             if(!companion_loadout::cast_level(sd,ALL_RESURRECTION,4))continue;
+             for(auto* ally:allies) if(pc_isdead(ally) && pc_search_inventory(sd,ITEMID_BLUE_GEMSTONE)>=0)
+                 return cast_skill(shell,ally,ALL_RESURRECTION,4);
+@@ -447,7 +511,25 @@
+     if (emergency_only || (farming && encounter->second.priest_pull && encounter->second.rescue_ally)) return false;
+     auto team=hunts.find(shell.character);
+     if(team!=hunts.end() && team->second.mode!=TeamMode::nearby && !team->second.retreat && shell.skills){
++
++        if(camp_priest(shell,owner) && farming){auto* wizard=team_wizard(owner);
++        if(!team->second.owner_pull && std::getenv("CAMP_POSITION") && wizard && !pc_isdead(wizard) &&
++           (!battle_check_range(sd,wizard,8) || !battle_check_range(sd,owner,8)))
++            return camp_cover(shell,owner);
++            // Native emergency and normal Heal have already run. Stay in camp.
++            for(int career:{JOB_WIZARD,JOB_NOVICE,JOB_HUNTER}){
++                for(auto* ally:allies){
++                    if((career==JOB_NOVICE ? ally!=owner : companion_progression::career(ally->status.class_)!=career)
++                       || pc_isdead(ally) || ally->sc.getSCE(SC_KYRIE))continue;
++                    if(std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"kyrie")!=shell.policy.skills.end()
++                       && sd->battle_status.sp>=skill_get_sp(PR_KYRIE,5)+3*skill_get_sp(AL_HEAL,5)
++                       && cast_skill(shell,ally,PR_KYRIE,5))return true;
++                }
++            }
++            return false;
++        }
+         auto* tank=map_id2sd(team->second.opener);
++        if(team->second.owner_pull && tank && !scout_sees(sd,tank))tank=nullptr;
+         if(farming && tank==sd && team->second.priest_pull && !sd->sc.getSCE(SC_INCREASEAGI) &&
+            std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"agi")!=shell.policy.skills.end() &&
+            cast_skill(shell,sd,AL_INCAGI,1))return true;
+@@ -666,7 +748,7 @@
+     h.retreat=true;
+     ShowInfo("Companion retreat: owner=%d reason=%s potions=%d gems=%d\n",owner->id,why,h.potions,h.gems);
+     for (auto& [id,s]:shells) if (s.character==owner->status.char_id) stop_hunt_attack(s);
+-    std::string msg=std::string("Team retreat: ")+why+". Regroup on owner. Fly Wing is manual.";
++    std::string msg=std::string("Team retreat: ")+why+(h.owner_pull?". Companions hold camp. Fly Wing is manual.":". Regroup on owner. Fly Wing is manual.");
+     clif_displaymessage(owner->fd,msg.c_str());
+ }
+ 
+@@ -692,7 +774,7 @@
+ }
+ 
+ struct PullScan {
+-    std::vector<mob_data*> candidates;
++    std::vector<mob_data*> candidates,camp; std::set<int> examined;
+     int seen=0;
+     const mob_data* unsafe=nullptr;
+     bool unreachable=false, excluded=false, outside=false, claimed=false;
+@@ -706,6 +788,7 @@
+ }
+ 
+ // Leave a corridor around other parties for the whole train, including its tail.
++static bool party_sees(map_session_data* owner,const block_list* obj);
+ static int mark_pull_hazard(block_list* bl,va_list ap){
+     auto* owner=va_arg(ap,map_session_data*);
+     auto& h=*va_arg(ap,Hunt*);
+@@ -718,11 +801,21 @@
+         margin=10;protect_player=true;
+     }else{
+         auto* mob=static_cast<mob_data*>(bl);
+-        if(status_isdead(*mob) || h.pack.count(mob->id) || team_victim(mob,owner))return 0;
++        if(!party_sees(owner,mob) || status_isdead(*mob) || h.pack.count(mob->id) || team_victim(mob,owner))return 0;
+         if(!unclaimed(owner,mob)){margin=5;protect_player=true;}
+         else if(!safe_pull(mob) && (status_bl_has_mode(mob,MD_AGGRESSIVE) || mob->get_bosstype()!=BOSSTYPE_NONE))
+             margin=std::min(18,std::max(5,int(mob->db->range2)+1));
+         else return 0;
++    }
++    if(!protect_player && bl->type==BL_MOB){
++        auto* m=static_cast<mob_data*>(bl);
++        auto* master=map_id2md(m->master_id);
++        bool family=m->mob_id==1686 ||
++            ((m->mob_id==1023 || m->mob_id==1273) && party_sees(owner,master) && master->mob_id==1686);
++        family=family && m->get_bosstype()==BOSSTYPE_NONE && !m->guardian_data;
++        if(std::none_of(h.observed_hazards.begin(),h.observed_hazards.end(),
++            [&](const Hunt::Hazard& a){return a.id==m->id;}))
++            h.observed_hazards.push_back({m->id,m->mob_id,m->x,m->y,margin,m->master_id,family});
+     }
+     for(int y=std::max<int>(h.y-h.radius,bl->y-margin);y<=std::min<int>(h.y+h.radius,bl->y+margin);++y)
+         for(int x=std::max<int>(h.x-h.radius,bl->x-margin);x<=std::min<int>(h.x+h.radius,bl->x+margin);++x)
+@@ -734,14 +827,14 @@
+     return 0;
+ }
+ 
+-static bool pull_cell(const Hunt& h,int x,int y){
++static bool pull_cell(const Hunt& h,int x,int y){ if(h.radius==6 && distance_xy(x,y,h.x,h.y)>4)return false;
+     int i=h.route_index(x,y);
+     return i>=0 && size_t(i)<h.blocked.size() && !h.blocked[i] && h.parent[i]>=0;
+ }
+ 
+ // A moving hazard can overlap an existing route. Leave its footprint without
+ // moving deeper into danger. Foreign players always keep their entire buffer.
+-static bool pull_step(const Hunt& h,int from,int x,int y){
++static bool pull_step(const Hunt& h,int from,int x,int y){ if(h.radius==6 && distance_xy(x,y,h.x,h.y)>4)return false;
+     int to=h.route_index(x,y);
+     return from>=0 && to>=0 && h.parent[to]>=0 && h.blocked[to]!=UINT8_MAX &&
+            h.blocked[to]<=h.blocked[from];
+@@ -749,6 +842,95 @@
+ 
+ // Pick a reachable concentration, then tag along the outward corridor. Once
+ // the train is worth bringing in, use stops which take it closer to camp.
++// Terrain is known; a live monster is an attack option only while the puller sees it.
++static bool scout_sees(const block_list* eye,const block_list* obj){
++    return eye && obj && obj->prev && eye->m==obj->m &&
++        distance_xy(eye->x,eye->y,obj->x,obj->y)<=std::min(14,AREA_SIZE) &&
++        status_check_visibility(eye,obj,true) &&
++        path_search_long(nullptr,eye->m,eye->x,eye->y,obj->x,obj->y,CELL_CHKWALL);
++}
++static bool party_sees(map_session_data* owner,const block_list* obj){
++    if(scout_sees(owner,obj))return true;
++    for(const auto& kv:shells){
++        const auto& shell=kv.second;
++        if(hunt_member(shell,owner) && !pc_isdead(shell.sd) && scout_sees(shell.sd,obj))return true;
++    }
++    return false;
++}
++static void scout_log(Hunt& h,map_session_data* sd,t_tick now,const char* why,int id,int x,int y){
++    if(now<h.scout_log_at)return;
++    h.scout_log_at=now+1500;
++    ShowInfo("B_SCOUT %lld puller=%d at=%d,%d reason=%s id=%d goal=%d,%d pack=%zu round=%d\n",
++        (long long)now,sd->id,sd->x,sd->y,why,id,x,y,h.pack.size(),int(h.round));
++}
++// Visit a finite sequence of spokes in the reachable terrain component. Preserve
++// the cursor between outings so an empty first sector does not monopolise the camp.
++static bool delivery_edge(const Hunt&,int,int,int,int);
++static bool scout_waypoint(Hunt& h,map_session_data* sd,t_tick now){
++    if(h.scout_goal && distance_xy(sd->x,sd->y,h.sx,h.sy)>2 && pull_cell(h,h.sx,h.sy))return true;
++    h.scout_goal=false;
++    // Rank local terrain samples, keeping the loaded train on the front side.
++    int score_best=INT_MIN;
++    for(int i=0;i<24;++i){
++        const int d=(i+h.scout_cursor)%8, stride=std::min(h.radius,8+6*(i/8));
++        int x=sd->x+dirx[d]*stride,y=sd->y+diry[d]*stride;
++        int index=h.route_index(x,y);
++        if(index<0 || !pull_cell(h,x,y) || h.failed_cells[index]>now)continue;
++        if(!h.pack.empty() && h.drop_x && (x-h.x)*h.drop_dx+(y-h.y)*h.drop_dy<2)continue;
++        int home=h.depth[index];
++        if(home<0)continue;
++        int score=0;
++        for(int j=1;j<=stride;++j){
++            int cx=sd->x+dirx[d]*j, cy=sd->y+diry[d]*j, key=h.route_index(cx,cy);
++            if(key<0 || !pull_cell(h,cx,cy)){score-=10;continue;}
++            int tile=(cx/8)*1024+cy/8;
++            auto v=h.visited.find(tile);
++            score+=v==h.visited.end() || now-v->second>90000?3:-2;
++        }
++        // With little margin above the stop threshold sweep across the front
++        // near support. Healthy trains can explore the outer band.
++        const bool thin=sd->battle_status.hp*100ULL<
++            (h.stop_hp+18ULL)*sd->battle_status.max_hp;
++        int band=thin?12:32;
++        score-=(thin?4:1)*abs(home-band);
++        if(score>score_best){score_best=score;h.sx=x;h.sy=y;}
++    }
++    // A spoke can miss a winding corridor or end behind the rear line. Search
++    // local walkable edges from here, including lateral routes back to the front.
++    if(score_best==INT_MIN){
++        struct Node {int x,y,depth;};
++        std::vector<Node> queue{{sd->x,sd->y,0}};
++        std::set<int> seen{h.route_index(sd->x,sd->y)};
++        for(size_t i=0;i<queue.size();++i){
++            auto cur=queue[i];
++            if(cur.depth>=16)continue;
++            int from=h.route_index(cur.x,cur.y);
++            for(int j=0;j<8;++j){
++                int d=(h.scout_cursor+j)%8,x=cur.x+dirx[d],y=cur.y+diry[d];
++                int idx=h.route_index(x,y);
++                if(idx<0 || seen.count(idx) || !pull_step(h,from,x,y) ||
++                   !pull_step(h,from,x,cur.y) || !pull_step(h,from,cur.x,y) ||
++                   (!h.pack.empty() && !delivery_edge(h,cur.x,cur.y,x,y)))continue;
++                seen.insert(idx);queue.push_back({x,y,cur.depth+1});
++                if(distance_xy(sd->x,sd->y,x,y)<=2 || !pull_cell(h,x,y))continue;
++                auto skip=h.failed_cells.find(idx);
++                if(skip!=h.failed_cells.end() && skip->second>now)continue;
++                int front=(x-h.x)*h.drop_dx+(y-h.y)*h.drop_dy;
++                auto visit=h.visited.find((x/8)*1024+y/8);
++                int score=std::min(12,front)+cur.depth+
++                    (visit==h.visited.end() || now-visit->second>90000?24:0);
++                if(score>score_best){score_best=score;h.sx=x;h.sy=y;}
++            }
++        }
++        if(score_best!=INT_MIN)scout_log(h,sd,now,"local-route",0,h.sx,h.sy);
++    }
++    if(score_best!=INT_MIN){
++        ++h.scout_cursor;h.scout_goal=true;
++        scout_log(h,sd,now,"waypoint",0,h.sx,h.sy);return true;
++    }
++    return false;
++}
++
+ static void plan_tour(Hunt& h,const map_session_data* puller,PullScan& scan){
+     if(scan.candidates.empty())return;
+     const int start=h.route_index(puller->x,puller->y), width=2*h.radius+1;
+@@ -826,7 +1008,7 @@
+     auto& best=*va_arg(ap,mob_data**);
+     auto* mob=static_cast<mob_data*>(bl);
+     auto& scan=*va_arg(ap,PullScan*);
+-    if (status_isdead(*mob)) return 0;
++    if (!scan.examined.insert(mob->id).second || !party_sees(owner,mob) || status_isdead(*mob) || h.route_index(mob->x,mob->y)<0) return 0;
+     ++scan.seen;
+     if (!hunt_candidate(owner,mob,h.radius+hunt_chase_range)) {
+         if(gettick()>=h.next_trace && (mob->target_id || h.pack.count(mob->id))){
+@@ -839,21 +1021,515 @@
+         else scan.claimed=true;
+         return 0;
+     }
+-    if (h.missed.count(mob->id)) return 0;
++    if (h.missed.count(mob->id) && !team_victim(mob,owner)) return 0;
+     if (team_victim(mob,owner)) {
+         h.pack.insert(mob->id);
+     } else if (!h.pack.count(mob->id)) {
+         if (!safe_pull(mob)) scan.unsafe=mob;
+         else if (h.parent[h.route_index(mob->x,mob->y)]<0) scan.unreachable=true;
+-        else if(pull_cell(h,mob->x,mob->y))scan.candidates.push_back(mob);
++        else if(pull_cell(h,mob->x,mob->y)){
++            if(scout_sees(tank,mob))scan.candidates.push_back(mob);
++            if(distance_xy(h.x,h.y,mob->x,mob->y)<=7)scan.camp.push_back(mob);
++        }
+     }
+     return 0;
+ }
+ 
++int observe_stranger(block_list* bl,va_list args){
++    auto* owner=va_arg(args,map_session_data*);
++    if(bl->id!=owner->id && shells.find(bl->id)==shells.end())
++        ShowInfo("B_PEER %lld %d %d %d\n",(long long)gettick(),bl->id,bl->x,bl->y);
++    return 0;
++}
++// Staging observer. No movement, cast, timer registration, AI state or RNG writes.
++int observe_mob(block_list* bl, va_list args) {
++    auto* m=static_cast<mob_data*>(bl);
++    auto tick=va_arg(args,long long);
++auto* own=va_arg(args,map_session_data*);
++ShowInfo("B_ELIG %lld %d %d %d %lld %u %u\n",tick,m->id,safe_pull(m),unclaimed(own,m),(long long)m->db->base_exp,(unsigned)m->status.rhw.atk,(unsigned)m->status.rhw.atk2);
++    auto* ice=m->sc.getSCE(SC_FREEZE);auto* thaw=ice?get_timer(ice->timer):nullptr;ShowInfo("B_MOVE %lld %d %d %d %lld\n",tick,m->id,status_bl_has_mode(m,MD_AGGRESSIVE),m->db->range2,thaw?(long long)thaw->tick:0LL);
++    ShowInfo("B_M %lld %d %d %d %d %d %u %u %d %d %d %d %d %d\n",tick,m->id,m->mob_id,m->x,m->y,m->target_id,m->status.hp,m->status.max_hp,m->status.speed,m->status.def_ele,m->status.ele_lv,m->status.rhw.range,m->sc.getSCE(SC_FREEZE)!=nullptr,m->status.amotion);
++    return 0;
++}
++void observe_team(map_session_data* owner,const Hunt& h,long long now) {
++    ShowInfo("B_FRAME %lld %d %d %d %d %d %d %d %d %d\n",now,owner->id,owner->m,h.x,h.y,h.radius,h.cap,h.priest_pull,h.inbound,h.release_pack);
++    ShowInfo("B_PULLSTATE %lld %d %d %d\n",now,h.target,h.release_pack,h.inbound);
++    map_foreachinmap(observe_mob,owner->m,BL_MOB,now,owner);
++    std::vector<const Shell*> priests;
++    for(const auto& kv:shells) {
++        const auto& s=kv.second;
++        if(s.character==owner->status.char_id && s.sd && companion_progression::career(s.sd->status.class_)==JOB_PRIEST)priests.push_back(&s);
++    }
++    auto actor=[&](map_session_data* a,const Shell* s){
++        auto& b=a->battle_status;
++        static std::set<int> printed;
++        if(printed.insert(a->id).second){
++           ShowInfo("B_BUILD %lld %d %d %d %d %d %d %d %d %d %d\n",now,a->id,a->status.base_level,a->status.job_level,a->status.class_,b.hp,b.max_hp,b.sp,b.max_sp,pc_checkskill(a,AL_HEAL),pc_checkskill(a,PR_KYRIE));
++           for(int i=0;i<MAX_INVENTORY;i++){
++               auto& it=a->inventory.u.items_inventory[i];
++               if(it.nameid && it.equip)ShowInfo("B_GEAR %lld %d %u %u %d %u %u %u %u\n",now,a->id,(unsigned)it.nameid,(unsigned)it.equip,(int)it.refine,(unsigned)it.card[0],(unsigned)it.card[1],(unsigned)it.card[2],(unsigned)it.card[3]);
++           }
++        }
++        ShowInfo("B_A %lld %d %d %d %d %d %u %u %u %u %d %d %d %d %d %d %d %lld %lld %lld %lld %d %lld %lld\n",now,a->id,s?(int)s->profile:0,a->m,a->x,a->y,b.hp,b.max_hp,b.sp,b.max_sp,a->ud.to_x,a->ud.to_y,a->ud.walktimer!=INVALID_TIMER,a->ud.target,a->ud.skill_id,a->ud.skilltarget,a->ud.skilltimer!=INVALID_TIMER,(long long)a->ud.canact_tick,(long long)(s?s->skill_retry:0),(long long)(s?s->potion_retry:0),(long long)b.speed,a->die_counter,(long long)a->status.base_exp,(long long)a->status.job_exp);
++        for(const auto& cd:a->scd){auto* t=get_timer(cd.second);if(t)ShowInfo("B_CD %lld %d %u %lld\n",now,a->id,cd.first,(long long)t->tick);}
++        for(const auto& [buff,entry]:a->sc){
++            const auto* sc=&entry;
++            if(sc){auto* t=get_timer(sc->timer);ShowInfo("B_BUFF %lld %d %d %d %d %lld\n",now,a->id,(int)buff,sc->val2,sc->val3,t?(long long)t->tick:0LL);}
++        }
++        ShowInfo("B_PARTY %lld %d %d %d %d\n",now,a->id,a->status.party_id,owner->status.party_id,a->status.class_);
++        for(const auto* priest:priests){
++            auto* p=priest->sd;
++            auto lv=companion_loadout::cast_level(p,AL_HEAL,5);
++            bool enabled=priest->skills && std::find(priest->policy.skills.begin(),priest->policy.skills.end(),"heal")!=priest->policy.skills.end();
++            bool reach=lv && p->m==a->m && battle_check_range(p,a,skill_get_range2(p,AL_HEAL,lv,true));
++            ShowInfo("B_AID %lld %d %d %d %d %d %d %d\n",now,p->id,a->id,reach,enabled && lv && !pc_isdead(p),lv && p->battle_status.sp>=skill_get_sp(AL_HEAL,lv),p->ud.skilltimer==INVALID_TIMER,now>=std::max(p->ud.canact_tick,priest->skill_retry));
++            if(priest->profile==1)ShowInfo("B_COVER %lld %d %d %d %d %d %d %d\n",now,a->id,reach,enabled && lv && !pc_isdead(p),lv && p->battle_status.sp>=skill_get_sp(AL_HEAL,lv),p->ud.skilltimer==INVALID_TIMER,now>=std::max(p->ud.canact_tick,priest->skill_retry),p->ud.walktimer!=INVALID_TIMER);
++        }
++    };
++    actor(owner,nullptr);
++    for(const auto& kv:shells){const auto& s=kv.second;if(s.character==owner->status.char_id && s.sd)actor(s.sd,&s);}
++    for(auto id:h.pack)ShowInfo("B_PACK %lld %d\n",now,id);
++    for(const auto& kv:shells){
++        const auto& s=kv.second;
++        if(s.character!=owner->status.char_id || !s.sd)continue;
++        std::vector<companion_supply::Stock> stock;
++        if(companion_supply::list(mmysql_handle,s.character,s.profile,stock))
++            for(const auto& r:stock)ShowInfo("B_SUPPLY %lld %d %u %u\n",now,s.sd->id,r.itemid,r.amount);
++        for(auto entry:{std::make_pair(AL_HEAL,"heal"),std::make_pair(PR_KYRIE,"kyrie"),std::make_pair(WZ_STORMGUST,"storm")}){
++            auto lv=pc_checkskill(s.sd,entry.first);
++            bool enabled=s.skills && std::find(s.policy.skills.begin(),s.policy.skills.end(),entry.second)!=s.policy.skills.end();
++            ShowInfo("B_SK %lld %d %d %d %d %d\n",now,s.sd->id,(int)entry.first,(int)lv,enabled,lv?skill_get_sp(entry.first,lv):0);
++        }
++    }
++    map_foreachinmap(observe_stranger,owner->m,BL_PC,owner);
++    ShowInfo("B_DONE %lld\n",now);
++}
++
++// Disposable one-owner trial. The anchor still owns the survey grid.
++static bool delivery_clear(const Hunt& h,int x,int y) {
++    for(auto& p:h.rear_cells)
++        if(distance_xy(x,y,p.first,p.second)<=2)return false;
++    return true;
++}
++// A moving owner can enter an existing train. Leave an overlapping buffer only
++// along edges which maintain or increase clearance from each affected cell.
++static bool delivery_edge(const Hunt& h,int x,int y,int nx,int ny){
++    for(auto& p:h.rear_cells){
++        int after=distance_xy(nx,ny,p.first,p.second);
++        if(after<=2 && after<distance_xy(x,y,p.first,p.second))return false;
++    }
++    return true;
++}
++// Rebooking a live train needs stronger evidence than reserving an empty dock.
++static bool delivery_corridor(const Hunt& h,block_list* actor,int x,int y){
++    walkpath_data path{};
++    int cx=actor->x,cy=actor->y;
++    if((cx!=x || cy!=y) && !path_search(&path,actor->m,cx,cy,x,y,0,CELL_CHKNOPASS))return false;
++    for(int i=0;i<path.path_len;i++){
++        int nx=cx+dirx[path.path[i]],ny=cy+diry[path.path[i]];
++        if(!pull_cell(h,nx,ny) || !delivery_edge(h,cx,cy,nx,ny))return false;
++        cx=nx;cy=ny;
++    }
++    return true;
++}
++static bool train_can_approach(const Hunt& h,map_session_data* puller,int x,int y){
++    if(!delivery_corridor(h,puller,x,y))return false;
++    for(int id:h.pack)if(auto* m=map_id2md(id)){
++        if(!scout_sees(puller,m) || m->target_id!=puller->id)continue;
++        // Before the mob sees the dock it follows the puller. Check both
++        // shortcuts, since validating only the puller's route misses corners.
++        if(!delivery_corridor(h,m,puller->x,puller->y) || !delivery_corridor(h,m,x,y))return false;
++    }
++    return true;
++}
++static void delivery_plan(map_session_data* owner,Hunt& h,Shell* tank,Shell* wizard,mob_data* lead) {
++    h.rear_cells={{owner->x,owner->y}};
++    if(owner->ud.walktimer!=INVALID_TIMER){
++        int px=owner->x,py=owner->y;
++        const auto& path=owner->ud.walkpath;
++        for(int i=path.path_pos;i<path.path_len;i++){
++            px+=dirx[path.path[i]];py+=diry[path.path[i]];
++            h.rear_cells.emplace_back(px,py);
++        }
++    }
++    map_session_data* priest=nullptr;
++    for(auto& [id,s]:shells)if(hunt_member(s,owner) && s.sd!=tank->sd){
++        h.rear_cells.emplace_back(s.sd->x,s.sd->y);
++        if(camp_priest(s,owner))priest=s.sd;
++    }
++    const int old=h.drop_x, old_y=h.drop_y;
++    h.drop_x=h.drop_y=0;
++    if(!wizard || !priest || pc_isdead(priest))return;
++    auto valid=[&](int x,int y,int dx,int dy){
++        int ex=x+3*dx,ey=y+3*dy;
++        for(int i=-1;i<=3;i++){
++            int px=x+i*dx,py=y+i*dy;
++            if(!delivery_clear(h,px,py) || !pull_cell(h,px,py) || !map_getcell(owner->m,px,py,CELL_CHKPASS))return false;
++        }
++        return path_search_long(nullptr,owner->m,x,y,ex,ey,CELL_CHKWALL) &&
++            check_distance_client_blxy(wizard->sd,x,y,skill_get_range2(wizard->sd,WZ_STORMGUST,1,true)) &&
++            path_search_long(nullptr,owner->m,wizard->sd->x,wizard->sd->y,x,y,CELL_CHKWALL) &&
++            battle_check_range(priest,wizard->sd,skill_get_range2(priest,AL_HEAL,1,true)) &&
++            check_distance_client_blxy(priest,x,y,skill_get_range2(priest,AL_HEAL,1,true)) &&
++            path_search_long(nullptr,owner->m,priest->x,priest->y,x,y,CELL_CHKWALL);
++    };
++    const bool approach=h.had_dock && !h.pack.empty() && (h.inbound || h.release_pack) &&
++        distance_xy(tank->sd->x,tank->sd->y,h.x,h.y)<=16;
++    if(old && valid(old,old_y,h.drop_dx,h.drop_dy) && (!approach || train_can_approach(h,tank->sd,old,old_y))){h.drop_x=old;h.drop_y=old_y;return;}
++    // Once a train is in flight, do not flip its entrance to the opposite side.
++    if(!h.pack.empty() && h.had_dock){
++        if(old)ShowInfo("B_INVALID %lld %d %d %d %d %d %d\n",(long long)gettick(),old,old_y,owner->x,owner->y,tank->sd->x,tank->sd->y);
++        // Rebook on the same flank only. A crossing owner retains the right
++        // of way, including the uncompleted part of the owner's walk.
++        if(owner->ud.walktimer==INVALID_TIMER){
++            int best=INT_MAX,chosen_dx=0,chosen_dy=0;
++            for(int direction=0;direction<8;direction++){
++                const int dx=dirx[direction],dy=diry[direction];
++                if(!approach && dx*h.drop_dx+dy*h.drop_dy<=0)continue;
++                if(approach && dx*(tank->sd->x-owner->x)+dy*(tank->sd->y-owner->y)<0)continue;
++                for(int extra:{6,7,5,8}){
++                    int x=owner->x+extra*dx,y=owner->y+extra*dy;
++                    int score=distance_xy(tank->sd->x,tank->sd->y,x,y)*2+abs(extra-6);
++                    if(score>=best || !valid(x,y,dx,dy) || !delivery_corridor(h,tank->sd,x,y) ||
++                       (approach && !train_can_approach(h,tank->sd,x,y)))continue;
++                    bool train_clear=true;
++                    for(int mid:h.pack)if(auto* m=map_id2md(mid))
++                        if(party_sees(owner,m) && m->target_id==tank->sd->id && !delivery_corridor(h,m,x,y)){train_clear=false;break;}
++                    if(!train_clear)continue;
++                    h.drop_x=x;h.drop_y=y;chosen_dx=dx;chosen_dy=dy;best=score;
++                }
++            }
++            if(h.drop_x){
++                h.drop_dx=chosen_dx;h.drop_dy=chosen_dy;
++                h.ex=h.drop_x+6*chosen_dx;h.ey=h.drop_y+6*chosen_dy;
++                ShowInfo("B_DOCK %lld %d %d %d %d %d %d\n",(long long)gettick(),owner->x,owner->y,h.drop_x,h.drop_y,chosen_dx,chosen_dy);
++            }
++        }
++        return;
++    }
++    if(h.pack.empty())h.had_dock=false;
++    int tx=lead?lead->x:tank->sd->x,ty=lead?lead->y:tank->sd->y;
++    int best=INT_MAX;
++    for(int d=0;d<8;d++)for(int reach:{6,5,7}){
++        int dx=dirx[d],dy=diry[d],x=h.x+reach*dx,y=h.y+reach*dy;
++        int score=distance_xy(tx,ty,x+3*dx,y+3*dy)*8+abs(6-reach);
++        if(score>=best || !valid(x,y,dx,dy))continue;
++        best=score;h.drop_x=x;h.drop_y=y;h.drop_dx=dx;h.drop_dy=dy;
++    }
++    if(h.drop_x){h.had_dock=true;h.ex=h.drop_x+6*h.drop_dx;h.ey=h.drop_y+6*h.drop_dy;}
++    if(h.drop_x)ShowInfo("B_DOCK %lld %d %d %d %d %d %d\n",(long long)gettick(),owner->x,owner->y,h.drop_x,h.drop_y,h.drop_dx,h.drop_dy);
++}
++
++// Lower-bound arrival at the near edge of the damaging cells; usable only on
++// a clear approach and for monsters actually chasing this puller.
++static void delivery_window(Hunt& h,Shell* wizard,Shell* tank,t_tick now){
++    h.approaching=0;h.pace=false;
++    if(!wizard || !h.drop_x)return;
++    auto* w=wizard->sd;
++    const auto& u=w->ud;
++    int state=0;
++    t_tick starts=std::max(now,u.canact_tick)+skill_castfix(w,WZ_STORMGUST,1);
++    if(u.skilltimer!=INVALID_TIMER && u.skill_id==WZ_STORMGUST &&
++       u.skillx==h.drop_x && u.skilly==h.drop_y){
++        const auto* t=get_timer(u.skilltimer);
++        if(t){state=1;starts=t->tick;}
++    }
++    t_tick ends=starts+skill_get_time(WZ_STORMGUST,1);
++    for(const auto& g:u.skillunits){
++        if(!g || !g->alive_count || g->skill_id!=WZ_STORMGUST)continue;
++        for(int i=0;i<g->unit_count;i++){
++            if(g->unit[i].alive && g->unit[i].x==h.drop_x && g->unit[i].y==h.drop_y){
++                state=2;starts=g->tick;ends=g->tick+g->limit;break;
++            }
++        }
++    }
++    int first=INT_MAX,last=0,nearest=0,n=0;
++    for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(!m || m->target_id!=tank->sd->id ||
++           !path_search_long(nullptr,w->m,m->x,m->y,h.drop_x,h.drop_y,CELL_CHKWALL))continue;
++        int d=distance_xy(m->x,m->y,h.drop_x,h.drop_y);
++        int eta=std::max(0,d-4)*int(m->status.speed);
++        if(eta<first){first=eta;nearest=id;}
++        last=std::max(last,eta);++n;
++    }
++    // An actual approaching train may trigger native spell selection early.
++    // Never delay an emergency return in order to hit a predicted window.
++    if(h.release_pack && n>=2 && ends>now+first && last<=ends-now)h.approaching=nearest;
++    if(state==1 && n>=2 && h.release_pack && last<starts-now &&
++       distance_xy(tank->sd->x,tank->sd->y,h.drop_x,h.drop_y)>5 &&
++       tank->sd->battle_status.hp*100ULL>tank->sd->battle_status.max_hp*h.stop_hp &&
++       !h.pressed && !h.hazard_near_train){
++        // Yield only while the protected caster is genuinely casting and the
++        // tail would otherwise beat it. Abandon pacing on contact.
++        bool clear=true;
++        for(int id:h.pack)if(auto* m=map_id2md(id))
++            if(distance_bl(m,tank->sd)<=status_get_range(m)+2)clear=false;
++        h.pace=clear;
++    }
++    if(h.last_window!=state || (n && now>=h.next_trace))
++        ShowInfo("B_WINDOW %lld %d %d %d %d %d %d %lld %lld\n",(long long)now,h.drop_x,h.drop_y,state,n,n?first:-1,last,(long long)(starts-now),(long long)(ends-now));
++    h.last_window=state;
++}
++
++// Recheck at commitment. A small ETA from distance alone says nothing about
++// a mob which stopped walking or is following a tank away from the field.
++static bool delivery_viable(const Hunt& h,map_session_data* wizard){
++    auto* puller=map_id2sd(h.opener);
++    if(!puller)return false;
++    for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(!m || status_isdead(*m))continue;
++        int d=distance_xy(m->x,m->y,h.drop_x,h.drop_y);
++        if(d<=4)return true;
++        if(!h.release_pack || m->target_id!=puller->id || m->sc.getSCE(SC_FREEZE) ||
++           m->ud.walktimer==INVALID_TIMER || distance_xy(puller->x,puller->y,h.drop_x,h.drop_y)>4 ||
++           !path_search_long(nullptr,wizard->m,m->x,m->y,h.drop_x,h.drop_y,CELL_CHKWALL))continue;
++        if(distance_xy(m->ud.to_x,m->ud.to_y,h.drop_x,h.drop_y)<=4)return true;
++    }
++    return false;
++}
++
++// For an invalidated handoff, find one lateral casting position reachable
++// without stepping through the train. The owner and healer remain native.
++static bool delivery_cast_position(map_session_data* w,const Hunt& h,map_session_data* owner,int& fx,int& fy){
++    map_session_data* support=nullptr;
++    for(auto& [id,s]:shells)if(hunt_member(s,owner) && camp_priest(s,owner))support=s.sd;
++    if(!support || pc_isdead(support))return false;
++    int dock_x=owner->x+6*h.drop_dx,dock_y=owner->y+6*h.drop_dy;
++    int best=INT_MAX;
++    for(int side:{1,-1})for(int lateral:{3,4,2,5,6})for(int back:{0,1,2,3}){
++        int x=owner->x-side*h.drop_dy*lateral-back*h.drop_dx;
++        int y=owner->y+side*h.drop_dx*lateral-back*h.drop_dy;
++        if(!pull_cell(h,x,y) || !check_distance_client_xy(x,y,dock_x,dock_y,skill_get_range2(w,WZ_STORMGUST,1,true)) ||
++           !check_distance_client_blxy(support,x,y,skill_get_range2(support,AL_HEAL,1,true)) ||
++           !path_search_long(nullptr,w->m,support->x,support->y,x,y,CELL_CHKWALL) ||
++           !path_search_long(nullptr,w->m,x,y,dock_x,dock_y,CELL_CHKWALL))continue;
++        walkpath_data route{};
++        if((w->x!=x || w->y!=y) && !path_search(&route,w->m,w->x,w->y,x,y,0,CELL_CHKNOPASS))continue;
++        int cx=w->x,cy=w->y;
++        bool safe=true;
++        for(int i=0;i<=route.path_len && safe;i++){
++            if(i){cx+=dirx[route.path[i-1]];cy+=diry[route.path[i-1]];}
++            if(!pull_cell(h,cx,cy)){safe=false;break;}
++            for(int id:h.pack)if(auto* m=map_id2md(id))
++                if(distance_xy(m->x,m->y,cx,cy)<=status_get_range(m)+2){safe=false;break;}
++        }
++        if(safe && route.path_len<best){best=route.path_len;fx=x;fy=y;}
++    }
++    return best!=INT_MAX;
++}
++
++// This observer sees only the protected area and requires a living camp member's LOS.
++static bool camp_sighted(map_session_data* owner,const Hunt& h,const mob_data* mob){
++    for(const auto& kv:shells){
++        const auto& s=kv.second;
++        if(hunt_member(s,owner) && !pc_isdead(s.sd) &&
++           distance_xy(s.sd->x,s.sd->y,h.x,h.y)<=12 && scout_sees(s.sd,mob))return true;
++    }
++    return false;
++}
++static int observe_owner_delivery(block_list* bl,va_list ap){
++    auto* owner=va_arg(ap,map_session_data*);
++    auto& h=*va_arg(ap,Hunt*);
++    auto& delivered=*va_arg(ap,std::set<int>*);
++    auto* m=static_cast<mob_data*>(bl);
++    if(status_isdead(*m) || m->master_id || m->guardian_data || m->get_bosstype()!=BOSSTYPE_NONE ||
++       !camp_sighted(owner,h,m) || !unclaimed(owner,m))return 0;
++    const int gap=distance_xy(m->x,m->y,h.drop_x,h.drop_y);
++    const bool tagged=std::any_of(m->dmglog.begin(),m->dmglog.end(),[&](const auto& hit){return hit.id==owner->status.char_id && hit.dmg>0;});
++    if(m->target_id==owner->id || tagged || (h.pack.count(m->id) && team_victim(m,owner))){
++        delivered.insert(m->id);
++        if(!h.camp_target || m->id<h.camp_target)h.camp_target=m->id;
++    }else if(distance_xy(m->x,m->y,h.x,h.y)<=7 && (!h.camp_add || m->id<h.camp_add)){
++        h.camp_add=m->id;
++    }
++    return 0;
++}
++struct CampAuditCounts{int seen=0,aggro=0,inside=0;};
++static int count_observed_mob(block_list* bl,va_list ap){
++ auto* owner=va_arg(ap,map_session_data*);auto* h=va_arg(ap,Hunt*);
++ auto* c=va_arg(ap,CampAuditCounts*);auto* g=va_arg(ap,s_skill_unit_group*);
++ auto* m=static_cast<mob_data*>(bl);
++ if(status_isdead(*m) || !camp_sighted(owner,*h,m))return 0;
++ ++c->seen;if(m->target_id==owner->id)++c->aggro;
++ if(g)for(int i=0;i<g->unit_count;++i){
++  const auto& u=g->unit[i];
++  if(u.alive && distance_xy(m->x,m->y,u.x,u.y)<=u.range){++c->inside;h->audit_inside.insert(m->id);break;}
++ }
++ return 0;
++}
++static int count_player_view(block_list* bl,va_list ap){
++ auto* owner=va_arg(ap,map_session_data*);auto* c=va_arg(ap,CampAuditCounts*);
++ if(!status_isdead(*bl) && scout_sees(owner,bl)){++c->seen;if(static_cast<mob_data*>(bl)->target_id==owner->id)++c->aggro;}
++ return 0;
++}
++static void sample_owner_train(map_session_data* owner,Hunt& h){
++ auto now=gettick();if(now<h.audit_next)return;h.audit_next=now+1000;
++ CampAuditCounts camp,player;
++ auto g=h.audit_group?skill_id2group(h.audit_group):nullptr;
++ map_foreachinallarea(count_observed_mob,owner->m,h.x-26,h.y-26,h.x+26,h.y+26,BL_MOB,owner,&h,&camp,g.get());
++ map_foreachinallarea(count_player_view,owner->m,owner->x-14,owner->y-14,owner->x+14,owner->y+14,BL_MOB,owner,&player);
++ ShowInfo("KT_TRAIN %lld owner=%d pos=%d,%d dock=%d,%d player_visible=%d player_aggro=%d camp_visible=%d camp_aggro=%d registered=%zu field=%d inside_now=%d hit_unique=%zu\n",(long long)now,owner->status.char_id,owner->x,owner->y,h.drop_x,h.drop_y,player.seen,player.aggro,camp.seen,camp.aggro,h.pack.size(),h.audit_group,camp.inside,h.audit_hits.size());
++}
++
++static void observe_owner_camp(map_session_data* owner,Hunt& h){
++    std::set<int> delivered;
++    h.camp_target=h.camp_add=0;
++    map_foreachinallarea(observe_owner_delivery,owner->m,h.x-26,h.y-26,h.x+26,h.y+26,BL_MOB,owner,&h,&delivered);
++    if(h.pack.empty() && !delivered.empty()){h.storm_landed=false;h.mire_landed=false;}
++    if(h.pack.size()!=delivered.size() && gettick()>=h.scout_log_at){
++        h.scout_log_at=gettick()+1000;
++        ShowInfo("Mob wave B_OWNER_CAMP %lld anchor=%d,%d dock=%d,%d visible_train=%zu\n",(long long)gettick(),h.x,h.y,h.drop_x,h.drop_y,delivered.size());
++    }
++    h.pack.clear();h.pack.insert(delivered.begin(),delivered.end());
++    h.opened=h.release_pack=!h.pack.empty();h.hunter_target=h.camp_add;
++    h.round=h.opened?Hunt::Clear:Hunt::Ready;
++    sample_owner_train(owner,h);
++}
++
++// One booking per returning wave. Read only reports within a scout's current LOS.
++// The route belongs to the puller; the caster owns the committed native field.
++struct StormContact { int id,x,y,px,py,speed; };
++static void storm_meeting(map_session_data* owner,Hunt& h,t_tick now){
++    h.storm_target=0;
++    Shell *wizard=nullptr,*healer=nullptr;
++    for(auto& kv:shells){
++        auto& s=kv.second;
++        if(!hunt_member(s,owner)||pc_isdead(s.sd))continue;
++        if(s.build==companion_build::Build::storm)wizard=&s;
++        if(pc_checkskill(s.sd,AL_HEAL) && s.skills && std::find(s.policy.skills.begin(),s.policy.skills.end(),"heal")!=s.policy.skills.end() &&
++           s.sd->battle_status.sp>=skill_get_sp(AL_HEAL,companion_loadout::cast_level(s.sd,AL_HEAL,5)) &&
++           (!healer || camp_priest(s,owner)))healer=&s;
++    }
++    if(!wizard || h.retreat)return;
++    auto* w=wizard->sd;
++    auto* puller=h.owner_pull?owner:map_id2sd(h.opener);
++    if(!puller)return;
++    bool casting=w->ud.skilltimer!=INVALID_TIMER && w->ud.skill_id==WZ_STORMGUST;
++    if(casting || h.audit_group){
++        if(now>=h.storm_log){
++            h.storm_log=now+1000;
++            ShowInfo("Mob wave SG_HOLD %lld group=%d center=%d,%d puller=%d at=%d,%d heal_range=%d hp=%u\n",
++                 (long long)now,h.audit_group,h.book_x,h.book_y,puller->id,puller->x,puller->y,
++                 healer && battle_check_range(healer->sd,puller,skill_get_range2(healer->sd,AL_HEAL,1,true)),puller->battle_status.hp);
++        }
++        h.drop_x=h.book_x;h.drop_y=h.book_y;
++        return;
++    }
++    auto note=[&](const char* why,int count,int first,int tail,int cast){
++        if(now<h.storm_log && h.storm_reason==why)return;
++        h.storm_log=now+2000;h.storm_reason=why;
++        ShowInfo("Mob wave SG_PLAN %lld role=%s center=%d,%d seen=%d first_ms=%d tail_ms=%d cast_ms=%d reason=%s\n",
++           (long long)now,h.owner_pull?"owner":h.priest_pull?"priest":"knight",h.drop_x,h.drop_y,count,first,tail,cast,why);
++    };
++    if(!healer){note("heal-unavailable",0,-1,-1,0);return;}
++    if(h.owner_pull && !battle_check_range(healer->sd,owner,skill_get_range2(healer->sd,AL_HEAL,1,true)) && now>=h.help_notice){
++        mob_message(owner,h,"เจ้าของอยู่นอกระยะ Heal ของค่าย");h.help_notice=now+12000;
++    }
++    if(!h.owner_pull && !h.release_pack && h.round!=Hunt::Clear)return;
++    int cast=storm_cast_preview(w);
++    int delay=int(std::max<t_tick>({0,w->ud.canact_tick-now,wizard->skill_retry-now}));
++    auto cd=w->scd.find(WZ_STORMGUST);
++    if(cd!=w->scd.end())if(auto* timer=get_timer(cd->second))delay=std::max(delay,int(timer->tick-now));
++    std::vector<StormContact> seen;
++    for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(!m || status_isdead(*m) || !unclaimed(owner,m) ||
++           !(camp_sighted(owner,h,m) || (!h.owner_pull && scout_sees(puller,m))))continue;
++        int x=m->x,y=m->y;
++        // Only use the movement heading visible to the party. Do not read the mob's future route.
++        auto prev=h.storm_seen.find(id);
++        const int native=std::max(1,int(status_get_speed(m)));
++        int speed=native,vx=0,vy=0;
++        if(prev!=h.storm_seen.end() && now-std::get<2>(prev->second)<=2000){
++            auto [ox,oy,then,old_speed,old_vx,old_vy]=prev->second;
++            const int cells=distance_xy(ox,oy,x,y);
++            if(cells){
++                speed=std::clamp(int((now-then)/cells),native,native*4);
++                vx=std::clamp(x-ox,-1,1);vy=std::clamp(y-oy,-1,1);
++            }else{
++                speed=std::max(old_speed,int(now-then));vx=old_vx;vy=old_vy;
++            }
++        }
++        if(prev==h.storm_seen.end() || x!=std::get<0>(prev->second) || y!=std::get<1>(prev->second))
++            h.storm_seen[id]={x,y,now,speed,vx,vy};
++        auto* victim=map_id2sd(m->target_id);
++        if(m->ud.walktimer==INVALID_TIMER || (victim && distance_bl(m,victim)<=status_get_range(m)))vx=vy=0;
++        int steps=std::min(4,(cast+delay)/speed),px=x,py=y;
++        for(int i=0;i<steps;++i){
++            if(!map_getcell(m->m,px+vx,py+vy,CELL_CHKPASS) || !path_search_long(nullptr,m->m,px,py,px+vx,py+vy,CELL_CHKWALL))break;
++            px+=vx;py+=vy;
++        }
++        seen.push_back({id,x,y,px,py,speed});
++    }
++    for(auto it=h.storm_seen.begin();it!=h.storm_seen.end();)
++        if(now-std::get<2>(it->second)>2000)it=h.storm_seen.erase(it);else ++it;
++    if(seen.empty())return;
++    std::vector<std::pair<int,int>> backline;
++    for(auto& kv:shells){
++        auto& s=kv.second;
++        if(hunt_member(s,owner) && (s.sd->status.class_==JOB_HUNTER || s.sd->status.class_==JOB_WIZARD || (s.sd->status.class_==JOB_PRIEST && s.sd!=puller)))
++            backline.emplace_back(s.sd->x,s.sd->y);
++    }
++    int best=INT_MIN,bx=0,by=0,first=0,last=0,focus=0;
++    const int range=skill_get_range2(w,WZ_STORMGUST,10,true);
++    for(int x=w->x-range;x<=w->x+range;x++)for(int y=w->y-range;y<=w->y+range;y++){
++        if(distance_xy(x,y,h.x,h.y)>12 || !pull_cell(h,x,y) || !map_getcell(w->m,x,y,CELL_CHKPASS) ||
++           !check_distance_client_blxy(w,x,y,range) || !path_search_long(nullptr,w->m,w->x,w->y,x,y,CELL_CHKWALL) ||
++           !check_distance_client_blxy(healer->sd,x,y,skill_get_range2(healer->sd,AL_HEAL,1,true)) ||
++           !path_search_long(nullptr,w->m,healer->sd->x,healer->sd->y,x,y,CELL_CHKWALL))continue;
++        if(distance_xy(x,y,h.x,h.y)<=2 || distance_xy(x,y,w->x,w->y)<=2 ||
++           distance_xy(x,y,healer->sd->x,healer->sd->y)<=2)continue;
++        if(std::any_of(backline.begin(),backline.end(),[&](auto pos){return distance_xy(x,y,pos.first,pos.second)<=2;}))continue;
++        if(!h.owner_pull && (!delivery_clear(h,x,y) || !delivery_corridor(h,puller,x,y)))continue;
++        int pull_eta=0;
++        if(!h.owner_pull){
++            walkpath_data route{};
++            if((puller->x!=x || puller->y!=y) && !path_search(&route,w->m,puller->x,puller->y,x,y,0,CELL_CHKNOPASS))continue;
++            int px=puller->x,py=puller->y;
++            for(int i=0;i<route.path_len && distance_xy(px,py,x,y)>4;++i){
++                auto dir=route.path[i];px+=dirx[dir];py+=diry[dir];
++                pull_eta+=status_get_speed(puller)*(dirx[dir] && diry[dir]?14:10)/10;
++            }
++        }
++        int score=0,earliest=INT_MAX,latest=0,nearest=0,covered=0;
++        for(const auto& m:seen){
++            int d=distance_xy(m.x,m.y,x,y),pred=distance_xy(m.px,m.py,x,y);
++            if(!path_search_long(nullptr,w->m,m.x,m.y,x,y,CELL_CHKWALL))continue;
++            int eta=std::max(std::max(0,d-4)*m.speed,d>4?pull_eta:0);
++            if(h.owner_pull && pred>4 && d>4)continue;
++            if(eta>cast+delay+skill_get_time(WZ_STORMGUST,10)-350)continue;
++            ++covered;score+=1000-std::min(pred,24)*8-std::min(d,24)*4;
++            if(eta<earliest){earliest=eta;nearest=m.id;}latest=std::max(latest,eta);
++        }
++        if(!covered)continue;
++        score-=distance_xy(puller->x,puller->y,x,y)*2;
++        if(x==h.book_x && y==h.book_y)score+=10;
++        if(score>best){best=score;bx=x;by=y;first=earliest;last=latest;focus=nearest;}
++    }
++    if(!focus){note("no-covered-meeting",seen.size(),-1,-1,cast);return;}
++    h.book_x=h.drop_x=bx;h.book_y=h.drop_y=by;
++    if(delay>350){note("action-or-skill-delay",seen.size(),first,last,cast);return;}
++    if(first>cast+delay+350 || last>cast+delay+skill_get_time(WZ_STORMGUST,10)-350){
++        note("train-approaching",seen.size(),first,last,cast);return;
++    }
++    h.storm_target=h.camp_target=focus;h.approaching=focus;h.pace=false;
++    note("cast-window",seen.size(),first,last,cast);
++}
++
+ void update_team(map_session_data* owner,Hunt& h) {
++    trial::armed=std::getenv("RAGOFF_BENCH_STOP")!=nullptr;
++    if(trial::armed)if(FILE* f=std::fopen("artifacts/trial.stop","r")){std::fclose(f);trial::stop("manual",owner->id,gettick());}
++    if(trial::stopped && !trial::regrouped){
++        team_retreat(owner,h,"position trial stop");trial::regrouped=true;
++        ShowInfo("B_REGROUP %lld %d\n",(long long)gettick(),owner->id);
++    }
+     const auto now=gettick();
+     if (now<h.next_scan) return;
+-    h.next_scan=now+350;
++    if(std::getenv("RAGOFF_SCOUT_AUDIT"))observe_team(owner,h,now);
++h.next_scan=now+350;
++    if(h.owner_pull){observe_owner_camp(owner,h);storm_meeting(owner,h,now);return;}
+     Shell *tank=nullptr,*healer=nullptr,*wizard=nullptr,*mobber=nullptr;
+     for (auto& [id,s]:shells) {
+         if (!hunt_member(s,owner)) continue;
+@@ -866,31 +1542,96 @@
+     if(h.mode==TeamMode::mob && h.priest_pull)tank=healer=mobber;
+     if(h.mode==TeamMode::mob && tank){
+         if(h.parent.empty())survey_camp(h,owner->m);
++        h.observed_hazards.clear();
+         h.blocked.assign(h.parent.size(),0);
++        // Keep the no-train buffer for foreign players. Monster hazards are local observations.
++        for(auto& kv:shells)if(hunt_member(kv.second,owner) && !pc_isdead(kv.second.sd)){
++            auto* e=kv.second.sd;
++            map_foreachinallarea(mark_pull_hazard,owner->m,e->x-AREA_SIZE,e->y-AREA_SIZE,e->x+AREA_SIZE,e->y+AREA_SIZE,BL_MOB,owner,&h);
++        }
++        map_foreachinallarea(mark_pull_hazard,owner->m,owner->x-AREA_SIZE,owner->y-AREA_SIZE,owner->x+AREA_SIZE,owner->y+AREA_SIZE,BL_MOB,owner,&h);
+         int extent=h.radius+18;
+-        map_foreachinallarea(mark_pull_hazard,owner->m,h.x-extent,h.y-extent,h.x+extent,h.y+extent,BL_PC|BL_MOB,owner,&h);
++        map_foreachinallarea(mark_pull_hazard,owner->m,h.x-extent,h.y-extent,h.x+extent,h.y+extent,BL_PC,owner,&h);
+         h.hold_train=false;h.hazard_near_train=false;
++        bool only_family=true, exposed=false;
++        std::vector<const Hunt::Hazard*> sources;
+         auto check_train=[&](int i){
+             if(i<0)return;
+             if(h.blocked[i]==UINT8_MAX)h.hold_train=true;
+-            else if(h.blocked[i])h.hazard_near_train=true;
++            else if(h.blocked[i]){
++                // A baby or its visible parent at the very edge of detection
++                // still blocks the route; the train may walk away or tangent.
++                // Any overlapping boss, unknown master or closer hazard ends the trip.
++                int width=2*h.radius+1,x=h.x+i%width-h.radius,y=h.y+i/width-h.radius;
++                exposed=true;bool skirt=false;
++                for(const auto& hazard:h.observed_hazards){
++                    int gap=distance_xy(x,y,hazard.x,hazard.y);
++                    if(gap>hazard.margin)continue;
++                    sources.push_back(&hazard);
++                    if(!hazard.orc_family || gap<=hazard.margin/2){only_family=false;h.hazard_near_train=true;}
++                    else if(gap<hazard.margin-1)h.hazard_near_train=true;
++                    skirt=true;
++                }
++                if(!skirt){only_family=false;h.hazard_near_train=true;}
++            }
+         };
+         check_train(h.route_index(tank->sd->x,tank->sd->y));
+         for(auto id:h.pack){
+             auto* mob=map_id2md(id);
+-            int i=mob?h.route_index(mob->x,mob->y):-1;
++            int i=party_sees(owner,mob)?h.route_index(mob->x,mob->y):-1;
+             check_train(i);
++        }
++        h.skirt_goal=false;
++        if(!exposed || h.round!=Hunt::Pull)h.skirt_since=0;
++        // Escape a moving Orc-family buffer along a proven clear straight
++        // segment. Do not add targets while clearing the buffer. Close contact,
++        // a player, a second type of hazard or an unavailable exit ends the trip.
++        auto* head=tank->sd;
++        if(h.hazard_near_train && only_family && !sources.empty() && !h.hold_train &&
++           h.round==Hunt::Pull && !h.release_pack && !h.scout_home &&
++           head->battle_status.hp*100ULL>=(h.stop_hp+18ULL)*head->battle_status.max_hp){
++            if(!h.skirt_since)h.skirt_since=now;
++            int best_clearance=0;
++            if(now-h.skirt_since<3500)for(int d=0;d<8;++d){
++                int cx=head->x,cy=head->y;
++                for(int n=1;n<=8;++n){
++                    int x=cx+dirx[d],y=cy+diry[d],from=h.route_index(cx,cy);
++                    if(!pull_step(h,from,x,y) || !pull_step(h,from,cx,y) ||
++                       !pull_step(h,from,x,cy) || !delivery_edge(h,cx,cy,x,y))break;
++                    int gain=INT_MAX;
++                    bool approaches=false;
++                    for(auto* a:sources){
++                        int next=distance_xy(x,y,a->x,a->y);
++                        if(next<distance_xy(cx,cy,a->x,a->y)){approaches=true;break;}
++                        gain=std::min(gain,next-int(distance_xy(head->x,head->y,a->x,a->y)));
++                    }
++                    if(approaches)break;
++                    if(gain>best_clearance && n>=3 && pull_cell(h,x,y)){
++                        best_clearance=gain;h.sx=x;h.sy=y;
++                    }
++                    cx=x;cy=y;
++                }
++            }
++            if(best_clearance){
++                h.scout_goal=h.skirt_goal=true;h.hazard_near_train=false;
++                scout_log(h,head,now,"skirt-observed-family",0,h.sx,h.sy);
++            }
+         }
+         auto& path=tank->sd->ud.walkpath;
+         int x=tank->sd->x,y=tank->sd->y;
+         if(tank->sd->ud.walktimer!=INVALID_TIMER)for(int i=path.path_pos;i<path.path_len;++i){
+             int from=h.route_index(x,y);
+             x+=dirx[path.path[i]];y+=diry[path.path[i]];
+-            if(h.hold_train || !pull_step(h,from,x,y)){unit_stop_walking(tank->sd,USW_FIXPOS|USW_FORCE_STOP|USW_RELEASE_TARGET);break;}
++            if(h.hold_train || !pull_step(h,from,x,y) || (!h.pack.empty() && !delivery_edge(h,x-dirx[path.path[i]],y-diry[path.path[i]],x,y))){unit_stop_walking(tank->sd,USW_FIXPOS|USW_FORCE_STOP|USW_RELEASE_TARGET);break;}
+         }
+     }
+     if(h.retreat)return;
+     if (!tank || !healer || pc_isdead(owner) || distance_xy(owner->x,owner->y,h.x,h.y)>hunt_chase_range) {
++        if(h.mode==TeamMode::mob){
++            h.target=0;h.release_pack=true;h.round=Hunt::Clear;
++            if(!h.pack.empty())h.opened=true;
++            return;
++        }
+         team_retreat(owner,h,pc_isdead(owner)?"เจ้าของล้ม":!tank?"Knight ไม่พร้อมช่วยสู้":!healer?"Priest ไม่พร้อมช่วยสู้":"เจ้าของห่างจุดรวมเกิน 12 ช่อง"); return;
+     }
+     h.opener=tank->sd->id;
+@@ -917,7 +1658,7 @@
+     }
+     auto& st=tank->sd->battle_status;
+     int hp=100ULL*st.hp/std::max<uint32>(1,st.max_hp);
+-    if(hp<h.retreat_hp || (h.mode==TeamMode::boss && (h.potions>=20 || h.gems>=5))) {
++    if((h.mode!=TeamMode::mob && hp<h.retreat_hp) || (h.mode==TeamMode::boss && (h.potions>=20 || h.gems>=5))) {
+         team_retreat(owner,h,hp<h.retreat_hp?(h.priest_pull?"Priest HP critical":"Knight HP critical"):"fight supply budget reached"); return;
+     }
+     if(h.mode==TeamMode::boss){
+@@ -933,7 +1674,8 @@
+     for(auto it=h.missed.begin();it!=h.missed.end();){
+         auto* mob=map_id2md(it->first);
+         auto& pos=it->second;
+-        auto* victim=mob?map_id2bl(mob->target_id):nullptr;
++        if(!party_sees(owner,mob)){if(now-pos.since>=escort_grace_ms)it=h.missed.erase(it);else ++it;continue;}
++        auto* victim=map_id2bl(mob->target_id);
+         bool gone=!mob || !mob->prev || mob->m!=owner->m || status_isdead(*mob) ||
+                   distance_xy(mob->x,mob->y,h.x,h.y)>h.radius+3;
+         bool reengaged=!gone && victim && team_victim(mob,owner) &&
+@@ -947,8 +1689,8 @@
+     for(auto it=h.pack.begin();it!=h.pack.end();){
+         auto* mob=map_id2md(*it);
+         auto& seen=h.last_aggro[*it];
+-        if(mob && (!seen || team_victim(mob,owner)))seen=now;
+-        bool valid=hunt_candidate(owner,mob,h.radius+hunt_chase_range) && distance_xy(mob->x,mob->y,h.x,h.y)<=h.radius+3;
++        if(party_sees(owner,mob) && (!seen || team_victim(mob,owner)))seen=now;
++        bool valid=party_sees(owner,mob) && hunt_candidate(owner,mob,h.radius+hunt_chase_range) && distance_xy(mob->x,mob->y,h.x,h.y)<=h.radius+3;
+         int gap=valid?distance_bl(tank->sd,mob):0;
+         bool outside=valid && distance_xy(mob->x,mob->y,h.x,h.y)>7;
+         bool following=valid && mob->target_id==tank->sd->id;
+@@ -991,47 +1733,97 @@
+     }
+     mob_data* best=nullptr;
+     PullScan scan;
+-    map_foreachinallarea(gather_candidate,owner->m,h.x-h.radius,h.y-h.radius,h.x+h.radius,h.y+h.radius,BL_MOB,owner,tank->sd,&h,&best,&scan);
++    // Query only the neighbourhoods of party observers; classify each actor once.
++    std::vector<map_session_data*> eyes{owner};
++    for(const auto& kv:shells)if(hunt_member(kv.second,owner) && !pc_isdead(kv.second.sd))eyes.push_back(kv.second.sd);
++    for(auto* eye:eyes)
++        map_foreachinallarea(gather_candidate,owner->m,eye->x-AREA_SIZE,eye->y-AREA_SIZE,
++            eye->x+AREA_SIZE,eye->y+AREA_SIZE,BL_MOB,owner,tank->sd,&h,&best,&scan);
++    
++    // Remember live followers even if the native escort gives up on tagging them.
++    for(auto it=h.outstanding.begin();it!=h.outstanding.end();){
++        auto* m=map_id2md(*it);
++        if(!party_sees(owner,m) || m->m!=owner->m || distance_xy(m->x,m->y,h.x,h.y)>h.radius+3 || status_isdead(*m) || !unclaimed(owner,m) ||
++           (!team_victim(m,owner) && !h.pack.count(*it) && distance_xy(m->x,m->y,h.x,h.y)>7))
++            it=h.outstanding.erase(it);
++        else ++it;
++    }
++    h.outstanding.insert(h.pack.begin(),h.pack.end());
++    for(int id:h.outstanding)h.pack.insert(id);
+     const bool at_camp=distance_xy(tank->sd->x,tank->sd->y,h.x,h.y)<=3;
+-    if(!h.release_pack || h.inbound || (h.pack.empty() && at_camp)){
+-        const bool had_stops=!h.tour.empty();
+-        for(auto it=h.skip_tag_until.begin();it!=h.skip_tag_until.end();){
+-            if(now>=it->second)it=h.skip_tag_until.erase(it);else ++it;
+-        }
+-        if(h.inbound && (h.pack.empty() || at_camp))h.inbound=false;
+-        if(!h.inbound && h.radius>30 && h.outbound_train && h.pack.size()>=size_t((h.cap+1)/2)){
+-            h.inbound=true;h.tour.clear();
+-        }
+-        if(h.inbound){
+-            const int home=distance_xy(h.x,h.y,tank->sd->x,tank->sd->y);
+-            int closest=INT_MAX;
+-            for(auto* m:scan.candidates){
+-                int to=distance_bl(tank->sd,m),back=distance_xy(h.x,h.y,m->x,m->y);
+-                if(to<=18 && back<home && to+back<=home+6 && to<closest && !h.skip_tag_until.count(m->id)){
+-                    closest=to;best=m;
+-                }
+-            }
+-            if(best)h.release_pack=false;
+-            if(best && best->id==h.target && now-h.pull_since>12000){
+-                h.skip_tag_until[best->id]=now+15000;best=nullptr;
+-            }
+-        }
+-        if(!h.inbound && h.tour.empty() && pull_cell(h,h.x,h.y)){
+-            plan_tour(h,tank->sd,scan);
+-            if(!h.tour.empty() && !h.lap_started)h.lap_started=now;
+-        }
+-        while(!h.tour.empty()){
+-            auto id=h.tour.front();
+-            auto candidate=std::find_if(scan.candidates.begin(),scan.candidates.end(),[id](auto* m){return m->id==id;});
+-            if(id==h.target && now-h.pull_since>std::max(12000,h.radius*500))h.skip_tag_until[id]=now+15000;
+-            if(candidate!=scan.candidates.end() && !h.skip_tag_until.count(id)){best=*candidate;break;}
+-            h.tour.pop_front();
+-        }
+-        if(!best && had_stops && !h.inbound && h.pack.size()<size_t((h.cap+1)/2)){
+-            plan_tour(h,tank->sd,scan);
+-            if(!h.tour.empty())best=map_id2md(h.tour.front());
+-        }
+-    }
++    auto* eye=tank->sd;
++    if(h.round!=Hunt::Pull)h.recruited.clear();
++    const int minimum=(7*h.cap+9)/10;
++    int actual=0;
++    for(int mid:h.pack){
++        auto* mob=map_id2md(mid);
++        if(party_sees(owner,mob) && mob->target_id==eye->id){
++            ++actual;
++            if(h.round==Hunt::Pull && h.recruited.insert(mid).second)h.last_contact=now;
++        }
++    }
++    h.visited[(eye->x/8)*1024+eye->y/8]=now;
++    const char* sweep_end=nullptr;
++    // Pick the terrain leg first. Detour only to tag a target close to this
++    // leg; a train should not chase each new sighting in the opposite direction.
++    const bool outbound=(h.round==Hunt::Ready || h.round==Hunt::Pull) && !h.release_pack && !h.scout_home;
++    bool have_leg=false;
++    if(outbound && !h.seen_id && !h.memory_until)have_leg=scout_waypoint(h,eye,now);
++    if(at_camp && h.pack.empty() && h.release_pack && h.round==Hunt::Pull){
++        // An empty return has no Clear phase to reset its distance budget.
++        h.round=Hunt::Ready;h.walked=0;h.outing_since=0;
++        h.scout_goal=false;h.scout_home=false;h.motion_since=0;
++        h.seen_id=0;h.memory_until=0;
++    }
++    if(at_camp && h.pack.empty() && h.round!=Hunt::Clear && h.round!=Hunt::Withdraw)h.release_pack=false;
++    for(auto it=h.skip_tag_until.begin();it!=h.skip_tag_until.end();)
++        if(now>=it->second)it=h.skip_tag_until.erase(it);else ++it;
++    if(h.scout_home && at_camp && h.pack.empty()){
++        h.scout_home=false;h.outing_since=0;h.walked=0;h.scout_goal=false;
++    }
++    if(!h.release_pack && !h.scout_home && (h.round==Hunt::Ready || h.round==Hunt::Pull)){
++        if(!have_leg && !h.seen_id && (!h.memory_until || now>=h.memory_until))
++            have_leg=scout_waypoint(h,eye,now);
++        if(h.skirt_goal){h.seen_id=0;h.memory_until=0;}
++        for(auto* m:scan.candidates){
++            if(h.skirt_goal)break;
++            if(actual>=minimum && m->id!=h.seen_id){
++                int dx=m->x-eye->x,dy=m->y-eye->y;
++                const bool thin=eye->battle_status.hp*100ULL<(h.stop_hp+18ULL)*eye->battle_status.max_hp;
++                if(thin && distance_xy(m->x,m->y,h.x,h.y)>std::max(14,int(distance_xy(eye->x,eye->y,h.x,h.y))))continue;
++                int reach=h.priest_pull?4:8;
++                if(distance_bl(eye,m)>reach && (!have_leg ||
++                   dx*(h.sx-eye->x)+dy*(h.sy-eye->y)<=0 || distance_bl(eye,m)>reach+2))continue;
++            }
++            if(h.outstanding.size()>=h.cap || h.skip_tag_until.count(m->id))continue;
++            if(!best || m->id==h.seen_id || (best->id!=h.seen_id &&
++                std::make_pair(distance_bl(eye,m),m->id)<std::make_pair(distance_bl(eye,best),best->id)))best=m;
++        }
++        if(best){
++            if(h.seen_id!=best->id)scout_log(h,eye,now,"sighted",best->id,best->x,best->y);
++            h.last_contact=now;h.seen_id=best->id;h.seen_x=best->x;h.seen_y=best->y;h.memory_until=now+2000;
++            h.scout_goal=false;
++        }else if(h.seen_id){
++            if(now<h.memory_until && !h.pack.count(h.seen_id) && pull_cell(h,h.seen_x,h.seen_y)){
++                h.sx=h.seen_x;h.sy=h.seen_y;h.scout_goal=true;
++                scout_log(h,eye,now,"last-seen",h.seen_id,h.sx,h.sy);
++            }
++            h.seen_id=0;
++        }
++        if(h.scout_goal && h.memory_until && now>=h.memory_until && h.sx==h.seen_x && h.sy==h.seen_y)h.scout_goal=false;
++        if(h.outing_since){
++            if(now-h.outing_since>=60000)sweep_end="outing-time";
++            else if(actual>=minimum && !best && now-std::max(h.last_contact,h.outing_since)>=18000)sweep_end="searched-without-contact";
++            if(sweep_end)h.scout_home=true;
++        }
++    }
++    const bool exploring_before_waypoint=!best && !h.scout_home && !h.release_pack &&
++        (h.round==Hunt::Ready || h.round==Hunt::Pull);
++    bool explore=exploring_before_waypoint && scout_waypoint(h,eye,now);
++    if(!best && !explore && !at_camp){
++        h.scout_home=true;if(!sweep_end)sweep_end=h.release_pack?"release-pack":exploring_before_waypoint?"no-reachable-waypoint":"return-in-progress";
++    }
++    if(h.scout_home){best=nullptr;explore=false;}
+     h.hunter_target=0;
+     for(int id:h.pack){
+         auto* m=map_id2md(id);
+@@ -1041,7 +1833,7 @@
+     }
+     if(!h.hunter_target && h.pack.size()<h.cap){
+         int closest=8;
+-        for(auto* m:scan.candidates){
++        for(auto* m:scan.camp){
+             int d=distance_xy(h.x,h.y,m->x,m->y);
+             if(d<closest && (!best || best->id!=m->id) && !m->target_id){
+                 closest=d;h.hunter_target=m->id;
+@@ -1058,6 +1850,40 @@
+         for(int mid:h.pack)trace(mid,"pack");
+         if(best && !h.pack.count(best->id))trace(best->id,"candidate");
+     }
++
++    static bool injected=false;
++    const char* probe=std::getenv("DELIVERY_CASE");
++    if(!injected && probe && !strcmp(probe,"lane") && h.drop_x && !h.pack.empty()){
++        const int x=h.drop_x+2*h.drop_dx,y=h.drop_y+2*h.drop_dy;
++        for(int offset=-2;offset<=2;offset++){
++            map_setcell(owner->m,x-offset*h.drop_dy,y+offset*h.drop_dx,CELL_WALKABLE,false);
++            map_setcell(owner->m,x-offset*h.drop_dy,y+offset*h.drop_dx,CELL_SHOOTABLE,false);
++        }
++        injected=true;ShowInfo("B_FAULT %lld lane %d %d\n",(long long)now,x,y);
++    }
++    if(!injected && wizard && probe && !strcmp(probe,"late") && h.pack.size()>=2){
++        for(const auto& g:wizard->sd->ud.skillunits)if(g && g->skill_id==WZ_STORMGUST && g->alive_count && g->tick+g->limit-now<1800){
++            auto* m=map_id2md(*h.pack.rbegin());
++            int x=h.drop_x+15*h.drop_dx,y=h.drop_y+15*h.drop_dy;
++            if(m && pull_cell(h,x,y) && unit_movepos(m,x,y,0,false)){
++                injected=true;ShowInfo("B_FAULT %lld late %d %d %d %d\n",(long long)now,m->id,x,y,g->group_id);
++            }
++            break;
++        }
++    }
++    if(!injected && wizard && probe && !strcmp(probe,"interrupt") &&
++       wizard->sd->ud.skill_id==WZ_STORMGUST && wizard->sd->ud.skilltimer!=INVALID_TIMER){
++        unit_skillcastcancel(wizard->sd,0);injected=true;
++        ShowInfo("B_FAULT %lld interrupt %d\n",(long long)now,wizard->sd->ud.skilltimer);
++    }
++    if(!wizard || (!h.audit_group && !(wizard->sd->ud.skilltimer!=INVALID_TIMER && wizard->sd->ud.skill_id==WZ_STORMGUST)))delivery_plan(owner,h,tank,wizard,best);
++    if(!h.drop_x){
++        best=nullptr;h.tour.clear();h.approaching=0;
++
++    }
++    if(!wizard || wizard->build!=companion_build::Build::storm)delivery_window(h,wizard,tank,now);
++    else {h.approaching=0;h.pace=false;}
++    storm_meeting(owner,h,now);
+     // Defend the camp while the Knight is out. Use the same pack and spell
+     // budget as the train, even if the two groups cannot see each other.
+     h.camp_target=0;
+@@ -1067,13 +1893,14 @@
+         auto* mob=map_id2md(mid);
+         if(!mob)continue;
+         if(mob->target_id==tank->sd->id && distance_bl(mob,tank->sd)<=status_get_range(mob)+2)++close_pursuers;
+-        int d=distance_xy(h.x,h.y,mob->x,mob->y);
++        int d=distance_xy(h.drop_x,h.drop_y,mob->x,mob->y);
+         if(d>6)continue;
+         ++nearby;
+         if(mob->target_id && mob->target_id!=tank->sd->id && team_victim(mob,owner))threatened=true;
+         if(d<closest){h.camp_target=mid;closest=d;}
+     }
+-    if(!threatened && (nearby<2 || (h.outbound_train && nearby<int(h.pack.size()))))h.camp_target=0;
++    if(h.approaching && !h.camp_target)h.camp_target=h.approaching;
++    if(!h.approaching && !threatened && (nearby<2 || (h.outbound_train && nearby<int(h.pack.size()))))h.camp_target=0;
+     if(h.pack.empty()){h.storm_landed=h.mire_landed=false;h.front_x=h.front_y=0;h.outbound_train=false;}
+     if(!h.front_x && !h.front_y){
+         const auto* incoming=h.pack.empty()?best:map_id2md(*h.pack.begin());
+@@ -1108,8 +1935,28 @@
+     bool exposed=h.pressed && (!tank->sd->sc.getSCE(SC_KYRIE) || hp<85);
+     bool beyond_heal=tank!=healer && distance_bl(tank->sd,healer->sd)>9;
+     int lead=std::min<int>(8,distance_xy(h.x,h.y,tank->sd->x,tank->sd->y)/6);
++    if(!h.hp_window || now-h.hp_window>=2000){
++        h.sustained_loss=h.hp_window?std::max(0.0,(double(h.window_hp)-st.hp)*1000/(now-h.hp_window)):0;
++        h.window_hp=st.hp;h.hp_window=now;
++    }
++    // A single hit may be a burst. Keep the native hard HP floor and react
++    // immediately if it threatens critical HP before help, even on the first hit.
++    double projected_loss=std::max(h.sustained_loss,std::min(loss,healing_per_second));
++    bool burst_danger=lead>0 && loss>0 && st.hp-loss*lead<st.max_hp*h.stop_hp/100.0;
+     bool return_for_hp=h.radius>30 && (beyond_heal || h.priest_pull) && lead>0 && loss>0 &&
+-        st.hp-loss*lead < st.max_hp*h.stop_hp/100.0;
++        (burst_danger || st.hp-projected_loss*lead < st.max_hp*h.stop_hp/100.0);
++    // Below the requested minimum, use the hard floor and immediate danger
++    // forecast. A brief projected dip below the soft floor alone ends no trip.
++    bool hp_supply=false;
++    if(actual<minimum && h.round==Hunt::Pull && (return_for_hp || loss>healing_per_second)){
++        std::vector<companion_supply::Stock> stock;
++        if(companion_supplies::enabled() && companion_supply::list(mmysql_handle,tank->character,tank->profile,stock))
++            for(const auto& row:stock)if(row.itemid==11623 && row.amount){hp_supply=true;break;}
++    }
++    const bool sustained_danger=lead>0 && h.sustained_loss>0 &&
++        st.hp-h.sustained_loss*lead<st.max_hp*h.stop_hp/100.0;
++    const bool extra_safe=actual<minimum && hp_supply && hp>=h.stop_hp &&
++        !burst_danger && !sustained_danger && !h.pressed;
+     bool continue_home=false;
+     const char* reason=nullptr;
+     if(h.rescue_ally)reason="หยุดลาก กลับไปฮีลเพื่อน";
+@@ -1121,12 +1968,13 @@
+     else if(!ready) reason="พักลาก SP ของ Wizard ไม่พอร่ายวง 2 รอบ";
+     else if(h.pressed && ((exposed && (camp_gap>18 || close_pursuers>=3)) ||
+                           (camp_gap>25 && close_pursuers>=4)))reason="จบรอบ Priest กำลังถูกล้อม พาฝูงกลับก่อนโล่แตก";
+-    else if(return_for_hp) reason="จบรอบ กลับเข้าระยะฮีลก่อน HP ต่ำ";
++    else if(return_for_hp && !extra_safe) reason="จบรอบ กลับเข้าระยะฮีลก่อน HP ต่ำ";
+     else if(hp<h.stop_hp) reason="พักลาก HP ของ Knight ต่ำกว่าเกณฑ์";
+-    else if(loss>healing_per_second && loss>0) reason="พักลาก Knight เสีย HP เร็วกว่าที่ Priest ฮีลทัน";
+-    else if(!h.pack.empty() && h.lap_started && now-h.lap_started>=std::max(35000,h.radius*1500) && h.pack.size()>=size_t((h.cap+1)/2))reason="จบรอบ พาฝูงกลับจุดรวม";
+-    else if(h.pack.size()>=h.cap) reason="ครบจำนวนแล้ว Knight พาฝูงกลับจุดรวม";
+-    else if(!best){
++    else if(!extra_safe && (h.sustained_loss>healing_per_second || burst_danger) && loss>0) reason="พักลาก Knight เสีย HP เร็วกว่าที่ Priest ฮีลทัน";
++    else if(!h.pack.empty() && h.lap_started && now-h.lap_started>=std::max(35000,h.radius*1500) && actual>=minimum)reason="จบรอบ พาฝูงกลับจุดรวม";
++    else if(actual>=h.cap || h.outstanding.size()>=h.cap) reason="ครบจำนวนแล้ว Knight พาฝูงกลับจุดรวม";
++    else if(sweep_end)reason=sweep_end;
++    else if(!best && !explore){
+         if(h.inbound){continue_home=true;reason="พาฝูงกลับ เก็บเป้าที่ผ่านระหว่างทาง";}
+         else if(scan.unreachable) reason="พักลาก Knight เดินไปไม่ถึงเป้า";
+         else if(scan.unsafe) reason="พักลาก ข้ามมอนที่เสี่ยง";
+@@ -1138,9 +1986,78 @@
+     }
+     if(h.hazard_near_train)reason="จบรอบ เลี่ยงมอนอันตรายแล้วพาฝูงกลับ";
+     if(h.hold_train)reason="พักลาก มีผู้เล่นอื่นใกล้ขบวน";
+-    if(!best && h.pack.empty() && at_camp && scan.candidates.empty() && now>=h.next_camp_hint && !h.hold_train){
+-        suggest_camp(owner,h);h.next_camp_hint=now+60000;
+-    }
++    const char* return_reason=reason;
++    const auto previous=h.round;
++    const char* round_probe=std::getenv("DELIVERY_CASE");
++    static bool injected_withdraw=false;
++    const bool fault=!injected_withdraw && round_probe && !strcmp(round_probe,"withdraw") &&
++        h.pack.size()>=2 && camp_gap>8;
++    if(fault){injected_withdraw=true;ShowInfo("B_FAULT %lld withdraw\n",(long long)now);}
++    const bool camp_incoming=std::any_of(scan.camp.begin(),scan.camp.end(),[&](mob_data* m){
++        if(!status_bl_has_mode(m,MD_AGGRESSIVE) || m->ud.walktimer==INVALID_TIMER ||
++           distance_xy(m->x,m->y,h.x,h.y)>7)return false;
++        for(auto cell:h.rear_cells){
++            int current=distance_xy(m->x,m->y,cell.first,cell.second);
++            int next=distance_xy(m->ud.to_x,m->ud.to_y,cell.first,cell.second);
++            if(next<current && next<=status_get_range(m)+1 &&
++               path_search_long(nullptr,m->m,m->x,m->y,cell.first,cell.second,CELL_CHKWALL))return true;
++        }
++        return false;
++    });
++    if(fault && trial::armed)h.round=Hunt::Withdraw;
++    else if(h.round==Hunt::Ready && (!h.outstanding.empty() || camp_incoming))h.round=Hunt::Clear;
++    else if(h.round==Hunt::Pull && !h.outstanding.empty() &&
++            ((reason && !continue_home) || (h.release_pack && !h.inbound)))
++        h.round=Hunt::Clear;
++    if((h.round==Hunt::Clear || h.round==Hunt::Withdraw) &&
++       h.outstanding.empty() && !camp_incoming && hp>=h.stop_hp && ready && reserve && !h.rescue_ally &&
++       !h.hold_train && !h.hazard_near_train){
++        ShowInfo("B_SECURE %lld %d %d %d\n",(long long)now,int(h.round),hp,camp_incoming);
++        h.round=Hunt::Ready;h.release_pack=false;h.inbound=false;
++    }
++    if(h.round==Hunt::Ready && !reason && (best || explore))
++        h.round=h.outstanding.empty()?Hunt::Pull:Hunt::Clear;
++    if(h.round==Hunt::Clear || h.round==Hunt::Withdraw){
++        best=nullptr;continue_home=false;h.inbound=false;
++        reason=h.round==Hunt::Clear?"clear current pack":"withdraw under cover";
++    }
++    if(previous==Hunt::Pull && (h.round!=previous || (!was_released && reason && h.outing_since))){
++        int followers=0;
++        for(auto id:h.pack){
++            auto* f=map_id2md(id);
++            if(party_sees(owner,f) && f->target_id==h.opener)++followers;
++        }
++        if(h.hazard_near_train)for(const auto& a:h.observed_hazards){
++            auto report=[&](block_list* unit){
++                if(unit && distance_xy(unit->x,unit->y,a.x,a.y)<=a.margin)
++                    ShowInfo("B_SCOUT %lld rule=unsafe-mobile-or-boss id=%d species=%d master=%d family=%d at=%d,%d margin=%d exposed=%d at=%d,%d\n",
++                        (long long)now,a.id,a.species,a.master,int(a.orc_family),a.x,a.y,a.margin,unit->id,unit->x,unit->y);
++            };
++            report(eye);
++            for(int id:h.pack)if(auto* m=map_id2md(id))if(party_sees(owner,m))report(m);
++        }
++        ShowInfo("B_RETURN %lld at=%d,%d actual=%d committed=%zu cap=%d minimum=%d outcome=%s hp=%d loss=%.1f heal=%.1f gap=%d walked=%d elapsed=%lld reason=%s\n",
++            (long long)now,eye->x,eye->y,followers,h.outstanding.size(),h.cap,minimum,followers>=minimum?"met":"exception",hp,loss,healing_per_second,camp_gap,h.walked,
++            (long long)(h.outing_since?now-h.outing_since:0),h.round==Hunt::Withdraw?"withdraw":return_reason?return_reason:"release");
++    }
++    if(previous!=h.round)
++        ShowInfo("B_ROUND %lld %d %d %zu %d %d %d\n",(long long)now,int(previous),int(h.round),
++                 h.outstanding.size(),hp,ready,reserve);
++    // A neutral camp add is Hunter's only. Never open one while clearing.
++    h.camp_add=0;
++    if(auto* m=map_id2md(h.hunter_target)){
++        if(distance_xy(m->x,m->y,h.x,h.y)<=7 && m->target_id!=h.opener &&
++           (team_victim(m,owner) || h.round==Hunt::Pull))h.camp_add=m->id;
++        else if(!h.pack.count(m->id))h.hunter_target=0;
++    }
++    if(!h.camp_add)for(int id:h.pack){
++        auto* m=map_id2md(id);
++        if(m && distance_xy(m->x,m->y,h.x,h.y)<=7 && m->target_id!=h.opener && team_victim(m,owner)){
++            h.camp_add=id;break;
++        }
++    }
++
++    if(h.round==Hunt::Clear || h.round==Hunt::Withdraw)h.scout_goal=false;
+     if(reason){
+         h.inbound=continue_home && !h.hold_train && !h.hazard_near_train;
+         h.release_pack=true;h.tour.clear();h.lap_started=0;
+@@ -1155,27 +2072,37 @@
+         h.next_notice=now+5000;
+     }
+     if(!h.pack.empty() || !best)h.kyrie_deadline=0;
++    if(!h.release_pack && !reason && h.round==Hunt::Pull && (best || explore)){
++        if(!h.outing_since){h.outing_since=now;h.walked=0;h.motion_x=eye->x;h.motion_y=eye->y;}
++        h.walked+=distance_xy(h.motion_x,h.motion_y,eye->x,eye->y);
++        h.motion_x=eye->x;h.motion_y=eye->y;
++        if(explore){h.target=0;h.opened=false;return;}
++    }else{h.outing_since=0;h.scout_goal=false;h.motion_since=0;}
+     if(h.release_pack || !best){
+         h.target=0;
+         int nearest=INT_MAX;
+         for(auto id:h.pack){
+             auto* mob=map_id2md(id);
+-            int dist=distance_xy(mob->x,mob->y,h.x,h.y);
++            int dist=distance_xy(mob->x,mob->y,h.drop_x,h.drop_y);
+             if(dist<nearest){nearest=dist;h.target=id;}
+         }
+         int together=0;
+         for(auto id:h.pack){
+             auto* mob=map_id2md(id);
+-            if(distance_xy(mob->x,mob->y,h.x,h.y)<=7)++together;
++            if(distance_xy(mob->x,mob->y,h.drop_x,h.drop_y)<=7)++together;
+         }
+         if(!was_released || !h.return_since) h.return_since=now;
+-        const int tank_distance=distance_xy(tank->sd->x,tank->sd->y,h.x,h.y);
++        const int tank_distance=distance_xy(tank->sd->x,tank->sd->y,h.drop_x,h.drop_y);
+         // A pack already attacking camp needs the original immediate AoE response.
+         const bool arriving=ready && together>=2 && (h.outbound_train?
+             tank_distance<=4 && !h.escort_target : tank_distance<=9);
+         h.opened=together>0 && (together>=int(h.pack.size()) || hp<h.stop_hp ||
+             arriving || (tank_distance<=5 && now-h.return_since>=(h.outbound_train?6000:4000)));
+-        if(!was_released && ready && h.pack.size()>1 && hp>=h.stop_hp)h.wait_for_area_until=now+8000;
++        if(h.round==Hunt::Withdraw){
++            h.wait_for_area_until=0;
++            if(together)h.opened=true;
++        }
++        if(h.round!=Hunt::Withdraw && !was_released && ready && h.pack.size()>1 && hp>=h.stop_hp)h.wait_for_area_until=now+8000;
+         if(!was_released && !h.pack.empty())ShowInfo("Companion mob: returning=%zu at_anchor=%d cap=%d anchor=%d,%d\n",h.pack.size(),together,h.cap,h.x,h.y);
+     }else{
+         if(h.pack.empty() && !h.kyrie_deadline && healer->skills &&
+@@ -1343,7 +2270,7 @@
+  auto* mob=static_cast<mob_data*>(bl);
+  if(status_isdead(*mob))return 0;
+  if(!unclaimed(owner,mob) || mob->master_id || mob->guardian_data || mob->get_bosstype()!=BOSSTYPE_NONE)return 1;
+- if(h.pack.count(mob->id))return 0;
++ if(h.owner_pull || h.pack.count(mob->id))return 0;
+  extra.insert(mob->id);
+  return 0;
+ }
+@@ -1351,7 +2278,15 @@
+  using B=companion_build::Build;
+  auto* sd=shell.sd;
+  auto b=shell.build;
+- auto skip=[&](const char* reason){shell.wave_decision=reason;return false;};
++ auto skip=[&](const char* reason){
++  shell.wave_decision=reason;auto t=hunts.find(shell.character);
++  if(t!=hunts.end() && t->second.mode==TeamMode::mob && t->second.storm_target && gettick()>=t->second.spell_notice){
++   t->second.spell_notice=gettick()+2500;
++   ShowInfo("Mob wave SG_BLOCK owner=%u reason=%s sp=%u\n",shell.character,reason,sd->battle_status.sp);
++   if(!strcmp(reason,"SP-or-reserve") || !strcmp(reason,"storm-10-not-learned") || !strcmp(reason,"skill-disabled"))
++    if(auto* owner=map_charid2sd(shell.character))mob_message(owner,t->second,std::string("Storm Gust Lv.10: ")+reason);
++  }
++  return false;};
+  if(b!=B::storm && b!=B::vermilion && b!=B::pillar)return false;
+  if(!shell.skills || sd->status.class_!=JOB_WIZARD || !population_combat_target(sd,target,BCT_ENEMY))return skip("target-or-skills");
+  const char* key=companion_build::name(JOB_WIZARD,b);
+@@ -1363,41 +2298,17 @@
+ 
+  auto encounter=hunts.find(shell.character);
+  const bool wave=encounter!=hunts.end() && encounter->second.mode==TeamMode::mob && (encounter->second.opened || encounter->second.camp_target==target->id);
+- if(wave && b==B::storm){
++ if(id==WZ_STORMGUST && encounter!=hunts.end() && encounter->second.mode==TeamMode::mob){
+   auto& h=encounter->second;
+-  int clustered=0;
+-  for(auto id:h.pack){
+-   auto* m=map_id2md(id);
+-   if(m && !status_isdead(*m) && distance_bl(m,target)<=5)++clustered;
+-  }
+-  if(h.pack.size()==1 && h.hunter_hit_target==target->id && gettick()-h.hunter_hit_tick<1800 &&
+-     stats.hp<=2ULL*h.hunter_hit_damage){shell.wave_decision="hunter-finishing";return true;}
+-  if(!h.storm_landed && clustered<4){
+-   for(auto mid:h.pack){
+-    auto* mob=map_id2md(mid);
+-    if(!mob || status_isdead(*mob))continue;
+-    auto* st=status_get_status_data(*mob);
+-    if(!battle_check_undead(st->race,st->def_ele) && !status_has_mode(st,MD_STATUSIMMUNE)){lv=1;break;}
+-   }
+-  }else if(h.storm_landed && !h.mire_landed && h.pack.size()>1 && distance_xy(target->x,target->y,h.x,h.y)<=5){
+-   // Use the gap between Storm Gusts. A lingering mire from an earlier
+-   // pull must never postpone the next damaging field.
+-   auto active_field=[&](uint16 skill){
+-    return std::any_of(sd->ud.skillunits.begin(),sd->ud.skillunits.end(),
+-        [skill](const auto& group){return group && group->skill_id==skill;});
+-   };
+-   const auto mire=pc_checkskill(sd,WZ_QUAGMIRE);
+-   if(mire && (active_field(id) || sd->scd.count(id)) && !active_field(WZ_QUAGMIRE) &&
+-      sd->battle_status.sp>=skill_get_sp(id,lv)+skill_get_sp(WZ_QUAGMIRE,mire)){
+-    id=WZ_QUAGMIRE;lv=mire;
+-   }
+-  }
++  if(lv<10)return skip("storm-10-not-learned");
++  if(!h.storm_target || !h.book_x)return skip("waiting-for-train");
++  lv=10;
+  }
+  if(!can_spend_sp(shell,id,lv))return skip("SP-or-reserve");
+  const auto ratio=[&](const status_data& victim){
+   return elemental_attribute_db.getAttribute(victim.ele_lv,skill_get_ele(id,lv),victim.def_ele);
+  };
+- if(id!=WZ_QUAGMIRE && ratio(stats)<100 && !(wave && b==B::storm && status_get_sc(target)->getSCE(SC_FREEZE))){
++ if(!(wave && id==WZ_STORMGUST) && id!=WZ_QUAGMIRE && ratio(stats)<100 && !(wave && b==B::storm && status_get_sc(target)->getSCE(SC_FREEZE))){
+   if(!wave || b==B::pillar)return skip("resistant");
+   block_list* susceptible=nullptr;
+   for(auto mid:encounter->second.pack){
+@@ -1418,7 +2329,10 @@
+     (wave || encounter->second.release_pack)){
+   // The wave closes the last seven cells during the cast. Centering on
+   // the first orc at six cells leaves the far side of camp uncovered.
+-  if(distance_xy(x,y,encounter->second.x,encounter->second.y)<=7){
++  if(id==WZ_STORMGUST){
++   if(!encounter->second.drop_x)return skip("delivery-unavailable");
++   x=encounter->second.drop_x;y=encounter->second.drop_y;
++  }else if(distance_xy(x,y,encounter->second.x,encounter->second.y)<=7){
+    x=encounter->second.x;
+    y=encounter->second.y;
+   }
+@@ -1450,7 +2364,7 @@
+        && (extras.empty() || h.pack.size()+extras.size()<=h.cap+2);
+   };
+   blocked=!safe_center(x,y);
+-  if(blocked && b!=B::pillar){
++  if(blocked && b!=B::pillar && id!=WZ_STORMGUST){
+    // Move the edge of the field away from excluded monsters while keeping
+    // the current wave target inside the damaging part of the spell.
+    for(int d=0;d<8;++d){
+@@ -1483,6 +2397,9 @@
+ // between two stops would split the train. Keep the inside of the turn clear.
+ static bool walk_pull(map_session_data* sd,const Hunt& h,int x,int y,int stride){
+     int start=h.route_index(sd->x,sd->y),goal=h.route_index(x,y);
++    if(h.release_pack && !h.pack.empty() && sd->id==h.opener && h.drop_x && x==h.x && y==h.y){
++        x=h.drop_x;y=h.drop_y;goal=h.route_index(x,y);
++    }
+     if(h.hold_train || start<0 || goal<0 || start==goal || !pull_cell(h,x,y))return false;
+     int width=2*h.radius+1;
+     int inner=(!h.release_pack && !h.pack.empty()) ?
+@@ -1494,6 +2411,9 @@
+         int heading=map_calc_dir_xy(cx,cy,x,y,DIR_NORTH);
+         for(int turn:{0,1,-1,2,-2,3,-3,4}){
+             int dir=(heading+turn+8)%8,nx=cx+dirx[dir],ny=cy+diry[dir],next=h.route_index(nx,ny);
++            if(!map_getcell(sd->m,nx,ny,CELL_CHKPASS) || !map_getcell(sd->m,cx,ny,CELL_CHKPASS) ||
++               !map_getcell(sd->m,nx,cy,CELL_CHKPASS) ||
++               (!h.pack.empty() && !delivery_edge(h,cx,cy,nx,ny)))continue;
+             if(!pull_step(h,at,nx,ny) || parent[next]>=0 || !pull_step(h,at,cx,ny) || !pull_step(h,at,nx,cy) ||
+                distance_xy(nx,ny,h.x,h.y)<inner)continue;
+             parent[next]=at;queue.push_back(next);
+@@ -1539,6 +2459,46 @@
+     return steps>0 && unit_walktoxy(sd,next_x,next_y,0);
+ }
+ 
++// Only companion shells can execute this function. Movement uses stationary camp coordinates.
++static void hold_owner_camp(Shell& shell,map_session_data* owner,Hunt& h){
++    auto* sd=shell.sd;
++    if(sd->ud.skilltimer!=INVALID_TIMER)return;
++    const auto job=companion_progression::career(sd->status.class_);
++    if(job==JOB_PRIEST && support_party(shell,owner))return;
++    if(job==JOB_WIZARD && !h.retreat && h.storm_target){if(auto* t=map_id2md(h.storm_target))cast_build_ground(shell,t);return;}
++    const int x=job==JOB_KNIGHT?h.drop_x:h.x;
++    const int y=job==JOB_KNIGHT?h.drop_y:h.y;
++    if(distance_xy(sd->x,sd->y,x,y)>(job==JOB_KNIGHT?1:3)){
++        unit_stop_attack(sd);
++        if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,x,y);
++        return;
++    }
++    if(h.retreat || pc_isdead(owner))return;
++    const bool add=!h.camp_target;
++    auto* mob=map_id2md(add?h.camp_add:h.camp_target);
++    if(!mob || !scout_sees(sd,mob) || !unclaimed(owner,mob))return;
++    const bool engaged=team_victim(mob,owner) || (h.hunter_hit_target==mob->id && h.hunter_hit_damage>0);
++    auto enabled=[&](const char* k){return std::find(shell.policy.skills.begin(),shell.policy.skills.end(),k)!=shell.policy.skills.end();};
++    if(job==JOB_KNIGHT){
++        if((!add || engaged) && mob->target_id!=sd->id && enabled("provoke") && cast_skill(shell,mob,SM_PROVOKE,5))return;
++    }else if(job==JOB_HUNTER){
++        if(!hunter_ready(shell,owner))return;
++        auto item=select_arrow(shell,status_get_status_data(*mob));
++        if(!item || !prepare_arrow(shell,item))return;
++        if(enabled("double") && cast_skill(shell,mob,AC_DOUBLE,1))return;
++    }else if(job==JOB_WIZARD){
++        if(!add && cast_build_ground(shell,mob))return;
++        if(add && engaged){
++            auto spell=choose_spell(shell,*status_get_status_data(*mob));
++            if(spell.skill)cast_skill(shell,mob,spell.skill,spell.level,true);
++        }
++        return;
++    }else return;
++    // One in-range swing/shot. A continuous native chase would leave camp.
++    if((!add || engaged) && sd->ud.attacktimer==INVALID_TIMER && battle_check_range(sd,mob,status_get_range(sd)))
++        unit_attack(sd,mob->id,0);
++}
++
+ bool assist_owner(Shell& shell, map_session_data* owner) {
+     auto* sd = shell.sd;
+     // A bow user can engage beyond the normal eight-cell formation. The tank
+@@ -1567,6 +2527,23 @@
+                     if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,ally->x,ally->y);
+                     return true;
+                 }
++            }
++            if(tank && knight && h.release_pack && h.book_x && (h.storm_target || h.audit_group ||
++               (team_wizard(owner) && team_wizard(owner)->ud.skilltimer!=INVALID_TIMER && team_wizard(owner)->ud.skill_id==WZ_STORMGUST))){
++                if(distance_xy(sd->x,sd->y,h.book_x,h.book_y)>1){
++                    if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,h.book_x,h.book_y,3);
++                    return true;
++                }
++                for(int mid:h.pack)if(auto* m=map_id2md(mid)){
++                    if(!scout_sees(sd,m) || !unclaimed(owner,m))continue;
++                    if(threatened_backline(m,owner) && m->target_id!=sd->id &&
++                       std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end() &&
++                       cast_skill(shell,m,SM_PROVOKE,5))return true;
++                    if(sd->ud.attacktimer==INVALID_TIMER && battle_check_range(sd,m,status_get_range(sd))){
++                        unit_attack(sd,mid,0);return true;
++                    }
++                }
++                return true;
+             }
+             if(h.priest_pull && knight){
+                 // Hold camp while the Priest is away. Do not steal the train's
+@@ -1590,6 +2567,16 @@
+                 }
+                 if(!target){unit_stop_attack(sd);return true;}
+             }
++            if(tank && h.mode==TeamMode::mob && (!h.drop_x || h.pace) && !h.opened){
++                unit_stop_attack(sd);
++                const bool escape=!h.drop_x && h.had_dock && !h.pack.empty() &&
++                    distance_xy(sd->x,sd->y,h.ex,h.ey)>1 && pull_cell(h,h.ex,h.ey) &&
++                    delivery_clear(h,h.ex,h.ey);
++                if(escape){
++                    if(sd->ud.walktimer==INVALID_TIMER)walk_pull(sd,h,h.ex,h.ey,3);
++                }else if(sd->ud.walktimer!=INVALID_TIMER)unit_stop_walking(sd,USW_FIXPOS|USW_FORCE_STOP);
++                return true;
++            }
+             if(tank && h.mode==TeamMode::mob && shell.skills && !sd->scd.count(SM_ENDURE) &&
+                ((!h.release_pack && h.target) || (h.release_pack && !h.pack.empty() && distance_xy(sd->x,sd->y,h.x,h.y)>4)) &&
+                std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"endure")!=shell.policy.skills.end()){
+@@ -1613,7 +2600,7 @@
+                 if(m && battle_check_range(sd,m,status_get_range(sd)))target=m;
+             }
+             if(escorting && hunter)cover_stray();
+-            if(tank && !h.rescue_ally && !h.pressed && (escorting || (h.escort_target && h.camp_target && h.escort_target==h.camp_target)) && h.escort_target && 100ULL*sd->battle_status.hp>=sd->battle_status.max_hp*h.stop_hp){
++            if(h.round!=Hunt::Withdraw && tank && !h.rescue_ally && !h.pressed && (escorting || (h.escort_target && h.camp_target && h.escort_target==h.camp_target)) && h.escort_target && 100ULL*sd->battle_status.hp>=sd->battle_status.max_hp*h.stop_hp){
+                 auto* stray=map_id2md(h.escort_target);
+                 if(stray && stray->prev && hunt_candidate(owner,stray,assist_range)){
+                     bool following=stray->target_id==sd->id;
+@@ -1636,7 +2623,7 @@
+                     return true;
+                 }
+             }
+-            if(hunter && h.mode==TeamMode::mob && h.wait_for_area_until>gettick() &&
++            if(hunter && h.mode==TeamMode::mob && !h.release_pack && h.wait_for_area_until>gettick() &&
+                h.pack.size()>1 && !escorting && !h.camp_target){
+                 unit_stop_attack(sd);return true;
+             }
+@@ -1665,6 +2652,17 @@
+                 int x=h.x+offset*h.front_x,y=h.y+offset*h.front_y;
+                 if(map_getcell(sd->m,x,y,CELL_CHKPASS)){fx=x;fy=y;}
+             }
++            if(h.mode==TeamMode::mob && (h.drop_x || h.had_dock)){
++                if(tank && h.drop_x && h.release_pack && !h.pack.empty()){
++                    fx=h.drop_x;fy=h.drop_y;form=true;
++                }else if(rear){
++                    // Keep the current ready casting position when it satisfies the meeting.
++                    fx=sd->x;fy=sd->y;form=false;
++                    if(!h.drop_x && h.had_dock && owner->ud.walktimer==INVALID_TIMER &&
++                       (owner->x!=h.x || owner->y!=h.y))
++                        form=delivery_cast_position(sd,h,owner,fx,fy);
++                }
++            }
+             if(form && distance_xy(sd->x,sd->y,fx,fy)>(rear?0:tank?1:2)){
+                 unit_stop_attack(sd);
+                 if(sd->ud.walktimer!=INVALID_TIMER)return true;
+@@ -1673,6 +2671,13 @@
+                 }else if(walk_toward_cell(sd,h,fx,fy))return true;
+             }
+             if(!escorting && h.mode==TeamMode::mob && hunter)cover_stray();
++            if(h.mode==TeamMode::mob && uses_ground_build(shell) && h.camp_add && !h.approaching &&
++               !(h.release_pack && h.pack.size()>1 && delivery_viable(h,sd))){
++                auto* m=map_id2md(h.camp_add);
++                if(m && distance_xy(m->x,m->y,h.x,h.y)<=7 && battle_check_range(sd,m,8) &&
++                   (team_victim(m,owner) || (h.hunter_hit_target==m->id && h.hunter_hit_damage>0)))
++                    target=m;
++            }
+             if(!tank && !h.opened && !target){shell.wave_decision="gathering-no-target";unit_stop_attack(sd);return true;}
+             if(tank && h.mode==TeamMode::boss && !h.opened){
+                 auto* boss=map_id2md(h.boss);
+@@ -1684,23 +2689,47 @@
+             }
+             if(tank && h.mode==TeamMode::mob && !h.release_pack){
+                 auto* pull=map_id2md(h.target);
+-                if(!pull)return true;
++                if(pull && !scout_sees(sd,pull))pull=nullptr;
++                if(!pull && !h.scout_goal)return true;
+                 if(h.priest_pull && h.pack.empty() && (!sd->sc.getSCE(SC_INCREASEAGI) || !sd->sc.getSCE(SC_KYRIE))){
+                     shell.wave_decision="waiting-for-puller-buffs";return true;
+                 }
+                 if(h.pack.empty() && gettick()<h.kyrie_deadline && !sd->sc.getSCE(SC_KYRIE))return true;
++                const int key=pull?pull->id:-(h.route_index(h.sx,h.sy)+1);
++                const int gx=pull?pull->x:h.sx,gy=pull?pull->y:h.sy;
++                const t_tick tick=gettick();
++                if(h.motion_id!=key || h.progress_x!=sd->x || h.progress_y!=sd->y){
++                    h.motion_id=key;h.progress_x=sd->x;h.progress_y=sd->y;h.motion_since=tick;
++                }
++                auto reject=[&](const char* why){
++                    if(pull){h.skip_tag_until[pull->id]=tick+12000;h.target=0;h.seen_id=0;}
++                    if(!pull)h.failed_cells[h.route_index(gx,gy)]=tick+12000;
++                    h.scout_goal=false;h.motion_id=0;h.motion_since=0;
++                    scout_log(h,sd,tick,why,pull?pull->id:0,gx,gy);
++                };
++                auto advance=[&](){
++                    if(tick<h.next_move || sd->ud.walktimer!=INVALID_TIMER)return;
++                    h.next_move=tick+500;
++                    if(!walk_pull(sd,h,gx,gy,h.pack.empty()?7:3))reject("path-failed");
++                    else scout_log(h,sd,tick,"walk",pull?pull->id:0,gx,gy);
++                };
++                if(h.motion_since && tick-h.motion_since>3500 && (!pull || !battle_check_range(sd,pull,status_get_range(sd)))){
++                    if(sd->ud.walktimer!=INVALID_TIMER)unit_stop_walking(sd,USW_FIXPOS);
++                    reject("no-progress");return true;
++                }
++                if(!pull){advance();return true;}
+                 // Walk into tagging range before provoking, then lead the train home.
+                 const int tag_range=distance_xy(sd->x,sd->y,h.x,h.y)>=4 ? 9 : 3;
+                 if(distance_bl(sd,pull)>tag_range){
+-                    if(sd->ud.walktimer==INVALID_TIMER)walk_toward_cell(sd,h,pull->x,pull->y,h.pack.empty()?8:2);
++                    advance();
+                     return true;
+                 }
+                 if(std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"provoke")!=shell.policy.skills.end() &&
+-                    cast_skill(shell,pull,SM_PROVOKE,5))return true;
++                    cast_skill(shell,pull,SM_PROVOKE,5)){ShowInfo("B_PULL %lld %d %d\n",(long long)gettick(),sd->id,pull->id);return true;}
+                 int range=status_get_range(sd);
+                 if(!battle_check_range(sd,pull,range)){
+-                    if(sd->ud.walktimer==INVALID_TIMER)walk_pull(sd,h,pull->x,pull->y,h.pack.empty()?6:3);
+-                }else if(sd->ud.attacktimer==INVALID_TIMER)unit_attack(sd,pull->id,0);
++                    advance();
++                }else if(sd->ud.attacktimer==INVALID_TIMER){ unit_attack(sd,pull->id,0); if(sd->ud.attacktimer!=INVALID_TIMER)ShowInfo("B_PULL %lld %d %d\n",(long long)gettick(),sd->id,pull->id);}
+                 return true;
+             }
+             if(tank && h.mode==TeamMode::mob && h.opened && h.release_pack &&
+@@ -1782,13 +2811,30 @@
+     if(hunter){
+         uint32 arrow=select_arrow(shell,target_status);
+         if(!arrow || !prepare_arrow(shell,arrow))return false;
++        if(hunt!=hunts.end() && hunt->second.camp_add==target->id &&
++           !team_victim(static_cast<mob_data*>(target),owner)){
++            if(std::find(shell.policy.skills.begin(),shell.policy.skills.end(),"double")!=shell.policy.skills.end())
++                cast_skill(shell,target,AC_DOUBLE,1);
++            return true;
++        }
+         for(const auto& skill:shell.policy.skills){
+             if(skill=="concentration" && !sd->sc.getSCE(SC_CONCENTRATE) && cast_skill(shell,sd,AC_CONCENTRATION,1))return true;
+             if(skill=="blitz" && population_safe_blitz(sd,target) && cast_skill(shell,target,HT_BLITZBEAT,1))return true;
+             if(skill=="double" && cast_skill(shell,target,AC_DOUBLE,1))return true;
+         }
+     } else if (wizard) {
+-        if(cast_build_ground(shell,target))return true;
++        const bool camp_single=hunt!=hunts.end() && target->id==hunt->second.camp_add && !hunt->second.approaching &&
++            !(hunt->second.release_pack && hunt->second.pack.size()>1 && (hunt->second.outbound_train || delivery_viable(hunt->second,sd)));
++        if(camp_single){
++            auto* m=static_cast<mob_data*>(target);
++            if(!team_victim(m,owner) && !(hunt->second.hunter_hit_target==m->id && hunt->second.hunter_hit_damage>0))return true;
++        }
++        if(!camp_single && cast_build_ground(shell,target))return true;
++        if(!camp_single && hunt!=hunts.end() && hunt->second.mode==TeamMode::mob &&
++           shell.build==companion_build::Build::storm && hunt->second.release_pack && !hunt->second.pack.empty())return true;
++        if(hunt!=hunts.end() && hunt->second.release_pack && hunt->second.outbound_train &&
++           hunt->second.pack.size()>1 && target->id==hunt->second.camp_add &&
++           !delivery_viable(hunt->second,sd))return true;
+         const auto spell = choose_spell(shell,*target_status);
+         if (spell.skill && cast_skill(shell,target,spell.skill,spell.level,true)) return true;
+     } else {
+@@ -1945,6 +2991,7 @@
+     shell.dead_since = 0;
+     shell.wave_decision="waiting-for-assist";
+     auto hunt=hunts.find(shell.character);
++    if(hunt!=hunts.end() && hunt->second.mode==TeamMode::mob){stand(shell);shell.retreating=false;}
+     if (hunt != hunts.end()) { if (hunt->second.mode==TeamMode::nearby) update_hunt(owner,hunt->second); else update_team(owner,hunt->second); }
+     companion_loadout::equip_fallback(sd);
+     if(shell.following && shell.profile && DIFF_TICK(tick,shell.potion_retry)>=0){shell.potion_retry=tick+2000;companion_supplies::consume(sd,shell.character,shell.profile,shell.preset);}
+@@ -1957,6 +3004,8 @@
+         shell.wave_decision="follow-paused-or-warp";
+         unit_stop_attack(sd); shell.target = 0; shell.retreating = false;
+         unit_stop_walking(sd, USW_FIXPOS | USW_FORCE_STOP | USW_RELEASE_TARGET);
++    } else if(hunt!=hunts.end() && hunt->second.owner_pull && sd->m==owner->m){
++        if(shell.assist)hold_owner_camp(shell,owner,hunt->second);
+     } else if (sd->m != owner->m || distance_bl(sd, owner) > (hunt!=hunts.end() && hunt->second.mode==TeamMode::mob && hunt->second.opener==sd->id ? hunt->second.radius+hunt_chase_range+3 : AREA_SIZE+2) || shell.failures >= 5) {
+         if (!relocate(sd, owner)) { population_m1_release(sd); return 0; }
+         shell.failures = 0; shell.target = 0;
+@@ -1969,15 +3018,19 @@
+         if(sd->ud.skilltimer==INVALID_TIMER && !support_party(shell,owner,true) && distance_bl(sd,owner)>2 && sd->ud.walktimer==INVALID_TIMER)
+             {if(team->second.opener==sd->id && team->second.mode==TeamMode::mob)walk_pull(sd,team->second,owner->x,owner->y,3);
+              else unit_walktobl(sd,owner,2,0);}
+-    } else if (retreat(shell,owner)) {
++    } else if ((hunt==hunts.end() || hunt->second.mode!=TeamMode::mob) && retreat(shell,owner)) {
+         shell.wave_decision="low-HP-retreat";
+     } else if (sd->ud.skilltimer != INVALID_TIMER || support_party(shell, owner)) {
+         shell.wave_decision=sd->ud.skilltimer!=INVALID_TIMER?"cast-in-progress":"support";
++    } else if(hunt!=hunts.end() && hunt->second.mode==TeamMode::mob && hunt->second.storm_target && shell.assist && shell.build==companion_build::Build::storm){
++        if(auto* t=map_id2md(hunt->second.storm_target))cast_build_ground(shell,t);
+     } else if (pc_isdead(owner)) {
+         unit_stop_attack(sd); shell.target = 0; shell.retreating = false;
+         unit_stop_walking(sd, USW_FIXPOS | USW_FORCE_STOP | USW_RELEASE_TARGET);
+-    } else if (rest(shell, owner)) {
++    } else if ((hunt==hunts.end() || hunt->second.mode!=TeamMode::mob) && rest(shell, owner)) {
+         shell.wave_decision="SP-rest";
++    } else if(camp_priest(shell,owner) && hunt!=hunts.end() && hunt->second.mode==TeamMode::mob){
++        if(std::getenv("CAMP_POSITION"))camp_cover(shell,owner); else if(distance_bl(sd,owner)>3 && sd->ud.walktimer==INVALID_TIMER)unit_walktobl(sd,owner,2,0);
+     } else if (assist_owner(shell, owner)) {
+         // Continue assisting while the owner and target remain within the combat leash.
+     } else if (distance_bl(sd, owner) > 4) {
+@@ -2343,7 +3396,7 @@
+   if(build==B::battle && current==JOB_PRIEST)skills={AL_HEAL,AL_INCAGI,AL_BLESSING,AL_DP,AL_DEMONBANE,PR_MACEMASTERY,PR_IMPOSITIO,MG_SRECOVERY,PR_KYRIE};
+   if(current==JOB_WIZARD && (build==B::storm||build==B::vermilion||build==B::pillar))skills.push_back(build==B::storm?WZ_STORMGUST:build==B::pillar?WZ_FIREPILLAR:WZ_VERMILION);
+  }
+- if(expanded_skills>=13 && build==B::mobber){
++ if(expanded_skills>=13 && build==B::mobber && profile.job==JOB_PRIEST){
+   skills={AL_HEAL,AL_INCAGI,AL_ANGELUS,AL_BLESSING,AL_DP,AL_WARP,AL_HOLYWATER};
+   if(current==JOB_PRIEST)skills.insert(skills.end(),{PR_KYRIE,PR_IMPOSITIO,PR_ASPERSIO,PR_SANCTUARY,MG_SRECOVERY,PR_MAGNIFICAT});
+  }
+@@ -2402,13 +3455,16 @@
+         const char* mode=it==hunts.end()?"assist":it->second.retreat?"retreat":it->second.mode==TeamMode::mob?"mob":it->second.mode==TeamMode::boss?"boss":"nearby";
+         int cap=pc_readreg2(owner,"CompanionMobCap");
+         std::snprintf(line,sizeof(line),"[RCO1] %u team %s %d",seq,mode,cap>0?std::min(cap,expanded_skills>=14?30:10):5);
+-        if(expanded_skills>=13){int value=pc_readreg2(owner,"CompanionMobPuller");auto n=std::strlen(line);std::snprintf(line+n,sizeof(line)-n," %s",value==1?"priest":value==2?"knight":"auto");}
+-        if(radius && expanded_skills>=13){
++        int value=pc_readreg2(owner,"CompanionMobPuller");
++        const bool show_choice=expanded_skills>=13 && (value!=3 || expanded_skills>=15);
++        if(show_choice){auto n=std::strlen(line);std::snprintf(line+n,sizeof(line)-n," %s",value==1?"priest":value==2?"knight":value==3?"owner":"auto");}
++        if(radius && show_choice){
+             const auto used=std::strlen(line);
+             std::snprintf(line+used,sizeof(line)-used," %d",saved_mob_radius(owner));
+         }
+         clif_displaymessage(owner->fd,line);
+     }
++    if(expanded_skills>=15){std::snprintf(line,sizeof(line),"[RCO1] %u ownerpull 1",seq);clif_displaymessage(owner->fd,line);}
+     if(hunt_status){std::snprintf(line,sizeof(line),"[RCO1] %u hunt %d",seq,int(hunts.count(owner->status.char_id) && hunts.at(owner->status.char_id).mode==TeamMode::nearby));clif_displaymessage(owner->fd,line);}
+     if(enabled) for(auto row:rows) {
+         auto* active=active_profile(row.id); auto* sd=active?active->sd:nullptr;
+@@ -2502,13 +3558,13 @@
+     if (hunt->second.mode!=TeamMode::nearby) {
+         if(hunt->second.mode==TeamMode::mob && shell!=shells.end() && companion_progression::career(actor->status.class_)==JOB_HUNTER){
+             auto& h=hunt->second;
+-            if(h.hunter_target==mob->id && h.pack.size()<h.cap)h.pack.insert(mob->id);
++            if(!h.owner_pull && h.hunter_target==mob->id && h.pack.size()<h.cap)h.pack.insert(mob->id);
+             h.hunter_hit_target=mob->id;h.hunter_hit_damage=static_cast<int>(std::min<int64>(damage,INT_MAX));h.hunter_hit_tick=gettick();
+         }
+         if(hunt->second.mode==TeamMode::mob && shell!=shells.end() && uses_ground_build(shell->second)){
+             auto& h=hunt->second;
+             h.wait_for_area_until=0;
+-            if(h.splash_targets.erase(mob->id))h.pack.insert(mob->id);
++            if(!h.owner_pull && h.splash_targets.erase(mob->id))h.pack.insert(mob->id);
+         }
+         if(hunt->second.mode==TeamMode::boss && actor->id==hunt->second.opener && mob->id==hunt->second.boss)hunt->second.opened=true;
+         return;
+@@ -2552,7 +3608,7 @@
+     auto mode=verb=="boss"?TeamMode::boss:TeamMode::mob;
+     if(verb=="retreat"){
+         if(it==hunts.end() || it->second.mode==TeamMode::nearby)return "No team encounter.";
+-        team_retreat(owner,it->second,"owner requested retreat");return "Regrouping on owner.";
++        team_retreat(owner,it->second,"owner requested retreat");return it->second.owner_pull?"Holding at camp.":"Regrouping on owner.";
+     }
+     if(arg=="off"){
+         if(it!=hunts.end() && it->second.mode==mode)population_end_hunt(owner);
+@@ -2568,8 +3624,8 @@
+     auto setting=[&](const char* name,int fallback){int n=pc_readreg2(owner,name);return n>0?n:fallback;};
+     if(mode==TeamMode::mob && arg=="puller"){
+         if(it!=hunts.end())return "Turn off the current mode before changing puller.";
+-        int choice=extra=="auto"?0:extra=="priest"?1:extra=="knight"?2:-1;
+-        if(choice<0)return "Use mob puller auto, priest or knight.";
++        int choice=extra=="auto"?0:extra=="priest"?1:extra=="knight"?2:extra=="owner"?3:-1;
++        if(choice<0)return "Use mob puller auto, priest, knight or owner.";
+         if(!pc_setreg2(owner,"CompanionMobPuller",choice))return "Could not save puller.";
+         return "Mob puller saved: "+extra;
+     }
+@@ -2580,8 +3636,9 @@
+         return "Mob radius saved.";
+     }
+     int stop=setting("CompanionMobStop",60), retreat=setting("CompanionMobRetreat",35);
+-    if(mode==TeamMode::mob && (arg=="stop" || arg=="retreat")){
+-        if(!positive_number(extra,value) || value>=100 || (arg=="stop"?value<=retreat:value>=stop))return "Require 0 < retreat < stop < 100.";
++    if(mode==TeamMode::mob && arg=="retreat")return "Automatic HP retreat is disabled on this test.";
++    if(mode==TeamMode::mob && arg=="stop"){
++        if(!positive_number(extra,value) || value>=100)return "Require 0 < retreat < stop < 100.";
+         if(!pc_setreg2(owner,arg=="stop"?"CompanionMobStop":"CompanionMobRetreat",value))return "Could not save threshold.";
+         if(it!=hunts.end())(arg=="stop"?it->second.stop_hp:it->second.retreat_hp)=value;
+         return "Threshold saved.";
+@@ -2595,7 +3652,7 @@
+         priest|=s.sd->status.class_==JOB_PRIEST;
+         if(s.sd->status.class_==JOB_PRIEST && s.build==companion_build::Build::mobber){
+             mobber=true;
+-            if(mode==TeamMode::mob && pc_readreg2(owner,"CompanionMobPuller")!=2 &&
++            if(mode==TeamMode::mob && pc_readreg2(owner,"CompanionMobPuller")<2 &&
+                (!s.skills || !pc_checkskill(s.sd,PR_KYRIE) || !pc_checkskill(s.sd,AL_INCAGI) ||
+                 std::find(s.policy.skills.begin(),s.policy.skills.end(),"agi")==s.policy.skills.end() ||
+                 std::find(s.policy.skills.begin(),s.policy.skills.end(),"kyrie")==s.policy.skills.end()))
+@@ -2604,6 +3661,7 @@
+     }
+     Hunt h;
+     const int puller_choice=pc_readreg2(owner,"CompanionMobPuller");
++    h.owner_pull=mode==TeamMode::mob && puller_choice==3;
+     h.priest_pull=mode==TeamMode::mob && (puller_choice==1 || (!puller_choice && mobber));
+     if(h.priest_pull && !mobber)return "Summon an assisting Puller Priest (mobber build) first.";
+     if((!tank && !h.priest_pull) || !priest)return "Summon an assisting Knight and Priest first.";
+@@ -2615,10 +3673,26 @@
+         if(!boss || !boss->prev || boss->m!=owner->m || distance_bl(owner,boss)>hunt_chase_range || status_isdead(*boss) ||
+             boss->get_bosstype()==BOSSTYPE_NONE || boss->master_id || boss->guardian_data || !unclaimed(owner,boss))return "Select an unclaimed boss within 12 cells.";
+     }
++    if(h.owner_pull){
++        Shell *guard=nullptr,*caster=nullptr;
++        for(auto& kv:shells)if(hunt_member(kv.second,owner)){
++            if(kv.second.sd->status.class_==JOB_KNIGHT)guard=&kv.second;
++            if(uses_ground_build(kv.second))caster=&kv.second;
++        }
++        if(!guard || !caster)return "Owner camp needs an assisting Knight and ground Wizard.";
++        survey_camp(h,owner->m);h.blocked.assign(h.parent.size(),0);
++        delivery_plan(owner,h,guard,caster,nullptr);
++        if(!h.drop_x)return "No safe receiving tile. Gather your team on open ground and retry.";
++        h.opener=owner->id;
++    }
+     auto& active=hunts.emplace(owner->status.char_id,std::move(h)).first->second;
+     if(mode==TeamMode::mob){
+         mob_message(owner,active,std::string(mapindex_id2name(owner->mapindex))+" ("+std::to_string(active.x)+","+std::to_string(active.y)+") เป้าสูงสุด "+std::to_string(active.cap)+" ตัว รัศมี "+std::to_string(active.radius)+" ช่อง");
+         update_team(owner,active);
++        if(active.owner_pull){
++            mob_message(owner,active,"Owner pulls. Bring monsters into camp casting/healing range. Guard starts at ("+std::to_string(active.drop_x)+","+std::to_string(active.drop_y)+"). Camp stays here.");
++            return "Mob mode ON. Owner pulls; mobile SG. Guard starts at ("+std::to_string(active.drop_x)+","+std::to_string(active.drop_y)+").";
++        }
+         if(active.priest_pull)mob_message(owner,active,"Priest เป็นคนลาก");
+         else if(auto* knight=map_id2sd(active.opener)){
+             auto lv=pc_checkskill(knight,SM_ENDURE);
+@@ -2823,7 +3897,7 @@
+         if(active) return "Already summoned.";
+         if(!owner->prev || !owner->state.active || pc_isdead(owner) || owner->state.warping || owner->state.changemap) return "Cannot summon while dead or changing maps.";
+         unsigned count=0;for(const auto& pair:shells) if(pair.second.account==owner->status.account_id && pair.second.character==owner->status.char_id) ++count;
+-        if(count>=max_active_per_owner) return "Active companion limit reached (four per owner).";
++        if(count>=max_active_per_owner) return "Active companion limit reached (five per owner).";
+         if(shells.size()>=16) return "Server companion limit reached.";
+         return spawn(owner,row->job,&*row)?"Summoned. Follow active; use Assist to help your party.":"Summon failed.";
+     }
+@@ -2877,7 +3951,7 @@
+             }
+             previous=seq;
+         }
+-        auto note=roster_action(owner,verb,arg,extra);roster_reply(owner,seq,note,(verb=="equipment"||verb=="inspect")?std::strtoul(arg.c_str(),nullptr,10):0,verb=="inspect",modern,std::string(command).find(" loop1 ")!=std::string::npos?14:std::string(command).find(" puller1 ")!=std::string::npos?13:std::string(command).find(" bird1 ")!=std::string::npos?12:std::string(command).find(" team2 ")!=std::string::npos?11:std::string(command).find(" team1 ")!=std::string::npos?10:capability=="skills9"?9:capability=="skills8"?8:capability=="skills7"?7:capability=="skills6"?6:capability=="skills5"?5:capability=="skills4"?4:capability=="skills3"?3:capability=="skills2"?2:0,gear_capability=="gear3"?3:gear_capability=="gear2"?2:0,std::string(command).size()>=6 && std::string(command).substr(std::strlen(command)-6)==" hunt1",supply_capability=="syrup1",std::string(command).find(" hunter1")!=std::string::npos,std::string(command).find(" voice1 ")!=std::string::npos,std::string(command).find(" radius1 ")!=std::string::npos);return 0;
++        auto note=roster_action(owner,verb,arg,extra);roster_reply(owner,seq,note,(verb=="equipment"||verb=="inspect")?std::strtoul(arg.c_str(),nullptr,10):0,verb=="inspect",modern,std::string(command).find(" owner1 ")!=std::string::npos?15:std::string(command).find(" loop1 ")!=std::string::npos?14:std::string(command).find(" puller1 ")!=std::string::npos?13:std::string(command).find(" bird1 ")!=std::string::npos?12:std::string(command).find(" team2 ")!=std::string::npos?11:std::string(command).find(" team1 ")!=std::string::npos?10:capability=="skills9"?9:capability=="skills8"?8:capability=="skills7"?7:capability=="skills6"?6:capability=="skills5"?5:capability=="skills4"?4:capability=="skills3"?3:capability=="skills2"?2:0,gear_capability=="gear3"?3:gear_capability=="gear2"?2:0,std::string(command).size()>=6 && std::string(command).substr(std::strlen(command)-6)==" hunt1",supply_capability=="syrup1",std::string(command).find(" hunter1")!=std::string::npos,std::string(command).find(" voice1 ")!=std::string::npos,std::string(command).find(" radius1 ")!=std::string::npos);return 0;
+     }
+     if(head=="talk" && battle_config.companion_enable) {input>>arg;clif_displaymessage(owner->fd,configure_talk(owner,arg).c_str());return 0;}
+     if((head=="mob" || head=="boss" || head=="retreat") && battle_config.companion_enable){input>>arg>>extra;clif_displaymessage(owner->fd,team_command(owner,head,arg,extra).c_str());return 0;}
+@@ -2900,6 +3974,26 @@
+             }
+             auto note=roster_action(owner,head,arg,extra);clif_displaymessage(owner->fd,note.c_str());return 0;
+         }
++    }
++    if(head=="fieldteam" && battle_config.companion_enable){
++        if(hunts.count(owner->status.char_id)){clif_displaymessage(owner->fd,"Turn mob/hunt mode off before preparing the team.");return 0;}
++        if(!owner->status.party_id){
++            clif_displaymessage(owner->fd,roster_action(owner,"party","","").c_str());
++            clif_displaymessage(owner->fd,"When the party appears, choose Prepare again.");return 0;
++        }
++        std::vector<companion_store::Profile> rows;
++        if(!companion_store::list(owner->status.account_id,owner->status.char_id,rows))return -1;
++        unsigned count=0;
++        for(const auto& row:rows){
++            if(count>=5)break;
++            const auto id=std::to_string(row.id);
++            roster_action(owner,"summon",id,"");
++            const auto result=roster_action(owner,"assist",id,"");
++            if(result=="Assisting.")++count;
++            else clif_displaymessage(owner->fd,(row.name+" "+result).c_str());
++        }
++        const auto result="Field team: "+std::to_string(count)+"/5 assisting.";
++        clif_displaymessage(owner->fd,result.c_str());return 0;
+     }
+     if(head=="recruit") {input>>arg;auto note=roster_action(owner,"recruit",arg,"");clif_displaymessage(owner->fd,note.c_str());return 0;}
+     // Dismiss is always allowed, including after disabling the feature.
+@@ -2974,7 +4068,7 @@
+     unsigned mine = 0;
+     for (const auto& [id, s] : shells)
+         if (s.account == owner->status.account_id && s.character == owner->status.char_id) ++mine;
+-    if (mine >= max_active_per_owner) { clif_displaymessage(owner->fd, "Maximum four companions per owner."); return -1; }
++    if (mine >= max_active_per_owner) { clif_displaymessage(owner->fd, "Maximum five companions per owner."); return -1; }
+     if (shells.size() >= 16) { clif_displaymessage(owner->fd, "M4 staging limit reached."); return -1; }
+     if (!spawn(owner, job)) { clif_displaymessage(owner->fd, "Companion spawn failed."); return -1; }
+     clif_displaymessage(owner->fd, job == JOB_KNIGHT ? "Knight companion spawned. Follow active; create a party then use @companion assist."
+@@ -3046,16 +4140,25 @@
+         if(h.mode!=TeamMode::nearby){
+             if(!hunt_member(it->second,owner) || mob->guardian_data || mob->m!=owner->m)return false;
+             bool boss=h.mode==TeamMode::boss && (mob->id==h.boss || mob->master_id==h.boss);
+-            if(actor!=src)return boss || (!mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE);
++            if(actor!=src)return boss || (unclaimed(owner,mob) && !mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE);
+             if(h.retreat || !unclaimed(owner,mob) || distance_xy(mob->x,mob->y,h.x,h.y)>(h.mode==TeamMode::mob?h.radius+3:hunt_chase_range))return false;
++            if(h.owner_pull){
++                if(mob->master_id || mob->get_bosstype()!=BOSSTYPE_NONE || !camp_sighted(owner,h,mob))return false;
++                return h.pack.count(mob->id) || (h.camp_add==mob->id && (companion_progression::career(sd->status.class_)==JOB_HUNTER || team_victim(mob,owner) || (h.hunter_hit_target==mob->id && h.hunter_hit_damage>0)));
++            }
+             if(h.mode==TeamMode::boss)return boss && (h.opener==sd->id || h.opened) && (mob->id==h.boss || team_victim(mob,owner));
++            if(uses_ground_build(it->second) && h.camp_add==mob->id && !team_victim(mob,owner) &&
++               !(h.hunter_hit_target==mob->id && h.hunter_hit_damage>0))return false;
++            if(uses_ground_build(it->second) && h.camp_add==mob->id && distance_xy(h.x,h.y,mob->x,mob->y)<=7 &&
++               (team_victim(mob,owner) || (h.hunter_hit_target==mob->id && h.hunter_hit_damage>0)) &&
++               !mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE)return true;
+             bool knight_guard_for_mob=companion_progression::career(sd->status.class_)==JOB_KNIGHT && mob->target_id!=h.opener && threatened_backline(mob,owner) && distance_xy(mob->x,mob->y,h.x,h.y)<=10;
+             return !mob->master_id && mob->get_bosstype()==BOSSTYPE_NONE &&
+                 ((companion_progression::career(sd->status.class_)==JOB_HUNTER && h.hunter_target==mob->id &&
+                   distance_xy(h.x,h.y,mob->x,mob->y)<=7 && (h.pack.count(mob->id) || h.pack.size()<h.cap)) ||
+                  (h.priest_pull && knight_guard_for_mob && h.pack.count(mob->id)) || (h.opener==sd->id && (mob->id==h.target || (mob->id==h.escort_target && h.pack.count(mob->id)))) ||
+                  (uses_ground_build(it->second) && h.camp_target &&
+-                  (mob->id==h.camp_target || (distance_xy(h.x,h.y,mob->x,mob->y)<=7 &&
++                  (mob->id==h.camp_target || (distance_xy(h.drop_x,h.drop_y,mob->x,mob->y)<=7 &&
+                    (h.pack.count(mob->id) || (h.splash_targets.count(mob->id) && h.pack.size()<h.cap+2))))) ||
+                  (companion_progression::career(sd->status.class_)==JOB_HUNTER && h.pack.count(mob->id) &&
+                   (mob->target_id==owner->id || threatened_backline(mob,owner))) || (h.opened && (h.pack.count(mob->id) ||
+@@ -3139,3 +4242,53 @@
+     if(!owner || owner->status.char_id!=shell.character || !session_isActive(owner->fd) || !owner->state.active || !owner->prev || owner->m!=actor->m || pc_isdead(owner) || (battle_config.idle_no_share&&pc_isidle_party(owner)))return nullptr;
+     return owner;
+ }
++
++// Observation only: the counters below are never read by combat decisions.
++int kt_owner(const block_list* bl){
++ if(!bl)return 0;
++ for(const auto& kv:hunts){
++  const auto& h=kv.second;
++  if(h.mode!=TeamMode::mob)continue;
++  auto* owner=map_charid2sd(kv.first);
++  if(!owner || owner->m!=bl->m)continue;
++  if(bl->id==owner->id)return kv.first;
++  auto it=shells.find(bl->id);
++  if(it!=shells.end() && it->second.character==kv.first)return kv.first;
++  if(bl->type==BL_MOB && (distance_xy(bl->x,bl->y,h.x,h.y)<=26 || scout_sees(owner,bl)))return kv.first;
++ }
++ return 0;
++}
++namespace { struct AuditField {int owner,x,y;}; std::unordered_map<int, AuditField> audit_fields; }
++void kt_field(const s_skill_unit_group& g,bool begin,int x,int y){
++ if(g.skill_id!=WZ_STORMGUST)return;
++ auto it=audit_fields.find(g.group_id);
++ if(begin){
++  int cid=kt_owner(map_id2bl(g.src_id));if(!cid)return;
++  audit_fields[g.group_id]={cid,x,y};it=audit_fields.find(g.group_id);
++ }else if(it==audit_fields.end())return;
++ const auto data=it->second;auto team=hunts.find(data.owner);
++ Hunt* h=(team!=hunts.end() && team->second.mode==TeamMode::mob)?&team->second:nullptr;
++ if(begin && h){h->audit_group=g.group_id;h->audit_hits.clear();h->audit_inside.clear();h->audit_contacts.clear();}
++ ShowInfo("KT_FIELD %lld owner=%d group=%d src=%d level=%u center=%d,%d event=%s inside_seen=%zu hit_unique=%zu tracked=%d\n",(long long)gettick(),data.owner,g.group_id,g.src_id,g.skill_lv,data.x,data.y,begin?"begin":"end",h?h->audit_inside.size():0,h?h->audit_hits.size():0,int(h && h->audit_group==g.group_id));
++ if(!begin){
++  audit_fields.erase(it);
++  if(h && h->audit_group==g.group_id){h->audit_group=0;h->audit_inside.clear();h->audit_hits.clear();}
++ }
++}
++void kt_damage(const block_list* src,const block_list* dst,int skill,unsigned before,unsigned after){
++ int owner=kt_owner(dst);if(!owner || !src || before==after)return;
++ auto& h=hunts.at(owner);
++ auto it=shells.find(src->id);
++ bool sg=skill==WZ_STORMGUST && it!=shells.end() && it->second.character==unsigned(owner);
++ if(sg && h.audit_group)h.audit_hits.insert(dst->id);
++ ShowInfo("KT_HIT %lld owner=%d src=%d dst=%d skill=%d group=%d hp=%u->%u xy=%d,%d\n",(long long)gettick(),owner,src->id,dst->id,skill,sg?h.audit_group:0,before,after,dst->x,dst->y);
++}
++
++void kt_contact(int group,const block_list* mob){
++ if(!mob || mob->type!=BL_MOB)return;
++ auto it=audit_fields.find(group);if(it==audit_fields.end())return;
++ auto t=hunts.find(it->second.owner);if(t==hunts.end() || t->second.audit_group!=group)return;
++ if(!t->second.audit_contacts.insert(mob->id).second)return;
++ t->second.audit_inside.insert(mob->id);
++ ShowInfo("KT_CONTACT %lld group=%d id=%d xy=%d,%d\n",(long long)gettick(),group,mob->id,mob->x,mob->y);
++}
+--- a/src/map/population_engine/progression.cpp
++++ b/src/map/population_engine/progression.cpp
+@@ -89,6 +89,7 @@
+  const auto line=career(sd->status.class_);
+  static const std::initializer_list<StatStep> spear={{SP_DEX,25},{SP_STR,40},{SP_VIT,35},{SP_DEX,40},{SP_STR,70},{SP_VIT,70},{SP_STR,99},{SP_DEX,70},{SP_VIT,99}};
+  static const std::initializer_list<StatStep> falcon={{SP_DEX,35},{SP_AGI,25},{SP_LUK,30},{SP_INT,25},{SP_DEX,55},{SP_LUK,60},{SP_AGI,65},{SP_INT,50},{SP_DEX,80},{SP_LUK,90},{SP_VIT,30}};
++ static const std::initializer_list<StatStep> puller={{SP_VIT,25},{SP_AGI,45},{SP_DEX,20},{SP_VIT,50},{SP_AGI,75},{SP_STR,20},{SP_VIT,75},{SP_AGI,90},{SP_DEX,35},{SP_VIT,90},{SP_AGI,99}};
+  static const std::initializer_list<StatStep> mobber={{SP_VIT,30},{SP_INT,25},{SP_AGI,35},{SP_VIT,55},{SP_DEX,15},{SP_INT,45},{SP_AGI,60},{SP_VIT,80},{SP_INT,60},{SP_AGI,80},{SP_VIT,99},{SP_DEX,30}};
+  static const std::initializer_list<StatStep> battle={{SP_DEX,20},{SP_STR,35},{SP_AGI,35},{SP_VIT,25},{SP_STR,60},{SP_INT,25},{SP_AGI,75},{SP_DEX,45},{SP_STR,90},{SP_VIT,55}};
+  static const std::initializer_list<StatStep> storm={{SP_INT,45},{SP_VIT,15},{SP_DEX,55},{SP_INT,70},{SP_DEX,85},{SP_INT,99},{SP_VIT,40},{SP_DEX,99}};
+@@ -97,7 +98,7 @@
+  const auto* steps=&(line==JOB_KNIGHT?knight:line==JOB_PRIEST?priest:line==JOB_HUNTER?hunter:wizard);
+  using B=companion_build::Build;
+  switch(build){
+- case B::mobber:steps=&mobber;break;
++ case B::mobber:steps=line==JOB_KNIGHT?&puller:&mobber;break;
+  case B::spear:steps=&spear;break;case B::falcon:steps=&falcon;break;case B::battle:steps=&battle;break;
+  case B::storm:steps=&storm;break;case B::vermilion:steps=&wind;break;case B::pillar:steps=&fire;break;default:break;
+  }
+--- a/src/map/skill.cpp
++++ b/src/map/skill.cpp
+@@ -1,3 +1,4 @@
++#include "audit.hpp"
+ // Copyright (c) rAthena Dev Teams - Licensed under GNU GPL
+ // For more information, see LICENCE in the main folder
+ 
+@@ -16,6 +17,7 @@
+ #include <common/nullpo.hpp>
+ #include <common/random.hpp>
+ #include <common/showmsg.hpp>
++#include "trip_guard.hpp"
+ #include <common/strlib.hpp>
+ #include <common/timer.hpp>
+ #include <common/utilities.hpp>
+@@ -2269,7 +2271,9 @@
+ 			return 0;
+ 	}
+ 
+-	return unit_blown(target, dx, dy, count, flag);	// Send over the proper flag
++	int ox=target->x,oy=target->y; auto moved=unit_blown(target, dx, dy, count, flag);
++	if(moved && kt_owner(target))ShowInfo("KT_KNOCK %lld src=%d dst=%d xy=%d,%d->%d,%d\n",(long long)gettick(),src->id,target->id,ox,oy,target->x,target->y);
++	return moved;	// Send over the proper flag
+ }
+ 
+ // Checks if 'bl' should reflect back a spell cast by 'src'.
+@@ -4593,7 +4597,16 @@
+ 		std::shared_ptr<s_skill_db> skill = skill_db.find(skill_id);
+ 
+ 		if( skill != nullptr && skill->impl != nullptr ){
+-			skill->impl->castendNoDamageId( src, bl, skill_lv, tick, flag );
++			{
++    auto observed=skill_id==AL_HEAL || skill_id==PR_KYRIE;
++    auto hp_before=observed?status_get_hp(bl):0;
++    if(observed)ShowInfo("B_SPELL %lld %d %d %d\n",(long long)gettick(),src->id,bl->id,skill_id);
++    if(skill_id!=ALL_RESURRECTION || !trial::stopped) skill->impl->castendNoDamageId( src, bl, skill_lv, tick, flag );
++    if(observed){
++        auto* shield=status_get_sc(bl)->getSCE(SC_KYRIE);
++        ShowInfo("B_DELIVER %lld %d %d %d %lld %d\n",(long long)gettick(),src->id,bl->id,skill_id,(long long)status_get_hp(bl)-hp_before,shield?shield->val2:0);
++    }
++}
+ 			break;
+ 		}
+ 
+@@ -6343,14 +6356,17 @@
+ 		return nullptr;
+ 	}
+ 
+-	//success, unit created.
++	for(int i=0;i<group->unit_count;i++){const auto& cell=group->unit[i];if(cell.alive)ShowInfo("B_CELL %lld %d %d %d %d %lld\n",(long long)gettick(),group->group_id,cell.x,cell.y,cell.range,(long long)cell.limit);}
++//success, unit created.
+ 	switch( skill_id ) {
+ 		case NJ_TATAMIGAESHI: //Store number of tiles.
+ 			group->val1 = group->alive_count;
+ 			break;
+ 	}
+ 
+-	if(group && group->alive_count)population_ground_landed(src,skill_id,skill_lv);
++	if(group && group->alive_count)ShowInfo("B_FIELD %lld %d %d %d %d %d %d %d %d\n",(long long)gettick(),group->group_id,group->src_id,skill_id,skill_lv,x,y,group->limit,group->interval);
++if(group && group->alive_count)kt_field(*group,true,x,y);
++if(group && group->alive_count)population_ground_landed(src,skill_id,skill_lv);
+ 	return group;
+ }
+ 
+@@ -6748,6 +6764,7 @@
+ 		return 0;
+ 
+ 	nullpo_ret(ss = map_id2bl(sg->src_id));
++	if(sg->skill_id==WZ_STORMGUST)kt_contact(sg->group_id,bl);
+ 	if(!population_build_victim(ss,bl,sg->skill_id))return 0;
+ 
+ 	tsd = BL_CAST(BL_PC, bl);
+@@ -10272,7 +10289,7 @@
+  * @param skill_lv: Skill level of the casted skill
+  * @return time: Modified castime after status and bonus addition or reduction
+  */
+-int32 skill_vfcastfix(block_list *bl, double time, uint16 skill_id, uint16 skill_lv)
++int32 static_vfcastfix(block_list *bl, double time, uint16 skill_id, uint16 skill_lv,bool consume)
+ {
+ 	nullpo_ret(bl);
+ 
+@@ -10341,13 +10358,13 @@
+ 		if (sc->getSCE(SC_SUFFRAGIUM)) {
+ 			VARCAST_REDUCTION(sc->getSCE(SC_SUFFRAGIUM)->val2);
+ #ifndef RENEWAL
+-			status_change_end( bl, SC_SUFFRAGIUM );
++			if(consume)status_change_end( bl, SC_SUFFRAGIUM );
+ #endif
+ 		}
+ 		if (sc->getSCE(SC_MEMORIZE)) {
+ 			if (!sd || pc_checkskill(sd, skill_id) > 0) { // Foresight only decreases cast times from learned skills, not skills granted by items
+ 				reduce_cast_rate += 50;
+-				if ((--sc->getSCE(SC_MEMORIZE)->val2) <= 0)
++				if (consume && (--sc->getSCE(SC_MEMORIZE)->val2) <= 0)
+ 					status_change_end(bl, SC_MEMORIZE);
+ 			}
+ 		}
+@@ -10399,6 +10416,9 @@
+ 
+ 	return (int32)time;
+ }
++int32 skill_vfcastfix(block_list *bl, double time, uint16 skill_id, uint16 skill_lv){return static_vfcastfix(bl,time,skill_id,skill_lv,true);}
++int storm_cast_preview(block_list* bl){return static_vfcastfix(bl,skill_castfix(bl,WZ_STORMGUST,10),WZ_STORMGUST,10,false);}
++
+ #endif
+ 
+ /*==========================================
+@@ -11954,6 +11974,8 @@
+  */
+ int32 skill_delunitgroup_(std::shared_ptr<s_skill_unit_group> group, const char* file, int32 line, const char* func)
+ {
++if(group)kt_field(*group,false,0,0);
++if(group)ShowInfo("B_END %lld %d\n",(long long)gettick(),group->group_id);
+ 	block_list* src;
+ 	struct unit_data *ud;
+ 	int16 i;
+--- a/src/map/status.cpp
++++ b/src/map/status.cpp
+@@ -1,3 +1,4 @@
++#include "audit.hpp"
+ // Copyright (c) rAthena Dev Teams - Licensed under GNU GPL
+ // For more information, see LICENCE in the main folder
+ 
+@@ -14,6 +15,7 @@
+ #include <common/nullpo.hpp>
+ #include <common/random.hpp>
+ #include <common/showmsg.hpp>
++#include "trip_guard.hpp"
+ #include <common/strlib.hpp>
+ #include <common/timer.hpp>
+ #include <common/utilities.hpp>
+@@ -1626,7 +1628,10 @@
+ 			dhp = status->hp - 1;
+ 	}
+ 
+-	status->hp-= hp;
++	ShowInfo("B_HIT %lld %d %d %d %d %d %u\n",(long long)gettick(),src?src->id:0,target->id,skill_id,hp,sp,status->hp);
++trial::hit(target->id,status->hp,status->max_hp,hp,gettick());
++auto kt_before=status->hp;
++status->hp-= hp;
+ 	status->sp-= sp;
+ 	status->ap-= ap;
+ 
+@@ -1637,6 +1642,7 @@
+ 		if (!sp) sp = 1; // To make sure the status bar is updated
+ 	}
+ 
++	kt_damage(src,target,skill_id,kt_before,status->hp);
+ 	if (sc && hp && status->hp) {
+ 		if (sc->getSCE(SC_BERSERK) && status->hp <= 100)
+ 			status_change_end(target, SC_BERSERK);
+@@ -1862,7 +1868,8 @@
+ 	if(!ap && !sp && !hp && !(flag&4))
+ 		return 0;
+ 
+-	status->hp += hp;
++	ShowInfo("B_HEAL %lld %d %d %d\n",(long long)gettick(),bl->id,hp,sp);
++status->hp += hp;
+ 	status->sp += sp;
+ 	status->ap += ap;
+ 
+@@ -2009,7 +2016,8 @@
+ 	else if (per_ap && !ap)
+ 		ap = 1;
+ 
+-	status->hp += hp;
++	ShowInfo("B_HEAL %lld %d %d %d\n",(long long)gettick(),bl->id,hp,sp);
++status->hp += hp;
+ 	status->sp += sp;
+ 	status->ap += ap;
+ 
+@@ -13206,6 +13214,7 @@
+ 		// New sc
+ 		sce = sc->createSCE(type);
+ 	}
++	if((type==SC_FREEZE || type==SC_ENDURE) && kt_owner(bl))ShowInfo("KT_STATUS %lld id=%d sc=%s on=1\n",(long long)gettick(),bl->id,type==SC_FREEZE?"freeze":"endure");
+ 	sce->val1 = val1;
+ 	sce->val2 = val2;
+ 	sce->val3 = val3;
+@@ -13493,6 +13502,7 @@
+ 		val3 = sce->val3;
+ 		val4 = sce->val4;
+ 
++		if((type==SC_FREEZE || type==SC_ENDURE) && kt_owner(bl))ShowInfo("KT_STATUS %lld id=%d sc=%s on=0\n",(long long)gettick(),bl->id,type==SC_FREEZE?"freeze":"endure");
+ 		sc->deleteSCE( type );
+ 	}else{
+ 		return 0;
+--- /dev/null
++++ b/src/map/trip_guard.hpp
+@@ -0,0 +1,31 @@
++// Disposable one-party farm fixture. Included only by the trial builder.
++#pragma once
++#include <cstdio>
++#include <deque>
++#include <algorithm>
++#include <utility>
++namespace trial {
++inline bool armed=false, stopped=false, regrouped=false;
++inline long long started=0, last_command=0;
++inline std::deque<std::pair<long long,int>> hits[6];
++inline long long pending[6]={};
++inline int index(int id){return id==2000001?0:(id>=95000000 && id<=95000004?id-95000000+1:-1);}
++inline void stop(const char* why,int id,long long now){
++    if(!armed || stopped)return;
++    stopped=true;
++    ShowInfo("B_STOP %lld %s %d\n",now,why,id);
++}
++inline int floor_hp(int i,int maxhp,long long now){
++    auto& q=hits[i];
++    while(!q.empty() && q.front().first<now-8000)q.pop_front();
++    int floor=(maxhp*15+99)/100;
++    for(auto [t,d]:q)floor=std::max(floor,d);
++    return floor;
++}
++inline void hit(int id,int hp,int maximum,int damage,long long now){
++    int i=index(id);
++    if(!armed || i<0 || damage<=0)return;
++    hits[i].emplace_back(now,damage);
++    if(hp-damage<=floor_hp(i,maximum,now))stop("critical_hit",id,now);
++}
++}
+--- a/src/map/unit.cpp
++++ b/src/map/unit.cpp
+@@ -1,3 +1,4 @@
++#include "audit.hpp"
+ // Copyright (c) rAthena Dev Teams - Licensed under GNU GPL
+ // For more information, see LICENCE in the main folder
+ 
+@@ -940,7 +941,8 @@
+ 	if(!(flag&2) && (!status_bl_has_mode(bl,MD_CANMOVE) || !unit_can_move(bl)))
+ 		return 0;
+ 
+-	ud->state.walk_easy = flag&1;
++	if(bl->type==BL_PC)ShowInfo("B_WALK %lld %d %d %d\n",(long long)gettick(),bl->id,x,y);
++ud->state.walk_easy = flag&1;
+ 	ud->to_x = x;
+ 	ud->to_y = y;
+ 	unit_stop_attack(bl); //Sets target to 0
+@@ -1034,7 +1036,8 @@
+ 	}
+ 
+ 	ud->state.walk_easy = flag&1;
+-	ud->target_to = tbl->id;
++	if(bl->type==BL_PC)ShowInfo("B_CHASE %lld %d %d\n",(long long)gettick(),bl->id,tbl->id);
++ud->target_to = tbl->id;
+ 	ud->chaserange = range; // Note that if flag&2, this SHOULD be attack-range
+ 	ud->state.attack_continue = flag&2?1:0; // Chase to attack.
+ 	unit_stop_attack(bl); //Sets target to 0
+@@ -2618,7 +2621,9 @@
+ 	}
+ 
+ 
+-	if( casttime > 0 ) {
++	if(kt_owner(src))ShowInfo("KT_CAST %lld src=%d skill=%d level=%d target=%d xy=%d,%d cast_ms=%d\n",(long long)gettick(),src->id,skill_id,skill_lv,ud->skilltarget,ud->skillx,ud->skilly,casttime);
++	ShowInfo("B_CAST %lld %d %d %d %d %d %d %d\n",(long long)gettick(),src->id,skill_id,skill_lv,ud->skilltarget,ud->skillx,ud->skilly,casttime);
++if( casttime > 0 ) {
+ 		ud->skilltimer = add_timer( tick+casttime, skill_castend_id, src->id, 0 );
+ 
+ 		if( sd && (pc_checkskill(sd,SA_FREECAST) > 0 || skill_id == LG_EXEEDBREAK) )
+@@ -2816,7 +2821,9 @@
+ 	// In official this is triggered even if no cast time.
+ 	clif_skillcasting(*src, nullptr, skill_x, skill_y, skill_id, skill_lv, static_cast<e_element>(skill_get_ele(skill_id, skill_lv)), casttime);
+ 
+-	if( casttime > 0 ) {
++	if(kt_owner(src))ShowInfo("KT_CAST %lld src=%d skill=%d level=%d target=%d xy=%d,%d cast_ms=%d\n",(long long)gettick(),src->id,skill_id,skill_lv,ud->skilltarget,ud->skillx,ud->skilly,casttime);
++	ShowInfo("B_CAST %lld %d %d %d %d %d %d %d\n",(long long)gettick(),src->id,skill_id,skill_lv,ud->skilltarget,ud->skillx,ud->skilly,casttime);
++if( casttime > 0 ) {
+ 		ud->skilltimer = add_timer( tick+casttime, skill_castend_pos, src->id, 0 );
+ 
+ 		if( (sd && pc_checkskill(sd,SA_FREECAST) > 0) || skill_id == LG_EXEEDBREAK)
+@@ -2853,7 +2860,8 @@
+ 			ux->target_count++;
+ 	}
+ 
+-	ud->target = target_id;
++	if(ud->target!=target_id)ShowInfo("B_TARGET %lld %d %d\n",(long long)gettick(),ud->bl->id,target_id);
++ud->target = target_id;
+ 
+ 	return 0;
+ }
+@@ -3505,7 +3513,8 @@
+ 	if(ret == 0 && population_m1_is_shell(bl) && (skill_id == WZ_STORMGUST || skill_id == WZ_VERMILION || skill_id == WZ_FIREPILLAR))
+ 		ShowInfo("Companion cast cancelled actor=%d skill=%d pos=%d,%d interruptible_check=%d\n",bl->id,skill_id,bl->x,bl->y,(type&2)!=0);
+ 
+-	if(ret < 0)
++	if(ret==0 && (type&2))ShowInfo("B_INTERRUPT %lld %d %d\n",(long long)gettick(),bl->id,skill_id);
++if(ret < 0)
+ 		ShowError("delete timer error : skill_id : %d\n",ret);
+ 
+ 	ud->skilltimer = INVALID_TIMER;
+@@ -3528,7 +3537,8 @@
+ 		md.skill_idx = -1;
+ 	}
+ 
+-	clif_skillcastcancel( *bl );
++	if(ret==0)ShowInfo("B_CANCEL %lld %d %d\n",(long long)gettick(),bl->id,ud->skill_id);
++clif_skillcastcancel( *bl );
+ 
+ 	return 1;
+ }

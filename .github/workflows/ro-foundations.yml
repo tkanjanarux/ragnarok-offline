@@ -1,7 +1,13 @@
 name: RO foundations iPhone build
 on:
   push:
-    branches: [qa/ro-foundations-20261125]
+    branches: [main]
+    paths:
+      - 'Packages/**'
+      - 'RagnarokOffline/**'
+      - 'RagnarokOffline.xcodeproj/**'
+      - 'Configurations/**'
+      - 'swift-rathena'
   workflow_dispatch:
 permissions:
   contents: read

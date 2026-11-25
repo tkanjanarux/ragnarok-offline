@@ -1,0 +1,79 @@
+# Prices are local virtual Cash Points; not RO Zero KP.
+Header:
+  Type: ITEM_CASH_DB
+  Version: 1
+Body:
+- Tab: Consumables
+  Items:
+  - Item: Blue_Potion
+    Price: 5
+  - Item: Royal_Jelly
+    Price: 10
+  - Item: Small_Life_Potion
+    Price: 20
+  - Item: Med_Life_Potion
+    Price: 30
+  - Item: Battle_Manual
+    Price: 50
+  - Item: Bubble_Gum
+    Price: 50
+  - Item: Insurance
+    Price: 10
+  - Item: Insurance_Package
+    Price: 90
+  - Item: Bubble_Gum_Box5
+    Price: 225
+  - Item: Abrasive
+    Price: 15
+  - Item: C_Abrasive_Box5
+    Price: 65
+  - Item: Mental_Potion
+    Price: 20
+  - Item: Red_Potion
+    Price: 1
+  - Item: Orange_Potion
+    Price: 1
+  - Item: Yellow_Potion
+    Price: 2
+  - Item: White_Potion
+    Price: 3
+  - Item: Green_Potion
+    Price: 1
+  - Item: Honey
+    Price: 3
+  - Item: Yggdrasilberry
+    Price: 20
+  - Item: Seed_Of_Yggdrasil
+    Price: 10
+  - Item: Wing_Of_Fly
+    Price: 1
+  - Item: Wing_Of_Butterfly
+    Price: 1
+  - Item: Center_Potion
+    Price: 3
+  - Item: Awakening_Potion
+    Price: 5
+  - Item: Berserk_Potion
+    Price: 8
+  - Item: Strawberry
+    Price: 2
+  - Item: Grape_Juice
+    Price: 2
+- Tab: Scrolls
+  Items:
+  - Item: Blessing_10_Scroll
+    Price: 5
+  - Item: Inc_Agi_10_Scroll
+    Price: 5
+  - Item: Kafra_Card
+    Price: 10
+- Tab: Permanent
+  Items:
+  - Item: Muslim_Hat_M
+    Price: 250
+  - Item: Muslim_Hat_F
+    Price: 250
+  - Item: Pecopeco_Hairband
+    Price: 400
+  - Item: Necromencer's_Hood
+    Price: 600

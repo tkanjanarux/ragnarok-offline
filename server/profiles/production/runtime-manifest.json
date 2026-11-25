@@ -1,0 +1,331 @@
+{
+  "conf/import/atcommands.yml": {
+    "template": "conf/import-tmpl/atcommands.yml",
+    "sha256": "d230f5fe98ba47c6a77cf4c02f2fc63623c711e31767493fb1287766372d7676",
+    "crlf": false
+  },
+  "conf/import/battle_conf.txt": {
+    "override_profile": "production",
+    "sha256": "097984b38a58c090477403ed2571d1948c85f916cbbe3a7bca17d27be064dd98"
+  },
+  "conf/import/groups.yml": {
+    "override_profile": "production",
+    "sha256": "c7b21302cdb937531affdffdd779fa3f97a153ee4d2ff68b5a3a21136a64d928"
+  },
+  "conf/import/inter_server.yml": {
+    "template": "conf/import-tmpl/inter_server.yml",
+    "sha256": "e1e3c715202d6af54629be0ab311bf041732fc4f98cbdcc339aea7b42613cfe0",
+    "crlf": false
+  },
+  "conf/import/packet_conf.txt": {
+    "template": "conf/import-tmpl/packet_conf.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "crlf": false
+  },
+  "conf/import/script_conf.txt": {
+    "template": "conf/import-tmpl/script_conf.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "crlf": false
+  },
+  "db/import/abra_db.yml": {
+    "template": "db/import-tmpl/abra_db.yml",
+    "sha256": "716a735fb290f00e738abb56dcbcc748cf207cd9db98fcaa7779bbc732e8443d",
+    "crlf": false
+  },
+  "db/import/achievement_db.yml": {
+    "template": "db/import-tmpl/achievement_db.yml",
+    "sha256": "7eb14a7b9dbb3adfac1d565cd4e38abe9e52e5d7cb159b5f7680b531677bf106",
+    "crlf": false
+  },
+  "db/import/achievement_level_db.yml": {
+    "template": "db/import-tmpl/achievement_level_db.yml",
+    "sha256": "219e7de0f5e32f832669d8accde825de839ca1104c2fdc314367361a16f9a6c5",
+    "crlf": false
+  },
+  "db/import/attendance.yml": {
+    "template": "db/import-tmpl/attendance.yml",
+    "sha256": "1bd821b009013f0e729cea26dbfac5497886d96af6c5195ea1cace8f81f3b279",
+    "crlf": false
+  },
+  "db/import/attr_fix.yml": {
+    "template": "db/import-tmpl/attr_fix.yml",
+    "sha256": "147e40712c1c8d3009a81d7c8c09ab664ac89745d63c87d7eebc0d1d3fe48608",
+    "crlf": false
+  },
+  "db/import/battleground_db.yml": {
+    "template": "db/import-tmpl/battleground_db.yml",
+    "sha256": "087de50c1cd681cd0e76bede4a23e987f879548fd4a1fc0dcd92185fe35eaed4",
+    "crlf": false
+  },
+  "db/import/captcha_db.yml": {
+    "template": "db/import-tmpl/captcha_db.yml",
+    "sha256": "ffdd5bf64825eae9a31e8b8835f512c75c42307964f3c4b41a2cf27633c71e60",
+    "crlf": false
+  },
+  "db/import/castle_db.yml": {
+    "template": "db/import-tmpl/castle_db.yml",
+    "sha256": "3c850c279074f04446404a49b6ebb6528d89b14eb28cb176c0dc614cb52e411a",
+    "crlf": false
+  },
+  "db/import/const.yml": {
+    "template": "db/import-tmpl/const.yml",
+    "sha256": "37ed1b9f180bab540a2a4f81af05b4f190824e1b903b81d56f94f25565d0c9e3",
+    "crlf": false
+  },
+  "db/import/create_arrow_db.yml": {
+    "template": "db/import-tmpl/create_arrow_db.yml",
+    "sha256": "c960e6273578908d9f7eb047258afebf6bd04cbe105dc25523e2f22f7ac2359d",
+    "crlf": false
+  },
+  "db/import/elemental_db.yml": {
+    "template": "db/import-tmpl/elemental_db.yml",
+    "sha256": "e920c47a7d9abac22fbb1f4fb4c0d2a9ac84baaca492607f61aee5802fb2ddd2",
+    "crlf": false
+  },
+  "db/import/enchantgrade.yml": {
+    "template": "db/import-tmpl/enchantgrade.yml",
+    "sha256": "94280e49b04c4cad526923f2408b3d8c265fd13da324ccd7181117db97fbbf90",
+    "crlf": false
+  },
+  "db/import/exp_guild.yml": {
+    "template": "db/import-tmpl/exp_guild.yml",
+    "sha256": "534a07a121cac2391aa8fe49f8a24571c5c85307a1a3cdcc6f393af0e74ea6ef",
+    "crlf": false
+  },
+  "db/import/exp_homun.yml": {
+    "template": "db/import-tmpl/exp_homun.yml",
+    "sha256": "dbba1e938fbb567a47ac4ca12369853994e37d5946282673c5cae2b37681cd2d",
+    "crlf": false
+  },
+  "db/import/guild_skill_tree.yml": {
+    "template": "db/import-tmpl/guild_skill_tree.yml",
+    "sha256": "0eabdf664beda0431ddc5be60d83f3dadb17da558b9238e8409f5dc017dcb716",
+    "crlf": false
+  },
+  "db/import/homunculus_db.yml": {
+    "template": "db/import-tmpl/homunculus_db.yml",
+    "sha256": "88fa09f565590dc35db93c0450df474198b09e81a20714621ec6638146484015",
+    "crlf": false
+  },
+  "db/import/instance_db.yml": {
+    "template": "db/import-tmpl/instance_db.yml",
+    "sha256": "dea912ee65dbaec6324efa7683739c9624734dd36969457f1bcab6651cf6786e",
+    "crlf": false
+  },
+  "db/import/item_cash.yml": {
+    "override_profile": "production",
+    "sha256": "8629ed428f57e4d2eb8d6315ff3a59d98f0f36ce34691ad390b8b41cebb7bf0a"
+  },
+  "db/import/item_combos.yml": {
+    "template": "db/import-tmpl/item_combos.yml",
+    "sha256": "6587e9468437bfc573e6325425c82d44eb3ceeb0f234bd0f90f8224fcd095def",
+    "crlf": false
+  },
+  "db/import/item_db.yml": {
+    "override_profile": "production",
+    "sha256": "d73e628891db6060b8f0d79caa467fb042c733024edabd5f4f3ec6ca94c382b3"
+  },
+  "db/import/item_enchant.yml": {
+    "template": "db/import-tmpl/item_enchant.yml",
+    "sha256": "b87f561eff093a6c81b28ae23ef2c734c56549b4601436fbb5753883dcd77b40",
+    "crlf": false
+  },
+  "db/import/item_group_db.yml": {
+    "template": "db/import-tmpl/item_group_db.yml",
+    "sha256": "3edde3804eb85c23f8fd061cac6133d56777d526340ab663f6476168ee2c18b4",
+    "crlf": false
+  },
+  "db/import/item_noequip.txt": {
+    "template": "db/import-tmpl/item_noequip.txt",
+    "sha256": "d11484e84cfeec3de48a8e44701fbd11a307f7b54547f7412a0b089db192181a",
+    "crlf": true
+  },
+  "db/import/item_packages.yml": {
+    "template": "db/import-tmpl/item_packages.yml",
+    "sha256": "fc6941ce5f0961ff29c2c1ed3220660b41cd16dbf3d5172445ca0c53bf4f0e01",
+    "crlf": false
+  },
+  "db/import/item_randomopt_db.yml": {
+    "template": "db/import-tmpl/item_randomopt_db.yml",
+    "sha256": "9c1f3291295a4a84dd8d0ca8bd84ba6f1ce38220695d1b80634751bfa2740728",
+    "crlf": false
+  },
+  "db/import/item_randomopt_group.yml": {
+    "template": "db/import-tmpl/item_randomopt_group.yml",
+    "sha256": "718afabbc3548fa37ef2d28c141f08aa9a673700442b8f8113320a8603986711",
+    "crlf": false
+  },
+  "db/import/item_reform.yml": {
+    "template": "db/import-tmpl/item_reform.yml",
+    "sha256": "bce119a5ccefaac0c079e48f8935246ae5645d1b9ea7f4ee3a91c0f64d1a968f",
+    "crlf": false
+  },
+  "db/import/job_noenter_map.txt": {
+    "template": "db/import-tmpl/job_noenter_map.txt",
+    "sha256": "615a15a4790a9f9ab13d7c9b6f8e165838adc887283a0786b10cad478565c108",
+    "crlf": true
+  },
+  "db/import/job_stats.yml": {
+    "template": "db/import-tmpl/job_stats.yml",
+    "sha256": "b40ff1b6544443a96ae5c01c39e494d4c2aa2db5e0a3652cd0efb01abd8a4460",
+    "crlf": false
+  },
+  "db/import/laphine_synthesis.yml": {
+    "template": "db/import-tmpl/laphine_synthesis.yml",
+    "sha256": "381343f71a767ac1fbf4fc210bbb67027598f49b8a5f0d2aab1224b53dbca73e",
+    "crlf": false
+  },
+  "db/import/laphine_upgrade.yml": {
+    "template": "db/import-tmpl/laphine_upgrade.yml",
+    "sha256": "9d0bcbfaa9b8a63a671c7af42bc9d57e39a4e046a0a69ab32f4f4a1351200258",
+    "crlf": false
+  },
+  "db/import/level_penalty.yml": {
+    "template": "db/import-tmpl/level_penalty.yml",
+    "sha256": "cb6c14bf3150507d87aa55ea7725017d14aa1c7bf2fd8e34a1f5c76d4fb86fa3",
+    "crlf": false
+  },
+  "db/import/magicmushroom_db.yml": {
+    "template": "db/import-tmpl/magicmushroom_db.yml",
+    "sha256": "2c2909abcbaec8a6d78ece34ca237c05bd017ebf17192a37692babc9a909f800",
+    "crlf": false
+  },
+  "db/import/map_drops.yml": {
+    "template": "db/import-tmpl/map_drops.yml",
+    "sha256": "8882e2069b4974a3d51b871e648f7e75dc4e59da893de4e821f421f49ac427d4",
+    "crlf": false
+  },
+  "db/import/map_index.txt": {
+    "template": "db/import-tmpl/map_index.txt",
+    "sha256": "e92007a8d0c7c0238c67e3ef4a99a79cbaeb41905090afbd0cb0f618152bcc1c",
+    "crlf": true
+  },
+  "db/import/mercenary_db.yml": {
+    "template": "db/import-tmpl/mercenary_db.yml",
+    "sha256": "d13d840abce941b31f5dc48bd5c008b6b6e1c2c1938cd1d226f5e11bcfd1109d",
+    "crlf": false
+  },
+  "db/import/mob_avail.yml": {
+    "template": "db/import-tmpl/mob_avail.yml",
+    "sha256": "63cd73d189c9bd193a29e507bf053de2ecfb6d3157ac4baa34df0a432da97944",
+    "crlf": false
+  },
+  "db/import/mob_chat_db.yml": {
+    "template": "db/import-tmpl/mob_chat_db.yml",
+    "sha256": "ed45b0b0a3c4c32382234553ba4cc5ef5fae21553e25d225b5e33d33fbbd8aa2",
+    "crlf": false
+  },
+  "db/import/mob_db.yml": {
+    "template": "db/import-tmpl/mob_db.yml",
+    "sha256": "5dc1d1d2517f1c0e82c4e465855ee908a6fb22da27a69ba779d7f363a9b22da3",
+    "crlf": false
+  },
+  "db/import/mob_item_ratio.yml": {
+    "template": "db/import-tmpl/mob_item_ratio.yml",
+    "sha256": "eceda05b050495ce19579d781341f012a29aa9f3632ceeac903131f66820ef98",
+    "crlf": false
+  },
+  "db/import/mob_skill_db.txt": {
+    "template": "db/import-tmpl/mob_skill_db.txt",
+    "sha256": "fc510bad44230fc1d2baafaee206fa09a0a37e3b460a0c71959189c69a7c42d9",
+    "crlf": true
+  },
+  "db/import/mob_summon.yml": {
+    "template": "db/import-tmpl/mob_summon.yml",
+    "sha256": "3b696ab30c7b5240adfaabf68cb01f6d07d477578421946ab5dcfd35a1f9102d",
+    "crlf": false
+  },
+  "db/import/pet_db.yml": {
+    "template": "db/import-tmpl/pet_db.yml",
+    "sha256": "b4ce5d72629f31c95576ae9b061f7dfe1fb168cc502d0f82ead4eba88d182fb9",
+    "crlf": false
+  },
+  "db/import/produce_db.txt": {
+    "template": "db/import-tmpl/produce_db.txt",
+    "sha256": "b10e38b4aa3ef012f697115ab32102cb0a7342b81ec0448a2751584fa1ffa362",
+    "crlf": true
+  },
+  "db/import/quest_db.yml": {
+    "template": "db/import-tmpl/quest_db.yml",
+    "sha256": "13dfa20291d1b6cd2411d8cb138aea67121b3917962c9cdd5e3eb391fdeed24c",
+    "crlf": false
+  },
+  "db/import/refine.yml": {
+    "template": "db/import-tmpl/refine.yml",
+    "sha256": "145671374e8eee9a6e1814ec953e9b40b6827b298bf10253d8dd7287436d9581",
+    "crlf": false
+  },
+  "db/import/reputation.yml": {
+    "template": "db/import-tmpl/reputation.yml",
+    "sha256": "e1163e4cefadce71b7eb895b009f33b3c515f8898d478bf1ff1e436d24a14ca0",
+    "crlf": false
+  },
+  "db/import/reputation_group.yml": {
+    "template": "db/import-tmpl/reputation_group.yml",
+    "sha256": "92671964457b525aa3b2f2d473ab6f182a9e61f9e6de22e582fc2f951615d366",
+    "crlf": false
+  },
+  "db/import/size_fix.yml": {
+    "template": "db/import-tmpl/size_fix.yml",
+    "sha256": "e7876633ee1a758f98c57d0b09481f09b7d0c66abef0b36259684740fce0aab5",
+    "crlf": false
+  },
+  "db/import/skill_changematerial_db.txt": {
+    "template": "db/import-tmpl/skill_changematerial_db.txt",
+    "sha256": "d649fd0cee6c4338776d0ad5f6120932b93e2ce744874079dc951526dce0d39c",
+    "crlf": true
+  },
+  "db/import/skill_damage_db.txt": {
+    "template": "db/import-tmpl/skill_damage_db.txt",
+    "sha256": "3f800285afca2f0170fb3613c41304a15316ebc0ed975c3fa14bce18bc09e235",
+    "crlf": true
+  },
+  "db/import/skill_db.yml": {
+    "template": "db/import-tmpl/skill_db.yml",
+    "sha256": "c3715f7cd3831a7675537c1e199ac2a278ddc662b78b962551facad22b4e7e47",
+    "crlf": false
+  },
+  "db/import/skill_nocast_db.txt": {
+    "template": "db/import-tmpl/skill_nocast_db.txt",
+    "sha256": "1f624c86703d7346701e0d3f3bdff4dba051b8311a352b3b08d0665c982f20dd",
+    "crlf": true
+  },
+  "db/import/skill_tree.yml": {
+    "template": "db/import-tmpl/skill_tree.yml",
+    "sha256": "12815f58c2a806da0c18e3bca084b56cf75c1d67c1473a696dfce55ac218e283",
+    "crlf": false
+  },
+  "db/import/spellbook_db.yml": {
+    "template": "db/import-tmpl/spellbook_db.yml",
+    "sha256": "48b3e5cdd5718272036f5bd3d2ec275007143c42741d2ab43fad1fa2b3f164dc",
+    "crlf": false
+  },
+  "db/import/statpoint.yml": {
+    "template": "db/import-tmpl/statpoint.yml",
+    "sha256": "35eec58d09fe139a2ddc0b45676aceeb074c84c941d17295d1080655629b454b",
+    "crlf": false
+  },
+  "db/import/status.yml": {
+    "template": "db/import-tmpl/status.yml",
+    "sha256": "62fc7a45fc296155c884641a956a8a4bb51a87757bf55afccc63be62b153d993",
+    "crlf": false
+  },
+  "db/import/status_disabled.txt": {
+    "template": "db/import-tmpl/status_disabled.txt",
+    "sha256": "e42de8fa0fe44387c755981af2e735c58bf683cba02e2611c2c8b39458a33c92",
+    "crlf": true
+  },
+  "db/import/stylist.yml": {
+    "template": "db/import-tmpl/stylist.yml",
+    "sha256": "20943e4d585b9bcf2374ace49c41deb5e304ef8d5e0dd144f156fb06669b71f4",
+    "crlf": false
+  },
+  "npc/custom/companion_recruiter.txt": {
+    "override_profile": "production",
+    "sha256": "b29ad4968ebefcf7c165e328669929dbe1a8dffb0aeec1c29d0e4497c4df0018"
+  },
+  "npc/scripts_custom.conf": {
+    "override_profile": "production",
+    "sha256": "961ef849712d2258894a02acbb8afcbd2f1feb3a178f682b3d753c954f6618a1"
+  }
+}

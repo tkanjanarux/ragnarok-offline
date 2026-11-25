@@ -1,0 +1,27 @@
+// RagOff M6: the same owner-checked API used by the native roster UI.
+prontera,156,184,4	script	Companion Recruiter	4_M_KNIGHT_BLACK,{
+	if (!getbattleflag("companion_enable")) {
+		mes "[Companion Recruiter]";
+		mes "Companions are not available on this server.";
+		close;
+	}
+	mes "[Companion Recruiter]";
+	if (getbattleflag("companion_loadouts"))
+        mes "Choose a career. Your companion advances when your character reaches second class.";
+    else
+        mes "Recruit a companion for your character.";
+	mes "Keep up to nine in your roster and summon up to four at a time.";
+	mes "Open Party > Companions to summon, reserve or manage your team.";
+	next;
+	if (getbattleflag("companion_loadouts"))
+        .@choices$ = "Swordman / Knight:Acolyte / Priest:Mage / Wizard:Archer / Hunter:Cancel";
+    else
+        .@choices$ = "Recruit Knight:Recruit Priest:Recruit Wizard:Cancel";
+    switch(select(.@choices$)) {
+	case 1: close2; atcommand "@companion recruit knight"; end;
+	case 2: close2; atcommand "@companion recruit priest"; end;
+	case 3: close2; atcommand "@companion recruit wizard"; end;
+	case 4: if (getbattleflag("companion_loadouts")) { close2; atcommand "@companion recruit hunter"; end; }
+	default: close;
+	}
+}

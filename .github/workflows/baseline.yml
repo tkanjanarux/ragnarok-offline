@@ -1,0 +1,28 @@
+name: Canonical baseline checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Portable client tests
+        run: |
+          python3 scripts/test-ro-foundations.py /tmp/portable
+          docker run --rm --network none -v /tmp/portable:/work:ro -w /work swift:6.2 swift test --scratch-path /tmp/build
+      - name: SQLite migration tests
+        run: python3 -m unittest discover -s scripts/server-closeout -p 'test_migration.py' -v
+      - name: Reconstruct and verify both deployed server profiles
+        run: |
+          python3 server/prepare.py production --output build/production --with-runtime-templates
+          python3 server/prepare.py playable --output build/playable --with-runtime-templates
+          python3 server/prepare.py production --output build/production --verify
+          python3 server/prepare.py playable --output build/playable --verify
