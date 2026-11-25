@@ -252,8 +252,8 @@ struct GuildView: View {
         VStack(alignment: .leading, spacing: 6) {
             section("Guild Notice")
             if session.guild.master {
-                TextField("Subject", text: Binding(get: { subject }, set: { subject = $0; noticeDirty = true }))
-                TextField("Notice", text: Binding(get: { notice }, set: { notice = $0; noticeDirty = true }), axis: .vertical).lineLimit(4...8)
+                TextField("Subject", text: Binding(get: { subject }, set: { subject = $0; noticeDirty = true })).disabled(busy)
+                TextField("Notice", text: Binding(get: { notice }, set: { notice = $0; noticeDirty = true }), axis: .vertical).lineLimit(4...8).disabled(busy)
                 Button("Save notice") {
                     session.setGuildNotice(title: subject, text: notice)
                     if session.guild.pending == .notice { noticeDirty = false }
@@ -331,6 +331,7 @@ private struct GuildPositionEditor: View {
     @State private var expel = false
     @State private var storage = false
     @State private var submitted = false
+    @State private var originGuild: UInt32?
     private var valid: Bool {
         guard let value = Int32(tax), (0...100).contains(value) else { return false }
         return GuildPresentation.validText(name, bytes: 23)
@@ -338,20 +339,20 @@ private struct GuildPositionEditor: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text("Guild position").fontWeight(.bold)
-            TextField("Position name", text: $name)
-            HStack { Text("EXP tax (%)"); TextField("0", text: $tax).keyboardType(.numberPad).frame(width: 65) }
+            TextField("Position name", text: $name).disabled(session.guild.pending != nil)
+            HStack { Text("EXP tax (%)"); TextField("0", text: $tax).keyboardType(.numberPad).frame(width: 65).disabled(session.guild.pending != nil) }
             check("Invite members", value: $invite)
             check("Expel members", value: $expel)
             check("Guild storage", value: $storage)
             HStack {
                 Button("Save") {
-                    guard let value = Int32(tax) else { return }
+                    guard GuildPresentation.sameContext(originGuild, state: session.guild), let value = Int32(tax) else { return }
                     session.setGuildPosition(id: positionID, name: name, tax: value, invite: invite, expel: expel, storage: storage)
                     submitted = session.guild.pending == .position
                 }.disabled(!valid || !session.guild.master || session.guild.pending != nil || session.guild.positions[positionID] == nil)
                 Button("Back", action: close)
             }
-        }.onAppear { load() }
+        }.onAppear { originGuild = session.guild.id; load() }
             .onChange(of: session.guild.pending) { _, pending in
                 if submitted && pending == nil { submitted = false; load() }
             }
