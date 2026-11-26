@@ -10,7 +10,7 @@ def method(signature):
     while depth:
         depth += (source[i]=='{') - (source[i]=='}'); i+=1
     return source[start:i].replace('private func','func')
-methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack('])
+methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget('])
 harness='''
 import Foundation
 import Testing
@@ -18,10 +18,11 @@ import Testing
 typealias GameObjectID = UInt32
 @MainActor final class MapScene {
  enum Kind { case monster, npc }
+ typealias MapSceneMapObject = Object
  enum Damage { case normal, _repeat }
  struct Object { var objectID: UInt32; var gridPosition = SIMD2<Int>.zero; var type = Kind.monster; var isDead = false; var job = 0; func nextPosition(at: ContinuousClock.Instant) -> SIMD2<Int>? { nil } }
  enum Decision { case alreadyInRange, moveTo(SIMD2<Int>), noPath }
- struct State { var isPlayerDead = false }
+ struct State { var isPlayerDead = false; var selectedTargetType: Kind? }
  final class Session {
    weak var mapScene: MapScene?
    struct Status { var attackRange = 1 }
@@ -37,14 +38,18 @@ typealias GameObjectID = UInt32
  var state = State()
  var player = Object(objectID: 1)
  var objects: [UInt32:Object] = [2:Object(objectID:2)]
- var selectedTarget: Object?
+ var selectedTargetID: UInt32?
+ var targetSelector: Int?
+ var selectedTarget: Object? {
+   get { selectedTargetID.flatMap { objects[$0] } }
+   set { selectedTargetID = newValue?.objectID }
+ }
  var gamepadAttack = GamepadAttackLease()
  var arrivalTask: Task<Void, any Error>?
  var pendingArrivalAction: (@MainActor () -> Void)?
  var decision = Decision.alreadyInRange
  var moves: [SIMD2<Int>] = []
  init() { playSession.mapScene = self; selectedTarget = objects[2] }
- func selectTarget(_ object: Object?) { selectedTarget = object }
  func requestMove(to position: SIMD2<Int>) { moves.append(position) }
  func decideMovement(from: SIMD2<Int>, toward: SIMD2<Int>, within: Int) -> Decision { decision }
  func nearestItem(fromPosition: SIMD2<Int>) -> Object? { nil }
@@ -69,6 +74,15 @@ typealias GameObjectID = UInt32
      #expect(scene.pendingArrivalAction == nil && scene.playSession.actions.count == 1)
      #expect(scene.playSession.stops == [.zero])
      #expect(scene.playSession.actions[0].0 == .normal && scene.playSession.actions[0].1 == 0)
+   }
+ }
+ @Test func touchAttackCanBeCancelledOrRetargetedByController() {
+   for retarget in [false,true] {
+     let scene = MapScene(); scene.attackMonster(targetID:2)
+     #expect(scene.playSession.actions.first?.0 == ._repeat)
+     if retarget { scene.selectTarget(nil) } else { scene.gamepadCancel() }
+     #expect(scene.playSession.actions.count == 2 && scene.playSession.actions.last?.1 == 0)
+     #expect(scene.pendingArrivalAction == nil)
    }
  }
  @Test func oldSceneNeverSendsStopToNewMapAndDeadTargetDoesNotAttack() {

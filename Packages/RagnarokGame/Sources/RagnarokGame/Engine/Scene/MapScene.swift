@@ -842,7 +842,14 @@ extension MapScene {
         if let token = gamepadGeneration {
             guard gamepadAttack.accepts(token, target: targetID), playSession.mapScene === self,
                   !state.isPlayerDead else { return }
-        } else { stopGamepadAttack() }
+        } else {
+            // Touch and controller share ownership, so switching input cannot leave
+            // the previous server repeat or a deferred arrival running.
+            cancelArrivalAction()
+            let token = gamepadAttack.begin(targetID)
+            attackMonster(targetID: targetID, gamepadGeneration: token)
+            return
+        }
         guard let target = objects[targetID], !target.isDead else {
             return
         }
