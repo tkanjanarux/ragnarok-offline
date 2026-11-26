@@ -17,6 +17,10 @@ struct MapSceneView: View {
 
     @Environment(PlaySession.self) private var playSession
 
+    #if os(iOS)
+    @State private var gamepad = GamepadController()
+    #endif
+
     @State private var hudFrames: [CGRect] = []
     @State private var companionFrame: CGRect = .null
     @State private var actionBarHeight: CGFloat = 0
@@ -58,6 +62,18 @@ struct MapSceneView: View {
             #endif
         }
         .frame(width: size.width, height: size.height)
+        #if os(iOS)
+        .task(id: ObjectIdentifier(runtime.scene)) {
+            await gamepad.run(session: playSession, runtime: runtime,
+                blocked: { presentedMenuItem != nil || !companionFrame.isNull || playSession.questUI.selectedQuestID != nil },
+                menu: { presentedMenuItem = presentedMenuItem == .options ? nil : .options },
+                cancelWindow: {
+                    if presentedMenuItem != nil { presentedMenuItem = nil; return true }
+                    if playSession.guild.visible && playSession.guild.pending == nil { playSession.guild.visible = false; return true }
+                    return false
+                })
+        }
+        #endif
         .overlay(alignment: .bottomLeading) {
             #if os(macOS)
             ChatBoxView()
@@ -98,6 +114,9 @@ struct MapSceneView: View {
                         presentedMenuItem = item
                     }
                 }
+                #if os(iOS)
+                GamepadHUD(controller: gamepad).padding(.leading, leadingInset)
+                #endif
             }
             .hudObstacle()
         }
@@ -293,6 +312,11 @@ struct MapSceneView: View {
                     .padding(.leading, leadingInset).padding(.trailing, trailingInset).padding(.bottom, bottomInset)
             }
         }
+        #if os(iOS)
+        .overlay {
+            if gamepad.helpVisible { GamepadHelp(controller: gamepad) }
+        }
+        #endif
         .environment(\.companionHUDObstacles, hudFrames)
         .task(id: runtime.scene.mapName) {
             playSession.navigation.update(map: runtime.scene.mapName, position: runtime.scene.state.playerPosition,

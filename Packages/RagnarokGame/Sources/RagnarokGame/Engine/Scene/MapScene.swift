@@ -183,6 +183,9 @@ public final class MapScene {
     private var pendingArrivalAction: (@MainActor () -> Void)?
     private var arrivalTask: Task<Void, any Error>?
 
+    var gamepadTouchRevision: UInt64 = 0
+    var gamepadTouchGestures: Set<ObjectIdentifier> = []
+
     var thumbstickValue: CGPoint = .zero {
         didSet {
             updateThumbstickOctant()
@@ -272,6 +275,7 @@ public final class MapScene {
     }
 
     func jump(toPosition position: SIMD2<Int>) {
+        gamepadTouchRevision &+= 1
         camera.reset()
         objects.removeAll()
         shopSigns.removeAll()
@@ -526,6 +530,7 @@ extension MapScene {
 
 extension MapScene {
     func handleInteraction(_ result: HitTestResult) {
+        gamepadTouchRevision &+= 1
         switch result {
         case .ground(let position):
             if player.action.actionType == .sit {
@@ -969,5 +974,43 @@ extension MapScene {
         default:
             false
         }
+    }
+}
+
+// MARK: - Physical controller input
+extension MapScene {
+    /// No stop opcode is invented: releasing ends requests; the short accepted path finishes.
+    func gamepadMove(_ direction: SIMD2<Float>) {
+        guard !state.isPlayerDead, player.action.actionType != .sit, thumbstickValue == .zero else { return }
+        let origin = player.nextPosition(at: .now) ?? player.gridPosition
+        let octant = Int((atan2(direction.y, direction.x) / (.pi / 4)).rounded())
+        for offset in [0, 1, -1] {
+            let angle = Float(octant + offset) * .pi / 4
+            let step = SIMD2<Int>(Int(cos(angle).rounded()), Int(sin(angle).rounded()))
+            let target = origin &+ step
+            if pathFinder.canMoveStraight(from: origin, to: target) && pathFinder.canRequestMove(from: origin, to: target) {
+                cancelArrivalAction()
+                requestMove(to: target)
+                return
+            }
+        }
+    }
+    func gamepadCancel() { cancelArrivalAction(); selectTarget(nil) }
+    func gamepadPrimary() -> String? {
+        if let target = selectedTarget {
+            let delta = target.gridPosition &- player.gridPosition
+            let distance = max(abs(delta.x), abs(delta.y))
+            if target.type == .monster {
+                guard distance <= max(1, playSession.playerStatus.attackRange) else { return "Move closer to attack." }
+                cancelArrivalAction()
+                playSession.requestAction(.normal, onTarget: target.objectID)
+            } else if target.type == .npc && distance <= 2 && ![45,111,139].contains(target.job) {
+                playSession.talkToNPC(npcID: target.objectID)
+            }
+        } else if let item = nearestItem(fromPosition: player.gridPosition) {
+            let d = item.gridPosition &- player.gridPosition
+            if max(abs(d.x),abs(d.y)) <= 1 { playSession.pickUpItem(objectID: item.objectID) }
+        }
+        return nil
     }
 }

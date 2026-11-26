@@ -180,6 +180,9 @@ final class MapViewController: UIViewController, MTKViewDelegate, UIGestureRecog
 
     #if os(iOS)
     @objc func handleThumbstickPan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if [.began, .changed].contains(gestureRecognizer.state) {
+            runtime?.scene.gamepadTouchGestures.insert(ObjectIdentifier(gestureRecognizer))
+        } else { runtime?.scene.gamepadTouchGestures.remove(ObjectIdentifier(gestureRecognizer)) }
         let translation = gestureRecognizer.translation(in: mtkView)
 
         switch gestureRecognizer.state {
@@ -230,6 +233,9 @@ final class MapViewController: UIViewController, MTKViewDelegate, UIGestureRecog
     #endif
 
     @objc func handleCameraPan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if [.began, .changed].contains(gestureRecognizer.state) {
+            runtime?.scene.gamepadTouchGestures.insert(ObjectIdentifier(gestureRecognizer))
+        } else { runtime?.scene.gamepadTouchGestures.remove(ObjectIdentifier(gestureRecognizer)) }
         guard let scene = runtime?.scene else {
             return
         }
@@ -256,6 +262,9 @@ final class MapViewController: UIViewController, MTKViewDelegate, UIGestureRecog
     }
 
     @objc func handleTwoFingerPan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if [.began, .changed].contains(gestureRecognizer.state) {
+            runtime?.scene.gamepadTouchGestures.insert(ObjectIdentifier(gestureRecognizer))
+        } else { runtime?.scene.gamepadTouchGestures.remove(ObjectIdentifier(gestureRecognizer)) }
         guard let scene = runtime?.scene else {
             return
         }
@@ -274,6 +283,9 @@ final class MapViewController: UIViewController, MTKViewDelegate, UIGestureRecog
     }
 
     @objc func handlePinch(_ gestureRecognizer: UIPinchGestureRecognizer) {
+        if [.began, .changed].contains(gestureRecognizer.state) {
+            runtime?.scene.gamepadTouchGestures.insert(ObjectIdentifier(gestureRecognizer))
+        } else { runtime?.scene.gamepadTouchGestures.remove(ObjectIdentifier(gestureRecognizer)) }
         guard let scene = runtime?.scene else {
             return
         }
@@ -316,6 +328,7 @@ final class MapViewController: UIViewController, MTKViewDelegate, UIGestureRecog
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        runtime?.scene.gamepadTouchRevision &+= 1
         let location = touch.location(in: mtkView)
         let isOnThumbstickHalf = isWidescreen ? location.x < mtkView.bounds.midX : location.y >= mtkView.bounds.midY
         if gestureRecognizer === thumbstickPanGestureRecognizer {

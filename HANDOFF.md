@@ -136,3 +136,14 @@ account/character identity; confirmations cannot cross a guild change. The
 position editor remains open for server feedback. No real guild/account mutations,
 Simulator, automatic merge or server deployment. No Guild screenshot was supplied;
 source/assets are the reference, and physical iPhone visual acceptance is pending.
+
+## Gamepad round 1 — separate review branch
+
+`gamepad-round1` is based on guild original2674eea (build45690894899 success),
+including navigation/HP fixes. See [mapping and limitations](docs/gamepad-round1/README.md).
+Native extendedGamepad sampling, short walk requests, camera orbit, stable visible
+monster lock, edge-only single attacks/shortcuts, and profile-ID Follow/Assist/Stop.
+Modal/text/lifecycle/touch ownership require neutral before resuming. Movement
+release is not an instant server stop; ground skills and transaction dialogs use
+touch. No remapping/full inventory navigation, Simulator, hardware acceptance,
+PR merge or server deployment. IPA is unsigned for external signing.

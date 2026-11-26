@@ -1,7 +1,7 @@
 name: RO foundations iPhone build
 on:
   push:
-    branches: [main, ui-original-restore, ui-navigation-polish, ui-guild-original]
+    branches: [main, ui-original-restore, ui-navigation-polish, ui-guild-original, gamepad-round1]
     paths:
       - 'Packages/**'
       - 'RagnarokOffline/**'
@@ -28,6 +28,14 @@ jobs:
         run: |
           python3 scripts/test-ro-foundations.py /tmp/guild-tests
           docker run --rm --network none -v /tmp/guild-tests:/work:ro -w /work swift:6.2 swift test --scratch-path /tmp/build
+  gamepad-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Controller input policy regressions
+        run: |
+          python3 scripts/test-gamepad.py /tmp/gamepad-tests
+          docker run --rm --network none -v /tmp/gamepad-tests:/work:ro -w /work swift:6.2 swift test --scratch-path /tmp/build
   iphone:
     runs-on: xcode-27
     timeout-minutes: 60
