@@ -99,6 +99,10 @@ struct GamepadTargetRing {
         }
         order += added.map(\.id)
     }
+    @discardableResult mutating func select(_ id: UInt32) -> Bool {
+        guard order.contains(id) else { return false }
+        selected = id; return true
+    }
     mutating func cycle(_ step: Int) -> UInt32? {
         guard !order.isEmpty else { selected = nil; return nil }
         let index = selected.flatMap { order.firstIndex(of: $0) }

@@ -98,7 +98,7 @@ final class GamepadController: NSObject {
             if scene.targetSelector?.objectID != id { scene.targetSelector = TargetSelector(objectID: id, showTime: .now) }
             targetName = scene.objects[id]?.name ?? "No target"
         }
-        else { targetName = "No target" }
+        else { targetName = scene.selectedTarget?.name ?? "No target" }
         if let move = frame.move {
             facing = GamepadReducer.worldDirection(move, azimuth: scene.camera.azimuth)
             scene.gamepadMove(facing)
@@ -125,7 +125,13 @@ final class GamepadController: NSObject {
         case .target(let direction):
             if let id = ring.cycle(direction) { scene.selectTarget(scene.objects[id]) }
         case .primary:
-            if ring.selected == nil && scene.selectedTarget?.type != .npc, let id = ring.cycle(1) { scene.selectTarget(scene.objects[id]) }
+            if ring.selected == nil {
+                if let target = scene.selectedTarget {
+                    if target.type == .monster && !ring.select(target.objectID) {
+                        message = "Move closer to the selected target."; return
+                    }
+                } else if let id = ring.cycle(1) { scene.selectTarget(scene.objects[id]) }
+            }
             message = scene.gamepadPrimary() ?? ""
         case .shortcut(let row, let column): useShortcut(row: row, column: column, session: session, scene: scene)
         case .nextCompanion:

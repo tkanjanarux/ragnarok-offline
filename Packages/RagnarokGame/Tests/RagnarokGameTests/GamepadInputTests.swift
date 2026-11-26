@@ -104,4 +104,13 @@ struct GamepadInputTests {
         #expect(ring.cycle(1) == 2)
     }
 
+    @Test func touchSelectedTargetIsPreservedOnlyWhileEligible() {
+        var ring = GamepadTargetRing()
+        ring.update([.init(id: 1,position:.zero),.init(id: 2,position:SIMD2(1,0))],origin:.zero,facing:SIMD2(1,0))
+        #expect(ring.select(2) && ring.selected == 2)
+        #expect(!ring.select(99) && ring.selected == 2)
+        ring.update([.init(id: 1,position:.zero)],origin:.zero,facing:SIMD2(1,0))
+        #expect(!ring.select(2) && ring.selected == nil)
+    }
+
 }
