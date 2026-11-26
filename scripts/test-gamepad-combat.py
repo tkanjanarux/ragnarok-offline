@@ -10,7 +10,7 @@ def method(signature):
     while depth:
         depth += (source[i]=='{') - (source[i]=='}'); i+=1
     return source[start:i].replace('private func','func')
-methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget('])
+methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget(', 'func gamepadResetForMapChange('])
 harness='''
 import Foundation
 import Testing
@@ -75,6 +75,14 @@ typealias GameObjectID = UInt32
      #expect(scene.playSession.stops == [.zero])
      #expect(scene.playSession.actions[0].0 == .normal && scene.playSession.actions[0].1 == 0)
    }
+ }
+ @Test func sameSceneWarpCancelsArrivalWithoutSendingOldCoordinates() {
+   let scene = MapScene(); scene.decision = .moveTo(SIMD2(5,6))
+   _ = scene.gamepadPrimary(); let stale = scene.pendingArrivalAction
+   scene.gamepadResetForMapChange(); scene.player.gridPosition = SIMD2(50,60)
+   scene.decision = .alreadyInRange; stale?()
+   #expect(scene.playSession.actions.isEmpty && scene.playSession.stops.isEmpty)
+   #expect(scene.pendingArrivalAction == nil && scene.selectedTarget == nil)
  }
  @Test func touchAttackCanBeCancelledOrRetargetedByController() {
    for retarget in [false,true] {

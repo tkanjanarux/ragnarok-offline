@@ -117,7 +117,7 @@ are resolved through the user's resource loader.
 ## Controls follow-up
 
 Branch `gamepad-round1-controls`, base `be00178` (native build45733383927 passed).
-24 portable tests: 19 policy tests and 5 tests compiling the actual MapScene
+25 portable tests: 19 policy tests and 6 tests compiling the actual MapScene
 combat methods with injected movement/packet seams. The latter verify approach,
 repeat, single cancellation packets, stale arrival rejection and map identity;
 they are not a live server or device test. Run both `scripts/test-gamepad.py` and
@@ -125,3 +125,6 @@ they are not a live server or device test. Run both `scripts/test-gamepad.py` an
 
 Touch-initiated attacks use the same ownership/generation, so controller B or retarget
 also cancels a touch repeat; a fresh touch attack supersedes an old pad arrival.
+
+Same-scene jumps and unload invalidate locally before clearing the selected target;
+they never send a stop destination from the pre-warp map/position.

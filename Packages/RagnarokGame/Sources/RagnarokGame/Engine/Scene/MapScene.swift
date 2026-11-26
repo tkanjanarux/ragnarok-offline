@@ -253,6 +253,7 @@ public final class MapScene {
     }
 
     func unload() {
+        gamepadResetForMapChange()
         spriteLoader.cancelAll()
         audioPlayer.stopBGM()
         audioPlayer.stopSoundEffects()
@@ -276,6 +277,7 @@ public final class MapScene {
     }
 
     func jump(toPosition position: SIMD2<Int>) {
+        gamepadResetForMapChange()
         gamepadTouchRevision &+= 1
         camera.reset()
         objects.removeAll()
@@ -1022,6 +1024,13 @@ extension MapScene {
         // cooldown check. This covers an attack accepted while stepping or casting.
         // One bounded stop destination, not a stream or an immediate-stop promise.
         playSession.requestMove(to: player.nextPosition(at: .now) ?? player.gridPosition)
+    }
+    func gamepadResetForMapChange() {
+        // Warp/unload is already authoritative. Never send a pre-warp cell back
+        // through the still-current scene/session while jump is resetting it.
+        gamepadAttack.cancel()
+        cancelArrivalAction()
+        selectTarget(nil)
     }
     func gamepadInterruptAttack() { cancelArrivalAction() }
     func gamepadCancel() { cancelArrivalAction(); selectTarget(nil) }
