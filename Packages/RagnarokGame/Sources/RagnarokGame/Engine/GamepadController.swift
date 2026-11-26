@@ -12,6 +12,7 @@ final class GamepadController: NSObject {
     var message = ""
     var helpVisible = false
     var labels: [String: String] = [:]
+    private var runID = UUID()
     private weak var activeScene: MapScene?
     private weak var presentationRoot: UIViewController?
     private var reducer = GamepadReducer()
@@ -38,12 +39,16 @@ final class GamepadController: NSObject {
     /// Enumeration also discovers pads connected before this view starts and hot-plug changes.
     func run(session: PlaySession, runtime: MapSceneRuntime, blocked: () -> Bool,
              menu: () -> Void, cancelWindow: () -> Bool) async {
+        let id = UUID(); runID = id
         presentationRoot = Self.topPresentation
         activeScene = runtime.scene
         resetInput()
         companionRequest = nil
-        defer { activeScene = nil; reducer.reset(); ring.reset(); runtime.scene.gamepadCancel(); controller = nil; connectedName = nil }
-        while !Task.isCancelled {
+        defer {
+            runtime.scene.gamepadCancel()
+            if runID == id { activeScene = nil; reducer.reset(); ring.reset(); controller = nil; connectedName = nil }
+        }
+        while !Task.isCancelled && runID == id {
             tick(session: session, runtime: runtime, blocked: blocked(), menu: menu, cancelWindow: cancelWindow)
             do { try await Task.sleep(for: .milliseconds(33)) } catch { break }
         }
