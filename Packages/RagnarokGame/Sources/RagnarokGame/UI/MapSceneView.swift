@@ -24,6 +24,7 @@ struct MapSceneView: View {
     @State private var hudFrames: [CGRect] = []
     @State private var companionFrame: CGRect = .null
     @State private var actionBarHeight: CGFloat = 0
+    @State private var menuExpanded = false
     @State private var presentedMenuItem: MenuItem?
 
     var body: some View {
@@ -65,10 +66,11 @@ struct MapSceneView: View {
         #if os(iOS)
         .task(id: ObjectIdentifier(runtime.scene)) {
             await gamepad.run(session: playSession, runtime: runtime,
-                blocked: { presentedMenuItem != nil || !companionFrame.isNull || playSession.questUI.selectedQuestID != nil },
-                menu: { presentedMenuItem = presentedMenuItem == .options ? nil : .options },
+                blocked: { menuExpanded || presentedMenuItem != nil || !companionFrame.isNull || playSession.questUI.selectedQuestID != nil },
+                menu: { menuExpanded = false; presentedMenuItem = presentedMenuItem == .options ? nil : .options },
                 cancelWindow: {
                     if presentedMenuItem != nil { presentedMenuItem = nil; return true }
+                    if menuExpanded { menuExpanded = false; return true }
                     if playSession.guild.visible && playSession.guild.pending == nil { playSession.guild.visible = false; return true }
                     return false
                 })
@@ -107,7 +109,7 @@ struct MapSceneView: View {
             VStack(alignment: .leading, spacing: 0) {
                 BasicInfoView(character: playSession.character, status: playSession.playerStatus)
 
-                MenuView { item in
+                MenuView(isExpanded: $menuExpanded) { item in
                     if item == presentedMenuItem {
                         presentedMenuItem = nil
                     } else {
@@ -115,7 +117,7 @@ struct MapSceneView: View {
                     }
                 }
                 #if os(iOS)
-                GamepadHUD(controller: gamepad).padding(.leading, leadingInset)
+                if !menuExpanded { GamepadHUD(controller: gamepad).padding(.leading, leadingInset) }
                 #endif
             }
             .hudObstacle()

@@ -24,7 +24,7 @@ struct MenuView: View {
     @Environment(PlaySession.self) private var playSession
     var action: (MenuItem) -> Void
 
-    @State private var isExpanded = false
+    @Binding private var isExpanded: Bool
 
     var body: some View {
         VStack(spacing: 0) {
@@ -118,7 +118,8 @@ struct MenuView: View {
         }
     }
 
-    init(action: @escaping (MenuItem) -> Void) {
+    init(isExpanded: Binding<Bool> = .constant(false), action: @escaping (MenuItem) -> Void) {
+        self._isExpanded = isExpanded
         self.action = action
     }
 }
