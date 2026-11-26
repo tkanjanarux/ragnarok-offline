@@ -46,7 +46,8 @@ typealias GameObjectID = UInt32
    var casts: [UInt32] = []
    func useSkill(skillID:Int, level:Int, onTarget:UInt32) { casts.append(onTarget) }
    func talkToNPC(npcID: UInt32) {}
-   func pickUpItem(objectID: UInt32) {}
+   var pickups: [UInt32] = []
+   func pickUpItem(objectID: UInt32) { pickups.append(objectID) }
  }
  var playSession = Session()
  var state = State()
@@ -74,7 +75,8 @@ typealias GameObjectID = UInt32
  func requestMove(to position: SIMD2<Int>) { moves.append(position) }
  func decideMovement(from: SIMD2<Int>, toward: SIMD2<Int>, within: Int) -> Decision { decision }
  func useSkill(_ skill:SkillInfo,level:Int) {}
- func nearestItem(fromPosition: SIMD2<Int>) -> Object? { nil }
+ var item: Object?
+ func nearestItem(fromPosition: SIMD2<Int>) -> Object? { item }
 '''+methods+'''
 }
 @MainActor struct GamepadCombatTests {
@@ -97,6 +99,16 @@ typealias GameObjectID = UInt32
      #expect(scene.playSession.stops == [.zero])
      #expect(scene.playSession.actions[0].0 == .normal && scene.playSession.actions[0].1 == 0)
    }
+ }
+ @Test func contextualLootSupersedesSoftAttackArrival() {
+   let scene = MapScene(); scene.selectTarget(nil); scene.decision = .moveTo(SIMD2(5,6))
+   _ = scene.gamepadPrimary(targetID:2,validate:{ _ in true })
+   let stale = scene.pendingArrivalAction
+   scene.item = .init(objectID:7)
+   _ = scene.gamepadPrimary()
+   scene.decision = .alreadyInRange; stale?()
+   #expect(scene.playSession.pickups == [7] && scene.gamepadAttack.target == nil)
+   #expect(!scene.playSession.actions.contains { $0.0 == ._repeat })
  }
  @Test func actualShortcutPipelineDispatchesOneTargetedSkillAndItemsIgnorePreview() {
    let scene = MapScene(); scene.selectTarget(nil)

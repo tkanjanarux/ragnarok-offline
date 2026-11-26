@@ -1054,7 +1054,10 @@ extension MapScene {
             }
         } else if let item = nearestItem(fromPosition: player.gridPosition) {
             let d = item.gridPosition &- player.gridPosition
-            if max(abs(d.x),abs(d.y)) <= 1 { playSession.pickUpItem(objectID: item.objectID) }
+            if max(abs(d.x),abs(d.y)) <= 1 {
+                cancelArrivalAction()
+                playSession.pickUpItem(objectID: item.objectID)
+            }
         }
         return nil
     }
