@@ -73,17 +73,19 @@ final class TargetSelectorRenderer {
         renderCommandEncoder.setRenderPipelineState(renderPipelineState)
         renderCommandEncoder.setDepthStencilState(depthStencilState)
 
-        let parts = [
+        var parts = [
             (ringVertexBuffer, ringVertexCount, targetSelector.ringCenterHeight),
             (gemVertexBuffer, gemVertexCount, targetSelector.gemTopHeight),
         ]
+        if !targetSelector.showGem { parts.removeLast() }
         for (vertexBuffer, vertexCount, height) in parts {
             var uniforms = TargetSelectorVertexUniforms(
                 modelMatrix: modelMatrix,
                 viewMatrix: camera.viewMatrix,
                 projectionMatrix: camera.projectionMatrix,
                 worldPosition: targetSelector.worldPosition,
-                offset: [0, height]
+                offset: [0, height],
+                opacity: targetSelector.opacity
             )
 
             renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)

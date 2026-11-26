@@ -34,7 +34,7 @@ targetSelectorVertexShader(const device TargetSelectorVertex *vertices [[buffer(
 
     RasterizerData out;
     out.position = uniforms.projectionMatrix * uniforms.viewMatrix * float4(worldPosition, 1.0);
-    out.color = in.color;
+    out.color = float4(in.color.rgb, in.color.a * uniforms.opacity);
     return out;
 }
 

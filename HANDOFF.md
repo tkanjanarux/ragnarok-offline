@@ -156,3 +156,13 @@ packets prevents stale local arrivals. Eight trigger chords use row1 slots1–8.
 D-pad has team scope with acknowledged serialized existing commands, including
 nearby Hunt. See updated gamepad notes for partial-batch and protocol limitations.
 No server changes, accounts, Simulator, hardware acceptance, merge or deployment.
+
+## Directional controller targeting
+
+`gamepad-directional-target` starts from adb177d. See
+[selection constants, indicators and acceptance](docs/gamepad-directional-target/README.md).
+Keep explicit selection, soft preview and action lease separate. Preview must
+never call selectTarget or send combat packets. Offensive acquisition uses real
+skill flags; support/ground/item paths cannot inherit a monster preview. Held-stick
+consumption allows a directional press without cancelling itself; reset clears it.
+No Simulator/device claims, server changes, automatic PR merge or deployment.

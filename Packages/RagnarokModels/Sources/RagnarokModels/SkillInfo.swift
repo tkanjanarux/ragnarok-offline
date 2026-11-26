@@ -76,6 +76,10 @@ extension SkillInfo {
         return hasFlag(._self) && !isTargetSkill
     }
 
+    public var isOffensiveTargetedSkill: Bool {
+        hasFlag(.attack) && !isPassiveSkill && !isGroundTargetedSkill && !isSupportSkill && !isSelfOnlySkill
+    }
+
     public var isSupportSkill: Bool {
         hasFlag(.support)
     }

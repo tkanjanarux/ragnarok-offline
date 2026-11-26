@@ -182,6 +182,8 @@ public final class MapScene {
 
     private var pendingArrivalAction: (@MainActor () -> Void)?
     private var gamepadAttack = GamepadAttackLease()
+    private var gamepadAttackValidation: GamepadTargetValidation?
+    var gamepadActionTargetID: GameObjectID? { gamepadAttack.target }
     private var arrivalTask: Task<Void, any Error>?
 
     var gamepadTouchRevision: UInt64 = 0
@@ -696,6 +698,7 @@ extension MapScene {
 
     private func cancelArrivalAction() {
         stopGamepadAttack()
+        gamepadAttackValidation = nil
         arrivalTask?.cancel()
         arrivalTask = nil
 
@@ -856,6 +859,7 @@ extension MapScene {
             return
         }
 
+        if let validate = gamepadAttackValidation, !validate(targetID) { cancelArrivalAction(); return }
         let startPosition = player.gridPosition
         let attackRange = playSession.playerStatus.attackRange
 
@@ -1034,13 +1038,15 @@ extension MapScene {
     }
     func gamepadInterruptAttack() { cancelArrivalAction() }
     func gamepadCancel() { cancelArrivalAction(); selectTarget(nil) }
-    func gamepadPrimary() -> String? {
-        if let target = selectedTarget {
+    func gamepadPrimary(targetID: GameObjectID? = nil, validate: GamepadTargetValidation? = nil) -> String? {
+        if let targetID, (objects[targetID] == nil || validate?(targetID) == false) { return "No target in that direction." }
+        if let target = targetID.flatMap({ objects[$0] }) ?? selectedTarget {
             let delta = target.gridPosition &- player.gridPosition
             let distance = max(abs(delta.x), abs(delta.y))
             if target.type == .monster {
                 guard !target.isDead else { return "Target is no longer available." }
                 cancelArrivalAction()
+                gamepadAttackValidation = validate
                 let token = gamepadAttack.begin(target.objectID)
                 attackMonster(targetID: target.objectID, gamepadGeneration: token)
             } else if target.type == .npc && distance <= 2 && ![45,111,139].contains(target.job) {
@@ -1051,5 +1057,44 @@ extension MapScene {
             if max(abs(d.x),abs(d.y)) <= 1 { playSession.pickUpItem(objectID: item.objectID) }
         }
         return nil
+    }
+}
+
+extension MapScene {
+    /// Conservative acquisition: known monster, short straight walkable sightline,
+    /// and a bounded path. Server immunity/attack permissions remain authoritative.
+    func gamepadCanAcquire(_ id: GameObjectID) -> Bool {
+        guard let target = objects[id], target.type == .monster, !target.isDead,
+              !target.effectState.contains(.cloak), !target.effectState.contains(.hide),
+              !target.effectState.contains(.invisible) else { return false }
+        let d = target.gridPosition &- player.gridPosition
+        guard Float(d.x*d.x + d.y*d.y) <= GamepadDirectionalTargets.lockRadius * GamepadDirectionalTargets.lockRadius,
+              pathFinder.canMoveStraight(from: player.gridPosition, to: target.gridPosition) else { return false }
+        let path = pathFinder.findPath(from: player.gridPosition, to: target.gridPosition, within: 1)
+        return !path.isEmpty && path.count <= 13
+    }
+
+    /// Controller skills are immediate, never an arrival closure. This entry point
+    /// is reached through the same PlaySession shortcut and skill packet pipeline.
+    func useGamepadSkill(_ skill: SkillInfo, level: Int, targetID: GameObjectID, validate: GamepadTargetValidation?) {
+        guard playSession.mapScene === self, !state.isPlayerDead, player.cast == nil,
+              skill.level > 0, level > 0, !skill.isPassiveSkill, !skill.isGroundTargetedSkill,
+              let target = objects[targetID], !target.isDead else { return }
+        if skill.isOffensiveTargetedSkill {
+            guard gamepadCanAcquire(targetID), validate?(targetID) == true else { return }
+        } else {
+            guard (skill.isSupportSkill || skill.isSelfOnlySkill),
+                  targetID == player.objectID || (skill.isSupportSkill && target.type == .pc) else { return }
+            if targetID != player.objectID {
+                guard !target.effectState.contains(.cloak), !target.effectState.contains(.hide),
+                      !target.effectState.contains(.invisible) else { return }
+            }
+        }
+        let d = target.gridPosition &- player.gridPosition
+        guard max(abs(d.x),abs(d.y)) <= max(1,skill.attackRange),
+              pathFinder.canMoveStraight(from: player.gridPosition, to: target.gridPosition) else { return }
+        // Supersede a previous approach, but never install a delayed cast.
+        cancelArrivalAction()
+        playSession.useSkill(skillID: skill.skillID, level: level, onTarget: targetID)
     }
 }

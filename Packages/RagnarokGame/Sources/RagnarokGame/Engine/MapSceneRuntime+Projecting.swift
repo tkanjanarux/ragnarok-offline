@@ -36,7 +36,7 @@ extension MapSceneRuntime {
 
     func gamepadCanSee(_ object: MapSceneMapObject) -> Bool {
         guard let lastCamera, !object.isDead,
-              !object.effectState.contains(.cloak), !object.effectState.contains(.invisible) else { return false }
+              !object.effectState.contains(.cloak), !object.effectState.contains(.invisible), !object.effectState.contains(.hide) else { return false }
         let point = MapSceneRenderer.renderPosition(for: scene.worldPosition(for: object))
         let clip = lastCamera.projectionMatrix * lastCamera.viewMatrix * SIMD4<Float>(point, 1)
         return clip.w > 0 && abs(clip.x) <= clip.w && abs(clip.y) <= clip.w && abs(clip.z) <= clip.w

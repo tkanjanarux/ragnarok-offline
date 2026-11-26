@@ -161,11 +161,95 @@ struct GamepadInputTests {
         plan.cancel(); #expect(plan.steps.isEmpty)
     }
 
-    @Test func movingOverridesAttackEvenWhileMovePacketIsRateLimited() {
+    @Test func directionalPressCanStartWhileWalkingWithoutExtraMove() {
         var r = armed()
         _ = r.sample(.init(left:SIMD2(1,0)),now:1,available:true,blocked:false)
         let f = r.sample(.init(left:SIMD2(1,0),buttons:[.a]),now:1.01,available:true,blocked:false)
-        #expect(f.cancelAttack && f.move == nil && f.command == nil)
+        #expect(f.cancelAttack && f.move == nil && f.command == .primary)
+    }
+
+    @Test func directionalPressConsumesHeldStickButNewMovementCancels() {
+        var r = armed()
+        _ = r.sample(.init(left:SIMD2(1,0),buttons:[.a]),now:1,available:true,blocked:false)
+        r.consumeMovementUntilNeutral()
+        let held = r.sample(.init(left:SIMD2(1,0)),now:2,available:true,blocked:false)
+        #expect(!held.cancelAttack && held.move == nil)
+        let turn = r.sample(.init(left:SIMD2(0,1)),now:3,available:true,blocked:false)
+        #expect(turn.cancelAttack && turn.move != nil)
+        r.consumeMovementUntilNeutral()
+        _ = r.sample(.init(),now:4,available:true,blocked:false)
+        #expect(r.sample(.init(left:SIMD2(0,1)),now:5,available:true,blocked:false).cancelAttack)
+    }
+    @Test func directionalConeBoundsAndAngularPriority() {
+        var d = GamepadDirectionalTargets()
+        let candidates: [GamepadTargetRing.Candidate] = [.init(id:1,position:SIMD2(-1,0)), .init(id:2,position:SIMD2(2,1)), .init(id:3,position:SIMD2(7,0)), .init(id:4,position:SIMD2(9,0))]
+        d.update(candidates,origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == 3)
+        d.update([.init(id:1,position:SIMD2(-1,0)),.init(id:4,position:SIMD2(9,0))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == nil)
+        d.update([.init(id:8,position:SIMD2(2,2))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == nil) // 45 degrees is outside the 40-degree half-cone.
+    }
+    @Test func explicitOverridesFacingWithoutHiddenPreviewLock() {
+        var d = GamepadDirectionalTargets()
+        d.update([.init(id:1,position:SIMD2(3,0)),.init(id:2,position:SIMD2(-3,0))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == 1)
+        #expect(d.resolve(explicit:2,valid:[1,2]) == 2)
+        #expect(d.resolve(explicit:2,valid:[1]) == nil) // No fallback after failed explicit validation.
+        #expect(d.resolve(explicit:nil,valid:[1,2]) == 1)
+        d.update([.init(id:1,position:SIMD2(3,0)),.init(id:2,position:SIMD2(-3,0))],origin:.zero,facing:SIMD2(-1,0))
+        #expect(d.preview == 2) // Preview never becomes a lock.
+        d.reset(); #expect(d.resolve(explicit:nil,valid:[1,2]) == nil)
+    }
+    @Test func previewHysteresisStableButRealTurnSwitchesImmediately() {
+        var d = GamepadDirectionalTargets()
+        d.update([.init(id:1,position:SIMD2(4,0)),.init(id:2,position:SIMD2(4,0.05))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == 1)
+        d.update([.init(id:1,position:SIMD2(4,0.06)),.init(id:2,position:SIMD2(4,0))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == 1)
+        d.update([.init(id:1,position:SIMD2(4,0.06)),.init(id:2,position:SIMD2(0,4))],origin:.zero,facing:SIMD2(0,1))
+        #expect(d.preview == 2)
+        d.update([],origin:.zero,facing:SIMD2(0,1)); #expect(d.preview == nil)
+    }
+    @Test func facingIntentDoesNotRotateWithCameraAfterRelease() {
+        var f = GamepadFacingIntent()
+        let a = f.update(stick:SIMD2(0,1),azimuth:.pi/2,direction:0)
+        let b = f.update(stick:.zero,azimuth:0,direction:0)
+        #expect(a == b && abs(b.x - 1) < 0.001)
+        let changed = f.update(stick:.zero,azimuth:0,direction:4)
+        #expect(abs(changed.y - 1) < 0.001)
+        f.reset(); #expect(abs(f.update(stick:.zero,azimuth:1,direction:0).y + 1) < 0.001)
+    }
+    @Test func skillFlagsSeparateOffenseFromSupportGroundAndSelf() {
+        #expect(SkillInfo(flag:1).isOffensiveTargetedSkill)
+        for flag in [0,2,4,16,32,1|16,1|2,1|32] {
+            #expect(!SkillInfo(flag:flag).isOffensiveTargetedSkill)
+        }
+    }
+
+    @Test func consumedIntentDoesNotSurviveLifecycleOrBlock() {
+        var r = armed()
+        _ = r.sample(.init(left:SIMD2(1,0)),now:1,available:true,blocked:false)
+        r.consumeMovementUntilNeutral()
+        _ = r.sample(.init(),now:2,available:false,blocked:false)
+        _ = r.sample(.init(),now:3,available:true,blocked:false)
+        #expect(r.sample(.init(left:SIMD2(1,0)),now:4,available:true,blocked:false).move != nil)
+    }
+    @Test func previewTieBreakAndInvalidCoordinatesAreDeterministic() {
+        var d = GamepadDirectionalTargets()
+        d.update([.init(id:4,position:SIMD2(3,0)),.init(id:2,position:SIMD2(3,0))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == 2)
+        d.update([.init(id:4,position:SIMD2(Float.nan,0))],origin:.zero,facing:SIMD2(1,0))
+        #expect(d.preview == nil)
+    }
+
+    @Test func cancelClearsConsumedIntentAfterSingleNeutralSample() {
+        var r = armed()
+        _ = r.sample(.init(left:SIMD2(1,0)),now:1,available:true,blocked:false)
+        r.consumeMovementUntilNeutral()
+        #expect(r.sample(.init(buttons:[.b]),now:2,available:true,blocked:false).command == .cancel)
+        _ = r.sample(.init(),now:3,available:true,blocked:false)
+        #expect(r.sample(.init(left:SIMD2(1,0)),now:4,available:true,blocked:false).move != nil)
     }
 
 }

@@ -17,6 +17,8 @@ final class GamepadController: NSObject {
     private weak var presentationRoot: UIViewController?
     private var reducer = GamepadReducer()
     private var ring = GamepadTargetRing()
+    private var directional = GamepadDirectionalTargets()
+    private var facingIntent = GamepadFacingIntent()
     private var controller: GCController?
     private var touchRevision: UInt64 = 0
     private var facing = SIMD2<Float>(0, 1)
@@ -33,7 +35,7 @@ final class GamepadController: NSObject {
     }
     @objc private func resetInput() {
         teamPlan.cancel(); companionRequest = nil
-        reducer.reset(); ring.reset(); activeScene?.gamepadCancel(); targetName = "No target"
+        reducer.reset(); ring.reset(); directional.reset(); facingIntent.reset(); activeScene?.gamepadCancel(); targetName = "No target"
     }
 
     /// Poll live values on the main actor. There are no buffered callback actions to replay.
@@ -47,7 +49,7 @@ final class GamepadController: NSObject {
         companionRequest = nil
         defer {
             if runID == id { runtime.scene.gamepadCancel() }
-            if runID == id { activeScene = nil; reducer.reset(); ring.reset(); controller = nil; connectedName = nil }
+            if runID == id { activeScene = nil; reducer.reset(); ring.reset(); directional.reset(); facingIntent.reset(); controller = nil; connectedName = nil }
         }
         while !Task.isCancelled && runID == id {
             tick(session: session, runtime: runtime, blocked: blocked(), menu: menu, cancelWindow: cancelWindow)
@@ -61,7 +63,7 @@ final class GamepadController: NSObject {
         let current = controller.flatMap { old in devices.first { $0 === old } } ?? devices.first
         if current !== controller {
             teamPlan.cancel(); companionRequest = nil
-            scene.gamepadCancel(); reducer.reset(); ring.reset(); controller = current
+            scene.gamepadCancel(); reducer.reset(); ring.reset(); directional.reset(); facingIntent.reset(); controller = current
             connectedName = current?.vendorName ?? (current == nil ? nil : "Controller")
             if let pad = current?.extendedGamepad {
                 labels = ["a": pad.buttonA.localizedName ?? "Bottom", "b": pad.buttonB.localizedName ?? "Right",
@@ -78,34 +80,30 @@ final class GamepadController: NSObject {
         input.leftTrigger = pad.leftTrigger.value > 0.5; input.rightTrigger = pad.rightTrigger.value > 0.5
         let available = UIApplication.shared.applicationState == .active && session.mapScene === scene && !scene.state.isPlayerDead
         if touchRevision != scene.gamepadTouchRevision {
-            touchRevision = scene.gamepadTouchRevision; reducer.reset(); ring.reset()
+            touchRevision = scene.gamepadTouchRevision; reducer.reset(); ring.reset(); directional.reset(); facingIntent.reset()
         }
         let uiBlocked = blocked || helpVisible || session.gamepadModalOpen || editingOrPresented
         let frame = reducer.sample(input, now: ProcessInfo.processInfo.systemUptime, available: available,
                                    blocked: uiBlocked || scene.thumbstickValue != .zero || !scene.gamepadTouchGestures.isEmpty)
-        if !available { teamPlan.cancel(); companionRequest = nil; scene.gamepadCancel(); ring.reset(); targetName = "No target"; return }
+        if !available { teamPlan.cancel(); companionRequest = nil; scene.gamepadCancel(); ring.reset(); directional.reset(); facingIntent.reset(); targetName = "No target"; return }
         if uiBlocked { teamPlan.cancel(); companionRequest = nil; scene.gamepadCancel(); ring.reset() }
-        let origin = SIMD2<Float>(Float(scene.player.gridPosition.x),Float(scene.player.gridPosition.y))
-        let left = GamepadReducer.axis(input.left)
-        if left != .zero { facing = GamepadReducer.worldDirection(left, azimuth: scene.camera.azimuth) }
-        else {
-            let angle = -Float(scene.player.action.direction.rawValue) * .pi / 4 - .pi / 2
-            facing = SIMD2(cos(angle), sin(angle))
+        let canAim = !uiBlocked && scene.thumbstickValue == .zero && scene.gamepadTouchGestures.isEmpty
+        if !canAim { facingIntent.reset() }
+        let left = canAim ? GamepadReducer.axis(input.left) : .zero
+        facing = facingIntent.update(stick: left, azimuth: scene.camera.azimuth, direction: scene.player.action.direction.rawValue)
+        let candidates = targetCandidates(runtime)
+        let valid = Set(candidates.map(\.id))
+        if let id = scene.selectedTargetID {
+            if scene.objects[id] == nil || (scene.objects[id]?.type == .monster && !valid.contains(id)) { scene.gamepadCancel() }
         }
-        let candidates = scene.objects.values.filter {
-            let d = $0.gridPosition &- scene.player.gridPosition
-            return $0.type == .monster && max(abs(d.x),abs(d.y)) <= 12 && runtime.gamepadCanSee($0)
-        }.map { GamepadTargetRing.Candidate(id: $0.objectID, position: SIMD2(Float($0.gridPosition.x),Float($0.gridPosition.y))) }
+        if let id = scene.gamepadActionTargetID, !valid.contains(id) { scene.gamepadInterruptAttack() }
         if let target = scene.selectedTarget, !runtime.gamepadCanSee(target) { scene.gamepadCancel() }
-        let old = ring.selected
+        let origin = SIMD2<Float>(Float(scene.player.gridPosition.x),Float(scene.player.gridPosition.y))
         ring.update(candidates, origin: origin, facing: facing)
-        if old != nil && ring.selected == nil { scene.gamepadCancel() }
-        if let id = ring.selected {
-            if scene.selectedTargetID != id { scene.selectTarget(scene.objects[id]) }
-            if scene.targetSelector?.objectID != id { scene.targetSelector = TargetSelector(objectID: id, showTime: .now) }
-            targetName = scene.objects[id]?.name ?? "No target"
-        }
-        else { targetName = scene.selectedTarget?.name ?? "No target" }
+        if let id = scene.selectedTargetID, valid.contains(id) { ring.select(id) }
+        else if ring.selected != nil { ring.reset(); ring.update(candidates, origin: origin, facing: facing) }
+        directional.update(candidates, origin: origin, facing: facing)
+        updateIndicator(scene, suppressed: uiBlocked || !scene.gamepadTouchGestures.isEmpty)
         if frame.cancelAttack { scene.gamepadInterruptAttack() }
         if let move = frame.move {
             facing = GamepadReducer.worldDirection(move, azimuth: scene.camera.azimuth)
@@ -132,7 +130,7 @@ final class GamepadController: NSObject {
         switch command {
         case .menu: if !editingOrPresented { menu() }
         case .cancel:
-            scene.gamepadCancel(); ring.reset(); teamPlan.cancel(); companionRequest = nil
+            scene.gamepadCancel(); ring.reset(); directional.reset(); facingIntent.reset(); teamPlan.cancel(); companionRequest = nil
             if helpVisible { helpVisible = false }
             else if !cancelWindow() {
                 if uiBlocked { message = "Use touch to close this window." }
@@ -141,16 +139,19 @@ final class GamepadController: NSObject {
         case .target(let direction):
             scene.gamepadCancel()
             if let id = ring.cycle(direction) { scene.selectTarget(scene.objects[id]) }
+            updateIndicator(scene, suppressed: false)
         case .primary:
-            if ring.selected == nil {
-                if let target = scene.selectedTarget {
-                    if target.type == .monster && !ring.select(target.objectID) {
-                        message = "Move closer to the selected target."; return
-                    }
-                } else if let id = ring.cycle(1) { scene.selectTarget(scene.objects[id]) }
+            if let target = scene.selectedTarget, target.type != .monster {
+                message = scene.gamepadPrimary() ?? "" // Existing explicit NPC interaction only.
+            } else if let id = acquire(runtime) {
+                message = scene.gamepadPrimary(targetID: id, validate: validator(runtime)) ?? ""
+                if scene.gamepadActionTargetID == id { reducer.consumeMovementUntilNeutral() }
+            } else {
+                if scene.selectedTargetID == nil { _ = scene.gamepadPrimary() } // Preserve nearby loot, never fallback monster acquisition.
+                message = "No target in that direction."
             }
-            message = scene.gamepadPrimary() ?? ""
-        case .shortcut(let row, let column): useShortcut(row: row, column: column, session: session, scene: scene)
+            updateIndicator(scene, suppressed: false)
+        case .shortcut(let row, let column): useShortcut(row: row, column: column, session: session, runtime: runtime)
         case .companion(let verb):
             guard session.companions.ready, session.companions.available,
                   !session.companions.pending, !session.companions.transferPending,
@@ -172,29 +173,69 @@ final class GamepadController: NSObject {
             message = "Waiting for team confirmation…"
         } else { teamPlan.cancel(); message = "Team command was not sent." }
     }
-    private func useShortcut(row: Int, column: Int, session: PlaySession, scene: MapScene) {
+    private func targetCandidates(_ runtime: MapSceneRuntime) -> [GamepadTargetRing.Candidate] {
+        runtime.scene.objects.values.filter {
+            runtime.scene.gamepadCanAcquire($0.objectID) && runtime.gamepadCanSee($0)
+        }.map { .init(id: $0.objectID, position: SIMD2(Float($0.gridPosition.x),Float($0.gridPosition.y))) }
+    }
+    private func validator(_ runtime: MapSceneRuntime) -> GamepadTargetValidation {
+        { [weak runtime] id in
+            guard let runtime, let object = runtime.scene.objects[id] else { return false }
+            return runtime.scene.gamepadCanAcquire(id) && runtime.gamepadCanSee(object)
+        }
+    }
+    private func acquire(_ runtime: MapSceneRuntime) -> GameObjectID? {
+        let scene = runtime.scene
+        let candidates = targetCandidates(runtime) // Revalidate at the press, not a cached ID.
+        directional.update(candidates, origin: SIMD2(Float(scene.player.gridPosition.x),Float(scene.player.gridPosition.y)), facing: facing)
+        return directional.resolve(explicit: scene.selectedTargetID, valid: Set(candidates.map(\.id)))
+    }
+    private func updateIndicator(_ scene: MapScene, suppressed: Bool) {
+        if suppressed {
+            directional.reset()
+            if scene.targetSelector?.isSoftPreview == true { scene.targetSelector = nil }
+            targetName = "No target"; return
+        }
+        let locked = scene.selectedTargetID
+        let action = scene.gamepadActionTargetID
+        let id = locked ?? action ?? directional.preview
+        let soft = locked == nil && action == nil
+        if let id, let target = scene.objects[id] {
+            if scene.targetSelector?.objectID != id || scene.targetSelector?.isSoftPreview != soft || scene.targetSelector?.isActionTarget != (locked == nil && action != nil) {
+                scene.targetSelector = TargetSelector(objectID: id, showTime: .now, isSoftPreview: soft, isActionTarget: locked == nil && action != nil)
+            }
+            targetName = (locked != nil ? "Locked: " : action != nil ? "Attacking: " : "Preview: ") + target.name
+        } else {
+            scene.targetSelector = nil; targetName = "No target"
+        }
+    }
+    private func useShortcut(row: Int, column: Int, session: PlaySession, runtime: MapSceneRuntime) {
+        let scene = runtime.scene
         let rows = session.shortcutList.rows
         guard rows.indices.contains(row), rows[row].indices.contains(column), !session.hasPendingInventoryOperation else { return }
         let shortcut = rows[row][column]
         guard session.isShortcutAvailable(shortcut) else { return }
-        if case let .skill(id, level) = shortcut {
-            guard scene.player.cast == nil else { return }
-            guard let skill = session.skillList.skills[id], skill.level > 0, level > 0, !skill.isPassiveSkill else { message = "This shortcut is not a learned active skill."; return }
-            guard !skill.isGroundTargetedSkill else { message = "Ground skills use touch controls in round 1."; return }
-            if let cooldown = session.skillCooldown(for: shortcut), cooldown.endTime > .now { return }
-            // Prevent the legacy nearest-monster fallback or a delayed approach/cast queue.
-            if !skill.isSelfOnlySkill {
-                guard let target = scene.selectedTarget else {
-                    if skill.isSupportSkill { session.useShortcut(shortcut) }
-                    else { message = "Select a target first." }
-                    return
-                }
-                let d = target.gridPosition &- scene.player.gridPosition
-                guard max(abs(d.x),abs(d.y)) <= max(1,skill.attackRange) else { message = "Move closer to use this skill."; return }
-                guard skill.isSupportSkill || target.type == .monster else { return }
-            }
-        }
-        session.useShortcut(shortcut)
+        guard case let .skill(id, level) = shortcut else { session.useShortcut(shortcut); return }
+        guard scene.player.cast == nil, let skill = session.skillList.skills[id], skill.level > 0, level > 0,
+              !skill.isPassiveSkill else { message = "This shortcut is not a learned active skill."; return }
+        guard !skill.isGroundTargetedSkill else { message = "Ground skills use touch controls."; return }
+        if let cooldown = session.skillCooldown(for: shortcut), cooldown.endTime > .now { return }
+        let targetID: GameObjectID
+        if skill.isOffensiveTargetedSkill {
+            guard let id = acquire(runtime) else { message = "No target in that direction."; return }
+            targetID = id
+        } else if skill.isSelfOnlySkill { targetID = scene.player.objectID }
+        else if skill.isSupportSkill {
+            // A monster preview/lock must never hijack a heal/buff. Preserve an
+            // explicitly selected player/party target, otherwise use the player.
+            targetID = scene.selectedTarget?.type == .pc ? scene.selectedTargetID! : scene.player.objectID
+        } else { message = "Use touch controls for this skill."; return }
+        guard let target = scene.objects[targetID], !target.isDead else { return }
+        let delta = target.gridPosition &- scene.player.gridPosition
+        guard max(abs(delta.x),abs(delta.y)) <= max(1,skill.attackRange) else { message = "Move closer to use this skill."; return }
+        message = ""
+        session.useShortcut(shortcut, gamepadTarget: targetID, gamepadValidation: validator(runtime))
+        if skill.isOffensiveTargetedSkill { reducer.consumeMovementUntilNeutral() }
     }
     private static var topPresentation: UIViewController? {
         var top = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }

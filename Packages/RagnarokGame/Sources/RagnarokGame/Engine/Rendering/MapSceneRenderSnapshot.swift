@@ -41,6 +41,8 @@ struct MapSceneRenderSnapshot {
         let worldPosition: SIMD3<Float>
         let ringCenterHeight: Float
         let gemTopHeight: Float
+        var opacity: Float = 1
+        var showGem = true
     }
 
     struct Text {

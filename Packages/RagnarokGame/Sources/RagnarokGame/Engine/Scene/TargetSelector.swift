@@ -10,6 +10,8 @@ import RagnarokModels
 struct TargetSelector {
     let objectID: GameObjectID
     let showTime: ContinuousClock.Instant
+    var isSoftPreview = false
+    var isActionTarget = false
 
     func gemDrop(at time: ContinuousClock.Instant) -> Float {
         // How far the gem drops at every 100 milliseconds. Between them the drop is interpolated.

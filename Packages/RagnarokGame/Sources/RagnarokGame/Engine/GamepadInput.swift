@@ -1,5 +1,7 @@
 import Foundation
 
+typealias GamepadTargetValidation = @MainActor (UInt32) -> Bool
+
 struct GamepadInput: Sendable {
     enum Button: Int, CaseIterable, Sendable { case a, b, x, y, leftShoulder, rightShoulder, menu, up, down, left, right }
     var left = SIMD2<Float>.zero
@@ -26,8 +28,11 @@ struct GamepadReducer {
     private var lastTime: Double?
     private var nextMove = -Double.infinity
     private var nextAction = -Double.infinity
+    private var consumedMovement: SIMD2<Float>?
+    private var lastMovement = SIMD2<Float>.zero
 
     mutating func reset() { self = Self() }
+    mutating func consumeMovementUntilNeutral() { consumedMovement = lastMovement == .zero ? nil : lastMovement }
     static func axis(_ value: SIMD2<Float>) -> SIMD2<Float> {
         guard value.x.isFinite, value.y.isFinite else { return .zero }
         let length = sqrt(value.x * value.x + value.y * value.y)
@@ -47,15 +52,22 @@ struct GamepadReducer {
         let edges = input.buttons.subtracting(previous)
         let dt = min(0.05, max(0, now - (lastTime ?? now)))
         previous = input.buttons; lastTime = now
-        guard available else { armed = false; gameplayArmed = false; nextMove = now; nextAction = now; return .init() }
+        guard available else { consumedMovement = nil; lastMovement = .zero; armed = false; gameplayArmed = false; nextMove = now; nextAction = now; return .init() }
         if !armed { armed = input.neutral; gameplayArmed = input.neutral && !blocked; return .init() }
         // Cancel/menu are UI actions, never shop confirmation. Modifiers turn B into a shortcut.
-        if edges.contains(.menu) { gameplayArmed = false; return .init(command: .menu) }
-        if edges.contains(.b) && !input.leftTrigger && !input.rightTrigger { gameplayArmed = false; return .init(command: .cancel) }
-        guard !blocked else { gameplayArmed = false; return .init() }
-        if !gameplayArmed { gameplayArmed = input.neutral; return .init() }
+        if edges.contains(.menu) { consumedMovement = nil; gameplayArmed = false; return .init(command: .menu) }
+        if edges.contains(.b) && !input.leftTrigger && !input.rightTrigger { consumedMovement = nil; gameplayArmed = false; return .init(command: .cancel) }
+        guard !blocked else { consumedMovement = nil; gameplayArmed = false; return .init() }
+        if !gameplayArmed { gameplayArmed = input.neutral; if input.neutral { consumedMovement = nil }; return .init() }
         var frame = GamepadFrame()
-        let left = Self.axis(input.left)
+        let rawLeft = Self.axis(input.left)
+        if let consumed = consumedMovement {
+            let dot = rawLeft.x * consumed.x + rawLeft.y * consumed.y
+            let lengths = sqrt((rawLeft.x*rawLeft.x + rawLeft.y*rawLeft.y) * (consumed.x*consumed.x + consumed.y*consumed.y))
+            if rawLeft == .zero || (lengths > 0 && dot / lengths < cos(25 * .pi / 180)) { consumedMovement = nil }
+        }
+        lastMovement = rawLeft
+        let left = consumedMovement == nil ? rawLeft : SIMD2<Float>.zero
         frame.cancelAttack = left != .zero
         if left != .zero && now >= nextMove { frame.move = left; nextMove = now + 0.2 }
         frame.camera = Self.axis(input.right) * Float(dt)
@@ -66,7 +78,7 @@ struct GamepadReducer {
             else if let face, input.leftTrigger { frame.command = .shortcut(row: 0, column: face) }
             else {
                 switch button {
-                case .a: if left == .zero { frame.command = .primary }
+                case .a: frame.command = .primary; frame.move = nil
                 case .x: frame.command = .shortcut(row: 0, column: 0)
                 case .y: frame.command = .shortcut(row: 0, column: 1)
                 case .leftShoulder: frame.command = .target(-1)
@@ -154,5 +166,51 @@ struct GamepadTeamPlan {
     mutating func acknowledge(message: String, ready: Bool, members: [UInt32]) -> Bool {
         guard ready, members.sorted() == self.members, steps.first?.success == message else { cancel(); return false }
         steps.removeFirst(); return true
+    }
+}
+
+/// Preview is only a proposal. Choosing it never selects a scene entity or sends packets.
+struct GamepadDirectionalTargets {
+    static let acquireRadius: Float = 8
+    static let lockRadius: Float = 12
+    static let halfConeRadians: Float = 40 * .pi / 180
+    static let distanceWeight: Float = 0.08
+    static let hysteresis: Float = 0.06
+    typealias Candidate = GamepadTargetRing.Candidate
+    private(set) var preview: UInt32?
+    mutating func reset() { preview = nil }
+    mutating func update(_ candidates: [Candidate], origin: SIMD2<Float>, facing: SIMD2<Float>) {
+        let length = sqrt(facing.x*facing.x + facing.y*facing.y)
+        guard length > 0, length.isFinite else { preview = nil; return }
+        let forward = facing / length
+        let ranked: [(UInt32, Float)] = candidates.compactMap { c in
+            let d = c.position - origin, distance = sqrt(d.x*d.x + d.y*d.y)
+            guard distance.isFinite, distance <= Self.acquireRadius else { return nil }
+            let dot = distance > 0 ? (d.x*forward.x + d.y*forward.y) / distance : 1
+            guard dot >= cos(Self.halfConeRadians) else { return nil }
+            return (c.id, acos(min(1,max(-1,dot))) + distance / Self.acquireRadius * Self.distanceWeight)
+        }.sorted { $0.1 == $1.1 ? $0.0 < $1.0 : $0.1 < $1.1 }
+        guard let best = ranked.first else { preview = nil; return }
+        if let old = ranked.first(where: { $0.0 == preview }), old.1 <= best.1 + Self.hysteresis { return }
+        preview = best.0
+    }
+    /// Explicit locks override facing, but never bypass current visibility/path validity.
+    func resolve(explicit: UInt32?, valid: Set<UInt32>) -> UInt32? {
+        if let explicit { return valid.contains(explicit) ? explicit : nil }
+        return preview.flatMap { valid.contains($0) ? $0 : nil }
+    }
+}
+
+struct GamepadFacingIntent {
+    private var intent: SIMD2<Float>?
+    private var modelDirection: Int?
+    mutating func reset() { self = Self() }
+    mutating func update(stick: SIMD2<Float>, azimuth: Float, direction: Int) -> SIMD2<Float> {
+        if stick != .zero { intent = GamepadReducer.worldDirection(stick, azimuth: azimuth) }
+        else if modelDirection != direction { intent = nil }
+        modelDirection = direction
+        if let intent { return intent }
+        let angle = -Float(direction) * .pi / 4 - .pi / 2
+        return SIMD2(cos(angle),sin(angle))
     }
 }

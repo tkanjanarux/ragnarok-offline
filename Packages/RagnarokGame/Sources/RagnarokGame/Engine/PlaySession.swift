@@ -1509,7 +1509,7 @@ final class PlaySession {
 
     // MARK: - Shortcut
 
-    func useShortcut(_ shortcut: Shortcut) {
+    func useShortcut(_ shortcut: Shortcut, gamepadTarget: GameObjectID? = nil, gamepadValidation: GamepadTargetValidation? = nil) {
         switch shortcut {
         case .empty:
             break
@@ -1519,7 +1519,9 @@ final class PlaySession {
             }
         case .skill(let skillID, let level):
             if let skill = skillList.skills[skillID] {
-                mapScene?.useSkill(skill, level: level)
+                if let gamepadTarget {
+                    mapScene?.useGamepadSkill(skill, level: level, targetID: gamepadTarget, validate: gamepadValidation)
+                } else { mapScene?.useSkill(skill, level: level) }
             }
         }
     }

@@ -11,7 +11,7 @@ struct GamepadHUD: View {
                     Spacer(minLength: 3)
                     Button("Controls") { controller.helpVisible.toggle() }
                 }
-                Text("Target: \(controller.targetName)").lineLimit(1)
+                Text(controller.targetName).lineLimit(1)
                 Text("\(controller.companionName)").lineLimit(1)
                 if !controller.message.isEmpty { Text(controller.message).lineLimit(2) }
             }.font(.game(size: 10)).foregroundStyle(Color.gameLabel)
@@ -33,6 +33,8 @@ struct GamepadHelp: View {
                         Text("Left stick: walk relative to camera. Right stick: orbit camera.")
                         Text("Release: finish the short accepted step; not an instant server stop.")
                         Text("\(label("lb")) / \(label("rb")): previous / next visible monster")
+                        Text("Faint ring: directional preview. Gem: explicit lock. Solid ring: current attack.")
+                        Text("Without a lock, point the left stick and press attack or an offensive shortcut. Release or redirect the stick to move again. Shoulders or touching a monster lock it; cancel unlocks.")
                         Text("\(label("a")): approach and attack continuously. Selected nearby NPC: talk. No target nearby: loot.")
                         Text("\(label("b")): cancel target / close menu. Menu: Options.")
                         Text("\(label("x")) / \(label("y")): shortcut row 1, slots 1 / 2 (same as left-trigger shortcuts)")

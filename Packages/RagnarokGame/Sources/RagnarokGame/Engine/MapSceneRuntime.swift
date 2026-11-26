@@ -170,7 +170,7 @@ final class MapSceneRuntime {
     private func makeTargetSelector(at time: ContinuousClock.Instant) -> MapSceneRenderSnapshot.TargetSelector? {
         guard let targetSelector = scene.targetSelector,
               let object = scene.objects[targetSelector.objectID],
-              !object.effectState.contains(.cloak),
+              !object.isDead, !object.effectState.contains(.cloak), !object.effectState.contains(.hide), !object.effectState.contains(.invisible),
               let drawable = renderResources.spriteDrawables.first(where: { $0.objectID == targetSelector.objectID }) else {
             return nil
         }
@@ -183,7 +183,9 @@ final class MapSceneRuntime {
         return MapSceneRenderSnapshot.TargetSelector(
             worldPosition: drawable.worldPosition,
             ringCenterHeight: ringCenterHeight,
-            gemTopHeight: ringCenterHeight + 10 + 11 + 10 - targetSelector.gemDrop(at: time)
+            gemTopHeight: ringCenterHeight + 10 + 11 + 10 - targetSelector.gemDrop(at: time),
+            opacity: targetSelector.isSoftPreview ? 0.3 : targetSelector.isActionTarget ? 0.8 : 1,
+            showGem: !targetSelector.isSoftPreview && !targetSelector.isActionTarget
         )
     }
 
@@ -253,10 +255,10 @@ final class MapSceneRuntime {
     /// The target selector's object shows its name 2 points under its HP bar.
     /// Without a bar, the name is centered where the bar would be.
     private func makeTexts(worldPositions: [GameObjectID : SIMD3<Float>]) -> [MapSceneRenderSnapshot.Text] {
-        guard let targetSelector = scene.targetSelector,
+        guard let targetSelector = scene.targetSelector, !targetSelector.isSoftPreview,
               let target = scene.objects[targetSelector.objectID],
               let targetPosition = worldPositions[target.objectID],
-              !target.effectState.contains(.cloak) else {
+              !target.isDead, !target.effectState.contains(.cloak), !target.effectState.contains(.hide), !target.effectState.contains(.invisible) else {
             return []
         }
 

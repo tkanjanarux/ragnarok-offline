@@ -1,7 +1,7 @@
 name: RO foundations iPhone build
 on:
   push:
-    branches: [main, ui-original-restore, ui-navigation-polish, ui-guild-original, gamepad-round1, gamepad-round1-controls]
+    branches: [main, ui-original-restore, ui-navigation-polish, ui-guild-original, gamepad-round1, gamepad-round1-controls, gamepad-directional-target]
     paths:
       - 'Packages/**'
       - 'RagnarokOffline/**'
