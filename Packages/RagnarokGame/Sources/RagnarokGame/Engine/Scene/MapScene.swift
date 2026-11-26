@@ -470,6 +470,7 @@ extension MapScene {
     }
 
     func removeObject(objectID: GameObjectID) {
+        gamepadObjectInvalidated(objectID)
         objects.removeValue(forKey: objectID)
         shopSigns.removeValue(forKey: objectID)
         hpspBarObjectIDs.remove(objectID)
@@ -1035,6 +1036,16 @@ extension MapScene {
         gamepadAttack.cancel()
         cancelArrivalAction()
         selectTarget(nil)
+    }
+    func gamepadObjectInvalidated(_ id: GameObjectID) {
+        if id == player.objectID {
+            gamepadTouchRevision &+= 1
+            gamepadResetForMapChange()
+            return
+        }
+        if gamepadAttack.target == id { cancelArrivalAction() }
+        if selectedTargetID == id { selectTarget(nil) }
+        if targetSelector?.objectID == id { targetSelector = nil }
     }
     func gamepadInterruptAttack() { cancelArrivalAction() }
     func gamepadCancel() { cancelArrivalAction(); selectTarget(nil) }

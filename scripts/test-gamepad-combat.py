@@ -10,7 +10,7 @@ def method(signature):
     while depth:
         depth += (source[i]=='{') - (source[i]=='}'); i+=1
     return source[start:i].replace('private func','func')
-methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget(', 'func gamepadResetForMapChange(', 'func gamepadCanAcquire(', 'func useGamepadSkill('])
+methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget(', 'func gamepadResetForMapChange(', 'func gamepadCanAcquire(', 'func useGamepadSkill(', 'func gamepadObjectInvalidated('])
 sceneSource = source
 source=(root/'Packages/RagnarokGame/Sources/RagnarokGame/Engine/PlaySession.swift').read_text()
 shortcutMethod=method('func useShortcut(')
@@ -54,7 +54,9 @@ typealias GameObjectID = UInt32
  var player = Object(objectID: 1)
  var objects: [UInt32:Object] = [2:Object(objectID:2)]
  var selectedTargetID: UInt32?
- var targetSelector: Int?
+ struct Selector { let objectID: UInt32 }
+ var targetSelector: Selector?
+ var gamepadTouchRevision: UInt64 = 0
  var selectedTarget: Object? {
    get { selectedTargetID.flatMap { objects[$0] } }
    set { selectedTargetID = newValue?.objectID }
@@ -99,6 +101,27 @@ typealias GameObjectID = UInt32
      #expect(scene.playSession.stops == [.zero])
      #expect(scene.playSession.actions[0].0 == .normal && scene.playSession.actions[0].1 == 0)
    }
+ }
+ @Test func removalOrHidingInvalidatesBeforeEntityIDCanBeReused() {
+   let scene = MapScene(); scene.selectTarget(nil); scene.decision = .moveTo(SIMD2(5,6))
+   _ = scene.gamepadPrimary(targetID:2,validate:{ _ in true })
+   let stale = scene.pendingArrivalAction
+   scene.gamepadObjectInvalidated(3)
+   #expect(scene.gamepadAttack.target == 2) // Unrelated entity must not cancel.
+   scene.gamepadObjectInvalidated(2)
+   scene.objects[2] = .init(objectID:2)
+   scene.decision = .alreadyInRange; stale?()
+   #expect(scene.gamepadAttack.target == nil && scene.pendingArrivalAction == nil)
+   #expect(!scene.playSession.actions.contains { $0.0 == ._repeat })
+ }
+ @Test func deathAndImmediateResurrectionStillInvalidateInputAndArrival() {
+   let scene = MapScene(); scene.selectTarget(nil); scene.decision = .moveTo(SIMD2(5,6))
+   _ = scene.gamepadPrimary(targetID:2,validate:{ _ in true })
+   let stale = scene.pendingArrivalAction
+   scene.gamepadObjectInvalidated(scene.player.objectID)
+   scene.state.isPlayerDead = false; scene.decision = .alreadyInRange; stale?()
+   #expect(scene.gamepadTouchRevision == 1 && scene.gamepadAttack.target == nil)
+   #expect(scene.playSession.actions.isEmpty && scene.playSession.stops.isEmpty)
  }
  @Test func contextualLootSupersedesSoftAttackArrival() {
    let scene = MapScene(); scene.selectTarget(nil); scene.decision = .moveTo(SIMD2(5,6))

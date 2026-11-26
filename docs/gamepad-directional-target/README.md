@@ -93,3 +93,7 @@ No physical iPhone/iPad/controller or screenshot/visual verification was availab
 A native build proves compilation/package integrity, not device behavior or latency.
 Cancellation is a wire request; accepted movement may finish and network/server
 restrictions can delay it. No new stop opcode or instant-stop guarantee.
+
+Vanish/death and hide/cloak/invisible events invalidate the owned action immediately,
+before the next controller sample, including entity-ID reuse. Player vanish/death
+also resets input generation so immediate resurrection cannot resume held actions.

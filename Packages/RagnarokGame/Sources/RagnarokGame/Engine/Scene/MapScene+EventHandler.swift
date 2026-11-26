@@ -187,6 +187,7 @@ extension MapScene {
     }
 
     public func onMapObjectVanished(objectID: GameObjectID, type: UnitClearType) {
+        gamepadObjectInvalidated(objectID)
         guard type == .dead, let object = objects[objectID] else {
             if type == .respawn || type == .teleport,
                let object = objects[objectID], !object.effectState.contains(.invisible) {
@@ -245,6 +246,9 @@ extension MapScene {
     }
 
     public func onMapObjectStateChanged(objectID: GameObjectID, bodyState: StatusChangeOption1, healthState: StatusChangeOption2, effectState: MapEffectOptions) {
+        if objectID != player.objectID && (effectState.contains(.hide) || effectState.contains(.cloak) || effectState.contains(.invisible)) {
+            gamepadObjectInvalidated(objectID)
+        }
         if let mapObject = objects[objectID] {
             mapObject.bodyState = bodyState
             mapObject.healthState = healthState
