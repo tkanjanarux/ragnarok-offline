@@ -1,6 +1,26 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ / %@: pick up nearby item": {
+      "localizations": {
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ / %@: เก็บของใกล้ตัว"
+          }
+        }
+      }
+    },
+    "%@ alone: shortcut row 1, slot 2. Trigger + face buttons keep their shortcut mappings.": {
+      "localizations": {
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ เดี่ยว: ช่องลัดแถว 1 ช่อง 2 เมื่อถือทริกเกอร์ ปุ่มหน้าจอยยังใช้ช่องลัดตามเดิม"
+          }
+        }
+      }
+    },
     "Right stick press": {
       "localizations": {
         "th": {
@@ -31,22 +51,22 @@
         }
       }
     },
-    "%@: press right stick to pick up one nearby item; keeps monster lock.": {
+    "%@ alone: pick up one nearby item. Keeps the lock and stops the current attack; press %@ to attack again.": {
       "localizations": {
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@: กดก้านขวาเพื่อเก็บของใกล้ตัวหนึ่งชิ้น โดยคงเป้ามอนที่ล็อกไว้"
+            "value": "%@ เดี่ยว: เก็บของใกล้ตัวหนึ่งชิ้น คงล็อกเป้าและหยุดการโจมตี กด %@ เพื่อโจมตีต่อ"
           }
         }
       }
     },
-    "This controller has no right-stick button. Use touch to pick up items.": {
+    "%@: right-stick press is a backup pickup button.": {
       "localizations": {
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "จอยนี้ไม่มีปุ่มกดก้านขวา ใช้การแตะเพื่อเก็บของ"
+            "value": "%@: กดก้านขวาเป็นปุ่มเก็บของสำรอง"
           }
         }
       }

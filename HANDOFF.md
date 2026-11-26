@@ -175,3 +175,12 @@ skill cast ranges remain independent. Optional right-stick click picks up one ne
 item while keeping explicit lock, cancelling an older attack/arrival. No remote loot,
 optimistic success or held-button repeat. Preserve existing mapping/lifecycle guards.
 No Simulator/hardware claims, player data, server changes, merge or deployment.
+
+## X pickup follow-up
+
+`gamepad-x-loot` starts at a711731. [Current mapping/tests](docs/gamepad-x-loot/README.md):
+X alone now picks up using the same pipeline as optional R3. Y stays slot2; LT+A
+retains slot1 and all eight trigger chords/RT precedence stay unchanged. Releasing
+triggers while holding X cannot replay pickup; X+R3 emits one command. X does not
+suppress camera orbit. Range/lock/cancellation/team guards stay as in the prior base.
+No Simulator/hardware claims, server changes, automatic merge or deployment.

@@ -80,8 +80,7 @@ struct GamepadReducer {
             else {
                 switch button {
                 case .a: frame.command = .primary; frame.move = nil
-                case .rightStick: frame.command = .pickup; frame.move = nil
-                case .x: frame.command = .shortcut(row: 0, column: 0)
+                case .x, .rightStick: frame.command = .pickup; frame.move = nil
                 case .y: frame.command = .shortcut(row: 0, column: 1)
                 case .leftShoulder: frame.command = .target(-1)
                 case .rightShoulder: frame.command = .target(1)

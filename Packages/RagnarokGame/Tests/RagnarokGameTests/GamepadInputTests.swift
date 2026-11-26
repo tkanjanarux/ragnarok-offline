@@ -34,15 +34,57 @@ struct GamepadInputTests {
         }
     }
     @Test func pickupCannotReplayAfterModalDisconnectOrMapReset() {
-        for reset in 0..<3 {
-            var r = armed(); let input = GamepadInput(buttons:[.rightStick])
+        for button in [GamepadInput.Button.x, .rightStick] {
+          for reset in 0..<3 {
+            var r = armed(); let input = GamepadInput(buttons:[button])
             if reset == 0 { _ = r.sample(input,now:1,available:true,blocked:true) }
             else if reset == 1 { _ = r.sample(input,now:1,available:false,blocked:false) }
             else { r.reset() }
             #expect(r.sample(input,now:2,available:true,blocked:false).command == nil)
             _ = r.sample(.init(),now:3,available:true,blocked:false)
             #expect(r.sample(input,now:4,available:true,blocked:false).command == .pickup)
+          }
         }
+    }
+    @Test func xPickupIsEdgeOnlyWithoutSuppressingRightStickCamera() {
+        var r = armed()
+        let input = GamepadInput(left:SIMD2(1,0),right:SIMD2(1,0),buttons:[.x])
+        let first = r.sample(input,now:1,available:true,blocked:false)
+        #expect(first.command == .pickup && first.move == nil)
+        #expect(first.camera.x > 0)
+        #expect(r.sample(input,now:2,available:true,blocked:false).command == nil)
+        _ = r.sample(.init(),now:3,available:true,blocked:false)
+        #expect(r.sample(input,now:4,available:true,blocked:false).command == .pickup)
+    }
+    @Test func heldXCannotBecomePickupWhenATriggerIsReleasedOrSwitched() {
+        for triggers in [(true,false),(false,true),(true,true)] {
+            var r = armed()
+            let chord = GamepadInput(buttons:[.x],leftTrigger:triggers.0,rightTrigger:triggers.1)
+            #expect(r.sample(chord,now:1,available:true,blocked:false).command == .shortcut(row:0,column:triggers.1 ? 6 : 2))
+            #expect(r.sample(.init(buttons:[.x]),now:2,available:true,blocked:false).command == nil)
+            #expect(r.sample(.init(buttons:[.x],leftTrigger:true,rightTrigger:true),now:3,available:true,blocked:false).command == nil)
+            _ = r.sample(.init(),now:4,available:true,blocked:false)
+            #expect(r.sample(.init(buttons:[.x]),now:5,available:true,blocked:false).command == .pickup)
+            #expect(r.sample(chord,now:6,available:true,blocked:false).command == nil)
+        }
+    }
+    @Test func simultaneousXAndR3ProduceOnlyOneCommandAndNeverQueueAnother() {
+        for trigger in [false,true] {
+            var r = armed()
+            let both = GamepadInput(buttons:[.x,.rightStick],leftTrigger:trigger)
+            let command = r.sample(both,now:1,available:true,blocked:false).command
+            #expect(command == (trigger ? .shortcut(row:0,column:2) : .pickup))
+            #expect(r.sample(both,now:2,available:true,blocked:false).command == nil)
+            #expect(r.sample(.init(buttons:[.rightStick]),now:3,available:true,blocked:false).command == nil)
+            _ = r.sample(.init(),now:4,available:true,blocked:false)
+            #expect(r.sample(.init(buttons:[.rightStick]),now:5,available:true,blocked:false).command == .pickup)
+        }
+    }
+    @Test func yKeepsSlotTwoAndSlotOneRemainsOnLeftTriggerA() {
+        var r = armed()
+        #expect(r.sample(.init(buttons:[.y]),now:1,available:true,blocked:false).command == .shortcut(row:0,column:1))
+        _ = r.sample(.init(),now:2,available:true,blocked:false)
+        #expect(r.sample(.init(buttons:[.a],leftTrigger:true),now:3,available:true,blocked:false).command == .shortcut(row:0,column:0))
     }
     @Test func deadzoneFiniteAndNormalized() {
         #expect(GamepadReducer.axis(SIMD2(0.1,0.1)) == .zero)
@@ -81,7 +123,7 @@ struct GamepadInputTests {
         #expect(r.sample(held,now: 2,available: true,blocked: false).command == nil)
         #expect(r.sample(held,now: 3,available: true,blocked: false).move == nil)
         _ = r.sample(.init(),now: 4,available: true,blocked: false)
-        #expect(r.sample(held,now: 5,available: true,blocked: false).command == .shortcut(row: 0,column: 0))
+        #expect(r.sample(held,now: 5,available: true,blocked: false).command == .pickup)
         r.reset()
         #expect(r.sample(held,now: 6,available: true,blocked: false).move == nil)
     }

@@ -1,5 +1,8 @@
 # Controller range and dedicated pickup
 
+Mapping follow-up: [X pickup](../gamepad-x-loot/README.md) supersedes the X/Y alias
+and R3-only guidance below; range and pickup pipeline policy remain unchanged.
+
 Review branch `gamepad-range-loot`, base `ce304a2d89045f1bab60a13322a59601578c4f51`.
 Includes Guild/navigation/world HP and all prior controller fixes. No merge/deploy.
 

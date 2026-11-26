@@ -12,8 +12,12 @@ struct GamepadHUD: View {
                     Button("Controls") { controller.helpVisible.toggle() }
                 }
                 Text(controller.targetName).lineLimit(1)
-                if let pickup = controller.labels["r3"] {
-                    Text("\(pickup): pick up nearby item", bundle: .module).lineLimit(2)
+                if let pickup = controller.labels["x"] {
+                    if let backup = controller.labels["r3"] {
+                        Text("\(pickup) / \(backup): pick up nearby item", bundle: .module).lineLimit(2)
+                    } else {
+                        Text("\(pickup): pick up nearby item", bundle: .module).lineLimit(2)
+                    }
                 }
                 Text("\(controller.companionName)").lineLimit(1)
                 if !controller.message.isEmpty { Text(controller.message).lineLimit(2) }
@@ -34,10 +38,9 @@ struct GamepadHelp: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Left stick: walk relative to camera. Right stick: orbit camera.")
+                        Text("\(label("x")) alone: pick up one nearby item. Keeps the lock and stops the current attack; press \(label("a")) to attack again.", bundle: .module)
                         if let pickup = controller.labels["r3"] {
-                            Text("\(pickup): press right stick to pick up one nearby item; keeps monster lock.", bundle: .module)
-                        } else {
-                            Text("This controller has no right-stick button. Use touch to pick up items.", bundle: .module)
+                            Text("\(pickup): right-stick press is a backup pickup button.", bundle: .module)
                         }
                         Text("Server attack range: \(controller.attackRange) cells. Selection also keeps the short-range approach area.", bundle: .module)
                         Text("Release: finish the short accepted step; not an instant server stop.")
@@ -46,7 +49,7 @@ struct GamepadHelp: View {
                         Text("Without a lock, point the left stick and press attack or an offensive shortcut. Release or redirect the stick to move again. Shoulders or touching a monster lock it; cancel unlocks.")
                         Text("\(label("a")): approach and attack continuously. Selected nearby NPC: talk. No target nearby: loot.")
                         Text("\(label("b")): cancel target / close menu. Menu: Options.")
-                        Text("\(label("x")) / \(label("y")): shortcut row 1, slots 1 / 2 (same as left-trigger shortcuts)")
+                        Text("\(label("y")) alone: shortcut row 1, slot 2. Trigger + face buttons keep their shortcut mappings.", bundle: .module)
                         Text("\(label("lt")) + \(label("a"))/\(label("b"))/\(label("x"))/\(label("y")): row 1, slots 1–4")
                         Text("\(label("rt")) + \(label("a"))/\(label("b"))/\(label("x"))/\(label("y")): row 1, slots 5–8. Both triggers: right wins.")
                         Text("D-pad up: Follow · right: Assist · down: Stop · left: Hunt (whole active team)")
