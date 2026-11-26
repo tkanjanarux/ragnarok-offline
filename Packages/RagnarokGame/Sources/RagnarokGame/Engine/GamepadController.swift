@@ -20,6 +20,7 @@ final class GamepadController: NSObject {
     private var touchRevision: UInt64 = 0
     private var facing = SIMD2<Float>(0, 1)
     private var companionID: UInt32?
+    private var companionRequest: UInt32?
 
     override init() {
         super.init()
@@ -40,6 +41,7 @@ final class GamepadController: NSObject {
         presentationRoot = Self.topPresentation
         activeScene = runtime.scene
         resetInput()
+        companionRequest = nil
         defer { activeScene = nil; reducer.reset(); ring.reset(); runtime.scene.gamepadCancel(); controller = nil; connectedName = nil }
         while !Task.isCancelled {
             tick(session: session, runtime: runtime, blocked: blocked(), menu: menu, cancelWindow: cancelWindow)
@@ -103,6 +105,11 @@ final class GamepadController: NSObject {
         }
         scene.camera.azimuth = (scene.camera.azimuth + frame.camera.x * 1.8).truncatingRemainder(dividingBy: .pi * 2)
         scene.camera.elevation = min(.pi / 3, max(.pi / 12, scene.camera.elevation + frame.camera.y))
+        if let request = companionRequest,
+           session.companions.completedSequence == request || !session.companions.pending {
+            message = session.companions.message
+            companionRequest = nil
+        }
         let profiles = session.companions.profiles.filter { $0.active && $0.hp > 0 }.sorted { $0.id < $1.id }
         if !profiles.contains(where: { $0.id == companionID }) { companionID = profiles.first?.id }
         companionName = profiles.first(where: { $0.id == companionID })?.name ?? "No active companion"
@@ -128,7 +135,10 @@ final class GamepadController: NSObject {
             guard let companionID, session.companions.ready, session.companions.available,
                   !session.companions.pending, !session.companions.transferPending else { message = "Load companions first; D-pad left refreshes the roster."; return }
             session.companionCommand("\(verb) \(companionID)")
-            message = "Waiting for companion confirmation…"
+            if session.companions.pending {
+                companionRequest = session.companions.sequence
+                message = "Waiting for companion confirmation…"
+            }
         }
     }
     private func useShortcut(row: Int, column: Int, session: PlaySession, scene: MapScene) {
