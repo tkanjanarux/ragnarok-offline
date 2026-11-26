@@ -5,6 +5,45 @@ struct GamepadInputTests {
     private func armed() -> GamepadReducer {
         var r = GamepadReducer(); _ = r.sample(.init(), now: 0, available: true, blocked: false); return r
     }
+    @Test func serverRangeExpandsBothModesAndTracksEquipmentChanges() {
+        var preview = GamepadDirectionalTargets()
+        let candidates: [GamepadTargetRing.Candidate] = [.init(id:1,position:SIMD2(14,14))]
+        preview.update(candidates,origin:.zero,facing:SIMD2(1,1),attackRange:14)
+        #expect(preview.preview == 1)
+        #expect(GamepadTargetRange(attackRange:14).containsLock(SIMD2(14,14)))
+        #expect(!GamepadTargetRange(attackRange:14).containsLock(SIMD2(15,14)))
+        #expect(!GamepadTargetRange(attackRange:14).containsSoft(SIMD2(14,15)))
+        preview.update(candidates,origin:.zero,facing:SIMD2(1,1),attackRange:13)
+        #expect(preview.preview == nil)
+        #expect(!GamepadTargetRange(attackRange:13).containsLock(SIMD2(14,14)))
+        preview.update(candidates,origin:.zero,facing:SIMD2(-1,-1),attackRange:20)
+        #expect(preview.preview == nil) // Extra range cannot select behind.
+        #expect(GamepadTargetRange(attackRange:1).containsSoft(SIMD2(8,0)))
+        #expect(GamepadTargetRange(attackRange:1).containsLock(SIMD2(12,0)))
+        #expect(!GamepadTargetRange(attackRange:1).containsSoft(SIMD2(8,8)))
+    }
+    @Test func pickupEdgeDoesNotRepeatOrRotateCameraAndModifiersDoNotChangeIt() {
+        for triggers in [(false,false),(true,false),(false,true),(true,true)] {
+            var r = armed()
+            let input = GamepadInput(right:SIMD2(0.8,0.3),buttons:[.rightStick],leftTrigger:triggers.0,rightTrigger:triggers.1)
+            let first = r.sample(input,now:1,available:true,blocked:false)
+            #expect(first.command == .pickup && first.camera == .zero)
+            #expect(r.sample(input,now:2,available:true,blocked:false).command == nil)
+            _ = r.sample(.init(),now:3,available:true,blocked:false)
+            #expect(r.sample(input,now:4,available:true,blocked:false).command == .pickup)
+        }
+    }
+    @Test func pickupCannotReplayAfterModalDisconnectOrMapReset() {
+        for reset in 0..<3 {
+            var r = armed(); let input = GamepadInput(buttons:[.rightStick])
+            if reset == 0 { _ = r.sample(input,now:1,available:true,blocked:true) }
+            else if reset == 1 { _ = r.sample(input,now:1,available:false,blocked:false) }
+            else { r.reset() }
+            #expect(r.sample(input,now:2,available:true,blocked:false).command == nil)
+            _ = r.sample(.init(),now:3,available:true,blocked:false)
+            #expect(r.sample(input,now:4,available:true,blocked:false).command == .pickup)
+        }
+    }
     @Test func deadzoneFiniteAndNormalized() {
         #expect(GamepadReducer.axis(SIMD2(0.1,0.1)) == .zero)
         #expect(GamepadReducer.axis(SIMD2(Float.nan,0)) == .zero)

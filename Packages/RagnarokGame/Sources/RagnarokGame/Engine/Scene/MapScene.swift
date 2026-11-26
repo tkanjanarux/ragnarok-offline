@@ -1049,6 +1049,27 @@ extension MapScene {
     }
     func gamepadInterruptAttack() { cancelArrivalAction() }
     func gamepadCancel() { cancelArrivalAction(); selectTarget(nil) }
+    /// Dedicated pickup never depends on monster selection and never approaches loot.
+    /// Ownership, capacity and success remain server-authoritative.
+    func gamepadPickup() -> String? {
+        guard playSession.mapScene === self, !state.isPlayerDead else { return nil }
+        let origin = player.gridPosition
+        let nearby = items.values.filter {
+            let d = $0.gridPosition &- origin
+            return max(abs(d.x), abs(d.y)) <= 1
+                && pathFinder.canMoveStraight(from: origin, to: $0.gridPosition)
+        }.sorted {
+            let a = $0.gridPosition &- origin, b = $1.gridPosition &- origin
+            let da = a.x*a.x + a.y*a.y, db = b.x*b.x + b.y*b.y
+            return da == db ? $0.objectID < $1.objectID : da < db
+        }
+        guard let item = nearby.first else { return "No nearby item to pick up." }
+        // Supersede an approach/repeat without discarding the explicit monster lock.
+        cancelArrivalAction()
+        playSession.pickUpItem(objectID: item.objectID)
+        return nil
+    }
+
     func gamepadPrimary(targetID: GameObjectID? = nil, validate: GamepadTargetValidation? = nil) -> String? {
         if let targetID, (objects[targetID] == nil || validate?(targetID) == false) { return "No target in that direction." }
         if let target = targetID.flatMap({ objects[$0] }) ?? selectedTarget {
@@ -1082,9 +1103,12 @@ extension MapScene {
               !target.effectState.contains(.cloak), !target.effectState.contains(.hide),
               !target.effectState.contains(.invisible) else { return false }
         let d = target.gridPosition &- player.gridPosition
-        guard Float(d.x*d.x + d.y*d.y) <= GamepadDirectionalTargets.lockRadius * GamepadDirectionalTargets.lockRadius,
+        let range = GamepadTargetRange(attackRange: playSession.playerStatus.attackRange)
+        guard range.containsLock(SIMD2(Float(d.x), Float(d.y))),
               pathFinder.canMoveStraight(from: player.gridPosition, to: target.gridPosition) else { return false }
-        let path = pathFinder.findPath(from: player.gridPosition, to: target.gridPosition, within: 1)
+        // Check a path to attack range, not to the monster's feet. This avoids
+        // imposing the old 13-node cap on a valid long-range bow shot.
+        let path = pathFinder.findPath(from: player.gridPosition, to: target.gridPosition, within: max(1, playSession.playerStatus.attackRange))
         return !path.isEmpty && path.count <= 13
     }
 

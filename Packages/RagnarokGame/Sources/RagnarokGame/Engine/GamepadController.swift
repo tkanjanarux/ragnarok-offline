@@ -8,6 +8,7 @@ import RagnarokModels
 final class GamepadController: NSObject {
     var connectedName: String?
     var targetName = "No target"
+    var attackRange = 0
     var companionName = "No active companion"
     var message = ""
     var helpVisible = false
@@ -65,17 +66,21 @@ final class GamepadController: NSObject {
             teamPlan.cancel(); companionRequest = nil
             scene.gamepadCancel(); reducer.reset(); ring.reset(); directional.reset(); facingIntent.reset(); controller = current
             connectedName = current?.vendorName ?? (current == nil ? nil : "Controller")
+            labels = [:]
             if let pad = current?.extendedGamepad {
                 labels = ["a": pad.buttonA.localizedName ?? "Bottom", "b": pad.buttonB.localizedName ?? "Right",
                           "x": pad.buttonX.localizedName ?? "Left", "y": pad.buttonY.localizedName ?? "Top",
                           "lb": pad.leftShoulder.localizedName ?? "Left shoulder", "rb": pad.rightShoulder.localizedName ?? "Right shoulder",
                           "lt": pad.leftTrigger.localizedName ?? "Left trigger", "rt": pad.rightTrigger.localizedName ?? "Right trigger"]
+                if let button = pad.rightThumbstickButton { labels["r3"] = button.localizedName ?? String(localized: "Right stick press", bundle: .module) }
             }
         }
         guard let pad = controller?.extendedGamepad else { targetName = "No target"; return }
         var input = GamepadInput(left: SIMD2(pad.leftThumbstick.xAxis.value, pad.leftThumbstick.yAxis.value),
                                  right: SIMD2(pad.rightThumbstick.xAxis.value, pad.rightThumbstick.yAxis.value))
-        let buttons: [(GamepadInput.Button, GCControllerButtonInput)] = [(.a,pad.buttonA),(.b,pad.buttonB),(.x,pad.buttonX),(.y,pad.buttonY),(.leftShoulder,pad.leftShoulder),(.rightShoulder,pad.rightShoulder),(.menu,pad.buttonMenu),(.up,pad.dpad.up),(.down,pad.dpad.down),(.left,pad.dpad.left),(.right,pad.dpad.right)]
+        var buttons: [(GamepadInput.Button, GCControllerButtonInput)] = [(.a,pad.buttonA),(.b,pad.buttonB),(.x,pad.buttonX),(.y,pad.buttonY),(.leftShoulder,pad.leftShoulder),(.rightShoulder,pad.rightShoulder),(.menu,pad.buttonMenu),(.up,pad.dpad.up),(.down,pad.dpad.down),(.left,pad.dpad.left),(.right,pad.dpad.right)]
+        if let button = pad.rightThumbstickButton { buttons.append((.rightStick, button)) }
+        attackRange = session.playerStatus.attackRange
         input.buttons = Set(buttons.filter { $0.1.isPressed }.map(\.0))
         input.leftTrigger = pad.leftTrigger.value > 0.5; input.rightTrigger = pad.rightTrigger.value > 0.5
         let available = UIApplication.shared.applicationState == .active && session.mapScene === scene && !scene.state.isPlayerDead
@@ -102,7 +107,7 @@ final class GamepadController: NSObject {
         ring.update(candidates, origin: origin, facing: facing)
         if let id = scene.selectedTargetID, valid.contains(id) { ring.select(id) }
         else if ring.selected != nil { ring.reset(); ring.update(candidates, origin: origin, facing: facing) }
-        directional.update(candidates, origin: origin, facing: facing)
+        directional.update(candidates, origin: origin, facing: facing, attackRange: session.playerStatus.attackRange)
         updateIndicator(scene, suppressed: uiBlocked || !scene.gamepadTouchGestures.isEmpty)
         if frame.cancelAttack { scene.gamepadInterruptAttack() }
         if let move = frame.move {
@@ -151,6 +156,10 @@ final class GamepadController: NSObject {
                 message = "No target in that direction."
             }
             updateIndicator(scene, suppressed: false)
+        case .pickup:
+            guard !session.hasPendingInventoryOperation else { return }
+            message = scene.gamepadPickup() == nil ? "" : String(localized: "No nearby item to pick up.", bundle: .module)
+            updateIndicator(scene, suppressed: false)
         case .shortcut(let row, let column): useShortcut(row: row, column: column, session: session, runtime: runtime)
         case .companion(let verb):
             guard session.companions.ready, session.companions.available,
@@ -187,7 +196,7 @@ final class GamepadController: NSObject {
     private func acquire(_ runtime: MapSceneRuntime) -> GameObjectID? {
         let scene = runtime.scene
         let candidates = targetCandidates(runtime) // Revalidate at the press, not a cached ID.
-        directional.update(candidates, origin: SIMD2(Float(scene.player.gridPosition.x),Float(scene.player.gridPosition.y)), facing: facing)
+        directional.update(candidates, origin: SIMD2(Float(scene.player.gridPosition.x),Float(scene.player.gridPosition.y)), facing: facing, attackRange: scene.playSession.playerStatus.attackRange)
         return directional.resolve(explicit: scene.selectedTargetID, valid: Set(candidates.map(\.id)))
     }
     private func updateIndicator(_ scene: MapScene, suppressed: Bool) {

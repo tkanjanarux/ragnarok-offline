@@ -10,15 +10,19 @@ def method(signature):
     while depth:
         depth += (source[i]=='{') - (source[i]=='}'); i+=1
     return source[start:i].replace('private func','func')
-methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget(', 'func gamepadResetForMapChange(', 'func gamepadCanAcquire(', 'func useGamepadSkill(', 'func gamepadObjectInvalidated('])
+methods='\n'.join(method(s) for s in ['func attackMonster(', 'private func cancelArrivalAction(', 'private func stopGamepadAttack(', 'func gamepadPrimary(', 'func gamepadPickup(', 'func gamepadCancel(', 'func gamepadInterruptAttack(', 'func selectTarget(', 'func gamepadResetForMapChange(', 'func gamepadCanAcquire(', 'func useGamepadSkill(', 'func gamepadObjectInvalidated('])
 sceneSource = source
 source=(root/'Packages/RagnarokGame/Sources/RagnarokGame/Engine/PlaySession.swift').read_text()
 shortcutMethod=method('func useShortcut(')
 source=sceneSource
+statusSource=(root/'Packages/RagnarokModels/Sources/RagnarokModels/CharacterStatus.swift').read_text()
+start=statusSource.index('    public mutating func update(from packet: PACKET_ZC_ATTACK_RANGE)')
+statusUpdate=statusSource[start:statusSource.index('\n    }',start)+6].replace('public ','')
 harness='''
 import Foundation
 import Testing
 @testable import RagnarokGame
+struct PACKET_ZC_ATTACK_RANGE { var currentAttRange: UInt16 }
 typealias GameObjectID = UInt32
 @MainActor final class MapScene {
  enum Kind { case monster, npc, pc }
@@ -30,7 +34,9 @@ typealias GameObjectID = UInt32
  struct State { var isPlayerDead = false; var selectedTargetType: Kind? }
  @MainActor final class Session {
    weak var mapScene: MapScene?
-   struct Status { var attackRange = 1 }
+   struct Status { var attackRange = 1
+'''+statusUpdate+'''
+   }
    var playerStatus = Status()
    var actions: [(Damage,UInt32)] = []
    var stops: [SIMD2<Int>] = []
@@ -66,7 +72,8 @@ typealias GameObjectID = UInt32
  final class Path {
    var straight = true; var path = [SIMD2<Int>.zero]
    func canMoveStraight(from:SIMD2<Int>,to:SIMD2<Int>) -> Bool { straight }
-   func findPath(from:SIMD2<Int>,to:SIMD2<Int>,within:Int) -> [SIMD2<Int>] { path }
+   var requestedRange = 0
+   func findPath(from:SIMD2<Int>,to:SIMD2<Int>,within:Int) -> [SIMD2<Int>] { requestedRange = within; return path }
  }
  var pathFinder = Path()
  var arrivalTask: Task<Void, any Error>?
@@ -77,11 +84,46 @@ typealias GameObjectID = UInt32
  func requestMove(to position: SIMD2<Int>) { moves.append(position) }
  func decideMovement(from: SIMD2<Int>, toward: SIMD2<Int>, within: Int) -> Decision { decision }
  func useSkill(_ skill:SkillInfo,level:Int) {}
+ var items: [UInt32:Object] = [:]
  var item: Object?
  func nearestItem(fromPosition: SIMD2<Int>) -> Object? { item }
 '''+methods+'''
 }
 @MainActor struct GamepadCombatTests {
+ @Test func dynamicRangeUsesServerStatusAndSkillRangeRemainsIndependent() {
+   let scene = MapScene(); scene.objects[2]?.gridPosition = SIMD2(14,14)
+   #expect(!scene.gamepadCanAcquire(2))
+   scene.playSession.playerStatus.update(from:PACKET_ZC_ATTACK_RANGE(currentAttRange:14))
+   #expect(scene.gamepadCanAcquire(2) && scene.pathFinder.requestedRange == 14)
+   scene.useGamepadSkill(SkillInfo(flag:1),level:1,targetID:2,validate:{ _ in true })
+   #expect(scene.playSession.casts.isEmpty) // Weapon acquisition cannot extend cast range5.
+   scene.objects[2]?.gridPosition = SIMD2(15,14); #expect(!scene.gamepadCanAcquire(2))
+   scene.playSession.playerStatus.update(from:PACKET_ZC_ATTACK_RANGE(currentAttRange:15)); #expect(scene.gamepadCanAcquire(2))
+   scene.playSession.playerStatus.update(from:PACKET_ZC_ATTACK_RANGE(currentAttRange:1)); #expect(!scene.gamepadCanAcquire(2))
+ }
+ @Test func dedicatedPickupKeepsLockAndInvalidatesArrivalWithoutAttackingOrTalking() {
+   let scene = MapScene(); scene.items = [7:.init(objectID:7,gridPosition:SIMD2(1,1)),8:.init(objectID:8,gridPosition:SIMD2(1,0))]
+   scene.decision = .moveTo(SIMD2(5,6)); _ = scene.gamepadPrimary()
+   let stale = scene.pendingArrivalAction
+   #expect(scene.gamepadPickup() == nil)
+   #expect(scene.playSession.pickups == [8] && scene.selectedTargetID == 2)
+   scene.decision = .alreadyInRange; stale?()
+   #expect(scene.playSession.actions.allSatisfy { $0.1 == 0 }) // Only established stop, never attack.
+   #expect(scene.gamepadAttack.target == nil && scene.pendingArrivalAction == nil)
+ }
+ @Test func pickupNeverWalksAndRejectsMissingDistantBlockedDeadOrOldScene() {
+   let scene = MapScene()
+   #expect(scene.gamepadPickup() != nil)
+   scene.items = [7:.init(objectID:7,gridPosition:SIMD2(2,0))]
+   #expect(scene.gamepadPickup() != nil)
+   scene.items[7]?.gridPosition = SIMD2(1,1)
+   scene.pathFinder.straight = false; #expect(scene.gamepadPickup() != nil)
+   scene.pathFinder.straight = true; scene.state.isPlayerDead = true; _ = scene.gamepadPickup()
+   scene.state.isPlayerDead = false; scene.playSession.mapScene = nil; _ = scene.gamepadPickup()
+   #expect(scene.playSession.pickups.isEmpty && scene.moves.isEmpty && scene.playSession.actions.isEmpty)
+   scene.playSession.mapScene = scene; #expect(scene.gamepadPickup() == nil)
+   #expect(scene.playSession.pickups == [7] && scene.moves.isEmpty)
+ }
  @Test func singlePressApproachesThenRepeatsUsingActualSceneMethods() {
    let scene = MapScene(); scene.decision = .moveTo(SIMD2(5,6))
    #expect(scene.gamepadPrimary() == nil)

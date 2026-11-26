@@ -12,6 +12,9 @@ struct GamepadHUD: View {
                     Button("Controls") { controller.helpVisible.toggle() }
                 }
                 Text(controller.targetName).lineLimit(1)
+                if let pickup = controller.labels["r3"] {
+                    Text("\(pickup): pick up nearby item", bundle: .module).lineLimit(2)
+                }
                 Text("\(controller.companionName)").lineLimit(1)
                 if !controller.message.isEmpty { Text(controller.message).lineLimit(2) }
             }.font(.game(size: 10)).foregroundStyle(Color.gameLabel)
@@ -31,6 +34,12 @@ struct GamepadHelp: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Left stick: walk relative to camera. Right stick: orbit camera.")
+                        if let pickup = controller.labels["r3"] {
+                            Text("\(pickup): press right stick to pick up one nearby item; keeps monster lock.", bundle: .module)
+                        } else {
+                            Text("This controller has no right-stick button. Use touch to pick up items.", bundle: .module)
+                        }
+                        Text("Server attack range: \(controller.attackRange) cells. Selection also keeps the short-range approach area.", bundle: .module)
                         Text("Release: finish the short accepted step; not an instant server stop.")
                         Text("\(label("lb")) / \(label("rb")): previous / next visible monster")
                         Text("Faint ring: directional preview. Gem: explicit lock. Solid ring: current attack.")

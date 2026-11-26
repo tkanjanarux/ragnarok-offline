@@ -166,3 +166,12 @@ never call selectTarget or send combat packets. Offensive acquisition uses real
 skill flags; support/ground/item paths cannot inherit a monster preview. Held-stick
 consumption allows a directional press without cancelling itself; reset clears it.
 No Simulator/device claims, server changes, automatic PR merge or deployment.
+
+## Controller range and dedicated pickup
+
+`gamepad-range-loot` starts at ce304a2. [Policy/tests](docs/gamepad-range-loot/README.md):
+acquisition covers the server attack-range square plus prior melee approach circles;
+skill cast ranges remain independent. Optional right-stick click picks up one nearby
+item while keeping explicit lock, cancelling an older attack/arrival. No remote loot,
+optimistic success or held-button repeat. Preserve existing mapping/lifecycle guards.
+No Simulator/hardware claims, player data, server changes, merge or deployment.

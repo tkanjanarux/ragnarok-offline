@@ -3,7 +3,7 @@ import Foundation
 typealias GamepadTargetValidation = @MainActor (UInt32) -> Bool
 
 struct GamepadInput: Sendable {
-    enum Button: Int, CaseIterable, Sendable { case a, b, x, y, leftShoulder, rightShoulder, menu, up, down, left, right }
+    enum Button: Int, CaseIterable, Sendable { case a, b, x, y, leftShoulder, rightShoulder, menu, up, down, left, right, rightStick }
     var left = SIMD2<Float>.zero
     var right = SIMD2<Float>.zero
     var buttons: Set<Button> = []
@@ -12,7 +12,7 @@ struct GamepadInput: Sendable {
     var neutral: Bool { GamepadReducer.axis(left) == .zero && GamepadReducer.axis(right) == .zero && buttons.isEmpty && !leftTrigger && !rightTrigger }
 }
 
-enum GamepadCommand: Equatable { case primary, cancel, menu, target(Int), shortcut(row: Int, column: Int), companion(String) }
+enum GamepadCommand: Equatable { case primary, pickup, cancel, menu, target(Int), shortcut(row: Int, column: Int), companion(String) }
 struct GamepadFrame {
     var cancelAttack = false
     var move: SIMD2<Float>?
@@ -70,7 +70,8 @@ struct GamepadReducer {
         let left = consumedMovement == nil ? rawLeft : SIMD2<Float>.zero
         frame.cancelAttack = left != .zero
         if left != .zero && now >= nextMove { frame.move = left; nextMove = now + 0.2 }
-        frame.camera = Self.axis(input.right) * Float(dt)
+        // Clicking the stick must not orbit the camera from press-induced deflection.
+        frame.camera = input.buttons.contains(.rightStick) ? .zero : Self.axis(input.right) * Float(dt)
         guard now >= nextAction else { return frame }
         for button in GamepadInput.Button.allCases where edges.contains(button) {
             let face = [GamepadInput.Button.a, .b, .x, .y].firstIndex(of: button)
@@ -79,6 +80,7 @@ struct GamepadReducer {
             else {
                 switch button {
                 case .a: frame.command = .primary; frame.move = nil
+                case .rightStick: frame.command = .pickup; frame.move = nil
                 case .x: frame.command = .shortcut(row: 0, column: 0)
                 case .y: frame.command = .shortcut(row: 0, column: 1)
                 case .leftShoulder: frame.command = .target(-1)
@@ -171,24 +173,23 @@ struct GamepadTeamPlan {
 
 /// Preview is only a proposal. Choosing it never selects a scene entity or sends packets.
 struct GamepadDirectionalTargets {
-    static let acquireRadius: Float = 8
-    static let lockRadius: Float = 12
     static let halfConeRadians: Float = 40 * .pi / 180
     static let distanceWeight: Float = 0.08
     static let hysteresis: Float = 0.06
     typealias Candidate = GamepadTargetRing.Candidate
     private(set) var preview: UInt32?
     mutating func reset() { preview = nil }
-    mutating func update(_ candidates: [Candidate], origin: SIMD2<Float>, facing: SIMD2<Float>) {
+    mutating func update(_ candidates: [Candidate], origin: SIMD2<Float>, facing: SIMD2<Float>, attackRange: Int = 0) {
+        let range = GamepadTargetRange(attackRange: attackRange)
         let length = sqrt(facing.x*facing.x + facing.y*facing.y)
         guard length > 0, length.isFinite else { preview = nil; return }
         let forward = facing / length
         let ranked: [(UInt32, Float)] = candidates.compactMap { c in
             let d = c.position - origin, distance = sqrt(d.x*d.x + d.y*d.y)
-            guard distance.isFinite, distance <= Self.acquireRadius else { return nil }
+            guard distance.isFinite, range.containsSoft(d) else { return nil }
             let dot = distance > 0 ? (d.x*forward.x + d.y*forward.y) / distance : 1
             guard dot >= cos(Self.halfConeRadians) else { return nil }
-            return (c.id, acos(min(1,max(-1,dot))) + distance / Self.acquireRadius * Self.distanceWeight)
+            return (c.id, acos(min(1,max(-1,dot))) + distance / Float(max(8, attackRange)) * Self.distanceWeight)
         }.sorted { $0.1 == $1.1 ? $0.0 < $1.0 : $0.1 < $1.1 }
         guard let best = ranked.first else { preview = nil; return }
         if let old = ranked.first(where: { $0.0 == preview }), old.1 <= best.1 + Self.hysteresis { return }
@@ -213,4 +214,17 @@ struct GamepadFacingIntent {
         let angle = -Float(direction) * .pi / 4 - .pi / 2
         return SIMD2(cos(angle),sin(angle))
     }
+}
+
+/// Server range uses the same Chebyshev cell distance as PathFinder/attackMonster.
+/// Union with the old approach circles keeps melee usability without changing hit range.
+struct GamepadTargetRange {
+    let attackRange: Int
+    private func contains(_ delta: SIMD2<Float>, approachRadius: Float) -> Bool {
+        guard delta.x.isFinite, delta.y.isFinite else { return false }
+        return max(abs(delta.x), abs(delta.y)) <= Float(max(0, attackRange))
+            || delta.x * delta.x + delta.y * delta.y <= approachRadius * approachRadius
+    }
+    func containsSoft(_ delta: SIMD2<Float>) -> Bool { contains(delta, approachRadius: 8) }
+    func containsLock(_ delta: SIMD2<Float>) -> Bool { contains(delta, approachRadius: 12) }
 }
