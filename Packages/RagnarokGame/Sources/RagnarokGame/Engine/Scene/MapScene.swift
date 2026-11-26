@@ -987,11 +987,13 @@ extension MapScene {
         for offset in [0, 1, -1] {
             let angle = Float(octant + offset) * .pi / 4
             let step = SIMD2<Int>(Int(cos(angle).rounded()), Int(sin(angle).rounded()))
-            let target = origin &+ step
-            if pathFinder.canMoveStraight(from: origin, to: target) && pathFinder.canRequestMove(from: origin, to: target) {
-                cancelArrivalAction()
-                requestMove(to: target)
-                return
+            for distance in stride(from: GamepadReducer.lookahead(speedMilliseconds: player.speed), through: 1, by: -1) {
+                let target = origin &+ step &* distance
+                if pathFinder.canMoveStraight(from: origin, to: target) && pathFinder.canRequestMove(from: origin, to: target) {
+                    cancelArrivalAction()
+                    requestMove(to: target)
+                    return
+                }
             }
         }
     }

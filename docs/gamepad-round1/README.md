@@ -17,8 +17,8 @@ operations block gameplay. Touch gestures own input until released and the pad
 returns neutral. Controller menu/cancel never confirms a transaction.
 
 Left stick uses a radial0.22 deadzone and the same camera-to-grid rotation as the
-touch stick. At most five movement requests/second target one tile beyond the
-next movement cell, with existing straight-path and request-path checks. No speed
+touch stick. At most five movement requests/second target1–5 tiles beyond the
+next movement cell, according to the current server speed, with existing straight-path and request-path checks. No speed
 change, local teleport, delayed movement queue or stop opcode. Release/reset stops
 issuing requests; the already accepted short path can finish. This is **not an
 instant server stop**. Right stick uses clamped elapsed time (50ms maximum),

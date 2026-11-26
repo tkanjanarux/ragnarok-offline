@@ -33,6 +33,11 @@ struct GamepadReducer {
         guard length > 0.22 else { return .zero }
         return value / length * min(1, (length - 0.22) / 0.78)
     }
+    /// Keep enough server-speed cells ahead to cover the 200ms send interval.
+    /// This changes only lookahead, never the server's speed or local movement clock.
+    static func lookahead(speedMilliseconds: Int) -> Int {
+        min(5, max(1, Int(ceil(250 / Double(max(1, speedMilliseconds))))))
+    }
     static func worldDirection(_ value: SIMD2<Float>, azimuth: Float) -> SIMD2<Float> {
         let a = -azimuth
         return SIMD2(value.x * cos(a) - value.y * sin(a), value.x * sin(a) + value.y * cos(a))

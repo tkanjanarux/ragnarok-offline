@@ -113,4 +113,13 @@ struct GamepadInputTests {
         #expect(!ring.select(2) && ring.selected == nil)
     }
 
+    @Test func shortLookaheadCoversSendIntervalWithoutChangingServerSpeed() {
+        for speed in [50,60,100,150,200,300,600] {
+            let cells = GamepadReducer.lookahead(speedMilliseconds: speed)
+            #expect((1...5).contains(cells))
+            #expect(cells * speed >= 200)
+        }
+        #expect(GamepadReducer.lookahead(speedMilliseconds: 0) <= 5)
+    }
+
 }
