@@ -20,7 +20,7 @@ final class GamepadController: NSObject {
     private var controller: GCController?
     private var touchRevision: UInt64 = 0
     private var facing = SIMD2<Float>(0, 1)
-    private var companionID: UInt32?
+    private var teamPlan = GamepadTeamPlan()
     private var companionRequest: UInt32?
 
     override init() {
@@ -32,6 +32,7 @@ final class GamepadController: NSObject {
         }
     }
     @objc private func resetInput() {
+        teamPlan.cancel(); companionRequest = nil
         reducer.reset(); ring.reset(); activeScene?.gamepadCancel(); targetName = "No target"
     }
 
@@ -45,7 +46,7 @@ final class GamepadController: NSObject {
         resetInput()
         companionRequest = nil
         defer {
-            runtime.scene.gamepadCancel()
+            if runID == id { runtime.scene.gamepadCancel() }
             if runID == id { activeScene = nil; reducer.reset(); ring.reset(); controller = nil; connectedName = nil }
         }
         while !Task.isCancelled && runID == id {
@@ -59,6 +60,7 @@ final class GamepadController: NSObject {
         let devices = GCController.controllers().filter { $0.extendedGamepad != nil }
         let current = controller.flatMap { old in devices.first { $0 === old } } ?? devices.first
         if current !== controller {
+            teamPlan.cancel(); companionRequest = nil
             scene.gamepadCancel(); reducer.reset(); ring.reset(); controller = current
             connectedName = current?.vendorName ?? (current == nil ? nil : "Controller")
             if let pad = current?.extendedGamepad {
@@ -81,8 +83,8 @@ final class GamepadController: NSObject {
         let uiBlocked = blocked || helpVisible || session.gamepadModalOpen || editingOrPresented
         let frame = reducer.sample(input, now: ProcessInfo.processInfo.systemUptime, available: available,
                                    blocked: uiBlocked || scene.thumbstickValue != .zero || !scene.gamepadTouchGestures.isEmpty)
-        if !available { scene.gamepadCancel(); ring.reset(); targetName = "No target"; return }
-        if uiBlocked { scene.gamepadCancel(); ring.reset() }
+        if !available { teamPlan.cancel(); companionRequest = nil; scene.gamepadCancel(); ring.reset(); targetName = "No target"; return }
+        if uiBlocked { teamPlan.cancel(); companionRequest = nil; scene.gamepadCancel(); ring.reset() }
         let origin = SIMD2<Float>(Float(scene.player.gridPosition.x),Float(scene.player.gridPosition.y))
         let left = GamepadReducer.axis(input.left)
         if left != .zero { facing = GamepadReducer.worldDirection(left, azimuth: scene.camera.azimuth) }
@@ -104,30 +106,40 @@ final class GamepadController: NSObject {
             targetName = scene.objects[id]?.name ?? "No target"
         }
         else { targetName = scene.selectedTarget?.name ?? "No target" }
+        if frame.cancelAttack { scene.gamepadInterruptAttack() }
         if let move = frame.move {
             facing = GamepadReducer.worldDirection(move, azimuth: scene.camera.azimuth)
             scene.gamepadMove(facing)
         }
         scene.camera.azimuth = (scene.camera.azimuth + frame.camera.x * 1.8).truncatingRemainder(dividingBy: .pi * 2)
         scene.camera.elevation = min(.pi / 3, max(.pi / 12, scene.camera.elevation + frame.camera.y))
-        if let request = companionRequest,
-           session.companions.completedSequence == request || !session.companions.pending {
-            message = session.companions.message
-            companionRequest = nil
-        }
         let profiles = session.companions.profiles.filter { $0.active && $0.hp > 0 }.sorted { $0.id < $1.id }
-        if !profiles.contains(where: { $0.id == companionID }) { companionID = profiles.first?.id }
-        companionName = profiles.first(where: { $0.id == companionID })?.name ?? "No active companion"
+        companionName = "Team · \(profiles.count) active"
+        if let request = companionRequest {
+            if session.companions.sequence != request {
+                teamPlan.cancel(); companionRequest = nil
+                message = "Team command interrupted by another command."
+            } else if !session.companions.pending {
+                companionRequest = nil
+                let accepted = session.companions.completedSequence == request && teamPlan.acknowledge(
+                    message: session.companions.message, ready: session.companions.ready && session.companions.available,
+                    members: profiles.map(\.id))
+                if accepted { sendTeamStep(session) }
+                else { teamPlan.cancel(); message = session.companions.message + " Team command stopped; check the roster." }
+            }
+        }
         guard let command = frame.command else { return }
         switch command {
         case .menu: if !editingOrPresented { menu() }
         case .cancel:
+            scene.gamepadCancel(); ring.reset(); teamPlan.cancel(); companionRequest = nil
             if helpVisible { helpVisible = false }
             else if !cancelWindow() {
                 if uiBlocked { message = "Use touch to close this window." }
                 scene.gamepadCancel(); ring.reset()
             }
         case .target(let direction):
+            scene.gamepadCancel()
             if let id = ring.cycle(direction) { scene.selectTarget(scene.objects[id]) }
         case .primary:
             if ring.selected == nil {
@@ -139,18 +151,26 @@ final class GamepadController: NSObject {
             }
             message = scene.gamepadPrimary() ?? ""
         case .shortcut(let row, let column): useShortcut(row: row, column: column, session: session, scene: scene)
-        case .nextCompanion:
-            if !session.companions.ready { session.companionCommand("list") }
-            else if let index = profiles.firstIndex(where: { $0.id == companionID }), !profiles.isEmpty { companionID = profiles[(index + 1) % profiles.count].id }
         case .companion(let verb):
-            guard let companionID, session.companions.ready, session.companions.available,
-                  !session.companions.pending, !session.companions.transferPending else { message = "Load companions first; D-pad left refreshes the roster."; return }
-            session.companionCommand("\(verb) \(companionID)")
-            if session.companions.pending {
-                companionRequest = session.companions.sequence
-                message = "Waiting for companion confirmation…"
+            guard session.companions.ready, session.companions.available,
+                  !session.companions.pending, !session.companions.transferPending,
+                  teamPlan.steps.isEmpty else { message = "Open Companions to load the roster, or wait for the pending command."; return }
+            guard teamPlan.begin(verb, members: profiles.map(\.id), teamMode: session.companions.teamMode != nil,
+                                 hunt: session.companions.nearbyHunt != nil) else {
+                message = "No active team or this server does not advertise team controls."; return
             }
+            sendTeamStep(session)
         }
+    }
+    private func sendTeamStep(_ session: PlaySession) {
+        guard let step = teamPlan.steps.first else { message = "Team command confirmed."; return }
+        guard session.companions.ready, session.companions.available, !session.companions.pending,
+              !session.companions.transferPending else { teamPlan.cancel(); message = "Team command interrupted."; return }
+        session.companionCommand(step.action)
+        if session.companions.pending {
+            companionRequest = session.companions.sequence
+            message = "Waiting for team confirmation…"
+        } else { teamPlan.cancel(); message = "Team command was not sent." }
     }
     private func useShortcut(row: Int, column: Int, session: PlaySession, scene: MapScene) {
         let rows = session.shortcutList.rows

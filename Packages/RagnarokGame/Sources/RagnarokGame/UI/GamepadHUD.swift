@@ -12,7 +12,7 @@ struct GamepadHUD: View {
                     Button("Controls") { controller.helpVisible.toggle() }
                 }
                 Text("Target: \(controller.targetName)").lineLimit(1)
-                Text("Companion: \(controller.companionName)").lineLimit(1)
+                Text("\(controller.companionName)").lineLimit(1)
                 if !controller.message.isEmpty { Text(controller.message).lineLimit(2) }
             }.font(.game(size: 10)).foregroundStyle(Color.gameLabel)
                 .buttonStyle(ROCompactButtonStyle(visualHeight: 20, hitHeight: 28))
@@ -33,15 +33,15 @@ struct GamepadHelp: View {
                         Text("Left stick: walk relative to camera. Right stick: orbit camera.")
                         Text("Release: finish the short accepted step; not an instant server stop.")
                         Text("\(label("lb")) / \(label("rb")): previous / next visible monster")
-                        Text("\(label("a")): one attack. Selected nearby NPC: talk. No target nearby: loot.")
+                        Text("\(label("a")): approach and attack continuously. Selected nearby NPC: talk. No target nearby: loot.")
                         Text("\(label("b")): cancel target / close menu. Menu: Options.")
-                        Text("\(label("x")) / \(label("y")): shortcut row 1, slots 1 / 2")
-                        Text("\(label("lt")) + bottom/right/left/top: row 1, slots 3–6")
-                        Text("\(label("rt")) + bottom/right/left/top: row 2, slots 1–4. Both triggers: right wins.")
-                        Text("D-pad up: Follow · right: Assist · down: Stop · left: next companion / load roster")
-                        Text("Companion: \(controller.companionName)")
+                        Text("\(label("x")) / \(label("y")): shortcut row 1, slots 1 / 2 (same as left-trigger shortcuts)")
+                        Text("\(label("lt")) + \(label("a"))/\(label("b"))/\(label("x"))/\(label("y")): row 1, slots 1–4")
+                        Text("\(label("rt")) + \(label("a"))/\(label("b"))/\(label("x"))/\(label("y")): row 1, slots 5–8. Both triggers: right wins.")
+                        Text("D-pad up: Follow · right: Assist · down: Stop · left: Hunt (whole active team)")
+                        Text("\(controller.companionName)")
                         Text("Configure items/skills in the existing shortcut bar. Passive and ground skills are not cast by the controller; ground skills use touch controls.")
-                        Text("One action per press. Release controls after touching the map, closing windows or returning to the app. Transactions and text entry use touch.")
+                        Text("One command per press; attacks repeat on the selected monster only. Move, cancel or change target to end attacking. Release controls after touching the map, closing windows or returning to the app. Transactions and text entry use touch.")
                         Button("Close") { controller.helpVisible = false }
                     }.padding(10)
                 }

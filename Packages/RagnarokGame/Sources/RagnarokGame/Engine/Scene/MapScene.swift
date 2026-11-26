@@ -181,6 +181,7 @@ public final class MapScene {
     }
 
     private var pendingArrivalAction: (@MainActor () -> Void)?
+    private var gamepadAttack = GamepadAttackLease()
     private var arrivalTask: Task<Void, any Error>?
 
     var gamepadTouchRevision: UInt64 = 0
@@ -625,6 +626,7 @@ extension MapScene {
     }
 
     func selectTarget(_ target: MapSceneMapObject?) {
+        if selectedTargetID != target?.objectID && gamepadAttack.target != nil { cancelArrivalAction() }
         targetSelector = nil
         selectedTargetID = target?.objectID
 
@@ -691,6 +693,7 @@ extension MapScene {
     }
 
     private func cancelArrivalAction() {
+        stopGamepadAttack()
         arrivalTask?.cancel()
         arrivalTask = nil
 
@@ -835,7 +838,11 @@ extension MapScene {
 // MARK: - Player Actions
 
 extension MapScene {
-    func attackMonster(targetID: GameObjectID) {
+    func attackMonster(targetID: GameObjectID, gamepadGeneration: UInt64? = nil) {
+        if let token = gamepadGeneration {
+            guard gamepadAttack.accepts(token, target: targetID), playSession.mapScene === self,
+                  !state.isPlayerDead else { return }
+        } else { stopGamepadAttack() }
         guard let target = objects[targetID], !target.isDead else {
             return
         }
@@ -849,7 +856,7 @@ extension MapScene {
         case .moveTo(let destination):
             arrivalTask?.cancel()
             pendingArrivalAction = { [weak self] in
-                self?.attackMonster(targetID: targetID)
+                self?.attackMonster(targetID: targetID, gamepadGeneration: gamepadGeneration)
             }
             requestMove(to: destination)
         case .noPath:
@@ -981,6 +988,7 @@ extension MapScene {
 extension MapScene {
     /// No stop opcode is invented: releasing ends requests; the short accepted path finishes.
     func gamepadMove(_ direction: SIMD2<Float>) {
+        cancelArrivalAction()
         guard !state.isPlayerDead, player.action.actionType != .sit, thumbstickValue == .zero else { return }
         let origin = player.nextPosition(at: .now) ?? player.gridPosition
         let octant = Int((atan2(direction.y, direction.x) / (.pi / 4)).rounded())
@@ -997,15 +1005,28 @@ extension MapScene {
             }
         }
     }
+    private func stopGamepadAttack() {
+        guard gamepadAttack.cancel(), playSession.mapScene === self, !state.isPlayerDead else { return }
+        // CZ_REQUEST_ACT NORMAL with no entity: clif_parse_ActionRequest_sub first
+        // unit_stop_attack(), then unit_attack(0) releases the invalid target.
+        // No invented opcode and no claim that an accepted walking path stops.
+        playSession.requestAction(.normal, onTarget: 0)
+        // WalkToXY(flag 4) also clears target_to/step_attack before its movement
+        // cooldown check. This covers an attack accepted while stepping or casting.
+        // One bounded stop destination, not a stream or an immediate-stop promise.
+        playSession.requestMove(to: player.nextPosition(at: .now) ?? player.gridPosition)
+    }
+    func gamepadInterruptAttack() { cancelArrivalAction() }
     func gamepadCancel() { cancelArrivalAction(); selectTarget(nil) }
     func gamepadPrimary() -> String? {
         if let target = selectedTarget {
             let delta = target.gridPosition &- player.gridPosition
             let distance = max(abs(delta.x), abs(delta.y))
             if target.type == .monster {
-                guard distance <= max(1, playSession.playerStatus.attackRange) else { return "Move closer to attack." }
+                guard !target.isDead else { return "Target is no longer available." }
                 cancelArrivalAction()
-                playSession.requestAction(.normal, onTarget: target.objectID)
+                let token = gamepadAttack.begin(target.objectID)
+                attackMonster(targetID: target.objectID, gamepadGeneration: token)
             } else if target.type == .npc && distance <= 2 && ![45,111,139].contains(target.job) {
                 playSession.talkToNPC(npcID: target.objectID)
             }

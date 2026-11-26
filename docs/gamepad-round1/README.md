@@ -30,12 +30,18 @@ ID-based ring ordering and lock persist as new monsters spawn. Invalid/vanished/
 out-of-view/dead targets clear without automatically attacking their replacement.
 The existing world target selector and compact RO HUD identify the lock.
 
-A primary press requests `DMG_NORMAL` once only, within current attack range,
-not `DMG_REPEAT` (verified in existing clif_parse_ActionRequest/unit_attack path).
-A selected visible NPC within2 cells may receive the existing talk command; with
-no target/candidate, existing pickup is allowed only within1 cell. It never
-confirms an NPC dialog, shop or transaction. Approach remains manual. Existing
-server cooldown/speed/permission rules remain authoritative.
+A primary press now uses the same `attackMonster` approach/arrival/DMG_REPEAT
+pipeline as touching a monster. One edge starts continuous attacks on that ID;
+there is no automatic acquisition/attack after it dies. Moving, B, changing targets,
+touch movement, map/lifecycle loss or controller disconnect invalidate an attack
+generation, cancel the arrival task and send cancellation only once for that attack.
+Cancellation sends CZ_REQUEST_ACT NORMAL target0 (stop attack timer), then one
+short WalkToXY to the next known cell (clears server target_to/step_attack via
+unit_walktoxy flag4). Server cooldown/status/network rules remain authoritative;
+there is no stop acknowledgement or guarantee of instantaneous motion cessation.
+Old scenes cannot send cancellation through a new map session. Captured old arrival
+callbacks are rejected even when a new attack uses the same monster ID.
+Nearby NPC/loot interaction remains bounded, never confirms transactions.
 
 ## Mapping
 
@@ -47,14 +53,14 @@ controller's reported localized labels, falling back to position names.
 | Left stick | Camera-relative short-step walk |
 | Right stick | Camera orbit/elevation |
 | Left / right shoulder | Previous / next monster |
-| Bottom face (Xbox A) | One attack / explicit selected NPC / nearby loot |
+| Bottom face (Xbox A) | Approach + continuous attack / explicit selected NPC / nearby loot |
 | Right face (Xbox B) | Cancel targeting, close game menu/guild/help; other transactions use touch |
-| Left / top face (Xbox X/Y) | Absolute shortcut row1 slots1/2 |
-| Left trigger + bottom/right/left/top | Row1 slots3–6 |
-| Right trigger + bottom/right/left/top | Row2 slots1–4; right wins if both triggers held |
+| Left / top face (Xbox X/Y) | Absolute shortcut row1 slots1/2 (aliases of LT slots1/2) |
+| Left trigger + bottom/right/left/top | Row1 slots1–4 |
+| Right trigger + bottom/right/left/top | Row1 slots5–8; right wins if both triggers held |
 | Menu | Options |
-| D-pad up/right/down | Follow/Assist/Stop for the named active companion |
-| D-pad left | Next active companion, or load roster if unavailable |
+| D-pad up/right/down | Follow/Assist/Stop for the active team |
+| D-pad left | Nearby Hunt for the active team |
 
 Shortcuts are bounded by the real list and use the existing item/skill pipeline.
 The controller adds passive/unlearned/cast/cooldown/target/range checks; ground
@@ -63,13 +69,23 @@ guessed location. One command per press with a150ms minimum action interval;
 suppressed presses are dropped, not queued. Slots are absolute, unaffected by the
 visible shortcut row shift. No user item IDs are hardcoded.
 
-D-pad commands use the existing profile-ID companion callback and pending guards.
-No camp/nearby-hunt/team-mode/RL command is sent, no automatic summon or grants.
-The roster must contain a living active companion. Inspect its name in Controls.
+All four D-pad directions have team scope. The actual RCO1 UI protocol exposes
+per-profile Follow/Assist/Stop and `hunt on` for nearby team hunting; it has no
+acknowledged `teamfollow` verb. The client first sends existing `teamoff` (or
+`hunt off` on the older advertised capability), then serializes follow/assist/stop
+for the snapshot of living active profile IDs, or sends `hunt on`. Hunt is the
+existing game feature, not camp/Mob/Boss/RL, and the server checks party authority.
+Each step waits for the matching sequence, complete ready roster and expected
+server success result. Rejection, timeout, roster changes, another command,
+modal/lifecycle loss or B cancels the unsent remainder. Already acknowledged
+steps remain effective: this is not an atomic team transaction or automatic rollback.
+Load the roster through the touch Companions window first; no automatic summons.
+Server source evidence: production source.patch `roster_action`, `set_hunt`,
+`roster_reply`, plus playable delta; only read, not modified or deployed.
 
 ## Tests and acceptance
 
-Portable tests compile the actual reducer/target ring: deadzone/normalization,
+Portable tests compile the actual reducer/target ring/team plan/attack generation: deadzone/normalization,
 axes, send rate, held/edge behavior, trigger conflicts, modal and lifecycle reset,
 no replay, bounded camera dt, target stability and invalidation. Existing guild/
 foundation and navigation checks remain independent CI jobs. Xcode27.2 builds the
@@ -83,7 +99,7 @@ production restart/deploy or live account testing was performed.
 Manual acceptance: externally sign/install the IPA, connect an extended pad,
 release all controls, load your active companion roster and confirm Assist mode
 using existing UI. In the orc map, walk/turn camera, cycle a visible monster and
-press primary once in range. Put your chosen potion in row1 slot1, then press
+press primary once outside attack range. Put your chosen potion in row1 slot1, then press
 left face once. Test chord slots, cancel, open chat/Bank, disconnect while moving,
 background/foreground and warp; no gameplay should resume until neutral. Confirm
 the accepted short step may finish and no held item/skill action repeats.
@@ -97,3 +113,12 @@ the accepted short step may finish and no held item/skill action repeats.
 
 No external implementation or proprietary artwork is copied. Existing RO skins
 are resolved through the user's resource loader.
+
+## Controls follow-up
+
+Branch `gamepad-round1-controls`, base `be00178` (native build45733383927 passed).
+23 portable tests: 19 policy tests and 4 tests compiling the actual MapScene
+combat methods with injected movement/packet seams. The latter verify approach,
+repeat, single cancellation packets, stale arrival rejection and map identity;
+they are not a live server or device test. Run both `scripts/test-gamepad.py` and
+`scripts/test-gamepad-combat.py` against the same temporary package, then swift test.

@@ -147,3 +147,12 @@ Modal/text/lifecycle/touch ownership require neutral before resuming. Movement
 release is not an instant server stop; ground skills and transaction dialogs use
 touch. No remapping/full inventory navigation, Simulator, hardware acceptance,
 PR merge or server deployment. IPA is unsigned for external signing.
+
+## Gamepad controls follow-up
+
+`gamepad-round1-controls` starts at be00178, preserving guild2674eea/navigation/HP.
+Primary uses touch approach/repeat; owned attack generation plus real cancellation
+packets prevents stale local arrivals. Eight trigger chords use row1 slots1–8.
+D-pad has team scope with acknowledged serialized existing commands, including
+nearby Hunt. See updated gamepad notes for partial-batch and protocol limitations.
+No server changes, accounts, Simulator, hardware acceptance, merge or deployment.

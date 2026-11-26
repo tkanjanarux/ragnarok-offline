@@ -10,8 +10,9 @@ struct GamepadInput: Sendable {
     var neutral: Bool { GamepadReducer.axis(left) == .zero && GamepadReducer.axis(right) == .zero && buttons.isEmpty && !leftTrigger && !rightTrigger }
 }
 
-enum GamepadCommand: Equatable { case primary, cancel, menu, target(Int), shortcut(row: Int, column: Int), companion(String), nextCompanion }
+enum GamepadCommand: Equatable { case primary, cancel, menu, target(Int), shortcut(row: Int, column: Int), companion(String) }
 struct GamepadFrame {
+    var cancelAttack = false
     var move: SIMD2<Float>?
     var camera = SIMD2<Float>.zero
     var command: GamepadCommand?
@@ -55,16 +56,17 @@ struct GamepadReducer {
         if !gameplayArmed { gameplayArmed = input.neutral; return .init() }
         var frame = GamepadFrame()
         let left = Self.axis(input.left)
+        frame.cancelAttack = left != .zero
         if left != .zero && now >= nextMove { frame.move = left; nextMove = now + 0.2 }
         frame.camera = Self.axis(input.right) * Float(dt)
         guard now >= nextAction else { return frame }
         for button in GamepadInput.Button.allCases where edges.contains(button) {
             let face = [GamepadInput.Button.a, .b, .x, .y].firstIndex(of: button)
-            if let face, input.rightTrigger { frame.command = .shortcut(row: 1, column: face) }
-            else if let face, input.leftTrigger { frame.command = .shortcut(row: 0, column: face + 2) }
+            if let face, input.rightTrigger { frame.command = .shortcut(row: 0, column: face + 4) }
+            else if let face, input.leftTrigger { frame.command = .shortcut(row: 0, column: face) }
             else {
                 switch button {
-                case .a: frame.command = .primary
+                case .a: if left == .zero { frame.command = .primary }
                 case .x: frame.command = .shortcut(row: 0, column: 0)
                 case .y: frame.command = .shortcut(row: 0, column: 1)
                 case .leftShoulder: frame.command = .target(-1)
@@ -72,7 +74,7 @@ struct GamepadReducer {
                 case .up: frame.command = .companion("follow")
                 case .right: frame.command = .companion("assist")
                 case .down: frame.command = .companion("stop")
-                case .left: frame.command = .nextCompanion
+                case .left: frame.command = .companion("hunt")
                 default: break
                 }
             }
@@ -113,5 +115,44 @@ struct GamepadTargetRing {
         let index = selected.flatMap { order.firstIndex(of: $0) }
         selected = order[index.map { ($0 + (step < 0 ? -1 : 1) + order.count) % order.count } ?? 0]
         return selected
+    }
+}
+
+/// A cancelled arrival must never revive a previous attack, including the same target ID.
+struct GamepadAttackLease {
+    private(set) var generation: UInt64 = 0
+    private(set) var target: UInt32?
+    mutating func begin(_ target: UInt32) -> UInt64 {
+        generation &+= 1; self.target = target; return generation
+    }
+    func accepts(_ token: UInt64, target: UInt32) -> Bool { token == generation && self.target == target }
+    @discardableResult mutating func cancel() -> Bool {
+        let active = target != nil; generation &+= 1; target = nil; return active
+    }
+}
+
+/// The UI protocol has per-profile follow/assist/stop and a team hunt command.
+/// Serialize those existing acknowledged operations; never send unacknowledged chat verbs.
+struct GamepadTeamPlan {
+    struct Step: Equatable { let action: String; let success: String }
+    private(set) var steps: [Step] = []
+    private(set) var members: [UInt32] = []
+    mutating func cancel() { steps = []; members = [] }
+    mutating func begin(_ verb: String, members: [UInt32], teamMode: Bool, hunt: Bool) -> Bool {
+        cancel()
+        guard ["follow", "assist", "stop", "hunt"].contains(verb), !members.isEmpty,
+              teamMode || hunt, verb != "hunt" || hunt else { return false }
+        self.members = members.sorted()
+        steps = [.init(action: teamMode ? "teamoff" : "hunt off", success: teamMode ? "Assist mode." : "Nearby hunt OFF.")]
+        if verb == "hunt" { steps.append(.init(action: "hunt on", success: "Nearby hunt ON.")) }
+        else {
+            let success = verb == "follow" ? "Following." : verb == "assist" ? "Assisting." : "Stopped."
+            steps += self.members.map { .init(action: "\(verb) \($0)", success: success) }
+        }
+        return true
+    }
+    mutating func acknowledge(message: String, ready: Bool, members: [UInt32]) -> Bool {
+        guard ready, members.sorted() == self.members, steps.first?.success == message else { cancel(); return false }
+        steps.removeFirst(); return true
     }
 }

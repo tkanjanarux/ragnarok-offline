@@ -57,9 +57,9 @@ struct GamepadInputTests {
     @Test func triggerChordsAreDeterministicAndDoNotLeakCancel() {
         for (index,button) in [GamepadInput.Button.a,.b,.x,.y].enumerated() {
             var r = armed()
-            #expect(r.sample(.init(buttons:[button],leftTrigger:true),now:1,available:true,blocked:false).command == .shortcut(row:0,column:index+2))
+            #expect(r.sample(.init(buttons:[button],leftTrigger:true),now:1,available:true,blocked:false).command == .shortcut(row:0,column:index))
             r = armed()
-            #expect(r.sample(.init(buttons:[button],leftTrigger:true,rightTrigger:true),now:1,available:true,blocked:false).command == .shortcut(row:1,column:index))
+            #expect(r.sample(.init(buttons:[button],leftTrigger:true,rightTrigger:true),now:1,available:true,blocked:false).command == .shortcut(row:0,column:index+4))
         }
     }
     @Test func pressingTriggerOnHeldFaceDoesNotFireAgain() {
@@ -120,6 +120,52 @@ struct GamepadInputTests {
             #expect(cells * speed >= 200)
         }
         #expect(GamepadReducer.lookahead(speedMilliseconds: 0) <= 5)
+    }
+
+    @Test func cancelledArrivalCannotResumeEvenForSameMonster() {
+        var lease = GamepadAttackLease()
+        let old = lease.begin(12)
+        #expect(lease.accepts(old, target:12))
+        #expect(lease.cancel() == true)
+        #expect(lease.cancel() == false) // One network stop, not every tick.
+        let current = lease.begin(12)
+        #expect(!lease.accepts(old, target:12))
+        #expect(lease.accepts(current, target:12))
+        #expect(!lease.accepts(current, target:13))
+    }
+    @Test func allEightChordsAndDpadTeamScope() {
+        for (index,button) in [GamepadInput.Button.a,.b,.x,.y].enumerated() {
+            var r = armed()
+            #expect(r.sample(.init(buttons:[button],rightTrigger:true),now:1,available:true,blocked:false).command == .shortcut(row:0,column:index+4))
+        }
+        for (button,verb) in [(GamepadInput.Button.up,"follow"),(.right,"assist"),(.down,"stop"),(.left,"hunt")] {
+            var r = armed()
+            #expect(r.sample(.init(buttons:[button]),now:1,available:true,blocked:false).command == .companion(verb))
+        }
+    }
+    @Test func teamCommandsRequireMatchingAcknowledgementsAndCapabilities() {
+        var plan = GamepadTeamPlan()
+        #expect(plan.begin("hunt", members:[1], teamMode:true, hunt:false) == false)
+        #expect(plan.begin("assist", members:[], teamMode:true, hunt:true) == false)
+        #expect(plan.begin("follow", members:[2,1], teamMode:true, hunt:true) == true)
+        #expect(plan.steps.map(\.action) == ["teamoff","follow 1","follow 2"])
+        #expect(plan.acknowledge(message:"Assist mode.",ready:true,members:[1,2]) == true)
+        #expect(plan.acknowledge(message:"Following.",ready:false,members:[1,2]) == false)
+        #expect(plan.steps.isEmpty)
+        #expect(plan.begin("hunt", members:[1,2], teamMode:true, hunt:true) == true)
+        #expect(plan.steps.map(\.action) == ["teamoff","hunt on"])
+        #expect(plan.acknowledge(message:"Assist mode.",ready:true,members:[1]) == false)
+        #expect(plan.steps.isEmpty)
+        #expect(plan.begin("stop", members:[1], teamMode:false, hunt:true) == true)
+        #expect(plan.steps.map(\.action) == ["hunt off","stop 1"])
+        plan.cancel(); #expect(plan.steps.isEmpty)
+    }
+
+    @Test func movingOverridesAttackEvenWhileMovePacketIsRateLimited() {
+        var r = armed()
+        _ = r.sample(.init(left:SIMD2(1,0)),now:1,available:true,blocked:false)
+        let f = r.sample(.init(left:SIMD2(1,0),buttons:[.a]),now:1.01,available:true,blocked:false)
+        #expect(f.cancelAttack && f.move == nil && f.command == nil)
     }
 
 }
