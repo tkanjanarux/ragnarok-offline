@@ -1,0 +1,34 @@
+[
+  {
+    "item_id": 12118,
+    "skill": 19,
+    "unprotected_hp_loss": 257,
+    "protected_hp_loss": 198,
+    "actual_native_skill_damage": true,
+    "fixture": "Poring level99/INT200; native setunitdata MATK request1000 is subject to status recalculation. HP loss measured after native skill, not an assertion of exact resistance percentage."
+  },
+  {
+    "item_id": 12119,
+    "skill": 14,
+    "unprotected_hp_loss": 257,
+    "protected_hp_loss": 198,
+    "actual_native_skill_damage": true,
+    "fixture": "Poring level99/INT200; native setunitdata MATK request1000 is subject to status recalculation. HP loss measured after native skill, not an assertion of exact resistance percentage."
+  },
+  {
+    "item_id": 12120,
+    "skill": 90,
+    "unprotected_hp_loss": 556,
+    "protected_hp_loss": 438,
+    "actual_native_skill_damage": true,
+    "fixture": "Poring level99/INT200; native setunitdata MATK request1000 is subject to status recalculation. HP loss measured after native skill, not an assertion of exact resistance percentage."
+  },
+  {
+    "item_id": 12121,
+    "skill": 20,
+    "unprotected_hp_loss": 257,
+    "protected_hp_loss": 198,
+    "actual_native_skill_damage": true,
+    "fixture": "Poring level99/INT200; native setunitdata MATK request1000 is subject to status recalculation. HP loss measured after native skill, not an assertion of exact resistance percentage."
+  }
+]

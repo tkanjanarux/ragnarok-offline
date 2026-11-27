@@ -247,3 +247,45 @@ this exact price; the earlier price72 evidence is superseded for SKU2000220.
 
 These are isolated protocol/native tests, not iPhone/hardware visual acceptance.
 No live catalogue or gameplay process has been updated.
+
+### Capture recovery follow-up (runtime verification in progress)
+
+The delayed-Char/disconnect test reproduced a distinct defect in native taming:
+roulette reported success, Char created a pet, but the disconnected account never
+received its egg. Native incubated pets have zero owner fields, so the fixture
+compares **all newly allocated pet IDs**, not only rows matching the character.
+See [baseline fault evidence](capture-defect-evidence.json). No player account was used.
+
+The candidate capture overlay leaves lure consumption and capture RNG unchanged.
+A successful RNG roll starts the existing save barrier; the map revalidates the
+same living target, character, connection, map, inventory and weight. It commits
+pet + egg + recovery journal before reporting success and removing the monster.
+Disconnect/cancel before that commit grants no egg and never reports success.
+A lure attempt remains consumed, including cancelled targeting, as in native RO;
+the item descriptions now state this explicitly. Concurrent target requests cannot
+create a second delivery after the first captures the monster.
+
+Both prepared source profiles reproduce; native Map/Char compile and15 actual
+SQLite transaction/recovery cases pass, including capture replay/rollback. The
+isolated matching binaries have been activated with a verified database backup.
+Packet recovery verification is still in progress; this paragraph does **not** mark
+capture sale readiness complete. No new schema beyond the existing pet journal is
+needed, and the matching Char guard/rollback requirements above still apply.
+
+[Resistance combat evidence](resist-combat-evidence.json) now covers all four
+potions reducing actual native elemental skill HP loss on a synthetic character.
+The fixture's requested MATK is recalculated by the native status system; the
+report deliberately does not claim an exact damage percentage from HP snapshots.
+
+`python3 scripts/cash-shop/audit-prices.py` verifies all83 pack prices use consistent
+values for55 components, a10% discount rounded to the nearest virtual Cash, and
+all four actual Arrow Crafting conversions. Hunter companion supplies now cost162
+and Priest supplies297; these replace inconsistent148/315 initial proposals.
+Repurchase verification at those two revised prices is pending. These checks do
+not claim to audit an external economy or grant/charge any player's balance.
+
+The portable client suite passes13 Swift Testing cases plus3 packet XCTest cases.
+The new129-product/chunk regression keeps earlier products, deduplicates repeated
+chunks and rejects checkout after a last-page product's price changes. Existing
+unknown-purchase/no-retry tests remain. UI has nine cells per page, search and
+category filtering; physical touch/controller checkout remains device-unverified.

@@ -36,6 +36,9 @@ def verify(output, profile):
     for entry in json.loads((HERE / 'party-warp-source.json').read_text())[profile]['changes']:
         assert expected[entry['source']] == entry['base_sha256']
         expected[entry['source']] = entry['patched_sha256']
+    for entry in json.loads((HERE / 'capture-source.json').read_text())[profile]['changes']:
+        assert expected[entry['source']] == entry['base_sha256']
+        expected[entry['source']] = entry['patched_sha256']
     for name, digest in expected.items():
         assert sha(output / name) == digest, name
     actual = {str(p.relative_to(output)) for part in ['src', '3rdparty']
@@ -107,6 +110,19 @@ def prepare(output, profile, base):
     subprocess.run(['git', 'apply', '--check', str(patch)], cwd=output, check=True)
     subprocess.run(['git', 'apply', str(patch)], cwd=output, check=True)
     for entry in party['changes']:
+        target = output / entry['source']
+        if entry['crlf']:
+            target.write_bytes(target.read_bytes().replace(b'\n', b'\r\n'))
+    capture = json.loads((HERE / 'capture-source.json').read_text())[profile]
+    patch = HERE / f'patches/capture-journal-{profile}.patch'
+    assert sha(patch) == capture['patch_sha256']
+    for entry in capture['changes']:
+        target = output / entry['source']
+        assert sha(target) == entry['base_sha256']
+        target.write_bytes(target.read_bytes().replace(b'\r\n', b'\n'))
+    subprocess.run(['git', 'apply', '--check', str(patch)], cwd=output, check=True)
+    subprocess.run(['git', 'apply', str(patch)], cwd=output, check=True)
+    for entry in capture['changes']:
         target = output / entry['source']
         if entry['crlf']:
             target.write_bytes(target.read_bytes().replace(b'\n', b'\r\n'))

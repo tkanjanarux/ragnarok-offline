@@ -38,7 +38,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -60,7 +60,22 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000010,
+        "aegis_name": "RO_Catalogue_1_0",
+        "name": "White Syrup 100/200 — 100 bottles",
+        "price_cash": 900
+      },
+      {
+        "item_id": 2000011,
+        "aegis_name": "RO_Catalogue_1_1",
+        "name": "White Syrup 100/200 — 200 bottles",
+        "price_cash": 1800
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 2,
@@ -93,7 +108,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -114,7 +129,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000020,
+        "aegis_name": "RO_Catalogue_2_0",
+        "name": "Blue Syrup pack — fixed contents",
+        "price_cash": 900
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 3,
@@ -147,7 +171,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -167,7 +191,16 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000030,
+        "aegis_name": "RO_Catalogue_3_0",
+        "name": "White Slim Potion pack — fixed contents",
+        "price_cash": 450
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 4,
@@ -200,7 +233,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -220,7 +253,16 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000040,
+        "aegis_name": "RO_Catalogue_4_0",
+        "name": "Blue Potion large box — fixed contents",
+        "price_cash": 450
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 5,
@@ -253,7 +295,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -273,7 +315,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000050,
+        "aegis_name": "RO_Catalogue_5_0",
+        "name": "Panacea pack — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 6,
@@ -306,7 +357,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -326,7 +377,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000060,
+        "aegis_name": "RO_Catalogue_6_0",
+        "name": "Holy Water pack — fixed contents",
+        "price_cash": 36
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 7,
@@ -358,7 +418,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -378,7 +438,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000070,
+        "aegis_name": "RO_Catalogue_7_0",
+        "name": "Fire resistance potion — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 8,
@@ -410,7 +479,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -430,7 +499,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000080,
+        "aegis_name": "RO_Catalogue_8_0",
+        "name": "Water resistance potion — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 9,
@@ -462,7 +540,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -482,7 +560,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000090,
+        "aegis_name": "RO_Catalogue_9_0",
+        "name": "Wind resistance potion — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 10,
@@ -514,7 +601,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -534,7 +621,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000100,
+        "aegis_name": "RO_Catalogue_10_0",
+        "name": "Earth resistance potion — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 11,
@@ -566,7 +662,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -587,7 +683,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000110,
+        "aegis_name": "RO_Catalogue_11_0",
+        "name": "MaxHP food — fixed contents",
+        "price_cash": 135
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 12,
@@ -619,7 +724,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -640,7 +745,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000120,
+        "aegis_name": "RO_Catalogue_12_0",
+        "name": "MaxSP food — fixed contents",
+        "price_cash": 135
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 13,
@@ -673,7 +787,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -690,7 +804,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000130,
+        "aegis_name": "RO_Catalogue_13_0",
+        "name": "Normal arrow box — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 14,
@@ -723,7 +846,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -740,7 +863,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000140,
+        "aegis_name": "RO_Catalogue_14_0",
+        "name": "Silver Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 15,
@@ -773,7 +905,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -790,7 +922,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000150,
+        "aegis_name": "RO_Catalogue_15_0",
+        "name": "Fire Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 16,
@@ -823,7 +964,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -840,7 +981,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000160,
+        "aegis_name": "RO_Catalogue_16_0",
+        "name": "Crystal Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 17,
@@ -873,7 +1023,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -890,7 +1040,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000170,
+        "aegis_name": "RO_Catalogue_17_0",
+        "name": "Wind Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 18,
@@ -923,7 +1082,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -940,7 +1099,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000180,
+        "aegis_name": "RO_Catalogue_18_0",
+        "name": "Stone Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 19,
@@ -973,7 +1141,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -990,7 +1158,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000190,
+        "aegis_name": "RO_Catalogue_19_0",
+        "name": "Shadow Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 20,
@@ -1023,7 +1200,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -1040,7 +1217,16 @@
       "effects_tested": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "eligibility_evidence": "eligibility-evidence.json"
+    "eligibility_evidence": "eligibility-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000200,
+        "aegis_name": "RO_Catalogue_20_0",
+        "name": "Immaterial Arrow — fixed contents",
+        "price_cash": 45
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 21,
@@ -1144,7 +1330,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -1165,7 +1351,46 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000210,
+        "aegis_name": "RO_Catalogue_21_0",
+        "name": "Selectable mixed elemental arrows — Fire + normal arrows",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000211,
+        "aegis_name": "RO_Catalogue_21_1",
+        "name": "Selectable mixed elemental arrows — Water + normal arrows",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000212,
+        "aegis_name": "RO_Catalogue_21_2",
+        "name": "Selectable mixed elemental arrows — Wind + normal arrows",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000213,
+        "aegis_name": "RO_Catalogue_21_3",
+        "name": "Selectable mixed elemental arrows — Earth + normal arrows",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000214,
+        "aegis_name": "RO_Catalogue_21_4",
+        "name": "Selectable mixed elemental arrows — Shadow + normal arrows",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000215,
+        "aegis_name": "RO_Catalogue_21_5",
+        "name": "Selectable mixed elemental arrows — Ghost + normal arrows",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 22,
@@ -1216,7 +1441,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -1237,7 +1462,16 @@
       "reference": "utilities-evidence.json",
       "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
     },
-    "price_revision_evidence": "reprice-bundle-evidence.json"
+    "price_revision_evidence": "reprice-bundle-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000220,
+        "aegis_name": "RO_Catalogue_22_0",
+        "name": "Arrow Crafting materials — fixed contents",
+        "price_cash": 945
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 23,
@@ -1269,7 +1503,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1289,7 +1523,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000230,
+        "aegis_name": "RO_Catalogue_23_0",
+        "name": "Fire Converter — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 24,
@@ -1321,7 +1564,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1341,7 +1584,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000240,
+        "aegis_name": "RO_Catalogue_24_0",
+        "name": "Water Converter — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 25,
@@ -1373,7 +1625,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1393,7 +1645,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000250,
+        "aegis_name": "RO_Catalogue_25_0",
+        "name": "Wind Converter — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 26,
@@ -1425,7 +1686,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1445,7 +1706,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000260,
+        "aegis_name": "RO_Catalogue_26_0",
+        "name": "Earth Converter — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 27,
@@ -1477,7 +1747,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1498,7 +1768,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000270,
+        "aegis_name": "RO_Catalogue_27_0",
+        "name": "STR moderate food — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 28,
@@ -1530,7 +1809,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1551,7 +1830,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000280,
+        "aegis_name": "RO_Catalogue_28_0",
+        "name": "AGI moderate food — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 29,
@@ -1583,7 +1871,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1604,7 +1892,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000290,
+        "aegis_name": "RO_Catalogue_29_0",
+        "name": "VIT moderate food — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 30,
@@ -1636,7 +1933,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1657,7 +1954,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000300,
+        "aegis_name": "RO_Catalogue_30_0",
+        "name": "INT moderate food — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 31,
@@ -1689,7 +1995,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1710,7 +2016,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000310,
+        "aegis_name": "RO_Catalogue_31_0",
+        "name": "DEX moderate food — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 32,
@@ -1742,7 +2057,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1763,7 +2078,16 @@
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "additional_effect_evidence": "buff-effects-evidence.json"
+    "additional_effect_evidence": "buff-effects-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000320,
+        "aegis_name": "RO_Catalogue_32_0",
+        "name": "LUK moderate food — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 33,
@@ -1831,7 +2155,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -1852,7 +2176,46 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000330,
+        "aegis_name": "RO_Catalogue_33_0",
+        "name": "Selectable stat food — STR +5",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000331,
+        "aegis_name": "RO_Catalogue_33_1",
+        "name": "Selectable stat food — AGI +5",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000332,
+        "aegis_name": "RO_Catalogue_33_2",
+        "name": "Selectable stat food — VIT +5",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000333,
+        "aegis_name": "RO_Catalogue_33_3",
+        "name": "Selectable stat food — INT +5",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000334,
+        "aegis_name": "RO_Catalogue_33_4",
+        "name": "Selectable stat food — DEX +5",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000335,
+        "aegis_name": "RO_Catalogue_33_5",
+        "name": "Selectable stat food — LUK +5",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 34,
@@ -1884,7 +2247,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -1904,7 +2267,16 @@
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000340,
+        "aegis_name": "RO_Catalogue_34_0",
+        "name": "Speed Potion — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 35,
@@ -1936,7 +2308,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -1953,7 +2325,16 @@
       "edge_suite_complete": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "limit_evidence": "service-limits-evidence.json"
+    "limit_evidence": "service-limits-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000350,
+        "aegis_name": "RO_Catalogue_Skill_Reset",
+        "name": "Skill Reset Voucher",
+        "price_cash": 500
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 36,
@@ -1985,7 +2366,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2002,7 +2383,16 @@
       "edge_suite_complete": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "limit_evidence": "service-limits-evidence.json"
+    "limit_evidence": "service-limits-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000360,
+        "aegis_name": "RO_Catalogue_Stat_Reset",
+        "name": "Stat Reset Voucher",
+        "price_cash": 500
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 37,
@@ -2034,7 +2424,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2051,7 +2441,16 @@
       "edge_suite_complete": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "limit_evidence": "service-limits-evidence.json"
+    "limit_evidence": "service-limits-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000370,
+        "aegis_name": "RO_Catalogue_Full_Reset",
+        "name": "Skill and Stat Reset Voucher",
+        "price_cash": 900
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 38,
@@ -2083,7 +2482,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2100,7 +2499,16 @@
       "edge_suite_complete": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "limit_evidence": "service-limits-evidence.json"
+    "limit_evidence": "service-limits-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000380,
+        "aegis_name": "RO_Catalogue_Gym",
+        "name": "Gym Training Voucher",
+        "price_cash": 100
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 39,
@@ -2119,7 +2527,7 @@
       1
     ],
     "proposed_cash_prices": [
-      30
+      20
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Token of Siegfried",
@@ -2134,7 +2542,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": false,
       "effect_packet": false,
       "reconnect": false,
@@ -2142,12 +2550,23 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      7621
+    ],
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
     "utility_evidence": {
       "reference": "utilities-evidence.json",
       "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 7621,
+        "aegis_name": "Token_Of_Siegfried",
+        "name": "Token Of Siegfried",
+        "price_cash": 20
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 40,
@@ -2181,7 +2600,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2189,12 +2608,23 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      12212
+    ],
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
     "warp_evidence": [
       "giant-wing-evidence.json",
       "giant-wing-stopped-evidence.json"
-    ]
+    ],
+    "catalogue_variants": [
+      {
+        "item_id": 12212,
+        "aegis_name": "Giant_Fly_Wing",
+        "name": "Giant Fly Wing",
+        "price_cash": 10
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 41,
@@ -2227,7 +2657,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -2247,7 +2677,16 @@
     "utility_evidence": {
       "reference": "utilities-evidence.json",
       "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 2000410,
+        "aegis_name": "RO_Catalogue_41_0",
+        "name": "Magnifier pack — fixed contents",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 42,
@@ -2279,7 +2718,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2296,7 +2735,16 @@
       "edge_suite_complete": false
     },
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
-    "limit_evidence": "service-limits-evidence.json"
+    "limit_evidence": "service-limits-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000420,
+        "aegis_name": "RO_Catalogue_Repair",
+        "name": "Portable Repair Voucher",
+        "price_cash": 100
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 43,
@@ -2328,7 +2776,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2344,7 +2792,16 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000430,
+        "aegis_name": "RO_Catalogue_Hairstyle",
+        "name": "Hairstyle Voucher",
+        "price_cash": 100
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 44,
@@ -2382,7 +2839,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2399,7 +2856,22 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000440,
+        "aegis_name": "RO_Catalogue_Hair_Dye",
+        "name": "Hair Colour Voucher",
+        "price_cash": 100
+      },
+      {
+        "item_id": 2000441,
+        "aegis_name": "RO_Catalogue_Clothes_Dye",
+        "name": "Clothes Colour Voucher",
+        "price_cash": 100
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 45,
@@ -2431,7 +2903,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -2447,7 +2919,16 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000450,
+        "aegis_name": "RO_Catalogue_Rename",
+        "name": "Character Rename Voucher",
+        "price_cash": 500
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 46,
@@ -2479,7 +2960,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": false,
       "effect_packet": true,
       "reconnect": true,
@@ -2495,7 +2976,16 @@
       "purchase_test_pending": true,
       "failure_inventory_paths_pending": true
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000460,
+        "aegis_name": "RO_Catalogue_Card_Removal",
+        "name": "Portable Card Removal Voucher",
+        "price_cash": 100
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 47,
@@ -2622,7 +3112,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19587,
+        "aegis_name": "C_King_Poring_Hat",
+        "name": "Costume King Poring Hat",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 48,
@@ -2749,7 +3247,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19876,
+        "aegis_name": "C_Rabbit_Ear_Hat",
+        "name": "Costume Bunny Top Hat",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 49,
@@ -2876,7 +3382,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19843,
+        "aegis_name": "C_Cat_Hairband",
+        "name": "Costume Kitty Band",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 50,
@@ -3004,7 +3518,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19578,
+        "aegis_name": "C_Goggle",
+        "name": "Costume Googles",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 51,
@@ -3131,7 +3653,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19605,
+        "aegis_name": "C_Gang_Scarf",
+        "name": "Costume Gang Scarf",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 52,
@@ -4076,7 +4606,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 20513,
+        "aegis_name": "C_EXE_Backpack",
+        "name": "Costume EXE Backpack",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 53,
@@ -4203,7 +4741,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19903,
+        "aegis_name": "C_Witchs_Hat",
+        "name": "Costume Witch's Hat",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 54,
@@ -4330,7 +4876,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 31395,
+        "aegis_name": "C_Book_Of_Magic",
+        "name": "Costume Book of Magic",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 55,
@@ -4457,7 +5011,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 20132,
+        "aegis_name": "C_Subject_Aura",
+        "name": "Costume Test Subject Aura",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 56,
@@ -4584,7 +5146,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19667,
+        "aegis_name": "C_Helm_Of_Dragoon",
+        "name": "Costume Dragon Helm",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 57,
@@ -4711,7 +5281,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 420046,
+        "aegis_name": "C_Royal_Mantle",
+        "name": "Costume Royal Mantle",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 58,
@@ -4838,7 +5416,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19630,
+        "aegis_name": "C_Crown",
+        "name": "Costume Crown",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 59,
@@ -4965,7 +5551,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19618,
+        "aegis_name": "C_Mask_Of_Fox",
+        "name": "Costume Kitsune Mask",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 60,
@@ -5910,7 +6504,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 20764,
+        "aegis_name": "C_Fallen_Angel_Wing",
+        "name": "Costume Fallen Angel Wing",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 61,
@@ -6037,7 +6639,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19289,
+        "aegis_name": "C_Moon_Eyepatch",
+        "name": "Costume Moon Eyepatch",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 62,
@@ -6164,7 +6774,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19617,
+        "aegis_name": "C_Ear_Of_Puppy",
+        "name": "Costume Puppy Headband",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 63,
@@ -6291,7 +6909,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19739,
+        "aegis_name": "C_Sleeping_Kitty_Cat",
+        "name": "Costume Sleeping Kitty Hat",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 64,
@@ -6418,7 +7044,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 20202,
+        "aegis_name": "C_Deviruchi_Balloon",
+        "name": "Costume Deviruchi Balloon",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 65,
@@ -7363,7 +7997,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 20536,
+        "aegis_name": "C_Violet_Halo",
+        "name": "Costume Violet Halo",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 66,
@@ -8308,7 +8950,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 20765,
+        "aegis_name": "C_Archangel_Wing",
+        "name": "Costume Archangel Wing",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 67,
@@ -8435,7 +9085,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 31438,
+        "aegis_name": "C_Fluffy_Angel_Cape",
+        "name": "Costume Fluffy Angel Cape",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 68,
@@ -8562,7 +9220,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19702,
+        "aegis_name": "C_Santa_Hat_1",
+        "name": "Costume Twin Pompom By JB",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 69,
@@ -8689,7 +9355,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19910,
+        "aegis_name": "C_Halloween_Hat",
+        "name": "Costume Halloween Hat",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 70,
@@ -8816,7 +9490,15 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 31143,
+        "aegis_name": "C_Krathong_Crown_TH",
+        "name": "Costume: Krathong Crown",
+        "price_cash": 250
+      }
+    ]
   },
   {
     "request": 71,
@@ -8827,7 +9509,8 @@
       1
     ],
     "proposed_cash_prices": [
-      150
+      500,
+      5
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Starter pet egg + correct food",
@@ -8842,7 +9525,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -8850,7 +9533,10 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      2000710,
+      643
+    ],
     "exact_candidates": [
       {
         "request": 71,
@@ -8888,7 +9574,22 @@
       "species": 6,
       "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
       "device_verified": false
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 2000710,
+        "aegis_name": "RO_Catalogue_Poring_Starter",
+        "name": "Poring Starter Egg and Apple Juice",
+        "price_cash": 500
+      },
+      {
+        "item_id": 643,
+        "aegis_name": "Pet_Incubator",
+        "name": "Pet Incubator",
+        "price_cash": 5
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 72,
@@ -8906,6 +9607,10 @@
       100
     ],
     "proposed_cash_prices": [
+      90,
+      90,
+      90,
+      90,
       90
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
@@ -8921,7 +9626,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -8930,7 +9635,11 @@
     },
     "blocker": null,
     "skus": [
-      2000720
+      2000720,
+      2000721,
+      2000722,
+      2000723,
+      2000724
     ],
     "transaction_evidence": {
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
@@ -9045,7 +9754,40 @@
       "species": 6,
       "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
       "device_verified": false
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 2000720,
+        "aegis_name": "RO_Catalogue_72_0",
+        "name": "Bulk pet food — fixed contents",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000721,
+        "aegis_name": "RO_Catalogue_72_1",
+        "name": "Poring Food - 100",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000722,
+        "aegis_name": "RO_Catalogue_72_2",
+        "name": "Lunatic Food - 100",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000723,
+        "aegis_name": "RO_Catalogue_72_3",
+        "name": "Drops Food - 100",
+        "price_cash": 90
+      },
+      {
+        "item_id": 2000724,
+        "aegis_name": "RO_Catalogue_72_4",
+        "name": "Picky Food - 100",
+        "price_cash": 90
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 73,
@@ -9056,7 +9798,11 @@
       1
     ],
     "proposed_cash_prices": [
-      50
+      100,
+      100,
+      100,
+      100,
+      100
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Pet accessories",
@@ -9070,7 +9816,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": false,
       "effect_packet": false,
       "reconnect": false,
@@ -9078,7 +9824,13 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      10013,
+      10007,
+      10012,
+      10002,
+      10017
+    ],
     "exact_candidates": [
       {
         "request": 73,
@@ -9144,7 +9896,40 @@
       "species": 6,
       "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
       "device_verified": false
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 10013,
+        "aegis_name": "Backpack",
+        "name": "Backpack",
+        "price_cash": 100
+      },
+      {
+        "item_id": 10007,
+        "aegis_name": "Silk_Ribbon",
+        "name": "Silk Ribbon",
+        "price_cash": 100
+      },
+      {
+        "item_id": 10012,
+        "aegis_name": "Tiny_Egg_Shell",
+        "name": "Tiny Egg Shell",
+        "price_cash": 100
+      },
+      {
+        "item_id": 10002,
+        "aegis_name": "Monster_Oxygen_Mask",
+        "name": "Monster Oxygen Mask",
+        "price_cash": 100
+      },
+      {
+        "item_id": 10017,
+        "aegis_name": "Bark_Shorts",
+        "name": "Bark Shorts",
+        "price_cash": 100
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 74,
@@ -9155,7 +9940,12 @@
       1
     ],
     "proposed_cash_prices": [
-      100
+      135,
+      135,
+      135,
+      135,
+      135,
+      135
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Species-selectable taming kit",
@@ -9170,7 +9960,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -9178,7 +9968,14 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      2000740,
+      2000741,
+      2000742,
+      2000743,
+      2000744,
+      2000745
+    ],
     "exact_candidates": [
       {
         "request": 74,
@@ -9347,7 +10144,46 @@
       "reference": "taming-evidence.json",
       "species": 6,
       "scope": "actual native chance, cancel consumes lure per native rules, capture egg identity/persistence/reconnect; no success-disconnect assertion"
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 2000740,
+        "aegis_name": "RO_Catalogue_74_0",
+        "name": "Poring Taming Kit",
+        "price_cash": 135
+      },
+      {
+        "item_id": 2000741,
+        "aegis_name": "RO_Catalogue_74_1",
+        "name": "Drops Taming Kit",
+        "price_cash": 135
+      },
+      {
+        "item_id": 2000742,
+        "aegis_name": "RO_Catalogue_74_2",
+        "name": "Lunatic Taming Kit",
+        "price_cash": 135
+      },
+      {
+        "item_id": 2000743,
+        "aegis_name": "RO_Catalogue_74_3",
+        "name": "Picky Taming Kit",
+        "price_cash": 135
+      },
+      {
+        "item_id": 2000744,
+        "aegis_name": "RO_Catalogue_74_4",
+        "name": "Chonchon Taming Kit",
+        "price_cash": 135
+      },
+      {
+        "item_id": 2000745,
+        "aegis_name": "RO_Catalogue_74_5",
+        "name": "Spore Taming Kit",
+        "price_cash": 135
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 75,
@@ -9358,7 +10194,9 @@
       1
     ],
     "proposed_cash_prices": [
-      200
+      500,
+      500,
+      500
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Mage/hunter/priest themed pets",
@@ -9373,7 +10211,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": true,
       "reconnect": true,
@@ -9381,7 +10219,11 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      2000710,
+      2000750,
+      2000751
+    ],
     "exact_candidates": [
       {
         "request": 75,
@@ -9423,7 +10265,28 @@
       "species": 6,
       "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
       "device_verified": false
-    }
+    },
+    "catalogue_variants": [
+      {
+        "item_id": 2000710,
+        "aegis_name": "RO_Catalogue_Poring_Starter",
+        "name": "Poring Starter Egg and Apple Juice",
+        "price_cash": 500
+      },
+      {
+        "item_id": 2000750,
+        "aegis_name": "RO_Catalogue_Spore_Starter",
+        "name": "Spore Egg and Pet Food",
+        "price_cash": 500
+      },
+      {
+        "item_id": 2000751,
+        "aegis_name": "RO_Catalogue_Lunatic_Starter",
+        "name": "Lunatic Egg and Carrot Juice",
+        "price_cash": 500
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 76,
@@ -9434,6 +10297,8 @@
       1
     ],
     "proposed_cash_prices": [
+      250,
+      250,
       250
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
@@ -9449,7 +10314,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": false,
       "effect_packet": false,
       "reconnect": false,
@@ -9457,7 +10322,11 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      19630,
+      19618,
+      19844
+    ],
     "exact_candidates": [],
     "exact_city_items": {
       "Prontera": 19630,
@@ -9479,7 +10348,28 @@
       ],
       "device_verified": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 19630,
+        "aegis_name": "C_Crown",
+        "name": "Costume Crown",
+        "price_cash": 250
+      },
+      {
+        "item_id": 19618,
+        "aegis_name": "C_Mask_Of_Fox",
+        "name": "Costume Kitsune Mask",
+        "price_cash": 250
+      },
+      {
+        "item_id": 19844,
+        "aegis_name": "C_Turban",
+        "name": "Costume Turban",
+        "price_cash": 250
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 77,
@@ -9619,7 +10509,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -9640,7 +10530,46 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000770,
+        "aegis_name": "RO_Catalogue_77_0",
+        "name": "Hunter Supply — Fire",
+        "price_cash": 360
+      },
+      {
+        "item_id": 2000771,
+        "aegis_name": "RO_Catalogue_77_1",
+        "name": "Hunter Supply — Water",
+        "price_cash": 360
+      },
+      {
+        "item_id": 2000772,
+        "aegis_name": "RO_Catalogue_77_2",
+        "name": "Hunter Supply — Wind",
+        "price_cash": 360
+      },
+      {
+        "item_id": 2000773,
+        "aegis_name": "RO_Catalogue_77_3",
+        "name": "Hunter Supply — Earth",
+        "price_cash": 360
+      },
+      {
+        "item_id": 2000774,
+        "aegis_name": "RO_Catalogue_77_4",
+        "name": "Hunter Supply — Shadow",
+        "price_cash": 360
+      },
+      {
+        "item_id": 2000775,
+        "aegis_name": "RO_Catalogue_77_5",
+        "name": "Hunter Supply — Ghost",
+        "price_cash": 360
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 78,
@@ -9685,7 +10614,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -9701,7 +10630,16 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000780,
+        "aegis_name": "RO_Catalogue_78_0",
+        "name": "Knight Puller — fixed contents",
+        "price_cash": 2025
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 79,
@@ -9746,7 +10684,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -9762,7 +10700,16 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000790,
+        "aegis_name": "RO_Catalogue_79_0",
+        "name": "Wizard Supply — fixed contents",
+        "price_cash": 630
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 80,
@@ -9807,7 +10754,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -9823,7 +10770,16 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000800,
+        "aegis_name": "RO_Catalogue_80_0",
+        "name": "Priest Support — fixed contents",
+        "price_cash": 576
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 81,
@@ -9925,7 +10881,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -9944,7 +10900,34 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000810,
+        "aegis_name": "RO_Catalogue_81_0",
+        "name": "Assassin Supply — Assassin Fire",
+        "price_cash": 1215
+      },
+      {
+        "item_id": 2000811,
+        "aegis_name": "RO_Catalogue_81_1",
+        "name": "Assassin Supply — Assassin Water",
+        "price_cash": 1215
+      },
+      {
+        "item_id": 2000812,
+        "aegis_name": "RO_Catalogue_81_2",
+        "name": "Assassin Supply — Assassin Wind",
+        "price_cash": 1215
+      },
+      {
+        "item_id": 2000813,
+        "aegis_name": "RO_Catalogue_81_3",
+        "name": "Assassin Supply — Assassin Earth",
+        "price_cash": 1215
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 82,
@@ -10001,7 +10984,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -10017,7 +11000,16 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000820,
+        "aegis_name": "RO_Catalogue_82_0",
+        "name": "Farming outing — fixed contents",
+        "price_cash": 1163
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 83,
@@ -10062,7 +11054,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -10079,7 +11071,16 @@
       "effects_tested": false
     },
     "additional_effect_evidence": "buff-effects-evidence.json",
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000830,
+        "aegis_name": "RO_Catalogue_83_0",
+        "name": "Loot hunt — fixed contents",
+        "price_cash": 1350
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 84,
@@ -10130,7 +11131,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -10147,7 +11148,16 @@
       "effects_tested": false
     },
     "additional_effect_evidence": "buff-effects-evidence.json",
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000840,
+        "aegis_name": "RO_Catalogue_84_0",
+        "name": "Leveling — fixed contents",
+        "price_cash": 765
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 85,
@@ -10297,7 +11307,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -10316,7 +11326,34 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000850,
+        "aegis_name": "RO_Catalogue_85_0",
+        "name": "Map exploration — Fire",
+        "price_cash": 672
+      },
+      {
+        "item_id": 2000851,
+        "aegis_name": "RO_Catalogue_85_1",
+        "name": "Map exploration — Water",
+        "price_cash": 672
+      },
+      {
+        "item_id": 2000852,
+        "aegis_name": "RO_Catalogue_85_2",
+        "name": "Map exploration — Wind",
+        "price_cash": 672
+      },
+      {
+        "item_id": 2000853,
+        "aegis_name": "RO_Catalogue_85_3",
+        "name": "Map exploration — Earth",
+        "price_cash": 672
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 86,
@@ -10327,7 +11364,7 @@
       1
     ],
     "proposed_cash_prices": [
-      600
+      963
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Build change",
@@ -10342,7 +11379,7 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
@@ -10350,7 +11387,9 @@
       "device": false
     },
     "blocker": null,
-    "skus": [],
+    "skus": [
+      2000860
+    ],
     "exact_candidates": [
       {
         "request": 86,
@@ -10395,7 +11434,16 @@
       "tested": "purchase/cash once/cancel/exact contents/reconnect",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "catalogue_variants": [
+      {
+        "item_id": 2000860,
+        "aegis_name": "RO_Catalogue_86_0",
+        "name": "Build Change and Trial Supplies",
+        "price_cash": 963
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 87,
@@ -10406,9 +11454,13 @@
       1
     ],
     "proposed_cash_prices": [
-      600
+      180,
+      162,
+      279,
+      297,
+      153
     ],
-    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "pricing_status": "Consistent component values; Hunter162 / Priest297 virtual Cash supersede initial148 /315, repurchase pending",
     "intended_effect": "Five-companion role supplies",
     "variant_spec": "Five roles using four supported careers: Knight Puller, Knight Spear, Hunter, Wizard, Priest. No Assassin companion is implemented by this server; player Assassin Supply remains request81.",
     "dependencies": [
@@ -10422,15 +11474,21 @@
     "sellable": false,
     "evidence": {
       "script_audit": false,
-      "asset_audit": false,
+      "asset_audit": true,
       "purchase_packet": true,
       "effect_packet": false,
       "reconnect": true,
       "edge_cases": false,
       "device": false
     },
-    "blocker": "HP/SP delivery and consumption passed for five actual roles. Arrow/gem combat consumption and transfer permission edges pending.",
-    "skus": [],
+    "blocker": null,
+    "skus": [
+      2000870,
+      2000871,
+      2000872,
+      2000873,
+      2000874
+    ],
     "exact_candidates": [
       {
         "request": 87,
@@ -10581,7 +11639,40 @@
       "scope": "five actual roles purchase/open/Give Supplies/native HP+SP consumption/Stop pauses/save",
       "remaining": "arrow and gem combat consumption, cross-owner and active-transfer rejection"
     },
-    "combat_evidence": "companion-combat-evidence.json"
+    "combat_evidence": "companion-combat-evidence.json",
+    "catalogue_variants": [
+      {
+        "item_id": 2000870,
+        "aegis_name": "RO_Catalogue_87_0",
+        "name": "Knight Puller Companion Supplies",
+        "price_cash": 180
+      },
+      {
+        "item_id": 2000871,
+        "aegis_name": "RO_Catalogue_87_1",
+        "name": "Hunter Companion Supplies",
+        "price_cash": 162
+      },
+      {
+        "item_id": 2000872,
+        "aegis_name": "RO_Catalogue_87_2",
+        "name": "Wizard Companion Supplies",
+        "price_cash": 279
+      },
+      {
+        "item_id": 2000873,
+        "aegis_name": "RO_Catalogue_87_3",
+        "name": "Priest Companion Supplies",
+        "price_cash": 297
+      },
+      {
+        "item_id": 2000874,
+        "aegis_name": "RO_Catalogue_87_4",
+        "name": "Knight Spear Companion Supplies",
+        "price_cash": 153
+      }
+    ],
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
   },
   {
     "request": 88,

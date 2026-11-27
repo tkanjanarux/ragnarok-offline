@@ -218,3 +218,12 @@ Arrow Crafting pack price is945, replacing72 after checking native output value.
 New companion combat, group0 eligibility, buff-effect and service-cap evidence is
 linked in catalogue README. Remaining effect/edge checks and final readiness ledger
 are ongoing; do not infer all88 readiness from generation or successful builds.
+
+Cash catalogue capture follow-up: a delayed isolated Char response reproduced a
+successful capture with an orphan pet and no egg. A new post-party-warp overlay
+routes successful native taming through the same journal/save barrier; native RNG
+and lure-on-attempt cost stay unchanged. Both profile hashes/native15 SQL cases
+and x86_64 Map/Char compile pass; isolated packet recovery checks are running.
+Do not label capture recovery or final129-SKU readiness complete until those results
+are recorded. Hunter/Priest companion prices corrected to162/297; repurchase pending.
+No live activation, player mutation, Simulator or hardware acceptance occurred.

@@ -174,3 +174,34 @@ import RagnarokPackets
     // Unknown bundle outcome is removed for inventory review, never auto-retried.
     #expect(state.cash == 99_900)
 }
+
+@Test func cashShopExpandedCatalogueChunksKeepEarlierProductsAndRejectStaleCart() {
+    var state = CashShopState()
+    func chunk(_ range: Range<Int>, price: UInt32 = 100) -> PACKET_ZC_ACK_SCHEDULER_CASHITEM {
+        var packet = PACKET_ZC_ACK_SCHEDULER_CASHITEM()
+        packet.tabNum = 7
+        packet.items = range.map { index in
+            var row = PACKET_ZC_ACK_SCHEDULER_CASHITEM_sub()
+            row.itemId = UInt32(2_000_000 + index); row.price = price
+            return row
+        }
+        packet.count = Int16(packet.items.count)
+        packet.packetLength = Int16(8 + packet.items.count * 8)
+        return packet
+    }
+    // More than fourteen nine-cell pages, delivered in independently repeated chunks.
+    for range in [0..<50, 50..<100, 100..<129, 50..<100] { state.receive(chunk(range)) }
+    #expect(state.products.count == 129)
+    #expect(Set(state.products.map(\.id)).count == 129)
+    state.ready = true; state.cash = 10_000
+    let first = state.products.first!
+    let last = state.products.last!
+    state.addToCart(first); state.addToCart(last)
+    #expect(state.canPurchaseCart(freePoints: 0))
+    state.receive(chunk(128..<129, price: 101))
+    #expect(state.products.count == 129)
+    #expect(!state.canPurchaseCart(freePoints: 0))
+    #expect(state.beginCartPurchase(freePoints: 0) == nil)
+    #expect(state.products.first == first)
+    #expect(state.purchase(last, quantity: 1, useKafra: false) == nil)
+}

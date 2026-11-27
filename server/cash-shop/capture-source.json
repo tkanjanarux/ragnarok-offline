@@ -1,0 +1,60 @@
+{
+  "production": {
+    "changes": [
+      {
+        "source": "src/common/catalogue_pet.hpp",
+        "base_sha256": "e891cfd69fcc8c2f441076e29cd0b819812f3cbef8d60a3ce7e9682fe8af1de5",
+        "patched_sha256": "41bd01eb923858d8af1275269e3ea6a2abc23202525da1d562999a69d2691f0d",
+        "crlf": false
+      },
+      {
+        "source": "src/common/catalogue_pet.cpp",
+        "base_sha256": "48dc37d9bcbb885c11b64e99cb68dde18bed5742f5a5cd7776163d5f280a2213",
+        "patched_sha256": "b22e8605f3e9bead418510b47b6082d39908d60c6e70c051af7d7f1baab37525",
+        "crlf": false
+      },
+      {
+        "source": "src/map/script.cpp",
+        "base_sha256": "5fbe02029a1b5c56ed7b6d95912949c8d82534f341ad0fc05e0b651f46d4a2d3",
+        "patched_sha256": "3e66f94da1d29fba4fb0f022821542b531c0ea3672ef88396e407ed633970637",
+        "crlf": true
+      },
+      {
+        "source": "src/map/pet.cpp",
+        "base_sha256": "3db36d01350df042f1697c7336327501eb6e90481a10375b52c7ec3a7db9e4f5",
+        "patched_sha256": "913d42f19130a771b0469aeec662d986853465ea2ca8da3ae03fa803a5377627",
+        "crlf": true
+      }
+    ],
+    "patch_sha256": "013e1d75cc2ca92728664a54430822861ebfe081cf9607ea2ea18a836bd2f889"
+  },
+  "playable": {
+    "changes": [
+      {
+        "source": "src/common/catalogue_pet.hpp",
+        "base_sha256": "e891cfd69fcc8c2f441076e29cd0b819812f3cbef8d60a3ce7e9682fe8af1de5",
+        "patched_sha256": "41bd01eb923858d8af1275269e3ea6a2abc23202525da1d562999a69d2691f0d",
+        "crlf": false
+      },
+      {
+        "source": "src/common/catalogue_pet.cpp",
+        "base_sha256": "48dc37d9bcbb885c11b64e99cb68dde18bed5742f5a5cd7776163d5f280a2213",
+        "patched_sha256": "b22e8605f3e9bead418510b47b6082d39908d60c6e70c051af7d7f1baab37525",
+        "crlf": false
+      },
+      {
+        "source": "src/map/script.cpp",
+        "base_sha256": "5fbe02029a1b5c56ed7b6d95912949c8d82534f341ad0fc05e0b651f46d4a2d3",
+        "patched_sha256": "3e66f94da1d29fba4fb0f022821542b531c0ea3672ef88396e407ed633970637",
+        "crlf": true
+      },
+      {
+        "source": "src/map/pet.cpp",
+        "base_sha256": "3db36d01350df042f1697c7336327501eb6e90481a10375b52c7ec3a7db9e4f5",
+        "patched_sha256": "913d42f19130a771b0469aeec662d986853465ea2ca8da3ae03fa803a5377627",
+        "crlf": true
+      }
+    ],
+    "patch_sha256": "013e1d75cc2ca92728664a54430822861ebfe081cf9607ea2ea18a836bd2f889"
+  }
+}

@@ -38,5 +38,13 @@ int main(int argc,char** argv){assert(argc==2);int cases=0;
  {auto* db=fixture(argv[1]);auto q=claim();voucher(db,2);q.before[0].amount=2;q.before[2].nameid=531;q.before[2].amount=7;q.before[2].identify=1;sql(db,"INSERT INTO inventory(char_id,nameid,amount,identify) VALUES(7,531,7,1)");Snapshot after{};item egg{};assert(commit(db,q,after,egg));assert(number(db,"SELECT amount FROM inventory WHERE nameid=2000710")==1);assert(number(db,"SELECT amount FROM inventory WHERE nameid=531")==57);++cases;Sql_Free(db);}
  for(auto table:{"pet","ragoff_catalogue_pet_journal"}){auto* db=fixture(argv[1]);auto q=claim();voucher(db);sql(db,std::string("CREATE TRIGGER test_failure BEFORE INSERT ON ")+table+" BEGIN SELECT RAISE(ABORT,'synthetic SQL failure'); END");Snapshot after{};item egg{};assert(!commit(db,q,after,egg));assert(number(db,"SELECT count(*) FROM pet")==0);assert(number(db,"SELECT count(*) FROM inventory")==1);assert(number(db,"SELECT amount FROM inventory WHERE nameid=2000710")==1);assert(number(db,"SELECT count(*) FROM ragoff_catalogue_pet_journal")==0);++cases;Sql_Free(db);}
  {auto* db=fixture(argv[1]);auto q=claim();voucher(db);Snapshot after{};item egg{};q.food_slot=q.egg_slot;assert(!commit(db,q,after,egg));q=claim();q.before[0].bound=1;assert(!commit(db,q,after,egg));q=claim();q.name=std::string(NAME_LENGTH,'x');assert(!commit(db,q,after,egg));assert(number(db,"SELECT count(*) FROM pet")==0);cases+=3;Sql_Free(db);}
+ for(bool fail:{false,true}){auto* db=fixture(argv[1]);auto q=claim();q.capture=true;q.voucher_slot=-1;q.food_slot=-1;q.food_id=0;q.food_amount=0;q.before={};Snapshot after{};item egg{};
+  if(fail)sql(db,"CREATE TRIGGER test_failure BEFORE INSERT ON ragoff_catalogue_pet_journal BEGIN SELECT RAISE(ABORT,'synthetic SQL failure'); END");
+  assert(commit(db,q,after,egg)==!fail);
+  assert(number(db,"SELECT count(*) FROM pet")==(!fail?1:0));assert(number(db,"SELECT count(*) FROM inventory")==(!fail?1:0));
+  if(!fail){assert(after[q.egg_slot].card[1]>0);auto stale=q.before;assert(guard(db,7,stale.data(),false));assert(same(stale.data(),after.data()));Snapshot ignored{};item other{};assert(!commit(db,q,ignored,other));}
+  ++cases;Sql_Free(db);
+ }
+ {auto* db=fixture(argv[1]);auto q=claim();q.capture=true;Snapshot after{};item egg{};assert(!commit(db,q,after,egg));assert(number(db,"SELECT count(*) FROM pet")==0);++cases;Sql_Free(db);}
  std::cout<<"PASS "<<cases<<" native SQL pet transaction/recovery cases\n";
 }

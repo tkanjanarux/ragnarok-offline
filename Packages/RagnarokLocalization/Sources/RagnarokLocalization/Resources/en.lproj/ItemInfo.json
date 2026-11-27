@@ -117698,37 +117698,37 @@
   "2000740": {
     "identifiedItemName": "Poring Taming Kit",
     "unidentifiedItemName": "Poring Taming Kit",
-    "identifiedItemDescription": "10 x Unripe_Apple; 50 x Apple_Juice. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "10 x Unripe_Apple; 50 x Apple_Juice. 10 lures and 50 correct food. No guaranteed catch. Each attempt consumes one lure, including cancelled targeting. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000741": {
     "identifiedItemName": "Drops Taming Kit",
     "unidentifiedItemName": "Drops Taming Kit",
-    "identifiedItemDescription": "10 x Orange_Juice; 50 x Yellow_Herb. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "10 x Orange_Juice; 50 x Yellow_Herb. 10 lures and 50 correct food. No guaranteed catch. Each attempt consumes one lure, including cancelled targeting. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000742": {
     "identifiedItemName": "Lunatic Taming Kit",
     "unidentifiedItemName": "Lunatic Taming Kit",
-    "identifiedItemDescription": "10 x Rainbow_Carrot; 50 x Carrot_Juice. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "10 x Rainbow_Carrot; 50 x Carrot_Juice. 10 lures and 50 correct food. No guaranteed catch. Each attempt consumes one lure, including cancelled targeting. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000743": {
     "identifiedItemName": "Picky Taming Kit",
     "unidentifiedItemName": "Picky Taming Kit",
-    "identifiedItemDescription": "10 x Earthworm_The_Dude; 50 x Red_Herb. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "10 x Earthworm_The_Dude; 50 x Red_Herb. 10 lures and 50 correct food. No guaranteed catch. Each attempt consumes one lure, including cancelled targeting. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000744": {
     "identifiedItemName": "Chonchon Taming Kit",
     "unidentifiedItemName": "Chonchon Taming Kit",
-    "identifiedItemDescription": "10 x Rotten_Fish; 50 x Pet_Food. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "10 x Rotten_Fish; 50 x Pet_Food. 10 lures and 50 correct food. No guaranteed catch. Each attempt consumes one lure, including cancelled targeting. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000745": {
     "identifiedItemName": "Spore Taming Kit",
     "unidentifiedItemName": "Spore Taming Kit",
-    "identifiedItemDescription": "10 x Dew_Laden_Moss; 50 x Pet_Food. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "10 x Dew_Laden_Moss; 50 x Pet_Food. 10 lures and 50 correct food. No guaranteed catch. Each attempt consumes one lure, including cancelled targeting. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000860": {
@@ -117740,31 +117740,31 @@
   "2000870": {
     "identifiedItemName": "Knight Puller Companion Supplies",
     "unidentifiedItemName": "Knight Puller Companion Supplies",
-    "identifiedItemDescription": "50 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "50 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000871": {
     "identifiedItemName": "Hunter Companion Supplies",
     "unidentifiedItemName": "Hunter Companion Supplies",
-    "identifiedItemDescription": "20 x White_Potion; 20 x Blue_Potion; 200 x Silver_Arrow. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "20 x White_Potion; 20 x Blue_Potion; 200 x Silver_Arrow. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000872": {
     "identifiedItemName": "Wizard Companion Supplies",
     "unidentifiedItemName": "Wizard Companion Supplies",
-    "identifiedItemDescription": "20 x White_Potion; 50 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "20 x White_Potion; 50 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000873": {
     "identifiedItemName": "Priest Companion Supplies",
     "unidentifiedItemName": "Priest Companion Supplies",
-    "identifiedItemDescription": "20 x White_Potion; 50 x Blue_Potion; 20 x Blue_Gemstone. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "20 x White_Potion; 50 x Blue_Potion; 20 x Blue_Gemstone. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000874": {
     "identifiedItemName": "Knight Spear Companion Supplies",
     "unidentifiedItemName": "Knight Spear Companion Supplies",
-    "identifiedItemDescription": "40 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "identifiedItemDescription": "40 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000710": {

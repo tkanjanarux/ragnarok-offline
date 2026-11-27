@@ -1948,10 +1948,10 @@
         "item_id": 1751,
         "aegis_name": "Silver_Arrow",
         "quantity": 200,
-        "unit_cash": 0.02
+        "unit_cash": 0.1
       }
     ],
-    "price_cash": 148,
+    "price_cash": 162,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
@@ -2004,10 +2004,10 @@
         "item_id": 717,
         "aegis_name": "Blue_Gemstone",
         "quantity": 20,
-        "unit_cash": 2
+        "unit_cash": 1
       }
     ],
-    "price_cash": 315,
+    "price_cash": 297,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",

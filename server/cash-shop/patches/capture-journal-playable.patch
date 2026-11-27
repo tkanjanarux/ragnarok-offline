@@ -1,0 +1,211 @@
+--- a/src/common/catalogue_pet.hpp
++++ b/src/common/catalogue_pet.hpp
+@@ -9,6 +9,7 @@
+ inline constexpr t_itemid pet_marker = 0x0100;
+ using Snapshot = std::array<item,MAX_INVENTORY>;
+ struct Claim {
++    bool capture = false; // Native successful taming, lure already consumed by native use.
+     uint32 account, character;
+     int capacity, voucher_slot, food_slot, egg_slot;
+     int food_amount;
+@@ -27,3 +28,7 @@
+ }
+ // Map-side callback for the existing inventory-save barrier, no new wire opcode.
+ void catalogue_pet_barrier(uint32 account,uint32 character,uint32 token,int ready);
++
++struct map_session_data;
++struct mob_data;
++bool catalogue_pet_capture(map_session_data& sd, mob_data& md);
+--- a/src/common/catalogue_pet.cpp
++++ b/src/common/catalogue_pet.cpp
+@@ -52,20 +52,27 @@
+ static const char* condition="identify=1 AND unique_id=0 AND equip=0 AND equip_switch=0 AND refine=0 AND attribute=0 AND expire_time=0 AND bound=0 AND favorite=0 AND enchantgrade=0 AND card0=0 AND card1=0 AND card2=0 AND card3=0 AND option_id0=0 AND option_val0=0 AND option_parm0=0 AND option_id1=0 AND option_val1=0 AND option_parm1=0 AND option_id2=0 AND option_val2=0 AND option_parm2=0 AND option_id3=0 AND option_val3=0 AND option_parm3=0 AND option_id4=0 AND option_val4=0 AND option_parm4=0";
+ static bool rollback(Sql* db,int line){Sql_QueryStr(db,"ROLLBACK");ShowWarning("Cash pet transaction rejected at source line %d; no delivery committed.\n",line);return false;}
+ bool commit(Sql* db,const Claim& q,Snapshot& after,item& egg) {
+-    if(available(db)!=1 || q.capacity<1 || q.capacity>MAX_INVENTORY || q.voucher_slot<0 || q.voucher_slot>=q.capacity ||
+-       q.food_slot<0 || q.food_slot>=q.capacity || q.egg_slot<0 || q.egg_slot>=q.capacity ||
++    if(available(db)!=1 || q.capacity<1 || q.capacity>MAX_INVENTORY ||
++       q.egg_slot<0 || q.egg_slot>=q.capacity || q.before[q.egg_slot].nameid ||
++       q.name.empty() || q.name.size()>=NAME_LENGTH)return false;
++    if(q.capture){
++        if(q.voucher_slot!=-1 || q.food_slot!=-1 || q.food_amount!=0 || q.food_id!=0)return false;
++    }else if(q.voucher_slot<0 || q.voucher_slot>=q.capacity || q.food_slot<0 || q.food_slot>=q.capacity ||
+        q.voucher_slot==q.food_slot || q.voucher_slot==q.egg_slot || q.food_slot==q.egg_slot ||
+-       q.food_amount<1 || q.food_amount>100 || !plain(q.before[q.voucher_slot]) || q.before[q.egg_slot].nameid ||
++       q.food_amount<1 || q.food_amount>100 || !plain(q.before[q.voucher_slot]) ||
+        (q.before[q.food_slot].nameid && (!plain(q.before[q.food_slot]) || q.before[q.food_slot].nameid!=q.food_id)) ||
+-       q.before[q.food_slot].amount+q.food_amount>MAX_AMOUNT || q.name.empty() || q.name.size()>=NAME_LENGTH)return false;
++       q.before[q.food_slot].amount+q.food_amount>MAX_AMOUNT)return false;
+     if(Sql_QueryStr(db,"BEGIN IMMEDIATE")!=SQL_SUCCESS)return false;
+     if(Sql_Query(db,"SELECT count(*) FROM char WHERE char_id=%u AND account_id=%u AND inventory_slots=%d",q.character,q.account,q.capacity)!=SQL_SUCCESS || scalar(db)!=1)return rollback(db,__LINE__);
+     if(Sql_Query(db,"SELECT count(*) FROM ragoff_catalogue_pet_journal WHERE owner_char=%u",q.character)!=SQL_SUCCESS || scalar(db)!=0)return rollback(db,__LINE__);
+-    const item& voucher=q.before[q.voucher_slot];
++    item voucher{}; int voucher_id=0;
++    if(!q.capture){
++    voucher=q.before[q.voucher_slot];
+     if(Sql_Query(db,"SELECT id FROM inventory WHERE char_id=%u AND nameid=%u AND amount=%d AND %s ORDER BY id LIMIT 1",q.character,voucher.nameid,voucher.amount,condition)!=SQL_SUCCESS)return rollback(db,__LINE__);
+-    int voucher_id=scalar(db);if(voucher_id<1)return rollback(db,__LINE__);
++    voucher_id=scalar(db);if(voucher_id<1)return rollback(db,__LINE__);
++    }
+     int food_id=0;
+-    if(q.before[q.food_slot].nameid){
++    if(!q.capture && q.before[q.food_slot].nameid){
+         if(Sql_Query(db,"SELECT id FROM inventory WHERE char_id=%u AND nameid=%u AND amount=%d AND %s ORDER BY id LIMIT 1",q.character,q.food_id,q.before[q.food_slot].amount,condition)!=SQL_SUCCESS)return rollback(db,__LINE__);
+         food_id=scalar(db);if(food_id<1)return rollback(db,__LINE__);
+     }
+@@ -75,14 +82,16 @@
+     egg={};egg.nameid=q.egg_id;egg.identify=1;egg.amount=1;
+     egg.card[0]=q.egg_card0;egg.card[1]=pet_id&0xffff;egg.card[2]=(pet_id>>16)&0xffff;egg.card[3]=q.egg_card3;
+     if(Sql_Query(db,"INSERT INTO inventory(char_id,nameid,amount,identify,card0,card1,card2,card3) VALUES(%u,%u,1,1,%u,%u,%u,%u)",q.character,q.egg_id,egg.card[0],egg.card[1],egg.card[2],egg.card[3])!=SQL_SUCCESS)return rollback(db,__LINE__);
++    if(!q.capture){
+     if(food_id){if(Sql_Query(db,"UPDATE inventory SET amount=amount+%d WHERE id=%d",q.food_amount,food_id)!=SQL_SUCCESS)return rollback(db,__LINE__);}
+     else if(Sql_Query(db,"INSERT INTO inventory(char_id,nameid,amount,identify) VALUES(%u,%u,%d,1)",q.character,q.food_id,q.food_amount)!=SQL_SUCCESS)return rollback(db,__LINE__);
+     int rc=voucher.amount==1?Sql_Query(db,"DELETE FROM inventory WHERE id=%d",voucher_id):Sql_Query(db,"UPDATE inventory SET amount=amount-1 WHERE id=%d",voucher_id);
+     if(rc!=SQL_SUCCESS || Sql_NumRowsAffected(db)!=1)return rollback(db,__LINE__);
++    }
+     after=q.before;
+-    if(--after[q.voucher_slot].amount==0)after[q.voucher_slot]={};
++    if(!q.capture && --after[q.voucher_slot].amount==0)after[q.voucher_slot]={};
+     after[q.egg_slot]=egg;
+-    auto& food=after[q.food_slot];food.nameid=q.food_id;food.identify=1;food.amount+=q.food_amount;
++    if(!q.capture){auto& food=after[q.food_slot];food.nameid=q.food_id;food.identify=1;food.amount+=q.food_amount;}
+     const auto before_hex=encode(q.before),after_hex=encode(after);
+     if(Sql_Query(db,"INSERT INTO ragoff_catalogue_pet_journal(owner_char,format,item_size,slots,before_hex,after_hex,pet_id) VALUES(%u,1,%u,%u,'%s','%s',%u)",q.character,unsigned(sizeof(item)),unsigned(MAX_INVENTORY),before_hex.c_str(),after_hex.c_str(),unsigned(pet_id))!=SQL_SUCCESS)return rollback(db,__LINE__);
+     if(Sql_QueryStr(db,"COMMIT")!=SQL_SUCCESS)return rollback(db,__LINE__);
+--- a/src/map/script.cpp
++++ b/src/map/script.cpp
+@@ -7821,7 +7821,7 @@
+ int16 pet_get_card3_intimacy(int32 intimacy);
+ static_assert(catalogue_pet::pet_marker == CARD0_PET);
+ namespace {
+-struct CataloguePetPending { catalogue_pet::Claim claim; uint32 token; int timer,fd; uint32 login; int16 map; };
++struct CataloguePetPending { catalogue_pet::Claim claim; uint32 token; int timer,fd; uint32 login; int16 map; int capture_target=0; };
+ std::unordered_map<uint32,CataloguePetPending> catalogue_pet_pending;
+ uint32 catalogue_pet_sequence=0x40000000;
+ static TIMER_FUNC(catalogue_pet_timeout) {
+@@ -7829,7 +7829,10 @@
+     if(it!=catalogue_pet_pending.end() && it->second.timer==tid){
+         auto* sd=map_id2sd(id);
+         if(sd && sd->status.char_id==it->second.claim.character && sd->login_id1==it->second.login)
+-            clif_displaymessage(sd->fd,"Pet pack request timed out before delivery. Voucher kept; refresh before retrying.");
++        {
++            if(it->second.claim.capture) { clif_pet_roulette(*sd,false); clif_displaymessage(sd->fd,"Capture delivery cancelled before confirmation. The lure attempt was used."); }
++            else clif_displaymessage(sd->fd,"Pet pack request timed out before delivery. Voucher kept; refresh before retrying.");
++        }
+         catalogue_pet_pending.erase(it);
+     }
+     return 0;
+@@ -7841,30 +7844,45 @@
+     auto p=it->second;delete_timer(p.timer,catalogue_pet_timeout);catalogue_pet_pending.erase(it);
+     auto* sd=map_id2sd(account);
+     if(!sd || sd->status.char_id!=character || sd->fd!=p.fd || sd->login_id1!=p.login || !session_isActive(sd->fd))return;
++    auto reject=[&](const char* message){
++        if(p.claim.capture){clif_pet_roulette(*sd,false);clif_displaymessage(sd->fd,"Capture delivery cancelled. The lure attempt was used; no egg was granted.");}
++        else clif_displaymessage(sd->fd,message);
++    };
++    auto* captured=p.claim.capture?map_id2md(p.capture_target):nullptr;
++    if(p.claim.capture && (!captured || !captured->prev || captured->mob_id!=p.claim.monster ||
++       captured->m!=sd->m || status_isdead(*captured) ||
++       (battle_config.pet_distance_check && distance_bl(sd,captured)>battle_config.pet_distance_check))){
++        reject("");return;
++    }
+     // Low bits identify the existing inventory barrier. Bit16 is set only by
+     // a Char server with this journal guard and its migration installed.
+     if((ready & 0x13)!=0x13 || pc_isdead(sd) || sd->state.trading || sd->m!=p.map || sd->state.warping || sd->state.changemap ||
+        !catalogue_pet::same(sd->inventory.u.items_inventory,p.claim.before.data())){
+-        clif_displaymessage(sd->fd,"Pet pack cancelled because inventory or character state changed. Voucher kept.");return;
++        reject("Pet pack cancelled because inventory or character state changed. Voucher kept.");return;
+     }
+     // Recheck weight in case a status buff expired while waiting for the save.
+     auto egg_data=item_db.find(p.claim.egg_id),food_data=item_db.find(p.claim.food_id);
+-    if(!egg_data || !food_data || uint64(sd->weight)+egg_data->weight+uint64(food_data->weight)*p.claim.food_amount>sd->max_weight){
+-        clif_displaymessage(sd->fd,"Pet pack needs more free weight. Voucher kept.");return;
++    if(!egg_data || (!p.claim.capture && !food_data) || uint64(sd->weight)+egg_data->weight+(food_data?uint64(food_data->weight)*p.claim.food_amount:0)>sd->max_weight){
++        reject("Pet pack needs more free weight. Voucher kept.");return;
+     }
+     catalogue_pet::Snapshot after{};item egg{};
+     if(!catalogue_pet::commit(mmysql_handle,p.claim,after,egg)){
+-        clif_displaymessage(sd->fd,"Pet pack could not be delivered. Nothing was consumed.");return;
++        reject("Pet pack could not be delivered. Nothing was consumed.");return;
++    }
++    if(p.claim.capture){
++        achievement_update_objective(sd,AG_TAMING,1,captured->mob_id);
++        unit_remove_map(captured,CLR_OUTSIGHT);status_kill(captured);
++        clif_pet_roulette(*sd,true);
+     }
+     item food{};food.nameid=p.claim.food_id;food.identify=1;
+     bool ok=pc_additem(sd,&egg,1,LOG_TYPE_SCRIPT)==ADDITEM_SUCCESS &&
+-            pc_additem(sd,&food,p.claim.food_amount,LOG_TYPE_SCRIPT)==ADDITEM_SUCCESS &&
+-            pc_delitem(sd,p.claim.voucher_slot,1,0,0,LOG_TYPE_SCRIPT)==0;
++            (p.claim.capture || (pc_additem(sd,&food,p.claim.food_amount,LOG_TYPE_SCRIPT)==ADDITEM_SUCCESS &&
++            pc_delitem(sd,p.claim.voucher_slot,1,0,0,LOG_TYPE_SCRIPT)==0));
+     if(!ok || !catalogue_pet::same(sd->inventory.u.items_inventory,after.data())){
+         clif_displaymessage(sd->fd,"Pet pack delivery is saved. Reconnect to refresh inventory safely.");set_eof(sd->fd);return;
+     }
+     intif_storage_save(sd,&sd->inventory);
+-    clif_displaymessage(sd->fd,"Pet egg and food delivered. One voucher consumed.");
++    if(!p.claim.capture)clif_displaymessage(sd->fd,"Pet egg and food delivered. One voucher consumed.");
+ }
+ BUILDIN_FUNC(catalogue_pet_claim) {
+     map_session_data* sd;
+@@ -7911,6 +7929,32 @@
+     catalogue_pet_pending.emplace(q.account,CataloguePetPending{q,token,timer,sd->fd,sd->login_id1,sd->m});
+     WFIFOHEAD(char_fd,14);WFIFOW(char_fd,0)=0x30af;WFIFOL(char_fd,2)=q.account;WFIFOL(char_fd,6)=q.character;WFIFOL(char_fd,10)=token;WFIFOSET(char_fd,14);
+     script_pushint(st,1);return SCRIPT_CMD_SUCCESS;
++}
++
++// Successful native RNG result is not acknowledged until a durable egg exists.
++bool catalogue_pet_capture(map_session_data& sd,mob_data& md) {
++    if(CheckForCharServer() || catalogue_pet::available(mmysql_handle)!=1 || pc_isdead(&sd) || sd.state.trading ||
++       sd.state.warping || sd.state.changemap || catalogue_pet_pending.count(sd.status.account_id) ||
++       companion_runtime::busy(sd.status.account_id) || companion_supplies::busy(sd.status.account_id))return false;
++    auto pet=pet_db.find(md.mob_id);if(!pet)return false;
++    auto egg_data=item_db.find(pet->EggID);auto mob=mob_db.find(pet->class_);
++    if(!egg_data || !mob || uint64(sd.weight)+egg_data->weight>sd.max_weight)return false;
++    catalogue_pet::Claim q{};q.capture=true;
++    q.account=sd.status.account_id;q.character=sd.status.char_id;q.capacity=sd.status.inventory_slots;
++    q.voucher_slot=-1;q.food_slot=-1;q.egg_slot=-1;
++    std::copy_n(sd.inventory.u.items_inventory,MAX_INVENTORY,q.before.begin());
++    for(int n=0;n<q.capacity;++n)if(!q.before[n].nameid){q.egg_slot=n;break;}
++    if(q.egg_slot<0)return false;
++    q.egg_id=pet->EggID;q.monster=pet->class_;q.level=mob->lv;q.intimacy=pet->intimate;
++    char name[NAME_LENGTH];safestrncpy(name,mob->jname.c_str(),NAME_LENGTH);q.name=name;
++    q.egg_card0=CARD0_PET;q.egg_card3=pet_get_card3_intimacy(pet->intimate);
++    if(!intif_storage_save(&sd,&sd.inventory))return false;
++    uint32 token=++catalogue_pet_sequence;
++    if(token<0x40000000 || token>=0x80000000)token=catalogue_pet_sequence=0x40000001;
++    int timer=add_timer(gettick()+10000,catalogue_pet_timeout,q.account,0);
++    catalogue_pet_pending.emplace(q.account,CataloguePetPending{q,token,timer,sd.fd,sd.login_id1,sd.m,md.id});
++    WFIFOHEAD(char_fd,14);WFIFOW(char_fd,0)=0x30af;WFIFOL(char_fd,2)=q.account;WFIFOL(char_fd,6)=q.character;WFIFOL(char_fd,10)=token;WFIFOSET(char_fd,14);
++    return true;
+ }
+ 
+ BUILDIN_FUNC(checkweight2)
+--- a/src/map/pet.cpp
++++ b/src/map/pet.cpp
+@@ -2,6 +2,7 @@
+ // For more information, see LICENCE in the main folder
+ 
+ #include "pet.hpp"
++#include "../common/catalogue_pet.hpp"
+ 
+ #include <cstdlib>
+ #include <map>
+@@ -1339,14 +1340,9 @@
+ 		pet_catch_rate = (pet_catch_rate*battle_config.pet_catch_rate)/100;
+ 
+ 	if(rnd_chance(pet_catch_rate, 10000)) {
+-		achievement_update_objective(&sd, AG_TAMING, 1, md->mob_id);
+-		unit_remove_map(md,CLR_OUTSIGHT);
+-		status_kill(md);
+-		clif_pet_roulette( sd, true );
+-
+-		std::shared_ptr<s_mob_db> mdb = mob_db.find(pet->class_);
+-
+-		intif_create_pet(sd.status.account_id, sd.status.char_id, pet->class_, mdb->lv, pet->EggID, 0, pet->intimate, 100, 0, 1, mdb->jname.c_str());
++        // Report success only after egg + inventory are durably committed.
++        // Native lure consumption and capture probability above are unchanged.
++        if (!catalogue_pet_capture(sd, *md)) clif_pet_roulette(sd, false);
+ 	} else {
+ 		clif_pet_roulette( sd, false );
+ 	}
