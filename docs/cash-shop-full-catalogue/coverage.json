@@ -1,0 +1,5076 @@
+[
+  {
+    "request": 1,
+    "proposal": "White Syrup 100/200",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 200,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      100,
+      200
+    ],
+    "proposed_cash_prices": [
+      900,
+      1800
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "White Syrup 100/200",
+    "variant_spec": "White Syrup 100/200 — 100 bottles / White Syrup 100/200 — 200 bottles",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000010,
+      2000011
+    ]
+  },
+  {
+    "request": 2,
+    "proposal": "Blue Syrup pack",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 11624,
+        "aegis_name": "High_BluePotion",
+        "quantity": 50,
+        "unit_cash": 20
+      }
+    ],
+    "quantities": [
+      50
+    ],
+    "proposed_cash_prices": [
+      900
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Blue Syrup pack",
+    "variant_spec": "Blue Syrup pack — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000020
+    ]
+  },
+  {
+    "request": 3,
+    "proposal": "White Slim Potion pack",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 547,
+        "aegis_name": "White_Slim_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      100
+    ],
+    "proposed_cash_prices": [
+      450
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "White Slim Potion pack",
+    "variant_spec": "White Slim Potion pack — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000030
+    ]
+  },
+  {
+    "request": 4,
+    "proposal": "Blue Potion large box",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      100
+    ],
+    "proposed_cash_prices": [
+      450
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Blue Potion large box",
+    "variant_spec": "Blue Potion large box — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000040
+    ]
+  },
+  {
+    "request": 5,
+    "proposal": "Panacea pack",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      20
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Panacea pack",
+    "variant_spec": "Panacea pack — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000050
+    ]
+  },
+  {
+    "request": 6,
+    "proposal": "Holy Water pack",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 523,
+        "aegis_name": "Holy_Water",
+        "quantity": 20,
+        "unit_cash": 2
+      }
+    ],
+    "quantities": [
+      20
+    ],
+    "proposed_cash_prices": [
+      36
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Holy Water pack",
+    "variant_spec": "Holy Water pack — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000060
+    ]
+  },
+  {
+    "request": 7,
+    "proposal": "Fire resistance potion",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12118,
+        "aegis_name": "Resist_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Fire resistance potion",
+    "variant_spec": "Fire resistance potion — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000070
+    ]
+  },
+  {
+    "request": 8,
+    "proposal": "Water resistance potion",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12119,
+        "aegis_name": "Resist_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Water resistance potion",
+    "variant_spec": "Water resistance potion — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000080
+    ]
+  },
+  {
+    "request": 9,
+    "proposal": "Wind resistance potion",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12121,
+        "aegis_name": "Resist_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Wind resistance potion",
+    "variant_spec": "Wind resistance potion — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000090
+    ]
+  },
+  {
+    "request": 10,
+    "proposal": "Earth resistance potion",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12120,
+        "aegis_name": "Resist_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Earth resistance potion",
+    "variant_spec": "Earth resistance potion — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000100
+    ]
+  },
+  {
+    "request": 11,
+    "proposal": "MaxHP food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12423,
+        "aegis_name": "HP_Increase_PotionM",
+        "quantity": 10,
+        "unit_cash": 15
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      135
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "MaxHP food",
+    "variant_spec": "MaxHP food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000110
+    ]
+  },
+  {
+    "request": 12,
+    "proposal": "MaxSP food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12426,
+        "aegis_name": "SP_Increase_PotionM",
+        "quantity": 10,
+        "unit_cash": 15
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      135
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "MaxSP food",
+    "variant_spec": "MaxSP food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000120
+    ]
+  },
+  {
+    "request": 13,
+    "proposal": "Normal arrow box",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Normal arrow box",
+    "variant_spec": "Normal arrow box — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000130
+    ]
+  },
+  {
+    "request": 14,
+    "proposal": "Silver Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1751,
+        "aegis_name": "Silver_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Silver Arrow",
+    "variant_spec": "Silver Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000140
+    ]
+  },
+  {
+    "request": 15,
+    "proposal": "Fire Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1752,
+        "aegis_name": "Fire_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Fire Arrow",
+    "variant_spec": "Fire Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000150
+    ]
+  },
+  {
+    "request": 16,
+    "proposal": "Crystal Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1754,
+        "aegis_name": "Crystal_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Crystal Arrow",
+    "variant_spec": "Crystal Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000160
+    ]
+  },
+  {
+    "request": 17,
+    "proposal": "Wind Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1755,
+        "aegis_name": "Arrow_Of_Wind",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Wind Arrow",
+    "variant_spec": "Wind Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000170
+    ]
+  },
+  {
+    "request": 18,
+    "proposal": "Stone Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1756,
+        "aegis_name": "Stone_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Stone Arrow",
+    "variant_spec": "Stone Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000180
+    ]
+  },
+  {
+    "request": 19,
+    "proposal": "Shadow Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1767,
+        "aegis_name": "Arrow_Of_Shadow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Shadow Arrow",
+    "variant_spec": "Shadow Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000190
+    ]
+  },
+  {
+    "request": 20,
+    "proposal": "Immaterial Arrow",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1757,
+        "aegis_name": "Immatrial_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      45
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Immaterial Arrow",
+    "variant_spec": "Immaterial Arrow — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000200
+    ]
+  },
+  {
+    "request": 21,
+    "proposal": "Selectable mixed elemental arrows",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1752,
+        "aegis_name": "Fire_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1754,
+        "aegis_name": "Crystal_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1755,
+        "aegis_name": "Arrow_Of_Wind",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1756,
+        "aegis_name": "Stone_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1767,
+        "aegis_name": "Arrow_Of_Shadow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1757,
+        "aegis_name": "Immatrial_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "quantities": [
+      500
+    ],
+    "proposed_cash_prices": [
+      90,
+      90,
+      90,
+      90,
+      90,
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Selectable mixed elemental arrows",
+    "variant_spec": "Selectable mixed elemental arrows — Fire + normal arrows / Selectable mixed elemental arrows — Water + normal arrows / Selectable mixed elemental arrows — Wind + normal arrows / Selectable mixed elemental arrows — Earth + normal arrows / Selectable mixed elemental arrows — Shadow + normal arrows / Selectable mixed elemental arrows — Ghost + normal arrows",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000210,
+      2000211,
+      2000212,
+      2000213,
+      2000214,
+      2000215
+    ]
+  },
+  {
+    "request": 22,
+    "proposal": "Arrow Crafting materials",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 990,
+        "aegis_name": "Boody_Red",
+        "quantity": 10,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 991,
+        "aegis_name": "Crystal_Blue",
+        "quantity": 10,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 992,
+        "aegis_name": "Wind_Of_Verdure",
+        "quantity": 10,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 993,
+        "aegis_name": "Yellow_Live",
+        "quantity": 10,
+        "unit_cash": 2
+      }
+    ],
+    "quantities": [
+      10
+    ],
+    "proposed_cash_prices": [
+      72
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Arrow Crafting materials",
+    "variant_spec": "Arrow Crafting materials — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000220
+    ]
+  },
+  {
+    "request": 23,
+    "proposal": "Fire Converter",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12114,
+        "aegis_name": "Elemental_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Fire Converter",
+    "variant_spec": "Fire Converter — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000230
+    ]
+  },
+  {
+    "request": 24,
+    "proposal": "Water Converter",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12115,
+        "aegis_name": "Elemental_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Water Converter",
+    "variant_spec": "Water Converter — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000240
+    ]
+  },
+  {
+    "request": 25,
+    "proposal": "Wind Converter",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12117,
+        "aegis_name": "Elemental_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Wind Converter",
+    "variant_spec": "Wind Converter — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000250
+    ]
+  },
+  {
+    "request": 26,
+    "proposal": "Earth Converter",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12116,
+        "aegis_name": "Elemental_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Earth Converter",
+    "variant_spec": "Earth Converter — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000260
+    ]
+  },
+  {
+    "request": 27,
+    "proposal": "STR moderate food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12045,
+        "aegis_name": "Str_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "STR moderate food",
+    "variant_spec": "STR moderate food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000270
+    ]
+  },
+  {
+    "request": 28,
+    "proposal": "AGI moderate food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12060,
+        "aegis_name": "Agi_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "AGI moderate food",
+    "variant_spec": "AGI moderate food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000280
+    ]
+  },
+  {
+    "request": 29,
+    "proposal": "VIT moderate food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12055,
+        "aegis_name": "Vit_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "VIT moderate food",
+    "variant_spec": "VIT moderate food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000290
+    ]
+  },
+  {
+    "request": 30,
+    "proposal": "INT moderate food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12050,
+        "aegis_name": "Int_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "INT moderate food",
+    "variant_spec": "INT moderate food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000300
+    ]
+  },
+  {
+    "request": 31,
+    "proposal": "DEX moderate food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12065,
+        "aegis_name": "Dex_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "DEX moderate food",
+    "variant_spec": "DEX moderate food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000310
+    ]
+  },
+  {
+    "request": 32,
+    "proposal": "LUK moderate food",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12070,
+        "aegis_name": "Luk_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "LUK moderate food",
+    "variant_spec": "LUK moderate food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000320
+    ]
+  },
+  {
+    "request": 33,
+    "proposal": "Selectable stat food",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 12045,
+        "aegis_name": "Str_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12060,
+        "aegis_name": "Agi_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12055,
+        "aegis_name": "Vit_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12050,
+        "aegis_name": "Int_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12065,
+        "aegis_name": "Dex_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12070,
+        "aegis_name": "Luk_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      10
+    ],
+    "proposed_cash_prices": [
+      90,
+      90,
+      90,
+      90,
+      90,
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Selectable stat food",
+    "variant_spec": "Selectable stat food — STR +5 / Selectable stat food — AGI +5 / Selectable stat food — VIT +5 / Selectable stat food — INT +5 / Selectable stat food — DEX +5 / Selectable stat food — LUK +5",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000330,
+      2000331,
+      2000332,
+      2000333,
+      2000334,
+      2000335
+    ]
+  },
+  {
+    "request": 34,
+    "proposal": "Speed Potion",
+    "kind": "item",
+    "candidate_components": [
+      {
+        "item_id": 12016,
+        "aegis_name": "Speed_Up_Potion",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Speed Potion",
+    "variant_spec": "Speed Potion — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000340
+    ]
+  },
+  {
+    "request": 35,
+    "proposal": "Neuralizer",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 12213,
+        "aegis_name": "Neuralizer",
+        "weight_tenths": 0,
+        "equip_min_level": 0,
+        "type": "DelayConsume"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      300
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Neuralizer",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 36,
+    "proposal": "Stat reset voucher",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 6720,
+        "aegis_name": "Status_Reset_Coupon",
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Etc"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      300
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Stat reset voucher",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 37,
+    "proposal": "Full skill/stat reset pack",
+    "kind": "service",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      540
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Full skill/stat reset pack",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 38,
+    "proposal": "Gym Pass",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 7776,
+        "aegis_name": "Max_Weight_Up_Scroll",
+        "weight_tenths": 10,
+        "equip_min_level": 0,
+        "type": "Etc"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      100
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Gym Pass",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 39,
+    "proposal": "Token of Siegfried",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 7621,
+        "aegis_name": "Token_Of_Siegfried",
+        "weight_tenths": 10,
+        "equip_min_level": 0,
+        "type": "Etc"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      30
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Token of Siegfried",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 40,
+    "proposal": "Giant Fly Wing",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 12212,
+        "aegis_name": "Giant_Fly_Wing",
+        "weight_tenths": 10,
+        "equip_min_level": 0,
+        "type": "Usable"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      10
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Giant Fly Wing",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 41,
+    "proposal": "Magnifier pack",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 611,
+        "aegis_name": "Spectacles",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "quantities": [
+      100
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Magnifier pack",
+    "variant_spec": "Magnifier pack — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000410
+    ]
+  },
+  {
+    "request": 42,
+    "proposal": "Portable repair service",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 14521,
+        "aegis_name": "Repair_Scroll",
+        "weight_tenths": 10,
+        "equip_min_level": 0,
+        "type": "Usable"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      20
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Portable repair service",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 43,
+    "proposal": "Hairstyle voucher",
+    "kind": "service",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      50
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Hairstyle voucher",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 44,
+    "proposal": "Hair/clothes color voucher",
+    "kind": "service",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      50
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Hair/clothes color voucher",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 45,
+    "proposal": "Character rename voucher",
+    "kind": "service",
+    "candidate_components": [
+      {
+        "item_id": 7623,
+        "aegis_name": "Name_Change_Coupon",
+        "weight_tenths": 0,
+        "equip_min_level": 0,
+        "type": "Etc"
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      100
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Character rename voucher",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 46,
+    "proposal": "Card removal voucher",
+    "kind": "service",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      200
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Card removal voucher",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 47,
+    "proposal": "Costume Poring hat",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19587,
+        "aegis_name": "C_King_Poring_Hat",
+        "quantity": 1,
+        "weight_tenths": 100,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 905,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume Poring hat",
+    "variant_spec": "Costume King Poring Hat; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/킹포링모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "d732a6e8badd57fc5a6a66069f2136632d053ba42c64d9294cba575f05c93ee2"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/킹포링모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "1f63b5c3866c5b7a02034828c00dbc3d055130d3ce286151cdb2593b96865527"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_킹포링모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 9693,
+          "sha256": "f1962b9bfc34e4942c16e629604f2169c9ef23cfd13683d53e75ab9cc9874901"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_킹포링모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "1253f2eaf298c79ae35dd924d891c5aca1822c4bfa0dfa8549b9bc8adb7a421e"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_킹포링모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 10722,
+          "sha256": "717dcd0dfb84a37ff55e0e09ddb8322631baa914e08221b03fb4941bd8114d76"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_킹포링모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "616a52099b6b1b4c993e6e0ee5cd0494d93a0e3ca7be578a49d1ee38849cb2c0"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 48,
+    "proposal": "Costume rabbit hat",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19876,
+        "aegis_name": "C_Rabbit_Ear_Hat",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 384,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume rabbit hat",
+    "variant_spec": "Costume Bunny Top Hat; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/토끼귀모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1782,
+          "sha256": "fd44471e1333d96e19ce58f0ae2263e64dfb3774d215769cc9355a968283b224"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/토끼귀모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22854,
+          "sha256": "b333250122ea011cffab8a59cb659951aa69d403affc754e2513377eeede262f"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_토끼귀모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 18799,
+          "sha256": "80d44fd8ec49374b325a2cca9365dd988e81e3ffbb00ceadce0b5146a3aa97bf"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_토끼귀모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "5f48f35fea4e0e18305a229b3c86e69891f428c3d2f077f93202cadce8c983b9"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_토끼귀모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 18799,
+          "sha256": "80d44fd8ec49374b325a2cca9365dd988e81e3ffbb00ceadce0b5146a3aa97bf"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_토끼귀모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "5f48f35fea4e0e18305a229b3c86e69891f428c3d2f077f93202cadce8c983b9"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 49,
+    "proposal": "Costume cat hat",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19843,
+        "aegis_name": "C_Cat_Hairband",
+        "quantity": 1,
+        "weight_tenths": 10,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 2,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume cat hat",
+    "variant_spec": "Costume Kitty Band; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/고양이머리띠.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "078a8db7404b1a45fb8b6527a791bab3d31240727b50700200c3f046fcb0bde8"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/고양이머리띠.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 8676,
+          "sha256": "2116368f70dce1ec537b91f993b198e4f653671974e7524363effa60b2ad0e90"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_고양이머리띠.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 2033,
+          "sha256": "a96d46ead43cc38095f73c3ac010610a8fbe3eaca7c3a08991813e50ff3706e4"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_고양이머리띠.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "a8c577a60721b9c2602692760ad6b476ffe70d9da49a5b4a2082c7add754ef6a"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_고양이머리띠.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 1526,
+          "sha256": "02403429e3a9ffd487a2516f15948c754fa141bff1e23a9b6cca80ccc447be03"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_고양이머리띠.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "54b9d73a80aaf7f7746ef9ef9812ea578e546f25f04d6b1ea5d9496277be035b"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 50,
+    "proposal": "Costume goggles",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19578,
+        "aegis_name": "C_Goggle",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1,
+        "locations": {
+          "Costume_Head_Top": true,
+          "Costume_Head_Mid": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume goggles",
+    "variant_spec": "Costume Googles; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/고글.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "e20127149f314f8f3c8b0788e869928fafa10c14e529f5e269ba24cf9780f03d"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/고글.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 8676,
+          "sha256": "a27764b9a626933f6677a415737d560f851dae2856262119aed0b09c2d5acf76"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_고글.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 4081,
+          "sha256": "ecb572d344d8adbd24a33daecd80d581b879b331ee516dacce4ab8ddb16e1954"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_고글.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "8be2ffa7062c3f9a50b179fcb55855c532eac733fb771b23d0349a8d5d1ab123"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_고글.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 4963,
+          "sha256": "1133b29e643de33b6aa4bbf8241b944d6f2b3fe338e2aa71ebbb352593f2a262"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_고글.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "9e5adc857b4b1df4881878f78c1dbbaa9663f8b1f37feb700869391afa9b8464"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 51,
+    "proposal": "Costume scarf",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19605,
+        "aegis_name": "C_Gang_Scarf",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 369,
+        "locations": {
+          "Costume_Head_Low": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume scarf",
+    "variant_spec": "Costume Gang Scarf; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/갱스카프.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "997454ba60600d143950f98176afe166e3ce9c3d389305225ff968d68856382e"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/갱스카프.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "fb500b49424d50b76af6734529a84c8c3f8600fa5f790fcc8719490ac7ccd59d"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_갱스카프.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 3372,
+          "sha256": "fbbeab120d0dca9df093ef3a66ae4358842d0cc35743ed02ca733e195bc16468"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_갱스카프.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "7353ac1d820569d0b5edf02d283258f5928bb4850198ed158b87331d8a2dd998"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_갱스카프.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 3372,
+          "sha256": "fbbeab120d0dca9df093ef3a66ae4358842d0cc35743ed02ca733e195bc16468"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_갱스카프.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "056538bb3f0cfb42101087f3fbe793fa608b1a6ebbea3be762893138685fa747"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 52,
+    "proposal": "Costume backpack",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume backpack",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 53,
+    "proposal": "Costume witch hat",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19903,
+        "aegis_name": "C_Witchs_Hat",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 717,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume witch hat",
+    "variant_spec": "Costume Witch's Hat; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/마녀의모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "2a9910b107beefbac7b8c2d41cf0730e2c169ccf5df338fba019356d2865e6eb"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/마녀의모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "70d7d3ac50fce878818d1d88777c474adf10e4bdd0a36ce5290e8ad7d6314871"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_마녀의모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 10425,
+          "sha256": "0e22fbbcc6527568f4ba17c5549ff3a45da32a171825f97a94ade4ba8a5ed1e3"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_마녀의모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "4768170cf95042f300a8324bc52a1a9b2485cb0972371bc5ae5142c5958902b1"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_마녀의모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 10425,
+          "sha256": "0e22fbbcc6527568f4ba17c5549ff3a45da32a171825f97a94ade4ba8a5ed1e3"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_마녀의모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "84c47a35c93495d4e6fba3460431295b57b752a6f70cfcfe21b41b5b69ed4925"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 54,
+    "proposal": "Costume floating book",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 31395,
+        "aegis_name": "C_Book_Of_Magic",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1691,
+        "locations": {
+          "Costume_Head_Low": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume floating book",
+    "variant_spec": "Costume Book of Magic; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/Book_Of_Magic.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "8ea51f8cef0d7602a5926cca78672e41add456a0e5e35c35f5d0e3977d5106cb"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/Book_Of_Magic.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "de503f33089ed34f4f1463f91b4ad6069da0aef546b00046c29a1f6ca60a5209"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_Book_Of_Magic.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 69205,
+          "sha256": "5258e1a29e28e68aab18a47906e3efe0d6a9f47130a66466190adba3328b037e"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_Book_Of_Magic.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 76884,
+          "sha256": "acb8489cb546946af26892e25dd276a2ff0a0de8dbc441fe955ac9f965c53dfc"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_Book_Of_Magic.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 69205,
+          "sha256": "5258e1a29e28e68aab18a47906e3efe0d6a9f47130a66466190adba3328b037e"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_Book_Of_Magic.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 76884,
+          "sha256": "6378af54823e91b1412e3d2ed9c40031ae5930ba4fb7772b112f9d1f58c091db"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 55,
+    "proposal": "Costume magic aura",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 20132,
+        "aegis_name": "C_Subject_Aura",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1267,
+        "locations": {
+          "Costume_Head_Low": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume magic aura",
+    "variant_spec": "Costume Test Subject Aura; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/사념의오오라.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "b4b15fc47f16ac203fc92f45245b4e9ab5e1690ea58fc89a4d574de041d06ed5"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/사념의오오라.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "42be4aa3f8461460e43e0c30b7ea966b3746120f483dad18555bb703c57d760c"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_사념의오오라.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 524168,
+          "sha256": "aabc0dc1207cb0c46c6c437f065d4afce98e7ed3ffd66a8c7102957b5e225884"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_사념의오오라.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 82964,
+          "sha256": "c9997c46c1441954ba0ee030f91a064a85ec315177c149ea39a56cbd3c895b26"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_사념의오오라.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 524168,
+          "sha256": "aabc0dc1207cb0c46c6c437f065d4afce98e7ed3ffd66a8c7102957b5e225884"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_사념의오오라.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 83092,
+          "sha256": "60f2c9c00c4c24f757ba4d39cbf2a50bef8e49316dd546c14007ed168288d66c"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 56,
+    "proposal": "Costume armored helm",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19667,
+        "aegis_name": "C_Helm_Of_Dragoon",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 464,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume armored helm",
+    "variant_spec": "Costume Dragon Helm; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/드래군헬름.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "799ef1b386d6994e2eacd1abd948f54d26c51e993b88d285011396502e5f9089"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/드래군헬름.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "c65293511442faca2ce5aae3096702d76ba5bba2a0ca01eaeb24505ab9751b71"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_드래군헬름.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 9208,
+          "sha256": "3dd1a94462dee35c8fe06063167a2b5c34c6953d94936666407f238e371de6d8"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_드래군헬름.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "0e548fedf9c0cb9f9c34a150d69af1fb1f18ab8c48a14d1912d27ce696a37fe3"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_드래군헬름.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 9208,
+          "sha256": "3dd1a94462dee35c8fe06063167a2b5c34c6953d94936666407f238e371de6d8"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_드래군헬름.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "e1d845e18d8dc359d3e0de13012e1c0efe6c40db62e9d7ff7a8dcb020febca56"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 57,
+    "proposal": "Costume knight cape",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume knight cape",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 58,
+    "proposal": "Costume crown",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19630,
+        "aegis_name": "C_Crown",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 45,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume crown",
+    "variant_spec": "Costume Crown; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/크라운.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "f4bad48ba9878063e3785c1de641f512a0886563fbb04600729d5186e8c8977f"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/크라운.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "7cc8692cc08b1bb13ecff7e728bfdbcabc82087f7d7dd11015a488f17f307859"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_크라운.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 2101,
+          "sha256": "feb731f60623da13974b511ab71bfb233d5b6f76ad6913d93cdb8fbee66bbfc2"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_크라운.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "dd791c437688f371ecee42743ec9accb461731f90d1300d342638c444f623239"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_크라운.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 2094,
+          "sha256": "74de8821db148b3328d0221d5a75b00194485eaae2a95ba669e4ef180a3d8840"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_크라운.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 44628,
+          "sha256": "f11058b042a5040b9aa91e271db4a0e955b048ed889e96f76b0e9e3fb9df3a4e"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 59,
+    "proposal": "Costume mask",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19618,
+        "aegis_name": "C_Mask_Of_Fox",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 153,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume mask",
+    "variant_spec": "Costume Kitsune Mask; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/여우가면.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "4c27bf67c937295bcc98a615397e1f39cacf971e82f668f04aeca4f8a254476f"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/여우가면.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22854,
+          "sha256": "94fa8ab359a2690d346b27040e0fc39b479645142af49ec2913dd6e4a9424ea8"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_여우가면.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 2607,
+          "sha256": "0afa21edd76d62de21e09a53ee9d586afdc83174e565145ab20229b1ea1e6146"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_여우가면.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 49108,
+          "sha256": "e6f42cd8244493c09e5cfa703177d596f12cec07e57568bb156220eb016a2c53"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_여우가면.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 2575,
+          "sha256": "9849573fa82ff1ef8bc2a8e1a894251aedfd72607d4ddd5df10510b5e753b445"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_여우가면.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48380,
+          "sha256": "8f472bdd83553eb36bfeb7fae9cad3415795ccd39853e7529967d5c59817037a"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 60,
+    "proposal": "Costume black wings",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume black wings",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 61,
+    "proposal": "Costume eyepatch",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19289,
+        "aegis_name": "C_Moon_Eyepatch",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1370,
+        "locations": {
+          "Costume_Head_Mid": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume eyepatch",
+    "variant_spec": "Costume Moon Eyepatch; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/달의안대.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "c75d74843f46a61f9ee63e4fdfc8b03a5de1b529c301b40e9ee364067f388fd5"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/달의안대.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "7611d8d187ea759ca25a1732c1f481b97e6f5a88c20e4e5cad3f244e80b5d7de"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_달의안대.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 1988,
+          "sha256": "40f390d41968435b4eed8eb0d164a3f8762e7d3d14fff9d82fb9700bf319e9c7"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_달의안대.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 41268,
+          "sha256": "0d44fef6c8459d534a9ef89dbf9e3fea6f2e7b411988d6caaabe01e4550efc83"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_달의안대.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 1988,
+          "sha256": "40f390d41968435b4eed8eb0d164a3f8762e7d3d14fff9d82fb9700bf319e9c7"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_달의안대.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 41268,
+          "sha256": "040071fa2d49295831340f7d7ce88e28212c34eac55ac57d981b125badc7bfbf"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 62,
+    "proposal": "Costume animal ears",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19617,
+        "aegis_name": "C_Ear_Of_Puppy",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 199,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume animal ears",
+    "variant_spec": "Costume Puppy Headband; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/강아지귀.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "3d8242e4f66a30c965675da2b72cf8912fbb89fbd478ed5c1cff3ec23ffe6e56"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/강아지귀.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "936aa7ff49eaa0707e9a18b004310b4f1d87b7b5ade13473fabd9bb2bc82ad5b"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_강아지귀.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 1721,
+          "sha256": "14b2bffaf640db3dbbb182ed3c83eceb12dcf7b25f3434f22665eed957c21743"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_강아지귀.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48212,
+          "sha256": "fdd50acb35e2cb9ac1b46b5b4286fac3c3b7930bae6f67b0acbd7a8eee58c7d4"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_강아지귀.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 1721,
+          "sha256": "1064125402e717ba210dd30c76271e61f9d40ff5bf277c2cb69644bc03b6561d"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_강아지귀.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48980,
+          "sha256": "7e3fc83ba82367ab6cb2065b2efdbd7ae015f3bafe8b0fa5498b068c13189ec9"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 63,
+    "proposal": "Costume animal on head",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19739,
+        "aegis_name": "C_Sleeping_Kitty_Cat",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 838,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume animal on head",
+    "variant_spec": "Costume Sleeping Kitty Hat; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/잠자는고양이모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "59a03efdaaccef4f879addb41d009667691b1be825c80c7ff46efc31ddea4dfa"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/잠자는고양이모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "a6cf6a23d77e33c3595ca652343454e11c9ced11559912c21fd483c78e13e08a"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_잠자는고양이모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 4080,
+          "sha256": "0c7e20a6bda6d8d9ea28965b63bd06bba0de37bce6da1b2870cfe6bee06b924c"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_잠자는고양이모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "b2471bfab68c18b2e62e914b59d2d75e01e2c40f1b674b053510a151eaa53dd2"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_잠자는고양이모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 4080,
+          "sha256": "0c7e20a6bda6d8d9ea28965b63bd06bba0de37bce6da1b2870cfe6bee06b924c"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_잠자는고양이모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "fe430df6146c799789242838c0b21a86749504710084a7a2a2d02d29051527dd"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 64,
+    "proposal": "Costume balloon",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 20202,
+        "aegis_name": "C_Deviruchi_Balloon",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1082,
+        "locations": {
+          "Costume_Head_Low": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume balloon",
+    "variant_spec": "Costume Deviruchi Balloon; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/데비루치풍선.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "1bf96aabba204fd586add42db87f47a987c5b1b5e35b1bc54735365e2b601c5a"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/데비루치풍선.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "a6f23216f8e985e47ae03a3de78ed305d4fe22764870a4bce526d9f03148126f"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_데비루치풍선.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 60320,
+          "sha256": "afe871d3bb5cbf95a4c87b1cfe5eb12ba5a2913ec19ee228b1aab53ba0492c19"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_데비루치풍선.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 89044,
+          "sha256": "4451166dee2b51fe7f42ed42bd3df0e2291748680aac63652a3f1d5b725cb7d7"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_데비루치풍선.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 60320,
+          "sha256": "afe871d3bb5cbf95a4c87b1cfe5eb12ba5a2913ec19ee228b1aab53ba0492c19"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_데비루치풍선.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 89044,
+          "sha256": "58cfef8f2e7c9140d46d1d4d60ca8e1a5605425eed50e49a19e593e49dba417c"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 65,
+    "proposal": "Costume halo",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume halo",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 66,
+    "proposal": "Costume white wings",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume white wings",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 67,
+    "proposal": "Costume priest cape",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Costume priest cape",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 68,
+    "proposal": "Christmas costume",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19702,
+        "aegis_name": "C_Santa_Hat_1",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 390,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Christmas costume",
+    "variant_spec": "Costume Twin Pompom By JB; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/양갈래산타모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "54a72673731684e2e632beff18dd5756c6078ee7cdf5056b5d106cc69eeee121"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/양갈래산타모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "ec38d1bfe09106697ddcebdae90b42e5f7494802b9a16f3610057dc36df04452"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_양갈래산타모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 7347,
+          "sha256": "155a93329600930b7049ac0ad3189af186b94b637da2c1e76a29b95a3733ada4"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_양갈래산타모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "aec7f765762cf4bd555ab07249f341d86a9411841dd2d84ea94be3cdf97de4b2"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_양갈래산타모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 7347,
+          "sha256": "155a93329600930b7049ac0ad3189af186b94b637da2c1e76a29b95a3733ada4"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_양갈래산타모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 48276,
+          "sha256": "fb4d7dfdcf8314ed3cd101651a0be5c8868202faba9d4f2ac68357d6b6b92c40"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 69,
+    "proposal": "Halloween costume",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 19910,
+        "aegis_name": "C_Halloween_Hat",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1098,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Halloween costume",
+    "variant_spec": "Costume Halloween Hat; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/할로윈모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1654,
+          "sha256": "e64fceda78d15623d02b815a64167172b90fb87cb3923067acfc5fc1abbfa430"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/할로윈모자.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "da2ecee26cc940f2ea7c2f99225c60321ce18fd3bba0f6d6b767cba889c76583"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_할로윈모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 653648,
+          "sha256": "bc2f85865a9458fca4de88429013353a7ae1a89c155bc40d717cf36670b5ee25"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_할로윈모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 83220,
+          "sha256": "6f2d8f351d5e3f45b279c65b707bb130caefad4872544f400eaf1abc44c5c39e"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_할로윈모자.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 653648,
+          "sha256": "bc2f85865a9458fca4de88429013353a7ae1a89c155bc40d717cf36670b5ee25"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_할로윈모자.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 83220,
+          "sha256": "97c85a8585a87303ac330458ff4f94828960b2447a9cbf43d1599db1a7ae4659"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 70,
+    "proposal": "Thai themed costume",
+    "kind": "costume",
+    "candidate_components": [
+      {
+        "item_id": 31143,
+        "aegis_name": "C_Krathong_Crown_TH",
+        "quantity": 1,
+        "weight_tenths": 0,
+        "equip_min_level": 1,
+        "type": "Armor",
+        "view": 1560,
+        "locations": {
+          "Costume_Head_Top": true
+        }
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Thai themed costume",
+    "variant_spec": "Costume: Krathong Crown; existing costume slot, no item/equip/unequip script; no random selection",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": true,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "asset_evidence": {
+      "method": "Native bundled metadata + ReqAccName; decompressed BMP/SPR/ACT header and size validation, both sexes",
+      "files": [
+        {
+          "path": "data/texture/유저인터페이스/item/C크라통왕관_태국.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 1782,
+          "sha256": "659515c85ac98281d7963d9b4251670b58e16bd86ebf0729c809a0075f0f51bd"
+        },
+        {
+          "path": "data/texture/유저인터페이스/collection/C크라통왕관_태국.bmp",
+          "exists": true,
+          "valid": true,
+          "bytes": 22856,
+          "sha256": "acd28b086db59332be4812bd60c4a4dc1db2d50bc65448716085e2277c094b03"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_C크라통왕관_태국.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 821360,
+          "sha256": "d435b200183ca057e30d0ddc50964bbd9ef73ec3a5f124059aa30e7c06dacd93"
+        },
+        {
+          "path": "data/sprite/악세사리/남/남_C크라통왕관_태국.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 83220,
+          "sha256": "9d94b396ebb4e4b7ed4e92820a53ca98ad2ca6e0a362c842ca89d921887b2aaa"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_C크라통왕관_태국.spr",
+          "exists": true,
+          "valid": true,
+          "bytes": 821360,
+          "sha256": "def6a7c8a41fc386593bcefcbbcb72ecfb8114c5388073aa66800e43c52dcd73"
+        },
+        {
+          "path": "data/sprite/악세사리/여/여_C크라통왕관_태국.act",
+          "exists": true,
+          "valid": true,
+          "bytes": 83220,
+          "sha256": "8d7438ec5c61859613b166c1bc908d3cc2516ef7a362831cff06cd292a8a08d9"
+        }
+      ],
+      "visual_acceptance": false
+    },
+    "skus": []
+  },
+  {
+    "request": 71,
+    "proposal": "Starter pet egg + correct food",
+    "kind": "bundle",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      150
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Starter pet egg + correct food",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 72,
+    "proposal": "Bulk pet food",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 537,
+        "aegis_name": "Pet_Food",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "quantities": [
+      100
+    ],
+    "proposed_cash_prices": [
+      90
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Bulk pet food",
+    "variant_spec": "Bulk pet food — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000720
+    ]
+  },
+  {
+    "request": 73,
+    "proposal": "Pet accessories",
+    "kind": "item",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      50
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Pet accessories",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 74,
+    "proposal": "Species-selectable taming kit",
+    "kind": "bundle",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      100
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Species-selectable taming kit",
+    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 75,
+    "proposal": "Mage/hunter/priest themed pets",
+    "kind": "bundle",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      200
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Mage/hunter/priest themed pets",
+    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 76,
+    "proposal": "Prontera/Payon/Morroc collectible costume",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      250
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Prontera/Payon/Morroc collectible costume",
+    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 77,
+    "proposal": "Hunter Supply",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 1752,
+        "aegis_name": "Fire_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1754,
+        "aegis_name": "Crystal_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1755,
+        "aegis_name": "Arrow_Of_Wind",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1756,
+        "aegis_name": "Stone_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1767,
+        "aegis_name": "Arrow_Of_Shadow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1757,
+        "aegis_name": "Immatrial_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      360,
+      360,
+      360,
+      360,
+      360,
+      360
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Hunter Supply",
+    "variant_spec": "Hunter Supply — Fire / Hunter Supply — Water / Hunter Supply — Wind / Hunter Supply — Earth / Hunter Supply — Shadow / Hunter Supply — Ghost",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000770,
+      2000771,
+      2000772,
+      2000773,
+      2000774,
+      2000775
+    ]
+  },
+  {
+    "request": 78,
+    "proposal": "Knight Puller",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 200,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12055,
+        "aegis_name": "Vit_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12423,
+        "aegis_name": "HP_Increase_PotionM",
+        "quantity": 10,
+        "unit_cash": 15
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      2025
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Knight Puller",
+    "variant_spec": "Knight Puller — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000780
+    ]
+  },
+  {
+    "request": 79,
+    "proposal": "Wizard Supply",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12050,
+        "aegis_name": "Int_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 717,
+        "aegis_name": "Blue_Gemstone",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      630
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Wizard Supply",
+    "variant_spec": "Wizard Supply — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000790
+    ]
+  },
+  {
+    "request": 80,
+    "proposal": "Priest Support",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 717,
+        "aegis_name": "Blue_Gemstone",
+        "quantity": 100,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 523,
+        "aegis_name": "Holy_Water",
+        "quantity": 20,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      576
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Priest Support",
+    "variant_spec": "Priest Support — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000800
+    ]
+  },
+  {
+    "request": 81,
+    "proposal": "Assassin Supply",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12114,
+        "aegis_name": "Elemental_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12115,
+        "aegis_name": "Elemental_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12117,
+        "aegis_name": "Elemental_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12116,
+        "aegis_name": "Elemental_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      1215,
+      1215,
+      1215,
+      1215
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Assassin Supply",
+    "variant_spec": "Assassin Supply — Assassin Fire / Assassin Supply — Assassin Water / Assassin Supply — Assassin Wind / Assassin Supply — Assassin Earth",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000810,
+      2000811,
+      2000812,
+      2000813
+    ]
+  },
+  {
+    "request": 82,
+    "proposal": "Farming outing",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 611,
+        "aegis_name": "Spectacles",
+        "quantity": 20,
+        "unit_cash": 1
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      1163
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Farming outing",
+    "variant_spec": "Farming outing — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000820
+    ]
+  },
+  {
+    "request": 83,
+    "proposal": "Loot hunt",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 12210,
+        "aegis_name": "Bubble_Gum",
+        "quantity": 5,
+        "unit_cash": 50
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      1350
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Loot hunt",
+    "variant_spec": "Loot hunt — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000830
+    ]
+  },
+  {
+    "request": 84,
+    "proposal": "Leveling",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 12208,
+        "aegis_name": "Battle_Manual",
+        "quantity": 5,
+        "unit_cash": 50
+      },
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 100,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12209,
+        "aegis_name": "Insurance",
+        "quantity": 5,
+        "unit_cash": 10
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      765
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Leveling",
+    "variant_spec": "Leveling — fixed contents",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000840
+    ]
+  },
+  {
+    "request": 85,
+    "proposal": "Map exploration",
+    "kind": "bundle",
+    "candidate_components": [
+      {
+        "item_id": 12118,
+        "aegis_name": "Resist_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12119,
+        "aegis_name": "Resist_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12121,
+        "aegis_name": "Resist_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12120,
+        "aegis_name": "Resist_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      }
+    ],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      672,
+      672,
+      672,
+      672
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Map exploration",
+    "variant_spec": "Map exploration — Fire / Map exploration — Water / Map exploration — Wind / Map exploration — Earth",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": [
+      2000850,
+      2000851,
+      2000852,
+      2000853
+    ]
+  },
+  {
+    "request": 86,
+    "proposal": "Build change",
+    "kind": "service",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      600
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Build change",
+    "variant_spec": "fixed deterministic contents; no random group",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 87,
+    "proposal": "Five-companion role supplies",
+    "kind": "bundle",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      600
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Five-companion role supplies",
+    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "confirm/cancel + persistence + no item loss",
+      "actual companion distribution/consumption or appearance; excluded until proven"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  },
+  {
+    "request": 88,
+    "proposal": "Team fashion",
+    "kind": "costume",
+    "candidate_components": [],
+    "quantities": [
+      1
+    ],
+    "proposed_cash_prices": [
+      1000
+    ],
+    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "intended_effect": "Team fashion",
+    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "dependencies": [
+      "effective item script + restrictions",
+      "GRF iteminfo/icon + use assets",
+      "purchase debit/inventory/use/reconnect integration",
+      "real free cosmetic preview + no-stat audit + SPR/ACT/palette",
+      "confirm/cancel + persistence + no item loss",
+      "actual companion distribution/consumption or appearance; excluded until proven"
+    ],
+    "status": "in_progress",
+    "sellable": false,
+    "evidence": {
+      "script_audit": false,
+      "asset_audit": false,
+      "purchase_packet": false,
+      "effect_packet": false,
+      "reconnect": false,
+      "edge_cases": false,
+      "device": false
+    },
+    "blocker": null,
+    "skus": []
+  }
+]

@@ -1,0 +1,2 @@
+# Unified-diff context prefixes are data; preserve exact baseline indentation.
+*.patch -whitespace

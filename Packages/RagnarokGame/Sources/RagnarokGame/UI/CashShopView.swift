@@ -198,13 +198,17 @@ struct CashShopView: View {
         VStack(spacing: 0) {
             GameTitleBar(Text(verbatim: name(product)), closeAction: { detail = nil }, usesGameSkin: true)
             HStack(alignment: .top, spacing: 8) {
-                CashShopItemImage(itemID: product.itemID, preview: true).frame(width: 85, height: 100)
+                if let costume = CashShopCostume.forItem(product.itemID) {
+                    CashShopCostumePreview(itemID: product.itemID, costume: costume)
+                } else {
+                    CashShopItemImage(itemID: product.itemID, preview: true).frame(width: 85, height: 100)
+                }
                 ScrollView {
                     Text(AttributedString(description: context.itemInfoTable.localizedIdentifiedItemDescription(forItemID: Int(product.itemID)) ?? "", defaultColor: .gameLabel))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }.frame(height: 205)
             }.padding(8)
-        }.frame(width: 340).background(Color.white).border(Color.gameBoxBorder)
+        }.frame(width: CashShopCostume.forItem(product.itemID) == nil ? 340 : 390).background(Color.white).border(Color.gameBoxBorder)
     }
 
     private var confirmation: some View {

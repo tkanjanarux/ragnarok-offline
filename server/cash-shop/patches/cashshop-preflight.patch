@@ -1,0 +1,96 @@
+--- a/src/map/cashshop.cpp
++++ b/src/map/cashshop.cpp
+@@ -5,6 +5,8 @@
+ 
+ #include <cstdlib> // atoi
+ #include <cstring> // memset
++#include <climits>
++#include <unordered_set>
+ 
+ #include <common/cbasetypes.hpp> // uint16, uint32
+ #include <common/malloc.hpp> // CREATE, RECREATE, aFree
+@@ -438,12 +440,38 @@
+  * @param item_list Array of item ID
+  * @return true: success, false: fail
+  */
++// A purchased plain item must be preflighted against the same stack pc_additem
++// will use. pc_checkadditem matches only nameid and can select a bound/rental or
++// card-marked stack, causing an incorrect slot/stack prediction before payment.
++static char cashshop_check_plain_item(const map_session_data* sd, const item_data& data, uint32 amount) {
++	if (amount > MAX_AMOUNT || (data.stack.inventory && amount > data.stack.amount))
++		return CHKADDITEM_OVERAMOUNT;
++	if (!itemdb_isstackable2(&data) || data.flag.guid)
++		return CHKADDITEM_NEW;
++	for (int i = 0; i < MAX_INVENTORY; ++i) {
++		const auto& item = sd->inventory.u.items_inventory[i];
++		if (item.nameid != data.nameid || item.bound || item.expire_time || item.unique_id) continue;
++		bool plain = true;
++		for (const auto card : item.card) if (card != 0) plain = false;
++		if (!plain) continue;
++		if (i >= sd->status.inventory_slots || amount > MAX_AMOUNT - item.amount ||
++			(data.stack.inventory && amount > data.stack.amount - item.amount))
++			return CHKADDITEM_OVERAMOUNT;
++		return CHKADDITEM_EXIST;
++	}
++	return CHKADDITEM_NEW;
++}
++
+ bool cashshop_buylist( map_session_data* sd, uint32 kafrapoints, int32 n, const PACKET_CZ_SE_PC_BUY_CASHITEM_LIST_sub* item_list ){
+-	uint32 totalcash = 0;
+-	uint32 totalweight = 0;
++	uint64 totalcash = 0;
++	uint64 totalweight = 0;
++	std::unordered_set<t_itemid> requested_items;
+ 	int32 i,new_;
+ 
+ 	if( sd == nullptr || item_list == nullptr ){
++		clif_cashshop_result( sd, 0, CASHSHOP_RESULT_ERROR_UNKNOWN );
++		return false;
++	}else if( n <= 0 || n > MAX_INVENTORY || kafrapoints > INT_MAX ){
+ 		clif_cashshop_result( sd, 0, CASHSHOP_RESULT_ERROR_UNKNOWN );
+ 		return false;
+ 	}else if( sd->state.trading ){
+@@ -478,7 +506,9 @@
+ 			return false;
+ 		}
+ 
+-		if( quantity > 99 ){
++		// Reject repeated item IDs before any payment. Checking two lines against
++		// the same pre-purchase stack can otherwise pass and fail after charging.
++		if( quantity == 0 || quantity > 99 || !requested_items.insert(nameid).second ){
+ 			// Client blocks buying more than 99 items of the same type at the same time, this means someone forged a packet with a higher quantity
+ 			clif_cashshop_result( sd, nameid, CASHSHOP_RESULT_ERROR_UNKNOWN );
+ 			return false;
+@@ -507,7 +537,7 @@
+ #endif
+ 		}
+ 
+-		switch( pc_checkadditem( sd, nameid, quantity ) ){
++		switch( cashshop_check_plain_item( sd, *id, quantity ) ){
+ 			case CHKADDITEM_EXIST:
+ 				break;
+ 
+@@ -520,8 +550,12 @@
+ 				return false;
+ 		}
+ 
+-		totalcash += cash_item->price * quantity;
+-		totalweight += itemdb_weight( nameid ) * quantity;
++		totalcash += static_cast<uint64>(cash_item->price) * quantity;
++		totalweight += static_cast<uint64>(itemdb_weight( nameid )) * quantity;
++		if( totalcash > INT_MAX ){
++			clif_cashshop_result( sd, nameid, CASHSHOP_RESULT_ERROR_UNKNOWN );
++			return false;
++		}
+ 	}
+ 
+ 	if( ( totalweight + sd->weight ) > sd->max_weight ){
+@@ -532,7 +566,7 @@
+ 		return false;
+ 	}
+ 
+-	if(pc_paycash( sd, totalcash, kafrapoints, LOG_TYPE_CASH ) <= 0){
++	if(pc_paycash( sd, static_cast<int32>(totalcash), static_cast<int32>(kafrapoints), LOG_TYPE_CASH ) <= 0){
+ 		clif_cashshop_result( sd, 0, CASHSHOP_RESULT_ERROR_SHORTTAGE_CASH );
+ 		return false;
+ 	}

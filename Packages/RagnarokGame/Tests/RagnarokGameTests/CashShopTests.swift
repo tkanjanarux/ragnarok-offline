@@ -135,3 +135,42 @@ import RagnarokPackets
     let didTimeout131 = state.purchaseTimeout()
     #expect(!state.pending && !didTimeout131)
 }
+
+@Test func expandedCatalogueKeepsSKUIdentityAndDoesNotReplayUnknownBundlePurchase() {
+    var state = CashShopState()
+    var list = PACKET_ZC_ACK_SCHEDULER_CASHITEM()
+    list.tabNum = 7
+    list.items = (0..<1000).map { offset in
+        var row = PACKET_ZC_ACK_SCHEDULER_CASHITEM_sub()
+        row.itemId = UInt32(2_000_010 + offset)
+        row.price = UInt32(100 + offset)
+        return row
+    }
+    list.count = 1000
+    list.packetLength = 8008
+    state.receive(list)
+    state.receive(list)
+    #expect(state.products.count == 1000)
+    #expect(Set(state.products.map(\.id)).count == 1000)
+    state.ready = true
+    state.cash = 100_000
+    let selected = state.products.first { $0.itemID == 2_000_010 }!
+    state.addToCart(selected)
+    state.setQuantity(2, for: selected.id)
+    let request = state.beginCartPurchase(freePoints: 0)
+    #expect(request?.items.count == 1)
+    #expect(request?.items.first?.itemId == selected.itemID)
+    #expect(request?.items.first?.amount == 1)
+    #expect(state.beginCartPurchase(freePoints: 0) == nil)
+    let expired = state.purchaseTimeout()
+    #expect(expired)
+    // A refreshed catalogue must not clear an unresolved cash transaction.
+    state.receive(list)
+    #expect(state.pending)
+    #expect(state.beginCartPurchase(freePoints: 0) == nil)
+    state.receiveBalance(cashPoints: 99_900, kafraPoints: 0, tab: CashShopState.balanceCheckTab)
+    #expect(!state.pending)
+    #expect(state.cart.isEmpty)
+    // Unknown bundle outcome is removed for inventory review, never auto-retried.
+    #expect(state.cash == 99_900)
+}

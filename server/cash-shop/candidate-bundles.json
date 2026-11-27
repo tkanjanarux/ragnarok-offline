@@ -1,0 +1,1635 @@
+[
+  {
+    "request": 1,
+    "item_id": 2000010,
+    "aegis_name": "RO_Catalogue_1_0",
+    "name": "White Syrup 100/200 \u2014 100 bottles",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 900,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 2,
+    "item_id": 2000020,
+    "aegis_name": "RO_Catalogue_2_0",
+    "name": "Blue Syrup pack \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 11624,
+        "aegis_name": "High_BluePotion",
+        "quantity": 50,
+        "unit_cash": 20
+      }
+    ],
+    "price_cash": 900,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 3,
+    "item_id": 2000030,
+    "aegis_name": "RO_Catalogue_3_0",
+    "name": "White Slim Potion pack \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 547,
+        "aegis_name": "White_Slim_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 450,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 4,
+    "item_id": 2000040,
+    "aegis_name": "RO_Catalogue_4_0",
+    "name": "Blue Potion large box \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 450,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 5,
+    "item_id": 2000050,
+    "aegis_name": "RO_Catalogue_5_0",
+    "name": "Panacea pack \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 6,
+    "item_id": 2000060,
+    "aegis_name": "RO_Catalogue_6_0",
+    "name": "Holy Water pack \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 523,
+        "aegis_name": "Holy_Water",
+        "quantity": 20,
+        "unit_cash": 2
+      }
+    ],
+    "price_cash": 36,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 7,
+    "item_id": 2000070,
+    "aegis_name": "RO_Catalogue_7_0",
+    "name": "Fire resistance potion \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12118,
+        "aegis_name": "Resist_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 8,
+    "item_id": 2000080,
+    "aegis_name": "RO_Catalogue_8_0",
+    "name": "Water resistance potion \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12119,
+        "aegis_name": "Resist_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 9,
+    "item_id": 2000090,
+    "aegis_name": "RO_Catalogue_9_0",
+    "name": "Wind resistance potion \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12121,
+        "aegis_name": "Resist_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 10,
+    "item_id": 2000100,
+    "aegis_name": "RO_Catalogue_10_0",
+    "name": "Earth resistance potion \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12120,
+        "aegis_name": "Resist_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 11,
+    "item_id": 2000110,
+    "aegis_name": "RO_Catalogue_11_0",
+    "name": "MaxHP food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12423,
+        "aegis_name": "HP_Increase_PotionM",
+        "quantity": 10,
+        "unit_cash": 15
+      }
+    ],
+    "price_cash": 135,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 12,
+    "item_id": 2000120,
+    "aegis_name": "RO_Catalogue_12_0",
+    "name": "MaxSP food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12426,
+        "aegis_name": "SP_Increase_PotionM",
+        "quantity": 10,
+        "unit_cash": 15
+      }
+    ],
+    "price_cash": 135,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 13,
+    "item_id": 2000130,
+    "aegis_name": "RO_Catalogue_13_0",
+    "name": "Normal arrow box \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 14,
+    "item_id": 2000140,
+    "aegis_name": "RO_Catalogue_14_0",
+    "name": "Silver Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1751,
+        "aegis_name": "Silver_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 15,
+    "item_id": 2000150,
+    "aegis_name": "RO_Catalogue_15_0",
+    "name": "Fire Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1752,
+        "aegis_name": "Fire_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 16,
+    "item_id": 2000160,
+    "aegis_name": "RO_Catalogue_16_0",
+    "name": "Crystal Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1754,
+        "aegis_name": "Crystal_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 17,
+    "item_id": 2000170,
+    "aegis_name": "RO_Catalogue_17_0",
+    "name": "Wind Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1755,
+        "aegis_name": "Arrow_Of_Wind",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 18,
+    "item_id": 2000180,
+    "aegis_name": "RO_Catalogue_18_0",
+    "name": "Stone Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1756,
+        "aegis_name": "Stone_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 19,
+    "item_id": 2000190,
+    "aegis_name": "RO_Catalogue_19_0",
+    "name": "Shadow Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1767,
+        "aegis_name": "Arrow_Of_Shadow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 20,
+    "item_id": 2000200,
+    "aegis_name": "RO_Catalogue_20_0",
+    "name": "Immaterial Arrow \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 1757,
+        "aegis_name": "Immatrial_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 45,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 22,
+    "item_id": 2000220,
+    "aegis_name": "RO_Catalogue_22_0",
+    "name": "Arrow Crafting materials \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 990,
+        "aegis_name": "Boody_Red",
+        "quantity": 10,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 991,
+        "aegis_name": "Crystal_Blue",
+        "quantity": 10,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 992,
+        "aegis_name": "Wind_Of_Verdure",
+        "quantity": 10,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 993,
+        "aegis_name": "Yellow_Live",
+        "quantity": 10,
+        "unit_cash": 2
+      }
+    ],
+    "price_cash": 72,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 23,
+    "item_id": 2000230,
+    "aegis_name": "RO_Catalogue_23_0",
+    "name": "Fire Converter \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12114,
+        "aegis_name": "Elemental_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 24,
+    "item_id": 2000240,
+    "aegis_name": "RO_Catalogue_24_0",
+    "name": "Water Converter \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12115,
+        "aegis_name": "Elemental_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 25,
+    "item_id": 2000250,
+    "aegis_name": "RO_Catalogue_25_0",
+    "name": "Wind Converter \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12117,
+        "aegis_name": "Elemental_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 26,
+    "item_id": 2000260,
+    "aegis_name": "RO_Catalogue_26_0",
+    "name": "Earth Converter \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12116,
+        "aegis_name": "Elemental_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 27,
+    "item_id": 2000270,
+    "aegis_name": "RO_Catalogue_27_0",
+    "name": "STR moderate food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12045,
+        "aegis_name": "Str_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 28,
+    "item_id": 2000280,
+    "aegis_name": "RO_Catalogue_28_0",
+    "name": "AGI moderate food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12060,
+        "aegis_name": "Agi_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 29,
+    "item_id": 2000290,
+    "aegis_name": "RO_Catalogue_29_0",
+    "name": "VIT moderate food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12055,
+        "aegis_name": "Vit_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 30,
+    "item_id": 2000300,
+    "aegis_name": "RO_Catalogue_30_0",
+    "name": "INT moderate food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12050,
+        "aegis_name": "Int_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 31,
+    "item_id": 2000310,
+    "aegis_name": "RO_Catalogue_31_0",
+    "name": "DEX moderate food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12065,
+        "aegis_name": "Dex_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 32,
+    "item_id": 2000320,
+    "aegis_name": "RO_Catalogue_32_0",
+    "name": "LUK moderate food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12070,
+        "aegis_name": "Luk_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 34,
+    "item_id": 2000340,
+    "aegis_name": "RO_Catalogue_34_0",
+    "name": "Speed Potion \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12016,
+        "aegis_name": "Speed_Up_Potion",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 41,
+    "item_id": 2000410,
+    "aegis_name": "RO_Catalogue_41_0",
+    "name": "Magnifier pack \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 611,
+        "aegis_name": "Spectacles",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 72,
+    "item_id": 2000720,
+    "aegis_name": "RO_Catalogue_72_0",
+    "name": "Bulk pet food \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 537,
+        "aegis_name": "Pet_Food",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 90,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 78,
+    "item_id": 2000780,
+    "aegis_name": "RO_Catalogue_78_0",
+    "name": "Knight Puller \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 200,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12055,
+        "aegis_name": "Vit_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 12423,
+        "aegis_name": "HP_Increase_PotionM",
+        "quantity": 10,
+        "unit_cash": 15
+      }
+    ],
+    "price_cash": 2025,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 79,
+    "item_id": 2000790,
+    "aegis_name": "RO_Catalogue_79_0",
+    "name": "Wizard Supply \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12050,
+        "aegis_name": "Int_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 717,
+        "aegis_name": "Blue_Gemstone",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 630,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 80,
+    "item_id": 2000800,
+    "aegis_name": "RO_Catalogue_80_0",
+    "name": "Priest Support \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 717,
+        "aegis_name": "Blue_Gemstone",
+        "quantity": 100,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 523,
+        "aegis_name": "Holy_Water",
+        "quantity": 20,
+        "unit_cash": 2
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 100,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 576,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 82,
+    "item_id": 2000820,
+    "aegis_name": "RO_Catalogue_82_0",
+    "name": "Farming outing \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 611,
+        "aegis_name": "Spectacles",
+        "quantity": 20,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 1163,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 83,
+    "item_id": 2000830,
+    "aegis_name": "RO_Catalogue_83_0",
+    "name": "Loot hunt \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12210,
+        "aegis_name": "Bubble_Gum",
+        "quantity": 5,
+        "unit_cash": 50
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 1350,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 84,
+    "item_id": 2000840,
+    "aegis_name": "RO_Catalogue_84_0",
+    "name": "Leveling \u2014 fixed contents",
+    "components": [
+      {
+        "item_id": 12208,
+        "aegis_name": "Battle_Manual",
+        "quantity": 5,
+        "unit_cash": 50
+      },
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 100,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12209,
+        "aegis_name": "Insurance",
+        "quantity": 5,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 765,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 1,
+    "item_id": 2000011,
+    "aegis_name": "RO_Catalogue_1_1",
+    "name": "White Syrup 100/200 \u2014 200 bottles",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 200,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 1800,
+    "choice": null,
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 21,
+    "item_id": 2000210,
+    "aegis_name": "RO_Catalogue_21_0",
+    "name": "Selectable mixed elemental arrows \u2014 Fire + normal arrows",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1752,
+        "aegis_name": "Fire_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 77,
+    "item_id": 2000770,
+    "aegis_name": "RO_Catalogue_77_0",
+    "name": "Hunter Supply \u2014 Fire",
+    "components": [
+      {
+        "item_id": 1752,
+        "aegis_name": "Fire_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 360,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 21,
+    "item_id": 2000211,
+    "aegis_name": "RO_Catalogue_21_1",
+    "name": "Selectable mixed elemental arrows \u2014 Water + normal arrows",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1754,
+        "aegis_name": "Crystal_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 77,
+    "item_id": 2000771,
+    "aegis_name": "RO_Catalogue_77_1",
+    "name": "Hunter Supply \u2014 Water",
+    "components": [
+      {
+        "item_id": 1754,
+        "aegis_name": "Crystal_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 360,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 21,
+    "item_id": 2000212,
+    "aegis_name": "RO_Catalogue_21_2",
+    "name": "Selectable mixed elemental arrows \u2014 Wind + normal arrows",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1755,
+        "aegis_name": "Arrow_Of_Wind",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 77,
+    "item_id": 2000772,
+    "aegis_name": "RO_Catalogue_77_2",
+    "name": "Hunter Supply \u2014 Wind",
+    "components": [
+      {
+        "item_id": 1755,
+        "aegis_name": "Arrow_Of_Wind",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 360,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 21,
+    "item_id": 2000213,
+    "aegis_name": "RO_Catalogue_21_3",
+    "name": "Selectable mixed elemental arrows \u2014 Earth + normal arrows",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1756,
+        "aegis_name": "Stone_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 77,
+    "item_id": 2000773,
+    "aegis_name": "RO_Catalogue_77_3",
+    "name": "Hunter Supply \u2014 Earth",
+    "components": [
+      {
+        "item_id": 1756,
+        "aegis_name": "Stone_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 360,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 21,
+    "item_id": 2000214,
+    "aegis_name": "RO_Catalogue_21_4",
+    "name": "Selectable mixed elemental arrows \u2014 Shadow + normal arrows",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1767,
+        "aegis_name": "Arrow_Of_Shadow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 77,
+    "item_id": 2000774,
+    "aegis_name": "RO_Catalogue_77_4",
+    "name": "Hunter Supply \u2014 Shadow",
+    "components": [
+      {
+        "item_id": 1767,
+        "aegis_name": "Arrow_Of_Shadow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 360,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 21,
+    "item_id": 2000215,
+    "aegis_name": "RO_Catalogue_21_5",
+    "name": "Selectable mixed elemental arrows \u2014 Ghost + normal arrows",
+    "components": [
+      {
+        "item_id": 1750,
+        "aegis_name": "Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 1757,
+        "aegis_name": "Immatrial_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 77,
+    "item_id": 2000775,
+    "aegis_name": "RO_Catalogue_77_5",
+    "name": "Hunter Supply \u2014 Ghost",
+    "components": [
+      {
+        "item_id": 1757,
+        "aegis_name": "Immatrial_Arrow",
+        "quantity": 500,
+        "unit_cash": 0.1
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 525,
+        "aegis_name": "Panacea",
+        "quantity": 20,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 360,
+    "choice": "arrow element",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 33,
+    "item_id": 2000330,
+    "aegis_name": "RO_Catalogue_33_0",
+    "name": "Selectable stat food \u2014 STR +5",
+    "components": [
+      {
+        "item_id": 12045,
+        "aegis_name": "Str_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": "stat food",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 33,
+    "item_id": 2000331,
+    "aegis_name": "RO_Catalogue_33_1",
+    "name": "Selectable stat food \u2014 AGI +5",
+    "components": [
+      {
+        "item_id": 12060,
+        "aegis_name": "Agi_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": "stat food",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 33,
+    "item_id": 2000332,
+    "aegis_name": "RO_Catalogue_33_2",
+    "name": "Selectable stat food \u2014 VIT +5",
+    "components": [
+      {
+        "item_id": 12055,
+        "aegis_name": "Vit_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": "stat food",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 33,
+    "item_id": 2000333,
+    "aegis_name": "RO_Catalogue_33_3",
+    "name": "Selectable stat food \u2014 INT +5",
+    "components": [
+      {
+        "item_id": 12050,
+        "aegis_name": "Int_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": "stat food",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 33,
+    "item_id": 2000334,
+    "aegis_name": "RO_Catalogue_33_4",
+    "name": "Selectable stat food \u2014 DEX +5",
+    "components": [
+      {
+        "item_id": 12065,
+        "aegis_name": "Dex_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": "stat food",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 33,
+    "item_id": 2000335,
+    "aegis_name": "RO_Catalogue_33_5",
+    "name": "Selectable stat food \u2014 LUK +5",
+    "components": [
+      {
+        "item_id": 12070,
+        "aegis_name": "Luk_Dish05",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 90,
+    "choice": "stat food",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 85,
+    "item_id": 2000850,
+    "aegis_name": "RO_Catalogue_85_0",
+    "name": "Map exploration \u2014 Fire",
+    "components": [
+      {
+        "item_id": 12118,
+        "aegis_name": "Resist_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 672,
+    "choice": "resistance",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 85,
+    "item_id": 2000851,
+    "aegis_name": "RO_Catalogue_85_1",
+    "name": "Map exploration \u2014 Water",
+    "components": [
+      {
+        "item_id": 12119,
+        "aegis_name": "Resist_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 672,
+    "choice": "resistance",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 85,
+    "item_id": 2000852,
+    "aegis_name": "RO_Catalogue_85_2",
+    "name": "Map exploration \u2014 Wind",
+    "components": [
+      {
+        "item_id": 12121,
+        "aegis_name": "Resist_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 672,
+    "choice": "resistance",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 85,
+    "item_id": 2000853,
+    "aegis_name": "RO_Catalogue_85_3",
+    "name": "Map exploration \u2014 Earth",
+    "components": [
+      {
+        "item_id": 12120,
+        "aegis_name": "Resist_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 601,
+        "aegis_name": "Wing_Of_Fly",
+        "quantity": 20,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 602,
+        "aegis_name": "Wing_Of_Butterfly",
+        "quantity": 2,
+        "unit_cash": 1
+      },
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 50,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 25,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 672,
+    "choice": "resistance",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 81,
+    "item_id": 2000810,
+    "aegis_name": "RO_Catalogue_81_0",
+    "name": "Assassin Supply \u2014 Assassin Fire",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12114,
+        "aegis_name": "Elemental_Fire",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 1215,
+    "choice": "converter; advanced poison excluded until subclass rules tested",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 81,
+    "item_id": 2000811,
+    "aegis_name": "RO_Catalogue_81_1",
+    "name": "Assassin Supply \u2014 Assassin Water",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12115,
+        "aegis_name": "Elemental_Water",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 1215,
+    "choice": "converter; advanced poison excluded until subclass rules tested",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 81,
+    "item_id": 2000812,
+    "aegis_name": "RO_Catalogue_81_2",
+    "name": "Assassin Supply \u2014 Assassin Wind",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12117,
+        "aegis_name": "Elemental_Wind",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 1215,
+    "choice": "converter; advanced poison excluded until subclass rules tested",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 81,
+    "item_id": 2000813,
+    "aegis_name": "RO_Catalogue_81_3",
+    "name": "Assassin Supply \u2014 Assassin Earth",
+    "components": [
+      {
+        "item_id": 11623,
+        "aegis_name": "High_WhitePotion",
+        "quantity": 100,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 12116,
+        "aegis_name": "Elemental_Earth",
+        "quantity": 10,
+        "unit_cash": 10
+      }
+    ],
+    "price_cash": 1215,
+    "choice": "converter; advanced poison excluded until subclass rules tested",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "production": {
+    "source": "src/map/pc.cpp",
+    "base_sha256": "f153dc81c317396cf673f5c12d18261a6155f67187eb3ca5c38614a3c2a3c47e",
+    "patched_sha256": "1957a705860648c62cdfaeb5af74e9d1627c3c7a4cc91a17ef9d1041a9407ac1",
+    "patch_sha256": "17a78f84f41c8edc8ec36ec95364149a25e641abee580a354d855b828ab04640"
+  },
+  "playable": {
+    "source": "src/map/pc.cpp",
+    "base_sha256": "0d53fc4fb846d965237d10b372ae020c5c5f503146a5825b1013649ab1319527",
+    "patched_sha256": "47ff3e5ba0a336a5bde6922d02592e2cce1cb58a304b9cfe89185ecdd725b594",
+    "patch_sha256": "5b24dda42ccebcd457b204bbcbe323e08786cabc8f369316f423e5eb0c4a2d8d"
+  }
+}

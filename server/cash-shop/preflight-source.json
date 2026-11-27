@@ -1,0 +1,11 @@
+{
+  "source": "src/map/cashshop.cpp",
+  "base_sha256": "be86ec849415c6bcacd2c7936edde97aeecbf29d667c3e05b6e1210caf49fcd0",
+  "patched_sha256": "2b990a81b0e55f5ef813d3ab29380bb4beca02d7a6dbd46bdc65c2e9fe777e3a",
+  "patch_sha256": "f5da9e8f5f4696e156afd59cd700e8927012aaacbfb5388b20a54ce3a2cd960b",
+  "profiles": [
+    "production",
+    "playable"
+  ],
+  "packetver": 20211103
+}

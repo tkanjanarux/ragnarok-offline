@@ -184,3 +184,13 @@ retains slot1 and all eight trigger chords/RT precedence stay unchanged. Releasi
 triggers while holding X cannot replay pickup; X+R3 emits one command. X does not
 suppress camera orbit. Range/lock/cancellation/team guards stay as in the prior base.
 No Simulator/hardware claims, server changes, automatic merge or deployment.
+
+## Cash Shop full catalogue — active review branch
+
+`cash-shop-full-catalogue` starts from gamepad X pickup92eea05, which contains
+purchase recovery5e0d45a. See [ledger and current evidence](docs/cash-shop-full-catalogue/README.md).
+All88 requirements stay in scope; supply definitions and preview work are candidates,
+not an assertion of full readiness. Keep deployed34 entries and all recovery guards.
+Only schema-only synthetic fixtures may be mutated. Native transaction/dialog fixes
+are reproducible overlays for both distinct baseline profiles. No live deployment,
+production restart, player write, Simulator, hardware claim or automatic merge.

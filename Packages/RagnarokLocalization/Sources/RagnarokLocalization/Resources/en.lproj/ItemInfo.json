@@ -117196,5 +117196,408 @@
     "identifiedItemName" : "[S3] Serpent Shadow Earring",
     "unidentifiedItemDescription" : "Unidentified. Can be identified with Magnifier.",
     "unidentifiedItemName" : "[BP] Shadow Earring"
+  },
+  "2000010": {
+    "identifiedItemName": "White Syrup 100/200 — 100 bottles",
+    "unidentifiedItemName": "White Syrup 100/200 — 100 bottles",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000020": {
+    "identifiedItemName": "Blue Syrup pack — fixed contents",
+    "unidentifiedItemName": "Blue Syrup pack — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n50 x Blue Syrup\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n50 x Blue Syrup\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000030": {
+    "identifiedItemName": "White Slim Potion pack — fixed contents",
+    "unidentifiedItemName": "White Slim Potion pack — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x Condensed White Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x Condensed White Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000040": {
+    "identifiedItemName": "Blue Potion large box — fixed contents",
+    "unidentifiedItemName": "Blue Potion large box — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000050": {
+    "identifiedItemName": "Panacea pack — fixed contents",
+    "unidentifiedItemName": "Panacea pack — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000060": {
+    "identifiedItemName": "Holy Water pack — fixed contents",
+    "unidentifiedItemName": "Holy Water pack — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n20 x Holy Water\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n20 x Holy Water\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000070": {
+    "identifiedItemName": "Fire resistance potion — fixed contents",
+    "unidentifiedItemName": "Fire resistance potion — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Fireproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Fireproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000080": {
+    "identifiedItemName": "Water resistance potion — fixed contents",
+    "unidentifiedItemName": "Water resistance potion — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Coldproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Coldproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000090": {
+    "identifiedItemName": "Wind resistance potion — fixed contents",
+    "unidentifiedItemName": "Wind resistance potion — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Thunderproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Thunderproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000100": {
+    "identifiedItemName": "Earth resistance potion — fixed contents",
+    "unidentifiedItemName": "Earth resistance potion — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Earthproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Earthproof Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000110": {
+    "identifiedItemName": "MaxHP food — fixed contents",
+    "unidentifiedItemName": "MaxHP food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x HP Increase Potion (Medium)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x HP Increase Potion (Medium)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000120": {
+    "identifiedItemName": "MaxSP food — fixed contents",
+    "unidentifiedItemName": "MaxSP food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x SP Increase Potion (Medium)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x SP Increase Potion (Medium)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000130": {
+    "identifiedItemName": "Normal arrow box — fixed contents",
+    "unidentifiedItemName": "Normal arrow box — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000140": {
+    "identifiedItemName": "Silver Arrow — fixed contents",
+    "unidentifiedItemName": "Silver Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Silver Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Silver Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000150": {
+    "identifiedItemName": "Fire Arrow — fixed contents",
+    "unidentifiedItemName": "Fire Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Fire Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Fire Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000160": {
+    "identifiedItemName": "Crystal Arrow — fixed contents",
+    "unidentifiedItemName": "Crystal Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Crystal Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Crystal Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000170": {
+    "identifiedItemName": "Wind Arrow — fixed contents",
+    "unidentifiedItemName": "Wind Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Wind Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Wind Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000180": {
+    "identifiedItemName": "Stone Arrow — fixed contents",
+    "unidentifiedItemName": "Stone Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Stone Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Stone Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000190": {
+    "identifiedItemName": "Shadow Arrow — fixed contents",
+    "unidentifiedItemName": "Shadow Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Shadow Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Shadow Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000200": {
+    "identifiedItemName": "Immaterial Arrow — fixed contents",
+    "unidentifiedItemName": "Immaterial Arrow — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Immaterial Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Immaterial Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000220": {
+    "identifiedItemName": "Arrow Crafting materials — fixed contents",
+    "unidentifiedItemName": "Arrow Crafting materials — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Red Blood\n10 x Crystal Blue\n10 x Wind of Verdure\n10 x Green Live\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Red Blood\n10 x Crystal Blue\n10 x Wind of Verdure\n10 x Green Live\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000230": {
+    "identifiedItemName": "Fire Converter — fixed contents",
+    "unidentifiedItemName": "Fire Converter — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Fire)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Fire)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000240": {
+    "identifiedItemName": "Water Converter — fixed contents",
+    "unidentifiedItemName": "Water Converter — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Water)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Water)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000250": {
+    "identifiedItemName": "Wind Converter — fixed contents",
+    "unidentifiedItemName": "Wind Converter — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Wind)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Wind)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000260": {
+    "identifiedItemName": "Earth Converter — fixed contents",
+    "unidentifiedItemName": "Earth Converter — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Earth)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Elemental Converter (Earth)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000270": {
+    "identifiedItemName": "STR moderate food — fixed contents",
+    "unidentifiedItemName": "STR moderate food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Lutie Lady's Pancake\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Lutie Lady's Pancake\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000280": {
+    "identifiedItemName": "AGI moderate food — fixed contents",
+    "unidentifiedItemName": "AGI moderate food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Steamed Bat Wing in Pumpkin\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Steamed Bat Wing in Pumpkin\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000290": {
+    "identifiedItemName": "VIT moderate food — fixed contents",
+    "unidentifiedItemName": "VIT moderate food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Spicy Fried Bao\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Spicy Fried Bao\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000300": {
+    "identifiedItemName": "INT moderate food — fixed contents",
+    "unidentifiedItemName": "INT moderate food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Mastela Fruit Wine\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Mastela Fruit Wine\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000310": {
+    "identifiedItemName": "DEX moderate food — fixed contents",
+    "unidentifiedItemName": "DEX moderate food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Green Salad\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Green Salad\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000320": {
+    "identifiedItemName": "LUK moderate food — fixed contents",
+    "unidentifiedItemName": "LUK moderate food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Fried Scorpion Tails\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Fried Scorpion Tails\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000340": {
+    "identifiedItemName": "Speed Potion — fixed contents",
+    "unidentifiedItemName": "Speed Potion — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Speed Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Speed Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000410": {
+    "identifiedItemName": "Magnifier pack — fixed contents",
+    "unidentifiedItemName": "Magnifier pack — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x Magnifier\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x Magnifier\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000720": {
+    "identifiedItemName": "Bulk pet food — fixed contents",
+    "unidentifiedItemName": "Bulk pet food — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x Pet Food\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x Pet Food\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000780": {
+    "identifiedItemName": "Knight Puller — fixed contents",
+    "unidentifiedItemName": "Knight Puller — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n200 x White Syrup\n10 x Spicy Fried Bao\n10 x HP Increase Potion (Medium)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n200 x White Syrup\n10 x Spicy Fried Bao\n10 x HP Increase Potion (Medium)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000790": {
+    "identifiedItemName": "Wizard Supply — fixed contents",
+    "unidentifiedItemName": "Wizard Supply — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x Blue Potion\n10 x Mastela Fruit Wine\n100 x Blue Gemstone\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x Blue Potion\n10 x Mastela Fruit Wine\n100 x Blue Gemstone\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000800": {
+    "identifiedItemName": "Priest Support — fixed contents",
+    "unidentifiedItemName": "Priest Support — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x Blue Gemstone\n20 x Holy Water\n100 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x Blue Gemstone\n20 x Holy Water\n100 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000820": {
+    "identifiedItemName": "Farming outing — fixed contents",
+    "unidentifiedItemName": "Farming outing — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n20 x Fly Wing\n2 x Butterfly Wing\n20 x Magnifier\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n20 x Fly Wing\n2 x Butterfly Wing\n20 x Magnifier\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000830": {
+    "identifiedItemName": "Loot hunt — fixed contents",
+    "unidentifiedItemName": "Loot hunt — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n5 x Bubble Gum\n100 x White Syrup\n50 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n5 x Bubble Gum\n100 x White Syrup\n50 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000840": {
+    "identifiedItemName": "Leveling — fixed contents",
+    "unidentifiedItemName": "Leveling — fixed contents",
+    "identifiedItemDescription": "Fixed contents (not random):\n5 x Battle Manual\n100 x White Potion\n50 x Blue Potion\n5 x Life Insurance\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n5 x Battle Manual\n100 x White Potion\n50 x Blue Potion\n5 x Life Insurance\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000011": {
+    "identifiedItemName": "White Syrup 100/200 — 200 bottles",
+    "unidentifiedItemName": "White Syrup 100/200 — 200 bottles",
+    "identifiedItemDescription": "Fixed contents (not random):\n200 x White Syrup\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n200 x White Syrup\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000210": {
+    "identifiedItemName": "Selectable mixed elemental arrows — Fire + normal arrows",
+    "unidentifiedItemName": "Selectable mixed elemental arrows — Fire + normal arrows",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Fire Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Fire Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000770": {
+    "identifiedItemName": "Hunter Supply — Fire",
+    "unidentifiedItemName": "Hunter Supply — Fire",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Fire Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Fire Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000211": {
+    "identifiedItemName": "Selectable mixed elemental arrows — Water + normal arrows",
+    "unidentifiedItemName": "Selectable mixed elemental arrows — Water + normal arrows",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Crystal Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Crystal Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000771": {
+    "identifiedItemName": "Hunter Supply — Water",
+    "unidentifiedItemName": "Hunter Supply — Water",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Crystal Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Crystal Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000212": {
+    "identifiedItemName": "Selectable mixed elemental arrows — Wind + normal arrows",
+    "unidentifiedItemName": "Selectable mixed elemental arrows — Wind + normal arrows",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Wind Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Wind Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000772": {
+    "identifiedItemName": "Hunter Supply — Wind",
+    "unidentifiedItemName": "Hunter Supply — Wind",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Wind Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Wind Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000213": {
+    "identifiedItemName": "Selectable mixed elemental arrows — Earth + normal arrows",
+    "unidentifiedItemName": "Selectable mixed elemental arrows — Earth + normal arrows",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Stone Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Stone Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000773": {
+    "identifiedItemName": "Hunter Supply — Earth",
+    "unidentifiedItemName": "Hunter Supply — Earth",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Stone Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Stone Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000214": {
+    "identifiedItemName": "Selectable mixed elemental arrows — Shadow + normal arrows",
+    "unidentifiedItemName": "Selectable mixed elemental arrows — Shadow + normal arrows",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Shadow Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Shadow Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000774": {
+    "identifiedItemName": "Hunter Supply — Shadow",
+    "unidentifiedItemName": "Hunter Supply — Shadow",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Shadow Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Shadow Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000215": {
+    "identifiedItemName": "Selectable mixed elemental arrows — Ghost + normal arrows",
+    "unidentifiedItemName": "Selectable mixed elemental arrows — Ghost + normal arrows",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Immaterial Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Arrow\n500 x Immaterial Arrow\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000775": {
+    "identifiedItemName": "Hunter Supply — Ghost",
+    "unidentifiedItemName": "Hunter Supply — Ghost",
+    "identifiedItemDescription": "Fixed contents (not random):\n500 x Immaterial Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n500 x Immaterial Arrow\n50 x Blue Potion\n20 x Panacea\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000330": {
+    "identifiedItemName": "Selectable stat food — STR +5",
+    "unidentifiedItemName": "Selectable stat food — STR +5",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Lutie Lady's Pancake\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Lutie Lady's Pancake\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000331": {
+    "identifiedItemName": "Selectable stat food — AGI +5",
+    "unidentifiedItemName": "Selectable stat food — AGI +5",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Steamed Bat Wing in Pumpkin\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Steamed Bat Wing in Pumpkin\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000332": {
+    "identifiedItemName": "Selectable stat food — VIT +5",
+    "unidentifiedItemName": "Selectable stat food — VIT +5",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Spicy Fried Bao\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Spicy Fried Bao\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000333": {
+    "identifiedItemName": "Selectable stat food — INT +5",
+    "unidentifiedItemName": "Selectable stat food — INT +5",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Mastela Fruit Wine\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Mastela Fruit Wine\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000334": {
+    "identifiedItemName": "Selectable stat food — DEX +5",
+    "unidentifiedItemName": "Selectable stat food — DEX +5",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Green Salad\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Green Salad\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000335": {
+    "identifiedItemName": "Selectable stat food — LUK +5",
+    "unidentifiedItemName": "Selectable stat food — LUK +5",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Fried Scorpion Tails\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Fried Scorpion Tails\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000850": {
+    "identifiedItemName": "Map exploration — Fire",
+    "unidentifiedItemName": "Map exploration — Fire",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Fireproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Fireproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000851": {
+    "identifiedItemName": "Map exploration — Water",
+    "unidentifiedItemName": "Map exploration — Water",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Coldproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Coldproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000852": {
+    "identifiedItemName": "Map exploration — Wind",
+    "unidentifiedItemName": "Map exploration — Wind",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Thunderproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Thunderproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000853": {
+    "identifiedItemName": "Map exploration — Earth",
+    "unidentifiedItemName": "Map exploration — Earth",
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Earthproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Earthproof Potion\n20 x Fly Wing\n2 x Butterfly Wing\n50 x White Syrup\n25 x Blue Potion\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000810": {
+    "identifiedItemName": "Assassin Supply — Assassin Fire",
+    "unidentifiedItemName": "Assassin Supply — Assassin Fire",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Fire)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Fire)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000811": {
+    "identifiedItemName": "Assassin Supply — Assassin Water",
+    "unidentifiedItemName": "Assassin Supply — Assassin Water",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Water)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Water)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000812": {
+    "identifiedItemName": "Assassin Supply — Assassin Wind",
+    "unidentifiedItemName": "Assassin Supply — Assassin Wind",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Wind)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Wind)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000813": {
+    "identifiedItemName": "Assassin Supply — Assassin Earth",
+    "unidentifiedItemName": "Assassin Supply — Assassin Earth",
+    "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Earth)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Earth)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
   }
+
 }
