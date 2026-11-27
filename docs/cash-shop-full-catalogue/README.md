@@ -112,3 +112,59 @@ Other incomplete requirements remain in the 88-row ledger; this milestone does
 not claim that pets, companion supplies, all utility services or all item effects
 are complete. All candidate sale flags remain false until their required evidence
 and deployment review are complete.
+
+## Milestone 3 in progress: pets and remaining supply variants
+
+There are now 83 explicit supply variants, 13 service/voucher variants, 25 costume
+candidates and eight utility/accessory entries. These are still review candidates;
+the ledger does not yet mark the full catalogue ready to sell. Existing deployed
+entries remain unchanged. Sixteen new bundle packet tests are in progress.
+
+Three pet packs use real Poring/Spore/Lunatic eggs with their correct food (531/537/534).
+[Packet evidence](pet-packs-evidence.json) covers each purchase, one Cash debit,
+cancel, atomic egg/food/voucher exchange, hatch, feed, accessory equip, rename,
+reconnect and return-to-egg. [Six failure cases](pet-edges-evidence.json) cover full
+inventory, weight, food stack cap, disconnect at confirmation, repeated use and an
+injected SQLite journal-insert failure. None consumed a rejected voucher or left an
+orphan pet. Twelve native tests execute the production SQL adapter against isolated
+in-memory SQLite: replay, stale inventory, ambiguous snapshot, recovery, identity,
+stack merge and rollback at pet/journal insertion. Run against a prepared source:
+
+```
+python3 scripts/cash-shop/test-pet-journal.py /path/to/new-candidate
+```
+
+Pet accessories replace ACT while retaining the actual species SPR, following
+roBrowserLegacy PetAction/Pet.js at the documented commit. Five local accessory
+ACT/SPR pairs passed native file decoding and frame-index checks. This is not an
+app screenshot or hardware visual test. Actual packet equip has so far covered
+Poring, Spore and Lunatic; the remaining species still require integration.
+
+### Pet delivery activation and rollback requirements
+
+Apply `server/cash-shop/native/pet/migration.sql` only with all effective SQLite
+writers stopped and a verified SQLite backup including WAL contents. It adds one
+journal table, no rewards or player grants. Char and Map must both use the matching
+prepared profile. Map refuses delivery without Char's barrier capability and the
+journal table. Pet and inventory IDs come from SQLite INTEGER PRIMARY KEY, not
+MAX+1. The journal records exact before/after inventory snapshots with native
+item-size/slot version checks; it is not portable across arbitrary server ABIs.
+
+A save of the old snapshot is reconciled to the committed delivery; a mixed snapshot
+is rejected rather than guessed. Load acknowledges only the committed inventory.
+Never drop a nonempty journal or downgrade to a Char build lacking its guard while
+entries remain. Before rollback, disable catalogue purchases/claims, stop writers,
+reconcile pending entries using the matching build and verify inventory/pet IDs.
+After new writes, do not restore an old database and discard those writes. This is
+an activation plan only: production/playable have not been changed.
+
+[Fourteen additional status-item cases](status-items-evidence.json) verify actual
+cures, resist/converter/status application, single consumption, saved statuses and
+speed expiration as applicable. They do not measure combat damage, drop probability
+or EXP multipliers. Those effect/eligibility cases remain separate pending work.
+
+Milestone 2 source `f6a3c781ecebbdc62cf9cd64c532d272b035b08c` passed Xcode27.2 in
+[run45947045225](https://github.com/tkanjanarux/ragnarok-offline/actions/runs/45947045225).
+Its downloaded unsigned IPA SHA256 is
+`31f6aee6d196d891ab64b577249ce3b8418fcb13b32e3d8b524b41ecee5f032d`.
+It does not include the new pet-rendering work; a later build is required.

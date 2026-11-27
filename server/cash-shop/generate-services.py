@@ -20,6 +20,14 @@ if (select("Confirm reset:Cancel") != 1) close;
 mes "Reset completed.";
 close;
 '''
+    if s['service']=='pet_pack':
+        return header+'mes '+json.dumps(s['description'])+';\n'+'''mes "Hatch with a Pet Incubator. Feed only the listed species food; pet intimacy rules remain unchanged.";
+mes "Needs free weight and space for the egg and food before consuming this voucher.";
+if (select("Claim egg and food:Cancel") != 1) close;
+'''+stock+f'''if (!catalogue_pet_claim({ident},{s['egg']},{s['food']},{s['quantity']})) {{ mes "Cannot start: check inventory capacity and pending transfers. Voucher kept."; close; }}
+mes "Delivery requested. Wait for the server inventory update. Do not retry an unknown result; reconnect to refresh.";
+close;
+'''
     if s['service']=='card_removal':
         return header+'''mes "Portable Wise Old Woman policy: 200,000 Zeny + 25,000 per card, one Star Crumb and one Yellow Gemstone.";
 mes "90% success; 2% destroys item AND cards; 6% destroys the unprotected side; 2% keeps both but spends all fees.";

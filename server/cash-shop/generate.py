@@ -35,7 +35,7 @@ if (!catalogue_exchange({ident},{args})) {{
 mes "Pack opened.";
 close;
 '''
-        items.append(dict(Id=ident,AegisName=sku['aegis_name'],Name=sku['name'],Type='DelayConsume',Weight=10,
+        items.append(dict(Id=ident,AegisName=sku['aegis_name'],Name=sku.get('server_name',sku['name']),Type='DelayConsume',Weight=10,
             Trade=dict(NoDrop=True,NoTrade=True,NoSell=True,NoCart=True,NoGuildStorage=True,NoMail=True,NoAuction=True),Script=script))
         cash.append(dict(Item=sku['aegis_name'],Price=sku['price_cash']))
     output.mkdir(parents=True, exist_ok=False)

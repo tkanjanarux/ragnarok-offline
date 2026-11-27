@@ -1034,6 +1034,10 @@ final class PlaySession {
             pets.receive(packet)
         case let packet as PACKET_ZC_CHANGESTATE_PET:
             pets.receive(packet)
+            if packet.type == 3 {
+                mapScene?.onMapObjectSpriteChanged(objectID: UInt32(bitPattern: packet.GID),
+                    look: .head_bottom, value: Int(packet.data), value2: 0)
+            }
         case let packet as PACKET_ZC_FEED_PET:
             pets.finish(.feed, message: packet.result == 0 ? "Could not feed the pet. Check its food." : "Pet fed.")
         case let packet as PACKET_ZC_CONFIG:

@@ -1,0 +1,83 @@
+--- a/src/map/intif.cpp
++++ b/src/map/intif.cpp
+@@ -7,6 +7,7 @@
+ 
+ #include <common/malloc.hpp>
+ #include <common/mmo.hpp>
++#include <common/catalogue_pet.hpp>
+ #include <common/nullpo.hpp>
+ #include <common/showmsg.hpp>
+ #include <common/socket.hpp>
+@@ -3792,7 +3793,7 @@
+ 	}
+ 	// Processing branch
+ 	switch(cmd){
+-	case 0x38af: companion_runtime::barrier(RFIFOL(fd,2),RFIFOL(fd,6),RFIFOL(fd,10),RFIFOB(fd,14));companion_supplies::barrier(RFIFOL(fd,2),RFIFOL(fd,6),RFIFOL(fd,10),RFIFOB(fd,14));break;
++	case 0x38af: catalogue_pet_barrier(RFIFOL(fd,2),RFIFOL(fd,6),RFIFOL(fd,10),RFIFOB(fd,14));companion_runtime::barrier(RFIFOL(fd,2),RFIFOL(fd,6),RFIFOL(fd,10),RFIFOB(fd,14));companion_supplies::barrier(RFIFOL(fd,2),RFIFOL(fd,6),RFIFOL(fd,10),RFIFOB(fd,14));break;
+ 	case 0x3800:
+ 		if (RFIFOL(fd,4) == 0xFF000000) //Normal announce.
+ 			clif_broadcast(nullptr, RFIFOCP(fd,16), packet_len-16, BC_DEFAULT, ALL_CLIENT);
+--- a/src/char/int_storage.cpp
++++ b/src/char/int_storage.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include <common/malloc.hpp>
+ #include <common/mmo.hpp>
++#include <common/catalogue_pet.hpp>
+ #include <common/showmsg.hpp>
+ #include <common/socket.hpp>
+ #include <common/sql.hpp>
+@@ -29,13 +30,14 @@
+ int32 inventory_tosql(uint32 char_id, struct s_storage* p)
+ {
+ 	const int enabled=companion_gear::available(sql_handle);
+-    if(enabled==0) return char_memitemdata_to_sql(p->u.items_inventory,MAX_INVENTORY,char_id,TABLE_INVENTORY,p->stor_id);
++    if(enabled==0 && catalogue_pet::available(sql_handle)==0) return char_memitemdata_to_sql(p->u.items_inventory,MAX_INVENTORY,char_id,TABLE_INVENTORY,p->stor_id);
+     if(enabled<0 || std::strcmp(schema_config.inventory_db,"inventory") || Sql_QueryStr(sql_handle,"BEGIN IMMEDIATE")!=SQL_SUCCESS) return 1;
+     s_storage snapshot=*p;std::vector<uint32> ack;
+-    const bool ok=companion_gear::guard_snapshot(sql_handle,char_id,snapshot.u.items_inventory,MAX_INVENTORY,ack)
++    const bool ok=(enabled==0 || companion_gear::guard_snapshot(sql_handle,char_id,snapshot.u.items_inventory,MAX_INVENTORY,ack))
++        && catalogue_pet::guard(sql_handle,char_id,snapshot.u.items_inventory,false)
+         && companion_supply::guard(sql_handle,char_id,snapshot.u.items_inventory,MAX_INVENTORY,false)
+         && char_memitemdata_to_sql(snapshot.u.items_inventory,MAX_INVENTORY,char_id,TABLE_INVENTORY,p->stor_id)==0
+-        && companion_gear::acknowledge(sql_handle,ack);
++        && (enabled==0 || companion_gear::acknowledge(sql_handle,ack));
+     if(!ok || Sql_QueryStr(sql_handle,"COMMIT")!=SQL_SUCCESS){Sql_QueryStr(sql_handle,"ROLLBACK");return 1;}
+     return 0;
+ }
+@@ -71,13 +73,14 @@
+ bool inventory_fromsql(uint32 char_id, struct s_storage* p)
+ {
+ 	const int enabled=companion_gear::available(sql_handle);
+-    if(enabled==0) return char_memitemdata_from_sql(p,MAX_INVENTORY,char_id,TABLE_INVENTORY,p->stor_id);
++    if(enabled==0 && catalogue_pet::available(sql_handle)==0) return char_memitemdata_from_sql(p,MAX_INVENTORY,char_id,TABLE_INVENTORY,p->stor_id);
+     if(enabled<0 || std::strcmp(schema_config.inventory_db,"inventory") || Sql_QueryStr(sql_handle,"BEGIN IMMEDIATE")!=SQL_SUCCESS) return false;
+     std::vector<uint32> ack;
+     const bool ok=char_memitemdata_from_sql(p,MAX_INVENTORY,char_id,TABLE_INVENTORY,p->stor_id)
+-        && companion_gear::guard_snapshot(sql_handle,char_id,p->u.items_inventory,MAX_INVENTORY,ack,true)
++        && (enabled==0 || companion_gear::guard_snapshot(sql_handle,char_id,p->u.items_inventory,MAX_INVENTORY,ack,true))
++        && catalogue_pet::guard(sql_handle,char_id,p->u.items_inventory,true)
+         && companion_supply::guard(sql_handle,char_id,p->u.items_inventory,MAX_INVENTORY,true)
+-        && companion_gear::acknowledge(sql_handle,ack);
++        && (enabled==0 || companion_gear::acknowledge(sql_handle,ack));
+     if(!ok || Sql_QueryStr(sql_handle,"COMMIT")!=SQL_SUCCESS){Sql_QueryStr(sql_handle,"ROLLBACK");return false;}
+     p->amount=0;for(const auto& value:p->u.items_inventory)if(value.nameid)++p->amount;
+     return true;
+--- a/src/char/inter.cpp
++++ b/src/char/inter.cpp
+@@ -19,6 +19,7 @@
+ #include <common/socket.hpp>
+ #include <common/companion_gear.hpp>
+ #include <common/companion_supply.hpp>
++#include <common/catalogue_pet.hpp>
+ #include <common/strlib.hpp>
+ #include <common/timer.hpp>
+ 
+@@ -1428,6 +1429,7 @@
+         if(WFIFOB(fd,14) && companion_supply::available(sql_handle)==1) WFIFOB(fd,14)=3;
+         if(WFIFOB(fd,14) && RFIFOL(fd,10)<0x80000000u && companion_gear::details_available(sql_handle)==1) WFIFOB(fd,14)|=4;
+         if((WFIFOB(fd,14)&4) && companion_gear::options_available(sql_handle)==1) WFIFOB(fd,14)|=8;
++        if(RFIFOL(fd,10)>=0x40000000u && RFIFOL(fd,10)<0x80000000u && catalogue_pet::available(sql_handle)==1) WFIFOB(fd,14)|=16;
+         WFIFOSET(fd,15);break;
+     case 0x3000: mapif_parse_broadcast(fd); break;
+ 	case 0x3001: mapif_parse_WisRequest(fd); break;

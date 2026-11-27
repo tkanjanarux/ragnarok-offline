@@ -1,0 +1,32 @@
+[
+  {
+    "case": "full_inventory",
+    "passed": true,
+    "fixture_only": true
+  },
+  {
+    "case": "weight_limit",
+    "passed": true,
+    "fixture_only": true
+  },
+  {
+    "case": "food_stack_cap",
+    "passed": true,
+    "fixture_only": true
+  },
+  {
+    "case": "disconnect_at_confirmation",
+    "passed": true,
+    "fixture_only": true
+  },
+  {
+    "case": "duplicate_use_while_menu",
+    "passed": true,
+    "fixture_only": true
+  },
+  {
+    "case": "journal_insert_failure",
+    "passed": true,
+    "fixture_only": true
+  }
+]

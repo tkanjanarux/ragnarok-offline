@@ -262,6 +262,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -310,6 +314,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -357,6 +365,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -404,6 +416,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -451,6 +467,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -498,6 +518,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -1221,6 +1245,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -1268,6 +1296,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -1315,6 +1347,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -1362,6 +1398,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -1803,6 +1843,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -8329,14 +8373,45 @@
     "evidence": {
       "script_audit": false,
       "asset_audit": false,
-      "purchase_packet": false,
-      "effect_packet": false,
-      "reconnect": false,
-      "edge_cases": false,
+      "purchase_packet": true,
+      "effect_packet": true,
+      "reconnect": true,
+      "edge_cases": true,
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "exact_candidates": [
+      {
+        "request": 71,
+        "item_id": 2000710,
+        "aegis_name": "RO_Catalogue_Poring_Starter",
+        "name": "Poring Starter Egg and Apple Juice",
+        "price_cash": 500,
+        "service": "pet_pack",
+        "egg": 9001,
+        "food": 531,
+        "quantity": 50,
+        "mob": 1002,
+        "description": "Poring egg + 50 Apple Juice. Existing pet bonuses only: at Cordial LUK+2/Critical+1; at Loyal LUK+3/Critical+1."
+      },
+      {
+        "request": 71,
+        "item_id": 643,
+        "aegis_name": "Pet_Incubator",
+        "name": "Pet Incubator",
+        "quantity": 1,
+        "price_cash": 5,
+        "note": "Pet Incubator: needed to hatch a purchased egg. Separate optional utility."
+      }
+    ],
+    "pet_evidence": {
+      "reference": "pet-packs-evidence.json",
+      "edge_reference": "pet-edges-evidence.json",
+      "native_SQL_tests": 12,
+      "tested": "cash once/cancel/egg+food atomic delivery/hatch/feed/accessory/name/reconnect/return egg",
+      "pending": "native app visual acceptance, tame-family variants, status bonus boundaries"
+    }
   },
   {
     "request": 72,
@@ -8384,7 +8459,104 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "exact_candidates": [
+      {
+        "request": 72,
+        "item_id": 2000720,
+        "aegis_name": "RO_Catalogue_72_0",
+        "name": "Bulk pet food — fixed contents",
+        "components": [
+          {
+            "item_id": 537,
+            "aegis_name": "Pet_Food",
+            "quantity": 100,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 90,
+        "choice": null,
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 72,
+        "item_id": 2000721,
+        "aegis_name": "RO_Catalogue_72_1",
+        "name": "Poring Food - 100",
+        "components": [
+          {
+            "item_id": 531,
+            "aegis_name": "Apple_Juice",
+            "quantity": 100,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 90,
+        "choice": "Species-specific food; Pet Food537 is not universal.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 72,
+        "item_id": 2000722,
+        "aegis_name": "RO_Catalogue_72_2",
+        "name": "Lunatic Food - 100",
+        "components": [
+          {
+            "item_id": 534,
+            "aegis_name": "Carrot_Juice",
+            "quantity": 100,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 90,
+        "choice": "Species-specific food; Pet Food537 is not universal.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 72,
+        "item_id": 2000723,
+        "aegis_name": "RO_Catalogue_72_3",
+        "name": "Drops Food - 100",
+        "components": [
+          {
+            "item_id": 508,
+            "aegis_name": "Yellow_Herb",
+            "quantity": 100,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 90,
+        "choice": "Species-specific food; Pet Food537 is not universal.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 72,
+        "item_id": 2000724,
+        "aegis_name": "RO_Catalogue_72_4",
+        "name": "Picky Food - 100",
+        "components": [
+          {
+            "item_id": 507,
+            "aegis_name": "Red_Herb",
+            "quantity": 100,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 90,
+        "choice": "Species-specific food; Pet Food537 is not universal.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      }
+    ]
   },
   {
     "request": 73,
@@ -8417,7 +8589,66 @@
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "exact_candidates": [
+      {
+        "request": 73,
+        "item_id": 10013,
+        "aegis_name": "Backpack",
+        "name": "Backpack",
+        "quantity": 1,
+        "price_cash": 100,
+        "note": "Existing pet accessory; only the matching species can equip it."
+      },
+      {
+        "request": 73,
+        "item_id": 10007,
+        "aegis_name": "Silk_Ribbon",
+        "name": "Silk Ribbon",
+        "quantity": 1,
+        "price_cash": 100,
+        "note": "Existing pet accessory; only the matching species can equip it."
+      },
+      {
+        "request": 73,
+        "item_id": 10012,
+        "aegis_name": "Tiny_Egg_Shell",
+        "name": "Tiny Egg Shell",
+        "quantity": 1,
+        "price_cash": 100,
+        "note": "Existing pet accessory; only the matching species can equip it."
+      },
+      {
+        "request": 73,
+        "item_id": 10002,
+        "aegis_name": "Monster_Oxygen_Mask",
+        "name": "Monster Oxygen Mask",
+        "quantity": 1,
+        "price_cash": 100,
+        "note": "Existing pet accessory; only the matching species can equip it."
+      },
+      {
+        "request": 73,
+        "item_id": 10017,
+        "aegis_name": "Bark_Shorts",
+        "name": "Bark Shorts",
+        "quantity": 1,
+        "price_cash": 100,
+        "note": "Existing pet accessory; only the matching species can equip it."
+      }
+    ],
+    "pet_evidence": {
+      "tested_accessories": [
+        10013,
+        10017,
+        10007
+      ],
+      "remaining_accessories": [
+        10002,
+        10012
+      ],
+      "rendering": "ACT-only overlay added using existing species SPR; actual five ACT/SPR decoders/frame indices tested, not device rendering"
+    }
   },
   {
     "request": 74,
@@ -8451,7 +8682,159 @@
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "exact_candidates": [
+      {
+        "request": 74,
+        "item_id": 2000740,
+        "aegis_name": "RO_Catalogue_74_0",
+        "name": "Poring Taming Kit",
+        "components": [
+          {
+            "item_id": 619,
+            "aegis_name": "Unripe_Apple",
+            "quantity": 10,
+            "unit_cash": 10
+          },
+          {
+            "item_id": 531,
+            "aegis_name": "Apple_Juice",
+            "quantity": 50,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 135,
+        "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 74,
+        "item_id": 2000741,
+        "aegis_name": "RO_Catalogue_74_1",
+        "name": "Drops Taming Kit",
+        "components": [
+          {
+            "item_id": 620,
+            "aegis_name": "Orange_Juice",
+            "quantity": 10,
+            "unit_cash": 10
+          },
+          {
+            "item_id": 508,
+            "aegis_name": "Yellow_Herb",
+            "quantity": 50,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 135,
+        "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 74,
+        "item_id": 2000742,
+        "aegis_name": "RO_Catalogue_74_2",
+        "name": "Lunatic Taming Kit",
+        "components": [
+          {
+            "item_id": 622,
+            "aegis_name": "Rainbow_Carrot",
+            "quantity": 10,
+            "unit_cash": 10
+          },
+          {
+            "item_id": 534,
+            "aegis_name": "Carrot_Juice",
+            "quantity": 50,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 135,
+        "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 74,
+        "item_id": 2000743,
+        "aegis_name": "RO_Catalogue_74_3",
+        "name": "Picky Taming Kit",
+        "components": [
+          {
+            "item_id": 623,
+            "aegis_name": "Earthworm_The_Dude",
+            "quantity": 10,
+            "unit_cash": 10
+          },
+          {
+            "item_id": 507,
+            "aegis_name": "Red_Herb",
+            "quantity": 50,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 135,
+        "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 74,
+        "item_id": 2000744,
+        "aegis_name": "RO_Catalogue_74_4",
+        "name": "Chonchon Taming Kit",
+        "components": [
+          {
+            "item_id": 624,
+            "aegis_name": "Rotten_Fish",
+            "quantity": 10,
+            "unit_cash": 10
+          },
+          {
+            "item_id": 537,
+            "aegis_name": "Pet_Food",
+            "quantity": 50,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 135,
+        "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 74,
+        "item_id": 2000745,
+        "aegis_name": "RO_Catalogue_74_5",
+        "name": "Spore Taming Kit",
+        "components": [
+          {
+            "item_id": 630,
+            "aegis_name": "Dew_Laden_Moss",
+            "quantity": 10,
+            "unit_cash": 10
+          },
+          {
+            "item_id": 537,
+            "aegis_name": "Pet_Food",
+            "quantity": 50,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 135,
+        "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      }
+    ]
   },
   {
     "request": 75,
@@ -8478,14 +8861,49 @@
     "evidence": {
       "script_audit": false,
       "asset_audit": false,
-      "purchase_packet": false,
-      "effect_packet": false,
-      "reconnect": false,
-      "edge_cases": false,
+      "purchase_packet": true,
+      "effect_packet": true,
+      "reconnect": true,
+      "edge_cases": true,
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "exact_candidates": [
+      {
+        "request": 75,
+        "item_id": 2000750,
+        "aegis_name": "RO_Catalogue_Spore_Starter",
+        "name": "Spore Egg and Pet Food",
+        "price_cash": 500,
+        "service": "pet_pack",
+        "egg": 9012,
+        "food": 537,
+        "quantity": 50,
+        "mob": 1014,
+        "description": "Mage-themed companion: existing Spore egg + 50 Pet Food. Existing pet bonuses only: Hit+5 at Cordial, Hit+8 at Loyal. No new magic bonus."
+      },
+      {
+        "request": 75,
+        "item_id": 2000751,
+        "aegis_name": "RO_Catalogue_Lunatic_Starter",
+        "name": "Lunatic Egg and Carrot Juice",
+        "price_cash": 500,
+        "service": "pet_pack",
+        "egg": 9004,
+        "food": 534,
+        "quantity": 50,
+        "mob": 1063,
+        "description": "Hunter-themed companion: existing Lunatic egg + 50 Carrot Juice. Existing pet bonuses only: Critical+2/BaseATK+2 at Cordial, +3/+3 at Loyal. Priest theme uses the same Poring Starter SKU, without a duplicated offer."
+      }
+    ],
+    "pet_evidence": {
+      "reference": "pet-packs-evidence.json",
+      "edge_reference": "pet-edges-evidence.json",
+      "native_SQL_tests": 12,
+      "tested": "cash once/cancel/egg+food atomic delivery/hatch/feed/accessory/name/reconnect/return egg",
+      "pending": "native app visual acceptance, tame-family variants, status bonus boundaries"
+    }
   },
   {
     "request": 76,
@@ -8500,7 +8918,7 @@
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Prontera/Payon/Morroc collectible costume",
-    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "variant_spec": "Select the existing Crown / Fox Mask / Turban cosmetic; no duplicate city SKU or invented stat bonus.",
     "dependencies": [
       "effective item script + restrictions",
       "GRF iteminfo/icon + use assets",
@@ -8519,7 +8937,13 @@
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "exact_candidates": [],
+    "exact_city_items": {
+      "Prontera": 19630,
+      "Payon": 19618,
+      "Morroc": 19844
+    }
   },
   {
     "request": 77,
@@ -9111,6 +9535,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -9177,6 +9605,10 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "additional_effect_evidence": {
+      "reference": "status-items-evidence.json",
+      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
     }
   },
   {
@@ -9379,7 +9811,46 @@
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "exact_candidates": [
+      {
+        "request": 86,
+        "item_id": 2000860,
+        "aegis_name": "RO_Catalogue_86_0",
+        "name": "Build Change and Trial Supplies",
+        "components": [
+          {
+            "item_id": 2000370,
+            "aegis_name": "RO_Catalogue_Full_Reset",
+            "quantity": 1,
+            "unit_cash": 900
+          },
+          {
+            "item_id": 504,
+            "aegis_name": "White_Potion",
+            "quantity": 20,
+            "unit_cash": 3
+          },
+          {
+            "item_id": 505,
+            "aegis_name": "Blue_Potion",
+            "quantity": 20,
+            "unit_cash": 5
+          },
+          {
+            "item_id": 611,
+            "aegis_name": "Spectacles",
+            "quantity": 10,
+            "unit_cash": 1
+          }
+        ],
+        "price_cash": 963,
+        "choice": "One full-reset voucher plus trial supplies. Store all weighted supplies before using the reset voucher in town. Cancel reset keeps that voucher.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      }
+    ]
   },
   {
     "request": 87,
@@ -9413,8 +9884,147 @@
       "edge_cases": false,
       "device": false
     },
-    "blocker": null,
-    "skus": []
+    "blocker": "Five supply variants defined; distribution and native companion consumption packet tests still pending. Contents stay in owner inventory until explicit Give Supplies.",
+    "skus": [],
+    "exact_candidates": [
+      {
+        "request": 87,
+        "item_id": 2000870,
+        "aegis_name": "RO_Catalogue_87_0",
+        "name": "Knight Companion Supplies",
+        "components": [
+          {
+            "item_id": 504,
+            "aegis_name": "White_Potion",
+            "quantity": 50,
+            "unit_cash": 3
+          },
+          {
+            "item_id": 505,
+            "aegis_name": "Blue_Potion",
+            "quantity": 10,
+            "unit_cash": 5
+          }
+        ],
+        "price_cash": 180,
+        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 87,
+        "item_id": 2000871,
+        "aegis_name": "RO_Catalogue_87_1",
+        "name": "Hunter Companion Supplies",
+        "components": [
+          {
+            "item_id": 504,
+            "aegis_name": "White_Potion",
+            "quantity": 20,
+            "unit_cash": 3
+          },
+          {
+            "item_id": 505,
+            "aegis_name": "Blue_Potion",
+            "quantity": 20,
+            "unit_cash": 5
+          },
+          {
+            "item_id": 1751,
+            "aegis_name": "Silver_Arrow",
+            "quantity": 200,
+            "unit_cash": 0.02
+          }
+        ],
+        "price_cash": 148,
+        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 87,
+        "item_id": 2000872,
+        "aegis_name": "RO_Catalogue_87_2",
+        "name": "Wizard Companion Supplies",
+        "components": [
+          {
+            "item_id": 504,
+            "aegis_name": "White_Potion",
+            "quantity": 20,
+            "unit_cash": 3
+          },
+          {
+            "item_id": 505,
+            "aegis_name": "Blue_Potion",
+            "quantity": 50,
+            "unit_cash": 5
+          }
+        ],
+        "price_cash": 279,
+        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 87,
+        "item_id": 2000873,
+        "aegis_name": "RO_Catalogue_87_3",
+        "name": "Priest Companion Supplies",
+        "components": [
+          {
+            "item_id": 504,
+            "aegis_name": "White_Potion",
+            "quantity": 20,
+            "unit_cash": 3
+          },
+          {
+            "item_id": 505,
+            "aegis_name": "Blue_Potion",
+            "quantity": 50,
+            "unit_cash": 5
+          },
+          {
+            "item_id": 717,
+            "aegis_name": "Blue_Gemstone",
+            "quantity": 20,
+            "unit_cash": 2
+          }
+        ],
+        "price_cash": 315,
+        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      },
+      {
+        "request": 87,
+        "item_id": 2000874,
+        "aegis_name": "RO_Catalogue_87_4",
+        "name": "Assassin Companion Supplies",
+        "components": [
+          {
+            "item_id": 504,
+            "aegis_name": "White_Potion",
+            "quantity": 40,
+            "unit_cash": 3
+          },
+          {
+            "item_id": 505,
+            "aegis_name": "Blue_Potion",
+            "quantity": 10,
+            "unit_cash": 5
+          }
+        ],
+        "price_cash": 153,
+        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "status": "candidate_not_for_live_sale",
+        "transaction": "catalogue_exchange",
+        "tests_pending": true
+      }
+    ]
   },
   {
     "request": 88,

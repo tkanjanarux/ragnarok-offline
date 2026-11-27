@@ -117670,5 +117670,119 @@
     "unidentifiedItemName": "Portable Card Removal Voucher",
     "identifiedItemDescription": "One card-removal attempt. Also requires 200,000 Zeny + 25,000 per card, 1 Star Crumb and 1 Yellow Gemstone.\r\n90% success; 2% destroys equipment and cards; 6% destroys the unprotected side; 2% harmless failure. All completed attempts consume fees and voucher.\r\nChoose equipment or cards to protect against partial failure. Cancel and invalid attempts cost nothing. Eligible permanent equipped items only. Full rules shown before confirmation.",
     "unidentifiedItemDescription": "Service voucher."
+  },
+  "2000721": {
+    "identifiedItemName": "Poring Food - 100",
+    "unidentifiedItemName": "Poring Food - 100",
+    "identifiedItemDescription": "100 x Apple_Juice. Species-specific food; Pet Food537 is not universal.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000722": {
+    "identifiedItemName": "Lunatic Food - 100",
+    "unidentifiedItemName": "Lunatic Food - 100",
+    "identifiedItemDescription": "100 x Carrot_Juice. Species-specific food; Pet Food537 is not universal.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000723": {
+    "identifiedItemName": "Drops Food - 100",
+    "unidentifiedItemName": "Drops Food - 100",
+    "identifiedItemDescription": "100 x Yellow_Herb. Species-specific food; Pet Food537 is not universal.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000724": {
+    "identifiedItemName": "Picky Food - 100",
+    "unidentifiedItemName": "Picky Food - 100",
+    "identifiedItemDescription": "100 x Red_Herb. Species-specific food; Pet Food537 is not universal.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000740": {
+    "identifiedItemName": "Poring Taming Kit",
+    "unidentifiedItemName": "Poring Taming Kit",
+    "identifiedItemDescription": "10 x Unripe_Apple; 50 x Apple_Juice. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000741": {
+    "identifiedItemName": "Drops Taming Kit",
+    "unidentifiedItemName": "Drops Taming Kit",
+    "identifiedItemDescription": "10 x Orange_Juice; 50 x Yellow_Herb. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000742": {
+    "identifiedItemName": "Lunatic Taming Kit",
+    "unidentifiedItemName": "Lunatic Taming Kit",
+    "identifiedItemDescription": "10 x Rainbow_Carrot; 50 x Carrot_Juice. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000743": {
+    "identifiedItemName": "Picky Taming Kit",
+    "unidentifiedItemName": "Picky Taming Kit",
+    "identifiedItemDescription": "10 x Earthworm_The_Dude; 50 x Red_Herb. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000744": {
+    "identifiedItemName": "Chonchon Taming Kit",
+    "unidentifiedItemName": "Chonchon Taming Kit",
+    "identifiedItemDescription": "10 x Rotten_Fish; 50 x Pet_Food. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000745": {
+    "identifiedItemName": "Spore Taming Kit",
+    "unidentifiedItemName": "Spore Taming Kit",
+    "identifiedItemDescription": "10 x Dew_Laden_Moss; 50 x Pet_Food. 10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000860": {
+    "identifiedItemName": "Build Change and Trial Supplies",
+    "unidentifiedItemName": "Build Change and Trial Supplies",
+    "identifiedItemDescription": "1 x RO_Catalogue_Full_Reset; 20 x White_Potion; 20 x Blue_Potion; 10 x Spectacles. One full-reset voucher plus trial supplies. Store all weighted supplies before using the reset voucher in town. Cancel reset keeps that voucher.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000870": {
+    "identifiedItemName": "Knight Companion Supplies",
+    "unidentifiedItemName": "Knight Companion Supplies",
+    "identifiedItemDescription": "50 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000871": {
+    "identifiedItemName": "Hunter Companion Supplies",
+    "unidentifiedItemName": "Hunter Companion Supplies",
+    "identifiedItemDescription": "20 x White_Potion; 20 x Blue_Potion; 200 x Silver_Arrow. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000872": {
+    "identifiedItemName": "Wizard Companion Supplies",
+    "unidentifiedItemName": "Wizard Companion Supplies",
+    "identifiedItemDescription": "20 x White_Potion; 50 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000873": {
+    "identifiedItemName": "Priest Companion Supplies",
+    "unidentifiedItemName": "Priest Companion Supplies",
+    "identifiedItemDescription": "20 x White_Potion; 50 x Blue_Potion; 20 x Blue_Gemstone. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000874": {
+    "identifiedItemName": "Assassin Companion Supplies",
+    "unidentifiedItemName": "Assassin Companion Supplies",
+    "identifiedItemDescription": "40 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000710": {
+    "identifiedItemName": "Poring Starter Egg and Apple Juice",
+    "unidentifiedItemName": "Poring Starter Egg and Apple Juice",
+    "identifiedItemDescription": "Poring egg + 50 Apple Juice. Existing pet bonuses only: at Cordial LUK+2/Critical+1; at Loyal LUK+3/Critical+1.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000750": {
+    "identifiedItemName": "Spore Egg and Pet Food",
+    "unidentifiedItemName": "Spore Egg and Pet Food",
+    "identifiedItemDescription": "Mage-themed companion: existing Spore egg + 50 Pet Food. Existing pet bonuses only: Hit+5 at Cordial, Hit+8 at Loyal. No new magic bonus.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
+  },
+  "2000751": {
+    "identifiedItemName": "Lunatic Egg and Carrot Juice",
+    "unidentifiedItemName": "Lunatic Egg and Carrot Juice",
+    "identifiedItemDescription": "Hunter-themed companion: existing Lunatic egg + 50 Carrot Juice. Existing pet bonuses only: Critical+2/BaseATK+2 at Cordial, +3/+3 at Loyal. Priest theme uses the same Poring Starter SKU, without a duplicated offer.\r\nFixed contents. Confirmation required; no random item selection.",
+    "unidentifiedItemDescription": "Fixed-content pack."
   }
 }

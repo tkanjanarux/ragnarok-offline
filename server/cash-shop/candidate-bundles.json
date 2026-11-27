@@ -909,7 +909,8 @@
     "choice": "arrow element",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "server_name": "Elemental Arrows: Fire + Normal"
   },
   {
     "request": 77,
@@ -965,7 +966,8 @@
     "choice": "arrow element",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "server_name": "Elemental Arrows: Water + Normal"
   },
   {
     "request": 77,
@@ -1021,7 +1023,8 @@
     "choice": "arrow element",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "server_name": "Elemental Arrows: Wind + Normal"
   },
   {
     "request": 77,
@@ -1077,7 +1080,8 @@
     "choice": "arrow element",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "server_name": "Elemental Arrows: Earth + Normal"
   },
   {
     "request": 77,
@@ -1133,7 +1137,8 @@
     "choice": "arrow element",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "server_name": "Elemental Arrows: Shadow + Normal"
   },
   {
     "request": 77,
@@ -1189,7 +1194,8 @@
     "choice": "arrow element",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "server_name": "Elemental Arrows: Ghost + Normal"
   },
   {
     "request": 77,
@@ -1628,6 +1634,406 @@
     ],
     "price_cash": 1215,
     "choice": "converter; advanced poison excluded until subclass rules tested",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 72,
+    "item_id": 2000721,
+    "aegis_name": "RO_Catalogue_72_1",
+    "name": "Poring Food - 100",
+    "components": [
+      {
+        "item_id": 531,
+        "aegis_name": "Apple_Juice",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "Species-specific food; Pet Food537 is not universal.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 72,
+    "item_id": 2000722,
+    "aegis_name": "RO_Catalogue_72_2",
+    "name": "Lunatic Food - 100",
+    "components": [
+      {
+        "item_id": 534,
+        "aegis_name": "Carrot_Juice",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "Species-specific food; Pet Food537 is not universal.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 72,
+    "item_id": 2000723,
+    "aegis_name": "RO_Catalogue_72_3",
+    "name": "Drops Food - 100",
+    "components": [
+      {
+        "item_id": 508,
+        "aegis_name": "Yellow_Herb",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "Species-specific food; Pet Food537 is not universal.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 72,
+    "item_id": 2000724,
+    "aegis_name": "RO_Catalogue_72_4",
+    "name": "Picky Food - 100",
+    "components": [
+      {
+        "item_id": 507,
+        "aegis_name": "Red_Herb",
+        "quantity": 100,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 90,
+    "choice": "Species-specific food; Pet Food537 is not universal.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 74,
+    "item_id": 2000740,
+    "aegis_name": "RO_Catalogue_74_0",
+    "name": "Poring Taming Kit",
+    "components": [
+      {
+        "item_id": 619,
+        "aegis_name": "Unripe_Apple",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 531,
+        "aegis_name": "Apple_Juice",
+        "quantity": 50,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 135,
+    "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 74,
+    "item_id": 2000741,
+    "aegis_name": "RO_Catalogue_74_1",
+    "name": "Drops Taming Kit",
+    "components": [
+      {
+        "item_id": 620,
+        "aegis_name": "Orange_Juice",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 508,
+        "aegis_name": "Yellow_Herb",
+        "quantity": 50,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 135,
+    "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 74,
+    "item_id": 2000742,
+    "aegis_name": "RO_Catalogue_74_2",
+    "name": "Lunatic Taming Kit",
+    "components": [
+      {
+        "item_id": 622,
+        "aegis_name": "Rainbow_Carrot",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 534,
+        "aegis_name": "Carrot_Juice",
+        "quantity": 50,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 135,
+    "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 74,
+    "item_id": 2000743,
+    "aegis_name": "RO_Catalogue_74_3",
+    "name": "Picky Taming Kit",
+    "components": [
+      {
+        "item_id": 623,
+        "aegis_name": "Earthworm_The_Dude",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 507,
+        "aegis_name": "Red_Herb",
+        "quantity": 50,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 135,
+    "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 74,
+    "item_id": 2000744,
+    "aegis_name": "RO_Catalogue_74_4",
+    "name": "Chonchon Taming Kit",
+    "components": [
+      {
+        "item_id": 624,
+        "aegis_name": "Rotten_Fish",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 537,
+        "aegis_name": "Pet_Food",
+        "quantity": 50,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 135,
+    "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 74,
+    "item_id": 2000745,
+    "aegis_name": "RO_Catalogue_74_5",
+    "name": "Spore Taming Kit",
+    "components": [
+      {
+        "item_id": 630,
+        "aegis_name": "Dew_Laden_Moss",
+        "quantity": 10,
+        "unit_cash": 10
+      },
+      {
+        "item_id": 537,
+        "aegis_name": "Pet_Food",
+        "quantity": 50,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 135,
+    "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 86,
+    "item_id": 2000860,
+    "aegis_name": "RO_Catalogue_86_0",
+    "name": "Build Change and Trial Supplies",
+    "components": [
+      {
+        "item_id": 2000370,
+        "aegis_name": "RO_Catalogue_Full_Reset",
+        "quantity": 1,
+        "unit_cash": 900
+      },
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 611,
+        "aegis_name": "Spectacles",
+        "quantity": 10,
+        "unit_cash": 1
+      }
+    ],
+    "price_cash": 963,
+    "choice": "One full-reset voucher plus trial supplies. Store all weighted supplies before using the reset voucher in town. Cancel reset keeps that voucher.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 87,
+    "item_id": 2000870,
+    "aegis_name": "RO_Catalogue_87_0",
+    "name": "Knight Companion Supplies",
+    "components": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 50,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 10,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 180,
+    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 87,
+    "item_id": 2000871,
+    "aegis_name": "RO_Catalogue_87_1",
+    "name": "Hunter Companion Supplies",
+    "components": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1751,
+        "aegis_name": "Silver_Arrow",
+        "quantity": 200,
+        "unit_cash": 0.02
+      }
+    ],
+    "price_cash": 148,
+    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 87,
+    "item_id": 2000872,
+    "aegis_name": "RO_Catalogue_87_2",
+    "name": "Wizard Companion Supplies",
+    "components": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 279,
+    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 87,
+    "item_id": 2000873,
+    "aegis_name": "RO_Catalogue_87_3",
+    "name": "Priest Companion Supplies",
+    "components": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 717,
+        "aegis_name": "Blue_Gemstone",
+        "quantity": 20,
+        "unit_cash": 2
+      }
+    ],
+    "price_cash": 315,
+    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "status": "candidate_not_for_live_sale",
+    "transaction": "catalogue_exchange",
+    "tests_pending": true
+  },
+  {
+    "request": 87,
+    "item_id": 2000874,
+    "aegis_name": "RO_Catalogue_87_4",
+    "name": "Assassin Companion Supplies",
+    "components": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 40,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 10,
+        "unit_cash": 5
+      }
+    ],
+    "price_cash": 153,
+    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true

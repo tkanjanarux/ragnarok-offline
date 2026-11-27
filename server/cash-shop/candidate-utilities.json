@@ -1,0 +1,74 @@
+[
+  {
+    "request": 39,
+    "item_id": 7621,
+    "aegis_name": "Token_Of_Siegfried",
+    "name": "Token Of Siegfried",
+    "quantity": 1,
+    "price_cash": 20,
+    "note": "Use the existing resurrection action while dead; map restrictions remain."
+  },
+  {
+    "request": 40,
+    "item_id": 12212,
+    "aegis_name": "Giant_Fly_Wing",
+    "name": "Giant Fly Wing",
+    "quantity": 1,
+    "price_cash": 10,
+    "note": "Existing party leader teleport script; native party/radius/map rules remain."
+  },
+  {
+    "request": 71,
+    "item_id": 643,
+    "aegis_name": "Pet_Incubator",
+    "name": "Pet Incubator",
+    "quantity": 1,
+    "price_cash": 5,
+    "note": "Pet Incubator: needed to hatch a purchased egg. Separate optional utility."
+  },
+  {
+    "request": 73,
+    "item_id": 10013,
+    "aegis_name": "Backpack",
+    "name": "Backpack",
+    "quantity": 1,
+    "price_cash": 100,
+    "note": "Existing pet accessory; only the matching species can equip it."
+  },
+  {
+    "request": 73,
+    "item_id": 10007,
+    "aegis_name": "Silk_Ribbon",
+    "name": "Silk Ribbon",
+    "quantity": 1,
+    "price_cash": 100,
+    "note": "Existing pet accessory; only the matching species can equip it."
+  },
+  {
+    "request": 73,
+    "item_id": 10012,
+    "aegis_name": "Tiny_Egg_Shell",
+    "name": "Tiny Egg Shell",
+    "quantity": 1,
+    "price_cash": 100,
+    "note": "Existing pet accessory; only the matching species can equip it."
+  },
+  {
+    "request": 73,
+    "item_id": 10002,
+    "aegis_name": "Monster_Oxygen_Mask",
+    "name": "Monster Oxygen Mask",
+    "quantity": 1,
+    "price_cash": 100,
+    "note": "Existing pet accessory; only the matching species can equip it."
+  },
+  {
+    "request": 73,
+    "item_id": 10017,
+    "aegis_name": "Bark_Shorts",
+    "name": "Bark Shorts",
+    "quantity": 1,
+    "price_cash": 100,
+    "note": "Existing pet accessory; only the matching species can equip it."
+  }
+]

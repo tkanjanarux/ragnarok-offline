@@ -202,3 +202,11 @@ per-system evidence JSON in the ledger docs. The isolated packet suites are not
 iPhone visual acceptance and do not prove all88 requirements. Keep unfinished
 pet/companion/effect/edge cases visible; costume support88 is explicitly absent in
 companion gear validation. No live activation or player-data writes are authorized.
+
+Cash catalogue milestone3 is ongoing: three atomic pet egg+food claims now have
+packet and native SQLite recovery evidence, with an additive journal and matching
+Char/Map capability. Pet accessory ACT rendering follows the pinned roBrowser
+source; art stays local. See catalogue README for activation/rollback prerequisites.
+Do not enable untested catalogue variants merely because definitions exist. The
+16 added supply variants and remaining utility/taming/companion/effect cases are
+still separate pending work. No live deployment or hardware acceptance occurred.

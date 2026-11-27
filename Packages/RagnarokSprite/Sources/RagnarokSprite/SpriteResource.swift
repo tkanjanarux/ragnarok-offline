@@ -133,6 +133,14 @@ extension ResourceManager {
         return sprite
     }
 
+    public func sprite(at path: ResourcePath, actionAt actionPath: ResourcePath) async throws -> SpriteResource {
+        async let actData = contentsOfResource(at: actionPath.appendingPathExtension("act"))
+        async let sprData = contentsOfResource(at: path.appendingPathExtension("spr"))
+        let act = try await ACT(data: actData)
+        let spr = try await SPR(data: sprData)
+        return SpriteResource(act: act, spr: spr)
+    }
+
     public func itemSprite(forItemID itemID: Int) async throws -> SpriteResource {
         let itemCommonInfoTable = await itemCommonInfoTable()
         guard let itemResourceName = itemCommonInfoTable.identifiedItemResourceName(forItemID: itemID) else {

@@ -18,6 +18,7 @@ extension ComposedSprite {
         public var shield: Int
         public var headgears: [Int]
         public var garment: Int
+        public var petAccessory: Int
         public var outfit: Int
         public var madoType: MadoType
 
@@ -31,6 +32,7 @@ extension ComposedSprite {
             self.shield = 0
             self.headgears = []
             self.garment = 0
+            self.petAccessory = 0
             self.outfit = 0
             self.madoType = .robot
         }

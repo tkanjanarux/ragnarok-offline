@@ -175,7 +175,17 @@ extension ComposedSprite {
                         return nil
                     }
 
-                    let bodySprite = try await resourceManager.sprite(at: bodySpritePath)
+                    let bodySprite: SpriteResource
+                    if let accessoryAction = PetAccessoryAction.path(for: configuration.petAccessory) {
+                        do {
+                            bodySprite = try await resourceManager.sprite(at: bodySpritePath, actionAt: accessoryAction)
+                        } catch {
+                            logger.warning("Pet accessory action unavailable: \(error)")
+                            bodySprite = try await resourceManager.sprite(at: bodySpritePath)
+                        }
+                    } else {
+                        bodySprite = try await resourceManager.sprite(at: bodySpritePath)
+                    }
                     let bodyPart = ComposedSprite.Part(sprite: bodySprite, semantic: .main)
                     return bodyPart
                 }

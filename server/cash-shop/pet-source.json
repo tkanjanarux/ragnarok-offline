@@ -1,0 +1,72 @@
+{
+  "production": {
+    "changes": [
+      {
+        "source": "src/map/intif.cpp",
+        "base_sha256": "210313106def3e292923a8dcce6f890f04905309bcdc8aac5598e6abdd91cc82",
+        "patched_sha256": "e761c1e021c0c185565676ffb0de0afebd1e9f087a529e3748b73ae8a9c730ad",
+        "crlf": true
+      },
+      {
+        "source": "src/char/int_storage.cpp",
+        "base_sha256": "a2c59aa24227bc39a0f4699b92022d28ca62339d66af6a103892aa18d626b13e",
+        "patched_sha256": "23702151754b08de86d4705315f1d23011b5fd3214068f4455587b655da8f8f6",
+        "crlf": true
+      },
+      {
+        "source": "src/char/inter.cpp",
+        "base_sha256": "e4330ae2ad390e73178854d408c9f94870c192d5205b67c6dc44d53ee473f7a2",
+        "patched_sha256": "925751707c53797ea2a03cdaa008c05863444248141e37cf2b5ac5f061227426",
+        "crlf": true
+      }
+    ],
+    "patch_sha256": "0ebded6ae611112387a5b9b0f20e284767ec05d935d2b803b41ed79e55ccb3d8",
+    "extra_files": [
+      {
+        "source": "src/common/catalogue_pet.hpp",
+        "native": "native/pet/catalogue_pet.hpp",
+        "sha256": "e891cfd69fcc8c2f441076e29cd0b819812f3cbef8d60a3ce7e9682fe8af1de5"
+      },
+      {
+        "source": "src/common/catalogue_pet.cpp",
+        "native": "native/pet/catalogue_pet.cpp",
+        "sha256": "48dc37d9bcbb885c11b64e99cb68dde18bed5742f5a5cd7776163d5f280a2213"
+      }
+    ]
+  },
+  "playable": {
+    "changes": [
+      {
+        "source": "src/map/intif.cpp",
+        "base_sha256": "210313106def3e292923a8dcce6f890f04905309bcdc8aac5598e6abdd91cc82",
+        "patched_sha256": "e761c1e021c0c185565676ffb0de0afebd1e9f087a529e3748b73ae8a9c730ad",
+        "crlf": true
+      },
+      {
+        "source": "src/char/int_storage.cpp",
+        "base_sha256": "a2c59aa24227bc39a0f4699b92022d28ca62339d66af6a103892aa18d626b13e",
+        "patched_sha256": "23702151754b08de86d4705315f1d23011b5fd3214068f4455587b655da8f8f6",
+        "crlf": true
+      },
+      {
+        "source": "src/char/inter.cpp",
+        "base_sha256": "e4330ae2ad390e73178854d408c9f94870c192d5205b67c6dc44d53ee473f7a2",
+        "patched_sha256": "925751707c53797ea2a03cdaa008c05863444248141e37cf2b5ac5f061227426",
+        "crlf": true
+      }
+    ],
+    "patch_sha256": "0ebded6ae611112387a5b9b0f20e284767ec05d935d2b803b41ed79e55ccb3d8",
+    "extra_files": [
+      {
+        "source": "src/common/catalogue_pet.hpp",
+        "native": "native/pet/catalogue_pet.hpp",
+        "sha256": "e891cfd69fcc8c2f441076e29cd0b819812f3cbef8d60a3ce7e9682fe8af1de5"
+      },
+      {
+        "source": "src/common/catalogue_pet.cpp",
+        "native": "native/pet/catalogue_pet.cpp",
+        "sha256": "48dc37d9bcbb885c11b64e99cb68dde18bed5742f5a5cd7776163d5f280a2213"
+      }
+    ]
+  }
+}

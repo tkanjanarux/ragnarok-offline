@@ -18,6 +18,7 @@ extension ComposedSprite.Configuration {
         self.shield = object.shield
         self.headgears = [object.headTop, object.headMid, object.headBottom]
         self.garment = object.garment
+        self.petAccessory = object.type == .pet ? object.headBottom : 0
 
         self.updateHairStyle()
     }

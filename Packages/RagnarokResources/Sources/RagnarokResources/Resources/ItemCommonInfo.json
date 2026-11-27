@@ -116403,5 +116403,100 @@
     "identifiedItemResourceName": "쿠폰",
     "unidentifiedItemResourceName": "쿠폰",
     "slotCount": 0
+  },
+  "2000721": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000722": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000723": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000724": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000740": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000741": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000742": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000743": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000744": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000745": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000860": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000870": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000871": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000872": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000873": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000874": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000710": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000750": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000751": {
+    "identifiedItemResourceName": "초록상자",
+    "slotCount": 0,
+    "unidentifiedItemResourceName": "초록상자"
   }
 }

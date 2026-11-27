@@ -287,5 +287,17 @@
       "Costume_Head_Top": true
     },
     "weight_tenths": 0
+  },
+  {
+    "request": 76,
+    "item_id": 19844,
+    "aegis_name": "C_Turban",
+    "name": "Costume Turban",
+    "price_cash": 250,
+    "view": 7,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 10
   }
 ]

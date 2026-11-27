@@ -1,0 +1,257 @@
+[
+  {
+    "item_id": 525,
+    "status": null,
+    "kind": "cure",
+    "one_consumed": true,
+    "status_persisted": [],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 523,
+    "status": null,
+    "kind": "curse",
+    "one_consumed": true,
+    "status_persisted": [],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12118,
+    "status": 670,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        670,
+        1199497,
+        -15,
+        0,
+        20,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12119,
+    "status": 105,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        105,
+        1199497,
+        20,
+        0,
+        0,
+        -15
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12120,
+    "status": 669,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        669,
+        1199497,
+        0,
+        20,
+        -15,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12121,
+    "status": 671,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        671,
+        1199490,
+        0,
+        -15,
+        0,
+        20
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12114,
+    "status": 250,
+    "kind": "convert",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        250,
+        1189291,
+        3,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12115,
+    "status": 250,
+    "kind": "convert",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        250,
+        1189296,
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12116,
+    "status": 250,
+    "kind": "convert",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        250,
+        1189295,
+        2,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12117,
+    "status": 250,
+    "kind": "convert",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        250,
+        1189285,
+        4,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12016,
+    "status": 60,
+    "kind": "speed",
+    "one_consumed": true,
+    "status_persisted": [],
+    "speed_before": 150,
+    "speed_after": 75,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12208,
+    "status": 257,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        257,
+        1799500,
+        50,
+        0,
+        0,
+        0
+      ],
+      [
+        611,
+        59500,
+        12208,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12210,
+    "status": 258,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        258,
+        1799499,
+        100,
+        0,
+        0,
+        0
+      ],
+      [
+        612,
+        59498,
+        12210,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  },
+  {
+    "item_id": 12209,
+    "status": 260,
+    "kind": "status",
+    "one_consumed": true,
+    "status_persisted": [
+      [
+        260,
+        1799498,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "speed_before": null,
+    "speed_after": null,
+    "combat_multiplier_verified": false
+  }
+]

@@ -87,5 +87,44 @@
     "name": "Portable Card Removal Voucher",
     "price_cash": 100,
     "service": "card_removal"
+  },
+  {
+    "request": 71,
+    "item_id": 2000710,
+    "aegis_name": "RO_Catalogue_Poring_Starter",
+    "name": "Poring Starter Egg and Apple Juice",
+    "price_cash": 500,
+    "service": "pet_pack",
+    "egg": 9001,
+    "food": 531,
+    "quantity": 50,
+    "mob": 1002,
+    "description": "Poring egg + 50 Apple Juice. Existing pet bonuses only: at Cordial LUK+2/Critical+1; at Loyal LUK+3/Critical+1."
+  },
+  {
+    "request": 75,
+    "item_id": 2000750,
+    "aegis_name": "RO_Catalogue_Spore_Starter",
+    "name": "Spore Egg and Pet Food",
+    "price_cash": 500,
+    "service": "pet_pack",
+    "egg": 9012,
+    "food": 537,
+    "quantity": 50,
+    "mob": 1014,
+    "description": "Mage-themed companion: existing Spore egg + 50 Pet Food. Existing pet bonuses only: Hit+5 at Cordial, Hit+8 at Loyal. No new magic bonus."
+  },
+  {
+    "request": 75,
+    "item_id": 2000751,
+    "aegis_name": "RO_Catalogue_Lunatic_Starter",
+    "name": "Lunatic Egg and Carrot Juice",
+    "price_cash": 500,
+    "service": "pet_pack",
+    "egg": 9004,
+    "food": 534,
+    "quantity": 50,
+    "mob": 1063,
+    "description": "Hunter-themed companion: existing Lunatic egg + 50 Carrot Juice. Existing pet bonuses only: Critical+2/BaseATK+2 at Cordial, +3/+3 at Loyal. Priest theme uses the same Poring Starter SKU, without a duplicated offer."
   }
 ]
