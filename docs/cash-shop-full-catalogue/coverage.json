@@ -75,7 +75,8 @@
         "price_cash": 1800
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 2,
@@ -138,7 +139,8 @@
         "price_cash": 900
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 3,
@@ -200,7 +202,8 @@
         "price_cash": 450
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 4,
@@ -262,7 +265,8 @@
         "price_cash": 450
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 5,
@@ -324,7 +328,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 6,
@@ -386,7 +391,8 @@
         "price_cash": 36
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 7,
@@ -447,7 +453,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "resistance_effect_evidence": "resist-combat-evidence.json: actual native elemental skill HP loss before/after",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 8,
@@ -508,7 +516,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "resistance_effect_evidence": "resist-combat-evidence.json: actual native elemental skill HP loss before/after",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 9,
@@ -569,7 +579,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "resistance_effect_evidence": "resist-combat-evidence.json: actual native elemental skill HP loss before/after",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 10,
@@ -630,7 +642,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "resistance_effect_evidence": "resist-combat-evidence.json: actual native elemental skill HP loss before/after",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 11,
@@ -652,7 +666,7 @@
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "MaxHP food",
-    "variant_spec": "MaxHP food — fixed contents",
+    "variant_spec": "Ten native medium increase potions; this is an HP/SP capacity booster, not stat food.",
     "dependencies": [
       "effective item script + restrictions",
       "GRF iteminfo/icon + use assets",
@@ -688,11 +702,13 @@
       {
         "item_id": 2000110,
         "aegis_name": "RO_Catalogue_11_0",
-        "name": "MaxHP food — fixed contents",
+        "name": "MaxHP Boost Pack — Medium Increase Potions",
         "price_cash": 135
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "mapping_note": "Functional MaxHP/MaxSP booster uses the existing medium increase potion, explicitly named in shop details; not represented as literal food."
   },
   {
     "request": 12,
@@ -714,7 +730,7 @@
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "MaxSP food",
-    "variant_spec": "MaxSP food — fixed contents",
+    "variant_spec": "Ten native medium increase potions; this is an HP/SP capacity booster, not stat food.",
     "dependencies": [
       "effective item script + restrictions",
       "GRF iteminfo/icon + use assets",
@@ -750,11 +766,13 @@
       {
         "item_id": 2000120,
         "aegis_name": "RO_Catalogue_12_0",
-        "name": "MaxSP food — fixed contents",
+        "name": "MaxSP Boost Pack — Medium Increase Potions",
         "price_cash": 135
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "mapping_note": "Functional MaxHP/MaxSP booster uses the existing medium increase potion, explicitly named in shop details; not represented as literal food."
   },
   {
     "request": 13,
@@ -813,7 +831,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 14,
@@ -872,7 +892,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 15,
@@ -931,7 +953,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 16,
@@ -990,7 +1014,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 17,
@@ -1049,7 +1075,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 18,
@@ -1108,7 +1136,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 19,
@@ -1167,7 +1197,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 20,
@@ -1226,7 +1258,9 @@
         "price_cash": 45
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 21,
@@ -1390,7 +1424,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 22,
@@ -1471,7 +1507,9 @@
         "price_cash": 945
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 23,
@@ -1532,7 +1570,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 24,
@@ -1593,7 +1633,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 25,
@@ -1654,7 +1696,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 26,
@@ -1715,7 +1759,9 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 27,
@@ -1777,7 +1823,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 28,
@@ -1839,7 +1886,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 29,
@@ -1901,7 +1949,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 30,
@@ -1963,7 +2012,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 31,
@@ -2025,7 +2075,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 32,
@@ -2087,7 +2138,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 33,
@@ -2144,7 +2196,7 @@
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Selectable stat food",
-    "variant_spec": "Selectable stat food — STR +5 / Selectable stat food — AGI +5 / Selectable stat food — VIT +5 / Selectable stat food — INT +5 / Selectable stat food — DEX +5 / Selectable stat food — LUK +5",
+    "variant_spec": "Choose one of six existing stat-food packs before buying; identical request33 definitions are compatibility aliases, not duplicate shop entries.",
     "dependencies": [
       "effective item script + restrictions",
       "GRF iteminfo/icon + use assets",
@@ -2164,12 +2216,12 @@
     },
     "blocker": null,
     "skus": [
-      2000330,
-      2000331,
-      2000332,
-      2000333,
-      2000334,
-      2000335
+      2000270,
+      2000280,
+      2000290,
+      2000300,
+      2000310,
+      2000320
     ],
     "transaction_evidence": {
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
@@ -2179,43 +2231,45 @@
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
     "catalogue_variants": [
       {
-        "item_id": 2000330,
-        "aegis_name": "RO_Catalogue_33_0",
-        "name": "Selectable stat food — STR +5",
+        "item_id": 2000270,
+        "aegis_name": "RO_Catalogue_27_0",
+        "name": "STR moderate food — fixed contents",
         "price_cash": 90
       },
       {
-        "item_id": 2000331,
-        "aegis_name": "RO_Catalogue_33_1",
-        "name": "Selectable stat food — AGI +5",
+        "item_id": 2000280,
+        "aegis_name": "RO_Catalogue_28_0",
+        "name": "AGI moderate food — fixed contents",
         "price_cash": 90
       },
       {
-        "item_id": 2000332,
-        "aegis_name": "RO_Catalogue_33_2",
-        "name": "Selectable stat food — VIT +5",
+        "item_id": 2000290,
+        "aegis_name": "RO_Catalogue_29_0",
+        "name": "VIT moderate food — fixed contents",
         "price_cash": 90
       },
       {
-        "item_id": 2000333,
-        "aegis_name": "RO_Catalogue_33_3",
-        "name": "Selectable stat food — INT +5",
+        "item_id": 2000300,
+        "aegis_name": "RO_Catalogue_30_0",
+        "name": "INT moderate food — fixed contents",
         "price_cash": 90
       },
       {
-        "item_id": 2000334,
-        "aegis_name": "RO_Catalogue_33_4",
-        "name": "Selectable stat food — DEX +5",
+        "item_id": 2000310,
+        "aegis_name": "RO_Catalogue_31_0",
+        "name": "DEX moderate food — fixed contents",
         "price_cash": 90
       },
       {
-        "item_id": 2000335,
-        "aegis_name": "RO_Catalogue_33_5",
-        "name": "Selectable stat food — LUK +5",
+        "item_id": 2000320,
+        "aegis_name": "RO_Catalogue_32_0",
+        "name": "LUK moderate food — fixed contents",
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "deduplication": "2000330–2000335 remain usable definitions but are not listed; canonical sale IDs2000270,2000280,2000290,2000300,2000310,2000320."
   },
   {
     "request": 34,
@@ -2276,7 +2330,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 35,
@@ -2334,7 +2389,8 @@
         "price_cash": 500
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 36,
@@ -2392,7 +2448,8 @@
         "price_cash": 500
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 37,
@@ -2450,7 +2507,8 @@
         "price_cash": 900
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 38,
@@ -2508,7 +2566,9 @@
         "price_cash": 100
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "capacity_effect_evidence": "gym-weight-evidence.json: authoritative capacity4200→4400 weight units, persists after reconnect"
   },
   {
     "request": 39,
@@ -2566,7 +2626,8 @@
         "price_cash": 20
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 40,
@@ -2624,7 +2685,8 @@
         "price_cash": 10
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 41,
@@ -2686,7 +2748,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 42,
@@ -2744,7 +2807,8 @@
         "price_cash": 100
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 43,
@@ -2801,7 +2865,8 @@
         "price_cash": 100
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 44,
@@ -2871,7 +2936,8 @@
         "price_cash": 100
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 45,
@@ -2928,7 +2994,8 @@
         "price_cash": 500
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 46,
@@ -2985,7 +3052,9 @@
         "price_cash": 100
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "outcome_evidence": "card-outcomes-evidence.json:26 purchases, all five unchanged native random outcomes, money/materials/item identity and first-of-each-outcome persistence/reconnect"
   },
   {
     "request": 47,
@@ -3120,7 +3189,8 @@
         "name": "Costume King Poring Hat",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 48,
@@ -3255,7 +3325,8 @@
         "name": "Costume Bunny Top Hat",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 49,
@@ -3390,7 +3461,8 @@
         "name": "Costume Kitty Band",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 50,
@@ -3526,7 +3598,8 @@
         "name": "Costume Googles",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 51,
@@ -3661,7 +3734,8 @@
         "name": "Costume Gang Scarf",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 52,
@@ -4614,7 +4688,8 @@
         "name": "Costume EXE Backpack",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 53,
@@ -4749,7 +4824,8 @@
         "name": "Costume Witch's Hat",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 54,
@@ -4884,7 +4960,8 @@
         "name": "Costume Book of Magic",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 55,
@@ -5019,7 +5096,8 @@
         "name": "Costume Test Subject Aura",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 56,
@@ -5154,7 +5232,8 @@
         "name": "Costume Dragon Helm",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 57,
@@ -5289,7 +5368,8 @@
         "name": "Costume Royal Mantle",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 58,
@@ -5424,7 +5504,8 @@
         "name": "Costume Crown",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 59,
@@ -5559,7 +5640,8 @@
         "name": "Costume Kitsune Mask",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 60,
@@ -6512,7 +6594,8 @@
         "name": "Costume Fallen Angel Wing",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 61,
@@ -6647,7 +6730,8 @@
         "name": "Costume Moon Eyepatch",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 62,
@@ -6782,7 +6866,8 @@
         "name": "Costume Puppy Headband",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 63,
@@ -6917,7 +7002,8 @@
         "name": "Costume Sleeping Kitty Hat",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 64,
@@ -7052,7 +7138,8 @@
         "name": "Costume Deviruchi Balloon",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 65,
@@ -8005,7 +8092,8 @@
         "name": "Costume Violet Halo",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 66,
@@ -8958,7 +9046,8 @@
         "name": "Costume Archangel Wing",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 67,
@@ -9093,7 +9182,8 @@
         "name": "Costume Fluffy Angel Cape",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 68,
@@ -9228,7 +9318,8 @@
         "name": "Costume Twin Pompom By JB",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 69,
@@ -9363,7 +9454,8 @@
         "name": "Costume Halloween Hat",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 70,
@@ -9498,7 +9590,8 @@
         "name": "Costume: Krathong Crown",
         "price_cash": 250
       }
-    ]
+    ],
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 71,
@@ -9589,7 +9682,8 @@
         "price_cash": 5
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 72,
@@ -9787,7 +9881,8 @@
         "price_cash": 90
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 73,
@@ -9929,7 +10024,8 @@
         "price_cash": 100
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 74,
@@ -10183,7 +10279,9 @@
         "price_cash": 135
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "capture_recovery_evidence": "capture-recovery-evidence.json: post-success disconnect, duplicate target packet and pre-barrier disconnect",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 75,
@@ -10286,7 +10384,8 @@
         "price_cash": 500
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 76,
@@ -10369,7 +10468,8 @@
         "price_cash": 250
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 77,
@@ -10569,7 +10669,9 @@
         "price_cash": 360
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 78,
@@ -10639,7 +10741,8 @@
         "price_cash": 2025
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 79,
@@ -10709,7 +10812,8 @@
         "price_cash": 630
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 80,
@@ -10779,7 +10883,8 @@
         "price_cash": 576
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 81,
@@ -10927,7 +11032,9 @@
         "price_cash": 1215
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "combat_effect_evidence": "outgoing-elements-evidence.json: eight actual ammo consumptions/attacks and four converter casts/weapon damage comparisons; no exact DPS claim",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 82,
@@ -11009,7 +11116,9 @@
         "price_cash": 1163
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "wing_effect_evidence": "wings-evidence.json: actual normal Fly Wing and saved-point Butterfly Wing casts/warps, one consumption each"
   },
   {
     "request": 83,
@@ -11080,7 +11189,8 @@
         "price_cash": 1350
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 84,
@@ -11157,7 +11267,8 @@
         "price_cash": 765
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 85,
@@ -11353,7 +11464,10 @@
         "price_cash": 672
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "resistance_effect_evidence": "resist-combat-evidence.json: actual native elemental skill HP loss before/after",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "wing_effect_evidence": "wings-evidence.json: actual normal Fly Wing and saved-point Butterfly Wing casts/warps, one consumption each"
   },
   {
     "request": 86,
@@ -11443,7 +11557,8 @@
         "price_cash": 963
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   },
   {
     "request": 87,
@@ -11460,7 +11575,7 @@
       297,
       153
     ],
-    "pricing_status": "Consistent component values; Hunter162 / Priest297 virtual Cash supersede initial148 /315, repurchase pending",
+    "pricing_status": "Hunter162 / Priest297 Cash repurchased at revised prices; cancel/open/exact contents/reconnect passed",
     "intended_effect": "Five-companion role supplies",
     "variant_spec": "Five roles using four supported careers: Knight Puller, Knight Spear, Hunter, Wizard, Priest. No Assassin companion is implemented by this server; player Assassin Supply remains request81.",
     "dependencies": [
@@ -11672,7 +11787,9 @@
         "price_cash": 153
       }
     ],
-    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test"
+    "asset_evidence": "native-item-audit.json; costume/pet-specific ACT/SPR audits as described in README; not a device rendering test",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)",
+    "price_revision_evidence": "reprice-companion-evidence.json"
   },
   {
     "request": 88,
@@ -11709,6 +11826,7 @@
     },
     "blocker": "Current companion gear_runtime::reason explicitly rejects EQP_COSTUME and EQP_SHADOW_GEAR. Team fashion is conditional on appearance support; excluded from sale, not replaced by stat gear.",
     "skus": [],
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "pricing_evidence": "pricing-evidence.json; scripts/cash-shop/audit-prices.py (no external economy claim)"
   }
 ]

@@ -38,4 +38,30 @@ class AssemblyTests(unittest.TestCase):
             with self.subTest(price=price), self.assertRaises(AssertionError):
                 m.merge(self.items, self.cash, self.new, [dict(Item='Pack', Price=price)])
 
+class BundleAliasTests(unittest.TestCase):
+    def run_generator(self, changed=False, cycle=False):
+        import tempfile
+        import json
+        source = Path(__file__).resolve().parents[2] / 'server/cash-shop/generate.py'
+        spec = importlib.util.spec_from_file_location('bundles', source)
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        base = dict(item_id=2000270, aegis_name='Canonical', name='Food', price_cash=90,
+                    components=[dict(item_id=12045, aegis_name='Str_Dish05', quantity=10)])
+        alias = copy.deepcopy(base); alias.update(item_id=2000330, aegis_name='Alias', alias_of=2000270)
+        if changed: alias['components'][0]['quantity'] = 20
+        if cycle: base['alias_of'] = 2000330
+        with tempfile.TemporaryDirectory() as directory:
+            module.HERE = Path(directory)
+            (module.HERE / 'candidate-bundles.json').write_text(json.dumps([base, alias]))
+            output = module.HERE / 'generated'; module.generate(output)
+            return json.loads((output / 'item_db.yml').read_text()), json.loads((output / 'item_cash.yml').read_text())
+    def test_alias_keeps_usable_definition_but_lists_only_canonical(self):
+        items, cash = self.run_generator()
+        self.assertEqual([x['Id'] for x in items['Body']], [2000270, 2000330])
+        self.assertEqual(cash['Body'][0]['Items'], [dict(Item='Canonical', Price=90)])
+    def test_different_contents_cannot_be_hidden_as_alias(self):
+        with self.assertRaises(AssertionError): self.run_generator(changed=True)
+    def test_alias_cycles_rejected(self):
+        with self.assertRaises(AssertionError): self.run_generator(cycle=True)
+
 if __name__ == '__main__': unittest.main()

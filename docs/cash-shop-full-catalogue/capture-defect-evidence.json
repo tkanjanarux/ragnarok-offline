@@ -6,5 +6,5 @@
   "orphan_created_count": 1,
   "method": "Delay only isolated Char process, disconnect synthetic Map client after native success, resume Char in finally; compare ALL pet IDs because native incubated eggs have owner fields zero.",
   "candidate_fix": "Journal successful capture before acknowledgement; same native RNG/lure-consumption rules",
-  "runtime_fix_verification": "pending"
+  "runtime_fix_verification": "capture-recovery-evidence.json: three isolated cases passed on matching journal Map/Char"
 }

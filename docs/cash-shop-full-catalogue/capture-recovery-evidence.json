@@ -1,0 +1,35 @@
+[
+  {
+    "case": "disconnect_after_success",
+    "attempts": 8,
+    "success_ack_count": 1,
+    "created_pets": 1,
+    "delivered_eggs": 1,
+    "no_orphans": true,
+    "lure_consumption_native": true,
+    "no_duplicate_delivery": true,
+    "reconnect": true
+  },
+  {
+    "case": "duplicate_target_packet",
+    "attempts": 3,
+    "success_ack_count": 1,
+    "created_pets": 1,
+    "delivered_eggs": 1,
+    "no_orphans": true,
+    "lure_consumption_native": true,
+    "no_duplicate_delivery": true,
+    "reconnect": true
+  },
+  {
+    "case": "disconnect_before_barrier",
+    "attempts": 6,
+    "success_ack_count": 0,
+    "created_pets": 0,
+    "delivered_eggs": 0,
+    "no_orphans": true,
+    "lure_consumption_native": true,
+    "no_duplicate_delivery": true,
+    "reconnect": true
+  }
+]

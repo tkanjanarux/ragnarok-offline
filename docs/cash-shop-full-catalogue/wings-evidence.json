@@ -1,0 +1,24 @@
+[
+  {
+    "item_id": 601,
+    "actual_warp_packet": true,
+    "destination": [
+      96,
+      168
+    ],
+    "save_point_return": false,
+    "one_consumed": true,
+    "persisted": true
+  },
+  {
+    "item_id": 602,
+    "actual_warp_packet": true,
+    "destination": [
+      156,
+      186
+    ],
+    "save_point_return": true,
+    "one_consumed": true,
+    "persisted": true
+  }
+]

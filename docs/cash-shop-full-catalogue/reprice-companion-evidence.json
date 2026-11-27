@@ -1,0 +1,20 @@
+[
+  {
+    "item_id": 2000871,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000873,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  }
+]

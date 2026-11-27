@@ -36,7 +36,7 @@ Review candidates only. Live catalogue remains unchanged. A source/asset audit i
 | 30 | INT moderate food | 12050; packs 2000300 | 90 | in_progress | script_audit / edge_cases |
 | 31 | DEX moderate food | 12065; packs 2000310 | 90 | in_progress | script_audit / edge_cases |
 | 32 | LUK moderate food | 12070; packs 2000320 | 90 | in_progress | script_audit / edge_cases |
-| 33 | Selectable stat food | 12045, 12050, 12055, 12060, 12065, 12070; packs 2000330, 2000331, 2000332, 2000333, 2000334, 2000335 | 90, 90, 90, 90, 90, 90 | in_progress | script_audit / effect_packet / edge_cases |
+| 33 | Selectable stat food | 12045, 12050, 12055, 12060, 12065, 12070; packs 2000270, 2000280, 2000290, 2000300, 2000310, 2000320 | 90, 90, 90, 90, 90, 90 | in_progress | script_audit / effect_packet / edge_cases |
 | 34 | Speed Potion | 12016; packs 2000340 | 90 | in_progress | script_audit / effect_packet / edge_cases |
 | 35 | Neuralizer | 2000350; packs 2000350 | 500 | in_progress | script_audit / edge_cases |
 | 36 | Stat reset voucher | 2000360; packs 2000360 | 500 | in_progress | script_audit / edge_cases |

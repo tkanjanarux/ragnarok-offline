@@ -1,0 +1,7 @@
+{
+  "before_weight_tenths": 42000,
+  "after_weight_tenths": 44000,
+  "increase_weight_units": 200.0,
+  "one_pass_consumed": true,
+  "persisted_reconnect": true
+}

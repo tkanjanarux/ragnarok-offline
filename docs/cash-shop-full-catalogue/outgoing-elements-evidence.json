@@ -1,0 +1,230 @@
+[
+  {
+    "kind": "arrow",
+    "item_id": 1750,
+    "target_element": 0,
+    "baseline_hits": [
+      321,
+      321,
+      319
+    ],
+    "elemental_hits": [
+      320,
+      321,
+      319
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1751,
+    "target_element": 7,
+    "baseline_hits": [
+      321,
+      321,
+      319
+    ],
+    "elemental_hits": [
+      338,
+      338,
+      337
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1752,
+    "target_element": 2,
+    "baseline_hits": [
+      319,
+      320,
+      319
+    ],
+    "elemental_hits": [
+      349,
+      351,
+      351
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1754,
+    "target_element": 3,
+    "baseline_hits": [
+      321,
+      320,
+      321
+    ],
+    "elemental_hits": [
+      349,
+      351,
+      349
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1755,
+    "target_element": 1,
+    "baseline_hits": [
+      321,
+      319,
+      320
+    ],
+    "elemental_hits": [
+      349,
+      351,
+      352
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1756,
+    "target_element": 4,
+    "baseline_hits": [
+      319,
+      319,
+      320
+    ],
+    "elemental_hits": [
+      352,
+      352,
+      352
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1757,
+    "target_element": 8,
+    "baseline_hits": [
+      289,
+      291,
+      291
+    ],
+    "elemental_hits": [
+      311,
+      310,
+      311
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "arrow",
+    "item_id": 1767,
+    "target_element": 6,
+    "baseline_hits": [
+      320,
+      320,
+      321
+    ],
+    "elemental_hits": [
+      473,
+      337,
+      337
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "converter",
+    "item_id": 12114,
+    "target_element": 2,
+    "baseline_hits": [
+      214,
+      214,
+      214
+    ],
+    "elemental_hits": [
+      223,
+      223,
+      221
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "converter",
+    "item_id": 12115,
+    "target_element": 3,
+    "baseline_hits": [
+      214,
+      214,
+      215
+    ],
+    "elemental_hits": [
+      221,
+      223,
+      312
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups",
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim."
+  },
+  {
+    "kind": "converter",
+    "item_id": 12116,
+    "target_element": 4,
+    "baseline_hits": [
+      215,
+      214,
+      215
+    ],
+    "elemental_hits": [
+      221,
+      223,
+      221
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim.",
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups"
+  },
+  {
+    "kind": "converter",
+    "item_id": 12117,
+    "target_element": 1,
+    "baseline_hits": [
+      214,
+      215,
+      214
+    ],
+    "elemental_hits": [
+      221,
+      223,
+      221
+    ],
+    "consumption_checked": true,
+    "actual_server_combat": true,
+    "comparison": "Median of three actual native hits; random critical hits are retained in the raw sample. No exact multiplier or statistical DPS claim.",
+    "fixture": "immobile known Poring, HP100000/DEF0/FLEE1/element level1; two identical synthetic character setups"
+  }
+]

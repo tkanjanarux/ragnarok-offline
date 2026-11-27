@@ -227,3 +227,13 @@ and x86_64 Map/Char compile pass; isolated packet recovery checks are running.
 Do not label capture recovery or final129-SKU readiness complete until those results
 are recorded. Hunter/Priest companion prices corrected to162/297; repurchase pending.
 No live activation, player mutation, Simulator or hardware acceptance occurred.
+
+Cash catalogue closeout progress: all five native card outcomes were observed in26
+real fixture purchases, with cash/materials/item checks and per-outcome reconnect.
+Capture recovery3, pet pack3 and native taming6 regressions now pass on the journal
+binary; normal wings and actual Gym capacity also pass. Duplicate request33 foods
+are aliases of27–32: final catalogue adds123 SKUs, keeps34, total157, with96 usable
+custom definitions (six unlisted aliases). Nine assembly/alias checks pass. MaxHP/
+MaxSP packs now explicitly name medium Increase Potions; pack contents use readable
+item names. Physical iPhone remains unverified. Final full iPhone artifact, final
+catalogue packet check and production-profile native compile are still outstanding.

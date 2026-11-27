@@ -248,7 +248,7 @@ this exact price; the earlier price72 evidence is superseded for SKU2000220.
 These are isolated protocol/native tests, not iPhone/hardware visual acceptance.
 No live catalogue or gameplay process has been updated.
 
-### Capture recovery follow-up (runtime verification in progress)
+### Capture recovery follow-up
 
 The delayed-Char/disconnect test reproduced a distinct defect in native taming:
 roulette reported success, Char created a pet, but the disconnected account never
@@ -268,8 +268,10 @@ create a second delivery after the first captures the monster.
 Both prepared source profiles reproduce; native Map/Char compile and15 actual
 SQLite transaction/recovery cases pass, including capture replay/rollback. The
 isolated matching binaries have been activated with a verified database backup.
-Packet recovery verification is still in progress; this paragraph does **not** mark
-capture sale readiness complete. No new schema beyond the existing pet journal is
+[Three packet recovery cases](capture-recovery-evidence.json) now pass: disconnect
+after success preserves the egg through reconnect; duplicate target packets create
+one egg; disconnect before the barrier creates neither a pet nor an egg and never
+reports success. These verify the reproduced fault, not every possible network fault. No new schema beyond the existing pet journal is
 needed, and the matching Char guard/rollback requirements above still apply.
 
 [Resistance combat evidence](resist-combat-evidence.json) now covers all four
@@ -289,3 +291,48 @@ The new129-product/chunk regression keeps earlier products, deduplicates repeate
 chunks and rejects checkout after a last-page product's price changes. Existing
 unknown-purchase/no-retry tests remain. UI has nine cells per page, search and
 category filtering; physical touch/controller checkout remains device-unverified.
+
+[Outgoing elemental combat](outgoing-elements-evidence.json) now covers all eight
+arrow types and all four converters. Each arrow is actually consumed by a normal
+attack; each converter is cast through the native item-skill flow and compared on
+an equipped dagger. Bare-handed status ATK is not a valid converter damage probe.
+Synthetic stationary targets have explicit element/level and otherwise identical
+conditions. Raw samples retain random critical hits; comparisons use the median
+of three hits, not a claim of an exact elemental multiplier or measured DPS.
+Shadow is1767 and Immaterial is1757 in this server (the catalogue already uses those
+correct IDs). Resistance tests are separate incoming-skill probes.
+
+### Final catalogue cleanup and additional verification
+
+Six request33 stat-food definitions duplicated requests27–32 exactly. They remain
+usable compatibility definitions, but only the six canonical STR/AGI/VIT/INT/DEX/LUK
+packs are listed. Request33 is fulfilled by choosing the stat before purchase, not
+by buying a second identical SKU. Thus the final proposal is **123 additional SKUs**:
+77 listed supply packs,13 vouchers,25 costumes and8 utilities/accessories; plus the
+34 preserved entries = **157 listed entries**. There are still96 custom definitions,
+including the six unlisted aliases. Nine assembly/alias regressions pass and prevent
+hiding different contents or introducing an alias cycle.
+
+MaxHP/MaxSP packs explicitly contain the native **medium HP/SP Increase Potions**.
+They provide the requested capacity-boosting effect; they are not labelled as
+literal stat food. The shop now uses human-readable item names in pack descriptions.
+[All96 custom item mappings](custom-icons-evidence.json) resolve10 actual local
+icon/collection BMP files, decoded and hashed without committing any extracted art.
+
+- [Card outcomes](card-outcomes-evidence.json):26 actual voucher purchases produced
+  all five documented outcomes with unchanged native RNG. Cash100, Zeny225000,
+  materials/voucher consumption, refinement/cards/identity and the first occurrence
+  of each outcome's SQL persistence/reconnect were checked. No probability override.
+- [Revised companion prices](reprice-companion-evidence.json)162/297 passed actual
+  purchase/debit once/cancel/open/exact contents/reconnect.
+- [Gym capacity](gym-weight-evidence.json) changes authoritative capacity4200→4400
+  weight units for one pass and persists through reconnect; this complements the
+  earlier permanent-skill/cap10 tests.
+- [Normal wings](wings-evidence.json): real item-skill casts, actual warp packets,
+  saved-point Butterfly return, one consumption each and persisted position.
+- After the capture-journal activation, [all three pet packs](pet-packs-final-evidence.json)
+  and [all six native taming species](taming-final-evidence.json) passed again.
+  The stopped-companion Giant Fly Wing regression also passed on this final binary.
+
+Production-profile native compilation is being checked separately. The prepared
+production/playable source profiles remain distinct. No live activation occurred.

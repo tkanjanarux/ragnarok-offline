@@ -22,6 +22,6 @@ for sku in specs:
 # Exact native Arrow Crafting output, also verified through actual skill packets.
 for material, output, quantity in [(990, 1752, 600), (991, 1754, 150), (992, 1755, 150), (993, 1756, 150)]:
     assert units[material] == units[output] * quantity, ('conversion underpricing', material)
-print(json.dumps(dict(bundle_skus=len(specs),consistent_component_values=len(units),
+print(json.dumps(dict(bundle_definitions=len(specs),listed_bundle_skus=sum('alias_of' not in s for s in specs),consistent_component_values=len(units),
                       discount='10%, rounded to nearest virtual Cash',arrow_conversions_checked=4,
                       external_economy_claim=False)))

@@ -1,0 +1,818 @@
+{
+  "custom_definitions": 96,
+  "definitions": [
+    {
+      "item_id": 2000010,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000020,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000030,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000040,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000050,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000060,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000070,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000080,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000090,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000100,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000110,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000120,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000130,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000140,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000150,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000160,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000170,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000180,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000190,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000200,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000220,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000230,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000240,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000250,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000260,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000270,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000280,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000290,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000300,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000310,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000320,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000340,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000410,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000720,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000780,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000790,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000800,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000820,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000830,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000840,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000011,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000210,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000770,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000211,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000771,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000212,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000772,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000213,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000773,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000214,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000774,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000215,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000775,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000330,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000331,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000332,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000333,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000334,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000335,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000850,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000851,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000852,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000853,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000810,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000811,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000812,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000813,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000721,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000722,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000723,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000724,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000740,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000741,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000742,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000743,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000744,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000745,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000860,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000870,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000871,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000872,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000873,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000874,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000350,
+      "resource": "섬광막대",
+      "paths": [
+        "data/texture/유저인터페이스/item/섬광막대.bmp",
+        "data/texture/유저인터페이스/collection/섬광막대.bmp"
+      ]
+    },
+    {
+      "item_id": 2000360,
+      "resource": "쿠폰",
+      "paths": [
+        "data/texture/유저인터페이스/item/쿠폰.bmp",
+        "data/texture/유저인터페이스/collection/쿠폰.bmp"
+      ]
+    },
+    {
+      "item_id": 2000370,
+      "resource": "섬광막대",
+      "paths": [
+        "data/texture/유저인터페이스/item/섬광막대.bmp",
+        "data/texture/유저인터페이스/collection/섬광막대.bmp"
+      ]
+    },
+    {
+      "item_id": 2000380,
+      "resource": "카프라이용권",
+      "paths": [
+        "data/texture/유저인터페이스/item/카프라이용권.bmp",
+        "data/texture/유저인터페이스/collection/카프라이용권.bmp"
+      ]
+    },
+    {
+      "item_id": 2000420,
+      "resource": "빛의주문서",
+      "paths": [
+        "data/texture/유저인터페이스/item/빛의주문서.bmp",
+        "data/texture/유저인터페이스/collection/빛의주문서.bmp"
+      ]
+    },
+    {
+      "item_id": 2000450,
+      "resource": "쿠폰",
+      "paths": [
+        "data/texture/유저인터페이스/item/쿠폰.bmp",
+        "data/texture/유저인터페이스/collection/쿠폰.bmp"
+      ]
+    },
+    {
+      "item_id": 2000430,
+      "resource": "쿠폰",
+      "paths": [
+        "data/texture/유저인터페이스/item/쿠폰.bmp",
+        "data/texture/유저인터페이스/collection/쿠폰.bmp"
+      ]
+    },
+    {
+      "item_id": 2000440,
+      "resource": "쿠폰",
+      "paths": [
+        "data/texture/유저인터페이스/item/쿠폰.bmp",
+        "data/texture/유저인터페이스/collection/쿠폰.bmp"
+      ]
+    },
+    {
+      "item_id": 2000441,
+      "resource": "쿠폰",
+      "paths": [
+        "data/texture/유저인터페이스/item/쿠폰.bmp",
+        "data/texture/유저인터페이스/collection/쿠폰.bmp"
+      ]
+    },
+    {
+      "item_id": 2000460,
+      "resource": "쿠폰",
+      "paths": [
+        "data/texture/유저인터페이스/item/쿠폰.bmp",
+        "data/texture/유저인터페이스/collection/쿠폰.bmp"
+      ]
+    },
+    {
+      "item_id": 2000710,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000750,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    },
+    {
+      "item_id": 2000751,
+      "resource": "초록상자",
+      "paths": [
+        "data/texture/유저인터페이스/item/초록상자.bmp",
+        "data/texture/유저인터페이스/collection/초록상자.bmp"
+      ]
+    }
+  ],
+  "local_files": {
+    "data/texture/유저인터페이스/item/초록상자.bmp": {
+      "bytes": 1654,
+      "sha256": "db5a49d2580eb8aaa5ff04a5dee0ffd0f74459bf6a2baf610cd2a62856caa2f4"
+    },
+    "data/texture/유저인터페이스/collection/초록상자.bmp": {
+      "bytes": 22856,
+      "sha256": "4e625f36243a0e9d12737a60592c8d169fd07b8f993b3b5d6cb302842d951db0"
+    },
+    "data/texture/유저인터페이스/item/섬광막대.bmp": {
+      "bytes": 1654,
+      "sha256": "26205b1ef98b1adb768d8f0dfcd036bdd4f3a0fd3bc44ed29ebb10edf794ef58"
+    },
+    "data/texture/유저인터페이스/collection/섬광막대.bmp": {
+      "bytes": 22856,
+      "sha256": "8dd9530963edee9dcfeef16f8185c96f178ba0b5ccf806d633735d1516d0cb52"
+    },
+    "data/texture/유저인터페이스/item/쿠폰.bmp": {
+      "bytes": 1654,
+      "sha256": "ce3e31bbcc3e74f678b56736e3417e11dcb6f6e7f8ba614ea757df3e389c45b3"
+    },
+    "data/texture/유저인터페이스/collection/쿠폰.bmp": {
+      "bytes": 22854,
+      "sha256": "7a067aa4702dce3e9f368cfd66b3dafac38661b82ac4d53c600e410e95383999"
+    },
+    "data/texture/유저인터페이스/item/카프라이용권.bmp": {
+      "bytes": 1654,
+      "sha256": "1e9d75241fd8987305556550640c5d67cb717ba083d9647226179c77a461c6d7"
+    },
+    "data/texture/유저인터페이스/collection/카프라이용권.bmp": {
+      "bytes": 8678,
+      "sha256": "e99cc805f539b30dbd8b2d9e1851e32d6168071dd0ed80e6a1663f5495cb0846"
+    },
+    "data/texture/유저인터페이스/item/빛의주문서.bmp": {
+      "bytes": 1654,
+      "sha256": "17fa771c0c54855f6eac10fb25b23efef0575ade7b51060bacd7c9bea20d0c70"
+    },
+    "data/texture/유저인터페이스/collection/빛의주문서.bmp": {
+      "bytes": 22856,
+      "sha256": "fa7030ad3214dfc5d51727e7bd99c6f3ad228069a5e23683edaa623aa4b2cacb"
+    }
+  },
+  "actual_bmp_decoded": true,
+  "art_committed": false,
+  "device_visual_verified": false
+}

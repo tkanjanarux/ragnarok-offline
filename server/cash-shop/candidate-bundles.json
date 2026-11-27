@@ -9,7 +9,8 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       }
     ],
     "price_cash": 900,
@@ -28,7 +29,8 @@
         "item_id": 11624,
         "aegis_name": "High_BluePotion",
         "quantity": 50,
-        "unit_cash": 20
+        "unit_cash": 20,
+        "display_name": "Blue Syrup"
       }
     ],
     "price_cash": 900,
@@ -47,7 +49,8 @@
         "item_id": 547,
         "aegis_name": "White_Slim_Potion",
         "quantity": 100,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Condensed White Potion"
       }
     ],
     "price_cash": 450,
@@ -66,7 +69,8 @@
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 100,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 450,
@@ -85,7 +89,8 @@
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 90,
@@ -104,7 +109,8 @@
         "item_id": 523,
         "aegis_name": "Holy_Water",
         "quantity": 20,
-        "unit_cash": 2
+        "unit_cash": 2,
+        "display_name": "Holy Water"
       }
     ],
     "price_cash": 36,
@@ -123,7 +129,8 @@
         "item_id": 12118,
         "aegis_name": "Resist_Fire",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Fireproof Potion"
       }
     ],
     "price_cash": 90,
@@ -142,7 +149,8 @@
         "item_id": 12119,
         "aegis_name": "Resist_Water",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Coldproof Potion"
       }
     ],
     "price_cash": 90,
@@ -161,7 +169,8 @@
         "item_id": 12121,
         "aegis_name": "Resist_Wind",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Thunderproof Potion"
       }
     ],
     "price_cash": 90,
@@ -180,7 +189,8 @@
         "item_id": 12120,
         "aegis_name": "Resist_Earth",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Earthproof Potion"
       }
     ],
     "price_cash": 90,
@@ -193,17 +203,18 @@
     "request": 11,
     "item_id": 2000110,
     "aegis_name": "RO_Catalogue_11_0",
-    "name": "MaxHP food \u2014 fixed contents",
+    "name": "MaxHP Boost Pack \u2014 Medium Increase Potions",
     "components": [
       {
         "item_id": 12423,
         "aegis_name": "HP_Increase_PotionM",
         "quantity": 10,
-        "unit_cash": 15
+        "unit_cash": 15,
+        "display_name": "HP Increase Potion (Medium)"
       }
     ],
     "price_cash": 135,
-    "choice": null,
+    "choice": "Ten native medium increase potions; this is an HP/SP capacity booster, not stat food.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true
@@ -212,17 +223,18 @@
     "request": 12,
     "item_id": 2000120,
     "aegis_name": "RO_Catalogue_12_0",
-    "name": "MaxSP food \u2014 fixed contents",
+    "name": "MaxSP Boost Pack \u2014 Medium Increase Potions",
     "components": [
       {
         "item_id": 12426,
         "aegis_name": "SP_Increase_PotionM",
         "quantity": 10,
-        "unit_cash": 15
+        "unit_cash": 15,
+        "display_name": "SP Increase Potion (Medium)"
       }
     ],
     "price_cash": 135,
-    "choice": null,
+    "choice": "Ten native medium increase potions; this is an HP/SP capacity booster, not stat food.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true
@@ -237,7 +249,8 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       }
     ],
     "price_cash": 45,
@@ -256,7 +269,8 @@
         "item_id": 1751,
         "aegis_name": "Silver_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Silver Arrow"
       }
     ],
     "price_cash": 45,
@@ -275,7 +289,8 @@
         "item_id": 1752,
         "aegis_name": "Fire_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Fire Arrow"
       }
     ],
     "price_cash": 45,
@@ -294,7 +309,8 @@
         "item_id": 1754,
         "aegis_name": "Crystal_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Crystal Arrow"
       }
     ],
     "price_cash": 45,
@@ -313,7 +329,8 @@
         "item_id": 1755,
         "aegis_name": "Arrow_Of_Wind",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow of Wind"
       }
     ],
     "price_cash": 45,
@@ -332,7 +349,8 @@
         "item_id": 1756,
         "aegis_name": "Stone_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Stone Arrow"
       }
     ],
     "price_cash": 45,
@@ -351,7 +369,8 @@
         "item_id": 1767,
         "aegis_name": "Arrow_Of_Shadow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow of Shadow"
       }
     ],
     "price_cash": 45,
@@ -370,7 +389,8 @@
         "item_id": 1757,
         "aegis_name": "Immatrial_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Immaterial Arrow"
       }
     ],
     "price_cash": 45,
@@ -389,25 +409,29 @@
         "item_id": 990,
         "aegis_name": "Boody_Red",
         "quantity": 10,
-        "unit_cash": 60
+        "unit_cash": 60,
+        "display_name": "Red Blood"
       },
       {
         "item_id": 991,
         "aegis_name": "Crystal_Blue",
         "quantity": 10,
-        "unit_cash": 15
+        "unit_cash": 15,
+        "display_name": "Crystal Blue"
       },
       {
         "item_id": 992,
         "aegis_name": "Wind_Of_Verdure",
         "quantity": 10,
-        "unit_cash": 15
+        "unit_cash": 15,
+        "display_name": "Wind of Verdure"
       },
       {
         "item_id": 993,
         "aegis_name": "Yellow_Live",
         "quantity": 10,
-        "unit_cash": 15
+        "unit_cash": 15,
+        "display_name": "Green Live"
       }
     ],
     "price_cash": 945,
@@ -426,7 +450,8 @@
         "item_id": 12114,
         "aegis_name": "Elemental_Fire",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 90,
@@ -445,7 +470,8 @@
         "item_id": 12115,
         "aegis_name": "Elemental_Water",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 90,
@@ -464,7 +490,8 @@
         "item_id": 12117,
         "aegis_name": "Elemental_Wind",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 90,
@@ -483,7 +510,8 @@
         "item_id": 12116,
         "aegis_name": "Elemental_Earth",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 90,
@@ -502,7 +530,8 @@
         "item_id": 12045,
         "aegis_name": "Str_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Lutie Lady's Pancake"
       }
     ],
     "price_cash": 90,
@@ -521,7 +550,8 @@
         "item_id": 12060,
         "aegis_name": "Agi_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Steamed Bat Wing in Pumpkin"
       }
     ],
     "price_cash": 90,
@@ -540,7 +570,8 @@
         "item_id": 12055,
         "aegis_name": "Vit_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Spicy Fried Bao"
       }
     ],
     "price_cash": 90,
@@ -559,7 +590,8 @@
         "item_id": 12050,
         "aegis_name": "Int_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Mastela Fruit Wine"
       }
     ],
     "price_cash": 90,
@@ -578,7 +610,8 @@
         "item_id": 12065,
         "aegis_name": "Dex_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Green Salad"
       }
     ],
     "price_cash": 90,
@@ -597,7 +630,8 @@
         "item_id": 12070,
         "aegis_name": "Luk_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Fried Scorpion Tails"
       }
     ],
     "price_cash": 90,
@@ -616,7 +650,8 @@
         "item_id": 12016,
         "aegis_name": "Speed_Up_Potion",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Speed Potion"
       }
     ],
     "price_cash": 90,
@@ -635,7 +670,8 @@
         "item_id": 611,
         "aegis_name": "Spectacles",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Magnifier"
       }
     ],
     "price_cash": 90,
@@ -654,7 +690,8 @@
         "item_id": 537,
         "aegis_name": "Pet_Food",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Pet Food"
       }
     ],
     "price_cash": 90,
@@ -673,19 +710,22 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 200,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 12055,
         "aegis_name": "Vit_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Spicy Fried Bao"
       },
       {
         "item_id": 12423,
         "aegis_name": "HP_Increase_PotionM",
         "quantity": 10,
-        "unit_cash": 15
+        "unit_cash": 15,
+        "display_name": "HP Increase Potion (Medium)"
       }
     ],
     "price_cash": 2025,
@@ -704,19 +744,22 @@
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 100,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 12050,
         "aegis_name": "Int_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Mastela Fruit Wine"
       },
       {
         "item_id": 717,
         "aegis_name": "Blue_Gemstone",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Blue Gemstone"
       }
     ],
     "price_cash": 630,
@@ -735,19 +778,22 @@
         "item_id": 717,
         "aegis_name": "Blue_Gemstone",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Blue Gemstone"
       },
       {
         "item_id": 523,
         "aegis_name": "Holy_Water",
         "quantity": 20,
-        "unit_cash": 2
+        "unit_cash": 2,
+        "display_name": "Holy Water"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 100,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 576,
@@ -766,31 +812,36 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 601,
         "aegis_name": "Wing_Of_Fly",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Fly Wing"
       },
       {
         "item_id": 602,
         "aegis_name": "Wing_Of_Butterfly",
         "quantity": 2,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Butterfly Wing"
       },
       {
         "item_id": 611,
         "aegis_name": "Spectacles",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Magnifier"
       }
     ],
     "price_cash": 1163,
@@ -809,19 +860,22 @@
         "item_id": 12210,
         "aegis_name": "Bubble_Gum",
         "quantity": 5,
-        "unit_cash": 50
+        "unit_cash": 50,
+        "display_name": "Bubble Gum"
       },
       {
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 1350,
@@ -840,25 +894,29 @@
         "item_id": 12208,
         "aegis_name": "Battle_Manual",
         "quantity": 5,
-        "unit_cash": 50
+        "unit_cash": 50,
+        "display_name": "Battle Manual"
       },
       {
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 100,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 12209,
         "aegis_name": "Insurance",
         "quantity": 5,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Life Insurance"
       }
     ],
     "price_cash": 765,
@@ -877,7 +935,8 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 200,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       }
     ],
     "price_cash": 1800,
@@ -896,13 +955,15 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       },
       {
         "item_id": 1752,
         "aegis_name": "Fire_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Fire Arrow"
       }
     ],
     "price_cash": 90,
@@ -922,19 +983,22 @@
         "item_id": 1752,
         "aegis_name": "Fire_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Fire Arrow"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 360,
@@ -953,13 +1017,15 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       },
       {
         "item_id": 1754,
         "aegis_name": "Crystal_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Crystal Arrow"
       }
     ],
     "price_cash": 90,
@@ -979,19 +1045,22 @@
         "item_id": 1754,
         "aegis_name": "Crystal_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Crystal Arrow"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 360,
@@ -1010,13 +1079,15 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       },
       {
         "item_id": 1755,
         "aegis_name": "Arrow_Of_Wind",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow of Wind"
       }
     ],
     "price_cash": 90,
@@ -1036,19 +1107,22 @@
         "item_id": 1755,
         "aegis_name": "Arrow_Of_Wind",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow of Wind"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 360,
@@ -1067,13 +1141,15 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       },
       {
         "item_id": 1756,
         "aegis_name": "Stone_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Stone Arrow"
       }
     ],
     "price_cash": 90,
@@ -1093,19 +1169,22 @@
         "item_id": 1756,
         "aegis_name": "Stone_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Stone Arrow"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 360,
@@ -1124,13 +1203,15 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       },
       {
         "item_id": 1767,
         "aegis_name": "Arrow_Of_Shadow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow of Shadow"
       }
     ],
     "price_cash": 90,
@@ -1150,19 +1231,22 @@
         "item_id": 1767,
         "aegis_name": "Arrow_Of_Shadow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow of Shadow"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 360,
@@ -1181,13 +1265,15 @@
         "item_id": 1750,
         "aegis_name": "Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Arrow"
       },
       {
         "item_id": 1757,
         "aegis_name": "Immatrial_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Immaterial Arrow"
       }
     ],
     "price_cash": 90,
@@ -1207,19 +1293,22 @@
         "item_id": 1757,
         "aegis_name": "Immatrial_Arrow",
         "quantity": 500,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Immaterial Arrow"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 525,
         "aegis_name": "Panacea",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Panacea"
       }
     ],
     "price_cash": 360,
@@ -1238,14 +1327,16 @@
         "item_id": 12045,
         "aegis_name": "Str_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Lutie Lady's Pancake"
       }
     ],
     "price_cash": 90,
-    "choice": "stat food",
-    "status": "candidate_not_for_live_sale",
+    "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
+    "status": "compatibility_definition_not_listed",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "alias_of": 2000270
   },
   {
     "request": 33,
@@ -1257,14 +1348,16 @@
         "item_id": 12060,
         "aegis_name": "Agi_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Steamed Bat Wing in Pumpkin"
       }
     ],
     "price_cash": 90,
-    "choice": "stat food",
-    "status": "candidate_not_for_live_sale",
+    "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
+    "status": "compatibility_definition_not_listed",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "alias_of": 2000280
   },
   {
     "request": 33,
@@ -1276,14 +1369,16 @@
         "item_id": 12055,
         "aegis_name": "Vit_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Spicy Fried Bao"
       }
     ],
     "price_cash": 90,
-    "choice": "stat food",
-    "status": "candidate_not_for_live_sale",
+    "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
+    "status": "compatibility_definition_not_listed",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "alias_of": 2000290
   },
   {
     "request": 33,
@@ -1295,14 +1390,16 @@
         "item_id": 12050,
         "aegis_name": "Int_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Mastela Fruit Wine"
       }
     ],
     "price_cash": 90,
-    "choice": "stat food",
-    "status": "candidate_not_for_live_sale",
+    "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
+    "status": "compatibility_definition_not_listed",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "alias_of": 2000300
   },
   {
     "request": 33,
@@ -1314,14 +1411,16 @@
         "item_id": 12065,
         "aegis_name": "Dex_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Green Salad"
       }
     ],
     "price_cash": 90,
-    "choice": "stat food",
-    "status": "candidate_not_for_live_sale",
+    "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
+    "status": "compatibility_definition_not_listed",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "alias_of": 2000310
   },
   {
     "request": 33,
@@ -1333,14 +1432,16 @@
         "item_id": 12070,
         "aegis_name": "Luk_Dish05",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Fried Scorpion Tails"
       }
     ],
     "price_cash": 90,
-    "choice": "stat food",
-    "status": "candidate_not_for_live_sale",
+    "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
+    "status": "compatibility_definition_not_listed",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": true,
+    "alias_of": 2000320
   },
   {
     "request": 85,
@@ -1352,31 +1453,36 @@
         "item_id": 12118,
         "aegis_name": "Resist_Fire",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Fireproof Potion"
       },
       {
         "item_id": 601,
         "aegis_name": "Wing_Of_Fly",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Fly Wing"
       },
       {
         "item_id": 602,
         "aegis_name": "Wing_Of_Butterfly",
         "quantity": 2,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Butterfly Wing"
       },
       {
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 50,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 25,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 672,
@@ -1395,31 +1501,36 @@
         "item_id": 12119,
         "aegis_name": "Resist_Water",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Coldproof Potion"
       },
       {
         "item_id": 601,
         "aegis_name": "Wing_Of_Fly",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Fly Wing"
       },
       {
         "item_id": 602,
         "aegis_name": "Wing_Of_Butterfly",
         "quantity": 2,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Butterfly Wing"
       },
       {
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 50,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 25,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 672,
@@ -1438,31 +1549,36 @@
         "item_id": 12121,
         "aegis_name": "Resist_Wind",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Thunderproof Potion"
       },
       {
         "item_id": 601,
         "aegis_name": "Wing_Of_Fly",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Fly Wing"
       },
       {
         "item_id": 602,
         "aegis_name": "Wing_Of_Butterfly",
         "quantity": 2,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Butterfly Wing"
       },
       {
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 50,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 25,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 672,
@@ -1481,31 +1597,36 @@
         "item_id": 12120,
         "aegis_name": "Resist_Earth",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Earthproof Potion"
       },
       {
         "item_id": 601,
         "aegis_name": "Wing_Of_Fly",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Fly Wing"
       },
       {
         "item_id": 602,
         "aegis_name": "Wing_Of_Butterfly",
         "quantity": 2,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Butterfly Wing"
       },
       {
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 50,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 25,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 672,
@@ -1524,19 +1645,22 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 12114,
         "aegis_name": "Elemental_Fire",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 1215,
@@ -1555,19 +1679,22 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 12115,
         "aegis_name": "Elemental_Water",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 1215,
@@ -1586,19 +1713,22 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 12117,
         "aegis_name": "Elemental_Wind",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 1215,
@@ -1617,19 +1747,22 @@
         "item_id": 11623,
         "aegis_name": "High_WhitePotion",
         "quantity": 100,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "White Syrup"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 12116,
         "aegis_name": "Elemental_Earth",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Elemental Converter"
       }
     ],
     "price_cash": 1215,
@@ -1648,7 +1781,8 @@
         "item_id": 531,
         "aegis_name": "Apple_Juice",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Apple Juice"
       }
     ],
     "price_cash": 90,
@@ -1667,7 +1801,8 @@
         "item_id": 534,
         "aegis_name": "Carrot_Juice",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Carrot Juice"
       }
     ],
     "price_cash": 90,
@@ -1686,7 +1821,8 @@
         "item_id": 508,
         "aegis_name": "Yellow_Herb",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Yellow Herb"
       }
     ],
     "price_cash": 90,
@@ -1705,7 +1841,8 @@
         "item_id": 507,
         "aegis_name": "Red_Herb",
         "quantity": 100,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Red Herb"
       }
     ],
     "price_cash": 90,
@@ -1724,13 +1861,15 @@
         "item_id": 619,
         "aegis_name": "Unripe_Apple",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Unripe Apple"
       },
       {
         "item_id": 531,
         "aegis_name": "Apple_Juice",
         "quantity": 50,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Apple Juice"
       }
     ],
     "price_cash": 135,
@@ -1749,13 +1888,15 @@
         "item_id": 620,
         "aegis_name": "Orange_Juice",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Orange Juice"
       },
       {
         "item_id": 508,
         "aegis_name": "Yellow_Herb",
         "quantity": 50,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Yellow Herb"
       }
     ],
     "price_cash": 135,
@@ -1774,13 +1915,15 @@
         "item_id": 622,
         "aegis_name": "Rainbow_Carrot",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Rainbow Carrot"
       },
       {
         "item_id": 534,
         "aegis_name": "Carrot_Juice",
         "quantity": 50,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Carrot Juice"
       }
     ],
     "price_cash": 135,
@@ -1799,13 +1942,15 @@
         "item_id": 623,
         "aegis_name": "Earthworm_The_Dude",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Earthworm the Dude"
       },
       {
         "item_id": 507,
         "aegis_name": "Red_Herb",
         "quantity": 50,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Red Herb"
       }
     ],
     "price_cash": 135,
@@ -1824,13 +1969,15 @@
         "item_id": 624,
         "aegis_name": "Rotten_Fish",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Rotten Fish"
       },
       {
         "item_id": 537,
         "aegis_name": "Pet_Food",
         "quantity": 50,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Pet Food"
       }
     ],
     "price_cash": 135,
@@ -1849,13 +1996,15 @@
         "item_id": 630,
         "aegis_name": "Dew_Laden_Moss",
         "quantity": 10,
-        "unit_cash": 10
+        "unit_cash": 10,
+        "display_name": "Dew Laden Moss"
       },
       {
         "item_id": 537,
         "aegis_name": "Pet_Food",
         "quantity": 50,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Pet Food"
       }
     ],
     "price_cash": 135,
@@ -1874,25 +2023,29 @@
         "item_id": 2000370,
         "aegis_name": "RO_Catalogue_Full_Reset",
         "quantity": 1,
-        "unit_cash": 900
+        "unit_cash": 900,
+        "display_name": "Skill and Stat Reset Voucher"
       },
       {
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 20,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 611,
         "aegis_name": "Spectacles",
         "quantity": 10,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Magnifier"
       }
     ],
     "price_cash": 963,
@@ -1911,13 +2064,15 @@
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 50,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 10,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 180,
@@ -1936,19 +2091,22 @@
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 20,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 20,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 1751,
         "aegis_name": "Silver_Arrow",
         "quantity": 200,
-        "unit_cash": 0.1
+        "unit_cash": 0.1,
+        "display_name": "Silver Arrow"
       }
     ],
     "price_cash": 162,
@@ -1967,13 +2125,15 @@
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 20,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 279,
@@ -1992,19 +2152,22 @@
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 20,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 50,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       },
       {
         "item_id": 717,
         "aegis_name": "Blue_Gemstone",
         "quantity": 20,
-        "unit_cash": 1
+        "unit_cash": 1,
+        "display_name": "Blue Gemstone"
       }
     ],
     "price_cash": 297,
@@ -2023,13 +2186,15 @@
         "item_id": 504,
         "aegis_name": "White_Potion",
         "quantity": 40,
-        "unit_cash": 3
+        "unit_cash": 3,
+        "display_name": "White Potion"
       },
       {
         "item_id": 505,
         "aegis_name": "Blue_Potion",
         "quantity": 10,
-        "unit_cash": 5
+        "unit_cash": 5,
+        "display_name": "Blue Potion"
       }
     ],
     "price_cash": 153,

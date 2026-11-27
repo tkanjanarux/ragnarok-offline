@@ -1,0 +1,246 @@
+{
+  "cases": [
+    {
+      "attempt": 1,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 2,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 3,
+      "protection": 1,
+      "outcome": "unchanged_but_fees_spent",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 4,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 5,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 6,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 7,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 8,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 9,
+      "protection": 1,
+      "outcome": "keep_equipment",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 10,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 11,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 12,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 13,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 14,
+      "protection": 2,
+      "outcome": "keep_cards",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 15,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 16,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 17,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 18,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 19,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 20,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 21,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 22,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 23,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 24,
+      "protection": 2,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 25,
+      "protection": 1,
+      "outcome": "success",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    },
+    {
+      "attempt": 26,
+      "protection": 2,
+      "outcome": "total_loss",
+      "cash_debit": 100,
+      "zeny_debit": 225000,
+      "materials_voucher_consumed": true,
+      "item_identity_checked": true
+    }
+  ],
+  "outcomes": [
+    "keep_cards",
+    "keep_equipment",
+    "success",
+    "total_loss",
+    "unchanged_but_fees_spent"
+  ],
+  "native_rng_unchanged": true
+}

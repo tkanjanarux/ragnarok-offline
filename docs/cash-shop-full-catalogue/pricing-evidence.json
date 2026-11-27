@@ -1,0 +1,427 @@
+{
+  "virtual_cash_only": true,
+  "existing_blue_potion": {
+    "item_id": 505,
+    "cash": 5,
+    "native_sell_zeny": 2500
+  },
+  "pack_discount": "10% rounded to nearest Cash",
+  "native_resale_audited": [
+    {
+      "item_id": 2000010,
+      "cash": 900,
+      "native_sell_zeny": 75000
+    },
+    {
+      "item_id": 2000020,
+      "cash": 900,
+      "native_sell_zeny": 175000
+    },
+    {
+      "item_id": 2000030,
+      "cash": 450,
+      "native_sell_zeny": 82500
+    },
+    {
+      "item_id": 2000040,
+      "cash": 450,
+      "native_sell_zeny": 250000
+    },
+    {
+      "item_id": 2000050,
+      "cash": 90,
+      "native_sell_zeny": 5000
+    },
+    {
+      "item_id": 2000060,
+      "cash": 36,
+      "native_sell_zeny": 200
+    },
+    {
+      "item_id": 2000070,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000080,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000090,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000100,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000110,
+      "cash": 135,
+      "native_sell_zeny": 500
+    },
+    {
+      "item_id": 2000120,
+      "cash": 135,
+      "native_sell_zeny": 500
+    },
+    {
+      "item_id": 2000130,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000140,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000150,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000160,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000170,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000180,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000190,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000200,
+      "cash": 45,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000220,
+      "cash": 945,
+      "native_sell_zeny": 20000
+    },
+    {
+      "item_id": 2000230,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000240,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000250,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000260,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000270,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000280,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000290,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000300,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000310,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000320,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000340,
+      "cash": 90,
+      "native_sell_zeny": 10
+    },
+    {
+      "item_id": 2000410,
+      "cash": 90,
+      "native_sell_zeny": 2000
+    },
+    {
+      "item_id": 2000720,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000780,
+      "cash": 2025,
+      "native_sell_zeny": 200500
+    },
+    {
+      "item_id": 2000790,
+      "cash": 630,
+      "native_sell_zeny": 322500
+    },
+    {
+      "item_id": 2000800,
+      "cash": 576,
+      "native_sell_zeny": 272700
+    },
+    {
+      "item_id": 2000820,
+      "cash": 1163,
+      "native_sell_zeny": 203900
+    },
+    {
+      "item_id": 2000830,
+      "cash": 1350,
+      "native_sell_zeny": 200005
+    },
+    {
+      "item_id": 2000840,
+      "cash": 765,
+      "native_sell_zeny": 185010
+    },
+    {
+      "item_id": 2000011,
+      "cash": 1800,
+      "native_sell_zeny": 150000
+    },
+    {
+      "item_id": 2000210,
+      "cash": 90,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000770,
+      "cash": 360,
+      "native_sell_zeny": 130000
+    },
+    {
+      "item_id": 2000211,
+      "cash": 90,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000771,
+      "cash": 360,
+      "native_sell_zeny": 130000
+    },
+    {
+      "item_id": 2000212,
+      "cash": 90,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000772,
+      "cash": 360,
+      "native_sell_zeny": 130000
+    },
+    {
+      "item_id": 2000213,
+      "cash": 90,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000773,
+      "cash": 360,
+      "native_sell_zeny": 130000
+    },
+    {
+      "item_id": 2000214,
+      "cash": 90,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000774,
+      "cash": 360,
+      "native_sell_zeny": 130000
+    },
+    {
+      "item_id": 2000215,
+      "cash": 90,
+      "native_sell_zeny": 0
+    },
+    {
+      "item_id": 2000775,
+      "cash": 360,
+      "native_sell_zeny": 130000
+    },
+    {
+      "item_id": 2000330,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000331,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000332,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000333,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000334,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000335,
+      "cash": 90,
+      "native_sell_zeny": 50000
+    },
+    {
+      "item_id": 2000850,
+      "cash": 672,
+      "native_sell_zeny": 103510
+    },
+    {
+      "item_id": 2000851,
+      "cash": 672,
+      "native_sell_zeny": 103510
+    },
+    {
+      "item_id": 2000852,
+      "cash": 672,
+      "native_sell_zeny": 103510
+    },
+    {
+      "item_id": 2000853,
+      "cash": 672,
+      "native_sell_zeny": 103510
+    },
+    {
+      "item_id": 2000810,
+      "cash": 1215,
+      "native_sell_zeny": 200010
+    },
+    {
+      "item_id": 2000811,
+      "cash": 1215,
+      "native_sell_zeny": 200010
+    },
+    {
+      "item_id": 2000812,
+      "cash": 1215,
+      "native_sell_zeny": 200010
+    },
+    {
+      "item_id": 2000813,
+      "cash": 1215,
+      "native_sell_zeny": 200010
+    },
+    {
+      "item_id": 2000721,
+      "cash": 90,
+      "native_sell_zeny": 1000
+    },
+    {
+      "item_id": 2000722,
+      "cash": 90,
+      "native_sell_zeny": 1000
+    },
+    {
+      "item_id": 2000723,
+      "cash": 90,
+      "native_sell_zeny": 2000
+    },
+    {
+      "item_id": 2000724,
+      "cash": 90,
+      "native_sell_zeny": 900
+    },
+    {
+      "item_id": 2000740,
+      "cash": 135,
+      "native_sell_zeny": 5500
+    },
+    {
+      "item_id": 2000741,
+      "cash": 135,
+      "native_sell_zeny": 8500
+    },
+    {
+      "item_id": 2000742,
+      "cash": 135,
+      "native_sell_zeny": 13000
+    },
+    {
+      "item_id": 2000743,
+      "cash": 135,
+      "native_sell_zeny": 20450
+    },
+    {
+      "item_id": 2000744,
+      "cash": 135,
+      "native_sell_zeny": 37500
+    },
+    {
+      "item_id": 2000745,
+      "cash": 135,
+      "native_sell_zeny": 25050
+    },
+    {
+      "item_id": 2000870,
+      "cash": 180,
+      "native_sell_zeny": 55000
+    },
+    {
+      "item_id": 2000871,
+      "cash": 162,
+      "native_sell_zeny": 62000
+    },
+    {
+      "item_id": 2000872,
+      "cash": 279,
+      "native_sell_zeny": 137000
+    },
+    {
+      "item_id": 2000873,
+      "cash": 297,
+      "native_sell_zeny": 141500
+    },
+    {
+      "item_id": 2000874,
+      "cash": 153,
+      "native_sell_zeny": 49000
+    }
+  ],
+  "largest_pack_zeny_per_cash": 555.5555555555555,
+  "overcharge_note": "Native merchant sale modifiers apply equally; no resale flag/balance changed.",
+  "conversion_note": "Four Arrow Crafting material values match actual native output at the same arrow unit price. Companion unit values match player packs.",
+  "scope": "No Zeny-to-Cash conversion or currency grant introduced. Does not claim an audit of external services or all historical economy paths.",
+  "live_catalogue_sha256": "8629ed428f57e4d2eb8d6315ff3a59d98f0f36ce34691ad390b8b41cebb7bf0a",
+  "live_both_profiles_unchanged": true
+}
