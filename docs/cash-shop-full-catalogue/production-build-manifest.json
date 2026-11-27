@@ -1,0 +1,19 @@
+{
+  "profile": "production",
+  "source_file_count": 3230,
+  "source_tree_sha256": "a9f50b33d5b5e2c867e455f8bff394dc68042bdb6d3a4952696baf10c770a3a7",
+  "binaries": {
+    "map-server": {
+      "sha256": "be06b780a8f587d2e5ed8f6dd9c6f046660daf6d3853ee9df430da8668693ff7",
+      "bytes": 8876808,
+      "architecture": "ELF x86_64"
+    },
+    "char-server": {
+      "sha256": "ec5efbe683b6c0a8f395d9589bd3ff60c1b9df895a635bb0fa6f1cf7af505282",
+      "bytes": 1154592,
+      "architecture": "ELF x86_64"
+    }
+  },
+  "packetver": 20211103,
+  "live_deployed": false
+}

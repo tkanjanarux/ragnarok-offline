@@ -1,0 +1,17 @@
+{
+  "profile": "playable",
+  "packetver": 20211103,
+  "preserved_cash_entries": 34,
+  "added_cash_entries": 123,
+  "custom_items": 96,
+  "base_import_sha256": {
+    "item_db.yml": "d73e628891db6060b8f0d79caa467fb042c733024edabd5f4f3ec6ca94c382b3",
+    "item_cash.yml": "8629ed428f57e4d2eb8d6315ff3a59d98f0f36ce34691ad390b8b41cebb7bf0a"
+  },
+  "generated_sha256": {
+    "item_db.yml": "36b510bedc089040af7abe3228c1fb7e8db181d68e4d0d9f137768534c88625b",
+    "item_cash.yml": "1e76e7252ba3ac35b71ae5baaff5d67f26f77387c41dd3ef8c8757d628b797d5"
+  },
+  "live_deployed": false,
+  "sale_readiness": "See per-requirement evidence ledger; review only"
+}

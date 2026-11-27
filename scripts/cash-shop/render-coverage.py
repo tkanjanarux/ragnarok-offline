@@ -7,17 +7,16 @@ folder = root / 'docs/cash-shop-full-catalogue'
 rows = json.loads((folder / 'coverage.json').read_text())
 assert [r['request'] for r in rows] == list(range(1, 89))
 lines = ['# Cash Shop: all 88 requirements', '',
-         'Review candidates only. Live catalogue remains unchanged. A source/asset audit is not a purchase/use test.', '',
-         '| # | Requirement | Exact candidate IDs / SKUs | Cash price proposal | Status | Remaining prerequisite |',
-         '|---|---|---|---|---|---|']
+         '85 requirements have implementation and enumerated isolated tests; 11/12 are explicit potion adaptations; 88 is excluded. Live catalogue remains unchanged.', '',
+         'Ready means ready for deployment review, not exhaustive testing or device acceptance. See [limits and usage](README.md), [deployment plan](SERVER-DELIVERY.md), and [full specifications/evidence](coverage.json).', '',
+         '| # | Requirement | Exact sale ID / AegisName / Cash | Status | Effect evidence / limitation |',
+         '|---|---|---|---|---|']
 for r in rows:
-    ids = sorted({c['item_id'] for c in r['candidate_components']})
-    label = ', '.join(map(str, ids)) or 'Not selected / service implementation required'
-    if r.get('skus'): label += '; packs ' + ', '.join(map(str,r['skus']))
-    price = ', '.join(map(str,r.get('proposed_cash_prices',[])))
-    remaining = r.get('blocker') or ' / '.join(k for k,v in r['evidence'].items() if not v and k != 'device')
-    cells = [str(r['request']),r['proposal'],label,price,r['status'],remaining]
+    label = '; '.join(f"{s['item_id']} {s['aegis_name']} ({s['price_cash']})" for s in r.get('catalogue_variants', [])) or 'Excluded; no sale SKU'
+    evidence = ', '.join(f'[{name.removesuffix("-evidence.json")}]({name})' for name in r.get('effect_references', []))
+    remaining = r.get('blocker') or (r.get('mapping_note', '') + ' ' + evidence).strip()
+    cells = [str(r['request']),r['proposal'],label,r['status'],remaining]
     lines.append('| ' + ' | '.join(c.replace('|','/').replace('\n',' ') for c in cells) + ' |')
 lines += ['', 'Device visual/hardware acceptance is unverified for every row. No Simulator is required.',
-          'Prices remain review candidates until economic/conversion checks and actual item effect evidence are recorded.', '']
+          'Quantities, components, service policy, variant choice, restrictions, assets and transaction evidence are in coverage.json and candidate specifications. Prices use local virtual Cash; no live grants/charges occurred.', '']
 (folder/'COVERAGE.md').write_text('\n'.join(lines))

@@ -15,9 +15,10 @@
     ],
     "price_cash": 900,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 2,
@@ -35,9 +36,10 @@
     ],
     "price_cash": 900,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 3,
@@ -55,9 +57,10 @@
     ],
     "price_cash": 450,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 4,
@@ -75,9 +78,10 @@
     ],
     "price_cash": 450,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 5,
@@ -95,9 +99,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 6,
@@ -115,9 +120,10 @@
     ],
     "price_cash": 36,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 7,
@@ -135,9 +141,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 8,
@@ -155,9 +162,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 9,
@@ -175,9 +183,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 10,
@@ -195,9 +204,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 11,
@@ -215,9 +225,10 @@
     ],
     "price_cash": 135,
     "choice": "Ten native medium increase potions; this is an HP/SP capacity booster, not stat food.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 12,
@@ -235,9 +246,10 @@
     ],
     "price_cash": 135,
     "choice": "Ten native medium increase potions; this is an HP/SP capacity booster, not stat food.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 13,
@@ -255,9 +267,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 14,
@@ -275,9 +288,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 15,
@@ -295,9 +309,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 16,
@@ -315,9 +330,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 17,
@@ -335,9 +351,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 18,
@@ -355,9 +372,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 19,
@@ -375,9 +393,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 20,
@@ -395,9 +414,10 @@
     ],
     "price_cash": 45,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 22,
@@ -436,9 +456,10 @@
     ],
     "price_cash": 945,
     "choice": "10 of each material. Native Arrow Crafting yields 600 Fire Arrows or 150 arrows of the matching other element per material. Price follows those output values with a 10% pack discount; Arrow Crafting skill is required.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 23,
@@ -456,9 +477,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 24,
@@ -476,9 +498,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 25,
@@ -496,9 +519,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 26,
@@ -516,9 +540,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 27,
@@ -536,9 +561,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 28,
@@ -556,9 +582,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 29,
@@ -576,9 +603,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 30,
@@ -596,9 +624,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 31,
@@ -616,9 +645,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 32,
@@ -636,9 +666,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 34,
@@ -656,9 +687,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 41,
@@ -676,9 +708,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 72,
@@ -696,9 +729,10 @@
     ],
     "price_cash": 90,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 78,
@@ -730,9 +764,10 @@
     ],
     "price_cash": 2025,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 79,
@@ -764,9 +799,10 @@
     ],
     "price_cash": 630,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 80,
@@ -798,9 +834,10 @@
     ],
     "price_cash": 576,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 82,
@@ -846,9 +883,10 @@
     ],
     "price_cash": 1163,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 83,
@@ -880,9 +918,10 @@
     ],
     "price_cash": 1350,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 84,
@@ -921,9 +960,10 @@
     ],
     "price_cash": 765,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 1,
@@ -941,9 +981,10 @@
     ],
     "price_cash": 1800,
     "choice": null,
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 21,
@@ -968,10 +1009,11 @@
     ],
     "price_cash": 90,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "server_name": "Elemental Arrows: Fire + Normal"
+    "tests_pending": false,
+    "server_name": "Elemental Arrows: Fire + Normal",
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 77,
@@ -1003,9 +1045,10 @@
     ],
     "price_cash": 360,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 21,
@@ -1030,10 +1073,11 @@
     ],
     "price_cash": 90,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "server_name": "Elemental Arrows: Water + Normal"
+    "tests_pending": false,
+    "server_name": "Elemental Arrows: Water + Normal",
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 77,
@@ -1065,9 +1109,10 @@
     ],
     "price_cash": 360,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 21,
@@ -1092,10 +1137,11 @@
     ],
     "price_cash": 90,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "server_name": "Elemental Arrows: Wind + Normal"
+    "tests_pending": false,
+    "server_name": "Elemental Arrows: Wind + Normal",
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 77,
@@ -1127,9 +1173,10 @@
     ],
     "price_cash": 360,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 21,
@@ -1154,10 +1201,11 @@
     ],
     "price_cash": 90,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "server_name": "Elemental Arrows: Earth + Normal"
+    "tests_pending": false,
+    "server_name": "Elemental Arrows: Earth + Normal",
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 77,
@@ -1189,9 +1237,10 @@
     ],
     "price_cash": 360,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 21,
@@ -1216,10 +1265,11 @@
     ],
     "price_cash": 90,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "server_name": "Elemental Arrows: Shadow + Normal"
+    "tests_pending": false,
+    "server_name": "Elemental Arrows: Shadow + Normal",
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 77,
@@ -1251,9 +1301,10 @@
     ],
     "price_cash": 360,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 21,
@@ -1278,10 +1329,11 @@
     ],
     "price_cash": 90,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "server_name": "Elemental Arrows: Ghost + Normal"
+    "tests_pending": false,
+    "server_name": "Elemental Arrows: Ghost + Normal",
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 77,
@@ -1313,9 +1365,10 @@
     ],
     "price_cash": 360,
     "choice": "arrow element",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 33,
@@ -1333,10 +1386,11 @@
     ],
     "price_cash": 90,
     "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
-    "status": "compatibility_definition_not_listed",
+    "status": "compatibility_alias_unlisted",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "alias_of": 2000270
+    "tests_pending": false,
+    "alias_of": 2000270,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 33,
@@ -1354,10 +1408,11 @@
     ],
     "price_cash": 90,
     "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
-    "status": "compatibility_definition_not_listed",
+    "status": "compatibility_alias_unlisted",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "alias_of": 2000280
+    "tests_pending": false,
+    "alias_of": 2000280,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 33,
@@ -1375,10 +1430,11 @@
     ],
     "price_cash": 90,
     "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
-    "status": "compatibility_definition_not_listed",
+    "status": "compatibility_alias_unlisted",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "alias_of": 2000290
+    "tests_pending": false,
+    "alias_of": 2000290,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 33,
@@ -1396,10 +1452,11 @@
     ],
     "price_cash": 90,
     "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
-    "status": "compatibility_definition_not_listed",
+    "status": "compatibility_alias_unlisted",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "alias_of": 2000300
+    "tests_pending": false,
+    "alias_of": 2000300,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 33,
@@ -1417,10 +1474,11 @@
     ],
     "price_cash": 90,
     "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
-    "status": "compatibility_definition_not_listed",
+    "status": "compatibility_alias_unlisted",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "alias_of": 2000310
+    "tests_pending": false,
+    "alias_of": 2000310,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 33,
@@ -1438,10 +1496,11 @@
     ],
     "price_cash": 90,
     "choice": "Choose the corresponding STR/AGI/VIT/INT/DEX/LUK pack before purchase; identical contents are listed once.",
-    "status": "compatibility_definition_not_listed",
+    "status": "compatibility_alias_unlisted",
     "transaction": "catalogue_exchange",
-    "tests_pending": true,
-    "alias_of": 2000320
+    "tests_pending": false,
+    "alias_of": 2000320,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 85,
@@ -1487,9 +1546,10 @@
     ],
     "price_cash": 672,
     "choice": "resistance",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 85,
@@ -1535,9 +1595,10 @@
     ],
     "price_cash": 672,
     "choice": "resistance",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 85,
@@ -1583,9 +1644,10 @@
     ],
     "price_cash": 672,
     "choice": "resistance",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 85,
@@ -1631,9 +1693,10 @@
     ],
     "price_cash": 672,
     "choice": "resistance",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 81,
@@ -1665,9 +1728,10 @@
     ],
     "price_cash": 1215,
     "choice": "converter; advanced poison excluded until subclass rules tested",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 81,
@@ -1699,9 +1763,10 @@
     ],
     "price_cash": 1215,
     "choice": "converter; advanced poison excluded until subclass rules tested",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 81,
@@ -1733,9 +1798,10 @@
     ],
     "price_cash": 1215,
     "choice": "converter; advanced poison excluded until subclass rules tested",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 81,
@@ -1767,9 +1833,10 @@
     ],
     "price_cash": 1215,
     "choice": "converter; advanced poison excluded until subclass rules tested",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 72,
@@ -1787,9 +1854,10 @@
     ],
     "price_cash": 90,
     "choice": "Species-specific food; Pet Food537 is not universal.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 72,
@@ -1807,9 +1875,10 @@
     ],
     "price_cash": 90,
     "choice": "Species-specific food; Pet Food537 is not universal.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 72,
@@ -1827,9 +1896,10 @@
     ],
     "price_cash": 90,
     "choice": "Species-specific food; Pet Food537 is not universal.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 72,
@@ -1847,9 +1917,10 @@
     ],
     "price_cash": 90,
     "choice": "Species-specific food; Pet Food537 is not universal.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 74,
@@ -1874,9 +1945,10 @@
     ],
     "price_cash": 135,
     "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 74,
@@ -1901,9 +1973,10 @@
     ],
     "price_cash": 135,
     "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 74,
@@ -1928,9 +2001,10 @@
     ],
     "price_cash": 135,
     "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 74,
@@ -1955,9 +2029,10 @@
     ],
     "price_cash": 135,
     "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 74,
@@ -1982,9 +2057,10 @@
     ],
     "price_cash": 135,
     "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 74,
@@ -2009,9 +2085,10 @@
     ],
     "price_cash": 135,
     "choice": "10 lures and 50 correct food. Native capture chance; no guaranteed catch. Choose species before purchase.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 86,
@@ -2050,9 +2127,10 @@
     ],
     "price_cash": 963,
     "choice": "One full-reset voucher plus trial supplies. Store all weighted supplies before using the reset voucher in town. Cancel reset keeps that voucher.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 87,
@@ -2077,9 +2155,10 @@
     ],
     "price_cash": 180,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 87,
@@ -2111,9 +2190,10 @@
     ],
     "price_cash": 162,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 87,
@@ -2138,9 +2218,10 @@
     ],
     "price_cash": 279,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 87,
@@ -2172,9 +2253,10 @@
     ],
     "price_cash": 297,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   },
   {
     "request": 87,
@@ -2199,8 +2281,9 @@
     ],
     "price_cash": 153,
     "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
-    "status": "candidate_not_for_live_sale",
+    "status": "isolated_verified_pending_deploy",
     "transaction": "catalogue_exchange",
-    "tests_pending": true
+    "tests_pending": false,
+    "test_scope": "Enumerated isolated transaction/effect checks; device unverified. See docs/cash-shop-full-catalogue/coverage.json."
   }
 ]

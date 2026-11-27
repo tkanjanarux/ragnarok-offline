@@ -1,0 +1,14 @@
+{
+  "public_catalogue_entries": 157,
+  "preserved_existing": 34,
+  "new_unique_skus": 123,
+  "fixture_only_extra_probe": 1,
+  "wire_products": 158,
+  "packet_lengths_checked": true,
+  "all_six_canonical_stat_foods_listed": true,
+  "duplicate_aliases_unlisted": true,
+  "unlisted_alias_purchase_rejected_without_charge": true,
+  "final_prices_verified": true,
+  "actual_packetver": 20211103,
+  "device_visual_verified": false
+}

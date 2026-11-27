@@ -185,55 +185,37 @@ triggers while holding X cannot replay pickup; X+R3 emits one command. X does no
 suppress camera orbit. Range/lock/cancellation/team guards stay as in the prior base.
 No Simulator/hardware claims, server changes, automatic merge or deployment.
 
-## Cash Shop full catalogue — active review branch
+## Cash Shop full catalogue — delivery candidate, live activation pending
 
-`cash-shop-full-catalogue` starts from gamepad X pickup92eea05, which contains
-purchase recovery5e0d45a. See [ledger and current evidence](docs/cash-shop-full-catalogue/README.md).
-All88 requirements stay in scope; supply definitions and preview work are candidates,
-not an assertion of full readiness. Keep deployed34 entries and all recovery guards.
-Only schema-only synthetic fixtures may be mutated. Native transaction/dialog fixes
-are reproducible overlays for both distinct baseline profiles. No live deployment,
-production restart, player write, Simulator, hardware claim or automatic merge.
+`cash-shop-full-catalogue` starts at92eea05, preserving purchase recovery5e0d45a,
+Guild/navigation/HP/controller changes. App sourceb79d14e; closeout commits only
+change docs/audit metadata. [Delivery evidence](docs/cash-shop-full-catalogue/README.md),
+[88-row ledger](docs/cash-shop-full-catalogue/COVERAGE.md) and
+[server plan](docs/cash-shop-full-catalogue/SERVER-DELIVERY.md) are authoritative.
 
-Cash catalogue milestone2 adds native rename credit/character-screen flow, reset
-preservation, validated style ranges, 24 real costume mappings/robe path fallback,
-and guarded portable card removal with the existing risk/material policy. See
-per-system evidence JSON in the ledger docs. The isolated packet suites are not
-iPhone visual acceptance and do not prove all88 requirements. Keep unfinished
-pet/companion/effect/edge cases visible; costume support88 is explicitly absent in
-companion gear validation. No live activation or player-data writes are authorized.
+85 requirements have implementation and enumerated isolated verification;11/12
+explicitly use native medium Increase Potions instead of literal food.88 companion
+fashion is excluded because native gear validation rejects costume/shadow slots.
+123 new listed SKUs +34 preserved =157. Six duplicate stat-food definitions stay
+usable but unlisted; no duplicate food offers. Arrow materials945 Cash; companion
+Hunter162/Priest297, repurchased. No promise of exhaustive per-SKU boundary testing.
 
-Cash catalogue milestone3 is ongoing: three atomic pet egg+food claims now have
-packet and native SQLite recovery evidence, with an additive journal and matching
-Char/Map capability. Pet accessory ACT rendering follows the pinned roBrowser
-source; art stays local. See catalogue README for activation/rollback prerequisites.
-Do not enable untested catalogue variants merely because definitions exist. The
-16 added supply variants and remaining utility/taming/companion/effect cases are
-still separate pending work. No live deployment or hardware acceptance occurred.
+Both distinct native source profiles reproduce and Map+Char compile for x86_64,
+PACKETVER20211103. The playable map differs from production; never replace it with
+production Map. Matching journal-capable Char/Map and additive SQLite pet journal
+are mandatory. Successful native capture now uses the save barrier/journal after a
+reproduced orphan-egg race; native RNG is unchanged.15 native SQLite cases per
+profile;3 packet capture recovery cases;3 pet packs and6 taming species rerun after
+fix. Socketless Giant Fly Wing actor placement fixed without combat-policy changes.
 
-Cash catalogue milestone4 adds a reproducible import assembler (34 preserved +129
-candidate SKUs) and scoped socketless Giant Fly Wing placement fix. The isolated
-actor-spawn/Stop-mode tests pass; no combat policy or live runtime changed. The
-Arrow Crafting pack price is945, replacing72 after checking native output value.
-New companion combat, group0 eligibility, buff-effect and service-cap evidence is
-linked in catalogue README. Remaining effect/edge checks and final readiness ledger
-are ongoing; do not infer all88 readiness from generation or successful builds.
+All five native card outcomes observed in26 fixture purchases; identity/materials/
+money and per-outcome reconnect checked. Final catalogue packet count/prices/alias
+rejection pass. Source/assets audit is distinct from actual packet effects and from
+hardware acceptance. Physical iPhone/controller/preview remains unverified; no
+Simulator gate. Latest build/artifact status and hash belong in the delivery report.
 
-Cash catalogue capture follow-up: a delayed isolated Char response reproduced a
-successful capture with an orphan pet and no egg. A new post-party-warp overlay
-routes successful native taming through the same journal/save barrier; native RNG
-and lure-on-attempt cost stay unchanged. Both profile hashes/native15 SQL cases
-and x86_64 Map/Char compile pass; isolated packet recovery checks are running.
-Do not label capture recovery or final129-SKU readiness complete until those results
-are recorded. Hunter/Priest companion prices corrected to162/297; repurchase pending.
-No live activation, player mutation, Simulator or hardware acceptance occurred.
-
-Cash catalogue closeout progress: all five native card outcomes were observed in26
-real fixture purchases, with cash/materials/item checks and per-outcome reconnect.
-Capture recovery3, pet pack3 and native taming6 regressions now pass on the journal
-binary; normal wings and actual Gym capacity also pass. Duplicate request33 foods
-are aliases of27–32: final catalogue adds123 SKUs, keeps34, total157, with96 usable
-custom definitions (six unlisted aliases). Nine assembly/alias checks pass. MaxHP/
-MaxSP packs now explicitly name medium Increase Potions; pack contents use readable
-item names. Physical iPhone remains unverified. Final full iPhone artifact, final
-catalogue packet check and production-profile native compile are still outstanding.
+No live deployment, service restart, player write, PR merge, RL redesign or currency
+grant is authorized by this implementation task. Only owned isolated fixtures were
+mutated. Static unsigned IPA publication is allowed. Read the deployment plan before
+any later activation: fresh online/process/DB/writer identity and SQLite backups,
+no old-DB restore after new writes, never downgrade/drop a nonempty pet journal.

@@ -1,0 +1,25 @@
+{
+  "requests": 88,
+  "isolated_verified_requirements": 85,
+  "explicitly_adapted_requirements": [
+    11,
+    12
+  ],
+  "blocked_excluded_requirements": [
+    88
+  ],
+  "existing_entries_preserved": 34,
+  "new_listed_skus": 123,
+  "total_listed_entries": 157,
+  "listed_bundles": 77,
+  "custom_definitions": 96,
+  "unlisted_compatibility_aliases": 6,
+  "services": 13,
+  "costumes": 25,
+  "utilities_accessories": 8,
+  "live_deployed": false,
+  "device_verified": false,
+  "simulator_run": false,
+  "app_source": "b79d14ea9284753034e14f71e3123e667b03f44f",
+  "meaning_of_ready": "Implementation and enumerated isolated packet/effect/persistence checks complete; deployment and device acceptance are distinct. Not exhaustive all-boundaries testing."
+}
