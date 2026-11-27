@@ -1,0 +1,2275 @@
+[
+  {
+    "item_id": 504,
+    "aegis_name": "White_Potion",
+    "type": "Healing",
+    "weight": 150,
+    "buy_zeny": 1200,
+    "sell_zeny": 600,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/하얀포션.bmp",
+        "bytes": 1654,
+        "sha256": "623c065e346bce9f2f028a07e3f184fc0fec46a9e471ecf5b8ab9589fcdc471d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/하얀포션.bmp",
+        "bytes": 8678,
+        "sha256": "acf064f40e08e45e5c72785f3ce6ae9767ae4fad2936f44367ca7f99ba95b56d"
+      }
+    ]
+  },
+  {
+    "item_id": 505,
+    "aegis_name": "Blue_Potion",
+    "type": "Healing",
+    "weight": 150,
+    "buy_zeny": 5000,
+    "sell_zeny": 2500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/파란포션.bmp",
+        "bytes": 1654,
+        "sha256": "0d57c80d17df6500e66d714536a19734c72061fecf514b7a89a86c5a94ac479f"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/파란포션.bmp",
+        "bytes": 8678,
+        "sha256": "2d04dce37b0e1f4e1f68eb92e5aff24309b71c939069998a46ebba9958f4e9b9"
+      }
+    ]
+  },
+  {
+    "item_id": 507,
+    "aegis_name": "Red_Herb",
+    "type": "Healing",
+    "weight": 30,
+    "buy_zeny": 18,
+    "sell_zeny": 9,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/빨간허브.bmp",
+        "bytes": 1654,
+        "sha256": "066a8e038eabea1fcd61c1e5580bf09f939c170369f503fde57537c6a42d0009"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/빨간허브.bmp",
+        "bytes": 22856,
+        "sha256": "acdc28930ee2bc86896a22b660ef513c388467692f912aa719d8dacfbe07a5a8"
+      }
+    ]
+  },
+  {
+    "item_id": 508,
+    "aegis_name": "Yellow_Herb",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 40,
+    "sell_zeny": 20,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/노란허브.bmp",
+        "bytes": 1654,
+        "sha256": "dc93b824d3b669f27ef409ecf222515e12839ed81ea6967ad3da1e806de29fd6"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/노란허브.bmp",
+        "bytes": 22856,
+        "sha256": "e80a2e528c129673974d4f7e396ecbb00866e9fd568f8c0728f23cbc4d0d6674"
+      }
+    ]
+  },
+  {
+    "item_id": 523,
+    "aegis_name": "Holy_Water",
+    "type": "Healing",
+    "weight": 30,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/성수.bmp",
+        "bytes": 1654,
+        "sha256": "82b76c513e09471fd5e3c010c888462596b4bc72805058497175d0be057b1641"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/성수.bmp",
+        "bytes": 22856,
+        "sha256": "76e1b3241e777e8d24ac1fe29aeddb51c5d638964498b65071696c195979bfc4"
+      }
+    ]
+  },
+  {
+    "item_id": 525,
+    "aegis_name": "Panacea",
+    "type": "Healing",
+    "weight": 100,
+    "buy_zeny": 500,
+    "sell_zeny": 250,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/만능약.bmp",
+        "bytes": 1654,
+        "sha256": "6de8283ed73b8a53df8070b5b137dad51644df755abb688a0749be88bad98428"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/만능약.bmp",
+        "bytes": 22856,
+        "sha256": "76032c6c39c20ffba5770053800f863f8a5819aa61911fe92d0eefac4d1290ef"
+      }
+    ]
+  },
+  {
+    "item_id": 531,
+    "aegis_name": "Apple_Juice",
+    "type": "Healing",
+    "weight": 40,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/사과쥬스.bmp",
+        "bytes": 1654,
+        "sha256": "cbfda72f0c9acd1fa0d2ad0beea889f2cedefa01adec1159c5257a904b7fc9f5"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/사과쥬스.bmp",
+        "bytes": 22856,
+        "sha256": "15580bf6145b52ac84ae553cf8fc20836c7d7829ef81a1c1667754b3dbd0ea56"
+      }
+    ]
+  },
+  {
+    "item_id": 534,
+    "aegis_name": "Carrot_Juice",
+    "type": "Healing",
+    "weight": 40,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/당근쥬스.bmp",
+        "bytes": 1654,
+        "sha256": "635e505630f8aa73d531639ccef51e4d90a7be4d8663fcf1aea0c26591002acb"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/당근쥬스.bmp",
+        "bytes": 8676,
+        "sha256": "b419a6a5bdfd7451be952384101fd45e69fcd507ac5231ec3129759916e775ac"
+      }
+    ]
+  },
+  {
+    "item_id": 537,
+    "aegis_name": "Pet_Food",
+    "type": "Healing",
+    "weight": 10,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/괴물의먹이.bmp",
+        "bytes": 1654,
+        "sha256": "c58f126999d356e87190760ddbccc45527c140d7513fdeec538854d67af25897"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/괴물의먹이.bmp",
+        "bytes": 22856,
+        "sha256": "d812fe450bd930bfb2839d70d1503a28b08a8de1b2031a729acfc4a60d5105b5"
+      }
+    ]
+  },
+  {
+    "item_id": 547,
+    "aegis_name": "White_Slim_Potion",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 1650,
+    "sell_zeny": 825,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": {
+      "NoSell": true
+    },
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/화이트슬림포션.bmp",
+        "bytes": 1654,
+        "sha256": "1f3749255029631b00999fa44b49f6d551bac661e141aea6fa181b7db2a73e6d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/화이트슬림포션.bmp",
+        "bytes": 22854,
+        "sha256": "0c530c2a115c9a5a26fd793c6331db6941f70934e20d2f9a8b14dceb881ddb5d"
+      }
+    ]
+  },
+  {
+    "item_id": 601,
+    "aegis_name": "Wing_Of_Fly",
+    "type": "DelayConsume",
+    "weight": 50,
+    "buy_zeny": 250,
+    "sell_zeny": 125,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/파리의날개.bmp",
+        "bytes": 1654,
+        "sha256": "cd20b6f42f3e00ddd46569c98e36737a8ebd0cac43e152c1396bf4d35630b000"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/파리의날개.bmp",
+        "bytes": 22856,
+        "sha256": "e26774a11eba89520dde23a24aa1305620b6d79f4c85ef8ac38f8d6c42263ad3"
+      }
+    ]
+  },
+  {
+    "item_id": 602,
+    "aegis_name": "Wing_Of_Butterfly",
+    "type": "DelayConsume",
+    "weight": 50,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/나비의날개.bmp",
+        "bytes": 1654,
+        "sha256": "b9ca2605b736921f7abc6c5702a707f0c846e773687958d5457b620086a27d3c"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/나비의날개.bmp",
+        "bytes": 22856,
+        "sha256": "d8c7994a959109b74fb7426250d3c65a9751799fd33a0f96f5f2df7ffbc070d8"
+      }
+    ]
+  },
+  {
+    "item_id": 611,
+    "aegis_name": "Spectacles",
+    "type": "DelayConsume",
+    "weight": 50,
+    "buy_zeny": 40,
+    "sell_zeny": 20,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/돋보기.bmp",
+        "bytes": 1654,
+        "sha256": "886227c1a7c76de3fed91abda6ce8220332469fbea523b5438cb6fe8f1fc380b"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/돋보기.bmp",
+        "bytes": 8676,
+        "sha256": "c008edb9ed720c9bcf385a92fed8a1e561e769900ba4ac525a1e004c8f5b7e73"
+      }
+    ]
+  },
+  {
+    "item_id": 619,
+    "aegis_name": "Unripe_Apple",
+    "type": "Usable",
+    "weight": 50,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/덜익은사과.bmp",
+        "bytes": 1654,
+        "sha256": "41cb27b1d986d527a575a04afd3849f18221101bccb5dac455ded0c4a4cf5469"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/덜익은사과.bmp",
+        "bytes": 8676,
+        "sha256": "d8e7f2332a6d0c0aa3ccfc46582dceec3dd9bfe25f1c9a0907df741d51003d52"
+      }
+    ]
+  },
+  {
+    "item_id": 620,
+    "aegis_name": "Orange_Juice",
+    "type": "Usable",
+    "weight": 50,
+    "buy_zeny": 1500,
+    "sell_zeny": 750,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/오렌지쥬스.bmp",
+        "bytes": 1654,
+        "sha256": "10bdce5a977e2b8c1c03f171b8db820e829e766260c8cc9dd7529cdfc258d0de"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/오렌지쥬스.bmp",
+        "bytes": 8676,
+        "sha256": "0dad348d9e6de6743cce91297efbeff53c15fa16c43677db109981a48a9aadb3"
+      }
+    ]
+  },
+  {
+    "item_id": 622,
+    "aegis_name": "Rainbow_Carrot",
+    "type": "Usable",
+    "weight": 50,
+    "buy_zeny": 2500,
+    "sell_zeny": 1250,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/무지개당근.bmp",
+        "bytes": 1654,
+        "sha256": "76767673a9a8dd68e7d36c14eaac420b7d0f8825e436cbc0256a30733f54e7af"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/무지개당근.bmp",
+        "bytes": 8676,
+        "sha256": "14bb8324b3ba9f5b873f89cf36b46c368b3d25f6ec4d4ce063741fb7f7a1091b"
+      }
+    ]
+  },
+  {
+    "item_id": 623,
+    "aegis_name": "Earthworm_The_Dude",
+    "type": "Usable",
+    "weight": 50,
+    "buy_zeny": 4000,
+    "sell_zeny": 2000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/멋쟁이지렁이.bmp",
+        "bytes": 1654,
+        "sha256": "fe4985767fac8ba1b856306e6660d8d20c623766498bfb2458acb0f12ad270d2"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/멋쟁이지렁이.bmp",
+        "bytes": 8676,
+        "sha256": "4134569e1c4c9a1799ebb303c1ed4b9e565f1a628fce9d8113745ef4325286d6"
+      }
+    ]
+  },
+  {
+    "item_id": 624,
+    "aegis_name": "Rotten_Fish",
+    "type": "Usable",
+    "weight": 50,
+    "buy_zeny": 2500,
+    "sell_zeny": 1250,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/썩은생선.bmp",
+        "bytes": 1654,
+        "sha256": "2ca907fed47afb4b72ee08a62ccc27e96e2fbd1df65584cafd1feaec022eee4b"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/썩은생선.bmp",
+        "bytes": 8676,
+        "sha256": "ea77873c90895e75027ee63fdf04786d68dd27a8b5a3a0caa94cc84b0fb43187"
+      }
+    ]
+  },
+  {
+    "item_id": 630,
+    "aegis_name": "Dew_Laden_Moss",
+    "type": "Usable",
+    "weight": 50,
+    "buy_zeny": 10,
+    "sell_zeny": 5,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/아침이슬이끼.bmp",
+        "bytes": 1654,
+        "sha256": "c7214143fca80b97224ec8ab9d7dfbbd04f62239b682512cced871f437e66a84"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/아침이슬이끼.bmp",
+        "bytes": 8676,
+        "sha256": "5a5bad3434c0efd11f9c302d012d0985ea8043fa25f07013b70600f3d923f999"
+      }
+    ]
+  },
+  {
+    "item_id": 643,
+    "aegis_name": "Pet_Incubator",
+    "type": "Usable",
+    "weight": 30,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/알부화기.bmp",
+        "bytes": 1654,
+        "sha256": "3a6ff9526675fb959e753cef337f11ef68088be392de653dc3745a1652d9c9b5"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/알부화기.bmp",
+        "bytes": 8676,
+        "sha256": "f912aaad0c1285c397dd76c383c15c6658e7ebf80f06f8e3ee3091f342e149b0"
+      }
+    ]
+  },
+  {
+    "item_id": 717,
+    "aegis_name": "Blue_Gemstone",
+    "type": "Etc",
+    "weight": 1,
+    "buy_zeny": 450,
+    "sell_zeny": 225,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/블루젬스톤.bmp",
+        "bytes": 1654,
+        "sha256": "3d092ecb12cec14d718fd8e96a2de3d8e825dcaafecb0a9658f2a68974aa6e5d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/블루젬스톤.bmp",
+        "bytes": 22856,
+        "sha256": "532e94179be285b9b84d3a7c5679d8cd88e28470f5be08b34a91d03f70028229"
+      }
+    ]
+  },
+  {
+    "item_id": 990,
+    "aegis_name": "Boody_Red",
+    "type": "Etc",
+    "weight": 50,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/레드블러드.bmp",
+        "bytes": 1654,
+        "sha256": "7c11fea3f3ce194c56abaa03650b8cdc658ef4adac2f9be60c7a42d58322bdac"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/레드블러드.bmp",
+        "bytes": 22856,
+        "sha256": "08f6ed8b0f81ae157801be30ec393fd28f3584c16c142e1f804ae99ab42d9d10"
+      }
+    ]
+  },
+  {
+    "item_id": 991,
+    "aegis_name": "Crystal_Blue",
+    "type": "Etc",
+    "weight": 50,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/크리스탈블루.bmp",
+        "bytes": 1654,
+        "sha256": "d1297fd3d2f8b6686d3228bff4f28060460ebec8f01cedef974be2d3a815fab0"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/크리스탈블루.bmp",
+        "bytes": 22856,
+        "sha256": "9689ae8e33b078383eca2a88d1413017a247b4b16f89b68169c791efdccc9e76"
+      }
+    ]
+  },
+  {
+    "item_id": 992,
+    "aegis_name": "Wind_Of_Verdure",
+    "type": "Etc",
+    "weight": 50,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/옐로우라이브.bmp",
+        "bytes": 1654,
+        "sha256": "5496538c074cf8c9f35a74fca8adba5d68f4e45ca0fff613cb90163120836456"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/옐로우라이브.bmp",
+        "bytes": 22856,
+        "sha256": "f77fe41daaf4745524cf518f02b08c6bd414d068f939044dbc1c27998769d4da"
+      }
+    ]
+  },
+  {
+    "item_id": 993,
+    "aegis_name": "Yellow_Live",
+    "type": "Etc",
+    "weight": 50,
+    "buy_zeny": 1000,
+    "sell_zeny": 500,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/윈드오브버듀어.bmp",
+        "bytes": 1654,
+        "sha256": "e47662ff56eea3c8ea9beb66357902704ba228a198198ff6497b0728d23cde93"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/윈드오브버듀어.bmp",
+        "bytes": 22856,
+        "sha256": "f6c2fbfe7c3244b1b5a0c22ec076020966151fd95e486d5d9eb8ee50065502b6"
+      }
+    ]
+  },
+  {
+    "item_id": 1750,
+    "aegis_name": "Arrow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 1,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/화살.bmp",
+        "bytes": 1654,
+        "sha256": "37fe7430c302343b20e252479ed94ec0b6e02744770c922bac7fb868b10b8ddf"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/화살.bmp",
+        "bytes": 22856,
+        "sha256": "7ddbe0d63623262f829cf96d8f129e65245942a55e8827155cd7a0a8a8ed4b97"
+      }
+    ]
+  },
+  {
+    "item_id": 1751,
+    "aegis_name": "Silver_Arrow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/은화살.bmp",
+        "bytes": 1654,
+        "sha256": "ba5a9acd322ca790a48cd588af8df52a813ab344a1f8f129d26f90922b9c5ae2"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/은화살.bmp",
+        "bytes": 22856,
+        "sha256": "bb83962c5fc5312da7de1a72f97c707aa1c1e0b33514f2c7051278901bdad923"
+      }
+    ]
+  },
+  {
+    "item_id": 1752,
+    "aegis_name": "Fire_Arrow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/불화살.bmp",
+        "bytes": 1654,
+        "sha256": "da0ead006b49fd6295caeff635e4e95d38cf097cb6b0a27e11765bd4202e9a41"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/불화살.bmp",
+        "bytes": 22856,
+        "sha256": "d5e5844f73b8c0240f3544a55b01ffc004090049a0483e7b4b4a5f95b9e7195e"
+      }
+    ]
+  },
+  {
+    "item_id": 1754,
+    "aegis_name": "Crystal_Arrow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/수정화살.bmp",
+        "bytes": 1654,
+        "sha256": "c5e61c7f110143ef337df62eabeb49fe89b4f6f5c47537d475671582015fa2c2"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/수정화살.bmp",
+        "bytes": 8678,
+        "sha256": "e3438b2f32c242624b6482c3c0941370129287eda2c810063d045f97bcfe068a"
+      }
+    ]
+  },
+  {
+    "item_id": 1755,
+    "aegis_name": "Arrow_Of_Wind",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/바람의화살.bmp",
+        "bytes": 1654,
+        "sha256": "6f1cf3b7045a125a2b9682a5e79cf522a670f6624207d8d8845b0a45fc007aa0"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/바람의화살.bmp",
+        "bytes": 8678,
+        "sha256": "cc3ba5b0585bdd800e86209c493fe74baae9c37708ed371b21460c39fe47cfe7"
+      }
+    ]
+  },
+  {
+    "item_id": 1756,
+    "aegis_name": "Stone_Arrow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/암석화살.bmp",
+        "bytes": 1654,
+        "sha256": "14b2453b5f2cfac89f062bc87b6a55e0bb2730fa1fc9a1cea98e97d5b2cb32a6"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/암석화살.bmp",
+        "bytes": 8678,
+        "sha256": "f3e708e7fb63ff846f57926a82a82ec0f59ca1f2adeae43bdd8647d869efc476"
+      }
+    ]
+  },
+  {
+    "item_id": 1757,
+    "aegis_name": "Immatrial_Arrow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/무형의화살.bmp",
+        "bytes": 1654,
+        "sha256": "c825e06750cab27b2392eee1f02be068c0061fe41164e797a1fb0e8f670ec124"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/무형의화살.bmp",
+        "bytes": 8676,
+        "sha256": "33008ad3fc7d901758c827a4240314bc89b6c14b4152804514f02ab587874b01"
+      }
+    ]
+  },
+  {
+    "item_id": 1767,
+    "aegis_name": "Arrow_Of_Shadow",
+    "type": "Ammo",
+    "weight": 1,
+    "buy_zeny": 5,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": {
+      "Archer": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Rogue": true,
+      "Thief": true
+    },
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/그림자의화살.bmp",
+        "bytes": 1654,
+        "sha256": "da32f65bca5b07b9e9fc0b4dde6f1714232ced31dadf6f288753ae6dc9ebb307"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/그림자의화살.bmp",
+        "bytes": 8676,
+        "sha256": "8d663de72e51a5b8a8f3a5ab73585bbec3d08309d44e7374617f2fad0ab65748"
+      }
+    ]
+  },
+  {
+    "item_id": 7621,
+    "aegis_name": "Token_Of_Siegfried",
+    "type": "Etc",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": {
+      "NoDrop": true,
+      "NoTrade": true,
+      "NoSell": true,
+      "NoCart": true,
+      "NoGuildStorage": true,
+      "NoMail": true,
+      "NoAuction": true
+    },
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/지크프리드의증표.bmp",
+        "bytes": 1654,
+        "sha256": "0d33e17aed1142ba74e99c788155e5f94f563aab9405f6b4652be39af0e74b93"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/지크프리드의증표.bmp",
+        "bytes": 22856,
+        "sha256": "b4235bb2df298e016241217f91c33547b70aa56fc9db781d9add43c651f0bd02"
+      }
+    ]
+  },
+  {
+    "item_id": 10002,
+    "aegis_name": "Monster_Oxygen_Mask",
+    "type": "Petarmor",
+    "weight": 0,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/몬스터마스크.bmp",
+        "bytes": 1654,
+        "sha256": "168d07487e3249d2b9a4450df7ec19abbd7dc15721c41ff67f25a0e20715b218"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/몬스터마스크.bmp",
+        "bytes": 8676,
+        "sha256": "19c327785be37e2514914d875d1335c4d1b5735ce59e11d98bca3a0ca4cc59a0"
+      }
+    ]
+  },
+  {
+    "item_id": 10007,
+    "aegis_name": "Silk_Ribbon",
+    "type": "Petarmor",
+    "weight": 0,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/실크리본.bmp",
+        "bytes": 1654,
+        "sha256": "f0124edd99d4b89b9f758d2d409ffd7f7b54ade010ec37af7d688620955c126d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/실크리본.bmp",
+        "bytes": 8676,
+        "sha256": "9c8c36eabe1370118a20f4891ddd0b7760122d6a7e8f5ecda0b9b6e78f3e3ffe"
+      }
+    ]
+  },
+  {
+    "item_id": 10012,
+    "aegis_name": "Tiny_Egg_Shell",
+    "type": "Petarmor",
+    "weight": 0,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/작은알껍질.bmp",
+        "bytes": 1654,
+        "sha256": "37f15eca187a07eae58abe49827da3009ced45bcba429d2c2db68f75d32f3c53"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/작은알껍질.bmp",
+        "bytes": 8676,
+        "sha256": "5bd9c4c782d353f9bddb7b1804c81d50da008648bc010b33656b13f89bbfb5a0"
+      }
+    ]
+  },
+  {
+    "item_id": 10013,
+    "aegis_name": "Backpack",
+    "type": "Petarmor",
+    "weight": 0,
+    "buy_zeny": 1500,
+    "sell_zeny": 750,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/책가방.bmp",
+        "bytes": 1654,
+        "sha256": "6e45cfffdbb7bece5d6d2cab395da53ae2c65af8ea79eb04de398ba34ed8abcf"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/책가방.bmp",
+        "bytes": 8676,
+        "sha256": "0a0f1db6aba76a26f1fe632769a6ca879dcc05594e4b16f3cb24b842e60cfa61"
+      }
+    ]
+  },
+  {
+    "item_id": 10017,
+    "aegis_name": "Bark_Shorts",
+    "type": "Petarmor",
+    "weight": 0,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/나무팬츠.bmp",
+        "bytes": 1654,
+        "sha256": "5e37a4aa62bdc4713746a34bf33eb3c971b2bd330cc69452d574397ee219670d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/나무팬츠.bmp",
+        "bytes": 8676,
+        "sha256": "cdd1cb60e75a03fe229e49d4001d0ab4209ec303cd590343f1bf31eb23d92a6e"
+      }
+    ]
+  },
+  {
+    "item_id": 11623,
+    "aegis_name": "High_WhitePotion",
+    "type": "Healing",
+    "weight": 140,
+    "buy_zeny": 1500,
+    "sell_zeny": 750,
+    "equip_level_min": 60,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/상급포션-하양.bmp",
+        "bytes": 1654,
+        "sha256": "9ad25f43dbbca942eeafaac92d4c69e009d857e17e47d194815640c31e51813b"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/상급포션-하양.bmp",
+        "bytes": 22856,
+        "sha256": "2bcd8cc2b0bcfd5d6e48493e65a851dd1ae4f5c66a052addea5d4e1aebb7a02a"
+      }
+    ]
+  },
+  {
+    "item_id": 11624,
+    "aegis_name": "High_BluePotion",
+    "type": "Healing",
+    "weight": 100,
+    "buy_zeny": 7000,
+    "sell_zeny": 3500,
+    "equip_level_min": 60,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/상급포션-파랑.bmp",
+        "bytes": 1654,
+        "sha256": "2cfb3b1b90d80d925a446ed259397a1042f91eae19a73db770aaf16e81c56d33"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/상급포션-파랑.bmp",
+        "bytes": 22856,
+        "sha256": "5226143d7e2ca76ffdd6993051f06b442e568bba43f0471a0948ecc73a348edb"
+      }
+    ]
+  },
+  {
+    "item_id": 12016,
+    "aegis_name": "Speed_Up_Potion",
+    "type": "Usable",
+    "weight": 100,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/이속증가포션.bmp",
+        "bytes": 1654,
+        "sha256": "f922f6ccad5217b25c1aa371dc71b282b93f77f8fd99e0faf55a66709972b89e"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/이속증가포션.bmp",
+        "bytes": 22856,
+        "sha256": "9dbe9e1aa43a662628cdea08493d8df037f4f01f7639acae90d4591df1f6348c"
+      }
+    ]
+  },
+  {
+    "item_id": 12045,
+    "aegis_name": "Str_Dish05",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/힘요리05.bmp",
+        "bytes": 1654,
+        "sha256": "81a4ce2fd27bd7850ff484e8deef6ef61e3e5a274675c6bd7b1f1ed7bdeccbf1"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/힘요리05.bmp",
+        "bytes": 22856,
+        "sha256": "dbf0f4ecd2a274826ceb25f8cd348bae878081608d21e0568113226f25afd44f"
+      }
+    ]
+  },
+  {
+    "item_id": 12050,
+    "aegis_name": "Int_Dish05",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/인트요리05.bmp",
+        "bytes": 1654,
+        "sha256": "58d79a815e62f96b3e53a28a0240e388638257d245a2688fe51d3d995d81317b"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/인트요리05.bmp",
+        "bytes": 22856,
+        "sha256": "2f9dcc84fde08db0a22c20dc84cda08a3a7d56f0af40b93a029cdc42d9f4c559"
+      }
+    ]
+  },
+  {
+    "item_id": 12055,
+    "aegis_name": "Vit_Dish05",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/바탈요리05.bmp",
+        "bytes": 1654,
+        "sha256": "a9161cdd7c41d47a761b42be796e51c6afa4170d3f96261867496390dea2d373"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/바탈요리05.bmp",
+        "bytes": 22856,
+        "sha256": "d19641b97a2abde20f0876203d2d27a2af8eaaf9ae055f1438d2d81c33b0d911"
+      }
+    ]
+  },
+  {
+    "item_id": 12060,
+    "aegis_name": "Agi_Dish05",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/어질요리05.bmp",
+        "bytes": 1654,
+        "sha256": "44ce8c3784674acd41cef3163394719eec9ce3428e59c95548754f7a1e47864d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/어질요리05.bmp",
+        "bytes": 22856,
+        "sha256": "1198c297244ddf08e961a5b260ab05b1339be665a39467b370c9ec1c3fc89fee"
+      }
+    ]
+  },
+  {
+    "item_id": 12065,
+    "aegis_name": "Dex_Dish05",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/덱요리05.bmp",
+        "bytes": 1654,
+        "sha256": "78e520fc6b46941d7aca5d8552e4a1c9b4014c7ff500c61f66b67567c8d66f54"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/덱요리05.bmp",
+        "bytes": 22856,
+        "sha256": "186fa60776dd332014ea00c42552fc8ebba0aea2d294c5c1c9568f718d18a071"
+      }
+    ]
+  },
+  {
+    "item_id": 12070,
+    "aegis_name": "Luk_Dish05",
+    "type": "Healing",
+    "weight": 50,
+    "buy_zeny": 10000,
+    "sell_zeny": 5000,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/럭요리05.bmp",
+        "bytes": 1654,
+        "sha256": "b38a39c3670a4085422ea9c90b81b1494074f039ab7e990e634e34b964dcf5fa"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/럭요리05.bmp",
+        "bytes": 22856,
+        "sha256": "2b48e8528888e1ab414bf532b2d3d0a2ba8114d3e05945cc78f19ed7da3d1872"
+      }
+    ]
+  },
+  {
+    "item_id": 12114,
+    "aegis_name": "Elemental_Fire",
+    "type": "DelayConsume",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/엘리멘탈_화.bmp",
+        "bytes": 1654,
+        "sha256": "70fcd530ac3dc96d4867ef17431eeb832c38c16f4c54440d3454b0c094c3e3b3"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/엘리멘탈_화.bmp",
+        "bytes": 22856,
+        "sha256": "30834d0dc1a79e1f14be7fba61885b492835cd345c87419d201a93cedcc6f02e"
+      }
+    ]
+  },
+  {
+    "item_id": 12115,
+    "aegis_name": "Elemental_Water",
+    "type": "DelayConsume",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/엘리멘탈_수.bmp",
+        "bytes": 1654,
+        "sha256": "b85ad1ae98c5d0da0743786c9d3aa1c01a18afa87173db955408950c9911fc36"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/엘리멘탈_수.bmp",
+        "bytes": 22856,
+        "sha256": "0793302aedb7874329eef3f67a3b151e7c43adae95133610b86702aa4997f192"
+      }
+    ]
+  },
+  {
+    "item_id": 12116,
+    "aegis_name": "Elemental_Earth",
+    "type": "DelayConsume",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/엘리멘탈_지.bmp",
+        "bytes": 1654,
+        "sha256": "f5f38b21169b98cd8faff07311b84df13d3438e769c6620d37f19e1c9146d7ef"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/엘리멘탈_지.bmp",
+        "bytes": 22856,
+        "sha256": "1ed8f4b919488dfde4f7a5e482d0325990b638887337e426991648450777de8d"
+      }
+    ]
+  },
+  {
+    "item_id": 12117,
+    "aegis_name": "Elemental_Wind",
+    "type": "DelayConsume",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/엘리멘탈_풍.bmp",
+        "bytes": 1654,
+        "sha256": "8ecbde6ab5b4aff146691d1d3829be6267decd62b8378ba5691d0408b02c3996"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/엘리멘탈_풍.bmp",
+        "bytes": 22856,
+        "sha256": "cccaa4be6258a5d3752e8778f7185af0313499233bfbdcca62a1d36318dd0490"
+      }
+    ]
+  },
+  {
+    "item_id": 12118,
+    "aegis_name": "Resist_Fire",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/레지스트_화.bmp",
+        "bytes": 1654,
+        "sha256": "1bae836eadb1bf0d74f0daf713babe1667bfcf0ec7edafc296e4e0a8bc795982"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/레지스트_화.bmp",
+        "bytes": 22856,
+        "sha256": "aac7b2d2db368797db531828a08243dd1318f80987e173c02d2165f4ab8ca01d"
+      }
+    ]
+  },
+  {
+    "item_id": 12119,
+    "aegis_name": "Resist_Water",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/레지스트_수.bmp",
+        "bytes": 1654,
+        "sha256": "28d5e1ebd2fa04108851d8d8992747ef3772666ea2593018ce73bc85edd9ad60"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/레지스트_수.bmp",
+        "bytes": 22856,
+        "sha256": "76a607af1133db17a93d5eb09bca2d0ea70ea2a320120e86f9e8f11388b2a3a4"
+      }
+    ]
+  },
+  {
+    "item_id": 12120,
+    "aegis_name": "Resist_Earth",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/레지스트_지.bmp",
+        "bytes": 1654,
+        "sha256": "1d98f0db47622f986bce422809b6c30bf7990967559ab60c87cc167cd1c98b84"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/레지스트_지.bmp",
+        "bytes": 22856,
+        "sha256": "9dc5b44d2fa30470acdeb920c55cb6e9d772aa5971ec0253f957eb16e58461ea"
+      }
+    ]
+  },
+  {
+    "item_id": 12121,
+    "aegis_name": "Resist_Wind",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/레지스트_풍.bmp",
+        "bytes": 1654,
+        "sha256": "891c2d3147d51896d9f0f5d92560212110cc78c1bb7ca1683063a7635765503f"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/레지스트_풍.bmp",
+        "bytes": 22856,
+        "sha256": "a13e38228479c96d88fd1ac8f6405841339e97daf799bd6bde63b9c6ca3e4476"
+      }
+    ]
+  },
+  {
+    "item_id": 12208,
+    "aegis_name": "Battle_Manual",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": {
+      "NoDrop": true,
+      "NoTrade": true,
+      "NoSell": true,
+      "NoCart": true,
+      "NoGuildStorage": true,
+      "NoMail": true,
+      "NoAuction": true
+    },
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/전투교범.bmp",
+        "bytes": 1654,
+        "sha256": "c7e09c018540a22cc1444432070764322163ff8784ab19060410434ec810e379"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/전투교범.bmp",
+        "bytes": 22856,
+        "sha256": "3db1a810fb7459c1782aba1856c0a43012afead94578592c2e2d9520c044a4ac"
+      }
+    ]
+  },
+  {
+    "item_id": 12209,
+    "aegis_name": "Insurance",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": {
+      "NoDrop": true,
+      "NoTrade": true,
+      "NoSell": true,
+      "NoCart": true,
+      "NoGuildStorage": true,
+      "NoMail": true,
+      "NoAuction": true
+    },
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/생명보험증서.bmp",
+        "bytes": 1654,
+        "sha256": "607bc2488af6d97d34a5beb8c20b2638e5bcd240be86fb0ba0ff80e7adc78447"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/생명보험증서.bmp",
+        "bytes": 22856,
+        "sha256": "230a9c7663606ae489070d1443589a6f88c98f9cbd97f7b5f56dcf4d20653413"
+      }
+    ]
+  },
+  {
+    "item_id": 12210,
+    "aegis_name": "Bubble_Gum",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": {
+      "NoDrop": true,
+      "NoTrade": true,
+      "NoSell": true,
+      "NoCart": true,
+      "NoGuildStorage": true,
+      "NoMail": true,
+      "NoAuction": true
+    },
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/풍선껌.bmp",
+        "bytes": 1654,
+        "sha256": "54cf5f0599616f2d67092544872c237484f0db9f220dcb8d2479deec763e91ae"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/풍선껌.bmp",
+        "bytes": 22856,
+        "sha256": "10bce92343e24bca89f89b9be94397b70f8069c381b4e30ce39dedf642620587"
+      }
+    ]
+  },
+  {
+    "item_id": 12212,
+    "aegis_name": "Giant_Fly_Wing",
+    "type": "Usable",
+    "weight": 10,
+    "buy_zeny": 2,
+    "sell_zeny": 1,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": {
+      "NoDrop": true,
+      "NoTrade": true,
+      "NoSell": true,
+      "NoCart": true,
+      "NoGuildStorage": true,
+      "NoMail": true,
+      "NoAuction": true
+    },
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/거대한파리날개.bmp",
+        "bytes": 1654,
+        "sha256": "92df801f280244e8300482e011951499900d433f72ddbdf37a90fb1b881d744e"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/거대한파리날개.bmp",
+        "bytes": 22856,
+        "sha256": "6e19d02b327493c5dba0eac3750861cbfd133f13eb3b87f2fed6a867a90fac6d"
+      }
+    ]
+  },
+  {
+    "item_id": 12423,
+    "aegis_name": "HP_Increase_PotionM",
+    "type": "Usable",
+    "weight": 40,
+    "buy_zeny": 100,
+    "sell_zeny": 50,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/hp증가포션_중.bmp",
+        "bytes": 1654,
+        "sha256": "09322f9d59036a7df9aa95e36243e065c2ae84ab2c404b96ae062906ce9bd57a"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/hp증가포션_중.bmp",
+        "bytes": 22856,
+        "sha256": "a94d03e76ead91211f8e295f3bc0d501f96b310285bb6f183c7f6b8ee8ce7a4c"
+      }
+    ]
+  },
+  {
+    "item_id": 12426,
+    "aegis_name": "SP_Increase_PotionM",
+    "type": "Usable",
+    "weight": 40,
+    "buy_zeny": 100,
+    "sell_zeny": 50,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/sp증가포션_중.bmp",
+        "bytes": 1654,
+        "sha256": "fc43227a5439c4f4ed55ca42f444484cb6ab2043fda0dbd4596d4eab3afcf3b9"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/sp증가포션_중.bmp",
+        "bytes": 22856,
+        "sha256": "a6ef48a6492127db632a76ec26ec13e4767032c196133d22dc732b421b90729b"
+      }
+    ]
+  },
+  {
+    "item_id": 19289,
+    "aegis_name": "C_Moon_Eyepatch",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/달의안대.bmp",
+        "bytes": 1654,
+        "sha256": "c75d74843f46a61f9ee63e4fdfc8b03a5de1b529c301b40e9ee364067f388fd5"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/달의안대.bmp",
+        "bytes": 22856,
+        "sha256": "7611d8d187ea759ca25a1732c1f481b97e6f5a88c20e4e5cad3f244e80b5d7de"
+      }
+    ]
+  },
+  {
+    "item_id": 19578,
+    "aegis_name": "C_Goggle",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/고글.bmp",
+        "bytes": 1654,
+        "sha256": "e20127149f314f8f3c8b0788e869928fafa10c14e529f5e269ba24cf9780f03d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/고글.bmp",
+        "bytes": 8676,
+        "sha256": "a27764b9a626933f6677a415737d560f851dae2856262119aed0b09c2d5acf76"
+      }
+    ]
+  },
+  {
+    "item_id": 19587,
+    "aegis_name": "C_King_Poring_Hat",
+    "type": "Armor",
+    "weight": 100,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/킹포링모자.bmp",
+        "bytes": 1654,
+        "sha256": "d732a6e8badd57fc5a6a66069f2136632d053ba42c64d9294cba575f05c93ee2"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/킹포링모자.bmp",
+        "bytes": 22856,
+        "sha256": "1f63b5c3866c5b7a02034828c00dbc3d055130d3ce286151cdb2593b96865527"
+      }
+    ]
+  },
+  {
+    "item_id": 19605,
+    "aegis_name": "C_Gang_Scarf",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/갱스카프.bmp",
+        "bytes": 1654,
+        "sha256": "997454ba60600d143950f98176afe166e3ce9c3d389305225ff968d68856382e"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/갱스카프.bmp",
+        "bytes": 22856,
+        "sha256": "fb500b49424d50b76af6734529a84c8c3f8600fa5f790fcc8719490ac7ccd59d"
+      }
+    ]
+  },
+  {
+    "item_id": 19617,
+    "aegis_name": "C_Ear_Of_Puppy",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/강아지귀.bmp",
+        "bytes": 1654,
+        "sha256": "3d8242e4f66a30c965675da2b72cf8912fbb89fbd478ed5c1cff3ec23ffe6e56"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/강아지귀.bmp",
+        "bytes": 22856,
+        "sha256": "936aa7ff49eaa0707e9a18b004310b4f1d87b7b5ade13473fabd9bb2bc82ad5b"
+      }
+    ]
+  },
+  {
+    "item_id": 19618,
+    "aegis_name": "C_Mask_Of_Fox",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/여우가면.bmp",
+        "bytes": 1654,
+        "sha256": "4c27bf67c937295bcc98a615397e1f39cacf971e82f668f04aeca4f8a254476f"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/여우가면.bmp",
+        "bytes": 22854,
+        "sha256": "94fa8ab359a2690d346b27040e0fc39b479645142af49ec2913dd6e4a9424ea8"
+      }
+    ]
+  },
+  {
+    "item_id": 19630,
+    "aegis_name": "C_Crown",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 10,
+    "sell_zeny": 5,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/크라운.bmp",
+        "bytes": 1654,
+        "sha256": "f4bad48ba9878063e3785c1de641f512a0886563fbb04600729d5186e8c8977f"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/크라운.bmp",
+        "bytes": 22856,
+        "sha256": "7cc8692cc08b1bb13ecff7e728bfdbcabc82087f7d7dd11015a488f17f307859"
+      }
+    ]
+  },
+  {
+    "item_id": 19667,
+    "aegis_name": "C_Helm_Of_Dragoon",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/드래군헬름.bmp",
+        "bytes": 1654,
+        "sha256": "799ef1b386d6994e2eacd1abd948f54d26c51e993b88d285011396502e5f9089"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/드래군헬름.bmp",
+        "bytes": 22856,
+        "sha256": "c65293511442faca2ce5aae3096702d76ba5bba2a0ca01eaeb24505ab9751b71"
+      }
+    ]
+  },
+  {
+    "item_id": 19702,
+    "aegis_name": "C_Santa_Hat_1",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 10,
+    "sell_zeny": 5,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/양갈래산타모자.bmp",
+        "bytes": 1654,
+        "sha256": "54a72673731684e2e632beff18dd5756c6078ee7cdf5056b5d106cc69eeee121"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/양갈래산타모자.bmp",
+        "bytes": 22856,
+        "sha256": "ec38d1bfe09106697ddcebdae90b42e5f7494802b9a16f3610057dc36df04452"
+      }
+    ]
+  },
+  {
+    "item_id": 19739,
+    "aegis_name": "C_Sleeping_Kitty_Cat",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 10,
+    "sell_zeny": 5,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/잠자는고양이모자.bmp",
+        "bytes": 1654,
+        "sha256": "59a03efdaaccef4f879addb41d009667691b1be825c80c7ff46efc31ddea4dfa"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/잠자는고양이모자.bmp",
+        "bytes": 22856,
+        "sha256": "a6cf6a23d77e33c3595ca652343454e11c9ced11559912c21fd483c78e13e08a"
+      }
+    ]
+  },
+  {
+    "item_id": 19843,
+    "aegis_name": "C_Cat_Hairband",
+    "type": "Armor",
+    "weight": 10,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/고양이머리띠.bmp",
+        "bytes": 1654,
+        "sha256": "078a8db7404b1a45fb8b6527a791bab3d31240727b50700200c3f046fcb0bde8"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/고양이머리띠.bmp",
+        "bytes": 8676,
+        "sha256": "2116368f70dce1ec537b91f993b198e4f653671974e7524363effa60b2ad0e90"
+      }
+    ]
+  },
+  {
+    "item_id": 19844,
+    "aegis_name": "C_Turban",
+    "type": "Armor",
+    "weight": 10,
+    "buy_zeny": 20,
+    "sell_zeny": 10,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/둥근모자.bmp",
+        "bytes": 1654,
+        "sha256": "9b3984ccfd55076719914aa17ba4fafaa0c181621c9d2fabfa1e144e9d73b7ba"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/둥근모자.bmp",
+        "bytes": 22856,
+        "sha256": "df9ad50dbf1d61aced91fb2803bb67123ab44829fcb2f602b08e8703f7fa875b"
+      }
+    ]
+  },
+  {
+    "item_id": 19876,
+    "aegis_name": "C_Rabbit_Ear_Hat",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/토끼귀모자.bmp",
+        "bytes": 1782,
+        "sha256": "fd44471e1333d96e19ce58f0ae2263e64dfb3774d215769cc9355a968283b224"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/토끼귀모자.bmp",
+        "bytes": 22854,
+        "sha256": "b333250122ea011cffab8a59cb659951aa69d403affc754e2513377eeede262f"
+      }
+    ]
+  },
+  {
+    "item_id": 19903,
+    "aegis_name": "C_Witchs_Hat",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/마녀의모자.bmp",
+        "bytes": 1654,
+        "sha256": "2a9910b107beefbac7b8c2d41cf0730e2c169ccf5df338fba019356d2865e6eb"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/마녀의모자.bmp",
+        "bytes": 22856,
+        "sha256": "70d7d3ac50fce878818d1d88777c474adf10e4bdd0a36ce5290e8ad7d6314871"
+      }
+    ]
+  },
+  {
+    "item_id": 19910,
+    "aegis_name": "C_Halloween_Hat",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/할로윈모자.bmp",
+        "bytes": 1654,
+        "sha256": "e64fceda78d15623d02b815a64167172b90fb87cb3923067acfc5fc1abbfa430"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/할로윈모자.bmp",
+        "bytes": 22856,
+        "sha256": "da2ecee26cc940f2ea7c2f99225c60321ce18fd3bba0f6d6b767cba889c76583"
+      }
+    ]
+  },
+  {
+    "item_id": 20132,
+    "aegis_name": "C_Subject_Aura",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/사념의오오라.bmp",
+        "bytes": 1654,
+        "sha256": "b4b15fc47f16ac203fc92f45245b4e9ab5e1690ea58fc89a4d574de041d06ed5"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/사념의오오라.bmp",
+        "bytes": 22856,
+        "sha256": "42be4aa3f8461460e43e0c30b7ea966b3746120f483dad18555bb703c57d760c"
+      }
+    ]
+  },
+  {
+    "item_id": 20202,
+    "aegis_name": "C_Deviruchi_Balloon",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/데비루치풍선.bmp",
+        "bytes": 1654,
+        "sha256": "1bf96aabba204fd586add42db87f47a987c5b1b5e35b1bc54735365e2b601c5a"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/데비루치풍선.bmp",
+        "bytes": 22856,
+        "sha256": "a6f23216f8e985e47ae03a3de78ed305d4fe22764870a4bce526d9f03148126f"
+      }
+    ]
+  },
+  {
+    "item_id": 20513,
+    "aegis_name": "C_EXE_Backpack",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/exe_backpack.bmp",
+        "bytes": 1654,
+        "sha256": "cc4440c82c1a03f7986ceb4c7f96edc0c02904785abf113d6a9525b6e000e6e0"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/exe_backpack.bmp",
+        "bytes": 22856,
+        "sha256": "72a9b15fe715c1be9303e4da80f4edb4429617ae90c5d16bde779a33d8f68fd3"
+      }
+    ]
+  },
+  {
+    "item_id": 20536,
+    "aegis_name": "C_Violet_Halo",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/violet_halo.bmp",
+        "bytes": 1654,
+        "sha256": "6f0373129d277152706f816b673bbe846437eac3dcf477e75731d1188579bf2d"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/violet_halo.bmp",
+        "bytes": 22856,
+        "sha256": "06d99288c0fb86dc16506aba7cf448699c6482caaefc38a4822da717ed152bb5"
+      }
+    ]
+  },
+  {
+    "item_id": 20764,
+    "aegis_name": "C_Fallen_Angel_Wing",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/타락천사의날개.bmp",
+        "bytes": 1654,
+        "sha256": "8c38cfb0d7e788f8101ce8a4b7428804ccdbc18783ef15b0b85230e8ff492051"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/타락천사의날개.bmp",
+        "bytes": 22856,
+        "sha256": "cd2d1b6178c4454e249f978bfcabea35f93633cdba77da6a036ff8e373a3100e"
+      }
+    ]
+  },
+  {
+    "item_id": 20765,
+    "aegis_name": "C_Archangel_Wing",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/대천사의날개.bmp",
+        "bytes": 1654,
+        "sha256": "97b4eca7320b49ca2389415223e3f6193faf779c6d68de4d421970f2ba454d95"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/대천사의날개.bmp",
+        "bytes": 22856,
+        "sha256": "6b03949299f39a72855a95532a6fc647ef8f1073b00946ba854c5c888fb56bc0"
+      }
+    ]
+  },
+  {
+    "item_id": 31143,
+    "aegis_name": "C_Krathong_Crown_TH",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/c크라통왕관_태국.bmp",
+        "bytes": 1782,
+        "sha256": "659515c85ac98281d7963d9b4251670b58e16bd86ebf0729c809a0075f0f51bd"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/c크라통왕관_태국.bmp",
+        "bytes": 22856,
+        "sha256": "acd28b086db59332be4812bd60c4a4dc1db2d50bc65448716085e2277c094b03"
+      }
+    ]
+  },
+  {
+    "item_id": 31395,
+    "aegis_name": "C_Book_Of_Magic",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/book_of_magic.bmp",
+        "bytes": 1654,
+        "sha256": "8ea51f8cef0d7602a5926cca78672e41add456a0e5e35c35f5d0e3977d5106cb"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/book_of_magic.bmp",
+        "bytes": 22856,
+        "sha256": "de503f33089ed34f4f1463f91b4ad6069da0aef546b00046c29a1f6ca60a5209"
+      }
+    ]
+  },
+  {
+    "item_id": 31438,
+    "aegis_name": "C_Fluffy_Angel_Cape",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": 1,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/c_fluffy_angel_cape.bmp",
+        "bytes": 1654,
+        "sha256": "12c7266b10a28b2685dee543bad9d3c4ef64f0b3b79f0c551b82fc4bac384591"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/c_fluffy_angel_cape.bmp",
+        "bytes": 22856,
+        "sha256": "a9b38682dc8d495d6893209ab208dd63c0a3aac27a2d6c4fcbaa0114fbf55742"
+      }
+    ]
+  },
+  {
+    "item_id": 420046,
+    "aegis_name": "C_Royal_Mantle",
+    "type": "Armor",
+    "weight": 0,
+    "buy_zeny": 0,
+    "sell_zeny": 0,
+    "equip_level_min": null,
+    "jobs": null,
+    "stack": null,
+    "trade": null,
+    "icon_collection": true,
+    "actual_assets": [
+      {
+        "path": "data/texture/유저인터페이스/item/royal_mantle.bmp",
+        "bytes": 1654,
+        "sha256": "ae6e3e47ac55b0c1169657b760f9db8a75639ecfc95299bbef88ba415bf20b4b"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/royal_mantle.bmp",
+        "bytes": 22856,
+        "sha256": "6412445ece909927c03f31ed95aee82d326f09f8f548d3afa95f0994cc60c507"
+      }
+    ]
+  }
+]

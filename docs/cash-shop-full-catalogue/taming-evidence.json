@@ -1,0 +1,118 @@
+[
+  {
+    "lure": 619,
+    "food": 531,
+    "monster": 1002,
+    "egg": 9001,
+    "cancel_consumes_one_lure": true,
+    "native_chance_unchanged": true,
+    "attempt_results": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "success_egg_persisted": true,
+    "reconnect": true,
+    "device_verified": false,
+    "disconnect_during_success_tested": false
+  },
+  {
+    "lure": 620,
+    "food": 508,
+    "monster": 1113,
+    "egg": 9002,
+    "cancel_consumes_one_lure": true,
+    "native_chance_unchanged": true,
+    "attempt_results": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "success_egg_persisted": true,
+    "reconnect": true,
+    "device_verified": false,
+    "disconnect_during_success_tested": false
+  },
+  {
+    "lure": 622,
+    "food": 534,
+    "monster": 1063,
+    "egg": 9004,
+    "cancel_consumes_one_lure": true,
+    "native_chance_unchanged": true,
+    "attempt_results": [
+      0,
+      1
+    ],
+    "success_egg_persisted": true,
+    "reconnect": true,
+    "device_verified": false,
+    "disconnect_during_success_tested": false
+  },
+  {
+    "lure": 623,
+    "food": 507,
+    "monster": 1049,
+    "egg": 9005,
+    "cancel_consumes_one_lure": true,
+    "native_chance_unchanged": true,
+    "attempt_results": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "success_egg_persisted": true,
+    "reconnect": true,
+    "device_verified": false,
+    "disconnect_during_success_tested": false
+  },
+  {
+    "lure": 624,
+    "food": 537,
+    "monster": 1011,
+    "egg": 9006,
+    "cancel_consumes_one_lure": true,
+    "native_chance_unchanged": true,
+    "attempt_results": [
+      1
+    ],
+    "success_egg_persisted": true,
+    "reconnect": true,
+    "device_verified": false,
+    "disconnect_during_success_tested": false
+  },
+  {
+    "lure": 630,
+    "food": 537,
+    "monster": 1014,
+    "egg": 9012,
+    "cancel_consumes_one_lure": true,
+    "native_chance_unchanged": true,
+    "attempt_results": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "success_egg_persisted": true,
+    "reconnect": true,
+    "device_verified": false,
+    "disconnect_during_success_tested": false
+  }
+]

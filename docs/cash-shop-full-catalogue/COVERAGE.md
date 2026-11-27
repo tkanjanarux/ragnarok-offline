@@ -77,7 +77,7 @@ Review candidates only. Live catalogue remains unchanged. A source/asset audit i
 | 71 | Starter pet egg + correct food | Not selected / service implementation required | 150 | in_progress | script_audit / asset_audit |
 | 72 | Bulk pet food | 537; packs 2000720 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 73 | Pet accessories | Not selected / service implementation required | 50 | in_progress | script_audit / asset_audit / purchase_packet / effect_packet / reconnect / edge_cases |
-| 74 | Species-selectable taming kit | Not selected / service implementation required | 100 | in_progress | script_audit / asset_audit / purchase_packet / effect_packet / reconnect / edge_cases |
+| 74 | Species-selectable taming kit | Not selected / service implementation required | 100 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 75 | Mage/hunter/priest themed pets | Not selected / service implementation required | 200 | in_progress | script_audit / asset_audit |
 | 76 | Prontera/Payon/Morroc collectible costume | Not selected / service implementation required | 250 | in_progress | script_audit / asset_audit / purchase_packet / effect_packet / reconnect / edge_cases |
 | 77 | Hunter Supply | 505, 525, 1752, 1754, 1755, 1756, 1757, 1767; packs 2000770, 2000771, 2000772, 2000773, 2000774, 2000775 | 360, 360, 360, 360, 360, 360 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
@@ -89,8 +89,8 @@ Review candidates only. Live catalogue remains unchanged. A source/asset audit i
 | 83 | Loot hunt | 505, 11623, 12210; packs 2000830 | 1350 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 84 | Leveling | 504, 505, 12208, 12209; packs 2000840 | 765 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 85 | Map exploration | 505, 601, 602, 11623, 12118, 12119, 12120, 12121; packs 2000850, 2000851, 2000852, 2000853 | 672, 672, 672, 672 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 86 | Build change | Not selected / service implementation required | 600 | in_progress | script_audit / asset_audit / purchase_packet / effect_packet / reconnect / edge_cases |
-| 87 | Five-companion role supplies | Not selected / service implementation required | 600 | in_progress | Five supply variants defined; distribution and native companion consumption packet tests still pending. Contents stay in owner inventory until explicit Give Supplies. |
+| 86 | Build change | Not selected / service implementation required | 600 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
+| 87 | Five-companion role supplies | Not selected / service implementation required | 600 | in_progress | HP/SP delivery and consumption passed for five actual roles. Arrow/gem combat consumption and transfer permission edges pending. |
 | 88 | Team fashion | Not selected / service implementation required | 1000 | blocked | Current companion gear_runtime::reason explicitly rejects EQP_COSTUME and EQP_SHADOW_GEAR. Team fashion is conditional on appearance support; excluded from sale, not replaced by stat gear. |
 
 Device visual/hardware acceptance is unverified for every row. No Simulator is required.

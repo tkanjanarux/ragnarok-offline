@@ -1905,7 +1905,7 @@
     "request": 87,
     "item_id": 2000870,
     "aegis_name": "RO_Catalogue_87_0",
-    "name": "Knight Companion Supplies",
+    "name": "Knight Puller Companion Supplies",
     "components": [
       {
         "item_id": 504,
@@ -1921,7 +1921,7 @@
       }
     ],
     "price_cash": 180,
-    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true
@@ -1952,7 +1952,7 @@
       }
     ],
     "price_cash": 148,
-    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true
@@ -1977,7 +1977,7 @@
       }
     ],
     "price_cash": 279,
-    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true
@@ -2008,7 +2008,7 @@
       }
     ],
     "price_cash": 315,
-    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true
@@ -2017,7 +2017,7 @@
     "request": 87,
     "item_id": 2000874,
     "aegis_name": "RO_Catalogue_87_4",
-    "name": "Assassin Companion Supplies",
+    "name": "Knight Spear Companion Supplies",
     "components": [
       {
         "item_id": 504,
@@ -2033,7 +2033,7 @@
       }
     ],
     "price_cash": 153,
-    "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+    "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
     "status": "candidate_not_for_live_sale",
     "transaction": "catalogue_exchange",
     "tests_pending": true

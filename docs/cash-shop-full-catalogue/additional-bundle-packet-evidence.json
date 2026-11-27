@@ -1,0 +1,146 @@
+[
+  {
+    "item_id": 2000721,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000722,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000723,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000724,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000740,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000741,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000742,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000743,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000744,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000745,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000860,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000870,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000871,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000872,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000873,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  },
+  {
+    "item_id": 2000874,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  }
+]

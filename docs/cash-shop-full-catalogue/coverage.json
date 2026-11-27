@@ -58,7 +58,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 2,
@@ -110,7 +111,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 3,
@@ -162,7 +164,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 4,
@@ -214,7 +217,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 5,
@@ -266,7 +270,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 6,
@@ -318,7 +323,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 7,
@@ -369,7 +375,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 8,
@@ -420,7 +427,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 9,
@@ -471,7 +479,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 10,
@@ -522,7 +531,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 11,
@@ -573,7 +583,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 12,
@@ -624,7 +635,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 13,
@@ -672,7 +684,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 14,
@@ -720,7 +733,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 15,
@@ -768,7 +782,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 16,
@@ -816,7 +831,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 17,
@@ -864,7 +880,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 18,
@@ -912,7 +929,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 19,
@@ -960,7 +978,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 20,
@@ -1008,7 +1027,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 21,
@@ -1132,7 +1152,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 22,
@@ -1198,6 +1219,11 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "utility_evidence": {
+      "reference": "utilities-evidence.json",
+      "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
     }
   },
   {
@@ -1249,7 +1275,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 24,
@@ -1300,7 +1327,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 25,
@@ -1351,7 +1379,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 26,
@@ -1402,7 +1431,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 27,
@@ -1453,7 +1483,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 28,
@@ -1504,7 +1535,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 29,
@@ -1555,7 +1587,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 30,
@@ -1606,7 +1639,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 31,
@@ -1657,7 +1691,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 32,
@@ -1708,7 +1743,8 @@
     "effect_evidence": {
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 33,
@@ -1796,7 +1832,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 34,
@@ -1847,7 +1884,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 35,
@@ -1894,7 +1932,8 @@
       "reference": "services-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 36,
@@ -1941,7 +1980,8 @@
       "reference": "services-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 37,
@@ -1988,7 +2028,8 @@
       "reference": "services-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 38,
@@ -2035,7 +2076,8 @@
       "reference": "services-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 39,
@@ -2077,7 +2119,12 @@
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "utility_evidence": {
+      "reference": "utilities-evidence.json",
+      "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
+    }
   },
   {
     "request": 40,
@@ -2119,7 +2166,8 @@
       "device": false
     },
     "blocker": null,
-    "skus": []
+    "skus": [],
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 41,
@@ -2167,6 +2215,11 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "utility_evidence": {
+      "reference": "utilities-evidence.json",
+      "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
     }
   },
   {
@@ -2214,7 +2267,8 @@
       "reference": "services-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 43,
@@ -2261,7 +2315,8 @@
       "reference": "styles-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 44,
@@ -2315,7 +2370,8 @@
       "reference": "styles-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 45,
@@ -2362,7 +2418,8 @@
       "reference": "services-evidence.json",
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 46,
@@ -2409,7 +2466,8 @@
       "reference": "card-removal-evidence.json",
       "purchase_test_pending": true,
       "failure_inventory_paths_pending": true
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 47,
@@ -2520,7 +2578,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 48,
@@ -2631,7 +2705,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 49,
@@ -2742,7 +2832,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 50,
@@ -2854,7 +2960,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 51,
@@ -2965,7 +3087,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 52,
@@ -3894,7 +4032,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 53,
@@ -4005,7 +4159,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 54,
@@ -4116,7 +4286,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 55,
@@ -4227,7 +4413,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 56,
@@ -4338,7 +4540,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 57,
@@ -4449,7 +4667,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 58,
@@ -4560,7 +4794,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 59,
@@ -4671,7 +4921,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 60,
@@ -5600,7 +5866,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 61,
@@ -5711,7 +5993,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 62,
@@ -5822,7 +6120,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 63,
@@ -5933,7 +6247,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 64,
@@ -6044,7 +6374,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 65,
@@ -6973,7 +7319,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 66,
@@ -7902,7 +8264,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 67,
@@ -8013,7 +8391,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 68,
@@ -8124,7 +8518,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 69,
@@ -8235,7 +8645,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 70,
@@ -8346,7 +8772,23 @@
       "attack": 0,
       "slots": 0,
       "exact_live_combo_matches": 0
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 71,
@@ -8411,6 +8853,13 @@
       "native_SQL_tests": 12,
       "tested": "cash once/cancel/egg+food atomic delivery/hatch/feed/accessory/name/reconnect/return egg",
       "pending": "native app visual acceptance, tame-family variants, status bonus boundaries"
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "pet_species_evidence": {
+      "reference": "pet-species-evidence.json",
+      "species": 6,
+      "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
+      "device_verified": false
     }
   },
   {
@@ -8556,7 +9005,19 @@
         "transaction": "catalogue_exchange",
         "tests_pending": true
       }
-    ]
+    ],
+    "additional_transaction_evidence": {
+      "reference": "additional-bundle-packet-evidence.json",
+      "tested": "purchase/cash once/cancel/exact contents/reconnect",
+      "effects_tested": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "pet_species_evidence": {
+      "reference": "pet-species-evidence.json",
+      "species": 6,
+      "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
+      "device_verified": false
+    }
   },
   {
     "request": 73,
@@ -8648,6 +9109,13 @@
         10012
       ],
       "rendering": "ACT-only overlay added using existing species SPR; actual five ACT/SPR decoders/frame indices tested, not device rendering"
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "pet_species_evidence": {
+      "reference": "pet-species-evidence.json",
+      "species": 6,
+      "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
+      "device_verified": false
     }
   },
   {
@@ -8675,9 +9143,9 @@
     "evidence": {
       "script_audit": false,
       "asset_audit": false,
-      "purchase_packet": false,
+      "purchase_packet": true,
       "effect_packet": false,
-      "reconnect": false,
+      "reconnect": true,
       "edge_cases": false,
       "device": false
     },
@@ -8834,7 +9302,24 @@
         "transaction": "catalogue_exchange",
         "tests_pending": true
       }
-    ]
+    ],
+    "additional_transaction_evidence": {
+      "reference": "additional-bundle-packet-evidence.json",
+      "tested": "purchase/cash once/cancel/exact contents/reconnect",
+      "effects_tested": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "pet_species_evidence": {
+      "reference": "pet-species-evidence.json",
+      "species": 6,
+      "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
+      "device_verified": false
+    },
+    "taming_evidence": {
+      "reference": "taming-evidence.json",
+      "species": 6,
+      "scope": "actual native chance, cancel consumes lure per native rules, capture egg identity/persistence/reconnect; no success-disconnect assertion"
+    }
   },
   {
     "request": 75,
@@ -8903,6 +9388,13 @@
       "native_SQL_tests": 12,
       "tested": "cash once/cancel/egg+food atomic delivery/hatch/feed/accessory/name/reconnect/return egg",
       "pending": "native app visual acceptance, tame-family variants, status bonus boundaries"
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "pet_species_evidence": {
+      "reference": "pet-species-evidence.json",
+      "species": 6,
+      "scope": "actual no-food rejection, correct food-pack purchase/feed, accessory equip, Loyal stat change and reconnect; synthetic owned pet/egg at explicit intimacy fixture",
+      "device_verified": false
     }
   },
   {
@@ -8943,7 +9435,23 @@
       "Prontera": 19630,
       "Payon": 19618,
       "Morroc": 19844
-    }
+    },
+    "costume_packet_evidence": {
+      "reference": "costumes-evidence.json",
+      "count": 25,
+      "stats_checked": [
+        "MaxHP",
+        "MaxSP",
+        "STR",
+        "AGI",
+        "VIT",
+        "INT",
+        "DEX",
+        "LUK"
+      ],
+      "device_verified": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 77,
@@ -9103,7 +9611,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 78,
@@ -9163,7 +9672,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 79,
@@ -9223,7 +9733,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 80,
@@ -9283,7 +9794,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 81,
@@ -9403,7 +9915,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 82,
@@ -9475,7 +9988,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 83,
@@ -9539,7 +10053,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 84,
@@ -9609,7 +10124,8 @@
     "additional_effect_evidence": {
       "reference": "status-items-evidence.json",
       "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 85,
@@ -9777,7 +10293,8 @@
       "cases": "purchase/cash once/cancel/exact contents/reconnect; 67 SKUs",
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
-    }
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 86,
@@ -9804,9 +10321,9 @@
     "evidence": {
       "script_audit": false,
       "asset_audit": false,
-      "purchase_packet": false,
+      "purchase_packet": true,
       "effect_packet": false,
-      "reconnect": false,
+      "reconnect": true,
       "edge_cases": false,
       "device": false
     },
@@ -9850,7 +10367,13 @@
         "transaction": "catalogue_exchange",
         "tests_pending": true
       }
-    ]
+    ],
+    "additional_transaction_evidence": {
+      "reference": "additional-bundle-packet-evidence.json",
+      "tested": "purchase/cash once/cancel/exact contents/reconnect",
+      "effects_tested": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
     "request": 87,
@@ -9865,7 +10388,7 @@
     ],
     "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
     "intended_effect": "Five-companion role supplies",
-    "variant_spec": "fixed quantities; explicit choice before consumption",
+    "variant_spec": "Five roles using four supported careers: Knight Puller, Knight Spear, Hunter, Wizard, Priest. No Assassin companion is implemented by this server; player Assassin Supply remains request81.",
     "dependencies": [
       "effective item script + restrictions",
       "GRF iteminfo/icon + use assets",
@@ -9878,20 +10401,20 @@
     "evidence": {
       "script_audit": false,
       "asset_audit": false,
-      "purchase_packet": false,
+      "purchase_packet": true,
       "effect_packet": false,
-      "reconnect": false,
+      "reconnect": true,
       "edge_cases": false,
       "device": false
     },
-    "blocker": "Five supply variants defined; distribution and native companion consumption packet tests still pending. Contents stay in owner inventory until explicit Give Supplies.",
+    "blocker": "HP/SP delivery and consumption passed for five actual roles. Arrow/gem combat consumption and transfer permission edges pending.",
     "skus": [],
     "exact_candidates": [
       {
         "request": 87,
         "item_id": 2000870,
         "aegis_name": "RO_Catalogue_87_0",
-        "name": "Knight Companion Supplies",
+        "name": "Knight Puller Companion Supplies",
         "components": [
           {
             "item_id": 504,
@@ -9907,7 +10430,7 @@
           }
         ],
         "price_cash": 180,
-        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
         "status": "candidate_not_for_live_sale",
         "transaction": "catalogue_exchange",
         "tests_pending": true
@@ -9938,7 +10461,7 @@
           }
         ],
         "price_cash": 148,
-        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
         "status": "candidate_not_for_live_sale",
         "transaction": "catalogue_exchange",
         "tests_pending": true
@@ -9963,7 +10486,7 @@
           }
         ],
         "price_cash": 279,
-        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
         "status": "candidate_not_for_live_sale",
         "transaction": "catalogue_exchange",
         "tests_pending": true
@@ -9994,7 +10517,7 @@
           }
         ],
         "price_cash": 315,
-        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
         "status": "candidate_not_for_live_sale",
         "transaction": "catalogue_exchange",
         "tests_pending": true
@@ -10003,7 +10526,7 @@
         "request": 87,
         "item_id": 2000874,
         "aegis_name": "RO_Catalogue_87_4",
-        "name": "Assassin Companion Supplies",
+        "name": "Knight Spear Companion Supplies",
         "components": [
           {
             "item_id": 504,
@@ -10019,12 +10542,23 @@
           }
         ],
         "price_cash": 153,
-        "choice": "Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
+        "choice": "Contents go to your inventory. Team roles: Knight Puller, Knight Spear, Hunter, Wizard, Priest. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.",
         "status": "candidate_not_for_live_sale",
         "transaction": "catalogue_exchange",
         "tests_pending": true
       }
-    ]
+    ],
+    "additional_transaction_evidence": {
+      "reference": "additional-bundle-packet-evidence.json",
+      "tested": "purchase/cash once/cancel/exact contents/reconnect",
+      "effects_tested": false
+    },
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "companion_evidence": {
+      "reference": "companion-supplies-evidence.json",
+      "scope": "five actual roles purchase/open/Give Supplies/native HP+SP consumption/Stop pauses/save",
+      "remaining": "arrow and gem combat consumption, cross-owner and active-transfer rejection"
+    }
   },
   {
     "request": 88,
@@ -10060,6 +10594,7 @@
       "device": false
     },
     "blocker": "Current companion gear_runtime::reason explicitly rejects EQP_COSTUME and EQP_SHADOW_GEAR. Team fashion is conditional on appearance support; excluded from sale, not replaced by stat gear.",
-    "skus": []
+    "skus": [],
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   }
 ]

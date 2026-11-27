@@ -168,3 +168,36 @@ Milestone 2 source `f6a3c781ecebbdc62cf9cd64c532d272b035b08c` passed Xcode27.2 i
 Its downloaded unsigned IPA SHA256 is
 `31f6aee6d196d891ab64b577249ce3b8418fcb13b32e3d8b524b41ecee5f032d`.
 It does not include the new pet-rendering work; a later build is required.
+
+### Subsequent isolated evidence
+
+- All 16 added variants passed buy/debit once/cancel/open/exact contents/reconnect,
+  bringing tested bundle transactions to 83. Effect readiness remains per item.
+- All 25 costumes passed purchase/equip/persist/reconnect with MaxHP, MaxSP and all
+  six base+bonus stat parameters unchanged. The two garment metadata overrides
+  resolve actual local icons; [87 native items](native-item-audit.json) have all
+  174 icon/collection BMP files verified. No extracted images are included.
+- [Six taming species](taming-evidence.json) succeeded using their native unchanged
+  capture chances. Native cancellation consumes a lure; it is not a free preview.
+  Capture-success/disconnect recovery is not covered by that test.
+- [Six pet species](pet-species-evidence.json) passed no-food rejection, correct
+  food-pack purchase/feed, accessory equip, Loyal bonus and reconnect. These effect
+  tests explicitly seed synthetic owned eggs/pets at Loyal intimacy; native capture
+  is tested separately. The extra Drops SPR/backpack ACT pair also passed native
+  parsing/frame-index validation. None is an iPhone rendering claim.
+- [Utilities](utilities-evidence.json): dead-only Siegfried resurrection, repeated
+  resurrection consuming one token, Magnifier identification, and all four arrow
+  crafting materials with exact native output and stale-selection rejection.
+- [Five companion roles](companion-supplies-evidence.json) passed real pack purchase,
+  opening, Give Supplies transfer and native HP/SP potion consumption; Stop pauses
+  consumption. The actual server has four recruitable careers. The five-role set
+  is Knight Puller, Knight Spear, Hunter, Wizard and Priest, not a nonexistent
+  Assassin companion. This does not change player Assassin Supply (request81).
+  Arrow/gem combat consumption and transfer permission edges remain pending.
+
+Milestone3 `05f32a9e74c05eaa6e973867fe994df4c62f63ba` passed all five workflow jobs in
+[run45951620214](https://github.com/tkanjanarux/ragnarok-offline/actions/runs/45951620214).
+Downloaded unsigned IPA SHA256:
+`3fdca0f786c12b6e343707f4a2010d93a162e31d496e0abd6ed4c4a81f816219`.
+It includes pet accessory rendering, but predates the corrected companion role
+labels; it is an intermediate artifact, not the final catalogue delivery.

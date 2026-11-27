@@ -1,0 +1,144 @@
+[
+  {
+    "sku": 2000870,
+    "job": "knight",
+    "build": "puller",
+    "purchase": true,
+    "actual_ui_transfer": true,
+    "contents": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 50,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 10,
+        "unit_cash": 5
+      }
+    ],
+    "hp_consumption": true,
+    "sp_consumption": true,
+    "stop_pauses": true,
+    "persisted": true,
+    "device_verified": false
+  },
+  {
+    "sku": 2000871,
+    "job": "hunter",
+    "build": "double",
+    "purchase": true,
+    "actual_ui_transfer": true,
+    "contents": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 20,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 1751,
+        "aegis_name": "Silver_Arrow",
+        "quantity": 200,
+        "unit_cash": 0.02
+      }
+    ],
+    "hp_consumption": true,
+    "sp_consumption": true,
+    "stop_pauses": true,
+    "persisted": true,
+    "device_verified": false
+  },
+  {
+    "sku": 2000872,
+    "job": "wizard",
+    "build": "bolt",
+    "purchase": true,
+    "actual_ui_transfer": true,
+    "contents": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      }
+    ],
+    "hp_consumption": true,
+    "sp_consumption": true,
+    "stop_pauses": true,
+    "persisted": true,
+    "device_verified": false
+  },
+  {
+    "sku": 2000873,
+    "job": "priest",
+    "build": "support",
+    "purchase": true,
+    "actual_ui_transfer": true,
+    "contents": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 20,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 50,
+        "unit_cash": 5
+      },
+      {
+        "item_id": 717,
+        "aegis_name": "Blue_Gemstone",
+        "quantity": 20,
+        "unit_cash": 2
+      }
+    ],
+    "hp_consumption": true,
+    "sp_consumption": true,
+    "stop_pauses": true,
+    "persisted": true,
+    "device_verified": false
+  },
+  {
+    "sku": 2000874,
+    "job": "knight",
+    "build": "spear",
+    "purchase": true,
+    "actual_ui_transfer": true,
+    "contents": [
+      {
+        "item_id": 504,
+        "aegis_name": "White_Potion",
+        "quantity": 40,
+        "unit_cash": 3
+      },
+      {
+        "item_id": 505,
+        "aegis_name": "Blue_Potion",
+        "quantity": 10,
+        "unit_cash": 5
+      }
+    ],
+    "hp_consumption": true,
+    "sp_consumption": true,
+    "stop_pauses": true,
+    "persisted": true,
+    "device_verified": false
+  }
+]

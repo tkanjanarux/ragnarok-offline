@@ -117738,8 +117738,8 @@
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000870": {
-    "identifiedItemName": "Knight Companion Supplies",
-    "unidentifiedItemName": "Knight Companion Supplies",
+    "identifiedItemName": "Knight Puller Companion Supplies",
+    "unidentifiedItemName": "Knight Puller Companion Supplies",
     "identifiedItemDescription": "50 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },
@@ -117762,8 +117762,8 @@
     "unidentifiedItemDescription": "Fixed-content pack."
   },
   "2000874": {
-    "identifiedItemName": "Assassin Companion Supplies",
-    "unidentifiedItemName": "Assassin Companion Supplies",
+    "identifiedItemName": "Knight Spear Companion Supplies",
+    "unidentifiedItemName": "Knight Spear Companion Supplies",
     "identifiedItemDescription": "40 x White_Potion; 10 x Blue_Potion. Contents go to your inventory. Reserve a matching companion and use Give Supplies (1-100 per transfer). No automatic distribution or new AI behavior.\r\nFixed contents. Confirmation required; no random item selection.",
     "unidentifiedItemDescription": "Fixed-content pack."
   },

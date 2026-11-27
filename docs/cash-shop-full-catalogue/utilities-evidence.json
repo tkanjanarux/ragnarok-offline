@@ -1,0 +1,53 @@
+[
+  {
+    "item_id": 7621,
+    "purchased_two": true,
+    "cash_once": true,
+    "alive_request_no_consume": true,
+    "dead_revives": true,
+    "duplicate_packet_one_consume": true,
+    "persisted": true
+  },
+  {
+    "item_id": 611,
+    "identify_effect": true,
+    "one_consumed": true,
+    "persisted": true
+  },
+  {
+    "material": 990,
+    "arrow": 1752,
+    "quantity": 600,
+    "actual_skill_selection": true,
+    "one_material_consumed": true,
+    "duplicate_selection_no_grant": true,
+    "persisted": true
+  },
+  {
+    "material": 991,
+    "arrow": 1754,
+    "quantity": 150,
+    "actual_skill_selection": true,
+    "one_material_consumed": true,
+    "duplicate_selection_no_grant": true,
+    "persisted": true
+  },
+  {
+    "material": 992,
+    "arrow": 1755,
+    "quantity": 150,
+    "actual_skill_selection": true,
+    "one_material_consumed": true,
+    "duplicate_selection_no_grant": true,
+    "persisted": true
+  },
+  {
+    "material": 993,
+    "arrow": 1756,
+    "quantity": 150,
+    "actual_skill_selection": true,
+    "one_material_consumed": true,
+    "duplicate_selection_no_grant": true,
+    "persisted": true
+  }
+]
