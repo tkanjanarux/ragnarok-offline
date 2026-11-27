@@ -7140,10 +7140,10 @@
     "unidentifiedItemName" : "Shield"
   },
   "0002115" : {
-    "identifiedItemDescription" : "A shield used by Gna, messenger of Freyja, when she served as a Valkyrie.\r\n^FF0000^F67E04Used for War of Emperium TE God Item Creation.^000000^000000\r\nClass: ^808080Shield^000000\r\nDefense: ^80808080^000000\r\nWeight: ^80808050^000000\r\nRequires Level: ^80808065^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nMdef + 5\r\nReduces damage taken from Water, Fire, Shadow and Undead property attacks by 20%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Valkyrja's Shield [1]^000000\r\n^008080Fricca's Circlet^000000\r\n^008080Odin's Blessing [1]^000000\r\nDef + 2\r\nMdef + 5\r\n\r\nFor every upgrade level of ^008080Valkyrja's Shield [1]^000000,\r\nDef - 1\r\nMdef + 1\r\nFor every upgrade level of ^008080Fricca's Circlet^000000,\r\nDef - 1\r\nMdef + 1\r\n\r\n^800080Set Bonus^000000\r\n^008080Valkyrja's Shield [1]^000000\r\n^008080Long Horn [1]^000000\r\nAdds a 0.5% chance of casting ^0000FFLevel 2 Assumptio^000000 on the user when receiving a physical attack.",
-    "identifiedItemName" : "Valkyrja's Shield",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Shield"
+    "identifiedItemDescription": "Fire, Water, Shadow and Undead element damage received -20%; MDEF +5. A shield occupies the left hand and cannot be combined with a two-handed bow.\n\nRequired Base Level: 65. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 1. DEF: 80. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Valkyrja's Shield",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Shield"
   },
   "0002116" : {
     "identifiedItemDescription" : "Super Novice Guardian Angel's shield which contains holy power that can nullify evil.\r\nClass: ^808080Shield^000000\r\nDefense: ^80808030^000000\r\nWeight: ^80808050^000000\r\nRequires Level: ^80808020^000000\r\nUsable By: ^808080Novice Jobs^000000\r\nReduces damage taken from Demon race enemies by 5%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Angelic Cardigan [1]^000000\r\n^008080Angelic Protection [1]^000000\r\n^008080Angel's Reincarnation [1]^000000\r\n^008080Angelic Guard [1]^000000\r\n^008080Angel's Kiss [1]^000000\r\nMax HP + 900\r\nMax SP + 100\r\nAdds a chance of casting ^0000FFLevel 1 Assumptio^000000 on the user when receiving a physical attack.",
@@ -8160,10 +8160,10 @@
     "unidentifiedItemName" : "Headgear"
   },
   "0002296" : {
-    "identifiedItemDescription" : "A special optical tool that enables one to observe objects from a great distance.\r\nClass: ^808080Headgear^000000\r\nPosition: ^808080Middle^000000\r\nDefense: ^8080802^000000\r\nWeight: ^80808010^000000\r\nRequires Level: ^80808050^000000\r\nUsable By: ^808080Archer Jobs^000000\r\nDex + 1",
-    "identifiedItemName" : "Binoculars",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Headgear"
+    "identifiedItemDescription": "DEX +1. Archer, Hunter and Bard/Dancer job families only.\n\nRequired Base Level: 50. Jobs/classes: Archer, BardDancer, Hunter.\n\nSlots: 0. DEF: 2. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Binoculars",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Headgear"
   },
   "0002297" : {
     "identifiedItemDescription" : "A mask worn by Goblins to scare and intimidate unsuspecting enemies.\r\nClass: ^808080Headgear^000000\r\nPosition: ^808080Middle, Lower^000000\r\nDefense: ^8080801^000000\r\nWeight: ^80808010^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000",
@@ -8568,10 +8568,10 @@
     "unidentifiedItemName" : "Armor"
   },
   "0002365" : {
-    "identifiedItemDescription" : "A uniform that was once worn by a chef that was obsessed with cleanliness. Nobody could stop him once he started talking about cuisine.\r\nClass: ^808080Armor^000000\r\nDefense: ^80808015^000000\r\nWeight: ^80808030^000000\r\nRequires Level: ^80808055^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nIncreases the variable casting time of skills by 15%.\r\nThe users casting cannot be interrupted outside of WoE.\r\n\r\n^800080Set Bonus^000000\r\n^008080Orleans's Gown [1]^000000\r\n^008080Orleans's Necklace [1]^000000\r\nReduces the variable casting time of skills by 15%.",
-    "identifiedItemName" : "Orleans's Gown",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Armor"
+    "identifiedItemDescription": "Variable cast time +15%. Damage does not interrupt casting under the native map rules. This does NOT prevent movement flinch/knockback or make attacks uninterrupted.\n\nRequired Base Level: 55. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 15. Weight: 30.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Orleans's Gown",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Armor"
   },
   "0002366" : {
     "identifiedItemDescription" : "A holy garment that has been purified by a series of religious rituals.\r\nClass: ^808080Armor^000000\r\nDefense: ^80808050^000000\r\nWeight: ^808080150^000000\r\nRequires Level: ^80808055^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nIncreases resistance to ^800000Curse^000000, ^800000Silence^000000, ^800000Sleep^000000, ^800000Stone^000000, and ^800000Stun^000000 by 5%.",
@@ -8580,10 +8580,10 @@
     "unidentifiedItemName" : "Armor"
   },
   "0002367" : {
-    "identifiedItemDescription" : "A sniping suit that\r\nstimulates all the\r\nmuscles used in firing\r\narrows, increasing\r\naccuracy while reducing stress on the body.\r\nCRI +6 with additional\r\nCRI bonus determined\r\nby LUK stat. MDEF +5.\r\nSkill Delay reduced\r\nby 23%.\r\nClass : ^777777Armor^000000\r\nDefense : ^77777742^000000\r\nWeight : ^77777775^000000\r\nRequired Level : ^77777750^000000\r\nJobs: ^777777Sniper Job^000000",
-    "identifiedItemName" : "Sniping Suit",
-    "unidentifiedItemDescription" : "Unknown item\r\nrequiring Appraisal.\r\nCan be identified by\r\nusing a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Armor"
+    "identifiedItemDescription": "MDEF +5; Critical +6 plus floor(base LUK/10); after-cast delay -23%. Hunter upper/third/fourth classes only; normal Hunter cannot equip it. Not skill cooldown reduction.\n\nRequired Base Level: 50. Jobs/classes: Hunter; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 42. Weight: 75.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Sniping Suit",
+    "unidentifiedItemDescription": "Unknown item\r\nrequiring Appraisal.\r\nCan be identified by\r\nusing a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Armor"
   },
   "0002368" : {
     "identifiedItemDescription" : "",
@@ -8622,10 +8622,10 @@
     "unidentifiedItemName" : "Armor"
   },
   "0002374" : {
-    "identifiedItemDescription" : "A robe which is decorated with unknown letters. The wearer feels like they're learning a new language.\r\nClass: ^808080Armor^000000\r\nDefense: ^80808057^000000\r\nWeight: ^80808030^000000\r\nRequires Level: ^80808060^000000\r\nUsable By: ^808080High Priest Jobs, High Wizard Jobs, Sniper Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nMax SP + 150\r\nMdef + 5\r\nReduces the global delay of skills by 10%.\r\nIncreases the recovery rate of recovery skills by 6%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Robe [1]^000000\r\n^008080Diabolus Ring [1]^000000\r\nATK + 3%\r\nMATK + 3%\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Wing^000000\r\n^008080Diabolus Robe^000000\r\nMDef + 25\r\nMaxSP + 350\r\nReduces the cast delay of skills by 10%\r\nIncreases physical and magical damage on Temple of the Demon God monsters by 20%.\r\nReduces damage taken from Temple of the Demon God monsters by 5%,\r\nmATK + 15 for every upgrade level of ^008080Diabolus Robe^000000,\r\nIncreases the recovery rate of recovery skills by 2% for every upgrade level of ^008080Diabolus Robe^000000",
-    "identifiedItemName" : "Diabolus Robe",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Armor"
+    "identifiedItemDescription": "MaxSP +150; MDEF +5; outgoing healing power +6%; after-cast delay -10%. Diabolus Ring combo partner is not included.\n\nRequired Base Level: 60. Jobs/classes: Acolyte, Archer, BardDancer, Hunter, Mage, Monk, Priest, Sage, Wizard; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 57. Weight: 30.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Diabolus Robe",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Armor"
   },
   "0002375" : {
     "identifiedItemDescription" : "An Armor which is made of an unknown metal in the human-world. Mysterious power is hidden in the armor.\r\nClass: ^808080Armor^000000\r\nDefense: ^80808079^000000\r\nWeight: ^80808060^000000\r\nRequires Level: ^80808060^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs^000000\r\nStr + 2\r\nDex + 1\r\nMax HP + 150\r\nIncreases resistance to ^800000Stone^000000 and ^800000Stun^000000 by 5%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Armor [1]^000000\r\n^008080Diabolus Ring [1]^000000\r\nATK + 3%\r\nMATK + 3%\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Wing^000000\r\n^008080Diabolus Armor^000000\r\nStr + 8\r\nDex + 4\r\nMaxHP + 1350\r\nIncreases physical and magical damage on Temple of the Demon God monsters by 20%.\r\nReduces damage taken from Temple of the Demon God monsters by 5%,\r\nATK + 15 for every upgrade level of ^008080Diabolus Armor^000000,",
@@ -8754,10 +8754,10 @@
     "unidentifiedItemName" : "Armor"
   },
   "0002399" : {
-    "identifiedItemDescription" : "Inner wear made out of a draco's mane.\r\nClass: ^808080Armor^000000\r\nDefense: ^80808020^000000\r\nWeight: ^80808050^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nMdef + 3\r\n\r\n^800080Set Bonus^000000\r\n^008080Dragon Vest [1]^000000\r\n^008080Dragon Manteau [1]^000000\r\nAgi + 5\r\nFlee + 15",
-    "identifiedItemName" : "Dragon Vest",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Armor"
+    "identifiedItemDescription": "MDEF +3. With Dragon Manteau 2553: AGI +5 and Flee +15 in addition to individual item bonuses. No ASPD percentage bonus: AGI changes native attack timing.\n\nRequired Base Level: 1. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 20. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Dragon Vest",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Armor"
   },
   "0002401" : {
     "identifiedItemDescription" : "Cute, feminine shoes that are a part of the standard schoolgirl's uniform. Fortunately, these are unisex.\r\nClass: ^808080Shoes^000000\r\nDefense: ^8080805^000000\r\nWeight: ^80808020^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080All Jobs^000000",
@@ -8892,10 +8892,10 @@
     "unidentifiedItemName" : "Shoes"
   },
   "0002423" : {
-    "identifiedItemDescription" : "Although it seems\r\nthat whoever made\r\nthese shoes tried to\r\nfix his mistakes, he\r\ndidn't make these\r\nas well as he hoped.\r\nIncrease Max HP and\r\nSP by 20%. Increasing\r\nthe Upgrade Level\r\nwill reduce Max\r\nSP and HP bonus,\r\nbut will increase\r\nDEF bonus.\r\nClass : ^777777Footwear^000000    Defense : ^77777713^000000\r\nWeight : ^77777750^000000\r\nRequired Level : ^77777785^000000\r\nJobs: ^777777All Transcendent\r\nJobs except Novice^000000",
-    "identifiedItemName" : "Variant Shoes",
-    "unidentifiedItemDescription" : "Unknown item\r\nrequiring Appraisal.\r\nCan be identified by\r\nusing a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Shoes"
+    "identifiedItemDescription": "At +0: MaxHP +20%, MaxSP +20%. Each refine level reduces both bonuses by 1 percentage point; every 2 refines adds 1 extra DEF. Sold at +0, not randomly refined.\n\nRequired Base Level: 85. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 0. DEF: 13. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Variant Shoes",
+    "unidentifiedItemDescription": "Unknown item\r\nrequiring Appraisal.\r\nCan be identified by\r\nusing a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Shoes"
   },
   "0002424" : {
     "identifiedItemDescription" : "This pair of shoes was designed with a waterproof coating that prevents slippage in wet areas.\r\nClass: ^808080Shoes^000000\r\nDefense: ^80808013^000000\r\nWeight: ^80808030^000000\r\nRequires Level: ^80808055^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nReduces damage taken from Water property attacks by 5%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Tidal Shoes [1]^000000\r\n^008080Wool Scarf [1]^000000\r\nMax HP + 10%\r\nHP Recovery + 5%",
@@ -8952,10 +8952,10 @@
     "unidentifiedItemName" : "Shoes"
   },
   "0002433" : {
-    "identifiedItemDescription" : "Mysterious boots that automatically adjust their size to the wearer's size. They seem alive.\r\nClass: ^808080Shoes^000000\r\nDefense: ^80808015^000000\r\nWeight: ^80808025^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nMax HP + 10 for every base level.\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Boots [1]^000000\r\n^008080Diabolus Manteau [1]^000000\r\nMax HP + 6%\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Wing^000000\r\n^008080Diabolus Boots^000000\r\nIncreases physical and magical damage on Temple of the Demon God monsters by 20%.\r\nReduces damage taken from Temple of the Demon God monsters by 5%,\r\nMaxHP + 100 for every Base Level\r\nATK\/mATK + 20 for every upgrade level of ^008080Diabolus Boots^000000",
-    "identifiedItemName" : "Diabolus Boots",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Shoes"
+    "identifiedItemDescription": "MaxHP +10 per Base Level. With Diabolus Manteau 2537: an additional MaxHP +6%.\n\nRequired Base Level: 1. Jobs/classes: Alchemist, Assassin, BardDancer, Blacksmith, Crusader, Hunter, Knight, Monk, Priest, Rogue, Sage, Wizard; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 15. Weight: 25.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Diabolus Boots",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Shoes"
   },
   "0002434" : {
     "identifiedItemDescription" : "A pair of boots made of light, resilient leather that makes you want to run when you wear them.\r\nClass: ^808080Shoes^000000\r\nDefense: ^80808016^000000\r\nWeight: ^80808050^000000\r\nRequires Level: ^80808055^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nAgi + 1\r\nIf upgrade level is +9 or higher,\r\nAdditional Agi + 2\r\n\r\n^800080Set Bonus^000000\r\n^008080Black Leather Boots [1]^000000\r\n^008080Rider Insignia^000000 or ^008080Rider Insignia [1]^000000\r\nFlee + 10",
@@ -9378,10 +9378,10 @@
     "unidentifiedItemName" : "Garment"
   },
   "0002518" : {
-    "identifiedItemDescription" : "A shawl marked with ancient conjuration patterns that is one of the three keys for releasing the seal that binds Morpheus.\r\nClass: ^808080Garment^000000\r\nDefense: ^8080808^000000\r\nWeight: ^80808060^000000\r\nRequires Level: ^80808033^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nMax SP + 10%\r\nMdef + 3\r\n\r\n^800080Set Bonus^000000\r\n^008080Morpheus's Shawl^000000\r\n^008080Morpheus's Hood^000000\r\n^008080Morpheus's Ring^000000\r\n^008080Morpheus's Bracelet^000000\r\nInt + 5\r\nMax SP + 20%\r\nMdef + 11\r\nThe user's casting cannot be interrupted outside of WoE.\r\nIncreases the variable casting time of skills by 25%.",
-    "identifiedItemName" : "Morpheus's Shawl",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Garment"
+    "identifiedItemDescription": "MaxSP +10%; MDEF +3. The full Morpheus set also requires Hood 5126, Ring 2648 and Bracelet 2649. These three shop pieces alone do not grant the four-piece bonus.\n\nRequired Base Level: 33. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 0. DEF: 8. Weight: 60.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Morpheus's Shawl",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Garment"
   },
   "0002519" : {
     "identifiedItemDescription" : "A manteau made from gray crow feathers that were enchanted through the power of Morrigane, whose incarnation is the gray crow.\r\nClass: ^808080Garment^000000\r\nDefense: ^8080809^000000\r\nWeight: ^80808060^000000\r\nRequires Level: ^80808061^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nLuk + 2\r\nPerfect Dodge + 8\r\n^800080Set Bonus^000000\r\n^008080Morrigane's Helm^000000\r\n^008080Morrigane's Manteau^000000\r\n^008080Morrigane's Pendant^000000\r\n^008080Morrigane's Belt^000000\r\nStr + 2\r\nLuk + 9\r\nATK + 18\r\nCrit + 13\r\nPerfect Dodge + 13\r\n\r\n^800080Set Bonus^000000\r\n^008080Abusive Robe^000000\r\n^008080Morrigane's Manteau^000000\r\nLuk + 3\r\nAdditional Luk + 1 per upgrade level of ^008080Abusive Robe^000000.\r\nCrit + 10\r\nAdditional Crit + 1 per upgrade level of ^008080Abusive Robe^000000.\r\nBypass 15% of hard defense of Demi-Human, Demon and Undead race targets when performing a physical attack.",
@@ -9414,10 +9414,10 @@
     "unidentifiedItemName" : "Garment"
   },
   "0002524" : {
-    "identifiedItemDescription" : "A manteau that is worn by the Valkyries, Odin's battle maidens.\r\nClass: ^808080Garment^000000\r\nDefense: ^80808010^000000\r\nWeight: ^80808050^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\n^F4AD42Acolyte, Mage and Archer Bonus^000000\r\nPerfect Dodge + 5\r\nAdditional Perfect Dodge + 2 per upgrade level of the item up to a maximum upgrade level of 10.\r\n^F4AD42Swordman, Merchant and Thief Bonus^000000\r\nReflects 5% of the received short-ranged damage back to the attacker.\r\nReflects an additional 2% of the received short-ranged damage back to the attacker per upgrade level of the item up to a maximum upgrade level of 10.\r\nThis item is indestructible in battle.\r\n\r\n^800080Set Bonus^000000\r\n^008080Valkyrie Helm [1]^000000\r\n^008080Valkyrian Armor [1]^000000\r\n^008080Valkyrian Shoes [1]^000000\r\n^008080Valkyrian Manteau [1]^000000\r\nAll Stats + 1\r\n\r\n^800080Set Bonus^000000\r\n^008080Abusive Robe [1]^000000\r\n^008080Valkyrie Manteau [1]^000000\r\nMax HP + 10%\r\nAdditional Max HP + 1% per upgrade level of ^008080Abusive Robe^000000.\r\nATK + 2%\r\nAdditional ATK + 1% per upgrade level of ^008080Abusive Robe^000000.\r\nBypass 15% of hard defense of Demi-Human, Demon and Undead race targets when performing a physical attack.",
-    "identifiedItemName" : "Valkyrian Manteau",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Garment"
+    "identifiedItemDescription": "Cannot be broken as a garment. Mage/Archer/Acolyte families: Perfect Dodge +5 at +0. Swordman/Merchant/Thief families: reflect 5% short-range weapon damage at +0. Either family bonus rises by 2 per refine, capped at +10; not both bonuses together.\n\nRequired Base Level: 1. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 10. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Valkyrian Manteau",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Garment"
   },
   "0002525" : {
     "identifiedItemDescription" : "A fancy cape fashioned after those worn by genteel marquises of a bygone age.\r\nClass: ^808080Garment^000000\r\nDefense: ^8080809^000000\r\nWeight: ^80808060^000000\r\nRequires Level: ^80808040^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nAgi + 1\r\n\r\n^800080Set Bonus^000000\r\n^008080Flattery Robe [1]^000000\r\n^008080Ancient Cape [1]^000000\r\nMax SP + 10%\r\nFlee + 10\r\nFor every upgrade level of ^008080Flattery Robe [1]^000000,\r\nAdditional Max SP + 1%.\r\nAdditional Flee + 1.",
@@ -9492,10 +9492,10 @@
     "unidentifiedItemName" : "Garment"
   },
   "0002537" : {
-    "identifiedItemDescription" : "A manteau with an endless dark shape waving near it. Only those who overcome fear can wear this manteau.\r\nClass: ^808080Garment^000000\r\nDefense: ^80808015^000000\r\nWeight: ^80808025^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nMax HP + 100\r\nReduces damage taken from Neutral property attacks by 5%.\r\nIncreases physical damage on Satan Morocc and Wounded Morocc by 10%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Boots [1]^000000\r\n^008080Diabolus Manteau [1]^000000\r\nMax HP + 6%\r\n\r\n^800080Set Bonus^000000\r\n^008080Diabolus Wing^000000\r\n^008080Diabolus Manteau^000000\r\nMaxHP + 900\r\nReduces damage taken from long-ranged attacks by 10%.\r\nIncreases physical and magical damage on Temple of the Demon God monsters by 20%.\r\nReduces damage taken from Temple of the Demon God monsters by 5%,\r\nReduces damage taken from Fire, Water, and Wind property attacks by 3% for every upgrade level of ^008080Diabolus Manteau^000000",
-    "identifiedItemName" : "Diabolus Manteau",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Garment"
+    "identifiedItemDescription": "Neutral element damage received -5%; MaxHP +100. With Diabolus Boots 2433: MaxHP +6%. Physical damage +10% only against native monster IDs 1916,1917,1922,1923,1924,1925, not all enemies.\n\nRequired Base Level: 1. Jobs/classes: Alchemist, Assassin, BardDancer, Blacksmith, Crusader, Hunter, Knight, Monk, Priest, Rogue, Sage, Wizard; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 15. Weight: 25.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Diabolus Manteau",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Garment"
   },
   "0002538" : {
     "identifiedItemDescription" : "A dignified, splendid Manteau that is provided to any warrior who brings great honor from the battlefield.\r\n^FF0000Account Bound^000000\r\nClass: ^808080Garment^000000\r\nDefense: ^80808028^000000\r\nWeight: ^8080800^000000\r\nRequires Level: ^80808080^000000\r\nUsable By: ^808080Swordman, Merchant, Thief, Taekwon, Taekwon Master, Ninja^000000\r\nReduces damage from Demihuman monsters by 1%.\r\nReduces damage from Human Player monsters by 1%.\r\nMaxHP + 50\r\nMDEF + 1",
@@ -9570,10 +9570,10 @@
     "unidentifiedItemName" : "Fisher's Muffler"
   },
   "0002553" : {
-    "identifiedItemDescription" : "Manteau from a Draco's mane.\r\nClass: ^808080Garment^000000\r\nDefense: ^8080805^000000\r\nWeight: ^808080100^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nAgi + 1\r\nMdef + 5\r\n\r\n^800080Set Bonus^000000\r\n^008080Dragon Vest [1]^000000\r\n^008080Dragon Manteau [1]^000000\r\nAgi + 5\r\nFlee + 15",
-    "identifiedItemName" : "Dragon Manteau",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Garment"
+    "identifiedItemDescription": "AGI +1; MDEF +5. With Dragon Vest 2399: additional AGI +5 and Flee +15. No direct ASPD percentage bonus.\n\nRequired Base Level: 1. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 14. Weight: 100.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Dragon Manteau",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Garment"
   },
   "0002554" : {
     "identifiedItemDescription" : "Made from a scale of Nidhoggur's Shadow, it still possesses its strong power.\r\nClass: ^808080Garment^000000\r\nDefense: ^80808025^000000\r\nWeight: ^80808040^000000\r\nRequires Level: ^80808090^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nMdef + 3\r\nReduces damage taken from all property attacks by 7%.\r\nIncreases Max SP per (Base level \/ 3) + (upgrade level x 10).\r\nAdds a 1% chance of restoring 1% of damage as SP when performing a physical attack.\r\n\r\n^800080Set Malus^000000\r\n^008080Evil Dragon Armor [1]^000000\r\n^008080Nidhoggur's Shadow Garb [1]^000000\r\nDisables the following effect of ^008080Nidhoggur's Shadow Garb [1]^000000,\r\nRestoring damage as SP when performing a physical attack.",
@@ -10050,16 +10050,16 @@
     "unidentifiedItemName" : "Accessory"
   },
   "0002648" : {
-    "identifiedItemDescription" : "A ring, enchanted with the power of the Fate Stone, that is one of the three keys for the seal which binds Morpheus.\r\nClass: ^808080Accessory^000000\r\nWeight: ^80808010^000000\r\nRequires Level: ^80808033^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nInt + 1\r\nMax SP + 5%\r\n\r\n^800080Set Bonus^000000\r\n^008080Morpheus's Shawl^000000\r\n^008080Morpheus's Hood^000000\r\n^008080Morpheus's Ring^000000\r\n^008080Morpheus's Bracelet^000000\r\nInt + 5\r\nMax SP + 20%\r\nMdef + 11\r\nThe user's casting cannot be interrupted outside of WoE.\r\nIncreases the variable casting time of skills by 25%.",
-    "identifiedItemName" : "Morpheus's Ring",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Accessory"
+    "identifiedItemDescription": "INT +1; MaxSP +5%. Full Morpheus set requires Hood 5126, Shawl 2518 and Bracelet 2649; buying this ring alone grants only its own bonuses.\n\nRequired Base Level: 33. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 0. DEF: 0. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Morpheus's Ring",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Accessory"
   },
   "0002649" : {
-    "identifiedItemDescription" : "A bracelet, rumored to be a memento of Morpheus's beloved, that is one of the three keys for the seal which binds Morpheus.\r\nClass: ^808080Accessory^000000\r\nWeight: ^80808010^000000\r\nRequires Level: ^80808033^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nInt + 1\r\nMax SP + 5%\r\n\r\n^800080Set Bonus^000000\r\n^008080Morpheus's Shawl^000000\r\n^008080Morpheus's Hood^000000\r\n^008080Morpheus's Ring^000000\r\n^008080Morpheus's Bracelet^000000\r\nInt + 5\r\nMax SP + 20%\r\nMdef + 11\r\nThe user's casting cannot be interrupted outside of WoE.\r\nIncreases the variable casting time of skills by 25%.",
-    "identifiedItemName" : "Morpheus's Bracelet",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Accessory"
+    "identifiedItemDescription": "INT +1; MaxSP +5%. Full Morpheus set requires Hood 5126, Shawl 2518 and Ring 2648; buying this bracelet alone grants only its own bonuses.\n\nRequired Base Level: 33. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 0. DEF: 0. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Morpheus's Bracelet",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Accessory"
   },
   "0002650" : {
     "identifiedItemDescription" : "The belt that Morrigane kept as a memento of CuChulain after he perished in battle.\r\nClass: ^808080Accessory^000000\r\nWeight: ^80808020^000000\r\nRequires Level: ^80808061^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nATK + 5\r\nCrit + 3\r\n\r\n^800080Set Bonus^000000\r\n^008080Morrigane's Helm^000000\r\n^008080Morrigane's Manteau^000000\r\n^008080Morrigane's Pendant^000000\r\n^008080Morrigane's Belt^000000\r\nStr + 2\r\nLuk + 9\r\nATK + 18\r\nCrit + 13\r\nPerfect Dodge + 13",
@@ -10224,10 +10224,10 @@
     "unidentifiedItemName" : "(null)"
   },
   "0002677" : {
-    "identifiedItemDescription" : "A beautiful ring imbued with strange spiritual powers that result in surprising effects when worn with the right items.\r\nClass: ^808080Accessory^000000\r\nWeight: ^80808010^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080All Jobs^000000\r\nInt + 2\r\nDex + 1\r\n\r\n^800080Set Bonus^000000\r\n^008080Wizardry Staff^000000\r\n^008080Spiritual Ring^000000\r\nDex + 2\r\nMATK + 6%\r\nReduces the variable casting time of skills by 1% per upgrade level of the staff.\r\n\r\n^800080Set Bonus^000000\r\n^008080Soul Staff^000000\r\n^008080Spiritual Ring^000000\r\nDex + 2\r\nMATK + 6%\r\nReduces the variable casting time of skills by 1% per upgrade level of the staff.\r\n\r\n^800080Set Bonus^000000\r\n^008080Clip [1]^000000\r\n^008080Spiritual Ring^000000\r\nSP Recovery + 9%\r\nIncreases the damage of ^0000FFHeal^000000 on Undead race enemies by 50%.\r\nIncreases the damage of ^0000FFMagnus Exorcismus^000000 by 30%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Rosary^000000 or\r\n^008080Rosary [1]^000000\r\n^008080Spiritual Ring^000000\r\nSP Recovery + 9%\r\nIncreases the damage of ^0000FFHeal^000000 on Undead race enemies by 50%.\r\nIncreases the damage of ^0000FFMagnus Exorcismus^000000 by 30%.\r\n\r\n^800080Set Bonus^000000\r\n^008080Divine Cross^000000\r\n^008080Spiritual Ring^000000\r\nDex + 2\r\nMATK + 10%\r\nReduces damage taken from Demon and Undead race enemies by 10%.",
-    "identifiedItemName" : "Spiritual Ring",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Accessory"
+    "identifiedItemDescription": "INT +2; DEX +1. Combo partners are not included in this purchase.\n\nRequired Base Level: 1. Jobs/classes: All jobs.\n\nSlots: 0. DEF: 0. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Spiritual Ring",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Accessory"
   },
   "0002678" : {
     "identifiedItemDescription" : "A ring imbued with the power of the fire spirit king, which can be used to strengthen the wearer's weapon. This ring forms a matching set with the Ring of Resonance.\r\nClass: ^808080Accessory^000000\r\nWeight: ^80808010^000000\r\nRequires Level: ^8080801^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nStr + 2\r\nVit + 1\r\nATK + 15\r\nReduces damage taken from Fire property attacks by 10%.\r\nAdds a chance of casting various skills on the target or the user when performing a physical attack;\r\n^0000FFLevel 5 Bowling Bash^000000\r\n^0000FFLevel 1 Fire Ball^000000\r\n^0000FFLevel 1 Fury^000000\r\n^0000FFLevel 2 Gloria Domini^000000\r\n^0000FFLevel 1 Zen^000000\r\n\r\n^800080Set Bonus^000000\r\n^008080Ring of Flame Lord^000000\r\n^008080Ring of Resonance^000000\r\nAdds a chance of casting additional skills on the target when performing a physical attack;\r\n^0000FFLevel 1 Guillotine Fist^000000\r\n^0000FFLevel 1 Lex Aeterna^000000\r\n^0000FFLevel 2 Meteor Assault^000000\r\n^0000FFLevel 5 Occult Impaction^000000\r\n^0000FFLevel 5 Sonic Blow^000000",
@@ -10380,10 +10380,10 @@
     "unidentifiedItemName" : "Accessory"
   },
   "0002703" : {
-    "identifiedItemDescription" : "Beings that obtained ultimate power found a way to maximize their abilities by attaining a deep understanding of themselves, knowing that power always has its cost.\r\nClass: ^808080Accessory^000000\r\nWeight: ^80808015^000000\r\nRequires Level: ^80808050^000000\r\nUsable By: ^808080Lord Knight Jobs, Master Smith Jobs, Assassin Cross Jobs, High Priest Jobs, High Wizard Jobs, Sniper Jobs, Paladin Jobs, Biochemist Jobs, Stalker Jobs, Champion Jobs, Scholar Jobs, Minstrel Jobs, Gypsy Jobs^000000\r\nReduces the global delay of skills by 5%.\r\nIncreases the SP cost of skills by 5%.",
-    "identifiedItemName" : "Expert Ring",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Accessory"
+    "identifiedItemDescription": "After-cast delay -5%; skill SP consumption +5%. This is not skill cooldown reduction.\n\nRequired Base Level: 50. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 0. Weight: 15.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Expert Ring",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Accessory"
   },
   "0002704" : {
     "identifiedItemDescription" : "",
@@ -17934,10 +17934,10 @@
     "unidentifiedItemName" : "Headgear"
   },
   "0005123" : {
-    "identifiedItemDescription" : "A woolen hunting cap once worn by Ulle, god of hunting. Just wearing it makes you feel like you can hunt down any beast.\r\nClass: ^808080Headgear^000000\r\nPosition: ^808080Upper^000000\r\nDefense: ^8080806^000000\r\nWeight: ^80808050^000000\r\nRequires Level: ^80808065^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nAgi + 1\r\nDex + 2\r\n\r\n^800080Set Bonus^000000\r\n^008080Ulle's Cap [1]^000000\r\n^008080Odin's Blessing [1]^000000\r\nIf the user's base Dex is 70 or higher,\r\nReduces the SP cost of skills by 10%.",
-    "identifiedItemName" : "Ulle's Cap",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Headgear"
+    "identifiedItemDescription": "DEX +2; AGI +1. Additional combos require other equipment; no free combo is included.\n\nRequired Base Level: 65. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 1. DEF: 6. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Ulle's Cap",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Headgear"
   },
   "0005124" : {
     "identifiedItemDescription" : "A circlet blessed by Freyja, mother of Baldur.\r\nClass: ^808080Headgear^000000\r\nPosition: ^808080Upper^000000\r\nDefense: ^8080806^000000\r\nWeight: ^80808030^000000\r\nRequires Level: ^80808065^000000\r\nUsable By: ^808080All Jobs except Novice Jobs^000000\r\nInt + 2\r\nMax SP + 50\r\nMdef + 10\r\n\r\n^800080Set Bonus^000000\r\n^008080Valkyrja's Shield [1]^000000\r\n^008080Fricca's Circlet^000000\r\n^008080Odin's Blessing [1]^000000\r\nDef + 2\r\nMdef + 5\r\nFor every upgrade level of ^008080Valkyrja's Shield [1],\r\nDef - 1\r\nMdef + 1\r\nFor every upgrade level of ^008080Fricca's Circlet^000000,\r\nDef - 1\r\nMdef + 1",
@@ -18444,10 +18444,10 @@
     "unidentifiedItemName" : "Angel's Blessing"
   },
   "0005208" : {
-    "identifiedItemDescription" : "A hat designed to mimic the look of a terrible magic book which attacks people.\r\nClass: ^808080Headgear^000000\r\nPosition: ^808080Upper^000000\r\nDefense: ^8080803^000000\r\nWeight: ^80808030^000000\r\nRequires Level: ^80808040^000000\r\nUsable By: ^808080All Jobs^000000\r\nAdds a 5% chance of restoring 8% of damage as HP when performing a physical attack.\r\nAdds a 1% chance of restoring 4% of damage as SP when performing a physical attack.\r\nDrains 10 HP from the user every 5 seconds.\r\nIf upgrade level is +9 or higher,\r\nAdds an additional 8% of the damage dealt as HP when performing a physical attack.\r\nAdds an additional 4% of the damage dealt as SP when performing a physical attack.\r\n\r\n^800080Set Malus^000000\r\n^008080Evil Dragon Armor [1]^000000\r\n^008080Rideword Hat [1]^000000\r\nDisables the following effect of ^008080Rideword Hat [1]^000000,\r\nRestoring damage as HP\/SP when performing a physical attack.",
-    "identifiedItemName" : "Rideword Hat",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Headgear"
+    "identifiedItemDescription": "5% chance to absorb 8% of eligible weapon damage as HP; 1% chance to absorb 4% as SP. Lose 10 HP every 5 seconds. Not every skill can trigger drain; idle/support-only play does not trigger it.\n\nRequired Base Level: 40. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 1. DEF: 3. Weight: 30.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Rideword Hat",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Headgear"
   },
   "0005209" : {
     "identifiedItemDescription" : "A yellow basball cap worn to keep the sun from your eyes.\r\nItem Class : ^777777Headgear^000000    Defense : ^7777772^000000\r\nLocation : ^777777Upper^000000    Weight : ^77777730^000000\r\nAvailable Job : ^777777Every Job except Novice Class^000000",
@@ -19140,10 +19140,10 @@
     "unidentifiedItemName" : "Little Angel Doll"
   },
   "0005325" : {
-    "identifiedItemDescription" : "A weird item that spreads a strange-shaped beam around the eyes. It seems to have been made in outer space.\r\nClass: ^808080Headgear^000000\r\nPosition: ^808080Middle^000000\r\nDefense: ^8080802^000000\r\nWeight: ^80808020^000000\r\nRequires Level: ^80808010^000000\r\nUsable By: ^808080All Jobs^000000\r\nATK and MATK + 2%.\r\nDex + 1",
-    "identifiedItemName" : "Robo Eye",
-    "unidentifiedItemDescription" : "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
-    "unidentifiedItemName" : "Headgear"
+    "identifiedItemDescription": "Physical damage +2% against all classes; MATK +2%; DEX +1. Cannot be dropped.\n\nRequired Base Level: 10. Jobs/classes: All jobs.\n\nSlots: 0. DEF: 2. Weight: 20.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "identifiedItemName": "Robo Eye",
+    "unidentifiedItemDescription": "An unknown item that requires appraisal. It can be identified by using a ^008080Magnifier^000000.",
+    "unidentifiedItemName": "Headgear"
   },
   "0005326" : {
     "identifiedItemDescription" : "placeholder",

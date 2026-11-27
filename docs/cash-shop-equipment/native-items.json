@@ -1,0 +1,556 @@
+[
+  {
+    "Id": 2115,
+    "AegisName": "Valkyrja's_Shield",
+    "Name": "Valkyrja's Shield",
+    "Type": "Armor",
+    "Buy": 30000,
+    "Weight": 500,
+    "Defense": 80,
+    "Slots": 1,
+    "Jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "Locations": {
+      "Left_Hand": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 65,
+    "Refineable": true,
+    "View": 4,
+    "Script": "bonus2 bSubEle,Ele_Water,20;\nbonus2 bSubEle,Ele_Fire,20;\nbonus2 bSubEle,Ele_Dark,20;\nbonus2 bSubEle,Ele_Undead,20;\nbonus bMdef,5;\n"
+  },
+  {
+    "Id": 2296,
+    "AegisName": "Binoculars",
+    "Name": "Binoculars",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 100,
+    "Defense": 2,
+    "Jobs": {
+      "Archer": true,
+      "BardDancer": true,
+      "Hunter": true
+    },
+    "Locations": {
+      "Head_Mid": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 50,
+    "View": 83,
+    "Script": "bonus bDex,1;\n"
+  },
+  {
+    "Id": 2365,
+    "AegisName": "Orleans_Gown",
+    "Name": "Orleans's Gown",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 300,
+    "Defense": 15,
+    "Slots": 1,
+    "Jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Armor": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 55,
+    "Refineable": true,
+    "Script": "bonus bVariableCastrate,15;\nbonus bNoCastCancel;\n"
+  },
+  {
+    "Id": 2367,
+    "AegisName": "Sniping_Suit",
+    "Name": "Sniping Suit",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 750,
+    "Defense": 42,
+    "Slots": 1,
+    "Jobs": {
+      "Hunter": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Armor": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 50,
+    "Refineable": true,
+    "Script": "bonus bMdef,5;\nbonus bCritical,6+(readparam(bLuk)/10);\nbonus bDelayrate,-23;\n"
+  },
+  {
+    "Id": 2374,
+    "AegisName": "Diabolus_Robe",
+    "Name": "Diabolus Robe",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 300,
+    "Defense": 57,
+    "Slots": 1,
+    "Jobs": {
+      "Acolyte": true,
+      "Archer": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Mage": true,
+      "Monk": true,
+      "Priest": true,
+      "Sage": true,
+      "Wizard": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Armor": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 60,
+    "Refineable": true,
+    "Script": "bonus bMaxSP,150;\nbonus bMdef,5;\nbonus bHealPower,6;\nbonus bDelayrate,-10;\n"
+  },
+  {
+    "Id": 2399,
+    "AegisName": "Dragon_Vest",
+    "Name": "Dragon Vest",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 500,
+    "Defense": 20,
+    "Slots": 1,
+    "Jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Armor": true
+    },
+    "ArmorLevel": 1,
+    "Refineable": true,
+    "Script": "bonus bMdef,3;\n"
+  },
+  {
+    "Id": 2423,
+    "AegisName": "Variant_Shoes",
+    "Name": "Variant Shoes",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 500,
+    "Defense": 13,
+    "Jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Shoes": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 85,
+    "Refineable": true,
+    "Script": ".@r = getrefine();\nbonus bMaxHPrate,20-.@r;\nbonus bMaxSPrate,20-.@r;\nbonus bDef,.@r/2;\n"
+  },
+  {
+    "Id": 2433,
+    "AegisName": "Diabolus_Boots",
+    "Name": "Diabolus Boots",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 250,
+    "Defense": 15,
+    "Slots": 1,
+    "Jobs": {
+      "Alchemist": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Blacksmith": true,
+      "Crusader": true,
+      "Hunter": true,
+      "Knight": true,
+      "Monk": true,
+      "Priest": true,
+      "Rogue": true,
+      "Sage": true,
+      "Wizard": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Shoes": true
+    },
+    "ArmorLevel": 1,
+    "Refineable": true,
+    "Script": "bonus bMaxHP,(BaseLevel*10);\n"
+  },
+  {
+    "Id": 2518,
+    "AegisName": "Morpheus's_Shawl",
+    "Name": "Morpheus's Shawl",
+    "Type": "Armor",
+    "Buy": 30000,
+    "Weight": 600,
+    "Defense": 8,
+    "Jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "Locations": {
+      "Garment": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 33,
+    "Refineable": true,
+    "Script": "bonus bMaxSPrate,10;\nbonus bMdef,3;\n"
+  },
+  {
+    "Id": 2524,
+    "AegisName": "Valkyrie_Manteau",
+    "Name": "Valkyrian Manteau",
+    "Type": "Armor",
+    "Weight": 500,
+    "Defense": 10,
+    "Slots": 1,
+    "Jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Garment": true
+    },
+    "ArmorLevel": 1,
+    "Refineable": true,
+    "Script": "bonus bUnbreakableGarment;\n.@r = getrefine();\nif (BaseClass == Job_Mage || BaseClass == Job_Archer || BaseClass == Job_Acolyte)\n   bonus bFlee2,5+(min(.@r,10)*2);\nelse if (BaseClass == Job_Swordman || BaseClass == Job_Merchant || BaseClass == Job_Thief)\n   bonus bShortWeaponDamageReturn,5+(min(.@r,10)*2);\n"
+  },
+  {
+    "Id": 2537,
+    "AegisName": "Diabolus_Manteau",
+    "Name": "Diabolus Manteau",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 250,
+    "Defense": 15,
+    "Slots": 1,
+    "Jobs": {
+      "Alchemist": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Blacksmith": true,
+      "Crusader": true,
+      "Hunter": true,
+      "Knight": true,
+      "Monk": true,
+      "Priest": true,
+      "Rogue": true,
+      "Sage": true,
+      "Wizard": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Garment": true
+    },
+    "ArmorLevel": 1,
+    "Refineable": true,
+    "Script": "bonus2 bSubEle,Ele_Neutral,5;\nbonus bMaxHP,100;\nbonus2 bAddDamageClass,1916,10;\nbonus2 bAddDamageClass,1917,10;\nbonus2 bAddDamageClass,1922,10;\nbonus2 bAddDamageClass,1923,10;\nbonus2 bAddDamageClass,1924,10;\nbonus2 bAddDamageClass,1925,10;\n"
+  },
+  {
+    "Id": 2553,
+    "AegisName": "Dragon_Manteau",
+    "Name": "Dragon Manteau",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 1000,
+    "Defense": 14,
+    "Slots": 1,
+    "Jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Garment": true
+    },
+    "ArmorLevel": 1,
+    "Refineable": true,
+    "Script": "bonus bAgi,1;\nbonus bMdef,5;\n"
+  },
+  {
+    "Id": 2648,
+    "AegisName": "Morpheus's_Ring",
+    "Name": "Morpheus's Ring",
+    "Type": "Armor",
+    "Buy": 30000,
+    "Weight": 100,
+    "Jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "Locations": {
+      "Both_Accessory": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 33,
+    "Script": "bonus bInt,1;\nbonus bMaxSPrate,5;\n"
+  },
+  {
+    "Id": 2649,
+    "AegisName": "Morpheus's_Armlet",
+    "Name": "Morpheus's Bracelet",
+    "Type": "Armor",
+    "Buy": 30000,
+    "Weight": 100,
+    "Jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "Locations": {
+      "Both_Accessory": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 33,
+    "Script": "bonus bInt,1;\nbonus bMaxSPrate,5;\n"
+  },
+  {
+    "Id": 2677,
+    "AegisName": "Spiritual_Ring",
+    "Name": "Spiritual Ring",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 100,
+    "Locations": {
+      "Both_Accessory": true
+    },
+    "ArmorLevel": 1,
+    "Script": "bonus bInt,2;\nbonus bDex,1;\n"
+  },
+  {
+    "Id": 2703,
+    "AegisName": "Expert_Ring",
+    "Name": "Expert Ring",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 150,
+    "Slots": 1,
+    "Jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "Classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "Locations": {
+      "Both_Accessory": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 50,
+    "Script": "bonus bDelayrate,-5;\nbonus bUseSPrate,5;\n"
+  },
+  {
+    "Id": 5123,
+    "AegisName": "Ulle_Cap",
+    "Name": "Ulle's Cap",
+    "Type": "Armor",
+    "Buy": 30000,
+    "Weight": 500,
+    "Defense": 6,
+    "Slots": 1,
+    "Jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "Locations": {
+      "Head_Top": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 65,
+    "Refineable": true,
+    "View": 254,
+    "Script": "bonus bDex,2;\nbonus bAgi,1;\n"
+  },
+  {
+    "Id": 5208,
+    "AegisName": "Rideword_Hat",
+    "Name": "Rideword Hat",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 300,
+    "Defense": 3,
+    "Slots": 1,
+    "Jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "Locations": {
+      "Head_Top": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 40,
+    "Refineable": true,
+    "View": 262,
+    "Script": "bonus2 bHPDrainRate,50,8;\nbonus2 bSPDrainRate,10,4;\nbonus2 bHPLossRate,10,5000;\n"
+  },
+  {
+    "Id": 5325,
+    "AegisName": "Robo_Eye",
+    "Name": "Robo Eye",
+    "Type": "Armor",
+    "Buy": 20,
+    "Weight": 200,
+    "Defense": 2,
+    "Locations": {
+      "Head_Mid": true
+    },
+    "ArmorLevel": 1,
+    "EquipLevelMin": 10,
+    "View": 345,
+    "Trade": {
+      "NoDrop": true
+    },
+    "Script": "bonus2 bAddClass,Class_All,2;\nbonus bMatkRate,2;\nbonus bDex,1;\n"
+  }
+]

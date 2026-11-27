@@ -225,3 +225,14 @@ workflow jobs. Unsigned IPA published and HTTPS downloaded/hash-verified; see
 [delivery](docs/cash-shop-full-catalogue/DELIVERY.md) and artifact manifest. All
 later changes are docs/audit-only and app-source diff is empty. Live catalogue
 remains unchanged. Fixture closeout integrity/FK pass, no pending pet journal.
+
+## Cash Shop equipment — active review branch
+
+`cash-shop-equipment` starts at29f074d, preserving the prior88-row catalogue and
+all client fixes. Adds19 specifically requested native +0 equipment offers;
+[ledger/proof](docs/cash-shop-equipment/README.md) is in progress, not live sale
+acceptance. Owner eligibility uses exported native job/class predicates plus level,
+with unknown/changed identity fallback and server ACK remaining authoritative.
+No companion compatibility is inferred from owner eligibility. Prices/slots/native
+scripts/assets are recorded. Never deploy the private read-only fixture probe.
+No live activation, player mutation, Simulator, automatic PR merge or RL changes.

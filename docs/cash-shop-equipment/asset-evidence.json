@@ -1,0 +1,459 @@
+[
+  {
+    "item_id": 5208,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/라이드워드.bmp",
+        "bytes": 1654,
+        "sha256": "5c896cb3611758f1de1b7badefc84f95cd1dad7f8cef4c2e3846ca44d7b312c9",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/라이드워드.bmp",
+        "bytes": 22856,
+        "sha256": "759c9b2c7a37e2f1bc85da975d52c26534950734bebd1eb035d5c678154d80f6",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_라이드워드.spr",
+        "bytes": 4130,
+        "sha256": "066f72ff19552f08bc00f17cef942f2583b2b838f3ee5fb17c81e72b9d3e3e4e",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_라이드워드.act",
+        "bytes": 48276,
+        "sha256": "ef292bb35057442ba44baf92dcacefdc20a5ec96ca1cdd02de151fc3210419a7",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_라이드워드.spr",
+        "bytes": 4130,
+        "sha256": "066f72ff19552f08bc00f17cef942f2583b2b838f3ee5fb17c81e72b9d3e3e4e",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_라이드워드.act",
+        "bytes": 48276,
+        "sha256": "862f15f865e5701b475e59a454ece5391b12c040c86fe6aa3823f241827e4577",
+        "validation": "native file signature/length; native decoder check separately"
+      }
+    ]
+  },
+  {
+    "item_id": 5325,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/로보아이.bmp",
+        "bytes": 1654,
+        "sha256": "a574ba6fed50bc1b4e451362f93815e5cca46f9371b3d559d4de2bd21de16528",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/로보아이.bmp",
+        "bytes": 22856,
+        "sha256": "59bb81991e4e7cc5ff65e886bdec42b934fc2f2d5f02809ca4929c9a9672279d",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_로보아이.spr",
+        "bytes": 2032,
+        "sha256": "b2b9b5eceae9ee02cbd3db6e10ac61b5e81deab3719bd9a15b6ae3f3a53c6638",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_로보아이.act",
+        "bytes": 77844,
+        "sha256": "d9d2479c6ba52b02f7a651128730702f6ca2ac0b4cc02869c794af76539b0375",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_로보아이.spr",
+        "bytes": 2032,
+        "sha256": "b2b9b5eceae9ee02cbd3db6e10ac61b5e81deab3719bd9a15b6ae3f3a53c6638",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_로보아이.act",
+        "bytes": 77844,
+        "sha256": "fe9b1bebff5f3456e30651bdfb778c79ce007d95f9fcc4ea268e5df631ddc95e",
+        "validation": "native file signature/length; native decoder check separately"
+      }
+    ]
+  },
+  {
+    "item_id": 5123,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/울캡.bmp",
+        "bytes": 1654,
+        "sha256": "7d6ea0714fa5d3f7741f45ad3ad4189a315fedafc36468158174d80dc7e7db25",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/울캡.bmp",
+        "bytes": 22856,
+        "sha256": "6f7eb4ca2531af0eda6957e0669ef9f949c030a3bddd7f1f0a969870047dbd28",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_울캡.spr",
+        "bytes": 5983,
+        "sha256": "c7bf8c2aa6a7d8fac1300a635a7dbf92aea7eb06f9918639ced96368629b323c",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_울캡.act",
+        "bytes": 48276,
+        "sha256": "fb36215004ec3306094839b857ba3d0aac216f91f1116450bd8547aa4db9a79b",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_울캡.spr",
+        "bytes": 5552,
+        "sha256": "6c29c17cf1628348d958b622e2263694c2a5087386bdfa95d6a9025ffdd5b651",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_울캡.act",
+        "bytes": 48276,
+        "sha256": "3efa62826108cda4c0e8157a7431513ab93082cf9028664ef833554818a5618c",
+        "validation": "native file signature/length; native decoder check separately"
+      }
+    ]
+  },
+  {
+    "item_id": 2296,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/망원경.bmp",
+        "bytes": 1654,
+        "sha256": "5c01a153708fa3e9c62a565d1f2dbea89fc3143badc4263dbaf67f8036080e57",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/망원경.bmp",
+        "bytes": 8676,
+        "sha256": "8e28c32e5e8dede2f2b73e6ef8379c353c48fee815cab73124231abf5034a3a7",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_망원경.spr",
+        "bytes": 1678,
+        "sha256": "c5b166263663a3c4f81244c485e7b62c1905c4a7118d6de7e70b7e9271fe9c8e",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/남/남_망원경.act",
+        "bytes": 44628,
+        "sha256": "4dcef2346a844e1c360dd6fbfe1ae50ad32aac788a242551624ecd0bd83bf4b1",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_망원경.spr",
+        "bytes": 1678,
+        "sha256": "c5b166263663a3c4f81244c485e7b62c1905c4a7118d6de7e70b7e9271fe9c8e",
+        "validation": "native file signature/length; native decoder check separately"
+      },
+      {
+        "path": "data/sprite/악세사리/여/여_망원경.act",
+        "bytes": 44628,
+        "sha256": "31e88fd45d57a6cd0f0c7cec50a1b17e90922706223e5137407274a0d69dff76",
+        "validation": "native file signature/length; native decoder check separately"
+      }
+    ]
+  },
+  {
+    "item_id": 2703,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/익스퍼트링.bmp",
+        "bytes": 1654,
+        "sha256": "286eac1267a7f47acab6b07af59da5a21a5264efbe065dac7b046b14ab15c5fa",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/익스퍼트링.bmp",
+        "bytes": 22856,
+        "sha256": "8d5df1bbcd34465852ce5fb41a7e8842261a64a88b8c8680849f96449b32ded5",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2677,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/스피리츄얼링.bmp",
+        "bytes": 1654,
+        "sha256": "32a7a0df219c53ae7599020238b051756fcf1cbe79df9c7e84b96a0373089073",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/스피리츄얼링.bmp",
+        "bytes": 22856,
+        "sha256": "962a21070e7fdf56e6897e84a2d47334fdf6d9719f8babf66003f2a94af614bd",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2518,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/모르피셔스쇼올.bmp",
+        "bytes": 1654,
+        "sha256": "8d84f078c43d74c3b81ef037181a790bd98b53d04ba03eea7f510eb10eaad9f2",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/모르피셔스쇼올.bmp",
+        "bytes": 22856,
+        "sha256": "8a618893e071e8db461cd5bca4508cd639532d7a5bf83675b722e7e26c8f48e1",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2648,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/모르피셔스반지.bmp",
+        "bytes": 1654,
+        "sha256": "0f32569382a1bf72a268e17f397585043ef39d185abac54da93d62abe2556333",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/모르피셔스반지.bmp",
+        "bytes": 22856,
+        "sha256": "b7226d0342e171493c44be55df0882907eae862e4d256df62a7afc46cc91c0e0",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2649,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/모르피셔스팔찌.bmp",
+        "bytes": 1654,
+        "sha256": "21455e63b710099a793307bb2f352c88ba927164b8571b90a7b799237a16f924",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/모르피셔스팔찌.bmp",
+        "bytes": 22856,
+        "sha256": "c75d1af1ab2fd539b2d0ccc02f6a95675197c5938865d8fa4d38a7fb042c7c5c",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2115,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/발키리아쉴드.bmp",
+        "bytes": 1654,
+        "sha256": "a1587a75dc028d1801b646af05a1b873053faae9d207c89dd313c0df87f133aa",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/발키리아쉴드.bmp",
+        "bytes": 22856,
+        "sha256": "5b730ec5b701bc0ba959d9615775d8cadb65a72978b76bce5675af429cbdd83b",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2367,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/스나이핑슈츠.bmp",
+        "bytes": 1654,
+        "sha256": "bd1edb0ea8cc24967756378c8ae69a432e293dadc7c8792d9ed0a7361d0c8dfa",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/스나이핑슈츠.bmp",
+        "bytes": 22856,
+        "sha256": "20739186760a5b8766fa828b527678ba7848d2b6378c7b305e4e43f2680e07e9",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2365,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/오를레앙의제복.bmp",
+        "bytes": 1654,
+        "sha256": "41f0b9ce96f50c0e5dba160faef53351655812c672e0b11db976e609120d195a",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/오를레앙의제복.bmp",
+        "bytes": 22856,
+        "sha256": "e4151ae653a6bc744ba2364cc106f8add06553119242deb30405dbe9eaabee2b",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2374,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/디아볼루스로브.bmp",
+        "bytes": 1654,
+        "sha256": "b21ddb188b507cbfc532dad1691cbea8f45042a3db9b15b8659f2280ac069f88",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/디아볼루스로브.bmp",
+        "bytes": 22856,
+        "sha256": "70f8f04f3649b4692839ce9b6a83f2d8aae6f188942426465bffea27502dc269",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2423,
+    "slots_before": 0,
+    "slots_native": 0,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/배리언트슈즈.bmp",
+        "bytes": 1654,
+        "sha256": "5ad3bf160bb76deed303c6b5aa9658b9636df6f8a0013b51c33754630b04bee2",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/배리언트슈즈.bmp",
+        "bytes": 22856,
+        "sha256": "9e376e9e8918a7dfbc7f7a96fd57408add4ae542e74e090564c8d78f516ee7af",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2433,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/디아볼루스부츠.bmp",
+        "bytes": 1654,
+        "sha256": "0ff70fbc96fa6956197ee396461071650eab837df5136ba76f48eeb2359dd36d",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/디아볼루스부츠.bmp",
+        "bytes": 22856,
+        "sha256": "bf57fedd3e103ed7c1682d22005c38b7f1d6de8e9abd7ca1b5e1848a6942b06c",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2537,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/디아볼루스망토.bmp",
+        "bytes": 1654,
+        "sha256": "912ea21c32fb82da4e09c9e5c95d255bac6d58bf0c06732b5a4b562788edb5d2",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/디아볼루스망토.bmp",
+        "bytes": 22856,
+        "sha256": "4c5fa2ff3b6a17ac9426e0a58bc14507e4e978e8df6a0736dd2e4ae5ed92075b",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2399,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/드래곤베스트.bmp",
+        "bytes": 1654,
+        "sha256": "a90134b477bc4d030b497f5d15984785aaa299dd557045860c4711f232cd3782",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/드래곤베스트.bmp",
+        "bytes": 22856,
+        "sha256": "9d1d4c8bfef0b6d1b4cf410135fab79a5371c82b5f6243d59b9b92cbac318ed6",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2553,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/드래곤의망토.bmp",
+        "bytes": 1654,
+        "sha256": "3e0942b2b8d883aea8ed497bf5bb8a0ac16ba03864536d63946ce80778276823",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/드래곤의망토.bmp",
+        "bytes": 8680,
+        "sha256": "505bbcff9336f5cd7ea67e8663bcc94c7dbd0b5444064374d5eeae12c9ba2db2",
+        "validation": "BMP decoded"
+      }
+    ]
+  },
+  {
+    "item_id": 2524,
+    "slots_before": 1,
+    "slots_native": 1,
+    "files": [
+      {
+        "path": "data/texture/유저인터페이스/item/발키리의망토.bmp",
+        "bytes": 1654,
+        "sha256": "8bc2a0e5bd5dfe112fb62454281424dd4b4dbfd122031afbe6bddc067dae16c7",
+        "validation": "BMP decoded"
+      },
+      {
+        "path": "data/texture/유저인터페이스/collection/발키리의망토.bmp",
+        "bytes": 22856,
+        "sha256": "990faff3e9b75c2ee592dacc70a801efc09313e3464934ef5e4fca9db51f0861",
+        "validation": "BMP decoded"
+      }
+    ]
+  }
+]

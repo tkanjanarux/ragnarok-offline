@@ -29,7 +29,8 @@ source = (root / 'Packages/RagnarokPackets/Sources/RagnarokPackets/PacketDecoder
 (out / 'Sources/RagnarokPackets/PacketDecodingError.swift').write_text(source[source.index('public enum PacketDecodingError'):source.index('final public class PacketDecoder')])
 for name in ['CashShop', 'QuestLog', 'QuestRichText', 'CharacterRename']:
     copy(f'Packages/RagnarokGame/Sources/RagnarokGame/Engine/{name}.swift', f'Sources/RagnarokGame/{name}.swift')
-for name in ['CashShopTests', 'QuestLogTests', 'QuestRichTextTests', 'CharacterRenameTests']:
+copy('Packages/RagnarokGame/Sources/RagnarokGame/Models/CashShopEquipment.swift', 'Sources/RagnarokGame/CashShopEquipment.swift')
+for name in ['CashShopTests', 'QuestLogTests', 'QuestRichTextTests', 'CharacterRenameTests', 'CashShopEquipmentTests']:
     copy(f'Packages/RagnarokGame/Tests/RagnarokGameTests/{name}.swift', f'Tests/RagnarokGameTests/{name}.swift')
 for name in ['CashShopPacketTests', 'QuestActiveRequestTests', 'CharacterRenamePacketTests']:
     copy(f'Packages/RagnarokPackets/Tests/RagnarokPacketsTests/{name}.swift', f'Tests/RagnarokPacketsTests/{name}.swift')

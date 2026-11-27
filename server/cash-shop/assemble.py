@@ -65,7 +65,7 @@ def assemble(prepared, output):
                            stdout=subprocess.DEVNULL)
             definitions += json.loads((dest / 'item_db.yml').read_text())['Body']
             additions += json.loads((dest / 'item_cash.yml').read_text())['Body'][0]['Items']
-    for name in ['candidate-costumes.json', 'candidate-utilities.json']:
+    for name in ['candidate-costumes.json', 'candidate-utilities.json', 'candidate-equipment.json']:
         additions += [dict(Item=s['aegis_name'], Price=s['price_cash'])
                       for s in json.loads((HERE / name).read_text())]
     # Check the reserved range against the actual prepared native item database,

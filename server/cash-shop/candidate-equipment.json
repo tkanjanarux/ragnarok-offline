@@ -1,0 +1,1103 @@
+[
+  {
+    "item_id": 5208,
+    "aegis_name": "Rideword_Hat",
+    "name": "Rideword Hat",
+    "price_cash": 900,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Head_Top": true
+    },
+    "minimum_level": 40,
+    "jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "classes": {},
+    "description": "5% chance to absorb 8% of eligible weapon damage as HP; 1% chance to absorb 4% as SP. Lose 10 HP every 5 seconds. Not every skill can trigger drain; idle/support-only play does not trigger it.\n\nRequired Base Level: 40. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 1. DEF: 3. Weight: 30.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 5208,
+      "AegisName": "Rideword_Hat",
+      "Name": "Rideword Hat",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 300,
+      "Defense": 3,
+      "Slots": 1,
+      "Jobs": {
+        "All": true,
+        "Novice": false,
+        "SuperNovice": false
+      },
+      "Locations": {
+        "Head_Top": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 40,
+      "Refineable": true,
+      "View": 262,
+      "Script": "bonus2 bHPDrainRate,50,8;\nbonus2 bSPDrainRate,10,4;\nbonus2 bHPLossRate,10,5000;\n"
+    }
+  },
+  {
+    "item_id": 5325,
+    "aegis_name": "Robo_Eye",
+    "name": "Robo Eye",
+    "price_cash": 500,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Head_Mid": true
+    },
+    "minimum_level": 10,
+    "jobs": {
+      "All": true
+    },
+    "classes": {},
+    "description": "Physical damage +2% against all classes; MATK +2%; DEX +1. Cannot be dropped.\n\nRequired Base Level: 10. Jobs/classes: All jobs.\n\nSlots: 0. DEF: 2. Weight: 20.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 5325,
+      "AegisName": "Robo_Eye",
+      "Name": "Robo Eye",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 200,
+      "Defense": 2,
+      "Locations": {
+        "Head_Mid": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 10,
+      "View": 345,
+      "Trade": {
+        "NoDrop": true
+      },
+      "Script": "bonus2 bAddClass,Class_All,2;\nbonus bMatkRate,2;\nbonus bDex,1;\n"
+    }
+  },
+  {
+    "item_id": 5123,
+    "aegis_name": "Ulle_Cap",
+    "name": "Ulle's Cap",
+    "price_cash": 500,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Head_Top": true
+    },
+    "minimum_level": 65,
+    "jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "classes": {},
+    "description": "DEX +2; AGI +1. Additional combos require other equipment; no free combo is included.\n\nRequired Base Level: 65. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 1. DEF: 6. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 5123,
+      "AegisName": "Ulle_Cap",
+      "Name": "Ulle's Cap",
+      "Type": "Armor",
+      "Buy": 30000,
+      "Weight": 500,
+      "Defense": 6,
+      "Slots": 1,
+      "Jobs": {
+        "All": true,
+        "Novice": false,
+        "SuperNovice": false
+      },
+      "Locations": {
+        "Head_Top": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 65,
+      "Refineable": true,
+      "View": 254,
+      "Script": "bonus bDex,2;\nbonus bAgi,1;\n"
+    }
+  },
+  {
+    "item_id": 2296,
+    "aegis_name": "Binoculars",
+    "name": "Binoculars",
+    "price_cash": 150,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Head_Mid": true
+    },
+    "minimum_level": 50,
+    "jobs": {
+      "Archer": true,
+      "BardDancer": true,
+      "Hunter": true
+    },
+    "classes": {},
+    "description": "DEX +1. Archer, Hunter and Bard/Dancer job families only.\n\nRequired Base Level: 50. Jobs/classes: Archer, BardDancer, Hunter.\n\nSlots: 0. DEF: 2. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2296,
+      "AegisName": "Binoculars",
+      "Name": "Binoculars",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 100,
+      "Defense": 2,
+      "Jobs": {
+        "Archer": true,
+        "BardDancer": true,
+        "Hunter": true
+      },
+      "Locations": {
+        "Head_Mid": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 50,
+      "View": 83,
+      "Script": "bonus bDex,1;\n"
+    }
+  },
+  {
+    "item_id": 2703,
+    "aegis_name": "Expert_Ring",
+    "name": "Expert Ring",
+    "price_cash": 450,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Both_Accessory": true
+    },
+    "minimum_level": 50,
+    "jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "After-cast delay -5%; skill SP consumption +5%. This is not skill cooldown reduction.\n\nRequired Base Level: 50. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 0. Weight: 15.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2703,
+      "AegisName": "Expert_Ring",
+      "Name": "Expert Ring",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 150,
+      "Slots": 1,
+      "Jobs": {
+        "Swordman": true,
+        "Mage": true,
+        "Archer": true,
+        "Acolyte": true,
+        "Merchant": true,
+        "Thief": true,
+        "Crusader": true,
+        "Knight": true,
+        "Wizard": true,
+        "Sage": true,
+        "Hunter": true,
+        "BardDancer": true,
+        "Priest": true,
+        "Monk": true,
+        "Alchemist": true,
+        "Blacksmith": true,
+        "Assassin": true,
+        "Rogue": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Both_Accessory": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 50,
+      "Script": "bonus bDelayrate,-5;\nbonus bUseSPrate,5;\n"
+    }
+  },
+  {
+    "item_id": 2677,
+    "aegis_name": "Spiritual_Ring",
+    "name": "Spiritual Ring",
+    "price_cash": 300,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Both_Accessory": true
+    },
+    "minimum_level": 1,
+    "jobs": {
+      "All": true
+    },
+    "classes": {},
+    "description": "INT +2; DEX +1. Combo partners are not included in this purchase.\n\nRequired Base Level: 1. Jobs/classes: All jobs.\n\nSlots: 0. DEF: 0. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2677,
+      "AegisName": "Spiritual_Ring",
+      "Name": "Spiritual Ring",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 100,
+      "Locations": {
+        "Both_Accessory": true
+      },
+      "ArmorLevel": 1,
+      "Script": "bonus bInt,2;\nbonus bDex,1;\n"
+    }
+  },
+  {
+    "item_id": 2518,
+    "aegis_name": "Morpheus's_Shawl",
+    "name": "Morpheus's Shawl",
+    "price_cash": 300,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Garment": true
+    },
+    "minimum_level": 33,
+    "jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "classes": {},
+    "description": "MaxSP +10%; MDEF +3. The full Morpheus set also requires Hood 5126, Ring 2648 and Bracelet 2649. These three shop pieces alone do not grant the four-piece bonus.\n\nRequired Base Level: 33. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 0. DEF: 8. Weight: 60.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2518,
+      "AegisName": "Morpheus's_Shawl",
+      "Name": "Morpheus's Shawl",
+      "Type": "Armor",
+      "Buy": 30000,
+      "Weight": 600,
+      "Defense": 8,
+      "Jobs": {
+        "All": true,
+        "Novice": false,
+        "SuperNovice": false
+      },
+      "Locations": {
+        "Garment": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 33,
+      "Refineable": true,
+      "Script": "bonus bMaxSPrate,10;\nbonus bMdef,3;\n"
+    }
+  },
+  {
+    "item_id": 2648,
+    "aegis_name": "Morpheus's_Ring",
+    "name": "Morpheus's Ring",
+    "price_cash": 200,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Both_Accessory": true
+    },
+    "minimum_level": 33,
+    "jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "classes": {},
+    "description": "INT +1; MaxSP +5%. Full Morpheus set requires Hood 5126, Shawl 2518 and Bracelet 2649; buying this ring alone grants only its own bonuses.\n\nRequired Base Level: 33. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 0. DEF: 0. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2648,
+      "AegisName": "Morpheus's_Ring",
+      "Name": "Morpheus's Ring",
+      "Type": "Armor",
+      "Buy": 30000,
+      "Weight": 100,
+      "Jobs": {
+        "All": true,
+        "Novice": false,
+        "SuperNovice": false
+      },
+      "Locations": {
+        "Both_Accessory": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 33,
+      "Script": "bonus bInt,1;\nbonus bMaxSPrate,5;\n"
+    }
+  },
+  {
+    "item_id": 2649,
+    "aegis_name": "Morpheus's_Armlet",
+    "name": "Morpheus's Bracelet",
+    "price_cash": 200,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Both_Accessory": true
+    },
+    "minimum_level": 33,
+    "jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "classes": {},
+    "description": "INT +1; MaxSP +5%. Full Morpheus set requires Hood 5126, Shawl 2518 and Ring 2648; buying this bracelet alone grants only its own bonuses.\n\nRequired Base Level: 33. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 0. DEF: 0. Weight: 10.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2649,
+      "AegisName": "Morpheus's_Armlet",
+      "Name": "Morpheus's Bracelet",
+      "Type": "Armor",
+      "Buy": 30000,
+      "Weight": 100,
+      "Jobs": {
+        "All": true,
+        "Novice": false,
+        "SuperNovice": false
+      },
+      "Locations": {
+        "Both_Accessory": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 33,
+      "Script": "bonus bInt,1;\nbonus bMaxSPrate,5;\n"
+    }
+  },
+  {
+    "item_id": 2115,
+    "aegis_name": "Valkyrja's_Shield",
+    "name": "Valkyrja's Shield",
+    "price_cash": 750,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Left_Hand": true
+    },
+    "minimum_level": 65,
+    "jobs": {
+      "All": true,
+      "Novice": false,
+      "SuperNovice": false
+    },
+    "classes": {},
+    "description": "Fire, Water, Shadow and Undead element damage received -20%; MDEF +5. A shield occupies the left hand and cannot be combined with a two-handed bow.\n\nRequired Base Level: 65. Jobs/classes: All jobs except Novice/Super Novice.\n\nSlots: 1. DEF: 80. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2115,
+      "AegisName": "Valkyrja's_Shield",
+      "Name": "Valkyrja's Shield",
+      "Type": "Armor",
+      "Buy": 30000,
+      "Weight": 500,
+      "Defense": 80,
+      "Slots": 1,
+      "Jobs": {
+        "All": true,
+        "Novice": false,
+        "SuperNovice": false
+      },
+      "Locations": {
+        "Left_Hand": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 65,
+      "Refineable": true,
+      "View": 4,
+      "Script": "bonus2 bSubEle,Ele_Water,20;\nbonus2 bSubEle,Ele_Fire,20;\nbonus2 bSubEle,Ele_Dark,20;\nbonus2 bSubEle,Ele_Undead,20;\nbonus bMdef,5;\n"
+    }
+  },
+  {
+    "item_id": 2367,
+    "aegis_name": "Sniping_Suit",
+    "name": "Sniping Suit",
+    "price_cash": 700,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Armor": true
+    },
+    "minimum_level": 50,
+    "jobs": {
+      "Hunter": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "MDEF +5; Critical +6 plus floor(base LUK/10); after-cast delay -23%. Hunter upper/third/fourth classes only; normal Hunter cannot equip it. Not skill cooldown reduction.\n\nRequired Base Level: 50. Jobs/classes: Hunter; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 42. Weight: 75.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2367,
+      "AegisName": "Sniping_Suit",
+      "Name": "Sniping Suit",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 750,
+      "Defense": 42,
+      "Slots": 1,
+      "Jobs": {
+        "Hunter": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Armor": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 50,
+      "Refineable": true,
+      "Script": "bonus bMdef,5;\nbonus bCritical,6+(readparam(bLuk)/10);\nbonus bDelayrate,-23;\n"
+    }
+  },
+  {
+    "item_id": 2365,
+    "aegis_name": "Orleans_Gown",
+    "name": "Orleans's Gown",
+    "price_cash": 600,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Armor": true
+    },
+    "minimum_level": 55,
+    "jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "Variable cast time +15%. Damage does not interrupt casting under the native map rules. This does NOT prevent movement flinch/knockback or make attacks uninterrupted.\n\nRequired Base Level: 55. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 15. Weight: 30.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2365,
+      "AegisName": "Orleans_Gown",
+      "Name": "Orleans's Gown",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 300,
+      "Defense": 15,
+      "Slots": 1,
+      "Jobs": {
+        "Swordman": true,
+        "Mage": true,
+        "Archer": true,
+        "Acolyte": true,
+        "Merchant": true,
+        "Thief": true,
+        "Crusader": true,
+        "Knight": true,
+        "Wizard": true,
+        "Sage": true,
+        "Hunter": true,
+        "BardDancer": true,
+        "Priest": true,
+        "Monk": true,
+        "Alchemist": true,
+        "Blacksmith": true,
+        "Assassin": true,
+        "Rogue": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Armor": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 55,
+      "Refineable": true,
+      "Script": "bonus bVariableCastrate,15;\nbonus bNoCastCancel;\n"
+    }
+  },
+  {
+    "item_id": 2374,
+    "aegis_name": "Diabolus_Robe",
+    "name": "Diabolus Robe",
+    "price_cash": 750,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Armor": true
+    },
+    "minimum_level": 60,
+    "jobs": {
+      "Acolyte": true,
+      "Archer": true,
+      "BardDancer": true,
+      "Hunter": true,
+      "Mage": true,
+      "Monk": true,
+      "Priest": true,
+      "Sage": true,
+      "Wizard": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "MaxSP +150; MDEF +5; outgoing healing power +6%; after-cast delay -10%. Diabolus Ring combo partner is not included.\n\nRequired Base Level: 60. Jobs/classes: Acolyte, Archer, BardDancer, Hunter, Mage, Monk, Priest, Sage, Wizard; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 57. Weight: 30.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2374,
+      "AegisName": "Diabolus_Robe",
+      "Name": "Diabolus Robe",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 300,
+      "Defense": 57,
+      "Slots": 1,
+      "Jobs": {
+        "Acolyte": true,
+        "Archer": true,
+        "BardDancer": true,
+        "Hunter": true,
+        "Mage": true,
+        "Monk": true,
+        "Priest": true,
+        "Sage": true,
+        "Wizard": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Armor": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 60,
+      "Refineable": true,
+      "Script": "bonus bMaxSP,150;\nbonus bMdef,5;\nbonus bHealPower,6;\nbonus bDelayrate,-10;\n"
+    }
+  },
+  {
+    "item_id": 2423,
+    "aegis_name": "Variant_Shoes",
+    "name": "Variant Shoes",
+    "price_cash": 900,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 0,
+    "locations": {
+      "Shoes": true
+    },
+    "minimum_level": 85,
+    "jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "At +0: MaxHP +20%, MaxSP +20%. Each refine level reduces both bonuses by 1 percentage point; every 2 refines adds 1 extra DEF. Sold at +0, not randomly refined.\n\nRequired Base Level: 85. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 0. DEF: 13. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2423,
+      "AegisName": "Variant_Shoes",
+      "Name": "Variant Shoes",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 500,
+      "Defense": 13,
+      "Jobs": {
+        "Swordman": true,
+        "Mage": true,
+        "Archer": true,
+        "Acolyte": true,
+        "Merchant": true,
+        "Thief": true,
+        "Crusader": true,
+        "Knight": true,
+        "Wizard": true,
+        "Sage": true,
+        "Hunter": true,
+        "BardDancer": true,
+        "Priest": true,
+        "Monk": true,
+        "Alchemist": true,
+        "Blacksmith": true,
+        "Assassin": true,
+        "Rogue": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Shoes": true
+      },
+      "ArmorLevel": 1,
+      "EquipLevelMin": 85,
+      "Refineable": true,
+      "Script": ".@r = getrefine();\nbonus bMaxHPrate,20-.@r;\nbonus bMaxSPrate,20-.@r;\nbonus bDef,.@r/2;\n"
+    }
+  },
+  {
+    "item_id": 2433,
+    "aegis_name": "Diabolus_Boots",
+    "name": "Diabolus Boots",
+    "price_cash": 600,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Shoes": true
+    },
+    "minimum_level": 1,
+    "jobs": {
+      "Alchemist": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Blacksmith": true,
+      "Crusader": true,
+      "Hunter": true,
+      "Knight": true,
+      "Monk": true,
+      "Priest": true,
+      "Rogue": true,
+      "Sage": true,
+      "Wizard": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "MaxHP +10 per Base Level. With Diabolus Manteau 2537: an additional MaxHP +6%.\n\nRequired Base Level: 1. Jobs/classes: Alchemist, Assassin, BardDancer, Blacksmith, Crusader, Hunter, Knight, Monk, Priest, Rogue, Sage, Wizard; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 15. Weight: 25.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2433,
+      "AegisName": "Diabolus_Boots",
+      "Name": "Diabolus Boots",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 250,
+      "Defense": 15,
+      "Slots": 1,
+      "Jobs": {
+        "Alchemist": true,
+        "Assassin": true,
+        "BardDancer": true,
+        "Blacksmith": true,
+        "Crusader": true,
+        "Hunter": true,
+        "Knight": true,
+        "Monk": true,
+        "Priest": true,
+        "Rogue": true,
+        "Sage": true,
+        "Wizard": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Shoes": true
+      },
+      "ArmorLevel": 1,
+      "Refineable": true,
+      "Script": "bonus bMaxHP,(BaseLevel*10);\n"
+    }
+  },
+  {
+    "item_id": 2537,
+    "aegis_name": "Diabolus_Manteau",
+    "name": "Diabolus Manteau",
+    "price_cash": 700,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Garment": true
+    },
+    "minimum_level": 1,
+    "jobs": {
+      "Alchemist": true,
+      "Assassin": true,
+      "BardDancer": true,
+      "Blacksmith": true,
+      "Crusader": true,
+      "Hunter": true,
+      "Knight": true,
+      "Monk": true,
+      "Priest": true,
+      "Rogue": true,
+      "Sage": true,
+      "Wizard": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "Neutral element damage received -5%; MaxHP +100. With Diabolus Boots 2433: MaxHP +6%. Physical damage +10% only against native monster IDs 1916,1917,1922,1923,1924,1925, not all enemies.\n\nRequired Base Level: 1. Jobs/classes: Alchemist, Assassin, BardDancer, Blacksmith, Crusader, Hunter, Knight, Monk, Priest, Rogue, Sage, Wizard; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 15. Weight: 25.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2537,
+      "AegisName": "Diabolus_Manteau",
+      "Name": "Diabolus Manteau",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 250,
+      "Defense": 15,
+      "Slots": 1,
+      "Jobs": {
+        "Alchemist": true,
+        "Assassin": true,
+        "BardDancer": true,
+        "Blacksmith": true,
+        "Crusader": true,
+        "Hunter": true,
+        "Knight": true,
+        "Monk": true,
+        "Priest": true,
+        "Rogue": true,
+        "Sage": true,
+        "Wizard": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Garment": true
+      },
+      "ArmorLevel": 1,
+      "Refineable": true,
+      "Script": "bonus2 bSubEle,Ele_Neutral,5;\nbonus bMaxHP,100;\nbonus2 bAddDamageClass,1916,10;\nbonus2 bAddDamageClass,1917,10;\nbonus2 bAddDamageClass,1922,10;\nbonus2 bAddDamageClass,1923,10;\nbonus2 bAddDamageClass,1924,10;\nbonus2 bAddDamageClass,1925,10;\n"
+    }
+  },
+  {
+    "item_id": 2399,
+    "aegis_name": "Dragon_Vest",
+    "name": "Dragon Vest",
+    "price_cash": 350,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Armor": true
+    },
+    "minimum_level": 1,
+    "jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "MDEF +3. With Dragon Manteau 2553: AGI +5 and Flee +15 in addition to individual item bonuses. No ASPD percentage bonus: AGI changes native attack timing.\n\nRequired Base Level: 1. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 20. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2399,
+      "AegisName": "Dragon_Vest",
+      "Name": "Dragon Vest",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 500,
+      "Defense": 20,
+      "Slots": 1,
+      "Jobs": {
+        "Swordman": true,
+        "Mage": true,
+        "Archer": true,
+        "Acolyte": true,
+        "Merchant": true,
+        "Thief": true,
+        "Crusader": true,
+        "Knight": true,
+        "Wizard": true,
+        "Sage": true,
+        "Hunter": true,
+        "BardDancer": true,
+        "Priest": true,
+        "Monk": true,
+        "Alchemist": true,
+        "Blacksmith": true,
+        "Assassin": true,
+        "Rogue": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Armor": true
+      },
+      "ArmorLevel": 1,
+      "Refineable": true,
+      "Script": "bonus bMdef,3;\n"
+    }
+  },
+  {
+    "item_id": 2553,
+    "aegis_name": "Dragon_Manteau",
+    "name": "Dragon Manteau",
+    "price_cash": 450,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Garment": true
+    },
+    "minimum_level": 1,
+    "jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "AGI +1; MDEF +5. With Dragon Vest 2399: additional AGI +5 and Flee +15. No direct ASPD percentage bonus.\n\nRequired Base Level: 1. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 14. Weight: 100.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2553,
+      "AegisName": "Dragon_Manteau",
+      "Name": "Dragon Manteau",
+      "Type": "Armor",
+      "Buy": 20,
+      "Weight": 1000,
+      "Defense": 14,
+      "Slots": 1,
+      "Jobs": {
+        "Swordman": true,
+        "Mage": true,
+        "Archer": true,
+        "Acolyte": true,
+        "Merchant": true,
+        "Thief": true,
+        "Crusader": true,
+        "Knight": true,
+        "Wizard": true,
+        "Sage": true,
+        "Hunter": true,
+        "BardDancer": true,
+        "Priest": true,
+        "Monk": true,
+        "Alchemist": true,
+        "Blacksmith": true,
+        "Assassin": true,
+        "Rogue": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Garment": true
+      },
+      "ArmorLevel": 1,
+      "Refineable": true,
+      "Script": "bonus bAgi,1;\nbonus bMdef,5;\n"
+    }
+  },
+  {
+    "item_id": 2524,
+    "aegis_name": "Valkyrie_Manteau",
+    "name": "Valkyrian Manteau",
+    "price_cash": 750,
+    "quantity": 1,
+    "refine": 0,
+    "slots": 1,
+    "locations": {
+      "Garment": true
+    },
+    "minimum_level": 1,
+    "jobs": {
+      "Swordman": true,
+      "Mage": true,
+      "Archer": true,
+      "Acolyte": true,
+      "Merchant": true,
+      "Thief": true,
+      "Crusader": true,
+      "Knight": true,
+      "Wizard": true,
+      "Sage": true,
+      "Hunter": true,
+      "BardDancer": true,
+      "Priest": true,
+      "Monk": true,
+      "Alchemist": true,
+      "Blacksmith": true,
+      "Assassin": true,
+      "Rogue": true
+    },
+    "classes": {
+      "Upper": true,
+      "All_Third": true,
+      "Fourth": true
+    },
+    "description": "Cannot be broken as a garment. Mage/Archer/Acolyte families: Perfect Dodge +5 at +0. Swordman/Merchant/Thief families: reflect 5% short-range weapon damage at +0. Either family bonus rises by 2 per refine, capped at +10; not both bonuses together.\n\nRequired Base Level: 1. Jobs/classes: Swordman, Mage, Archer, Acolyte, Merchant, Thief, Crusader, Knight, Wizard, Sage, Hunter, BardDancer, Priest, Monk, Alchemist, Blacksmith, Assassin, Rogue; rebirth/third/fourth class required.\n\nSlots: 1. DEF: 10. Weight: 50.\n\nDirect purchase: one identified, uncarded +0 item. No rental duration or random options. Server equipment rules apply.\n\nCompanion compatibility is not guaranteed; check the server equipment screen before transferring.",
+    "status": "verification_in_progress",
+    "native": {
+      "Id": 2524,
+      "AegisName": "Valkyrie_Manteau",
+      "Name": "Valkyrian Manteau",
+      "Type": "Armor",
+      "Weight": 500,
+      "Defense": 10,
+      "Slots": 1,
+      "Jobs": {
+        "Swordman": true,
+        "Mage": true,
+        "Archer": true,
+        "Acolyte": true,
+        "Merchant": true,
+        "Thief": true,
+        "Crusader": true,
+        "Knight": true,
+        "Wizard": true,
+        "Sage": true,
+        "Hunter": true,
+        "BardDancer": true,
+        "Priest": true,
+        "Monk": true,
+        "Alchemist": true,
+        "Blacksmith": true,
+        "Assassin": true,
+        "Rogue": true
+      },
+      "Classes": {
+        "Upper": true,
+        "All_Third": true,
+        "Fourth": true
+      },
+      "Locations": {
+        "Garment": true
+      },
+      "ArmorLevel": 1,
+      "Refineable": true,
+      "Script": "bonus bUnbreakableGarment;\n.@r = getrefine();\nif (BaseClass == Job_Mage || BaseClass == Job_Archer || BaseClass == Job_Acolyte)\n   bonus bFlee2,5+(min(.@r,10)*2);\nelse if (BaseClass == Job_Swordman || BaseClass == Job_Merchant || BaseClass == Job_Thief)\n   bonus bShortWeaponDamageReturn,5+(min(.@r,10)*2);\n"
+    }
+  }
+]

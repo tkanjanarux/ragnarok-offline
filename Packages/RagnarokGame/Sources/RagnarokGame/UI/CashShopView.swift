@@ -204,11 +204,32 @@ struct CashShopView: View {
                     CashShopItemImage(itemID: product.itemID, preview: true).frame(width: 85, height: 100)
                 }
                 ScrollView {
-                    Text(AttributedString(description: context.itemInfoTable.localizedIdentifiedItemDescription(forItemID: Int(product.itemID)) ?? "", defaultColor: .gameLabel))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack(alignment: .leading, spacing: 8) {
+                        if let equipment = CashShopEquipment.forItem(product.itemID) {
+                            equipmentEligibility(equipment)
+                            Divider()
+                        }
+                        Text(AttributedString(description: context.itemInfoTable.localizedIdentifiedItemDescription(forItemID: Int(product.itemID)) ?? "", defaultColor: .gameLabel))
+                    }.frame(maxWidth: .infinity, alignment: .leading)
                 }.frame(height: 205)
             }.padding(8)
         }.frame(width: CashShopCostume.forItem(product.itemID) == nil ? 340 : 390).background(Color.white).border(Color.gameBoxBorder)
+    }
+
+    @ViewBuilder private func equipmentEligibility(_ equipment: CashShopEquipment) -> some View {
+        switch equipment.eligibility(job: session.cashShopJobIsKnown ? session.character.job : nil,
+                                     level: session.playerStatus.baseLevel) {
+        case .eligible:
+            Text("Your job and level meet the equipment requirements.")
+        case .level(let required):
+            Text("Requires Base Level \(required). You cannot equip it yet.")
+        case .job:
+            Text("Your current job or class cannot equip this item.")
+        case .unknown:
+            Text("Equipment eligibility unavailable. Reconnect after changing jobs.")
+        }
+        Text("Server checks temporary restrictions and exceptions when equipping. Buying does not equip the item.")
+            .font(.game(size: 10))
     }
 
     private var confirmation: some View {

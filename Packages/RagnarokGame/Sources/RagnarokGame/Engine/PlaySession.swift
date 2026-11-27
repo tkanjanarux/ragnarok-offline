@@ -34,6 +34,9 @@ final class PlaySession {
 
     private(set) var account: AccountInfo
     private(set) var character: CharacterInfo
+    // Base appearance changes can mean a job change or a disguise. Do not infer
+    // equipment class from a sprite ID or retain an outdated shop eligibility hint.
+    private(set) var cashShopJobIsKnown = true
 
     var playerStatus: CharacterStatus
     var inventory: Inventory
@@ -723,6 +726,9 @@ final class PlaySession {
             let headDirection = HeadDirection(rawValue: Int(packet.headDir)) ?? .lookForward
             mapScene?.onMapObjectDirectionChanged(objectID: packet.srcId, direction: direction, headDirection: headDirection)
         case let packet as PACKET_ZC_SPRITE_CHANGE:
+            if packet.AID == account.accountID, packet.type == 0, Int(packet.val) != character.job {
+                cashShopJobIsKnown = false
+            }
             if packet.type == 0 { mapScene?.changeGroundUnitLook(packet.AID, kind: Int32(packet.val)) }
             if let look = Look(rawValue: Int(packet.type)) {
                 mapScene?.onMapObjectSpriteChanged(objectID: packet.AID, look: look, value: Int(packet.val), value2: Int(packet.val2))
