@@ -1,0 +1,30 @@
+[
+  {
+    "case": "priest_paid_blue_gem_revive",
+    "before": 20,
+    "after": 19,
+    "dead_companion_revived": true,
+    "starter_gems_fixture": 0
+  },
+  {
+    "case": "active_transfer_rejected",
+    "no_stock_change": true
+  },
+  {
+    "case": "hunter_paid_silver_arrow",
+    "before": 200,
+    "after": 193,
+    "actual_positive_hits": [
+      235,
+      236,
+      235,
+      236,
+      236,
+      236
+    ]
+  },
+  {
+    "case": "other_owner_transfer_rejected",
+    "no_stock_change": true
+  }
+]

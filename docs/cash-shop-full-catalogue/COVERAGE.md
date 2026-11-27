@@ -10,10 +10,10 @@ Review candidates only. Live catalogue remains unchanged. A source/asset audit i
 | 4 | Blue Potion large box | 505; packs 2000040 | 450 | in_progress | script_audit / asset_audit / edge_cases |
 | 5 | Panacea pack | 525; packs 2000050 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 6 | Holy Water pack | 523; packs 2000060 | 36 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 7 | Fire resistance potion | 12118; packs 2000070 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 8 | Water resistance potion | 12119; packs 2000080 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 9 | Wind resistance potion | 12121; packs 2000090 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 10 | Earth resistance potion | 12120; packs 2000100 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
+| 7 | Fire resistance potion | 12118; packs 2000070 | 90 | in_progress | script_audit / asset_audit / edge_cases |
+| 8 | Water resistance potion | 12119; packs 2000080 | 90 | in_progress | script_audit / asset_audit / edge_cases |
+| 9 | Wind resistance potion | 12121; packs 2000090 | 90 | in_progress | script_audit / asset_audit / edge_cases |
+| 10 | Earth resistance potion | 12120; packs 2000100 | 90 | in_progress | script_audit / asset_audit / edge_cases |
 | 11 | MaxHP food | 12423; packs 2000110 | 135 | in_progress | script_audit / asset_audit / edge_cases |
 | 12 | MaxSP food | 12426; packs 2000120 | 135 | in_progress | script_audit / asset_audit / edge_cases |
 | 13 | Normal arrow box | 1750; packs 2000130 | 45 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
@@ -25,11 +25,11 @@ Review candidates only. Live catalogue remains unchanged. A source/asset audit i
 | 19 | Shadow Arrow | 1767; packs 2000190 | 45 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 20 | Immaterial Arrow | 1757; packs 2000200 | 45 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 21 | Selectable mixed elemental arrows | 1750, 1752, 1754, 1755, 1756, 1757, 1767; packs 2000210, 2000211, 2000212, 2000213, 2000214, 2000215 | 90, 90, 90, 90, 90, 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 22 | Arrow Crafting materials | 990, 991, 992, 993; packs 2000220 | 72 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 23 | Fire Converter | 12114; packs 2000230 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 24 | Water Converter | 12115; packs 2000240 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 25 | Wind Converter | 12117; packs 2000250 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
-| 26 | Earth Converter | 12116; packs 2000260 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
+| 22 | Arrow Crafting materials | 990, 991, 992, 993; packs 2000220 | 945 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
+| 23 | Fire Converter | 12114; packs 2000230 | 90 | in_progress | script_audit / asset_audit / edge_cases |
+| 24 | Water Converter | 12115; packs 2000240 | 90 | in_progress | script_audit / asset_audit / edge_cases |
+| 25 | Wind Converter | 12117; packs 2000250 | 90 | in_progress | script_audit / asset_audit / edge_cases |
+| 26 | Earth Converter | 12116; packs 2000260 | 90 | in_progress | script_audit / asset_audit / edge_cases |
 | 27 | STR moderate food | 12045; packs 2000270 | 90 | in_progress | script_audit / asset_audit / edge_cases |
 | 28 | AGI moderate food | 12060; packs 2000280 | 90 | in_progress | script_audit / asset_audit / edge_cases |
 | 29 | VIT moderate food | 12055; packs 2000290 | 90 | in_progress | script_audit / asset_audit / edge_cases |
@@ -43,7 +43,7 @@ Review candidates only. Live catalogue remains unchanged. A source/asset audit i
 | 37 | Full skill/stat reset pack | 2000370; packs 2000370 | 900 | in_progress | script_audit / asset_audit / edge_cases |
 | 38 | Gym Pass | 2000380; packs 2000380 | 100 | in_progress | script_audit / asset_audit / edge_cases |
 | 39 | Token of Siegfried | 7621 | 30 | in_progress | script_audit / asset_audit / purchase_packet / effect_packet / reconnect / edge_cases |
-| 40 | Giant Fly Wing | 12212 | 10 | in_progress | script_audit / asset_audit / purchase_packet / effect_packet / reconnect / edge_cases |
+| 40 | Giant Fly Wing | 12212 | 10 | in_progress | script_audit / asset_audit / edge_cases |
 | 41 | Magnifier pack | 611; packs 2000410 | 90 | in_progress | script_audit / asset_audit / effect_packet / edge_cases |
 | 42 | Portable repair service | 2000420; packs 2000420 | 100 | in_progress | script_audit / asset_audit / edge_cases |
 | 43 | Hairstyle voucher | 2000430; packs 2000430 | 100 | in_progress | script_audit / asset_audit / edge_cases |

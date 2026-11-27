@@ -1,0 +1,48 @@
+{
+  "production": {
+    "changes": [
+      {
+        "source": "src/map/script.cpp",
+        "base_sha256": "722996c8cf145a0f4fb71df25664886cc00faa88a1e30967f510b711b8159f66",
+        "patched_sha256": "5fbe02029a1b5c56ed7b6d95912949c8d82534f341ad0fc05e0b651f46d4a2d3",
+        "crlf": true
+      },
+      {
+        "source": "src/map/population_engine/minimal.cpp",
+        "base_sha256": "aecc8bd79489ac9c151c6e7abf0bbacfa47ab13d37d0937add5aa3464f6e0a34",
+        "patched_sha256": "ee51cb4c97c5a0b4b1d544819fe382b507aaa25d72e41cc2539c0ac880b51b40",
+        "crlf": false
+      },
+      {
+        "source": "src/map/population_engine/minimal.hpp",
+        "base_sha256": "2a0e983f14cd1b59ff3a4febddc5f1ea2d997f2ac2eba81a99d5bae0cc6ea5cd",
+        "patched_sha256": "8ffbee71884d929f7639aae4be17f31717b48f8c720e08c1a700f26891d883af",
+        "crlf": false
+      }
+    ],
+    "patch_sha256": "95a274417af9ae964895a9cb96ec61a2fb1ed64d496bc69c45223922b6c3f773"
+  },
+  "playable": {
+    "changes": [
+      {
+        "source": "src/map/script.cpp",
+        "base_sha256": "722996c8cf145a0f4fb71df25664886cc00faa88a1e30967f510b711b8159f66",
+        "patched_sha256": "5fbe02029a1b5c56ed7b6d95912949c8d82534f341ad0fc05e0b651f46d4a2d3",
+        "crlf": true
+      },
+      {
+        "source": "src/map/population_engine/minimal.cpp",
+        "base_sha256": "fd6aef9561f80f37b82cdc68e0e13997a2903c6b2730e0bb1a235293ef8cc710",
+        "patched_sha256": "3eba1f378fe325cbaf0931046ef30f48778d0fe85c4d6af4d0b5197a21d0ca73",
+        "crlf": false
+      },
+      {
+        "source": "src/map/population_engine/minimal.hpp",
+        "base_sha256": "2a0e983f14cd1b59ff3a4febddc5f1ea2d997f2ac2eba81a99d5bae0cc6ea5cd",
+        "patched_sha256": "8ffbee71884d929f7639aae4be17f31717b48f8c720e08c1a700f26891d883af",
+        "crlf": false
+      }
+    ],
+    "patch_sha256": "c7def89f3eded8a3409be5a730428904e618319aa7b190d1e5df025bf5f8b092"
+  }
+}

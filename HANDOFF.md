@@ -210,3 +210,11 @@ source; art stays local. See catalogue README for activation/rollback prerequisi
 Do not enable untested catalogue variants merely because definitions exist. The
 16 added supply variants and remaining utility/taming/companion/effect cases are
 still separate pending work. No live deployment or hardware acceptance occurred.
+
+Cash catalogue milestone4 adds a reproducible import assembler (34 preserved +129
+candidate SKUs) and scoped socketless Giant Fly Wing placement fix. The isolated
+actor-spawn/Stop-mode tests pass; no combat policy or live runtime changed. The
+Arrow Crafting pack price is945, replacing72 after checking native output value.
+New companion combat, group0 eligibility, buff-effect and service-cap evidence is
+linked in catalogue README. Remaining effect/edge checks and final readiness ledger
+are ongoing; do not infer all88 readiness from generation or successful builds.

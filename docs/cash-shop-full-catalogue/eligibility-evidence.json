@@ -1,0 +1,158 @@
+[
+  {
+    "item_id": 11623,
+    "base_level": 59,
+    "normal_account_group": 0,
+    "consumed": 0,
+    "expected_restriction": true
+  },
+  {
+    "item_id": 11623,
+    "base_level": 60,
+    "normal_account_group": 0,
+    "consumed": 1,
+    "expected_restriction": true
+  },
+  {
+    "item_id": 11624,
+    "base_level": 59,
+    "normal_account_group": 0,
+    "consumed": 0,
+    "expected_restriction": true
+  },
+  {
+    "item_id": 11624,
+    "base_level": 60,
+    "normal_account_group": 0,
+    "consumed": 1,
+    "expected_restriction": true
+  },
+  {
+    "item_id": 1750,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1751,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1752,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1754,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1755,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1756,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1757,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1767,
+    "job": 5,
+    "normal_account_group": 0,
+    "equip_accepted": false,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1750,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1751,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1752,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1754,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1755,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1756,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1757,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  },
+  {
+    "item_id": 1767,
+    "job": 11,
+    "normal_account_group": 0,
+    "equip_accepted": true,
+    "no_quantity_loss": true,
+    "persisted": true
+  }
+]

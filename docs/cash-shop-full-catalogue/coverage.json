@@ -59,7 +59,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 2,
@@ -112,7 +113,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 3,
@@ -358,7 +360,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -410,7 +412,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -462,7 +464,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -514,7 +516,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -584,7 +586,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 12,
@@ -636,7 +639,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 13,
@@ -685,7 +689,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 14,
@@ -734,7 +739,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 15,
@@ -783,7 +789,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 16,
@@ -832,7 +839,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 17,
@@ -881,7 +889,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 18,
@@ -930,7 +939,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 19,
@@ -979,7 +989,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 20,
@@ -1028,7 +1039,8 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "eligibility_evidence": "eligibility-evidence.json"
   },
   {
     "request": 21,
@@ -1164,36 +1176,36 @@
         "item_id": 990,
         "aegis_name": "Boody_Red",
         "quantity": 10,
-        "unit_cash": 2
+        "unit_cash": 60
       },
       {
         "item_id": 991,
         "aegis_name": "Crystal_Blue",
         "quantity": 10,
-        "unit_cash": 2
+        "unit_cash": 15
       },
       {
         "item_id": 992,
         "aegis_name": "Wind_Of_Verdure",
         "quantity": 10,
-        "unit_cash": 2
+        "unit_cash": 15
       },
       {
         "item_id": 993,
         "aegis_name": "Yellow_Live",
         "quantity": 10,
-        "unit_cash": 2
+        "unit_cash": 15
       }
     ],
     "quantities": [
       10
     ],
     "proposed_cash_prices": [
-      72
+      945
     ],
-    "pricing_status": "draft; verify component value/no Zeny arbitrage before sale",
+    "pricing_status": "945 Cash = 10% discount on 6000 Fire + 1500 each Crystal/Wind/Stone Arrow output value; actual native crafting quantities verified",
     "intended_effect": "Arrow Crafting materials",
-    "variant_spec": "Arrow Crafting materials — fixed contents",
+    "variant_spec": "10 of each material. Native Arrow Crafting yields 600 Fire Arrows or 150 arrows of the matching other element per material. Price follows those output values with a 10% pack discount; Arrow Crafting skill is required.",
     "dependencies": [
       "effective item script + restrictions",
       "GRF iteminfo/icon + use assets",
@@ -1224,7 +1236,8 @@
     "utility_evidence": {
       "reference": "utilities-evidence.json",
       "scope": "actual skill selection/material consumption/duplicate-selection guard or dead-only revival or identify; explicit per-case fields"
-    }
+    },
+    "price_revision_evidence": "reprice-bundle-evidence.json"
   },
   {
     "request": 23,
@@ -1258,7 +1271,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -1310,7 +1323,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -1362,7 +1375,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -1414,7 +1427,7 @@
       "script_audit": false,
       "asset_audit": false,
       "purchase_packet": true,
-      "effect_packet": false,
+      "effect_packet": true,
       "reconnect": true,
       "edge_cases": false,
       "device": false
@@ -1484,7 +1497,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 28,
@@ -1536,7 +1550,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 29,
@@ -1588,7 +1603,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 30,
@@ -1640,7 +1656,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 31,
@@ -1692,7 +1709,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 32,
@@ -1744,7 +1762,8 @@
       "reference": "consumable-effects-evidence.json",
       "note": "actual HP/SP/stat/maxHP/maxSP change, single consumption, status persistence/reconnect; not every duration/combat/eligibility boundary"
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "additional_effect_evidence": "buff-effects-evidence.json"
   },
   {
     "request": 33,
@@ -1933,7 +1952,8 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "limit_evidence": "service-limits-evidence.json"
   },
   {
     "request": 36,
@@ -1981,7 +2001,8 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "limit_evidence": "service-limits-evidence.json"
   },
   {
     "request": 37,
@@ -2029,7 +2050,8 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "limit_evidence": "service-limits-evidence.json"
   },
   {
     "request": 38,
@@ -2077,7 +2099,8 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "limit_evidence": "service-limits-evidence.json"
   },
   {
     "request": 39,
@@ -2159,15 +2182,19 @@
     "evidence": {
       "script_audit": false,
       "asset_audit": false,
-      "purchase_packet": false,
-      "effect_packet": false,
-      "reconnect": false,
+      "purchase_packet": true,
+      "effect_packet": true,
+      "reconnect": true,
       "edge_cases": false,
       "device": false
     },
     "blocker": null,
     "skus": [],
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "warp_evidence": [
+      "giant-wing-evidence.json",
+      "giant-wing-stopped-evidence.json"
+    ]
   },
   {
     "request": 41,
@@ -2268,7 +2295,8 @@
       "cases": "buy/debit/cancel/confirmed effect/persist/reconnect",
       "edge_suite_complete": false
     },
-    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
+    "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)",
+    "limit_evidence": "service-limits-evidence.json"
   },
   {
     "request": 43,
@@ -10050,10 +10078,7 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "additional_effect_evidence": {
-      "reference": "status-items-evidence.json",
-      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    },
+    "additional_effect_evidence": "buff-effects-evidence.json",
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
@@ -10121,10 +10146,7 @@
       "candidate_map_sha256": "cf2b6e6e03e5823692006310731862990c50926962204cdf54a551cb420fa6e0",
       "effects_tested": false
     },
-    "additional_effect_evidence": {
-      "reference": "status-items-evidence.json",
-      "limitation": "status/application/cure or speed expiry observed; combat/EXP/drop multipliers not measured by these tests"
-    },
+    "additional_effect_evidence": "buff-effects-evidence.json",
     "native_item_asset_reference": "native-item-audit.json (87 effective native items; actual 174 icon/collection BMPs decoded; no art bundled)"
   },
   {
@@ -10558,7 +10580,8 @@
       "reference": "companion-supplies-evidence.json",
       "scope": "five actual roles purchase/open/Give Supplies/native HP+SP consumption/Stop pauses/save",
       "remaining": "arrow and gem combat consumption, cross-owner and active-transfer rejection"
-    }
+    },
+    "combat_evidence": "companion-combat-evidence.json"
   },
   {
     "request": 88,

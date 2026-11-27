@@ -1,0 +1,11 @@
+[
+  {
+    "item_id": 2000220,
+    "purchase": true,
+    "cash_debit_once": true,
+    "cancel_preserves_pack": true,
+    "open_exact_contents": true,
+    "reconnect_inventory_cash": true,
+    "effects_tested": false
+  }
+]

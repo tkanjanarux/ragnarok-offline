@@ -1,0 +1,38 @@
+[
+  {
+    "case": "gym_9_to_10",
+    "vouchers_remaining": 1,
+    "persisted": true,
+    "reconnect": true
+  },
+  {
+    "case": "gym_cap_10",
+    "vouchers_remaining": 2,
+    "persisted": true,
+    "reconnect": true
+  },
+  {
+    "case": "reset_with_weight",
+    "vouchers_remaining": 2,
+    "persisted": true,
+    "reconnect": true
+  },
+  {
+    "case": "reset_outside_town",
+    "vouchers_remaining": 2,
+    "persisted": true,
+    "reconnect": true
+  },
+  {
+    "case": "reset_empty_build",
+    "vouchers_remaining": 2,
+    "persisted": true,
+    "reconnect": true
+  },
+  {
+    "case": "repair_nothing_broken",
+    "vouchers_remaining": 2,
+    "persisted": true,
+    "reconnect": true
+  }
+]

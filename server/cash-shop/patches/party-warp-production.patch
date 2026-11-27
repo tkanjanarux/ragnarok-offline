@@ -1,0 +1,85 @@
+--- a/src/map/script.cpp
++++ b/src/map/script.cpp
+@@ -58,6 +58,7 @@
+ #include "party.hpp"
+ #include "path.hpp"
+ #include "pc.hpp"
++#include "population_engine/minimal.hpp"
+ #include "pc_groups.hpp"
+ #include "pet.hpp"
+ #include "quest.hpp"
+@@ -5927,6 +5928,13 @@
+ 					}
+ 				}
+ 
++                // Socketless companion PCs cannot complete pc_setpos's client
++                // LoadEndAck handshake. Use their existing map-placement path.
++                if (population_m1_is_shell(pl_sd)) {
++                    if (!population_party_warp(pl_sd, mapindex, nx, ny))
++                        ShowWarning("warpparty: companion placement failed; no client handshake requested.\n");
++                    continue; // A failed placement may have safely reserved the shell.
++                }
+ 				ret = pc_setpos(pl_sd, mapindex, nx, ny, CLR_TELEPORT);
+ 			}
+ 			break;
+--- a/src/map/population_engine/minimal.cpp
++++ b/src/map/population_engine/minimal.cpp
+@@ -1842,12 +1842,10 @@
+ 
+ // Socketless placement: no pc_setpos/LoadEndAck or character-server transfer.
+ // Mirrors upstream finish_map_placement bookkeeping on this single map-server.
+-bool relocate(map_session_data* sd, map_session_data* owner) {
+-    int16 x = owner->x, y = owner->y;
+-    if (!map_search_freecell(owner, owner->m, &x, &y, 2, 2, 0)) return false;
++bool place_shell(map_session_data* sd, int16 map, uint16 mapindex, int16 x, int16 y) {
+     clear_build_ground(shells.at(sd->id));
+     if (!unit_remove_map(sd, CLR_TELEPORT)) return false;
+-    sd->m = owner->m; sd->mapindex = owner->mapindex;
++    sd->m = map; sd->mapindex = mapindex;
+     sd->x = sd->ud.to_x = x; sd->y = sd->ud.to_y = y;
+     if (map_addblock(sd)) return false; // caller releases detached shell
+     auto* md = map_getmapdata(sd->m);
+@@ -1858,6 +1856,11 @@
+     clif_spawn(sd);
+     ShowInfo("Companion M2: relocated id=%d map=%s x=%d y=%d\n", sd->id, map_mapid2mapname(sd->m), x, y);
+     return true;
++}
++bool relocate(map_session_data* sd, map_session_data* owner) {
++    int16 x = owner->x, y = owner->y;
++    if (!map_search_freecell(owner, owner->m, &x, &y, 2, 2, 0)) return false;
++    return place_shell(sd, owner->m, owner->mapindex, x, y);
+ }
+ 
+ bool retreat(Shell& shell, map_session_data* owner) {
+@@ -2159,6 +2162,20 @@
+ }
+ }
+ 
++// Giant Fly Wing / warpparty placement only. Follow/combat policy is unchanged.
++bool population_party_warp(map_session_data* sd, std::uint16_t mapindex, std::int16_t x, std::int16_t y) {
++    if (!population_m1_is_shell(sd)) return false;
++    const int16 map = map_mapindex2mapid(mapindex);
++    if (map < 0 || !map_getcell(map, x, y, CELL_CHKPASS)) return false;
++    if (!place_shell(sd, map, mapindex, x, y)) {
++        population_m1_release(sd); // Persist and reserve instead of leaving an invisible PC.
++        return false;
++    }
++    auto& shell = shells.at(sd->id);
++    shell.target = 0; shell.failures = 0;
++    return true;
++}
++
+ companion_build::Build companion_build::active(const map_session_data* sd){
+  auto it=shells.find(sd->id);return it==shells.end()?Build::legacy:it->second.build;
+ }
+--- a/src/map/population_engine/minimal.hpp
++++ b/src/map/population_engine/minimal.hpp
+@@ -16,6 +16,8 @@
+ int population_m1_count();
+ bool population_profile_active(unsigned profile);
+ bool population_m1_is_shell(const block_list* bl);
++// Scripted party warp only; socketless placement, no client/Char transfer.
++bool population_party_warp(map_session_data* sd, std::uint16_t mapindex, std::int16_t x, std::int16_t y);
+ int population_m1_command(map_session_data* owner, const char* command);
+ struct mob_data;
+ bool population_mob_peel(const block_list* src,const mob_data* mob);

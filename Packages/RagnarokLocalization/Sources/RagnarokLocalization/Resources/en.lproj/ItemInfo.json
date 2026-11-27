@@ -117320,8 +117320,8 @@
   "2000220": {
     "identifiedItemName": "Arrow Crafting materials — fixed contents",
     "unidentifiedItemName": "Arrow Crafting materials — fixed contents",
-    "identifiedItemDescription": "Fixed contents (not random):\n10 x Red Blood\n10 x Crystal Blue\n10 x Wind of Verdure\n10 x Green Live\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
-    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Red Blood\n10 x Crystal Blue\n10 x Wind of Verdure\n10 x Green Live\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+    "identifiedItemDescription": "Fixed contents (not random):\n10 x Red Blood\n10 x Crystal Blue\n10 x Wind of Verdure\n10 x Green Live\n\nRequires Arrow Crafting. Each Red Blood creates 600 Fire Arrows; each other material creates 150 arrows of its element.\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
+    "unidentifiedItemDescription": "Fixed contents (not random):\n10 x Red Blood\n10 x Crystal Blue\n10 x Wind of Verdure\n10 x Green Live\n\nRequires Arrow Crafting. Each Red Blood creates 600 Fire Arrows; each other material creates 150 arrows of its element.\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
   },
   "2000230": {
     "identifiedItemName": "Fire Converter — fixed contents",

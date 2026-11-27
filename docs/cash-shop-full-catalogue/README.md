@@ -201,3 +201,49 @@ Downloaded unsigned IPA SHA256:
 `3fdca0f786c12b6e343707f4a2010d93a162e31d496e0abd6ed4c4a81f816219`.
 It includes pet accessory rendering, but predates the corrected companion role
 labels; it is an intermediate artifact, not the final catalogue delivery.
+
+### Milestone 4: catalogue assembly and additional runtime effects
+
+`assemble.py` creates new review imports from a verified prepared profile, retaining
+all 34 existing entries and adding 129 candidates (83 packs, 13 vouchers, 25 costumes,
+eight utilities/accessories). It preserves existing overrides/tabs, rejects native
+ID/name collisions, duplicate cash SKUs and silent repricing, and records input/output
+hashes. It never edits the supplied tree or live files. Requires Python3 + PyYAML:
+
+```
+python3 server/cash-shop/assemble.py /path/to/new-candidate --output /path/to/new-review-imports
+python3 scripts/cash-shop/test-assembly.py
+```
+
+The six merge regressions pass. Both production and playable assemble independently.
+The 88-row ledger still controls readiness: a generated candidate is not automatically
+approved for sale. The Arrow Crafting material pack now costs945 Cash (10% below
+its actual 6000 Fire +1500 each Crystal/Wind/Stone Arrow output value), correcting
+an excessive conversion discount. A new purchase/cancel/open/reconnect test verifies
+this exact price; the earlier price72 evidence is superseded for SKU2000220.
+
+- [Giant Fly Wing](giant-wing-evidence.json) exposed a socketless placement defect:
+  native `pc_setpos` waited for a companion LoadEndAck that can never arrive. The
+  scoped party-warp overlay uses the existing companion placement bookkeeping,
+  without changing Follow/Assist/Hunt decisions. Packet tests now see the actual
+  spawned actor beside the leader, plus the real synthetic party member's warp.
+  [Stop mode](giant-wing-stopped-evidence.json) stays stopped after placement.
+  Nonleader fallback is not yet covered by these tests. Both source profiles
+  reproduce and the updated x86_64 map compiled; only the isolated fixture runs it.
+- [Companion combat](companion-combat-evidence.json): paid arrows produce actual
+  Hunter hits; paid Blue Gemstone revives a synthetic teammate through Priest AI.
+  Active-transfer and wrong-owner withdrawal reject without stock changes.
+- [Normal-account eligibility](eligibility-evidence.json): both Syrups reject at
+  level59 and consume at60; all eight arrows reject Merchant and equip Hunter with
+  unchanged quantities. These20 cases use group0, not a GM item-restriction bypass.
+- [Buff effects](buff-effects-evidence.json): actual native EXP allocation changes
+  1000/1000 to1500/1500 with Battle Manual. Bubble Gum changes the runtime
+  `mob_getdroprate` values; this is not a statistically sampled drop-frequency test.
+  Insurance prevents actual death EXP loss on a penalty-enabled field; Prontera
+  already has no death penalty. Same-food/MaxHP/MaxSP reuse does not stack bonuses.
+- [Service limits](service-limits-evidence.json): Gym9→10 persists, repeated use at
+  cap preserves the spare voucher; weighted/out-of-town/empty reset and no-broken-item
+  repair preserve vouchers, points and inventory through reconnect.
+
+These are isolated protocol/native tests, not iPhone/hardware visual acceptance.
+No live catalogue or gameplay process has been updated.

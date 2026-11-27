@@ -1,0 +1,27 @@
+{
+  "item_id": 12212,
+  "purchase_cash_once": true,
+  "one_consumed": true,
+  "leader_warp": true,
+  "same_map_member_warp": true,
+  "companion_follows": true,
+  "stopped_mode_preserved": true,
+  "leader_position": [
+    281,
+    300
+  ],
+  "member_position": [
+    284,
+    297
+  ],
+  "companion_positions": [
+    [
+      282,
+      302
+    ]
+  ],
+  "persisted": true,
+  "synthetic_second_account_left_party": true,
+  "nonleader_fallback_tested": false,
+  "device_verified": false
+}

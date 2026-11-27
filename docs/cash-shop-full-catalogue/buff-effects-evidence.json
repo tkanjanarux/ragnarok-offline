@@ -1,0 +1,124 @@
+[
+  {
+    "item_id": 12208,
+    "actual_base_job_exp": [
+      [
+        1000,
+        1000
+      ],
+      [
+        1500,
+        1500
+      ]
+    ],
+    "fixture_note": "Native getexp 1000/1000 through isolated GM-only fixture NPC; same production EXP bonus function, not a simulated calculation"
+  },
+  {
+    "item_id": 12210,
+    "native_mobinfo_drop_percent_before": [
+      35.0,
+      0.5,
+      2.0,
+      5.0,
+      2.5,
+      0.75,
+      0.1,
+      1.0
+    ],
+    "native_mobinfo_drop_percent_after": [
+      45.0,
+      1.0,
+      4.0,
+      10.0,
+      5.0,
+      1.5,
+      0.2,
+      1.0
+    ],
+    "effect_path": "actual mob_getdroprate invoked by native mobinfo command; not sampled drop frequencies; fixed-rate card exceptions remain"
+  },
+  {
+    "item_id": 12209,
+    "unprotected_exp": [
+      9579,
+      8803
+    ],
+    "protected_exp": [
+      10000,
+      10000
+    ],
+    "same_death_action": true
+  },
+  {
+    "item_id": 12045,
+    "stat": 13,
+    "before": 54,
+    "once": 59,
+    "twice": 59,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12060,
+    "stat": 14,
+    "before": 56,
+    "once": 61,
+    "twice": 61,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12055,
+    "stat": 15,
+    "before": 52,
+    "once": 57,
+    "twice": 57,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12050,
+    "stat": 16,
+    "before": 54,
+    "once": 59,
+    "twice": 59,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12065,
+    "stat": 17,
+    "before": 60,
+    "once": 65,
+    "twice": 65,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12070,
+    "stat": 18,
+    "before": 54,
+    "once": 59,
+    "twice": 59,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12423,
+    "stat": 6,
+    "before": 7203,
+    "once": 9033,
+    "twice": 9033,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  },
+  {
+    "item_id": 12426,
+    "stat": 8,
+    "before": 625,
+    "once": 681,
+    "twice": 681,
+    "both_consumed": true,
+    "does_not_stack_same_buff": true
+  }
+]
