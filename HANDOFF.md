@@ -219,3 +219,9 @@ grant is authorized by this implementation task. Only owned isolated fixtures we
 mutated. Static unsigned IPA publication is allowed. Read the deployment plan before
 any later activation: fresh online/process/DB/writer identity and SQLite backups,
 no old-DB restore after new writes, never downgrade/drop a nonempty pet journal.
+
+Final catalogue appb79d14e passed Xcode27.2 run45963176587 and all four portable
+workflow jobs. Unsigned IPA published and HTTPS downloaded/hash-verified; see
+[delivery](docs/cash-shop-full-catalogue/DELIVERY.md) and artifact manifest. All
+later changes are docs/audit-only and app-source diff is empty. Live catalogue
+remains unchanged. Fixture closeout integrity/FK pass, no pending pet journal.

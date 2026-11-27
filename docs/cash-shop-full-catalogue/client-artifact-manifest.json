@@ -1,0 +1,20 @@
+{
+  "commit": "b79d14ea9284753034e14f71e3123e667b03f44f",
+  "run": 45963176587,
+  "run_url": "https://github.com/tkanjanarux/ragnarok-offline/actions/runs/45963176587",
+  "artifact": 15181719627,
+  "archive_sha256": "03345ffae2c10d21f0ea9eca9fe81f2ccc5466fee0b5d094241d57139bfffba4",
+  "ipa_sha256": "3f051943d93d21de6ce5db1efd4937b7080a7ae1d1ca88237ddeb1be37c15921",
+  "ipa_bytes": 65364272,
+  "ipa_name": "RagOff-b79d14e.ipa",
+  "sdk": "iphoneos27.2",
+  "signing": "unsigned; external signing required",
+  "device_visual_verification": "Not performed",
+  "catalogue_metadata_source_sha256": "72560edbf44cdc1096c289f61a401827f3425590ea7a0f29b77855dc6e8e5d42",
+  "catalogue_metadata_ipa_sha256": "72560edbf44cdc1096c289f61a401827f3425590ea7a0f29b77855dc6e8e5d42",
+  "download_url": "https://76-13-19-77.sslip.io/downloads/RagOff-b79d14e.ipa",
+  "https_download_sha256": "3f051943d93d21de6ce5db1efd4937b7080a7ae1d1ca88237ddeb1be37c15921",
+  "https_status": 200,
+  "simulator_tests": "Not run, per user instruction",
+  "live_catalogue_deployed": false
+}
