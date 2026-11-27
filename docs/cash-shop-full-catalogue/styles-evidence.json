@@ -1,0 +1,25 @@
+{
+  "scope": "schema-only isolated server; synthetic accounts only",
+  "candidate_map_sha256": "3d4b76f5130aef076ff38194391db48aa4e09d616d3358c9c26a0d0a9641d90b",
+  "device_verified": false,
+  "tests": [
+    {
+      "item_id": 2000430,
+      "field": "hair",
+      "value": 42,
+      "buy_cancel_apply_reconnect": true
+    },
+    {
+      "item_id": 2000440,
+      "field": "hair_color",
+      "value": 8,
+      "buy_cancel_apply_reconnect": true
+    },
+    {
+      "item_id": 2000441,
+      "field": "clothes_color",
+      "value": 3,
+      "buy_cancel_apply_reconnect": true
+    }
+  ]
+}

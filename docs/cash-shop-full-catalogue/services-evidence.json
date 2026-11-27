@@ -1,0 +1,55 @@
+{
+  "scope": "schema-only isolated server; synthetic accounts only",
+  "candidate_map_sha256": "3d4b76f5130aef076ff38194391db48aa4e09d616d3358c9c26a0d0a9641d90b",
+  "device_verified": false,
+  "tests": [
+    {
+      "item_id": 2000350,
+      "purchase_debit_once": true,
+      "cancel_preserves_voucher": true,
+      "effect_persisted": true,
+      "reconnect": true,
+      "fixture_only": true
+    },
+    {
+      "item_id": 2000360,
+      "purchase_debit_once": true,
+      "cancel_preserves_voucher": true,
+      "effect_persisted": true,
+      "reconnect": true,
+      "fixture_only": true
+    },
+    {
+      "item_id": 2000370,
+      "purchase_debit_once": true,
+      "cancel_preserves_voucher": true,
+      "effect_persisted": true,
+      "reconnect": true,
+      "fixture_only": true
+    },
+    {
+      "item_id": 2000380,
+      "purchase_debit_once": true,
+      "cancel_preserves_voucher": true,
+      "effect_persisted": true,
+      "reconnect": true,
+      "fixture_only": true
+    },
+    {
+      "item_id": 2000420,
+      "purchase_debit_once": true,
+      "cancel_preserves_voucher": true,
+      "effect_persisted": true,
+      "reconnect": true,
+      "fixture_only": true
+    },
+    {
+      "item_id": 2000450,
+      "purchase_debit_once": true,
+      "cancel_preserves_voucher": true,
+      "effect_persisted": true,
+      "reconnect": true,
+      "fixture_only": true
+    }
+  ]
+}

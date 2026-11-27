@@ -24,6 +24,12 @@ struct CashShopCostume: Sendable {
         case 19702: return CashShopCostume(view: 390, garment: false)
         case 19910: return CashShopCostume(view: 1098, garment: false)
         case 31143: return CashShopCostume(view: 1560, garment: false)
+        case 20513: return CashShopCostume(view: 22, garment: true)
+        case 420046: return CashShopCostume(view: 1697, garment: false)
+        case 20764: return CashShopCostume(view: 3, garment: true)
+        case 20536: return CashShopCostume(view: 39, garment: true)
+        case 20765: return CashShopCostume(view: 1, garment: true)
+        case 31438: return CashShopCostume(view: 1706, garment: false)
         default: return nil
         }
     }

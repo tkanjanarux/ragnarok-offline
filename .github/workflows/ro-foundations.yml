@@ -12,6 +12,14 @@ on:
 permissions:
   contents: read
 jobs:
+  cashshop-checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cash purchase recovery and character rename protocol
+        run: |
+          python3 scripts/test-original-ui-core.py /tmp/cashshop-tests
+          docker run --rm --network none -v /tmp/cashshop-tests:/work:ro -w /work swift:6.2 swift test --scratch-path /tmp/build
   navigation-checks:
     runs-on: ubuntu-24.04
     steps:

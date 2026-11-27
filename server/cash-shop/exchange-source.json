@@ -1,6 +1,6 @@
 {
   "source": "src/map/script.cpp",
   "base_sha256": "95aa609762ea2d409b1aac5ddcc7a2ac59a59b7f34d967ee5c8ad45352f59ca5",
-  "patched_sha256": "85f2eafa7f0f7ab0e688163b918fec188db96997bde28295128bf5d3a3fd425d",
-  "snippet_sha256": "e1dcecccc7b549d6eccce1ab93f7bfd704e1b3f794b66321728c2f34316e1226"
+  "patched_sha256": "21f36dd8de16099ba4757ffc5737ae982c90556858f6999e74f8f0d6b2bb8cf7",
+  "snippet_sha256": "68f501751e92a746983a4b17703e887e8214e2c3ab19acad430de782eebf581c"
 }

@@ -194,3 +194,11 @@ not an assertion of full readiness. Keep deployed34 entries and all recovery gua
 Only schema-only synthetic fixtures may be mutated. Native transaction/dialog fixes
 are reproducible overlays for both distinct baseline profiles. No live deployment,
 production restart, player write, Simulator, hardware claim or automatic merge.
+
+Cash catalogue milestone2 adds native rename credit/character-screen flow, reset
+preservation, validated style ranges, 24 real costume mappings/robe path fallback,
+and guarded portable card removal with the existing risk/material policy. See
+per-system evidence JSON in the ledger docs. The isolated packet suites are not
+iPhone visual acceptance and do not prove all88 requirements. Keep unfinished
+pet/companion/effect/edge cases visible; costume support88 is explicitly absent in
+companion gear validation. No live activation or player-data writes are authorized.

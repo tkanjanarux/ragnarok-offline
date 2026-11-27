@@ -72,6 +72,8 @@ final public class GameSession {
     private(set) var charServers: [CharServerInfo] = []
     private(set) var charServer: CharServerInfo?
     private(set) var characters: [CharacterInfo] = []
+    var characterRename = CharacterRenameState()
+    @ObservationIgnored private var renameTimeoutTask: Task<Void, Never>?
 
     var selectedCharacterSlot: Int = 0
     private(set) var maxCharacterSlots: Int = 9
@@ -345,7 +347,7 @@ final public class GameSession {
     ///
     /// Send ``PACKET_CH_SELECT_CHAR``
     func selectCharacter(slot: Int) {
-        guard case .login(.characterSelect) = stage, let charClient else {
+        guard case .login(.characterSelect) = stage, !characterRename.blocked, let charClient else {
             return
         }
 
@@ -353,6 +355,19 @@ final public class GameSession {
 
         let packet = PacketFactory.CH_SELECT_CHAR(slot: slot)
         charClient.sendPacket(packet)
+    }
+
+    func renameCharacter(charID: UInt32, name: String) {
+        guard case .login(.characterSelect) = stage, let charClient,
+              let character = characters.first(where: { $0.charID == charID }),
+              characterRename.begin(characterID: charID, credits: character.charNameChangeCount, name: name) else { return }
+        charClient.sendPacket(CharacterRenameRequest(characterID: charID, name: characterRename.requestedName))
+        renameTimeoutTask?.cancel()
+        renameTimeoutTask = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(15)) } catch { return }
+            guard !Task.isCancelled else { return }
+            self?.characterRename.timeout()
+        }
     }
 
     /// Create character.
@@ -371,7 +386,7 @@ final public class GameSession {
     ///
     /// Send ``PACKET_CH_DELETE_CHAR3_RESERVED``, then ``PACKET_CH_DELETE_CHAR3`` on success.
     func deleteCharacter(charID: UInt32) {
-        guard case .login(.characterSelect) = stage, let charClient else {
+        guard case .login(.characterSelect) = stage, !characterRename.blocked, let charClient else {
             return
         }
 
@@ -401,6 +416,7 @@ final public class GameSession {
         // Handle packet stream
         Task {
             for await packet in client.packetStream {
+                guard self.charClient === client else { continue }
                 handleCharPacket(packet)
             }
         }
@@ -424,6 +440,9 @@ final public class GameSession {
     }
 
     private func stopCharClient() {
+        renameTimeoutTask?.cancel()
+        renameTimeoutTask = nil
+        characterRename = CharacterRenameState()
         charKeepaliveTask?.cancel()
         charKeepaliveTask = nil
 
@@ -433,9 +452,14 @@ final public class GameSession {
 
     private func handleCharPacket(_ packet: any DecodablePacket) {
         switch packet {
+        case let packet as CharacterRenameResult:
+            characterRename.receive(result: packet.result)
+            if !characterRename.blocked { renameTimeoutTask?.cancel() }
         case let packet as PACKET_HC_ACCEPT_ENTER:
             let characters = packet.characters.map(CharacterInfo.init(from:))
             self.characters = characters
+            characterRename.receiveCharacterList(Dictionary(uniqueKeysWithValues: characters.map { ($0.charID, $0.name) }))
+            if !characterRename.blocked { renameTimeoutTask?.cancel() }
 
             let maxSlots = Int(packet.total)
             if maxSlots > 0 {

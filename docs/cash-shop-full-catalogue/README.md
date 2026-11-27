@@ -74,3 +74,41 @@ no web runtime is added to the iOS app. No Simulator or hardware testing is clai
 Deployment is pending review, full integration evidence and a separate activation
 step. No live accounts, balances, inventories, gameplay services or RL policy were
 modified by this work.
+
+## Milestone 2 evidence (still not final sale readiness)
+
+- [67 bundles](bundle-packet-evidence.json): buy/debit once, cancel, exact fixed
+  contents and real reconnect; five additional inventory/weight/menu cases are in
+  [edge evidence](bundle-edges-evidence.json).
+- [Six initial services](services-evidence.json): skill/stat/full reset, Gym,
+  repair and rename-credit activation. Reset refunds actual spent points and
+  retains quest/permanent/unspent bonuses. [Rename](rename-evidence.json) also
+  tests duplicate/invalid names, configured party/guild rejection, one-credit
+  consumption and reconnect. Character selection now uses the actual 0x08fc/0x08fd
+  protocol, with pending/timeout/connection identity guards.
+- [Three style variants](styles-evidence.json): confirmed changes, cancellation
+  and reconnect. Local assets support human classic/rebirth hairstyles1–42,
+  hair colours0–8 and common clothes colours0–3. Server bounds are also checked;
+  unsupported jobs/styles keep the voucher. No persistent preview mutation.
+- [24 costumes](costumes-evidence.json): exact item purchase/equip/persist/reconnect;
+  no item/equip/unequip script, base attack/defense/slots or matching live item
+  combos. Initial packet checks cover MaxHP/MaxSP, not all six stat packets yet.
+  Real GRF collection images were inspected privately for the added cape/backpack/
+  wing/halo variants. This is not native-app/device visual verification.
+- [Twelve consumables](consumable-effects-evidence.json): actual HP/SP recovery,
+  six +5 stat foods and MaxHP/MaxSP changes with single consumption and saved
+  status/reconnect. Combat multipliers, duration boundaries and eligibility cases
+  still require their own tests; those flags are not silently marked complete.
+- [Card removal](card-removal-evidence.json) follows the existing Wise Old Woman
+  probabilities, Zeny and material costs, plus one voucher per completed attempt.
+  Synchronous preflight prevents partial card grants; item identity/refinement/
+  other attributes are retained. Cancel, insufficient Zeny/materials, full bag
+  and a successful removal/reconnect passed. Every probability boundary is tested
+  from the production function; random failure inventory branches remain pending.
+
+Companion fashion88 is excluded: the current server explicitly rejects costume
+and shadow slots. No stat-bearing substitute or fake appearance SKU is offered.
+Other incomplete requirements remain in the 88-row ledger; this milestone does
+not claim that pets, companion supplies, all utility services or all item effects
+are complete. All candidate sale flags remain false until their required evidence
+and deployment review are complete.

@@ -116343,6 +116343,65 @@
     "identifiedItemResourceName": "초록상자",
     "slotCount": 0,
     "unidentifiedItemResourceName": "초록상자"
+  },
+  "2000350": {
+    "identifiedItemResourceName": "섬광막대",
+    "unidentifiedItemResourceName": "섬광막대",
+    "slotCount": 0
+  },
+  "2000360": {
+    "identifiedItemResourceName": "쿠폰",
+    "unidentifiedItemResourceName": "쿠폰",
+    "slotCount": 0
+  },
+  "2000370": {
+    "identifiedItemResourceName": "섬광막대",
+    "unidentifiedItemResourceName": "섬광막대",
+    "slotCount": 0
+  },
+  "2000380": {
+    "identifiedItemResourceName": "카프라이용권",
+    "unidentifiedItemResourceName": "카프라이용권",
+    "slotCount": 0
+  },
+  "2000420": {
+    "identifiedItemResourceName": "빛의주문서",
+    "unidentifiedItemResourceName": "빛의주문서",
+    "slotCount": 0
+  },
+  "2000450": {
+    "identifiedItemResourceName": "쿠폰",
+    "unidentifiedItemResourceName": "쿠폰",
+    "slotCount": 0
+  },
+  "0020513": {
+    "identifiedItemResourceName": "EXE_Backpack",
+    "unidentifiedItemResourceName": "EXE_Backpack",
+    "slotCount": 0
+  },
+  "0020536": {
+    "identifiedItemResourceName": "Violet_Halo",
+    "unidentifiedItemResourceName": "Violet_Halo",
+    "slotCount": 0
+  },
+  "2000430": {
+    "identifiedItemResourceName": "쿠폰",
+    "unidentifiedItemResourceName": "쿠폰",
+    "slotCount": 0
+  },
+  "2000440": {
+    "identifiedItemResourceName": "쿠폰",
+    "unidentifiedItemResourceName": "쿠폰",
+    "slotCount": 0
+  },
+  "2000441": {
+    "identifiedItemResourceName": "쿠폰",
+    "unidentifiedItemResourceName": "쿠폰",
+    "slotCount": 0
+  },
+  "2000460": {
+    "identifiedItemResourceName": "쿠폰",
+    "unidentifiedItemResourceName": "쿠폰",
+    "slotCount": 0
   }
-
 }

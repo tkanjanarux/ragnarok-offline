@@ -1,0 +1,199 @@
+{
+  "scope": "schema-only isolated server; synthetic accounts only",
+  "candidate_map_sha256": "3d4b76f5130aef076ff38194391db48aa4e09d616d3358c9c26a0d0a9641d90b",
+  "device_verified": false,
+  "tests": [
+    {
+      "item_id": 11623,
+      "parameter": 5,
+      "before": 1,
+      "after": 3673,
+      "one_consumed": true,
+      "status_type": null,
+      "status_saved": [],
+      "reconnect": true
+    },
+    {
+      "item_id": 11624,
+      "parameter": 7,
+      "before": 1,
+      "after": 375,
+      "one_consumed": true,
+      "status_type": null,
+      "status_saved": [],
+      "reconnect": true
+    },
+    {
+      "item_id": 547,
+      "parameter": 5,
+      "before": 1,
+      "after": 782,
+      "one_consumed": true,
+      "status_type": null,
+      "status_saved": [],
+      "reconnect": true
+    },
+    {
+      "item_id": 505,
+      "parameter": 7,
+      "before": 1,
+      "after": 86,
+      "one_consumed": true,
+      "status_type": null,
+      "status_saved": [],
+      "reconnect": true
+    },
+    {
+      "item_id": 12045,
+      "parameter": 13,
+      "before": 54,
+      "after": 59,
+      "one_consumed": true,
+      "status_type": 203,
+      "status_saved": [
+        [
+          203,
+          1198996,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12060,
+      "parameter": 14,
+      "before": 56,
+      "after": 61,
+      "one_consumed": true,
+      "status_type": 204,
+      "status_saved": [
+        [
+          204,
+          1198993,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12055,
+      "parameter": 15,
+      "before": 52,
+      "after": 57,
+      "one_consumed": true,
+      "status_type": 205,
+      "status_saved": [
+        [
+          205,
+          1198995,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12050,
+      "parameter": 16,
+      "before": 54,
+      "after": 59,
+      "one_consumed": true,
+      "status_type": 206,
+      "status_saved": [
+        [
+          206,
+          1198995,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12065,
+      "parameter": 17,
+      "before": 70,
+      "after": 75,
+      "one_consumed": true,
+      "status_type": 207,
+      "status_saved": [
+        [
+          207,
+          1198989,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12070,
+      "parameter": 18,
+      "before": 54,
+      "after": 59,
+      "one_consumed": true,
+      "status_type": 208,
+      "status_saved": [
+        [
+          208,
+          1198996,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12423,
+      "parameter": 6,
+      "before": 7203,
+      "after": 9033,
+      "one_consumed": true,
+      "status_type": 625,
+      "status_saved": [
+        [
+          625,
+          498996,
+          1,
+          2,
+          1830,
+          0
+        ]
+      ],
+      "reconnect": true
+    },
+    {
+      "item_id": 12426,
+      "parameter": 8,
+      "before": 625,
+      "after": 681,
+      "one_consumed": true,
+      "status_type": 626,
+      "status_saved": [
+        [
+          626,
+          498995,
+          1,
+          2,
+          9,
+          0
+        ]
+      ],
+      "reconnect": true
+    }
+  ]
+}

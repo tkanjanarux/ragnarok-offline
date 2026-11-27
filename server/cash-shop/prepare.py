@@ -55,7 +55,7 @@ def prepare(output, profile, base):
     assert sha(script) == exchange['base_sha256']
     data = script.read_bytes()
     data = data.replace(b'BUILDIN_FUNC(checkweight2)', snippet.read_bytes() + b'\nBUILDIN_FUNC(checkweight2)', 1)
-    data = data.replace(b'BUILDIN_DEF(checkweight2,"rr"),', b'BUILDIN_DEF(checkweight2,"rr"),\n\tBUILDIN_DEF(catalogue_exchange,"iii*"),', 1)
+    data = data.replace(b'BUILDIN_DEF(checkweight2,"rr"),', b'BUILDIN_DEF(checkweight2,"rr"),\n\tBUILDIN_DEF(catalogue_exchange,"iii*"),\n\tBUILDIN_DEF(catalogue_reset,"ii"),\n\tBUILDIN_DEF(catalogue_remove_cards,"iiiiiiiii"),', 1)
     script.write_bytes(data)
     dialog = json.loads((HERE / 'item-dialog-source.json').read_text())[profile]
     patch = HERE / f'patches/item-dialog-{profile}.patch'

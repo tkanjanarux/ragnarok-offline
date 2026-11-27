@@ -22,16 +22,16 @@ shutil.copytree(root / 'Packages/BinaryIO/Sources/BinaryIO', out / 'Sources/Bina
 for name in ['PacketProtocol', 'PacketEncoder']:
     copy(f'Packages/RagnarokPackets/Sources/RagnarokPackets/{name}.swift', f'Sources/RagnarokPackets/{name}.swift')
 copy('Packages/RagnarokPackets/Sources/RagnarokPackets/Generated/packets.swift', 'Sources/RagnarokPackets/packets.swift')
-for name in ['CashShopRequest', 'QuestWirePacket']:
+for name in ['CashShopRequest', 'QuestWirePacket', 'CharacterRename']:
     copy(f'Packages/RagnarokPackets/Sources/RagnarokPackets/Packets/{name}.swift', f'Sources/RagnarokPackets/{name}.swift')
 # Copy the real error enum; exclude the macOS-only OSAllocatedUnfairLock decoder.
 source = (root / 'Packages/RagnarokPackets/Sources/RagnarokPackets/PacketDecoder.swift').read_text()
 (out / 'Sources/RagnarokPackets/PacketDecodingError.swift').write_text(source[source.index('public enum PacketDecodingError'):source.index('final public class PacketDecoder')])
-for name in ['CashShop', 'QuestLog', 'QuestRichText']:
+for name in ['CashShop', 'QuestLog', 'QuestRichText', 'CharacterRename']:
     copy(f'Packages/RagnarokGame/Sources/RagnarokGame/Engine/{name}.swift', f'Sources/RagnarokGame/{name}.swift')
-for name in ['CashShopTests', 'QuestLogTests', 'QuestRichTextTests']:
+for name in ['CashShopTests', 'QuestLogTests', 'QuestRichTextTests', 'CharacterRenameTests']:
     copy(f'Packages/RagnarokGame/Tests/RagnarokGameTests/{name}.swift', f'Tests/RagnarokGameTests/{name}.swift')
-for name in ['CashShopPacketTests', 'QuestActiveRequestTests']:
+for name in ['CashShopPacketTests', 'QuestActiveRequestTests', 'CharacterRenamePacketTests']:
     copy(f'Packages/RagnarokPackets/Tests/RagnarokPacketsTests/{name}.swift', f'Tests/RagnarokPacketsTests/{name}.swift')
 (out / 'Package.swift').write_text('''// swift-tools-version: 6.0
 import PackageDescription

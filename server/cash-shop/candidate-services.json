@@ -1,0 +1,91 @@
+[
+  {
+    "request": 35,
+    "item_id": 2000350,
+    "aegis_name": "RO_Catalogue_Skill_Reset",
+    "name": "Skill Reset Voucher",
+    "price_cash": 500,
+    "mode": 1
+  },
+  {
+    "request": 36,
+    "item_id": 2000360,
+    "aegis_name": "RO_Catalogue_Stat_Reset",
+    "name": "Stat Reset Voucher",
+    "price_cash": 500,
+    "mode": 2
+  },
+  {
+    "request": 37,
+    "item_id": 2000370,
+    "aegis_name": "RO_Catalogue_Full_Reset",
+    "name": "Skill and Stat Reset Voucher",
+    "price_cash": 900,
+    "mode": 3
+  },
+  {
+    "request": 38,
+    "item_id": 2000380,
+    "aegis_name": "RO_Catalogue_Gym",
+    "name": "Gym Training Voucher",
+    "price_cash": 100,
+    "service": "gym"
+  },
+  {
+    "request": 42,
+    "item_id": 2000420,
+    "aegis_name": "RO_Catalogue_Repair",
+    "name": "Portable Repair Voucher",
+    "price_cash": 100,
+    "service": "repair"
+  },
+  {
+    "request": 45,
+    "item_id": 2000450,
+    "aegis_name": "RO_Catalogue_Rename",
+    "name": "Character Rename Voucher",
+    "price_cash": 500,
+    "service": "rename_credit"
+  },
+  {
+    "request": 43,
+    "item_id": 2000430,
+    "aegis_name": "RO_Catalogue_Hairstyle",
+    "name": "Hairstyle Voucher",
+    "price_cash": 100,
+    "service": "style",
+    "look": "LOOK_HAIR",
+    "minimum": 1,
+    "maximum": 42
+  },
+  {
+    "request": 44,
+    "item_id": 2000440,
+    "aegis_name": "RO_Catalogue_Hair_Dye",
+    "name": "Hair Colour Voucher",
+    "price_cash": 100,
+    "service": "style",
+    "look": "LOOK_HAIR_COLOR",
+    "minimum": 0,
+    "maximum": 8
+  },
+  {
+    "request": 44,
+    "item_id": 2000441,
+    "aegis_name": "RO_Catalogue_Clothes_Dye",
+    "name": "Clothes Colour Voucher",
+    "price_cash": 100,
+    "service": "style",
+    "look": "LOOK_CLOTHES_COLOR",
+    "minimum": 0,
+    "maximum": 3
+  },
+  {
+    "request": 46,
+    "item_id": 2000460,
+    "aegis_name": "RO_Catalogue_Card_Removal",
+    "name": "Portable Card Removal Voucher",
+    "price_cash": 100,
+    "service": "card_removal"
+  }
+]

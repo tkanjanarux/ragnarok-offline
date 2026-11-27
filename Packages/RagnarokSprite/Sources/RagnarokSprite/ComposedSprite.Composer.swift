@@ -391,14 +391,21 @@ extension ComposedSprite.Part {
 
         let pathGenerator = SpritePathGenerator(scriptContext: scriptContext)
 
-        guard let spritePath = pathGenerator.generateGarmentSpritePath(job: job, garment: garment, gender: gender) else {
-            return nil
+        // Some official robes use an English directory or a shared sprite.
+        // Try only paths supplied by this GRF's robe table, never another item.
+        var lastError: (any Error)?
+        for (english, fallback) in [(false, false), (true, false), (false, true), (true, true)] {
+            guard let path = pathGenerator.generateGarmentSpritePath(job: job, garment: garment,
+                gender: gender, checkEnglish: english, useFallback: fallback) else { continue }
+            do {
+                let sprite = try await resourceManager.sprite(at: path)
+                return ComposedSprite.Part(sprite: sprite, semantic: .garment)
+            } catch {
+                lastError = error
+            }
         }
-
-        let garmentSprite = try await resourceManager.sprite(at: spritePath)
-
-        let garmentPart = ComposedSprite.Part(sprite: garmentSprite, semantic: .garment)
-        return garmentPart
+        if let lastError { throw lastError }
+        return nil
     }
 
     static func generateShadowPart(

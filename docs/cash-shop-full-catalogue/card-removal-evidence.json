@@ -1,0 +1,52 @@
+{
+  "candidate_map_sha256": "a2f4e4b1263cfd0808f623bde19cb78e17e25552b156464f4289aa5159b35ff5",
+  "scope": "isolated synthetic fixture only",
+  "tests": [
+    {
+      "case": "cancel",
+      "passed": true,
+      "result_text": [],
+      "zeny": 500000,
+      "reconnect": true
+    },
+    {
+      "case": "no_money",
+      "passed": true,
+      "result_text": [
+        "Cannot proceed: check unchanged eligible equipment, money, materials, weight and inventory space. Nothing consumed."
+      ],
+      "zeny": 0,
+      "reconnect": true
+    },
+    {
+      "case": "no_material",
+      "passed": true,
+      "result_text": [
+        "Cannot proceed: check unchanged eligible equipment, money, materials, weight and inventory space. Nothing consumed."
+      ],
+      "zeny": 500000,
+      "reconnect": true
+    },
+    {
+      "case": "full_inventory",
+      "passed": true,
+      "result_text": [
+        "Cannot proceed: check unchanged eligible equipment, money, materials, weight and inventory space. Nothing consumed."
+      ],
+      "zeny": 500000,
+      "reconnect": true
+    },
+    {
+      "case": "success_or_documented_failure",
+      "passed": true,
+      "result_text": [
+        "Success. Cards and equipment returned separately. Refinement and other item attributes are retained."
+      ],
+      "zeny": 275000,
+      "reconnect": true
+    }
+  ],
+  "random_failure_inventory_paths": "not yet covered by packet suite",
+  "policy_test": "all 200 roll/protection combinations compiled from production function",
+  "device_verified": false
+}

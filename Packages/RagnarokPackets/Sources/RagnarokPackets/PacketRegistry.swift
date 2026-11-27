@@ -6,6 +6,7 @@
 //
 
 let registeredPackets: [Int16 : any DecodablePacket.Type] = [
+    0x8fd: CharacterRenameResult.self,
     0x152: GuildEmblemPacket.self,
     0x1f2: GuildMemberStatus.self,
     0x29b: MercenaryInfo.self,

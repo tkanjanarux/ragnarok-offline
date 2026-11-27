@@ -1,0 +1,41 @@
+{
+  "scope": "schema-only isolated server; synthetic accounts only",
+  "candidate_map_sha256": "3d4b76f5130aef076ff38194391db48aa4e09d616d3358c9c26a0d0a9641d90b",
+  "device_verified": false,
+  "tests": [
+    {
+      "case": "cancel_without_request",
+      "passed": true
+    },
+    {
+      "case": "duplicate_name_credit_preserved",
+      "passed": true
+    },
+    {
+      "case": "invalid_name_credit_preserved",
+      "passed": true
+    },
+    {
+      "case": "party_id_server_policy_reject",
+      "passed": true,
+      "note": "synthetic membership ID in schema-only fixture; actual deployed config forbids renaming while a member"
+    },
+    {
+      "case": "guild_id_server_policy_reject",
+      "passed": true,
+      "note": "synthetic membership ID in schema-only fixture; actual deployed config forbids renaming while a member"
+    },
+    {
+      "case": "successful_rename_credit_consumed_once_and_list_refreshed",
+      "passed": true
+    },
+    {
+      "case": "duplicate_attempt_no_second_credit",
+      "passed": true
+    },
+    {
+      "case": "rename_persists_reconnect",
+      "passed": true
+    }
+  ]
+}

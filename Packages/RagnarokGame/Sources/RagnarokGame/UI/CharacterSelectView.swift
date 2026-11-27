@@ -20,6 +20,8 @@ struct CharacterSelectView: View {
     @State private var characterAnimationsBySlot: [Int : SpriteAnimation] = [:]
     @State private var showingDeleteConfirmation = false
     @State private var showingCancelConfirmation = false
+    @State private var renamingCharacterID: UInt32?
+    @State private var renameText = ""
 
     private let slotsPerPage = 3
 
@@ -41,6 +43,7 @@ struct CharacterSelectView: View {
             ZStack(alignment: .bottomTrailing) {
                 VStack(alignment: .leading, spacing: 0) {
                     CharacterSlotPanel(characterAnimations: characterAnimationsBySlot)
+                        .disabled(gameSession.characterRename.blocked)
                         .padding(.top, 26)
 
                     CharacterInfoPanel(character: selectedCharacter)
@@ -73,7 +76,7 @@ struct CharacterSelectView: View {
                 if selectedCharacter != nil {
                     // btn_del.bmp
                     Button {
-                        showingDeleteConfirmation = true
+                        if !gameSession.characterRename.blocked { showingDeleteConfirmation = true }
                     } label: {
                         Text("del", bundle: #bundle)
                     }
@@ -81,12 +84,20 @@ struct CharacterSelectView: View {
                     .frame(width: 42, height: 20)
                 }
 
+                if let character = selectedCharacter, character.charNameChangeCount > 0 {
+                    Button("Rename") {
+                        renameText = character.name
+                        renamingCharacterID = character.charID
+                    }.buttonStyle(.game).frame(width: 68, height: 20)
+                        .disabled(gameSession.characterRename.blocked)
+                }
+
                 Spacer()
 
                 if selectedCharacter == nil {
                     // btn_make.bmp
                     Button {
-                        gameSession.makeCharacter(slot: gameSession.selectedCharacterSlot)
+                        if !gameSession.characterRename.blocked { gameSession.makeCharacter(slot: gameSession.selectedCharacterSlot) }
                     } label: {
                         Text("make", bundle: #bundle)
                     }
@@ -118,8 +129,32 @@ struct CharacterSelectView: View {
         }
         .gameWindowTitle(Text("Character Select", bundle: #bundle))
         .frame(width: 576)
+        .allowsHitTesting(renamingCharacterID == nil)
         .overlay(alignment: .center) {
-            if showingDeleteConfirmation {
+            if let charID = renamingCharacterID {
+                GameWindow {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("One rename credit is used only after the server accepts the name.")
+                        TextField("New name", text: $renameText).textFieldStyle(.plain)
+                            .padding(4).frame(height: 28).background(.white).border(Color.gameBoxBorder)
+                            .disabled(gameSession.characterRename.blocked)
+                        Text(gameSession.characterRename.message ?? "Server name, party and guild restrictions apply.")
+                            .fixedSize(horizontal: false, vertical: true)
+                    }.font(.game()).padding(12)
+                } bottomBar: {
+                    GameBottomBar {
+                        Button("Rename") { gameSession.renameCharacter(charID: charID, name: renameText) }
+                            .buttonStyle(.game).frame(width: 68, height: 22)
+                            .disabled(gameSession.characterRename.blocked || !characters.contains(where: { $0.charID == charID && $0.charNameChangeCount > 0 }))
+                        Spacer()
+                        Button(gameSession.characterRename.uncertain ? "Return to login" : "Close") {
+                            if gameSession.characterRename.uncertain { gameSession.exitCurrentPhase() }
+                            renamingCharacterID = nil
+                        }.buttonStyle(.game).frame(width: 100, height: 22)
+                            .disabled(gameSession.characterRename.blocked && !gameSession.characterRename.uncertain)
+                    }
+                }.gameWindowTitle(Text("Rename Character")).frame(width: 340)
+            } else if showingDeleteConfirmation {
                 MessageBoxView(gameContext.messageStringTable.localizedMessageString(forID: 19)) {
                     // btn_ok.bmp
                     Button {

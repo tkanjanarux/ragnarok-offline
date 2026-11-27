@@ -1,0 +1,291 @@
+[
+  {
+    "request": 47,
+    "item_id": 19587,
+    "aegis_name": "C_King_Poring_Hat",
+    "name": "Costume King Poring Hat",
+    "price_cash": 250,
+    "view": 905,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 100
+  },
+  {
+    "request": 48,
+    "item_id": 19876,
+    "aegis_name": "C_Rabbit_Ear_Hat",
+    "name": "Costume Bunny Top Hat",
+    "price_cash": 250,
+    "view": 384,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 49,
+    "item_id": 19843,
+    "aegis_name": "C_Cat_Hairband",
+    "name": "Costume Kitty Band",
+    "price_cash": 250,
+    "view": 2,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 10
+  },
+  {
+    "request": 50,
+    "item_id": 19578,
+    "aegis_name": "C_Goggle",
+    "name": "Costume Googles",
+    "price_cash": 250,
+    "view": 1,
+    "locations": {
+      "Costume_Head_Top": true,
+      "Costume_Head_Mid": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 51,
+    "item_id": 19605,
+    "aegis_name": "C_Gang_Scarf",
+    "name": "Costume Gang Scarf",
+    "price_cash": 250,
+    "view": 369,
+    "locations": {
+      "Costume_Head_Low": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 52,
+    "item_id": 20513,
+    "aegis_name": "C_EXE_Backpack",
+    "name": "Costume EXE Backpack",
+    "price_cash": 250,
+    "view": 22,
+    "locations": {
+      "Costume_Garment": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 53,
+    "item_id": 19903,
+    "aegis_name": "C_Witchs_Hat",
+    "name": "Costume Witch's Hat",
+    "price_cash": 250,
+    "view": 717,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 54,
+    "item_id": 31395,
+    "aegis_name": "C_Book_Of_Magic",
+    "name": "Costume Book of Magic",
+    "price_cash": 250,
+    "view": 1691,
+    "locations": {
+      "Costume_Head_Low": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 55,
+    "item_id": 20132,
+    "aegis_name": "C_Subject_Aura",
+    "name": "Costume Test Subject Aura",
+    "price_cash": 250,
+    "view": 1267,
+    "locations": {
+      "Costume_Head_Low": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 56,
+    "item_id": 19667,
+    "aegis_name": "C_Helm_Of_Dragoon",
+    "name": "Costume Dragon Helm",
+    "price_cash": 250,
+    "view": 464,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 57,
+    "item_id": 420046,
+    "aegis_name": "C_Royal_Mantle",
+    "name": "Costume Royal Mantle",
+    "price_cash": 250,
+    "view": 1697,
+    "locations": {
+      "Costume_Head_Low": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 58,
+    "item_id": 19630,
+    "aegis_name": "C_Crown",
+    "name": "Costume Crown",
+    "price_cash": 250,
+    "view": 45,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 59,
+    "item_id": 19618,
+    "aegis_name": "C_Mask_Of_Fox",
+    "name": "Costume Kitsune Mask",
+    "price_cash": 250,
+    "view": 153,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 60,
+    "item_id": 20764,
+    "aegis_name": "C_Fallen_Angel_Wing",
+    "name": "Costume Fallen Angel Wing",
+    "price_cash": 250,
+    "view": 3,
+    "locations": {
+      "Costume_Garment": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 61,
+    "item_id": 19289,
+    "aegis_name": "C_Moon_Eyepatch",
+    "name": "Costume Moon Eyepatch",
+    "price_cash": 250,
+    "view": 1370,
+    "locations": {
+      "Costume_Head_Mid": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 62,
+    "item_id": 19617,
+    "aegis_name": "C_Ear_Of_Puppy",
+    "name": "Costume Puppy Headband",
+    "price_cash": 250,
+    "view": 199,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 63,
+    "item_id": 19739,
+    "aegis_name": "C_Sleeping_Kitty_Cat",
+    "name": "Costume Sleeping Kitty Hat",
+    "price_cash": 250,
+    "view": 838,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 64,
+    "item_id": 20202,
+    "aegis_name": "C_Deviruchi_Balloon",
+    "name": "Costume Deviruchi Balloon",
+    "price_cash": 250,
+    "view": 1082,
+    "locations": {
+      "Costume_Head_Low": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 65,
+    "item_id": 20536,
+    "aegis_name": "C_Violet_Halo",
+    "name": "Costume Violet Halo",
+    "price_cash": 250,
+    "view": 39,
+    "locations": {
+      "Costume_Garment": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 66,
+    "item_id": 20765,
+    "aegis_name": "C_Archangel_Wing",
+    "name": "Costume Archangel Wing",
+    "price_cash": 250,
+    "view": 1,
+    "locations": {
+      "Costume_Garment": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 67,
+    "item_id": 31438,
+    "aegis_name": "C_Fluffy_Angel_Cape",
+    "name": "Costume Fluffy Angel Cape",
+    "price_cash": 250,
+    "view": 1706,
+    "locations": {
+      "Costume_Head_Low": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 68,
+    "item_id": 19702,
+    "aegis_name": "C_Santa_Hat_1",
+    "name": "Costume Twin Pompom By JB",
+    "price_cash": 250,
+    "view": 390,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 69,
+    "item_id": 19910,
+    "aegis_name": "C_Halloween_Hat",
+    "name": "Costume Halloween Hat",
+    "price_cash": 250,
+    "view": 1098,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  },
+  {
+    "request": 70,
+    "item_id": 31143,
+    "aegis_name": "C_Krathong_Crown_TH",
+    "name": "Costume: Krathong Crown",
+    "price_cash": 250,
+    "view": 1560,
+    "locations": {
+      "Costume_Head_Top": true
+    },
+    "weight_tenths": 0
+  }
+]

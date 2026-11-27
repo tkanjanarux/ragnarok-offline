@@ -1,0 +1,319 @@
+{
+  "scope": "schema-only isolated server; synthetic accounts only",
+  "candidate_map_sha256": "3d4b76f5130aef076ff38194391db48aa4e09d616d3358c9c26a0d0a9641d90b",
+  "device_verified": false,
+  "tests": [
+    {
+      "item_id": 19587,
+      "request": 47,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19876,
+      "request": 48,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19843,
+      "request": 49,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19578,
+      "request": 50,
+      "cash_once": true,
+      "equip_location": 3072,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19605,
+      "request": 51,
+      "cash_once": true,
+      "equip_location": 4096,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 20513,
+      "request": 52,
+      "cash_once": true,
+      "equip_location": 8192,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19903,
+      "request": 53,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 31395,
+      "request": 54,
+      "cash_once": true,
+      "equip_location": 4096,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 20132,
+      "request": 55,
+      "cash_once": true,
+      "equip_location": 4096,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19667,
+      "request": 56,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 420046,
+      "request": 57,
+      "cash_once": true,
+      "equip_location": 4096,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19630,
+      "request": 58,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19618,
+      "request": 59,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 20764,
+      "request": 60,
+      "cash_once": true,
+      "equip_location": 8192,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19289,
+      "request": 61,
+      "cash_once": true,
+      "equip_location": 2048,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19617,
+      "request": 62,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19739,
+      "request": 63,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 20202,
+      "request": 64,
+      "cash_once": true,
+      "equip_location": 4096,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 20536,
+      "request": 65,
+      "cash_once": true,
+      "equip_location": 8192,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 20765,
+      "request": 66,
+      "cash_once": true,
+      "equip_location": 8192,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 31438,
+      "request": 67,
+      "cash_once": true,
+      "equip_location": 4096,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19702,
+      "request": 68,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 19910,
+      "request": 69,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    },
+    {
+      "item_id": 31143,
+      "request": 70,
+      "cash_once": true,
+      "equip_location": 1024,
+      "stats_unchanged": [
+        6,
+        8
+      ],
+      "inventory_persisted": true,
+      "reconnect": true,
+      "render_device_verified": false
+    }
+  ]
+}

@@ -117598,6 +117598,77 @@
     "unidentifiedItemName": "Assassin Supply — Assassin Earth",
     "identifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Earth)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1",
     "unidentifiedItemDescription": "Fixed contents (not random):\n100 x White Syrup\n50 x Blue Potion\n10 x Elemental Converter (Earth)\n\nOpen from inventory, then confirm. Cancel keeps the pack. All contents must fit within weight, stack and slot limits. Contents keep their normal level/job/use restrictions.\nWeight: 1"
+  },
+  "2000350": {
+    "identifiedItemName": "Skill Reset Voucher",
+    "unidentifiedItemName": "Skill Reset Voucher",
+    "identifiedItemDescription": "Resets paid skill levels and refunds their spent points. Quest skills, Basic Skill and permanent grants stay.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0\nUse in town with carried weight zero and no mount/falcon/cart. Nothing is consumed for invalid conditions or no spent points.",
+    "unidentifiedItemDescription": "Resets paid skill levels and refunds their spent points. Quest skills, Basic Skill and permanent grants stay.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0\nUse in town with carried weight zero and no mount/falcon/cart. Nothing is consumed for invalid conditions or no spent points."
+  },
+  "2000360": {
+    "identifiedItemName": "Stat Reset Voucher",
+    "unidentifiedItemName": "Stat Reset Voucher",
+    "identifiedItemDescription": "Resets STR/AGI/VIT/INT/DEX/LUK to 1 and refunds their spent points. Keeps existing bonus and unspent points. Traits stay unchanged.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0\nUse in town with carried weight zero and no mount/falcon/cart. Nothing is consumed for invalid conditions or no spent points.",
+    "unidentifiedItemDescription": "Resets STR/AGI/VIT/INT/DEX/LUK to 1 and refunds their spent points. Keeps existing bonus and unspent points. Traits stay unchanged.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0\nUse in town with carried weight zero and no mount/falcon/cart. Nothing is consumed for invalid conditions or no spent points."
+  },
+  "2000370": {
+    "identifiedItemName": "Skill and Stat Reset Voucher",
+    "unidentifiedItemName": "Skill and Stat Reset Voucher",
+    "identifiedItemDescription": "Combines the skill and classic stat resets. Preserves quest/permanent skills and bonus/unspent points. Traits stay unchanged.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0\nUse in town with carried weight zero and no mount/falcon/cart. Nothing is consumed for invalid conditions or no spent points.",
+    "unidentifiedItemDescription": "Combines the skill and classic stat resets. Preserves quest/permanent skills and bonus/unspent points. Traits stay unchanged.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0\nUse in town with carried weight zero and no mount/falcon/cart. Nothing is consumed for invalid conditions or no spent points."
+  },
+  "2000380": {
+    "identifiedItemName": "Gym Training Voucher",
+    "unidentifiedItemName": "Gym Training Voucher",
+    "identifiedItemDescription": "Adds one permanent Enlarge Weight Limit level. Maximum 10 training levels. Existing Gym Pass training counts toward this limit.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0",
+    "unidentifiedItemDescription": "Adds one permanent Enlarge Weight Limit level. Maximum 10 training levels. Existing Gym Pass training counts toward this limit.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0"
+  },
+  "2000420": {
+    "identifiedItemName": "Portable Repair Voucher",
+    "unidentifiedItemName": "Portable Repair Voucher",
+    "identifiedItemDescription": "Repairs all broken equipment in your inventory, preserving cards and refinement. No additional materials. Voucher kept if nothing needs repair.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0",
+    "unidentifiedItemDescription": "Repairs all broken equipment in your inventory, preserving cards and refinement. No additional materials. Voucher kept if nothing needs repair.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0"
+  },
+  "2000450": {
+    "identifiedItemName": "Character Rename Voucher",
+    "unidentifiedItemName": "Character Rename Voucher",
+    "identifiedItemDescription": "Activates one saved rename credit. Use Rename at character selection. Cancelling name entry or a server rejection keeps the credit. Party/guild/name restrictions apply; the server may require leaving party or guild first.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0",
+    "unidentifiedItemDescription": "Activates one saved rename credit. Use Rename at character selection. Cancelling name entry or a server rejection keeps the credit. Party/guild/name restrictions apply; the server may require leaving party or guild first.\n\nUse in inventory, then confirm. Cancel keeps the voucher.\nWeight: 0"
+  },
+  "0020513": {
+    "identifiedItemName": "Costume EXE Backpack",
+    "unidentifiedItemName": "Costume Garment",
+    "identifiedItemDescription": "Costume garment. Appearance only; no stat bonuses.\r\nWeight: 0\r\nAll jobs. Free try-on before purchase.",
+    "unidentifiedItemDescription": "Identify this item before equipping."
+  },
+  "0020536": {
+    "identifiedItemName": "Costume Violet Halo",
+    "unidentifiedItemName": "Costume Garment",
+    "identifiedItemDescription": "Costume garment. Appearance only; no stat bonuses.\r\nWeight: 0\r\nAll jobs. Free try-on before purchase.",
+    "unidentifiedItemDescription": "Identify this item before equipping."
+  },
+  "2000430": {
+    "identifiedItemName": "Hairstyle Voucher",
+    "unidentifiedItemName": "Hairstyle Voucher",
+    "identifiedItemDescription": "One confirmed change, style numbers 1–42. Classic/rebirth human jobs only. Cancel or unchanged style keeps the voucher. Appearance only; no stats.",
+    "unidentifiedItemDescription": "Service voucher."
+  },
+  "2000440": {
+    "identifiedItemName": "Hair Colour Voucher",
+    "unidentifiedItemName": "Hair Colour Voucher",
+    "identifiedItemDescription": "One confirmed change, style numbers 0–8. Classic/rebirth human jobs only. Cancel or unchanged style keeps the voucher. Appearance only; no stats.",
+    "unidentifiedItemDescription": "Service voucher."
+  },
+  "2000441": {
+    "identifiedItemName": "Clothes Colour Voucher",
+    "unidentifiedItemName": "Clothes Colour Voucher",
+    "identifiedItemDescription": "One confirmed change, style numbers 0–3. Classic/rebirth human jobs only. Cancel or unchanged style keeps the voucher. Appearance only; no stats.",
+    "unidentifiedItemDescription": "Service voucher."
+  },
+  "2000460": {
+    "identifiedItemName": "Portable Card Removal Voucher",
+    "unidentifiedItemName": "Portable Card Removal Voucher",
+    "identifiedItemDescription": "One card-removal attempt. Also requires 200,000 Zeny + 25,000 per card, 1 Star Crumb and 1 Yellow Gemstone.\r\n90% success; 2% destroys equipment and cards; 6% destroys the unprotected side; 2% harmless failure. All completed attempts consume fees and voucher.\r\nChoose equipment or cards to protect against partial failure. Cancel and invalid attempts cost nothing. Eligible permanent equipped items only. Full rules shown before confirmation.",
+    "unidentifiedItemDescription": "Service voucher."
   }
-
 }

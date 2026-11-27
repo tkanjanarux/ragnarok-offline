@@ -1,0 +1,32 @@
+{
+  "scope": "schema-only isolated server; synthetic accounts only",
+  "candidate_map_sha256": "d573fa868f8a92e5698ef65689e536ef0e0cfc04f8891b3572f73b6d8887e956",
+  "device_verified": false,
+  "tests": [
+    {
+      "case": "full_inventory",
+      "passed": true,
+      "fixture_only": true
+    },
+    {
+      "case": "weight_limit",
+      "passed": true,
+      "fixture_only": true
+    },
+    {
+      "case": "disconnect_at_confirm",
+      "passed": true,
+      "fixture_only": true
+    },
+    {
+      "case": "duplicate_use_while_menu",
+      "passed": true,
+      "fixture_only": true
+    },
+    {
+      "case": "reconnect_after_cancel",
+      "passed": true,
+      "fixture_only": true
+    }
+  ]
+}
